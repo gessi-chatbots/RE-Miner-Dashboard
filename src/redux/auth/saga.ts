@@ -15,7 +15,6 @@ type UserData = {
     payload: {
         username: string;
         password: string;
-        fullname: string;
         email: string;
     };
     type: string;
@@ -23,10 +22,7 @@ type UserData = {
 
 const api = new APICore();
 
-/**
- * Login the user
- * @param {*} payload - username and password
- */
+
 function* login({ payload: { username, password }, type }: UserData): SagaIterator {
     try {
         const response = yield call(loginApi, { username, password });
@@ -41,9 +37,7 @@ function* login({ payload: { username, password }, type }: UserData): SagaIterat
     }
 }
 
-/**
- * Logout the user
- */
+
 function* logout(): SagaIterator {
     try {
         yield call(logoutApi);
@@ -55,9 +49,9 @@ function* logout(): SagaIterator {
     }
 }
 
-function* signup({ payload: { fullname, email, password } }: UserData): SagaIterator {
+function* signup({ payload: { email, password } }: UserData): SagaIterator {
     try {
-        const response = yield call(signupApi, { fullname, email, password });
+        const response = yield call(signupApi, { email, password });
         const user = response.data;
         // api.setLoggedInUser(user);
         // setAuthorization(user['token']);
@@ -93,8 +87,8 @@ export function* watchForgotPassword() {
     yield takeEvery(AuthActionTypes.FORGOT_PASSWORD, forgotPassword);
 }
 
-function* authSaga() {
+function* authorizationSaga() {
     yield all([fork(watchLoginUser), fork(watchLogout), fork(watchSignup), fork(watchForgotPassword)]);
 }
 
-export default authSaga;
+export default authorizationSaga;

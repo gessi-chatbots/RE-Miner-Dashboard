@@ -1,4 +1,4 @@
-import { createStore, compose, applyMiddleware } from 'redux';
+import {createStore, compose, applyMiddleware, Store} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 /*
 * reducers specify how the application's state changes in response to actions
@@ -19,7 +19,7 @@ declare global {
         __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
     }
 }
-
+let globalStore: Store;
 const sagaMiddleware = createSagaMiddleware();
 const middlewares = [sagaMiddleware];
 
@@ -27,7 +27,12 @@ const middlewares = [sagaMiddleware];
 export function configureStore(initialState: {}) {
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-    const localstore = createStore(reducers, initialState, composeEnhancers(applyMiddleware(...middlewares)));
+    const store = createStore(reducers, initialState, composeEnhancers(applyMiddleware(...middlewares)));
     sagaMiddleware.run(rootSaga);
-    return localstore;
+    globalStore = store;
+    return store;
 }
+
+export type RootState = ReturnType<typeof globalStore.getState>;
+export type AppDispatch = typeof globalStore.dispatch;
+

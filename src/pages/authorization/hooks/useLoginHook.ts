@@ -1,0 +1,51 @@
+import { useEffect } from 'react';
+import { Location, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+
+import { UserData } from '../Login';
+import useReduxHook from "../../../redux/hooks/useReduxHook";
+import {loginUser, resetAuth} from "../../../redux/auth/actions";
+
+type LocationState = {
+    from?: Location;
+};
+
+export default function useLoginHook() {
+    const { t } = useTranslation();
+    const { dispatch, appSelector } = useReduxHook();
+
+    const location: Location = useLocation();
+    let redirectUrl: string = '/';
+
+    if (location.state) {
+        const { from } = location.state as LocationState;
+        redirectUrl = from ? from.pathname : '/';
+    }
+
+    useEffect(() => {
+        dispatch(resetAuth());
+    }, [dispatch]);
+
+
+    const { loading, userLoggedIn, user, error } = appSelector((state) => ({
+        loading: state.Auth.loading,
+        user: state.Auth.user,
+        error: state.Auth.error,
+        userLoggedIn: state.Auth.userLoggedIn,
+    }));
+
+
+    const onSubmit = (formData: UserData) => {
+        dispatch(loginUser(formData['username'], formData['password']));
+    };
+
+    return {
+        loading,
+        userLoggedIn,
+        user,
+        error,
+        onSubmit,
+        redirectUrl,
+    };
+}
