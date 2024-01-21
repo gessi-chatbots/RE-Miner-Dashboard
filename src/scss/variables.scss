@@ -1029,7 +1029,7 @@ $form-floating-label-transform:   scale(.85) translateY(-.5rem) translateX(.15re
 $form-floating-transition:        opacity .1s ease-in-out, transform .1s ease-in-out;
 // scss-docs-end form-floating-variables
 
-// Form validation
+// AppForm validation
 
 // scss-docs-start form-feedback-variables
 $form-feedback-margin-top:          $form-text-margin-top;
@@ -1321,7 +1321,7 @@ $tooltip-arrow-height:              .4rem;
 $tooltip-arrow-color:               $tooltip-bg;
 // scss-docs-end tooltip-variables
 
-// Form tooltips must come after regular tooltips
+// AppForm tooltips must come after regular tooltips
 // scss-docs-start tooltip-feedback-variables
 $form-feedback-tooltip-padding-y:     $tooltip-padding-y;
 $form-feedback-tooltip-padding-x:     $tooltip-padding-x;
