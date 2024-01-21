@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-gessiappreviewminer-dev-145611-authRole",
+      "UnauthRoleArn": "arn:aws:iam::654654370616:role/amplify-gessiappreviewminer-dev-145611-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::654654370616:role/amplify-gessiappreviewminer-dev-145611-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-gessiappreviewminer-dev-145611-deployment",
+      "UnauthRoleName": "amplify-gessiappreviewminer-dev-145611-unauthRole",
+      "StackName": "amplify-gessiappreviewminer-dev-145611",
+      "StackId": "arn:aws:cloudformation:eu-west-1:654654370616:stack/amplify-gessiappreviewminer-dev-145611/abe1f430-b79b-11ee-b49d-06cee11da5f3",
+      "AmplifyAppId": "d34qay19up2yaz"
+    },
+    "categories": {
+      "auth": {
+        "gessiappreviewminere9940ef4": {}
+      }
+    }
+  }
+}

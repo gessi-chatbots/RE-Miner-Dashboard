@@ -1,12 +1,7 @@
 import React, { Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
-import PrivateRoute from './PrivateRoute';
 import useRedux from "../redux/hooks/useReduxHook";
 import Root from "./RootRoute";
-
-
-// Authorization routes
-const Login = React.lazy(() => import('../pages/authorization/Login'));
 
 type LoadComponentProps = {
     component: React.LazyExoticComponent<() => JSX.Element>;
@@ -25,14 +20,6 @@ const Routes = () => {
         { path: '/', element: <Root /> },
         {
             path: '/',
-            children: [
-                {
-                    path: 'authorization',
-                    children: [
-                        { path: 'login', element: <LoadComponent component={Login} /> }
-                    ]
-
-                }]
         }
     ]);
 };
