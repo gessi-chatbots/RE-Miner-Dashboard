@@ -1,0 +1,10 @@
+{
+  "resourceName": "remineDB",
+  "tableName": "users",
+  "partitionKey": {
+    "fieldName": "email",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
