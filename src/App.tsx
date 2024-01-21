@@ -3,6 +3,7 @@ import {
 import '@aws-amplify/ui-react/styles.css';
 import {Amplify} from "aws-amplify";
 import config from './amplifyconfiguration.json';
+import AppRoutes from "./routes/AppRoutes";
 Amplify.configure(config);
 const authenticationComponents = {
   Header() {
@@ -254,7 +255,12 @@ const formFields = {
 export default function App() {
   return (
       <Authenticator formFields={formFields} components={authenticationComponents}>
-        {({ signOut }) => <button onClick={signOut}>Sign out</button>}
+        {({ signOut }) => (
+            <>
+              <button onClick={signOut}>Sign out</button>
+              <AppRoutes />
+            </>
+        )}
       </Authenticator>
   );
 }
