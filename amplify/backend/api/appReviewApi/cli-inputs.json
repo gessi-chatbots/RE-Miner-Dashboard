@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "paths": {
+    "/review/{reviewId}": {
+      "name": "/review/{reviewId}",
+      "lambdaFunction": "reviewAppApi",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}
