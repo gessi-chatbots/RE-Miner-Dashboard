@@ -29,6 +29,49 @@
       "service": "Cognito"
     }
   },
+  "function": {
+    "addUserToDB": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "gessiappreviewminere9940ef4"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "remineDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_addUserToDB_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addUserToDB"
+        }
+      ]
+    },
+    "AMPLIFY_function_addUserToDB_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addUserToDB"
+        }
+      ]
+    }
+  },
   "storage": {
     "remineDB": {
       "providerPlugin": "awscloudformation",

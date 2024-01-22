@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
-import useRedux from "../redux/hooks/useReduxHook";
 import Root from "./RootRoute";
 
 type LoadComponentProps = {
@@ -15,7 +14,6 @@ const LoadComponent = ({ component: Component }: LoadComponentProps) => (
     </Suspense>
 );
 const Routes = () => {
-    const { appSelector } = useRedux();
     return useRoutes([
         { path: '/', element: <Root /> },
         {
