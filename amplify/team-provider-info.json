@@ -17,6 +17,9 @@
       },
       "storage": {
         "remineDB": {}
+      },
+      "function": {
+        "createUserInDB": {}
       }
     }
   }

@@ -29,6 +29,31 @@
       "service": "Cognito"
     }
   },
+  "function": {
+    "createUserInDB": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "gessiappreviewminere9940ef4"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "remineDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
   "storage": {
     "remineDB": {
       "providerPlugin": "awscloudformation",
