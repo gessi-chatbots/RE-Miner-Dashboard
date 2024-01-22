@@ -32,6 +32,12 @@
       },
       "api": {
         "appReviewApi": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d34qay19up2yaz",
+          "type": "cicd"
+        }
       }
     }
   }
