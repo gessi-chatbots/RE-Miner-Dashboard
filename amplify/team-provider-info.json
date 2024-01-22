@@ -22,7 +22,7 @@
         "createUserInDB": {},
         "addUserToDB": {
           "deploymentBucketName": "amplify-gessiappreviewminer-dev-145611-deployment",
-          "s3Key": "amplify-builds/addUserToDB-6b61753479444f796173-build.zip"
+          "s3Key": "amplify-builds/addUserToDB-345562522b456e597145-build.zip"
         }
       }
     }
