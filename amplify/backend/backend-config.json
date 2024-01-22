@@ -30,7 +30,7 @@
     }
   },
   "function": {
-    "createUserInDB": {
+    "addUserToDB": {
       "build": true,
       "dependsOn": [
         {
@@ -52,6 +52,24 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_addUserToDB_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addUserToDB"
+        }
+      ]
+    },
+    "AMPLIFY_function_addUserToDB_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addUserToDB"
+        }
+      ]
     }
   },
   "storage": {

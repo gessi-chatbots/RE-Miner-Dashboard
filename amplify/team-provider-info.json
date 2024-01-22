@@ -19,7 +19,11 @@
         "remineDB": {}
       },
       "function": {
-        "createUserInDB": {}
+        "createUserInDB": {},
+        "addUserToDB": {
+          "deploymentBucketName": "amplify-gessiappreviewminer-dev-145611-deployment",
+          "s3Key": "amplify-builds/addUserToDB-6b61753479444f796173-build.zip"
+        }
       }
     }
   }
