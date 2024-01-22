@@ -1,4 +1,20 @@
 {
+  "api": {
+    "appReviewApi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "reviewAppApi"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
     "gessiappreviewminere9940ef4": {
       "customAuth": false,
@@ -52,6 +68,22 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "reviewAppApi": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "remineDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -68,6 +100,22 @@
         {
           "category": "function",
           "resourceName": "addUserToDB"
+        }
+      ]
+    },
+    "AMPLIFY_function_reviewAppApi_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reviewAppApi"
+        }
+      ]
+    },
+    "AMPLIFY_function_reviewAppApi_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reviewAppApi"
         }
       ]
     }

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "storage": {
+      "remineDB": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

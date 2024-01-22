@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-gessiappreviewminer-dev-145611-unauthRole",
       "StackName": "amplify-gessiappreviewminer-dev-145611",
       "StackId": "arn:aws:cloudformation:eu-west-1:654654370616:stack/amplify-gessiappreviewminer-dev-145611/abe1f430-b79b-11ee-b49d-06cee11da5f3",
-      "AmplifyAppId": "d34qay19up2yaz"
+      "AmplifyAppId": "d34qay19up2yaz",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-gessiappreviewminer-dev-145611-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
@@ -22,8 +23,15 @@
         "createUserInDB": {},
         "addUserToDB": {
           "deploymentBucketName": "amplify-gessiappreviewminer-dev-145611-deployment",
-          "s3Key": "amplify-builds/addUserToDB-7936736249722b754869-build.zip"
+          "s3Key": "amplify-builds/addUserToDB-4956334a772b54422f35-build.zip"
+        },
+        "reviewAppApi": {
+          "deploymentBucketName": "amplify-gessiappreviewminer-dev-145611-deployment",
+          "s3Key": "amplify-builds/reviewAppApi-47737339336a6e353130-build.zip"
         }
+      },
+      "api": {
+        "appReviewApi": {}
       }
     }
   }
