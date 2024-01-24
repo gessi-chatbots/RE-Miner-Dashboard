@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
 import Root from "./RootRoute";
-import NavBar from "../components/NavBar";
+import Navbar from "../components/navbar/Navbar";
 
 
 const Routes = () => {
@@ -10,7 +10,7 @@ const Routes = () => {
         {
             // public routes
             path: 'dashboard',
-            element: <NavBar />,
+            element: <Navbar />,
             children: [
             ],
         },

@@ -7,7 +7,6 @@
 $variable-prefix:                                 'ct-';
 
 // Color system
-
 // scss-docs-start gray-color-variables
 $white:    #fff !default;
 $gray-100: #f1f3fa;
@@ -20,9 +19,7 @@ $gray-700: #919ca7;
 $gray-800: #343a40 !default;
 $gray-900: #474d56;
 $black:    #000 !default;
-// scss-docs-end gray-color-variables
 
-// fusv-disable
 // scss-docs-start gray-colors-map
 $grays: (
         "100": $gray-100,
@@ -35,11 +32,9 @@ $grays: (
         "800": $gray-800,
         "900": $gray-900
 );
-// scss-docs-end gray-colors-map
-// fusv-enable
 
 // scss-docs-start color-variables
-$blue:       #3688fc;
+$blue-upc:   #007bc0;
 $indigo:     #727cf5;
 $purple:     #6b5eae;
 $pink:       #ff679b;
@@ -51,26 +46,9 @@ $teal:       #02a8b5;
 $cyan:       #44badc;
 // scss-docs-end color-variables
 
-// scss-docs-start colors-map
-$colors: (
-        "blue":       $blue,
-        "indigo":     $indigo,
-        "purple":     $purple,
-        "pink":       $pink,
-        "red":        $red,
-        "orange":     $orange,
-        "yellow":     $yellow,
-        "green":      $green,
-        "teal":       $teal,
-        "cyan":       $cyan,
-        "white":      $white,
-        "gray":       $gray-600,
-        "gray-dark":  $gray-800
-);
-// scss-docs-end colors-map
 
 // scss-docs-start theme-color-variables
-$primary:       $blue;
+$primary:       $blue-upc;
 $secondary:     $gray-700;
 $success:       $green;
 $info:          $cyan;
