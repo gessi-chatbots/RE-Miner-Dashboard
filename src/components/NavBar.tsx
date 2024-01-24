@@ -9,23 +9,24 @@ const NavBar = () => {
     };
 
     return (
-        <Navbar collapseOnSelect expand="lg" variant="dark" className="py-lg-3">
+        <Navbar collapseOnSelect expand="lg" variant="secondary" className="py-lg-3">
             <Container>
                 <Navbar.Brand href="/" className="me-lg-5">
                 </Navbar.Brand>
-
                 <Navbar.Toggle aria-controls="responsive-navbar-nav">
-                    <i className="mdi mdi-menu"></i>
+                    <i className="primary mdi mdi-menu"></i>
                 </Navbar.Toggle>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav as="ul" className="me-auto align-items-center">
                         <Nav.Item as="li" className="mx-lg-1">
-                            <Nav.Link href="" className="active">
+                            <Nav.Link href="" className="">
                                 Apps
                             </Nav.Link>
                         </Nav.Item>
                         <Nav.Item className="mx-lg-1">
-                            <Nav.Link href="">Reviews</Nav.Link>
+                            <Nav.Link href="" className="dark">
+                                Reviews
+                            </Nav.Link>
                         </Nav.Item>
                     </Nav>
                     <button onClick={signOutUser}>Sign out</button>

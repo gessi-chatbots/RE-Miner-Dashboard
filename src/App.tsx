@@ -1,8 +1,10 @@
 import {
-  Authenticator, Button, Heading, useAuthenticator, useTheme, View, Text, Image} from "@aws-amplify/ui-react";
+  Authenticator,
+  Button, Heading, useAuthenticator, useTheme, View, Text, Image} from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
 import {Amplify} from "aws-amplify";
 import config from './amplifyconfiguration.json';
+import './scss/app.scss';
 import AppRoutes from "./routes/AppRoutes";
 Amplify.configure(config);
 const authenticationComponents = {
