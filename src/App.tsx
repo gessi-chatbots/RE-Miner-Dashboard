@@ -42,7 +42,7 @@ const authenticationComponents = {
               padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
               level={3}
           >
-            Sign In in ReMine App
+            Sign In in ReMiner App
           </Heading>
       );
     },
@@ -106,9 +106,6 @@ const authenticationComponents = {
           </Heading>
       );
     },
-    Footer() {
-      return <Text>Footer Information</Text>;
-    },
   },
   SetupTotp: {
     Header() {
@@ -121,9 +118,6 @@ const authenticationComponents = {
             Enter Information:
           </Heading>
       );
-    },
-    Footer() {
-      return <Text>Footer Information</Text>;
     },
   },
   ConfirmSignIn: {
@@ -138,9 +132,6 @@ const authenticationComponents = {
           </Heading>
       );
     },
-    Footer() {
-      return <Text>Footer Information</Text>;
-    },
   },
   ForgotPassword: {
     Header() {
@@ -154,9 +145,6 @@ const authenticationComponents = {
           </Heading>
       );
     },
-    Footer() {
-      return <Text>Footer Information</Text>;
-    },
   },
   ConfirmResetPassword: {
     Header() {
@@ -169,9 +157,6 @@ const authenticationComponents = {
             Enter Information:
           </Heading>
       );
-    },
-    Footer() {
-      return <Text>Footer Information</Text>;
     },
   },
 };
@@ -208,28 +193,28 @@ const formFields = {
       order: 4,
     },
     confirm_password: {
-      label: 'Confirm Password:',
+      label: 'Confirm Password',
       order: 5,
     },
   },
   forceNewPassword: {
     password: {
-      placeholder: 'Enter your Password:',
+      placeholder: 'Enter your Password',
     },
   },
   forgotPassword: {
     username: {
-      placeholder: 'Enter your email:',
+      placeholder: 'Enter your email',
     },
   },
   confirmResetPassword: {
     confirmation_code: {
-      placeholder: 'Enter your Confirmation Code:',
+      placeholder: 'Enter your Confirmation Code',
       label: 'New Label',
       isRequired: false,
     },
     confirm_password: {
-      placeholder: 'Enter your Password Please:',
+      placeholder: 'Enter your Password Please',
     },
   },
   setupTotp: {
@@ -239,14 +224,14 @@ const formFields = {
     },
     confirmation_code: {
       label: 'New Label',
-      placeholder: 'Enter your Confirmation Code:',
+      placeholder: 'Enter your Confirmation Code',
       isRequired: false,
     },
   },
   confirmSignIn: {
     confirmation_code: {
       label: 'New Label',
-      placeholder: 'Enter your Confirmation Code:',
+      placeholder: 'Enter your Confirmation Code',
       isRequired: false,
     },
   },
@@ -255,12 +240,7 @@ const formFields = {
 export default function App() {
   return (
       <Authenticator formFields={formFields} components={authenticationComponents}>
-        {({ signOut }) => (
-            <>
-              <button onClick={signOut}>Sign out</button>
-              <AppRoutes />
-            </>
-        )}
+        <AppRoutes />
       </Authenticator>
   );
 }
