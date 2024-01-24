@@ -44,3 +44,13 @@
     }
   }
 }
+
+.navbar-button:hover .mdi-chevron-right {
+  display: none; /* Hide the default icon */
+}
+
+.navbar-button:hover .mdi-chevron-down {
+  display: inline-block; /* Display the arrow icon when hovered */
+  /* Add your styles for the hovered state of the arrow icon here */
+  /* For example, you can change the color, size, or any other property */
+}
