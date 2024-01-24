@@ -1,24 +1,19 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { useRoutes } from 'react-router-dom';
 import Root from "./RootRoute";
+import Navbar from "../components/navbar/Navbar";
 
-type LoadComponentProps = {
-    component: React.LazyExoticComponent<() => JSX.Element>;
-};
 
-const loading = () => <div className=""></div>;
-
-const LoadComponent = ({ component: Component }: LoadComponentProps) => (
-    <Suspense fallback={loading()}>
-        <Component />
-    </Suspense>
-);
 const Routes = () => {
     return useRoutes([
         { path: '/', element: <Root /> },
         {
-            path: '/',
-        }
+            // public routes
+            path: 'dashboard',
+            element: <Navbar />,
+            children: [
+            ],
+        },
     ]);
 };
 export {Routes}

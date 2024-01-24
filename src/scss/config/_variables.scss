@@ -1,8 +1,12 @@
-//Auto generated file
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+// Prefix for :root CSS variables
 $variable-prefix:                                 'ct-';
 
 // Color system
-
 // scss-docs-start gray-color-variables
 $white:    #fff !default;
 $gray-100: #f1f3fa;
@@ -11,13 +15,11 @@ $gray-300: #dee2e6 !default;
 $gray-400: #ced4da !default;
 $gray-500: #adb5bd !default;
 $gray-600: #98a6ad;
-$gray-700: #6c757d;
+$gray-700: #919ca7;
 $gray-800: #343a40 !default;
-$gray-900: #313a46;
+$gray-900: #474d56;
 $black:    #000 !default;
-// scss-docs-end gray-color-variables
 
-// fusv-disable
 // scss-docs-start gray-colors-map
 $grays: (
         "100": $gray-100,
@@ -30,42 +32,23 @@ $grays: (
         "800": $gray-800,
         "900": $gray-900
 );
-// scss-docs-end gray-colors-map
-// fusv-enable
 
 // scss-docs-start color-variables
-$blue:       #2c8ef8;
+$blue-upc:   #007bc0;
 $indigo:     #727cf5;
 $purple:     #6b5eae;
 $pink:       #ff679b;
-$red:        #fa5c7c;
-$orange:     #fd7e14;
-$yellow:     #ffbc00;
-$green:      #0acf97;
+$red:        #fa6767;
+$orange:     #ff9041;
+$yellow:     #f9bc0d;
+$green:      #42d29d;
 $teal:       #02a8b5;
-$cyan:       #39afd1;
+$cyan:       #44badc;
 // scss-docs-end color-variables
 
-// scss-docs-start colors-map
-$colors: (
-        "blue":       $blue,
-        "indigo":     $indigo,
-        "purple":     $purple,
-        "pink":       $pink,
-        "red":        $red,
-        "orange":     $orange,
-        "yellow":     $yellow,
-        "green":      $green,
-        "teal":       $teal,
-        "cyan":       $cyan,
-        "white":      $white,
-        "gray":       $gray-600,
-        "gray-dark":  $gray-800
-);
-// scss-docs-end colors-map
 
 // scss-docs-start theme-color-variables
-$primary:       $indigo;
+$primary:       $blue-upc;
 $secondary:     $gray-700;
 $success:       $green;
 $info:          $cyan;
@@ -397,7 +380,7 @@ $position-values: (
 // Settings for the `<body>` element.
 
 $body-bg:                   #fafbfe;
-$body-color:                $gray-700;
+$body-color:                shade-color($gray-700,10%);
 $body-text-align:           null;
 
 // Utilities maps
@@ -439,7 +422,7 @@ $utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg");
 
 $link-color:                              var(--#{$variable-prefix}link-color);
 $link-decoration:                         none;
-$link-shade-percentage:                   15%;
+$link-shade-percentage:                   25%;
 $link-hover-color:                        var(--#{$variable-prefix}link-hover-color);
 $link-hover-decoration:                   null;
 
@@ -618,7 +601,7 @@ $font-sizes: (
 $headings-margin-bottom:      $spacer * .5;
 $headings-font-family:        null;
 $headings-font-style:         null;
-$headings-font-weight:        500;
+$headings-font-weight:        400;
 $headings-line-height:        1.1;
 $headings-color:              null;
 // scss-docs-end headings-variables
@@ -655,11 +638,11 @@ $blockquote-footer-color:     var(--#{$variable-prefix}blockquote-footer-color);
 $blockquote-footer-font-size: $small-font-size;
 
 $hr-margin-y:                 $spacer - 0.5rem;
-$hr-color:                    inherit;
+$hr-color:                    var(--#{$variable-prefix}hr-color);
 $hr-bg-color:                 currentColor;
 $hr-border-width:             0;
 $hr-height:                   $border-width;
-$hr-opacity:                  .25;
+$hr-opacity:                  0.25;
 
 $legend-margin-bottom:        .5rem;
 $legend-font-size:            1.5rem;
@@ -786,8 +769,8 @@ $btn-font-size-lg:            $input-btn-font-size-lg;
 $btn-border-width:            $input-btn-border-width;
 
 $btn-font-weight:             $font-weight-normal;
-$btn-box-shadow:              0px 2px 6px 0px;  // button box shadow
-$btn-focus-width:             $input-btn-focus-width;
+$btn-box-shadow:              var(--#{$variable-prefix}btn-box-shadow);
+$btn-focus-width:             0.15rem;
 $btn-focus-box-shadow:        $input-btn-focus-box-shadow;
 $btn-disabled-opacity:        .65;
 $btn-active-box-shadow:       var(--#{$variable-prefix}btn-active-box-shadow);
@@ -1029,7 +1012,7 @@ $form-floating-label-transform:   scale(.85) translateY(-.5rem) translateX(.15re
 $form-floating-transition:        opacity .1s ease-in-out, transform .1s ease-in-out;
 // scss-docs-end form-floating-variables
 
-// AppForm validation
+// Form validation
 
 // scss-docs-start form-feedback-variables
 $form-feedback-margin-top:          $form-text-margin-top;
@@ -1321,7 +1304,7 @@ $tooltip-arrow-height:              .4rem;
 $tooltip-arrow-color:               $tooltip-bg;
 // scss-docs-end tooltip-variables
 
-// AppForm tooltips must come after regular tooltips
+// Form tooltips must come after regular tooltips
 // scss-docs-start tooltip-feedback-variables
 $form-feedback-tooltip-padding-y:     $tooltip-padding-y;
 $form-feedback-tooltip-padding-x:     $tooltip-padding-x;
@@ -1409,7 +1392,7 @@ $modal-title-line-height:           $line-height-base;
 $modal-content-color:               null;
 $modal-content-bg:                  var(--#{$variable-prefix}modal-content-bg);
 $modal-content-border-color:        transparent;
-$modal-content-border-width:        $border-width;
+$modal-content-border-width:        0;
 $modal-content-border-radius:       0.2rem;
 $modal-content-inner-border-radius: subtract($modal-content-border-radius, $modal-content-border-width);
 $modal-content-box-shadow-xs:       var(--#{$variable-prefix}modal-content-box-shadow-xs);
@@ -1528,7 +1511,7 @@ $breadcrumb-padding-y:              $spacer * 1;
 $breadcrumb-padding-x:              0;
 $breadcrumb-item-padding-x:         .5rem;
 $breadcrumb-margin-bottom:          1rem;
-$breadcrumb-bg:                     null;
+$breadcrumb-bg:                     transparent;
 $breadcrumb-divider-color:          var(--#{$variable-prefix}breadcrumb-divider-color);
 $breadcrumb-active-color:           var(--#{$variable-prefix}breadcrumb-active-color);
 $breadcrumb-divider:                quote("\F0142");
@@ -1636,11 +1619,3 @@ $kbd-color:                         var(--#{$variable-prefix}kbd-color);
 $kbd-bg:                            var(--#{$variable-prefix}kbd-bg);
 
 $pre-color:                         null;
-
-// Custom
-
-$auth-bg:                         var(--#{$variable-prefix}auth-bg);
-// $auth-bg-pattern-img:             url("../../../images/bg-pattern-light.svg");
-// Logo auth display
-$logo-auth-light-display:                none;
-$logo-auth-dark-display:                 block;

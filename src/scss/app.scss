@@ -1,10 +1,17 @@
-@import "./node_modules/bootstrap/scss/bootstrap";
-@import "./node_modules/bootstrap/scss/functions";
-@import "./node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
 
-@import "variables";
+@import "./config/variables";
+@import "./config/light-color";
+@import "./config/dark-color";
+@import "./config/custom-variables";
+
+//Structure
+@import "./config/structure";
+@import "./config/topbar";
+@import "./config/page-head";
+@import "./config/horizontal-nav";
+
 // Icons
 @import './icons/materialdesignicons.scss';
-
-// Pages
-@import "pages/authentication";

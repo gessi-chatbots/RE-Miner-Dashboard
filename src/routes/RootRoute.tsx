@@ -1,9 +1,8 @@
-import { Navigate } from 'react-router-dom';
+import {Navigate} from 'react-router-dom';
 
 const Root = () => {
     const getRootUrl = () => {
-        let url: string = '/';
-        return url;
+        return 'dashboard';
     };
 
     const url = getRootUrl();
