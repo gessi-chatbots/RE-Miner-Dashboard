@@ -1,19 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Navbar, Button } from 'react-bootstrap';
-import { getCurrentUser, signOut, fetchUserAttributes } from 'aws-amplify/auth';
+import {Container, Navbar, Button, Row, Dropdown} from 'react-bootstrap';
+import { signOut, fetchUserAttributes } from 'aws-amplify/auth';
 import Logo from '../../static/images/logos/logo.png';
+import {Link} from "react-router-dom";
+
+const signOutUser = () => {
+    signOut()
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+};
+
+
+const DropdownMenuUser = () => {
+    return (
+        <Dropdown.Menu>
+            <Dropdown.Item>
+                <Link
+                    to="#"
+                    onClick={signOutUser}
+                    style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}
+                >
+                    Sign out
+                </Link>
+            </Dropdown.Item>
+        </Dropdown.Menu>
+    );
+};
+
+
 interface UserData {
     name?: string;
     family_name?: string;
 }
+
+
 const PrimaryNavBar = () => {
     const [userData, setUserData] = useState<UserData | null>(null);
+    const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 
-    const signOutUser = () => {
-        signOut()
-            .then((data) => console.log(data))
-            .catch((err) => console.log(err));
-    };
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -30,6 +54,9 @@ const PrimaryNavBar = () => {
 
         fetchUserData();
     }, []); // Empty dependency array to run the effect only once on mount
+    const toggleUserDropdown = () => {
+        setUserDropdownOpen(!userDropdownOpen);
+    };
 
     return (
         <Navbar className="bg-white py-lg-3">
@@ -39,14 +66,15 @@ const PrimaryNavBar = () => {
                         <img src={Logo} style={{ width: '50%' }} alt="Logo" />
                     </a>
                 </Navbar.Brand>
-                {userData && (
-                    <div>
-                        <span>Welcome back: {userData?.name} {userData?.family_name} </span>
-                    </div>
-                )}
-                <Button variant="light" onClick={signOutUser}>
-                    Sign out
-                </Button>
+
+                <Container className="d-flex flex-column align-items-end">
+                    <Row>
+                        <Button className="mr-2 btn-secondary" onClick={toggleUserDropdown}> <b>{userData?.name} {userData?.family_name} </b></Button>
+                        <Dropdown show={userDropdownOpen} align="start">
+                            <DropdownMenuUser />
+                        </Dropdown>
+                    </Row>
+                </Container>
             </Container>
         </Navbar>
     );
