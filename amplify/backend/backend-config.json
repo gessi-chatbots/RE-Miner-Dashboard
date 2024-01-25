@@ -93,7 +93,7 @@
             "StreamArn"
           ],
           "category": "storage",
-          "resourceName": "reviewMinerDB"
+          "resourceName": "appsDB"
         }
       ],
       "providerPlugin": "awscloudformation",

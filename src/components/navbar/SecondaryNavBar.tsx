@@ -5,8 +5,8 @@ import {Link} from "react-router-dom";
 const DropdownMenuApps = () => {
     return (
         <Dropdown.Menu>
-            <Dropdown.Item as={Link} to="apps/upload"><i className="mdi mdi-upload"/> Upload Apps</Dropdown.Item>
-            <Dropdown.Item as={Link} to="apps/view"><i className="mdi mdi-eye"/> View Apps</Dropdown.Item>
+            <Dropdown.Item as={Link} to="/apps/upload"><i className="mdi mdi-upload"/> Upload Apps</Dropdown.Item>
+            <Dropdown.Item as={Link} to="/apps"><i className="mdi mdi-eye"/> View Apps</Dropdown.Item>
         </Dropdown.Menu>
     );
 };
@@ -14,9 +14,9 @@ const DropdownMenuApps = () => {
 const DropdownMenuReviews = () => {
     return (
         <Dropdown.Menu>
-            <Dropdown.Item as={Link} to="reviews/upload"><i className="mdi mdi-upload"/> Upload Reviews</Dropdown.Item>
-            <Dropdown.Item as={Link} to="reviews/view"><i className="mdi mdi-eye"/> View Reviews</Dropdown.Item>
-            <Dropdown.Item as={Link} to="reviews/process"><i className="mdi mdi-orbit-variant"/> Process Reviews</Dropdown.Item>
+            <Dropdown.Item as={Link} to="/reviews/upload"><i className="mdi mdi-upload"/> Upload Reviews</Dropdown.Item>
+            <Dropdown.Item as={Link} to="/reviews"><i className="mdi mdi-eye"/> View Reviews</Dropdown.Item>
+            <Dropdown.Item as={Link} to="/reviews/process"><i className="mdi mdi-orbit-variant"/> Process Reviews</Dropdown.Item>
         </Dropdown.Menu>
     );
 };
@@ -38,11 +38,11 @@ const SecondaryNavBar = () => {
     };
 
     return (
-        <Navbar variant="secondary" className="bg-primary py-lg-3">
+        <Navbar variant="secondary" className="bg-primary py-lg-3 mb-3">
             <Container>
                 <Nav as="ul" className="me-auto align-items-center">
                     <Nav.Item as="li" className="mx-lg-1">
-                        <Nav.Link href="/dashboard" className="text-white">
+                        <Nav.Link as={Link} to="/dashboard" className="text-white">
                             <Button className="mr-2"> <i className="mdi mdi-view-dashboard-variant mdi-24px"/> Dashboard</Button>
                         </Nav.Link>
                     </Nav.Item>

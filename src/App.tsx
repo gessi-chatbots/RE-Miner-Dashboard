@@ -4,7 +4,7 @@ import {
 import '@aws-amplify/ui-react/styles.css';
 import {Amplify} from "aws-amplify";
 import config from './amplifyconfiguration.json';
-import './scss/app.scss';
+import './assets/scss/app.scss';
 import AppRoutes from "./routes/AppRoutes";
 Amplify.configure(config);
 const authenticationComponents = {

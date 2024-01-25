@@ -1,7 +1,7 @@
 {
   "permissions": {
     "storage": {
-      "reviewMinerDB": [
+      "appsDB": [
         "create",
         "read",
         "update",

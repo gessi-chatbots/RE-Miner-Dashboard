@@ -16,17 +16,17 @@
     "s3Key": {
       "Type": "String"
     },
-    "storagereviewMinerDBName": {
+    "storageappsDBName": {
       "Type": "String",
-      "Default": "storagereviewMinerDBName"
+      "Default": "storageappsDBName"
     },
-    "storagereviewMinerDBArn": {
+    "storageappsDBArn": {
       "Type": "String",
-      "Default": "storagereviewMinerDBArn"
+      "Default": "storageappsDBArn"
     },
-    "storagereviewMinerDBStreamArn": {
+    "storageappsDBStreamArn": {
       "Type": "String",
-      "Default": "storagereviewMinerDBStreamArn"
+      "Default": "storageappsDBStreamArn"
     }
   },
   "Conditions": {
@@ -82,14 +82,14 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "STORAGE_REVIEWMINERDB_NAME": {
-              "Ref": "storagereviewMinerDBName"
+            "STORAGE_APPSDB_NAME": {
+              "Ref": "storageappsDBName"
             },
-            "STORAGE_REVIEWMINERDB_ARN": {
-              "Ref": "storagereviewMinerDBArn"
+            "STORAGE_APPSDB_ARN": {
+              "Ref": "storageappsDBArn"
             },
-            "STORAGE_REVIEWMINERDB_STREAMARN": {
-              "Ref": "storagereviewMinerDBStreamArn"
+            "STORAGE_APPSDB_STREAMARN": {
+              "Ref": "storageappsDBStreamArn"
             }
           }
         },
@@ -223,14 +223,14 @@
               ],
               "Resource": [
                 {
-                  "Ref": "storagereviewMinerDBArn"
+                  "Ref": "storageappsDBArn"
                 },
                 {
                   "Fn::Join": [
                     "/",
                     [
                       {
-                        "Ref": "storagereviewMinerDBArn"
+                        "Ref": "storageappsDBArn"
                       },
                       "index/*"
                     ]
