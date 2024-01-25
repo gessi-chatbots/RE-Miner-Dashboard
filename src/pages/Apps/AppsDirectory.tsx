@@ -29,7 +29,7 @@ const AppsDirectory: React.FC = () => {
         <Container className="mt-2">
             <div>
                 <h1 className="text-secondary">Applications</h1>
-                <Table striped bordered hover>
+                <Table striped bordered hover className="table table-centered table-striped">
                     <thead>
                     <tr>
                         {defaultColumns.map(column => (

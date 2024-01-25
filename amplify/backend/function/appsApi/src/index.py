@@ -32,6 +32,15 @@ def list_apps():
     return jsonify(app_data_list)
 
 def handler(event, context):
-  print('received event:')
-  print(event)
-  return awsgi.response(app, event, context)
+    print('[Apps API]: Received Event')
+    print(event)
+
+    flask_response = awsgi.response(app, event, context)
+
+    flask_response['headers'] = {
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+    }
+
+    return flask_response
