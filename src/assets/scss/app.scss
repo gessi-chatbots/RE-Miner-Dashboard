@@ -1,6 +1,7 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 @import "../../../node_modules/bootstrap/scss/functions";
 @import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/react-toastify/dist/ReactToastify.css";
 
 @import "./config/variables";
 @import "./config/light-color";
@@ -18,5 +19,6 @@
 
 // Components
 @import "./components/nav.scss";
+@import "./components/dropzone.scss";
 @import "./components/tables.scss";
 @import "./components/modal.scss";
