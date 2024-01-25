@@ -13,7 +13,7 @@ TABLE = "applications-dev"
 
 @app.route(BASE_ROUTE, methods=['GET'])
 def list_apps():
-    return jsonify(message="app list ;P")
+    return jsonify(data=client.scan(TableName=TABLE))
 
 @app.route(BASE_ROUTE, methods=['POST'])
 def create_apps():
