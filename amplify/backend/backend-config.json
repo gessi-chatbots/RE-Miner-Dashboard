@@ -1,5 +1,19 @@
 {
   "api": {
+    "appsAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "appsApi"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "reviewsAPI": {
       "dependsOn": [
         {
@@ -56,6 +70,22 @@
           "category": "auth",
           "resourceName": "gessiappreviewminere9940ef4"
         },
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "reviewMinerDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "appsApi": {
+      "build": true,
+      "dependsOn": [
         {
           "attributes": [
             "Name",
