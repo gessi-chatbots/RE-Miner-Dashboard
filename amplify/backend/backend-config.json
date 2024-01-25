@@ -140,6 +140,22 @@
         }
       ]
     },
+    "AMPLIFY_function_appsApi_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "appsApi"
+        }
+      ]
+    },
+    "AMPLIFY_function_appsApi_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "appsApi"
+        }
+      ]
+    },
     "AMPLIFY_function_reviewsApi_deploymentBucketName": {
       "usedBy": [
         {
@@ -174,6 +190,10 @@
     }
   },
   "storage": {
+    "appsDB": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
     "reviewMinerDB": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"

@@ -1,0 +1,10 @@
+{
+  "resourceName": "appsDB",
+  "tableName": "applications",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
