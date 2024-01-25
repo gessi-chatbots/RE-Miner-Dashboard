@@ -1,9 +1,9 @@
 {
   "version": 1,
   "paths": {
-    "/review/{reviewId}": {
-      "name": "/review/{reviewId}",
-      "lambdaFunction": "reviewAppApi",
+    "/reviews": {
+      "name": "/reviews",
+      "lambdaFunction": "reviewsApi",
       "permissions": {
         "setting": "private",
         "auth": [

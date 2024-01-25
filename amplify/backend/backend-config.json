@@ -1,6 +1,6 @@
 {
   "api": {
-    "appReviewApi": {
+    "reviewsAPI": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "reviewAppApi"
+          "resourceName": "reviewsApi"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -46,7 +46,7 @@
     }
   },
   "function": {
-    "addUserToDB": {
+    "addConfirmedUserToDB": {
       "build": true,
       "dependsOn": [
         {
@@ -63,13 +63,13 @@
             "StreamArn"
           ],
           "category": "storage",
-          "resourceName": "remineDB"
+          "resourceName": "reviewMinerDB"
         }
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "reviewAppApi": {
+    "reviewsApi": {
       "build": true,
       "dependsOn": [
         {
@@ -79,7 +79,7 @@
             "StreamArn"
           ],
           "category": "storage",
-          "resourceName": "remineDB"
+          "resourceName": "reviewMinerDB"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -94,35 +94,35 @@
     }
   },
   "parameters": {
-    "AMPLIFY_function_addUserToDB_deploymentBucketName": {
+    "AMPLIFY_function_addConfirmedUserToDB_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "addUserToDB"
+          "resourceName": "addConfirmedUserToDB"
         }
       ]
     },
-    "AMPLIFY_function_addUserToDB_s3Key": {
+    "AMPLIFY_function_addConfirmedUserToDB_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "addUserToDB"
+          "resourceName": "addConfirmedUserToDB"
         }
       ]
     },
-    "AMPLIFY_function_reviewAppApi_deploymentBucketName": {
+    "AMPLIFY_function_reviewsApi_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "reviewAppApi"
+          "resourceName": "reviewsApi"
         }
       ]
     },
-    "AMPLIFY_function_reviewAppApi_s3Key": {
+    "AMPLIFY_function_reviewsApi_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "reviewAppApi"
+          "resourceName": "reviewsApi"
         }
       ]
     },
@@ -144,7 +144,7 @@
     }
   },
   "storage": {
-    "remineDB": {
+    "reviewMinerDB": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     }

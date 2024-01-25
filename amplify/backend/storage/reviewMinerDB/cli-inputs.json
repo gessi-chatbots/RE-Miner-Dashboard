@@ -1,8 +1,8 @@
 {
-  "resourceName": "remineDB",
+  "resourceName": "reviewMinerDB",
   "tableName": "users",
   "partitionKey": {
-    "fieldName": "email",
+    "fieldName": "user_id",
     "fieldType": "string"
   },
   "gsi": [],

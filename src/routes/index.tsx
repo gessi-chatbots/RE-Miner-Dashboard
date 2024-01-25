@@ -58,7 +58,7 @@ const Routes = () => {
                         },
                         {
                             path: 'upload',
-                            element: <DefaultLayout children={<h1>asdfa</h1>}></DefaultLayout>
+                            element: <DefaultLayout children={<h1></h1>}></DefaultLayout>
                         },
                         {
                             path: 'process',

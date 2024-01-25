@@ -1,7 +1,7 @@
 {
   "permissions": {
     "storage": {
-      "remineDB": [
+      "reviewMinerDB": [
         "create",
         "read",
         "update",
