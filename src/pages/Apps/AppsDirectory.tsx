@@ -5,7 +5,7 @@ import {fetchData} from "../../services/appsAPI";
 
 
 
-const defaultColumns = ['App ID', 'App Name', 'Description', 'Summary', 'Release Date'];
+const defaultColumns = ['App ID', 'App Name', 'Description', 'Summary', 'Release Date', 'Version', 'Actions'];
 
 const AppsDirectory: React.FC = () => {
     const [data, setData] = useState<AppDataDTO[] | null>();
@@ -29,7 +29,7 @@ const AppsDirectory: React.FC = () => {
         <Container className="mt-2">
             <div>
                 <h1 className="text-secondary">Applications</h1>
-                <Table striped bordered hover className="table table-centered table-striped">
+                <Table className="table table-centered table-striped mt-4">
                     <thead>
                     <tr>
                         {defaultColumns.map(column => (
@@ -45,8 +45,14 @@ const AppsDirectory: React.FC = () => {
                             <td>{app.description || 'N/A'}</td>
                             <td>{app.summary || 'N/A'}</td>
                             <td>{app.release_date || 'N/A'}</td>
+                            <td>{app.version || 'N/A'}</td>
+                            <td className="table-action">
+                                <a href="" className="action-icon"> <i className="mdi mdi-pencil"></i></a>
+                                <a href="" className="action-icon"> <i className="mdi mdi-delete"></i></a>
+                            </td>
                         </tr>
                     ))}
+
                     </tbody>
                 </Table>
             </div>
