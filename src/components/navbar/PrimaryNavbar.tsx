@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {Container, Navbar, Button, Row, Dropdown} from 'react-bootstrap';
 import { signOut, fetchUserAttributes } from 'aws-amplify/auth';
-import Logo from '../../static/images/logos/logo.png';
+import Logo from '../../assets/static/images/logos/logo.png';
 import {Link} from "react-router-dom";
 
 const signOutUser = () => {

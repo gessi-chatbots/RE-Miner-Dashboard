@@ -1,5 +1,10 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
+    "appsAPI": {
+      "ApiId": "string",
+      "ApiName": "string",
+      "RootUrl": "string"
+    },
     "reviewsAPI": {
       "ApiId": "string",
       "ApiName": "string",
@@ -25,6 +30,13 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     },
+    "appsApi": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "reviewsApi": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
@@ -34,6 +46,14 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
+    "appsDB": {
+      "Arn": "string",
+      "Name": "string",
+      "PartitionKeyName": "string",
+      "PartitionKeyType": "string",
+      "Region": "string",
+      "StreamArn": "string"
+    },
     "reviewMinerDB": {
       "Arn": "string",
       "Name": "string",
