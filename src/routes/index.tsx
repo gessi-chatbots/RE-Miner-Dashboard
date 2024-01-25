@@ -5,6 +5,7 @@ import Navbar from "../components/navbar/Navbar";
 import Dashboard from "../pages/Dashboard";
 import ReviewsDirectory from "../pages/Reviews/ReviewsDirectory";
 import AppsDirectory from "../pages/Apps/AppsDirectory";
+import UploadApps from "../pages/Apps/UploadApps";
 
 
 interface LayoutProps {
@@ -34,7 +35,7 @@ const Routes = () => {
         },
         {
             path: '/apps/upload',
-            element: <DefaultLayout><AppsDirectory /></DefaultLayout>
+            element: <DefaultLayout><UploadApps /></DefaultLayout>
         },
         {
             path: '/reviews',
