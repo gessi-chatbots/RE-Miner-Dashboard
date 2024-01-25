@@ -116,13 +116,7 @@
       "service": "Lambda"
     }
   },
-  "hosting": {
-    "amplifyhosting": {
-      "lastPushTimeStamp": "2024-01-22T19:25:02.543Z",
-      "service": "amplifyhosting",
-      "type": "cicd"
-    }
-  },
+  "hosting": {},
   "parameters": {
     "AMPLIFY_function_addConfirmedUserToDB_deploymentBucketName": {
       "usedBy": [
@@ -169,22 +163,6 @@
         {
           "category": "function",
           "resourceName": "reviewsApi"
-        }
-      ]
-    },
-    "AMPLIFY_hosting_amplifyhosting_appId": {
-      "usedBy": [
-        {
-          "category": "hosting",
-          "resourceName": "amplifyhosting"
-        }
-      ]
-    },
-    "AMPLIFY_hosting_amplifyhosting_type": {
-      "usedBy": [
-        {
-          "category": "hosting",
-          "resourceName": "amplifyhosting"
         }
       ]
     }

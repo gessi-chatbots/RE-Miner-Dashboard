@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Table } from 'react-bootstrap';
+import {AppDataDTO} from "../../DTOs/AppDataDTO";
+import {fetchData} from "../../services/appsAPI";
 
-import { AppDataDTO } from "../DTOs/AppDataDTO";
-import { fetchData } from "../services/appsAPI";
+
 
 const defaultColumns = ['App ID', 'App Name', 'Description', 'Summary', 'Release Date'];
 

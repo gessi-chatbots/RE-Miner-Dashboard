@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { get } from 'aws-amplify/api'
-import DynamicTable from "../components/table/DynamicTable";
 import {Container} from "react-bootstrap";
 
 interface AppsProps {}
@@ -29,7 +28,6 @@ const ReviewsDirectory: React.FC<AppsProps> = () => {
         <Container className="mt-2">
             <div>
                 <h1 className="text-secondary">Reviews</h1>
-                <DynamicTable data={data} visibleColumns={defaultColumns} />
             </div>
         </Container>
 

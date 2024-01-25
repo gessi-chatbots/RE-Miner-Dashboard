@@ -2,10 +2,10 @@ import React, {ReactNode} from 'react';
 import { useRoutes } from 'react-router-dom';
 import Root from "./RootRoute";
 import Navbar from "../components/navbar/Navbar";
-import AppsDirectory from "../pages/AppsDirectory";
-import AppsDirectoryRoute from "./AppsDirectoryRoute";
 import Dashboard from "../pages/Dashboard";
-import ReviewsDirectory from "../pages/ReviewsDirectory";
+import ReviewsDirectory from "../pages/Reviews/ReviewsDirectory";
+import AppsDirectory from "../pages/Apps/AppsDirectory";
+
 
 interface LayoutProps {
     children: ReactNode;
@@ -30,6 +30,10 @@ const Routes = () => {
         },
         {
             path: '/apps',
+            element: <DefaultLayout><AppsDirectory /></DefaultLayout>
+        },
+        {
+            path: '/apps/upload',
             element: <DefaultLayout><AppsDirectory /></DefaultLayout>
         },
         {

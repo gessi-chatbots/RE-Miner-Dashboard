@@ -31,12 +31,6 @@
           "s3Key": "amplify-builds/appsApi-7064682b646357527630-build.zip"
         }
       },
-      "hosting": {
-        "amplifyhosting": {
-          "appId": "d34qay19up2yaz",
-          "type": "cicd"
-        }
-      },
       "api": {
         "reviewsAPI": {},
         "appsAPI": {}

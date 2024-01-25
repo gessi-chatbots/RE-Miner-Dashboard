@@ -10,6 +10,7 @@ export const fetchData = async (): Promise<AppDataDTO[] | null> => {
         const { body } = await restOperation.response;
         const textResponse = await body.text();
         const jsonResponse = JSON.parse(textResponse)
+        console.log(jsonResponse)
         return jsonResponse.map((item: any) => ({
             id: item.id,
             name: item.name,
