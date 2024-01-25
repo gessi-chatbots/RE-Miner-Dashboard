@@ -1,4 +1,4 @@
-export interface AppData {
+export interface AppDataDTO {
     id: string;
     name: string;
     description: string;
