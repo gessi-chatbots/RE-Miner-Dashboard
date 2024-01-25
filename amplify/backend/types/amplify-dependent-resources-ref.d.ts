@@ -46,6 +46,14 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
+    "appsDB": {
+      "Arn": "string",
+      "Name": "string",
+      "PartitionKeyName": "string",
+      "PartitionKeyType": "string",
+      "Region": "string",
+      "StreamArn": "string"
+    },
     "reviewMinerDB": {
       "Arn": "string",
       "Name": "string",

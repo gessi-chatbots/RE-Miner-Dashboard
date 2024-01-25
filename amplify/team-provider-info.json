@@ -42,7 +42,8 @@
         "appsAPI": {}
       },
       "storage": {
-        "reviewMinerDB": {}
+        "reviewMinerDB": {},
+        "appsDB": {}
       }
     }
   }
