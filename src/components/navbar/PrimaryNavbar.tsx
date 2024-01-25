@@ -15,12 +15,18 @@ const DropdownMenuUser = () => {
     return (
         <Dropdown.Menu>
             <Dropdown.Item>
+                <i className="mdi mdi-account-settings"/> Account Settings
+            </Dropdown.Item>
+            <Dropdown.Item>
+                <i className="mdi mdi-application-settings"/> Application Settings
+            </Dropdown.Item>
+            <Dropdown.Item>
                 <Link
                     to="#"
                     onClick={signOutUser}
                     style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}
                 >
-                    Sign out
+                    <i className="mdi mdi-export"/> Sign out
                 </Link>
             </Dropdown.Item>
         </Dropdown.Menu>

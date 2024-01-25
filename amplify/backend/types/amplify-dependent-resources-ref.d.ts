@@ -1,6 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "appReviewApi": {
+    "reviewsAPI": {
       "ApiId": "string",
       "ApiName": "string",
       "RootUrl": "string"
@@ -18,14 +18,14 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
-    "addUserToDB": {
+    "addConfirmedUserToDB": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
       "Name": "string",
       "Region": "string"
     },
-    "reviewAppApi": {
+    "reviewsApi": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
@@ -34,7 +34,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
-    "remineDB": {
+    "reviewMinerDB": {
       "Arn": "string",
       "Name": "string",
       "PartitionKeyName": "string",
