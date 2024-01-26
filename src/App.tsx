@@ -172,7 +172,7 @@ const formFields = {
   signUp: {
     email: {
       label: 'Email:',
-      placeholder: 'Enter your email:',
+      placeholder: 'Enter your email',
       isRequired: true,
       order: 1,
     },
