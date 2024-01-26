@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import FileUploader from "../../components/files/FileUploader";
 import AppService from "../../services/AppService";
@@ -53,6 +53,11 @@ const UploadApps = () => {
         }
     };
 
+    useEffect(() => {
+        console.log("appDataList updated:", appDataList);
+    }, [appDataList]);
+
+
     const handleCreateButtonClick = async () => {
         if (!appName) {
             setIsAppNameValid(false);
@@ -98,7 +103,7 @@ const UploadApps = () => {
             <div>
                 <h1 className="text-secondary">Upload Applications</h1>
                 <div className="mt-5">
-                    <FileUploader onFileUpload={handleFileUpload} /> {/* Pass handleFileUpload as prop */}
+                    <FileUploader onFileUpload={handleFileUpload} />
                 </div>
             </div>
             <Row className="justify-content-end mt-3">

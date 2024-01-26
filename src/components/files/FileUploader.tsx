@@ -26,7 +26,6 @@ const FileUploader = (props: FileUploaderProps): ReactElement<any> => {
     const [reviewsCount, setReviewsCount] = useState<number>(0);
 
     const handleAcceptedFiles = (files: File[]): void => {
-        let allFiles: File[] = files;
         const invalidFiles = files.filter(file => file.type !== 'application/json');
 
         if (invalidFiles.length > 0) {
@@ -34,26 +33,27 @@ const FileUploader = (props: FileUploaderProps): ReactElement<any> => {
             return;
         }
 
+        if (files.length > 1) {
+            toast.error("Only one file is allowed at a time");
+            return;
+        }
+
+        const file = files[0];
+
         if (props.showPreview) {
-            files.forEach((file: File) => {
-                if (file.type.split('/')[0] === 'image') {
-                    file.preview = URL.createObjectURL(file as unknown as Blob);
-                }
-                file.formattedSize = formatBytes(file.size);
-            });
-
-            allFiles = [...selectedFiles, ...files];
-            setSelectedFiles(allFiles);
-
-
+            if (file.type.split('/')[0] === 'image') {
+                file.preview = URL.createObjectURL(file as unknown as Blob);
+            }
+            file.formattedSize = formatBytes(file.size);
+            setSelectedFiles([file]); // Replace existing files with the new one
         }
 
         if (props.onFileUpload) {
-            // Process JSON files
-            files.forEach(processJsonFile);
-
-            // TODO generate appList and send it
-            props.onFileUpload(allFiles, appDataList); // Update the call to pass allFiles
+            setAppDataList([]);
+            setAppNamesCount(0);
+            setReviewsCount(0);
+            processJsonFile(file);
+            props.onFileUpload(files, appDataList);
         }
     };
 
@@ -81,20 +81,18 @@ const FileUploader = (props: FileUploaderProps): ReactElement<any> => {
             if (event.target && event.target.result) {
                 const jsonContent = event.target.result as string;
                 const jsonData = JSON.parse(jsonContent);
-
+                let appList: AppDataDTO[] = []; // Initialize appList as an empty array
                 if (Array.isArray(jsonData)) {
                     jsonData.forEach((item: any) => {
                         appCount++;
                         reviewCount += item.reviews.length;
                         const appData: AppDataDTO = {
-                            id: item.app_name.replace(/\s+/g, '-').toLowerCase(),
-                            name: item.app_name,
+                            app_name: item.app_name,
                             description: item.description,
                             summary: item.summary,
                             release_date: item.release_date,
                             version: parseFloat(item.version),
-                            reviews: item.reviews.map((review: any) => (
-                                {
+                            reviews: item.reviews.map((review: any) => ({
                                 reviewId: review.reviewId,
                                 review: review.review,
                                 userName: review.userName,
@@ -102,10 +100,10 @@ const FileUploader = (props: FileUploaderProps): ReactElement<any> => {
                                 at: review.at
                             })) as ReviewDataDTO[]
                         };
-                        setAppDataList(prevList => [...prevList, appData]);
+                        appList.push(appData); // Push appData to appList
                     });
-
                 }
+                setAppDataList(appList); // Set appDataList state with appList
                 setAppNamesCount(prevCount => prevCount + appCount);
                 setReviewsCount(prevCount => prevCount + reviewCount);
             }

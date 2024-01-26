@@ -2,6 +2,7 @@ import json
 import awsgi
 import boto3
 from boto3.dynamodb.conditions import Key
+from botocore.exceptions import ClientError
 
 from flask_cors import CORS
 from flask import Flask, jsonify, request
@@ -19,7 +20,6 @@ TABLE = "applications-dev"
 def create_apps():
     print("[POST]: Create new Apps")
     request_json = json.loads(request.get_json())
-    print(request_json)
     user_id = request_json.get("user_id")
     if user_id is None:
         return jsonify({"error": "user_id is required in the request"}), 400
@@ -39,19 +39,6 @@ def create_apps():
     for app_entry in apps:
         app_name = app_entry.get("app_name")
         print(f"New app {app_name}")
-        existing_app = None
-        apps_database_list = items[0]['apps']['L']
-        for app_db in apps_database_list:
-            if 'M' in app_db:
-                app_db_details = app_db['M']
-                app_db_name_field = app_db_details.get('app_name', {}).get('S', None)
-                if app_db_name_field:
-                    print(app_db_name_field)
-            if existing_app:
-                break
-
-
-        # Construct the application item to be inserted or updated
         app_item = {
             'M': {
                 'app_name': {'S': app_entry.get("app_name")},
@@ -61,18 +48,29 @@ def create_apps():
             }
         }
         print(app_item)
-        # Update the item in DynamoDB
-        client.update_item(
-            TableName="users-dev",
-            Key={
-                'user_id': {'S': user_id}
-            },
-            UpdateExpression='SET apps = list_append(apps, :app_item)',
-            ExpressionAttributeValues={
-                ':app_item': {'L': [app_item]}
-            }
-        )
-        print("OK")
+        try:
+            client.update_item(
+                TableName="users-dev",
+                Key={
+                    'user_id': {'S': user_id}
+                },
+                UpdateExpression='SET apps = list_append(apps, :app_item)',
+                ExpressionAttributeValues={
+                    ':app_item': {'L': [app_item]}
+                }
+            )
+        except ClientError as e:
+            if e.response['Error']['Code'] == 'ValidationException':
+                client.update_item(
+                    TableName="users-dev",
+                        Key={
+                            'user_id': {'S': user_id}
+                        },
+                        UpdateExpression='SET apps = :app_list',
+                        ExpressionAttributeValues={
+                            ':app_list': {'L': [app_item]}
+                        }
+                )
     return jsonify({"message": "Items created/updated successfully"}), 200
 
 

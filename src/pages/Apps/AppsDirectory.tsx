@@ -56,9 +56,8 @@ const AppsDirectory: React.FC = () => {
                     </thead>
                     <tbody>
                     {data && data.map(app => (
-                        <tr key={app.id}>
-                            <td className="text-center">{app.id}</td>
-                            <td className="text-center">{app.name || 'N/A'}</td>
+                        <tr key={app.app_name}>
+                            <td className="text-center">{app.app_name || 'N/A'}</td>
                             <td className="text-center">{app.description || 'N/A'}</td>
                             <td className="text-center">{app.summary || 'N/A'}</td>
                             <td className="text-center">{app.release_date || 'N/A'}</td>
@@ -93,16 +92,10 @@ const AppsDirectory: React.FC = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="row">
-                        <div className="col-md-4">
-                            <div className="mb-3">
-                                <label htmlFor="appName" className="form-label">App ID</label>
-                                <input type="text" id="appName" className="form-control" defaultValue={selectedApp?.id} />
-                            </div>
-                        </div>
                         <div className="col-md-8">
                             <div className="mb-3">
                                 <label htmlFor="appName" className="form-label">App Name</label>
-                                <input type="text" id="appName" className="form-control" defaultValue={selectedApp?.name} />
+                                <input type="text" id="appName" className="form-control" defaultValue={selectedApp?.app_name} />
                             </div>
                         </div>
                     </div>
@@ -145,7 +138,7 @@ const AppsDirectory: React.FC = () => {
                 </Modal.Header>
                 <Modal.Body>
                     {/* Your delete modal content here */}
-                    {selectedApp && <p>Do you really want to <b>delete</b> the app: {selectedApp.name}?</p>}
+                    {selectedApp && <p>Do you really want to <b>delete</b> the app: {selectedApp.app_name}?</p>}
                     <p>This step is <b>irreversible</b></p>
                 </Modal.Body>
                 <Modal.Footer>
