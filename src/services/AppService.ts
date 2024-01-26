@@ -5,18 +5,30 @@ class AppService {
     API_NAME = 'appsAPI';
     PATH_NAME = '/apps'
     fetchAllApps = async (): Promise<AppDataDTO[] | null> => {
+        const authService = new AuthService();
+        const userData = await authService.getUserData();
+        let id;
+        if (userData && userData.sub) {
+            id = userData.sub;
+        } else {
+            id = "0"; // todo refactor
+        }
         try {
             const restOperation = get({
                 apiName: this.API_NAME,
                 path: this.PATH_NAME,
+                options: {
+                    queryParams: {
+                        user_id: id
+                    }
+                }
             });
             const { body } = await restOperation.response;
             const textResponse = await body.text();
             const jsonResponse = JSON.parse(textResponse);
             console.log(jsonResponse);
             return jsonResponse.map((item: any) => ({
-                id: item.id,
-                name: item.name,
+                app_name: item.app_name,
                 description: item.description,
                 summary: item.summary,
                 release_date: item.release_date,
@@ -34,7 +46,7 @@ class AppService {
          const userData = await authService.getUserData();
          const request_body = {
              user_id: userData?.sub,
-             apps: [appData]
+             apps: appData
          };
          console.log(JSON.stringify(request_body))
         try {

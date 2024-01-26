@@ -1,19 +1,27 @@
-import React, { useState } from "react";
-import {Button, Col, Container, Modal, Row} from "react-bootstrap";
-import FileUploader from "../../components/files/FileUploader";
+import React, {useEffect, useRef, useState} from "react";
+import { Button, Col, Container, Modal, Row } from "react-bootstrap";
+import FileUploader, {FileUploaderProps} from "../../components/files/FileUploader";
 import AppService from "../../services/AppService";
+import { toast } from 'react-toastify';
+import {AppDataDTO} from "../../DTOs/AppDataDTO";
+export interface File {
+    name: string;
+    type: string;
+    size: number;
+    preview?: string | null;
+    formattedSize?: string | null;
+}
 
 const UploadApps = () => {
-    const [isCreateAppModalOpen, setIsCreateAppModalOpen] = useState<boolean>(false);
-    const [appName, setAppName] = useState<string>('');
-    const [appDescription, setAppDescription] = useState<string>('');
-    const [appSummary, setAppSummary] = useState<string>('');
-    const [releaseDate, setReleaseDate] = useState<string>('');
-    const [appVersion, setAppVersion] = useState<string>('');
-
-    const handleFileUpload = (files: any) => {
-        console.log("Uploaded files:", files);
-    };
+    const [isCreateAppModalOpen, setIsCreateAppModalOpen] = useState(false);
+    const [appName, setAppName] = useState('');
+    const [appDescription, setAppDescription] = useState('');
+    const [appSummary, setAppSummary] = useState('');
+    const [releaseDate, setReleaseDate] = useState('');
+    const [appVersion, setAppVersion] = useState('');
+    const [isAppNameValid, setIsAppNameValid] = useState(false);
+    const [appDataList, setAppDataList] = useState<AppDataDTO[]>([]); // State to store AppDataList
+    const fileUploaderRef = useRef<any>(null);
 
     const openCreateAppModal = () => {
         setIsCreateAppModalOpen(true);
@@ -24,6 +32,10 @@ const UploadApps = () => {
     };
 
     const createApp = async () => {
+        if (!appName) {
+            return false;
+        }
+
         const appData = {
             app_name: appName,
             description: appDescription,
@@ -33,10 +45,59 @@ const UploadApps = () => {
         };
         const appService = new AppService();
         try {
-            await appService.createApp(appData);
-            closeModals();
+            await appService.createApp([appData]);
+            toast.success('App created successfully!');
+            return true; // Indicate success
         } catch (error) {
             console.error("Error creating app:", error);
+            return false; // Indicate failure
+        }
+    };
+
+    useEffect(() => {
+        console.log("appDataList updated:", appDataList);
+    }, [appDataList]);
+
+
+    const handleCreateButtonClick = async () => {
+        if (!appName) {
+            setIsAppNameValid(false);
+            alert("Please enter the App Name.");
+            return;
+        }
+
+        setIsAppNameValid(true);
+        const created = await createApp();
+        if (created) {
+            closeModals();
+        }
+    };
+
+    const handleAppNameChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+        setAppName(e.target.value);
+        setIsAppNameValid(!!e.target.value);
+    };
+
+    const handleFileUpload = (files: File[], appDataList: AppDataDTO[]) => {
+        setAppDataList(appDataList);
+    };
+
+    const handleUploadButtonClick = async () => {
+        if (appDataList.length === 0) {
+            console.log('No files uploaded.');
+            return;
+        }
+
+        try {
+            const appService = new AppService();
+            await appService.createApp(appDataList);
+            toast.success('Apps uploaded successfully!');
+            setAppDataList([]);
+            handleFileUpload([], [])
+            fileUploaderRef?.current?.clearSelectedFiles();
+        } catch (error) {
+            console.error('Error uploading apps:', error);
+            toast.error('Failed to upload apps. Please try again later.');
         }
     };
 
@@ -45,7 +106,7 @@ const UploadApps = () => {
             <div>
                 <h1 className="text-secondary">Upload Applications</h1>
                 <div className="mt-5">
-                    <FileUploader onFileUpload={handleFileUpload} />
+                    <FileUploader onFileUpload={handleFileUpload} ref={fileUploaderRef} />
                 </div>
             </div>
             <Row className="justify-content-end mt-3">
@@ -53,7 +114,7 @@ const UploadApps = () => {
                     <Button className="btn-secondary" onClick={openCreateAppModal}>Upload App Manually</Button>
                 </div>
                 <div className="col-auto">
-                    <Button className="button-primary">Upload</Button>
+                    <Button className="button-primary" onClick={handleUploadButtonClick}>Upload</Button>
                 </div>
             </Row>
 
@@ -64,8 +125,9 @@ const UploadApps = () => {
                 <Modal.Body>
                     <Row>
                         <Col className="col-md-12">
-                            <label htmlFor="appName" className="form-label">App Name</label>
-                            <input type="text" id="appName" value={appName} onChange={(e) => setAppName(e.target.value)} className="form-control" placeholder="App Name" />
+                            <label htmlFor="appName" className="form-label"><b className="text-danger">*</b>App Name</label>
+                            <input type="text" id="appName" value={appName} onChange={handleAppNameChange} className={`form-control ${!isAppNameValid && 'is-invalid'}`} placeholder="App Name" />
+                            {!isAppNameValid && <div className="invalid-feedback">App Name is required.</div>}
                         </Col>
                     </Row>
                     <Row>
@@ -93,7 +155,7 @@ const UploadApps = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModals}>Close</Button>
-                    <Button variant="primary" onClick={createApp}>Create</Button>
+                    <Button variant="primary" onClick={handleCreateButtonClick}>Create</Button>
                 </Modal.Footer>
             </Modal>
         </Container>

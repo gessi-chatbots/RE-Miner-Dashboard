@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Table, Button, Modal } from 'react-bootstrap';
+import {Container, Table, Button, Modal, OverlayTrigger, Tooltip} from 'react-bootstrap';
 
 import { AppDataDTO } from "../../DTOs/AppDataDTO";
 import AppService from "../../services/AppService";
-const defaultColumns = ['App ID', 'App Name', 'Description', 'Summary', 'Release Date', 'Version', 'Actions'];
+const defaultColumns = ['App Name', 'Description', 'Summary', 'Release Date', 'Version', 'Actions'];
 
 const AppsDirectory: React.FC = () => {
     const [data, setData] = useState<AppDataDTO[] | null>(null);
@@ -27,6 +27,10 @@ const AppsDirectory: React.FC = () => {
         setSelectedApp(null);
     };
 
+    const truncateDescription = (description: string) => {
+        return description.length > 200 ? `${description.substring(0, 200)}...` : description;
+    };
+
     useEffect(() => {
         const fetchDataFromApi = async () => {
             const appService = new AppService();
@@ -48,28 +52,43 @@ const AppsDirectory: React.FC = () => {
                 <h1 className="text-secondary">Applications</h1>
                 <Table className="table table-bordered table-centered table-striped table-hover mt-4">
                     <thead>
-                    <tr>
-                        {defaultColumns.map(column => (
-                            <th className="text-center" key={column}>{column}</th>
-                        ))}
-                    </tr>
+                        <tr>
+                            <th style={{ width: '20%' }} className="text-center">{defaultColumns[0]}</th>
+                            <th style={{ width: '25%' }} className="text-center">{defaultColumns[1]}</th>
+                            <th className="text-center">{defaultColumns[2]}</th>
+                            <th className="text-center">{defaultColumns[3]}</th>
+                            <th className="text-center">{defaultColumns[4]}</th>
+                            <th className="text-end" style={{ width: "150px" }}>{defaultColumns[5]}</th>
+                        </tr>
                     </thead>
                     <tbody>
                     {data && data.map(app => (
-                        <tr key={app.id}>
-                            <td className="text-center">{app.id}</td>
-                            <td className="text-center">{app.name || 'N/A'}</td>
-                            <td className="text-center">{app.description || 'N/A'}</td>
+                        <tr key={app.app_name}>
+                            <td className="text-center">{app.app_name || 'N/A'}</td>
+                            <td className="text-center">{truncateDescription(app.description) || 'N/A'}
+                                <br/>
+                                {app.description && app.description.length > 200 &&
+                                    <Button variant="link" onClick={() => openEditModal(app)}>Read More</Button>}
+                            </td>
                             <td className="text-center">{app.summary || 'N/A'}</td>
                             <td className="text-center">{app.release_date || 'N/A'}</td>
                             <td className="text-center">{app.version || 'N/A'}</td>
-                            <td className="text-end">
-                                <a href="#" className="action-icon" onClick={() => openEditModal(app)}>
-                                    <i className="mdi mdi-pencil"></i>
-                                </a>
-                                <a href="#" className="action-icon" onClick={() => openDeleteModal(app)}>
-                                    <i className="mdi mdi-delete"></i>
-                                </a>
+                            <td className="text-end" style={{ width: "150px" }}>
+                                <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Add Review</Tooltip>}>
+                                    <a href="#" className="action-icon" onClick={() => openEditModal(app)}>
+                                        <i className="mdi mdi-file-plus"></i>
+                                    </a>
+                                </OverlayTrigger>
+                                <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Edit</Tooltip>}>
+                                    <a href="#" className="action-icon" onClick={() => openEditModal(app)}>
+                                        <i className="mdi mdi-pencil"></i>
+                                    </a>
+                                </OverlayTrigger>
+                                <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
+                                    <a href="#" className="action-icon" onClick={() => openDeleteModal(app)}>
+                                        <i className="mdi mdi-delete"></i>
+                                    </a>
+                                </OverlayTrigger>
                             </td>
                         </tr>
                     ))}
@@ -83,18 +102,11 @@ const AppsDirectory: React.FC = () => {
                     <Modal.Title>Edit App</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* Form for editing the app */}
                     <div className="row">
-                        <div className="col-md-4">
-                            <div className="mb-3">
-                                <label htmlFor="appName" className="form-label">App ID</label>
-                                <input type="text" id="appName" className="form-control" defaultValue={selectedApp?.id} />
-                            </div>
-                        </div>
                         <div className="col-md-8">
                             <div className="mb-3">
                                 <label htmlFor="appName" className="form-label">App Name</label>
-                                <input type="text" id="appName" className="form-control" defaultValue={selectedApp?.name} />
+                                <input type="text" id="appName" className="form-control" defaultValue={selectedApp?.app_name} />
                             </div>
                         </div>
                     </div>
@@ -137,7 +149,7 @@ const AppsDirectory: React.FC = () => {
                 </Modal.Header>
                 <Modal.Body>
                     {/* Your delete modal content here */}
-                    {selectedApp && <p>Do you really want to <b>delete</b> the app: {selectedApp.name}?</p>}
+                    {selectedApp && <p>Do you really want to <b>delete</b> the app: {selectedApp.app_name}?</p>}
                     <p>This step is <b>irreversible</b></p>
                 </Modal.Body>
                 <Modal.Footer>
