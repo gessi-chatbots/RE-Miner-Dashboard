@@ -3,7 +3,7 @@ import {Container, Table, Button, Modal, OverlayTrigger, Tooltip} from 'react-bo
 
 import { AppDataDTO } from "../../DTOs/AppDataDTO";
 import AppService from "../../services/AppService";
-const defaultColumns = ['App ID', 'App Name', 'Description', 'Summary', 'Release Date', 'Version', 'Actions'];
+const defaultColumns = ['App Name', 'Description', 'Summary', 'Release Date', 'Version', 'Actions'];
 
 const AppsDirectory: React.FC = () => {
     const [data, setData] = useState<AppDataDTO[] | null>(null);

@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
-import FileUploader from "../../components/files/FileUploader";
+import FileUploader, {FileUploaderProps} from "../../components/files/FileUploader";
 import AppService from "../../services/AppService";
 import { toast } from 'react-toastify';
 import {AppDataDTO} from "../../DTOs/AppDataDTO";
@@ -21,6 +21,7 @@ const UploadApps = () => {
     const [appVersion, setAppVersion] = useState('');
     const [isAppNameValid, setIsAppNameValid] = useState(false);
     const [appDataList, setAppDataList] = useState<AppDataDTO[]>([]); // State to store AppDataList
+    const fileUploaderRef = useRef<any>(null);
 
     const openCreateAppModal = () => {
         setIsCreateAppModalOpen(true);
@@ -91,7 +92,9 @@ const UploadApps = () => {
             const appService = new AppService();
             await appService.createApp(appDataList);
             toast.success('Apps uploaded successfully!');
-            setAppDataList([]); // Clear the appDataList after successful upload
+            setAppDataList([]);
+            handleFileUpload([], [])
+            fileUploaderRef?.current?.clearSelectedFiles();
         } catch (error) {
             console.error('Error uploading apps:', error);
             toast.error('Failed to upload apps. Please try again later.');
@@ -103,7 +106,7 @@ const UploadApps = () => {
             <div>
                 <h1 className="text-secondary">Upload Applications</h1>
                 <div className="mt-5">
-                    <FileUploader onFileUpload={handleFileUpload} />
+                    <FileUploader onFileUpload={handleFileUpload} ref={fileUploaderRef} />
                 </div>
             </div>
             <Row className="justify-content-end mt-3">

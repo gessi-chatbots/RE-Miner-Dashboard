@@ -62,6 +62,7 @@ const ReviewsDirectory: React.FC = () => {
                             <td className="text-center">{app.app_name || 'N/A'}</td>
                             <td className="text-center">{app.description || 'N/A'}</td>
                             <td className="text-center">{app.summary || 'N/A'}</td>
+                            <td className="text-center">{app.summary || 'N/A'}</td>
                             <td className="text-end" style={{ width: "150px" }}> {/* Adjust width as needed */}
                                 <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Edit</Tooltip>}>
                                     <a href="#" className="action-icon" onClick={() => openEditModal(app)}>

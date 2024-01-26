@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, {ReactElement, useImperativeHandle, useRef, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Card } from 'react-bootstrap';
 import Dropzone from 'react-dropzone';
@@ -19,11 +19,12 @@ export interface FileUploaderProps {
     showPreview?: boolean;
 }
 
-const FileUploader = (props: FileUploaderProps): ReactElement<any> => {
+const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<any>): ReactElement<any> => {
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
     const [appDataList, setAppDataList] = useState<AppDataDTO[]>([]);
     const [appNamesCount, setAppNamesCount] = useState<number>(0);
     const [reviewsCount, setReviewsCount] = useState<number>(0);
+    const dropzoneRef = useRef(null);
 
     const handleAcceptedFiles = (files: File[]): void => {
         const invalidFiles = files.filter(file => file.type !== 'application/json');
@@ -57,6 +58,13 @@ const FileUploader = (props: FileUploaderProps): ReactElement<any> => {
         }
     };
 
+    const clearSelectedFiles = (): void => {
+        setSelectedFiles([]);
+    };
+
+    useImperativeHandle(ref, () => ({
+        clearSelectedFiles: clearSelectedFiles
+    }));
     const formatBytes = (bytes: number, decimals = 2): string => {
         if (bytes === 0) return '0 Bytes';
         const k = 1024;
@@ -197,7 +205,7 @@ const FileUploader = (props: FileUploaderProps): ReactElement<any> => {
             )}
         </>
     );
-};
+});
 
 FileUploader.defaultProps = {
     showPreview: true,
