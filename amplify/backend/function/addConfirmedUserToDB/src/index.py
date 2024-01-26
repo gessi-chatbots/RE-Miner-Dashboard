@@ -2,6 +2,8 @@ import json
 import boto3
 
 def handler(event, context):
+    print('[Create User in DB]: Received Event')
+    print(event)
     database = boto3.resource('dynamodb')
     table = database.Table('users-dev')
     user_id = event['request']['userAttributes']['sub']

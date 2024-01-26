@@ -93,6 +93,15 @@
             "StreamArn"
           ],
           "category": "storage",
+          "resourceName": "reviewMinerDB"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
           "resourceName": "appsDB"
         }
       ],

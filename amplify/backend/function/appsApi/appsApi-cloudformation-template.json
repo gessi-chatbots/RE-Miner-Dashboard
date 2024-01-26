@@ -27,6 +27,18 @@
     "storageappsDBStreamArn": {
       "Type": "String",
       "Default": "storageappsDBStreamArn"
+    },
+    "storagereviewMinerDBName": {
+      "Type": "String",
+      "Default": "storagereviewMinerDBName"
+    },
+    "storagereviewMinerDBArn": {
+      "Type": "String",
+      "Default": "storagereviewMinerDBArn"
+    },
+    "storagereviewMinerDBStreamArn": {
+      "Type": "String",
+      "Default": "storagereviewMinerDBStreamArn"
     }
   },
   "Conditions": {
@@ -90,6 +102,15 @@
             },
             "STORAGE_APPSDB_STREAMARN": {
               "Ref": "storageappsDBStreamArn"
+            },
+            "STORAGE_REVIEWMINERDB_NAME": {
+              "Ref": "storagereviewMinerDBName"
+            },
+            "STORAGE_REVIEWMINERDB_ARN": {
+              "Ref": "storagereviewMinerDBArn"
+            },
+            "STORAGE_REVIEWMINERDB_STREAMARN": {
+              "Ref": "storagereviewMinerDBStreamArn"
             }
           }
         },
@@ -201,6 +222,43 @@
         "PolicyDocument": {
           "Version": "2012-10-17",
           "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PartiQLInsert",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:PartiQLSelect",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:PartiQLUpdate",
+                "dynamodb:Delete*",
+                "dynamodb:PartiQLDelete"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storagereviewMinerDBArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storagereviewMinerDBArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
             {
               "Effect": "Allow",
               "Action": [

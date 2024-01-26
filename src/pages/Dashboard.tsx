@@ -6,10 +6,8 @@ import {Container} from "react-bootstrap"; // Import your API library
 
 
 const Dashboard = () => {
-    // State to store data from the API
     const [data, setData] = useState<Array<Record<string, any>>>([]);
 
-    // Fetch data from the API when the component mounts
     useEffect(() => {
         const fetchData = async () => {
             try {
