@@ -3,30 +3,32 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Card } from 'react-bootstrap';
 import Dropzone from 'react-dropzone';
 import { ToastContainer, toast } from 'react-toastify';
-import {Simulate} from "react-dom/test-utils";
-import invalid = Simulate.invalid;
+import {AppDataDTO} from "../../DTOs/AppDataDTO";
+import {ReviewDataDTO} from "../../DTOs/ReviewDataDTO";
 
-type File = {
+export interface File {
     name: string;
     type: string;
     size: number;
     preview?: string | null;
     formattedSize?: string | null;
-};
+}
 
-type FileUploaderProps = {
-    onFileUpload?: (files: File[]) => void;
+export interface FileUploaderProps {
+    onFileUpload?: (files: File[], appDataList: AppDataDTO[]) => void;
     showPreview?: boolean;
-};
+}
 
 const FileUploader = (props: FileUploaderProps): ReactElement<any> => {
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-    const [toastVisible, setToastVisible] = useState<boolean>(false);
+    const [appDataList, setAppDataList] = useState<AppDataDTO[]>([]);
+    const [appNamesCount, setAppNamesCount] = useState<number>(0);
+    const [reviewsCount, setReviewsCount] = useState<number>(0);
 
     const handleAcceptedFiles = (files: File[]): void => {
         let allFiles: File[] = files;
         const invalidFiles = files.filter(file => file.type !== 'application/json');
-        console.log(invalidFiles)
+
         if (invalidFiles.length > 0) {
             toast.error("Invalid format file! Only .json");
             return;
@@ -42,10 +44,16 @@ const FileUploader = (props: FileUploaderProps): ReactElement<any> => {
 
             allFiles = [...selectedFiles, ...files];
             setSelectedFiles(allFiles);
+
+
         }
 
         if (props.onFileUpload) {
-            props.onFileUpload(allFiles);
+            // Process JSON files
+            files.forEach(processJsonFile);
+
+            // TODO generate appList and send it
+            props.onFileUpload(allFiles, appDataList); // Update the call to pass allFiles
         }
     };
 
@@ -64,6 +72,47 @@ const FileUploader = (props: FileUploaderProps): ReactElement<any> => {
         newFiles.splice(index, 1);
         setSelectedFiles(newFiles);
     };
+
+    const processJsonFile = (file: File): void => {
+        const reader = new FileReader();
+        let appCount = 0;
+        let reviewCount = 0;
+        reader.onload = (event) => {
+            if (event.target && event.target.result) {
+                const jsonContent = event.target.result as string;
+                const jsonData = JSON.parse(jsonContent);
+
+                if (Array.isArray(jsonData)) {
+                    jsonData.forEach((item: any) => {
+                        appCount++;
+                        reviewCount += item.reviews.length;
+                        const appData: AppDataDTO = {
+                            id: item.app_name.replace(/\s+/g, '-').toLowerCase(),
+                            name: item.app_name,
+                            description: item.description,
+                            summary: item.summary,
+                            release_date: item.release_date,
+                            version: parseFloat(item.version),
+                            reviews: item.reviews.map((review: any) => (
+                                {
+                                reviewId: review.reviewId,
+                                review: review.review,
+                                userName: review.userName,
+                                score: review.score,
+                                at: review.at
+                            })) as ReviewDataDTO[]
+                        };
+                        setAppDataList(prevList => [...prevList, appData]);
+                    });
+
+                }
+                setAppNamesCount(prevCount => prevCount + appCount);
+                setReviewsCount(prevCount => prevCount + reviewCount);
+            }
+        };
+        reader.readAsText(file as unknown as Blob);
+    };
+
 
     return (
         <>
@@ -129,15 +178,15 @@ const FileUploader = (props: FileUploaderProps): ReactElement<any> => {
                                     </Col>
                                     <Col className="mb-2 col">
                                         <p className="mb-0">
-                                             0 <b>Apps</b>
+                                            {appNamesCount} <b>Apps</b>
                                         </p>
                                     </Col>
                                     <Col className="mb-2 col">
                                         <p className="mb-0">
-                                            0 <b>Reviews</b>
+                                            {reviewsCount} <b>Reviews</b>
                                         </p>
                                     </Col>
-                                    <Col className="mb-2 col d-flex justify-content-end"> {/* Adjusted column */}
+                                    <Col className="mb-2 col d-flex justify-content-end">
                                         <Link to="#" className="btn btn-link btn-lg text-muted shadow-none">
                                             <i className="mdi mdi-delete" onClick={() => removeFile(index)}></i>
                                         </Link>

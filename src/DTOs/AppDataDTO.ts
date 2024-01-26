@@ -1,3 +1,5 @@
+import {ReviewDataDTO} from "./ReviewDataDTO";
+
 export interface AppDataDTO {
     id: string;
     name: string;
@@ -5,4 +7,5 @@ export interface AppDataDTO {
     summary: string;
     release_date: string;
     version: number;
+    reviews: ReviewDataDTO[];
 }

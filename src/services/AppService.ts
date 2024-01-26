@@ -34,7 +34,7 @@ class AppService {
          const userData = await authService.getUserData();
          const request_body = {
              user_id: userData?.sub,
-             apps: [appData]
+             apps: appData
          };
          console.log(JSON.stringify(request_body))
         try {

@@ -14,7 +14,6 @@ const DropdownMenuApps = () => {
 const DropdownMenuReviews = () => {
     return (
         <Dropdown.Menu>
-            <Dropdown.Item as={Link} to="/reviews/upload"><i className="mdi mdi-upload"/> Upload Reviews</Dropdown.Item>
             <Dropdown.Item as={Link} to="/reviews"><i className="mdi mdi-eye"/> View Reviews</Dropdown.Item>
             <Dropdown.Item as={Link} to="/reviews/process"><i className="mdi mdi-orbit-variant"/> Process Reviews</Dropdown.Item>
         </Dropdown.Menu>

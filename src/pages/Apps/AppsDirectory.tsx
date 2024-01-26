@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Table, Button, Modal } from 'react-bootstrap';
+import {Container, Table, Button, Modal, OverlayTrigger, Tooltip} from 'react-bootstrap';
 
 import { AppDataDTO } from "../../DTOs/AppDataDTO";
 import AppService from "../../services/AppService";
@@ -63,13 +63,22 @@ const AppsDirectory: React.FC = () => {
                             <td className="text-center">{app.summary || 'N/A'}</td>
                             <td className="text-center">{app.release_date || 'N/A'}</td>
                             <td className="text-center">{app.version || 'N/A'}</td>
-                            <td className="text-end">
-                                <a href="#" className="action-icon" onClick={() => openEditModal(app)}>
-                                    <i className="mdi mdi-pencil"></i>
-                                </a>
-                                <a href="#" className="action-icon" onClick={() => openDeleteModal(app)}>
-                                    <i className="mdi mdi-delete"></i>
-                                </a>
+                            <td className="text-end" style={{ width: "150px" }}>
+                                <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Add Review</Tooltip>}>
+                                    <a href="#" className="action-icon" onClick={() => openEditModal(app)}>
+                                        <i className="mdi mdi-file-plus"></i>
+                                    </a>
+                                </OverlayTrigger>
+                                <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Edit</Tooltip>}>
+                                    <a href="#" className="action-icon" onClick={() => openEditModal(app)}>
+                                        <i className="mdi mdi-pencil"></i>
+                                    </a>
+                                </OverlayTrigger>
+                                <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
+                                    <a href="#" className="action-icon" onClick={() => openDeleteModal(app)}>
+                                        <i className="mdi mdi-delete"></i>
+                                    </a>
+                                </OverlayTrigger>
                             </td>
                         </tr>
                     ))}
@@ -83,7 +92,6 @@ const AppsDirectory: React.FC = () => {
                     <Modal.Title>Edit App</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* Form for editing the app */}
                     <div className="row">
                         <div className="col-md-4">
                             <div className="mb-3">
