@@ -1,10 +1,10 @@
-import React, {ReactElement, useImperativeHandle, useRef, useState} from 'react';
+import React, { ReactElement, useImperativeHandle, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Card } from 'react-bootstrap';
 import Dropzone from 'react-dropzone';
 import { ToastContainer, toast } from 'react-toastify';
-import {AppDataDTO} from "../../DTOs/AppDataDTO";
-import {ReviewDataDTO} from "../../DTOs/ReviewDataDTO";
+import { AppDataDTO } from "../../DTOs/AppDataDTO";
+import { ReviewDataDTO } from "../../DTOs/ReviewDataDTO";
 
 export interface File {
     name: string;
@@ -54,7 +54,6 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
             setAppNamesCount(0);
             setReviewsCount(0);
             processJsonFile(file);
-            props.onFileUpload(files, appDataList);
         }
     };
 
@@ -65,6 +64,7 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
     useImperativeHandle(ref, () => ({
         clearSelectedFiles: clearSelectedFiles
     }));
+
     const formatBytes = (bytes: number, decimals = 2): string => {
         if (bytes === 0) return '0 Bytes';
         const k = 1024;
@@ -114,11 +114,15 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
                 setAppDataList(appList); // Set appDataList state with appList
                 setAppNamesCount(prevCount => prevCount + appCount);
                 setReviewsCount(prevCount => prevCount + reviewCount);
+
+                // Call the parent component's callback function with the files and app data list
+                if (props.onFileUpload) {
+                    props.onFileUpload([file], appList);
+                }
             }
         };
         reader.readAsText(file as unknown as Blob);
     };
-
 
     return (
         <>

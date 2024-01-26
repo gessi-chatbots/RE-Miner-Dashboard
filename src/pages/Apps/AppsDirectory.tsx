@@ -27,6 +27,10 @@ const AppsDirectory: React.FC = () => {
         setSelectedApp(null);
     };
 
+    const truncateDescription = (description: string) => {
+        return description.length > 200 ? `${description.substring(0, 200)}...` : description;
+    };
+
     useEffect(() => {
         const fetchDataFromApi = async () => {
             const appService = new AppService();
@@ -48,17 +52,24 @@ const AppsDirectory: React.FC = () => {
                 <h1 className="text-secondary">Applications</h1>
                 <Table className="table table-bordered table-centered table-striped table-hover mt-4">
                     <thead>
-                    <tr>
-                        {defaultColumns.map(column => (
-                            <th className="text-center" key={column}>{column}</th>
-                        ))}
-                    </tr>
+                        <tr>
+                            <th style={{ width: '20%' }} className="text-center">{defaultColumns[0]}</th>
+                            <th style={{ width: '25%' }} className="text-center">{defaultColumns[1]}</th>
+                            <th className="text-center">{defaultColumns[2]}</th>
+                            <th className="text-center">{defaultColumns[3]}</th>
+                            <th className="text-center">{defaultColumns[4]}</th>
+                            <th className="text-end" style={{ width: "150px" }}>{defaultColumns[5]}</th>
+                        </tr>
                     </thead>
                     <tbody>
                     {data && data.map(app => (
                         <tr key={app.app_name}>
                             <td className="text-center">{app.app_name || 'N/A'}</td>
-                            <td className="text-center">{app.description || 'N/A'}</td>
+                            <td className="text-center">{truncateDescription(app.description) || 'N/A'}
+                                <br/>
+                                {app.description && app.description.length > 200 &&
+                                    <Button variant="link" onClick={() => openEditModal(app)}>Read More</Button>}
+                            </td>
                             <td className="text-center">{app.summary || 'N/A'}</td>
                             <td className="text-center">{app.release_date || 'N/A'}</td>
                             <td className="text-center">{app.version || 'N/A'}</td>
