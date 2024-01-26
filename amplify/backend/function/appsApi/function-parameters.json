@@ -1,6 +1,12 @@
 {
   "permissions": {
     "storage": {
+      "reviewMinerDB": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
       "appsDB": [
         "create",
         "read",

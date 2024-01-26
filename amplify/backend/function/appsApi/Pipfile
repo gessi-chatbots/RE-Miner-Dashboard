@@ -11,6 +11,7 @@ aws-wsgi = "*"
 boto3 = "*"
 flask = "*"
 flask-cors = "*"
+pipenv = "*"
 
 [requires]
 python_version = "3.9"

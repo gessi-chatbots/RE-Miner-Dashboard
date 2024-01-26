@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Table, Button, Modal } from 'react-bootstrap';
-import { fetchData } from "../../services/appsAPI";
-import { AppDataDTO } from "../../DTOs/AppDataDTO";
 
+import { AppDataDTO } from "../../DTOs/AppDataDTO";
+import AppService from "../../services/AppService";
 const defaultColumns = ['App ID', 'App Name', 'Description', 'Summary', 'Release Date', 'Version', 'Actions'];
 
 const AppsDirectory: React.FC = () => {
@@ -29,8 +29,9 @@ const AppsDirectory: React.FC = () => {
 
     useEffect(() => {
         const fetchDataFromApi = async () => {
+            const appService = new AppService();
             try {
-                const mappedData = await fetchData();
+                const mappedData = await appService.fetchAllApps();
                 if (mappedData !== undefined) {
                     setData(mappedData);
                 }

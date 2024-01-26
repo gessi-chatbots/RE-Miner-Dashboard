@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Nav, Navbar, Button, Dropdown } from "react-bootstrap";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const DropdownMenuApps = () => {
     return (
@@ -21,8 +21,6 @@ const DropdownMenuReviews = () => {
     );
 };
 
-
-
 const SecondaryNavBar = () => {
     const [appsDropdownOpen, setAppsDropdownOpen] = useState(false);
     const [reviewsDropdownOpen, setReviewsDropdownOpen] = useState(false);
@@ -42,25 +40,27 @@ const SecondaryNavBar = () => {
             <Container>
                 <Nav as="ul" className="me-auto align-items-center">
                     <Nav.Item as="li" className="mx-lg-1">
-                        <Nav.Link as={Link} to="/dashboard" className="text-white">
-                            <Button className="mr-2"> <i className="mdi mdi-view-dashboard-variant mdi-24px"/> Dashboard</Button>
-                        </Nav.Link>
+                        <Link to="/dashboard">
+                            <Button className="text-white">
+                                <i className="mdi mdi-view-dashboard-variant mdi-24px"/> Dashboard
+                            </Button>
+                        </Link>
                     </Nav.Item>
                     <Nav.Item as="li" className="mx-lg-1">
-                        <Nav.Link onClick={toggleAppsDropdown} className="text-white">
-                            <Button className="mr-2"> <i className="mdi mdi-apps mdi-24px"/> Apps <i className={`mdi mdi-chevron-${appsDropdownOpen ? 'down' : 'right'}`}></i></Button>
-                            <Dropdown show={appsDropdownOpen} align="start">
-                                <DropdownMenuApps />
-                            </Dropdown>
-                        </Nav.Link>
+                        <Button onClick={toggleAppsDropdown} className="text-white">
+                            <i className="mdi mdi-apps mdi-24px"/> Apps <i className={`mdi mdi-chevron-${appsDropdownOpen ? 'down' : 'right'}`}></i>
+                        </Button>
+                        <Dropdown show={appsDropdownOpen} align="start">
+                            <DropdownMenuApps />
+                        </Dropdown>
                     </Nav.Item>
                     <Nav.Item className="mx-lg-1">
-                        <Nav.Link onClick={toggleReviewsDropdown} className="text-white">
-                            <Button className="mr-2"> <i className="mdi mdi-file-document-multiple mdi-24px" /> Reviews <i className={`mdi mdi-chevron-${reviewsDropdownOpen ? 'down' : 'right'}`}></i></Button>
-                            <Dropdown show={reviewsDropdownOpen} align="start">
-                                <DropdownMenuReviews />
-                            </Dropdown>
-                        </Nav.Link>
+                        <Button onClick={toggleReviewsDropdown} className="text-white">
+                            <i className="mdi mdi-file-document-multiple mdi-24px" /> Reviews <i className={`mdi mdi-chevron-${reviewsDropdownOpen ? 'down' : 'right'}`}></i>
+                        </Button>
+                        <Dropdown show={reviewsDropdownOpen} align="start">
+                            <DropdownMenuReviews />
+                        </Dropdown>
                     </Nav.Item>
                 </Nav>
             </Container>

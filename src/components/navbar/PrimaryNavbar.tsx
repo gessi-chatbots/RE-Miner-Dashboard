@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import {Container, Navbar, Button, Row, Dropdown} from 'react-bootstrap';
-import { signOut, fetchUserAttributes } from 'aws-amplify/auth';
+import { Container, Navbar, Button, Row, Dropdown } from 'react-bootstrap';
 import Logo from '../../assets/static/images/logos/logo.png';
 import {Link} from "react-router-dom";
+import AuthService from "../../services/AuthService";
 
-const signOutUser = () => {
-    signOut()
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
-};
+
 
 
 const DropdownMenuUser = () => {
+    const authService = new AuthService();
+
+    const handleSignOut = () => {
+        authService.signOutUser();
+    };
+
     return (
         <Dropdown.Menu>
             <Dropdown.Item>
@@ -23,7 +25,7 @@ const DropdownMenuUser = () => {
             <Dropdown.Item>
                 <Link
                     to="#"
-                    onClick={signOutUser}
+                    onClick={handleSignOut}
                     style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}
                 >
                     <i className="mdi mdi-export"/> Sign out
@@ -41,25 +43,18 @@ interface UserData {
 
 
 const PrimaryNavBar = () => {
-    const [userData, setUserData] = useState<UserData | null>(null);
+    const [userData, setUserData] = useState<{ name?: string; family_name?: string } | null>(null);
     const [userDropdownOpen, setUserDropdownOpen] = useState(false);
-
 
     useEffect(() => {
         const fetchUserData = async () => {
-            try {
-                const currentUser = await fetchUserAttributes();
-                setUserData({
-                    name: currentUser?.name,
-                    family_name: currentUser?.family_name,
-                });
-            } catch (error) {
-                console.error('Error fetching user data:', error);
-            }
+            const authService = new AuthService();
+            const userData = await authService.getUserData();
+            setUserData(userData);
         };
-
         fetchUserData();
-    }, []); // Empty dependency array to run the effect only once on mount
+    }, []);
+
     const toggleUserDropdown = () => {
         setUserDropdownOpen(!userDropdownOpen);
     };
@@ -75,7 +70,9 @@ const PrimaryNavBar = () => {
 
                 <Container className="d-flex flex-column align-items-end">
                     <Row>
-                        <Button className="mr-2 btn-secondary" onClick={toggleUserDropdown}> <b>{userData?.name} {userData?.family_name} </b></Button>
+                        <Button className="mr-2 btn-secondary" onClick={toggleUserDropdown}>
+                            <b>{userData?.name} {userData?.family_name}</b>
+                        </Button>
                         <Dropdown show={userDropdownOpen} align="start">
                             <DropdownMenuUser />
                         </Dropdown>
