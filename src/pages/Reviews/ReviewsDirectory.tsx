@@ -3,7 +3,7 @@ import {Container, Table, Button, Modal, Tooltip, OverlayTrigger} from 'react-bo
 
 import { AppDataDTO } from "../../DTOs/AppDataDTO";
 import AppService from "../../services/AppService";
-const defaultColumns = ['App Name', 'Review', 'Score', 'Date', 'Actions'];
+const defaultColumns = ['Review ID', 'Review', 'Score', 'Date', 'Actions'];
 
 const ReviewsDirectory: React.FC = () => {
     const [data, setData] = useState<AppDataDTO[] | null>(null);
@@ -29,15 +29,6 @@ const ReviewsDirectory: React.FC = () => {
 
     useEffect(() => {
         const fetchDataFromApi = async () => {
-            const appService = new AppService();
-            try {
-                const mappedData = await appService.fetchAllApps();
-                if (mappedData !== undefined) {
-                    setData(mappedData);
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
         };
         fetchDataFromApi();
     }, []);
@@ -47,7 +38,7 @@ const ReviewsDirectory: React.FC = () => {
     return (
         <Container className="mt-2">
             <div>
-                <h1 className="text-secondary">App Reviews</h1>
+                <h1 className="text-secondary">Reviews</h1>
                 <Table className="table table-bordered table-centered table-striped table-hover mt-4">
                     <thead>
                     <tr>

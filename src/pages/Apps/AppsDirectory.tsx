@@ -10,6 +10,12 @@ const AppsDirectory: React.FC = () => {
     const [isEditModalOpen, setEditModalIsOpen] = useState<boolean>(false);
     const [isDeleteModalOpen, setDeleteModalIsOpen] = useState<boolean>(false);
     const [selectedApp, setSelectedApp] = useState<AppDataDTO | null>(null);
+    const [isAddReviewModalOpen, setIsAddReviewModalOpen] = useState<boolean>(false);
+
+    const openAddReviewModal = (app: AppDataDTO) => {
+        setSelectedApp(app);
+        setIsAddReviewModalOpen(true);
+    };
 
     const openEditModal = (app: AppDataDTO) => {
         setSelectedApp(app);
@@ -22,6 +28,7 @@ const AppsDirectory: React.FC = () => {
     };
 
     const closeModals = () => {
+        setIsAddReviewModalOpen(false);
         setEditModalIsOpen(false);
         setDeleteModalIsOpen(false);
         setSelectedApp(null);
@@ -58,7 +65,7 @@ const AppsDirectory: React.FC = () => {
                             <th className="text-center">{defaultColumns[2]}</th>
                             <th className="text-center">{defaultColumns[3]}</th>
                             <th className="text-center">{defaultColumns[4]}</th>
-                            <th className="text-end" style={{ width: "150px" }}>{defaultColumns[5]}</th>
+                            <th className="text-center" style={{ width: "150px" }}>{defaultColumns[5]}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,7 +82,7 @@ const AppsDirectory: React.FC = () => {
                             <td className="text-center">{app.version || 'N/A'}</td>
                             <td className="text-end" style={{ width: "150px" }}>
                                 <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Add Review</Tooltip>}>
-                                    <a href="#" className="action-icon" onClick={() => openEditModal(app)}>
+                                    <a href="#" className="action-icon" onClick={() => openAddReviewModal(app)}>
                                         <i className="mdi mdi-file-plus"></i>
                                     </a>
                                 </OverlayTrigger>
@@ -110,11 +117,10 @@ const AppsDirectory: React.FC = () => {
                             </div>
                         </div>
                     </div>
-
                     <div className="row" >
                         <div className="mb-3">
                             <label htmlFor="appDescription" className="form-label">Description</label>
-                            <textarea id="appDescription" className="form-control" defaultValue={selectedApp?.description} />
+                            <textarea id="appDescription" className="form-control" defaultValue={selectedApp?.description} rows={5} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="appSummary" className="form-label">Summary</label>
@@ -148,13 +154,66 @@ const AppsDirectory: React.FC = () => {
                     <Modal.Title>Delete App</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* Your delete modal content here */}
                     {selectedApp && <p>Do you really want to <b>delete</b> the app: {selectedApp.app_name}?</p>}
                     <p>This step is <b>irreversible</b></p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModals}>Close</Button>
                     <Button variant="danger" onClick={closeModals}>Delete</Button>
+                </Modal.Footer>
+            </Modal>
+
+            {/* Add Review Modal */}
+            <Modal show={isAddReviewModalOpen} backdrop="static" keyboard={false} onHide={closeModals}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Review</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="row">
+                        <div className="col-md-8">
+                            <div className="mb-3">
+                                <label htmlFor="appName" className="form-label">App Name</label>
+                                <input type="text" id="appName" className="form-control" defaultValue={selectedApp?.app_name} readOnly />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row" >
+                        <div className="mb-3">
+                            <label htmlFor="reviewId" className="form-label"><b className="text-danger">*</b> Review ID</label>
+                            <input type="text" id="reviewId" className="form-control"/>
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="review" className="form-label">Review Content</label>
+                            <textarea id="review" className="form-control"/>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <div className="mb-3">
+                                <label htmlFor="userName" className="form-label">Review Username</label>
+                                <input className="form-control" id="userName" type="text" />
+                            </div>
+                        </div>
+                        <div className="col-md-6">
+                            <div className="mb-3">
+                                <label htmlFor="score" className="form-label">Score</label>
+                                <input type="number" id="score" className="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <div className="mb-3">
+                                <label htmlFor="reviewDate" className="form-label">Date</label>
+                                <input className="form-control" id="reviewDate" type="date"/>
+                            </div>
+                        </div>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={closeModals}>Close</Button>
+                    <Button variant="primary" onClick={closeModals}>Save</Button>
                 </Modal.Footer>
             </Modal>
         </Container>
