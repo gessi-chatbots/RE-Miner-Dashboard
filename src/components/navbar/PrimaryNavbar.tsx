@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Container, Navbar, Button, Row, Dropdown } from 'react-bootstrap';
 import Logo from '../../assets/static/images/logos/logo.png';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import AuthService from "../../services/AuthService";
-
-
-
 
 const DropdownMenuUser = () => {
     const authService = new AuthService();
@@ -34,17 +31,10 @@ const DropdownMenuUser = () => {
         </Dropdown.Menu>
     );
 };
-
-
-interface UserData {
-    name?: string;
-    family_name?: string;
-}
-
-
 const PrimaryNavBar = () => {
     const [userData, setUserData] = useState<{ name?: string; family_name?: string } | null>(null);
     const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+    const userDropdownRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -59,6 +49,20 @@ const PrimaryNavBar = () => {
         setUserDropdownOpen(!userDropdownOpen);
     };
 
+    useEffect(() => {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (userDropdownRef.current && !userDropdownRef.current.contains(event.target as Node)) {
+                setUserDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleOutsideClick);
+
+        return () => {
+            document.removeEventListener("mousedown", handleOutsideClick);
+        };
+    }, []);
+
     return (
         <Navbar className="bg-white py-lg-3">
             <Container>
@@ -70,12 +74,14 @@ const PrimaryNavBar = () => {
 
                 <Container className="d-flex flex-column align-items-end">
                     <Row>
-                        <Button className="mr-2 btn-secondary" onClick={toggleUserDropdown}>
-                            <b>{userData?.name} {userData?.family_name}</b>
-                        </Button>
-                        <Dropdown show={userDropdownOpen} align="start">
-                            <DropdownMenuUser />
-                        </Dropdown>
+                        <div ref={userDropdownRef}>
+                            <Button className="mr-2 btn-secondary" onClick={toggleUserDropdown}>
+                                <b>{userData?.name} {userData?.family_name}</b>
+                            </Button>
+                            <Dropdown show={userDropdownOpen} align="start">
+                                <DropdownMenuUser />
+                            </Dropdown>
+                        </div>
                     </Row>
                 </Container>
             </Container>

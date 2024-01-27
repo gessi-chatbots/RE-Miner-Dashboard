@@ -82,6 +82,38 @@ const UploadApps = () => {
         setAppDataList(appDataList);
     };
 
+    const handleDownload = () => {
+        const templateData = [
+            {
+                "app_name": "app name",
+                "description": "description",
+                "summary": "summary",
+                "developer": "developer",
+                "release_date": "Jun 20, 2016",
+                "version": "3.715",
+                "reviews": [
+                    {
+                        "reviewId": "reviewID",
+                        "review": "review",
+                        "userName": "userName",
+                        "score": 4,
+                        "at": "Sep 15, 2022"
+                    }
+                ]
+            }
+        ];
+
+        const data = JSON.stringify(templateData); // Provide your template data here
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'template.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
     const handleUploadButtonClick = async () => {
         if (appDataList.length === 0) {
             console.log('No files uploaded.');
@@ -104,17 +136,25 @@ const UploadApps = () => {
     return (
         <Container className="mt-2">
             <div>
-                <h1 className="text-secondary">Upload Applications</h1>
+                <Row className="align-content-center">
+                    <Col className="col-md-8">
+                        <h1 className="text-secondary">Upload Applications</h1>
+                    </Col>
+                    <Col className="col-md-4 d-flex justify-content-end align-items-center">
+                        <Button className="btn-secondary" onClick={handleDownload}><i className="mdi mdi-download"/> Template File</Button>
+                    </Col>
+                </Row>
+
                 <div className="mt-5">
                     <FileUploader onFileUpload={handleFileUpload} ref={fileUploaderRef} />
                 </div>
             </div>
             <Row className="justify-content-end mt-3">
                 <div className="col-auto">
-                    <Button className="btn-secondary" onClick={openCreateAppModal}>Upload App Manually</Button>
+                    <Button className="btn-secondary" onClick={openCreateAppModal}><i className="mdi mdi-hand-back-right"/> Upload App Manually</Button>
                 </div>
                 <div className="col-auto">
-                    <Button className="button-primary" onClick={handleUploadButtonClick}>Upload</Button>
+                    <Button className="button-primary" onClick={handleUploadButtonClick}><i className="mdi mdi-upload"/> Upload</Button>
                 </div>
             </Row>
 
