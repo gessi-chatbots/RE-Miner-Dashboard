@@ -95,6 +95,7 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
                         appCount++;
                         reviewCount += item.reviews.length;
                         const appData: AppDataDTO = {
+                            id: "",
                             app_name: item.app_name,
                             description: item.description,
                             summary: item.summary,
@@ -108,14 +109,12 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
                                 at: review.at
                             })) as ReviewDataDTO[]
                         };
-                        appList.push(appData); // Push appData to appList
+                        appList.push(appData);
                     });
                 }
-                setAppDataList(appList); // Set appDataList state with appList
+                setAppDataList(appList);
                 setAppNamesCount(prevCount => prevCount + appCount);
                 setReviewsCount(prevCount => prevCount + reviewCount);
-
-                // Call the parent component's callback function with the files and app data list
                 if (props.onFileUpload) {
                     props.onFileUpload([file], appList);
                 }

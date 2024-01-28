@@ -3,6 +3,7 @@ import {Container, Table, Button, Modal, OverlayTrigger, Tooltip} from 'react-bo
 
 import { AppDataDTO } from "../../DTOs/AppDataDTO";
 import AppService from "../../services/AppService";
+import {toast} from "react-toastify";
 const defaultColumns = ['App Name', 'Description', 'Summary', 'Release Date', 'Version', 'Actions'];
 
 const AppsDirectory: React.FC = () => {
@@ -53,6 +54,23 @@ const AppsDirectory: React.FC = () => {
         fetchDataFromApi();
     }, []);
 
+    const deleteApp = async (app_id: string | undefined) => {
+        if (!app_id) {
+            console.error("App ID is undefined or null.");
+            return false;
+        }
+
+        const appService = new AppService();
+        try {
+            await appService.deleteApp(app_id);
+            toast.success('App deleted successfully!');
+            return true;
+        } catch (error) {
+            console.error("Error deleting app:", error);
+            return false;
+        }
+    };
+
     return (
         <Container className="mt-2">
             <div>
@@ -70,7 +88,7 @@ const AppsDirectory: React.FC = () => {
                     </thead>
                     <tbody>
                     {data && data.map(app => (
-                        <tr key={app.app_name}>
+                        <tr key={app.id}>
                             <td className="text-center">{app.app_name || 'N/A'}</td>
                             <td className="text-center">{truncateDescription(app.description) || 'N/A'}
                                 <br/>
@@ -159,7 +177,7 @@ const AppsDirectory: React.FC = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModals}>Close</Button>
-                    <Button variant="danger" onClick={closeModals}>Delete</Button>
+                    <Button variant="danger" onClick={() => deleteApp(selectedApp?.id)}>Delete</Button>
                 </Modal.Footer>
             </Modal>
 

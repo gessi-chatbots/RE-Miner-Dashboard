@@ -1,4 +1,4 @@
-import { get, post } from 'aws-amplify/api';
+import { get, post, del } from 'aws-amplify/api';
 import { AppDataDTO } from '../DTOs/AppDataDTO';
 import AuthService from "./AuthService";
 class AppService {
@@ -7,12 +7,7 @@ class AppService {
     fetchAllApps = async (): Promise<AppDataDTO[] | null> => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
-        let id;
-        if (userData && userData.sub) {
-            id = userData.sub;
-        } else {
-            id = "0"; // todo refactor
-        }
+        const id = userData?.sub || "";
         try {
             const restOperation = get({
                 apiName: this.API_NAME,
@@ -41,14 +36,12 @@ class AppService {
     };
 
      createApp = async (appData: any) => {
-         console.log(appData)
          const authService = new AuthService();
          const userData = await authService.getUserData();
          const request_body = {
              user_id: userData?.sub,
              apps: appData
          };
-         console.log(JSON.stringify(request_body))
         try {
             const restOperation = post({
                 apiName: this.API_NAME,
@@ -65,6 +58,28 @@ class AppService {
             console.log(textResponse)
         } catch (error) {
             console.error("Error creating app:", error);
+            throw error;
+        }
+    };
+
+    deleteApp = async (appId: string) => {
+        const authService = new AuthService();
+        const userData = await authService.getUserData();
+        const id = userData?.sub || "";
+        try {
+            const deleteOperation = del({
+                apiName: this.API_NAME,
+                path: this.PATH_NAME,
+                options: {
+                    queryParams: {
+                        user_id: id,
+                        app_id: appId
+                    }
+                }
+            });
+            await deleteOperation.response;
+        } catch (error) {
+            console.error("Error deleting app:", error);
             throw error;
         }
     };

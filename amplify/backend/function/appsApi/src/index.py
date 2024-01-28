@@ -6,7 +6,7 @@ from botocore.exceptions import ClientError
 
 from flask_cors import CORS
 from flask import Flask, jsonify, request
-from uuid import uuid4
+import uuid
 from datetime import datetime
 
 app = Flask(__name__)
@@ -14,6 +14,49 @@ CORS(app)
 BASE_ROUTE = "/apps"
 client = boto3.client("dynamodb")
 TABLE = "users-dev"
+
+@app.route(BASE_ROUTE, methods=['DELETE'])
+def delete_app():
+    print("[DELETE]: Delete an App")
+    request_json = json.loads(request.get_json())
+    user_id = request_json.get("user_id")
+    app_id = request_json.get("app_id")
+    if user_id is None:
+        return jsonify({"error": "user_id is required in the request"}), 400
+    elif app_id is None:
+        return jsonify({"error": "app_id is required in the request"}), 400
+
+    user_response = client.query(
+                    TableName=TABLE,
+                    KeyConditionExpression='user_id = :user_id',
+                    ExpressionAttributeValues={
+                        ':user_id': {'S': user_id}
+                    }
+                )
+    user_data = user_response.get('Items', [])
+    if not items:
+        return jsonify({"error": f"User with user_id {user_id} not found"}), 404
+
+    new_apps = item.get('apps', {}).get('L', [])
+    for app in new_apps:
+        id = app.get('M', {}).get('app_name', {}).get('id', None),
+        if id not None and app_id in app.get('M').get('app_name').get('id')
+            new_apps.remove(app)
+            break
+
+    client.update_item(
+        TableName=TABLE,
+        Key={
+            'user_id': {'S': user_id}
+        },
+        UpdateExpression='SET apps = :app_list',
+        ExpressionAttributeValues={
+            ':app_list': {'L': [new_apps]}
+        }
+    )
+    return jsonify({"message": "App deleted successfully"}), 200
+
+
 
 
 @app.route(BASE_ROUTE, methods=['POST'])
@@ -40,10 +83,12 @@ def create_apps():
         print(f"New app {app_name}")
         app_item = {
             'M': {
+                'id': {'S': str(uuid.uuid4())},
                 'app_name': {'S': app_entry.get("app_name")},
                 'description': {'S': app_entry.get("description")},
                 'summary': {'S': app_entry.get("summary")},
                 'release_date': {'S': app_entry.get("release_date")},
+                'reviews': {'L': []}
             }
         }
         try:
@@ -69,7 +114,7 @@ def create_apps():
                             ':app_list': {'L': [app_item]}
                         }
                 )
-    return jsonify({"message": "Items created/updated successfully"}), 200
+    return jsonify({"message": "App/s created successfully"}), 200
 
 
 @app.route(BASE_ROUTE, methods=['GET'])
@@ -87,7 +132,6 @@ def list_apps():
     items = response.get('Items', [])
     if not items:
         return jsonify({"error": f"User with user_id {user_id} not found"}), 404
-    print(f"items: {items}")
     app_data_list = []
     for item in items:
         apps = item.get('apps', {}).get('L', [])
@@ -95,6 +139,7 @@ def list_apps():
         for app_item in apps:
             print(f"app item: {app_item}")
             app_data = {
+                'id': app_item.get('M', {}).get('id', {}).get('S', None),
                 'app_name': app_item.get('M', {}).get('app_name', {}).get('S', None),
                 'description': app_item.get('M', {}).get('description', {}).get('S', None),
                 'summary': app_item.get('M', {}).get('summary', {}).get('S', None),
