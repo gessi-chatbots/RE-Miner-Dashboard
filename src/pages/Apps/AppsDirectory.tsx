@@ -4,6 +4,7 @@ import {Container, Table, Button, Modal, OverlayTrigger, Tooltip, Row, Col} from
 import { AppDataDTO } from "../../DTOs/AppDataDTO";
 import AppService from "../../services/AppService";
 import { toast } from 'react-toastify';
+import appService from "../../services/AppService";
 const defaultColumns = ['App Name', 'Description', 'Summary', 'Release Date', 'Version', 'Actions'];
 
 const AppsDirectory: React.FC = () => {
@@ -18,6 +19,8 @@ const AppsDirectory: React.FC = () => {
     const [summary, setAppSummary] = useState<string>('');
     const [release_date, setAppReleaseDate] = useState<string>('');
     const [version, setAppVersion] = useState<string>('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
 
     const openAddReviewModal = (app: AppDataDTO) => {
         setSelectedApp(app);
@@ -54,16 +57,51 @@ const AppsDirectory: React.FC = () => {
         const fetchDataFromApi = async () => {
             const appService = new AppService();
             try {
-                const mappedData = await appService.fetchAllApps();
-                if (mappedData !== undefined) {
+                const response = await appService.fetchAllApps(currentPage);
+                if (response !== null) {
+                    const { apps: mappedData, total_pages: pages } = response;
                     setData(mappedData);
+                    setTotalPages(pages);
+                } else {
+                    // Handle the case where response is null
+                    console.error('Response from fetchAllApps is null');
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
         fetchDataFromApi();
-    }, []);
+    }, [currentPage]);
+
+    const nextPage = async () => {
+        if (currentPage < totalPages) {
+            const appService = new AppService();
+            const nextPageNumber = currentPage + 1;
+            await updateAppDirectory(appService)
+            setCurrentPage(nextPageNumber);
+        }
+    };
+
+    const prevPage = async () => {
+        if (currentPage > 1) {
+            const appService = new AppService();
+            const prevPageNumber = currentPage - 1;
+            await updateAppDirectory(appService)
+            setCurrentPage(prevPageNumber);
+        }
+    };
+
+
+    async function updateAppDirectory(appService: AppService) {
+        const response = await appService.fetchAllApps(currentPage);
+        if (response !== null) {
+            const {apps: mappedData, total_pages: pages} = response;
+            if (mappedData !== undefined) {
+                setData(mappedData);
+                setTotalPages(pages);
+            }
+        }
+    }
 
     const updateApp = async (
         app: AppDataDTO | null,
@@ -94,10 +132,7 @@ const AppsDirectory: React.FC = () => {
                 reviews
             });
             setEditModalIsOpen(false);
-            const mappedData = await appService.fetchAllApps();
-            if (mappedData !== undefined) {
-                setData(mappedData);
-            }
+            await updateAppDirectory(appService);
             toast.success('App updated successfully!');
             return true;
         } catch (error) {
@@ -118,9 +153,13 @@ const AppsDirectory: React.FC = () => {
         const appService = new AppService();
         try {
             await appService.deleteApp(app_id);
-            const mappedData = await appService.fetchAllApps();
-            if (mappedData !== undefined) {
-                setData(mappedData);
+            const response = await appService.fetchAllApps();
+            if (response !== null) {
+                const {apps: mappedData, total_pages: pages} = response;
+                if (mappedData !== undefined) {
+                    setData(mappedData);
+                    setTotalPages(pages);
+                }
             }
             toast.success('App deleted successfully!');
             setDeleteModalIsOpen(false);
@@ -133,73 +172,103 @@ const AppsDirectory: React.FC = () => {
         }
     };
     return (
-        <Container className="mt-2">
+        <div>
             <div>
                 <h1 className="text-secondary">Applications</h1>
-                <div className="d-flex justify-content-center align-items-center">
                     {data && data.length === 0 && (
-                        <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
-                            <Row className="text-center">
-                                <Col>
-                                    <i className="mdi mdi-emoticon-sad text-secondary" style={{ fontSize: '5rem' }} />
-                                    <h2>No apps uploaded yet.</h2>
-                                    <p>Why don't you upload some apps?</p>
-                                    <Button className="btn-secondary" href="apps/upload"><i className="mdi mdi-upload"/> Upload Apps</Button>
-                                </Col>
-                            </Row>
+                        <div className="d-flex justify-content-center align-items-center">
+                            <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
+                                <Row className="text-center">
+                                    <Col>
+                                        <i className="mdi mdi-emoticon-sad text-secondary" style={{ fontSize: '5rem' }} />
+                                        <h2>No apps uploaded yet.</h2>
+                                        <p>Why don't you upload some apps?</p>
+                                        <Button className="btn-secondary" href="apps/upload"><i className="mdi mdi-upload"/> Upload Apps</Button>
+                                    </Col>
+                                </Row>
+                            </div>
                         </div>
+
                     )}
                     {data && data.length > 0 && (
-                        <Table className="table table-bordered table-centered table-striped table-hover mt-4">
-                            <thead>
-                            <tr>
-                                <th style={{ width: '20%' }} className="text-center">{defaultColumns[0]}</th>
-                                <th style={{ width: '25%' }} className="text-center">{defaultColumns[1]}</th>
-                                <th className="text-center">{defaultColumns[2]}</th>
-                                <th className="text-center">{defaultColumns[3]}</th>
-                                <th className="text-center">{defaultColumns[4]}</th>
-                                <th className="text-center" style={{ width: "150px" }}>{defaultColumns[5]}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {data.map(app => (
-                                <tr key={app.id}>
-                                    <td className="text-center">{app.app_name || 'N/A'}</td>
-                                    <td className="text-center">{truncateDescription(app.description) || 'N/A'}
-                                        <br/>
-                                        {app.description && app.description.length > 200 &&
-                                            <Button variant="link" onClick={() => openEditModal(app)}>Read More</Button>}
-                                    </td>
-                                    <td className="text-center">{app.summary || 'N/A'}</td>
-                                    <td className="text-center">{app.release_date || 'N/A'}</td>
-                                    <td className="text-center">{app.version || 'N/A'}</td>
-                                    <td className="text-end" style={{ width: "150px" }}>
-                                        <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Add Review</Tooltip>}>
-                                            <a href="#" className="action-icon" onClick={() => openAddReviewModal(app)}>
-                                                <i className="mdi mdi-file-plus"></i>
-                                            </a>
-                                        </OverlayTrigger>
-                                        <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Edit</Tooltip>}>
-                                            <a href="#" className="action-icon" onClick={() => openEditModal(app)}>
-                                                <i className="mdi mdi-pencil"></i>
-                                            </a>
-                                        </OverlayTrigger>
-                                        <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
-                                            <a href="#" className="action-icon" onClick={() => openDeleteModal(app)}>
-                                                <i className="mdi mdi-delete"></i>
-                                            </a>
-                                        </OverlayTrigger>
-                                    </td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </Table>
+                        <>
+                            <div className="d-flex justify-content-center align-items-center">
+                                <Table className="table table-bordered table-centered table-striped table-hover mt-4">
+                                    <thead>
+                                    <tr>
+                                        <th style={{ width: '20%' }} className="text-center">{defaultColumns[0]}</th>
+                                        <th style={{ width: '25%' }} className="text-center">{defaultColumns[1]}</th>
+                                        <th className="text-center">{defaultColumns[2]}</th>
+                                        <th className="text-center">{defaultColumns[3]}</th>
+                                        <th className="text-center">{defaultColumns[4]}</th>
+                                        <th className="text-center" style={{ width: "150px" }}>{defaultColumns[5]}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {data.map(app => (
+                                        <tr key={app.id}>
+                                            <td className="text-center">{app.app_name || 'N/A'}</td>
+                                            <td className="text-center">{truncateDescription(app.description) || 'N/A'}
+                                                <br/>
+                                                {app.description && app.description.length > 200 &&
+                                                    <Button variant="link" onClick={() => openEditModal(app)}>Read More</Button>}
+                                            </td>
+                                            <td className="text-center">{app.summary || 'N/A'}</td>
+                                            <td className="text-center">{app.release_date || 'N/A'}</td>
+                                            <td className="text-center">{app.version || 'N/A'}</td>
+                                            <td className="text-end" style={{ width: "150px" }}>
+                                                <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Add Review</Tooltip>}>
+                                                    <a href="#" className="action-icon" onClick={() => openAddReviewModal(app)}>
+                                                        <i className="mdi mdi-file-plus"></i>
+                                                    </a>
+                                                </OverlayTrigger>
+                                                <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Edit</Tooltip>}>
+                                                    <a href="#" className="action-icon" onClick={() => openEditModal(app)}>
+                                                        <i className="mdi mdi-pencil"></i>
+                                                    </a>
+                                                </OverlayTrigger>
+                                                <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
+                                                    <a href="#" className="action-icon" onClick={() => openDeleteModal(app)}>
+                                                        <i className="mdi mdi-delete"></i>
+                                                    </a>
+                                                </OverlayTrigger>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                    </tbody>
+                                </Table>
+                            </div>
+
+                            {totalPages > 1 && (
+                                <div className="d-flex justify-content-center align-items-center">
+                                    <nav>
+                                        <ul className="pagination pagination-rounded mb-0">
+                                            <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                                                <a className="page-link" href="javascript:void(0);" onClick={prevPage} aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
+                                            </li>
+                                            {/* Page numbers */}
+                                            {Array.from({ length: totalPages }, (_, index) => (
+                                                <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
+                                                    <Button className="page-link" onClick={() => setCurrentPage(index + 1)}>
+                                                        {index + 1}
+                                                    </Button>
+                                                </li>
+                                            ))}
+                                            <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                                                <Button className="page-link" onClick={nextPage} aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </Button>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+
+                            )}
+                        </>
                     )}
                 </div>
-
-
-            </div>
-
             {/* Edit Modal */}
             <Modal show={isEditModalOpen} backdrop="static" keyboard={false} onHide={closeModals}>
                 <Modal.Header closeButton>
@@ -329,7 +398,7 @@ const AppsDirectory: React.FC = () => {
                     <Button variant="primary" onClick={closeModals}>Save</Button>
                 </Modal.Footer>
             </Modal>
-        </Container>
+        </div>
     );
 };
 

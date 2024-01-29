@@ -6,6 +6,8 @@ import Dashboard from "../pages/Dashboard";
 import ReviewsDirectory from "../pages/Reviews/ReviewsDirectory";
 import AppsDirectory from "../pages/Apps/AppsDirectory";
 import UploadApps from "../pages/Apps/UploadApps";
+import Footer from "../components/footer/Footer";
+import {Container} from "react-bootstrap";
 
 
 interface LayoutProps {
@@ -15,7 +17,13 @@ interface LayoutProps {
 const DefaultLayout: React.FC<LayoutProps> = ({ children }) => (
     <>
         <Navbar />
-        {children}
+        <Container className="py-4">
+            {children}
+        </Container>
+        <div className="mt-5">
+            <Footer />
+        </div>
+
     </>
 );
 

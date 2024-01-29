@@ -4,25 +4,30 @@ import AuthService from "./AuthService";
 class AppService {
     API_NAME = 'appsAPI';
     PATH_NAME = '/apps'
-    fetchAllApps = async (): Promise<AppDataDTO[] | null> => {
+    fetchAllApps = async (page: number = 1, pageSize: number = 4): Promise<{ apps: AppDataDTO[], total_pages: number } | null> => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
         const id = userData?.sub || "";
+
         try {
             const restOperation = get({
                 apiName: this.API_NAME,
                 path: this.PATH_NAME,
                 options: {
                     queryParams: {
-                        user_id: id
+                        user_id: id,
+                        page: page.toString(),
+                        page_size: pageSize.toString()
                     }
                 }
             });
+
             const { body } = await restOperation.response;
             const textResponse = await body.text();
             const jsonResponse = JSON.parse(textResponse);
             console.log(jsonResponse);
-            return jsonResponse.map((item: any) => ({
+
+            const apps = jsonResponse.apps.map((item: any) => ({
                 id: item.id,
                 app_name: item.app_name,
                 description: item.description,
@@ -30,6 +35,11 @@ class AppService {
                 release_date: item.release_date,
                 version: item.version,
             }));
+
+            return {
+                apps: apps,
+                total_pages: jsonResponse.total_pages
+            };
         } catch (error) {
             console.error('Error fetching data:', error);
             throw error;

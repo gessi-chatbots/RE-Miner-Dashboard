@@ -28,7 +28,7 @@
         },
         "appsApi": {
           "deploymentBucketName": "amplify-gessiappreviewminer-dev-145611-deployment",
-          "s3Key": "amplify-builds/appsApi-7463445a553074713253-build.zip"
+          "s3Key": "amplify-builds/appsApi-374e4a324c5469653630-build.zip"
         }
       },
       "api": {
