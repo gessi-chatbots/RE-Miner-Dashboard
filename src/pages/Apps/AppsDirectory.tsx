@@ -3,7 +3,7 @@ import {Container, Table, Button, Modal, OverlayTrigger, Tooltip, Row, Col} from
 
 import { AppDataDTO } from "../../DTOs/AppDataDTO";
 import AppService from "../../services/AppService";
-import {toast} from "react-toastify";
+import { toast } from 'react-toastify';
 const defaultColumns = ['App Name', 'Description', 'Summary', 'Release Date', 'Version', 'Actions'];
 
 const AppsDirectory: React.FC = () => {
@@ -12,6 +12,12 @@ const AppsDirectory: React.FC = () => {
     const [isDeleteModalOpen, setDeleteModalIsOpen] = useState<boolean>(false);
     const [selectedApp, setSelectedApp] = useState<AppDataDTO | null>(null);
     const [isAddReviewModalOpen, setIsAddReviewModalOpen] = useState<boolean>(false);
+    const [isUpdating, setIsUpdating] = useState(false);
+    const [app_name, setAppName] = useState<string>('');
+    const [description, setAppDescription] = useState<string>('');
+    const [summary, setAppSummary] = useState<string>('');
+    const [release_date, setAppReleaseDate] = useState<string>('');
+    const [version, setAppVersion] = useState<string>('');
 
     const openAddReviewModal = (app: AppDataDTO) => {
         setSelectedApp(app);
@@ -20,6 +26,11 @@ const AppsDirectory: React.FC = () => {
 
     const openEditModal = (app: AppDataDTO) => {
         setSelectedApp(app);
+        setAppName(app.app_name || '');
+        setAppDescription(app.description || '');
+        setAppSummary(app.summary || '');
+        setAppReleaseDate(app.release_date || '');
+        setAppVersion(app.version || '');
         setEditModalIsOpen(true);
     };
 
@@ -54,6 +65,50 @@ const AppsDirectory: React.FC = () => {
         fetchDataFromApi();
     }, []);
 
+    const updateApp = async (
+        app: AppDataDTO | null,
+        app_name: string,
+        description: string,
+        summary: string,
+        release_date: string,
+        version: string
+    ) => {
+        if (!app) {
+            console.error("app is undefined or null.");
+            return false;
+        }
+        const id = app?.id
+        const reviews = app?.reviews
+
+        setIsUpdating(true);
+
+        const appService = new AppService();
+        try {
+            await appService.updateApp({
+                id,
+                app_name,
+                description,
+                summary,
+                release_date,
+                version,
+                reviews
+            });
+            setEditModalIsOpen(false);
+            const mappedData = await appService.fetchAllApps();
+            if (mappedData !== undefined) {
+                setData(mappedData);
+            }
+            toast.success('App updated successfully!');
+            return true;
+        } catch (error) {
+            toast.error('Error updating app');
+            console.error("Error updating app:", error);
+            return false;
+        } finally {
+            setIsUpdating(false);
+        }
+    };
+
     const deleteApp = async (app_id: string | undefined) => {
         if (!app_id) {
             console.error("App ID is undefined or null.");
@@ -63,20 +118,20 @@ const AppsDirectory: React.FC = () => {
         const appService = new AppService();
         try {
             await appService.deleteApp(app_id);
-            toast.success('App deleted successfully!');
-            setDeleteModalIsOpen(false);
             const mappedData = await appService.fetchAllApps();
             if (mappedData !== undefined) {
                 setData(mappedData);
             }
+            toast.success('App deleted successfully!');
+            setDeleteModalIsOpen(false);
             return true;
         } catch (error) {
+            toast.error('Error deleting app');
             console.error("Error deleting app:", error);
             setDeleteModalIsOpen(false);
             return false;
         }
     };
-
     return (
         <Container className="mt-2">
             <div>
@@ -150,43 +205,59 @@ const AppsDirectory: React.FC = () => {
                 <Modal.Header closeButton>
                     <Modal.Title>Edit App</Modal.Title>
                 </Modal.Header>
+
                 <Modal.Body>
                     <div className="row">
                         <div className="col-md-8">
                             <div className="mb-3">
                                 <label htmlFor="appName" className="form-label">App Name</label>
-                                <input type="text" id="appName" className="form-control" defaultValue={selectedApp?.app_name} />
+                                <input type="text" id="appName" className="form-control" value={app_name} onChange={(e) => setAppName(e.target.value)} />
                             </div>
                         </div>
                     </div>
                     <div className="row" >
                         <div className="mb-3">
                             <label htmlFor="appDescription" className="form-label">Description</label>
-                            <textarea id="appDescription" className="form-control" defaultValue={selectedApp?.description} rows={5} />
+                            <textarea id="appDescription" className="form-control" value={description} onChange={(e) => setAppDescription(e.target.value)} rows={5} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="appSummary" className="form-label">Summary</label>
-                            <input type="text" id="appSummary" className="form-control" defaultValue={selectedApp?.summary} />
+                            <input type="text" id="appSummary" className="form-control" value={summary} onChange={(e) => setAppSummary(e.target.value)} />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-6">
                             <div className="mb-3">
                                 <label htmlFor="appReleaseDate" className="form-label">Release Date</label>
-                                <input className="form-control" id="example-date" type="date" defaultValue={selectedApp?.release_date} />
+                                <input className="form-control" id="example-date" type="date" value={release_date} onChange={(e) => setAppReleaseDate(e.target.value)} />
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="mb-3">
                                 <label htmlFor="appVersion" className="form-label">Version</label>
-                                <input type="text" id="appVersion" className="form-control" defaultValue={selectedApp?.version} />
+                                <input type="text" id="appVersion" className="form-control" value={version} onChange={(e) => setAppVersion(e.target.value)} />
                             </div>
                         </div>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModals}>Close</Button>
-                    <Button variant="primary" onClick={closeModals}>Save</Button>
+                    <Button
+                        variant="primary"
+                        onClick={() =>
+                            updateApp(
+                                selectedApp,
+                                app_name,
+                                description,
+                                summary,
+                                release_date,
+                                version
+                            )
+                        }
+                        disabled={isUpdating}
+                    >
+                        Update
+                    </Button>
                 </Modal.Footer>
             </Modal>
 

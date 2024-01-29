@@ -6,6 +6,6 @@ export interface AppDataDTO {
     description: string;
     summary: string;
     release_date: string;
-    version: number;
+    version: string;
     reviews: ReviewDataDTO[];
 }

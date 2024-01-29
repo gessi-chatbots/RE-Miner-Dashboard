@@ -1,4 +1,4 @@
-import { get, post, del } from 'aws-amplify/api';
+import { get, post, del, put } from 'aws-amplify/api';
 import { AppDataDTO } from '../DTOs/AppDataDTO';
 import AuthService from "./AuthService";
 class AppService {
@@ -35,12 +35,11 @@ class AppService {
             throw error;
         }
     };
-
-     createApp = async (appData: any) => {
+    createApp = async (appData: any) => {
          const authService = new AuthService();
          const userData = await authService.getUserData();
+         const id = userData?.sub || "";
          const request_body = {
-             user_id: userData?.sub,
              apps: appData
          };
         try {
@@ -50,6 +49,9 @@ class AppService {
                 options: {
                     headers: {
                         'Content-Type': 'application/json'
+                    },
+                    queryParams: {
+                        user_id: id
                     },
                     body: JSON.stringify(request_body)
                 }
@@ -62,7 +64,6 @@ class AppService {
             throw error;
         }
     };
-
     deleteApp = async (appId: string) => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
@@ -84,6 +85,34 @@ class AppService {
             throw error;
         }
     };
+
+    updateApp = async (appData: AppDataDTO) => {
+        const authService = new AuthService();
+        const userData = await authService.getUserData();
+        const id = userData?.sub || "";
+        try {
+            const restOperation = put({
+                apiName: this.API_NAME,
+                path: this.PATH_NAME,
+                options: {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    queryParams: {
+                        user_id: id,
+                        app_id: appData.id
+                    },
+                    body: JSON.stringify(appData)
+                }
+            });
+            const { body } = await restOperation.response;
+            const textResponse = await body.text();
+            console.log(textResponse)
+        } catch (error) {
+            console.error("Error creating app:", error);
+            throw error;
+        }
+    }
 }
 
 export default AppService;

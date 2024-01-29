@@ -100,7 +100,7 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
                             description: item.description,
                             summary: item.summary,
                             release_date: item.release_date,
-                            version: parseFloat(item.version),
+                            version: item.version,
                             reviews: item.reviews.map((review: any) => ({
                                 reviewId: review.reviewId,
                                 review: review.review,

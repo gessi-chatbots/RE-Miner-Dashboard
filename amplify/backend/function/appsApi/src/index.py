@@ -36,13 +36,52 @@ def update_app():
         return jsonify({"error": "user_id is required in the request"}), 400
     elif app_id is None:
         return jsonify({"error": "app_id is required in the request"}), 400
-    
+    items = get_user_items(user_id)
+    if not items:
+        return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
+    app = json.loads(request.get_json())
+    app_updated = {
+        'M': {
+            'id': {'S': app.get('id')},
+            'app_name': {'S': app.get("app_name")},
+            'description': {'S': app.get("description")},
+            'summary': {'S': app.get("summary")},
+            'release_date': {'S': app.get("release_date")},
+            'version': {'S': app.get('version')}
+        }
+    }
+    app_index = None
+    for item in items:
+        apps = item.get('apps', {}).get('L', [])
+        for index, app_item in enumerate(apps):
+            if app_item.get('M', {}).get('id', {}).get('S') == app_id:
+                app_index = index
+                break
+
+    if app_index is not None:   
+        response = client.update_item(
+            TableName=TABLE,
+            Key={
+                'user_id': {'S': user_id}
+            },
+            UpdateExpression=f'SET apps[{app_index}] = :updated_app',
+            ExpressionAttributeValues={
+                ':updated_app': app_updated
+            }
+        )
+        print(response)
+        return jsonify({"message": "App updated successfully"}), 200
+    else:
+        return jsonify({"message": "App not found"}), 404
+
+
+  
     
 @app.route(BASE_ROUTE, methods=['POST'])
 def create_apps():
     print("[POST]: Create new Apps")
-    request_json = json.loads(request.get_json())
-    user_id = request_json.get("user_id")
+    apps_json = json.loads(request.get_json())
+    user_id = request.args.get("user_id")
     if user_id is None:
         return jsonify({"error": "user_id is required in the request"}), 400
     
@@ -50,17 +89,18 @@ def create_apps():
     if not items:
         return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
     
-    apps = request_json.get("apps", [])
-    for app_entry in apps:
-        app_name = app_entry.get("app_name")
+    apps = apps_json.get("apps", [])
+    for new_app in apps:
+        app_name = new_app.get("app_name")
         print(f"New app {app_name}")
         app_item = {
             'M': {
                 'id': {'S': str(uuid.uuid4())},
-                'app_name': {'S': app_entry.get("app_name")},
-                'description': {'S': app_entry.get("description")},
-                'summary': {'S': app_entry.get("summary")},
-                'release_date': {'S': app_entry.get("release_date")},
+                'app_name': {'S': new_app.get("app_name")},
+                'description': {'S': new_app.get("description")},
+                'summary': {'S': new_app.get("summary")},
+                'release_date': {'S': new_app.get("release_date")},
+                'version': {'S': new_app.get('version')},
                 'reviews': {'L': []}
             }
         }
@@ -77,6 +117,7 @@ def create_apps():
             )
         except ClientError as e:
             if e.response['Error']['Code'] == 'ValidationException':
+                # no app list exists for that user, we create a new one
                 client.update_item(
                     TableName=TABLE,
                         Key={
@@ -109,7 +150,7 @@ def list_apps():
                 'description': app_item.get('M', {}).get('description', {}).get('S', None),
                 'summary': app_item.get('M', {}).get('summary', {}).get('S', None),
                 'release_date': app_item.get('M', {}).get('release_date', {}).get('S', None),
-                'version': int(app_item.get('M', {}).get('version', {}).get('N', 0))
+                'version': app_item.get('M', {}).get('version', {}).get('S', 0)
             }
             app_data_list.append(app_data)
     print(app_data_list)
