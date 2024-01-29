@@ -46,7 +46,7 @@ class ReviewService {
             throw error;
         }
     };
-    createApp = async (appData: any) => {
+    createReview = async (appData: any) => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
         const id = userData?.sub || "";
@@ -62,7 +62,8 @@ class ReviewService {
                         'Content-Type': 'application/json'
                     },
                     queryParams: {
-                        user_id: id
+                        user_id: id,
+                        app_id: appData.id
                     },
                     body: JSON.stringify(request_body)
                 }
@@ -98,10 +99,12 @@ class ReviewService {
         }
     };
 
-    updateApp = async (appData: AppDataDTO) => {
+    updateReview = async (review: ReviewDataDTO) => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
         const id = userData?.sub || "";
+        const reviewId = review?.id;
+        const appId = review?.app_id;
         try {
             const restOperation = put({
                 apiName: this.API_NAME,
@@ -112,16 +115,17 @@ class ReviewService {
                     },
                     queryParams: {
                         user_id: id,
-                        app_id: appData.id
+                        app_id: appId,
+                        review_id: reviewId
                     },
-                    body: JSON.stringify(appData)
+                    body: JSON.stringify(review)
                 }
             });
             const { body } = await restOperation.response;
             const textResponse = await body.text();
             console.log(textResponse)
         } catch (error) {
-            console.error("Error creating app:", error);
+            console.error("Error updating review:", error);
             throw error;
         }
     }

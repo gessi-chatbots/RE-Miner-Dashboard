@@ -3,9 +3,9 @@ import {Table, Button, Modal, Tooltip, OverlayTrigger, Row, Col} from 'react-boo
 
 import ReviewService from "../../services/ReviewService";
 import {ReviewDataDTO} from "../../DTOs/ReviewDataDTO";
-import AppService from "../../services/AppService";
 import {toast} from "react-toastify";
 const defaultColumns = ['App Name', 'Review ID', 'Review', 'Score', 'Date', 'Actions'];
+
 
 const ReviewsDirectory: React.FC = () => {
     const [data, setData] = useState<ReviewDataDTO[] | null>(null);
@@ -14,6 +14,12 @@ const ReviewsDirectory: React.FC = () => {
     const [selectedReview, setSelectedReview] = useState<ReviewDataDTO | null>(null);
     const [totalPages, setTotalPages] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
+    const [isUpdating, setIsUpdating] = useState(false);
+    const [review, setReview] = useState<string>('');
+    const [date, setDate] = useState<string>('');
+    const [score, setScore] = useState<number>(0);
+    const [isScoreValid, setIsScoreValid] = useState(true); // Set to true initially
+    const [isUpdateButtonClicked, setIsUpdateButtonClicked] = useState(false);
 
     const openEditModal = (review: ReviewDataDTO) => {
         setSelectedReview(review);
@@ -30,6 +36,17 @@ const ReviewsDirectory: React.FC = () => {
         setDeleteModalIsOpen(false);
         setSelectedReview(null);
     };
+
+    async function updateReviewsDirectory(reviewService: ReviewService) {
+        const response = await reviewService.fetchAllReviews(currentPage);
+        if (response !== null) {
+            const { reviews: mappedData, total_pages: pages } = response;
+            if (mappedData !== undefined) {
+                setData(mappedData);
+                setTotalPages(pages);
+            }
+        }
+    }
 
     useEffect(() => {
         const fetchDataFromApi = async () => {
@@ -50,6 +67,63 @@ const ReviewsDirectory: React.FC = () => {
         fetchDataFromApi();
     }, [currentPage]);
 
+    const handleUpdateButtonClick = async (
+        reviewData: ReviewDataDTO | null,
+        review: string,
+        date: string,
+        score: number
+    ) => {
+        setIsUpdateButtonClicked(true);
+        if (score < 0 || score > 5) {
+            setIsScoreValid(false);
+            return;
+        }
+
+        setIsScoreValid(true);
+        const created = await updateReview(reviewData, review, date, score);
+        if (created) {
+            closeModals();
+        }
+    };
+    const updateReview = async (
+        reviewData: ReviewDataDTO | null,
+        review: string,
+        date: string,
+        score: number
+    ) => {
+        if (!reviewData) {
+            console.error("Review is undefined or null.");
+            return false;
+        }
+        const id = reviewData?.id
+        const app_id = reviewData?.app_id
+        const app_name = reviewData?.app_name
+        setIsUpdating(true);
+
+        const reviewService = new ReviewService();
+        try {
+            await reviewService.updateReview({
+                app_name,
+                app_id,
+                id,
+                review,
+                score,
+                date
+            });
+            setEditModalIsOpen(false);
+            await updateReviewsDirectory(reviewService);
+            toast.success('Review updated successfully!');
+            setIsUpdating(false);
+            return true;
+        } catch (error) {
+            toast.error('Error updating app');
+            console.error("Error updating app:", error);
+            return false;
+        } finally {
+            setIsUpdating(false);
+        }
+    };
+
 
     const deleteReview = async (app_id: string | undefined, review_id: string | undefined) => {
         if (!app_id) {
@@ -67,7 +141,7 @@ const ReviewsDirectory: React.FC = () => {
             await reviewService.deleteReview(app_id, review_id);
             const response = await reviewService.fetchAllReviews();
             if (response !== null) {
-                const {reviews: mappedData, total_pages: pages} = response;
+                const { reviews: mappedData, total_pages: pages } = response;
                 if (mappedData !== undefined) {
                     setData(mappedData);
                     setTotalPages(pages);
@@ -153,7 +227,6 @@ const ReviewsDirectory: React.FC = () => {
                             </div>
                         </div>
                     </div>
-
                     <div className="row" >
                         <div className="mb-3">
                             <label htmlFor="reviewID" className="form-label">Review ID</label>
@@ -161,14 +234,14 @@ const ReviewsDirectory: React.FC = () => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="review" className="form-label">Review</label>
-                            <input type="text" id="review" className="form-control" defaultValue={selectedReview?.review} />
+                            <input type="text" id="review" className="form-control" defaultValue={selectedReview?.review} onChange={(e) => setReview(e.target.value)} />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-6">
                             <div className="mb-3">
                                 <label htmlFor="appReleaseDate" className="form-label">Date</label>
-                                <input className="form-control" id="example-date" type="date" defaultValue={selectedReview?.date} />
+                                <input className="form-control" id="example-date" type="date" defaultValue={selectedReview?.date} onChange={(e) => setDate(e.target.value)} />
                             </div>
                         </div>
                         <div className="col-md-6">
@@ -182,14 +255,29 @@ const ReviewsDirectory: React.FC = () => {
                                     min={0}
                                     max={5}
                                     placeholder="Enter a score between 0 and 5"
+                                    onChange={(e) => setScore(e.target.valueAsNumber)}
                                 />
+                                {!isScoreValid && isUpdateButtonClicked  && <div className="invalid-feedback">Score between 0 & 5</div>}
                             </div>
                         </div>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModals}>Close</Button>
-                    <Button variant="primary" onClick={closeModals}>Save</Button>
+                    <Button
+                        variant="primary"
+                        onClick={() =>
+                            handleUpdateButtonClick(
+                                selectedReview,
+                                review,
+                                date,
+                                score,
+                            )
+                        }
+                        disabled={isUpdating}
+                    >
+                        Update
+                    </Button>
                 </Modal.Footer>
             </Modal>
 

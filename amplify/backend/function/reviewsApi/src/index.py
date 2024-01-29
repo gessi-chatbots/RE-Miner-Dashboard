@@ -15,7 +15,8 @@ BASE_ROUTE = "/reviews"
 client = boto3.client("dynamodb")
 TABLE = "users-dev"
 
-
+# TODO Check for break
+# TODO Check more precise query
 def get_user_items(user_id): 
     response = client.query(
         TableName=TABLE,
@@ -32,13 +33,18 @@ def update_review():
     print("[PUT]: Update a review data")
     user_id = request.args.get('user_id')
     review_id =  request.args.get('review_id')
+    app_id = request.args.get('app_id')
     if user_id is None:
         return jsonify({"error": "user_id is required in the request"}), 400
     elif review_id is None:
+        return jsonify({"error": "review_id is required in the request"}), 400
+    elif app_id is None: 
         return jsonify({"error": "app_id is required in the request"}), 400
+    
     items = get_user_items(user_id)
     if not items:
         return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
+    
     app = json.loads(request.get_json())
     review_updated = {
         'M': {
@@ -48,6 +54,7 @@ def update_review():
             'date': {'S': app.get("at")}
         }
     }
+    
     app_index = None
     review_index = None
     break_all_loops = False
@@ -88,21 +95,22 @@ def update_review():
   
     
 @app.route(BASE_ROUTE, methods=['POST'])
-def create_apps():
+def create_reviews():
     print("[POST]: Create new reviews")
     reviews_json = json.loads(request.get_json())
+    print("flag1")
     user_id = request.args.get("user_id")
-    app_id = request.args.get("app_id")
     if user_id is None:
         return jsonify({"error": "user_id is required in the request"}), 400
-    
+    print("flag2")
+    app_id = request.args.get("app_id")
     if app_id is None:
         return jsonify({"error": "app_id is required in the request"}), 400
-    
+    print("flag3")
     items = get_user_items(user_id)
     if not items:
         return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
-    
+    print("flag4")
     app_index = None
     for item in items:
         apps = item.get('apps', {}).get('L', [])
@@ -118,8 +126,9 @@ def create_apps():
                     'id': {'S': review.get("review_id")},
                     'review': {'S': review.get("app_name")},
                     'score': {'N': review.get("score")},
-                    'date': {'S': review.get("at")},
-                    'features': {'L': []}
+                    'date': {'S': review.get("date")},
+                    'features': {'L': []},
+                    'sentiments': {'L': []}
                 }
             }
             try:
@@ -155,6 +164,7 @@ def create_apps():
 def list_reviews():
     print("[GET]: All reviews from user")
     user_id = request.args.get('user_id')
+    
     page = int(request.args.get('page', 1))
     page_size = int(request.args.get('page_size', 4))
     items = get_user_items(user_id)
