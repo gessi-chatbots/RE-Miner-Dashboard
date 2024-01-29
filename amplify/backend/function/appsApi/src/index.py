@@ -15,57 +15,8 @@ BASE_ROUTE = "/apps"
 client = boto3.client("dynamodb")
 TABLE = "users-dev"
 
-@app.route(BASE_ROUTE, methods=['DELETE'])
-def delete_app():
-    print("[DELETE]: Delete an App")
-    request_json = json.loads(request.get_json())
-    user_id = request_json.get("user_id")
-    app_id = request_json.get("app_id")
-    if user_id is None:
-        return jsonify({"error": "user_id is required in the request"}), 400
-    elif app_id is None:
-        return jsonify({"error": "app_id is required in the request"}), 400
 
-    user_response = client.query(
-                    TableName=TABLE,
-                    KeyConditionExpression='user_id = :user_id',
-                    ExpressionAttributeValues={
-                        ':user_id': {'S': user_id}
-                    }
-                )
-    user_data = user_response.get('Items', [])
-    if not items:
-        return jsonify({"error": f"User with user_id {user_id} not found"}), 404
-
-    new_apps = item.get('apps', {}).get('L', [])
-    for app in new_apps:
-        id = app.get('M', {}).get('app_name', {}).get('id', None),
-        if id not None and app_id in app.get('M').get('app_name').get('id')
-            new_apps.remove(app)
-            break
-
-    client.update_item(
-        TableName=TABLE,
-        Key={
-            'user_id': {'S': user_id}
-        },
-        UpdateExpression='SET apps = :app_list',
-        ExpressionAttributeValues={
-            ':app_list': {'L': [new_apps]}
-        }
-    )
-    return jsonify({"message": "App deleted successfully"}), 200
-
-
-
-
-@app.route(BASE_ROUTE, methods=['POST'])
-def create_apps():
-    print("[POST]: Create new Apps")
-    request_json = json.loads(request.get_json())
-    user_id = request_json.get("user_id")
-    if user_id is None:
-        return jsonify({"error": "user_id is required in the request"}), 400
+def get_user_items(user_id): 
     response = client.query(
         TableName=TABLE,
         KeyConditionExpression='user_id = :user_id',
@@ -74,9 +25,31 @@ def create_apps():
         }
     )
     items = response.get('Items', [])
-    if not items:
-        return jsonify({"error": f"User with user_id {user_id} not found"}), 404
+    return items
 
+@app.route(BASE_ROUTE, methods=['PUT'])
+def update_app():
+    print("[PUT]: Update an app data")
+    user_id = request.args.get('user_id')
+    app_id =  request.args.get('app_id')
+    if user_id is None:
+        return jsonify({"error": "user_id is required in the request"}), 400
+    elif app_id is None:
+        return jsonify({"error": "app_id is required in the request"}), 400
+    
+    
+@app.route(BASE_ROUTE, methods=['POST'])
+def create_apps():
+    print("[POST]: Create new Apps")
+    request_json = json.loads(request.get_json())
+    user_id = request_json.get("user_id")
+    if user_id is None:
+        return jsonify({"error": "user_id is required in the request"}), 400
+    
+    items = get_user_items(user_id)
+    if not items:
+        return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
+    
     apps = request_json.get("apps", [])
     for app_entry in apps:
         app_name = app_entry.get("app_name")
@@ -121,17 +94,9 @@ def create_apps():
 def list_apps():
     print("[GET]: All apps from user")
     user_id = request.args.get('user_id')
-    print(user_id)
-    response = client.query(
-        TableName=TABLE,
-        KeyConditionExpression='user_id = :user_id',
-        ExpressionAttributeValues={
-            ':user_id': {'S': user_id}
-        }
-    )
-    items = response.get('Items', [])
+    items = get_user_items(user_id)
     if not items:
-        return jsonify({"error": f"User with user_id {user_id} not found"}), 404
+        return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
     app_data_list = []
     for item in items:
         apps = item.get('apps', {}).get('L', [])
@@ -149,6 +114,48 @@ def list_apps():
             app_data_list.append(app_data)
     print(app_data_list)
     return jsonify(app_data_list)
+
+@app.route(BASE_ROUTE, methods=['DELETE'])
+def delete_app():
+    print("[DELETE]: Delete an App")
+    user_id = request.args.get('user_id')
+    app_id = request.args.get("app_id")
+    if user_id is None:
+        return jsonify({"error": "user_id is required in the request"}), 400
+    elif app_id is None:
+        return jsonify({"error": "app_id is required in the request"}), 400
+
+    items = get_user_items(user_id)
+    if not items:
+        return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
+    new_apps = []
+    for item in items:
+        apps = item.get('apps', {}).get('L', [])
+        print(f"Apps before deletion: {apps}")
+        for app in apps:
+            id = app.get('M', {}).get('app_name', {}).get('id', {}).get('S', None),
+            if id is not None and app_id in app.get('M').get('id').get('S'):
+                apps.remove(app)
+                break
+        new_apps.extend(apps)
+    print(f"Apps after deletion: {new_apps}")
+
+    update_expression = 'SET apps = :app_list'
+    expression_attribute_values = {}
+
+    if new_apps:
+        expression_attribute_values[':app_list'] = {'L': new_apps}
+    else:
+        expression_attribute_values[':app_list'] = {'L': []}
+    client.update_item(
+        TableName=TABLE,
+        Key={
+            'user_id': {'S': user_id}
+        },
+        UpdateExpression=update_expression,
+        ExpressionAttributeValues=expression_attribute_values
+    )
+    return jsonify({"message": "App deleted successfully"}), 200
 
 def handler(event, context):
     print('[Apps API]: Received Event')

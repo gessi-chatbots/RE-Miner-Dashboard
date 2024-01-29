@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Container, Table, Button, Modal, OverlayTrigger, Tooltip} from 'react-bootstrap';
+import {Container, Table, Button, Modal, OverlayTrigger, Tooltip, Row, Col} from 'react-bootstrap';
 
 import { AppDataDTO } from "../../DTOs/AppDataDTO";
 import AppService from "../../services/AppService";
@@ -64,9 +64,15 @@ const AppsDirectory: React.FC = () => {
         try {
             await appService.deleteApp(app_id);
             toast.success('App deleted successfully!');
+            setDeleteModalIsOpen(false);
+            const mappedData = await appService.fetchAllApps();
+            if (mappedData !== undefined) {
+                setData(mappedData);
+            }
             return true;
         } catch (error) {
             console.error("Error deleting app:", error);
+            setDeleteModalIsOpen(false);
             return false;
         }
     };
@@ -75,50 +81,68 @@ const AppsDirectory: React.FC = () => {
         <Container className="mt-2">
             <div>
                 <h1 className="text-secondary">Applications</h1>
-                <Table className="table table-bordered table-centered table-striped table-hover mt-4">
-                    <thead>
-                        <tr>
-                            <th style={{ width: '20%' }} className="text-center">{defaultColumns[0]}</th>
-                            <th style={{ width: '25%' }} className="text-center">{defaultColumns[1]}</th>
-                            <th className="text-center">{defaultColumns[2]}</th>
-                            <th className="text-center">{defaultColumns[3]}</th>
-                            <th className="text-center">{defaultColumns[4]}</th>
-                            <th className="text-center" style={{ width: "150px" }}>{defaultColumns[5]}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {data && data.map(app => (
-                        <tr key={app.id}>
-                            <td className="text-center">{app.app_name || 'N/A'}</td>
-                            <td className="text-center">{truncateDescription(app.description) || 'N/A'}
-                                <br/>
-                                {app.description && app.description.length > 200 &&
-                                    <Button variant="link" onClick={() => openEditModal(app)}>Read More</Button>}
-                            </td>
-                            <td className="text-center">{app.summary || 'N/A'}</td>
-                            <td className="text-center">{app.release_date || 'N/A'}</td>
-                            <td className="text-center">{app.version || 'N/A'}</td>
-                            <td className="text-end" style={{ width: "150px" }}>
-                                <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Add Review</Tooltip>}>
-                                    <a href="#" className="action-icon" onClick={() => openAddReviewModal(app)}>
-                                        <i className="mdi mdi-file-plus"></i>
-                                    </a>
-                                </OverlayTrigger>
-                                <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Edit</Tooltip>}>
-                                    <a href="#" className="action-icon" onClick={() => openEditModal(app)}>
-                                        <i className="mdi mdi-pencil"></i>
-                                    </a>
-                                </OverlayTrigger>
-                                <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
-                                    <a href="#" className="action-icon" onClick={() => openDeleteModal(app)}>
-                                        <i className="mdi mdi-delete"></i>
-                                    </a>
-                                </OverlayTrigger>
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </Table>
+                <div className="d-flex justify-content-center align-items-center">
+                    {data && data.length === 0 && (
+                        <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
+                            <Row className="text-center">
+                                <Col>
+                                    <i className="mdi mdi-emoticon-sad text-secondary" style={{ fontSize: '5rem' }} />
+                                    <h2>No apps uploaded yet.</h2>
+                                    <p>Why don't you upload some apps?</p>
+                                    <Button className="btn-secondary" href="apps/upload"><i className="mdi mdi-upload"/> Upload Apps</Button>
+                                </Col>
+                            </Row>
+                        </div>
+                    )}
+                    {data && data.length > 0 && (
+                        <Table className="table table-bordered table-centered table-striped table-hover mt-4">
+                            <thead>
+                            <tr>
+                                <th style={{ width: '20%' }} className="text-center">{defaultColumns[0]}</th>
+                                <th style={{ width: '25%' }} className="text-center">{defaultColumns[1]}</th>
+                                <th className="text-center">{defaultColumns[2]}</th>
+                                <th className="text-center">{defaultColumns[3]}</th>
+                                <th className="text-center">{defaultColumns[4]}</th>
+                                <th className="text-center" style={{ width: "150px" }}>{defaultColumns[5]}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {data.map(app => (
+                                <tr key={app.id}>
+                                    <td className="text-center">{app.app_name || 'N/A'}</td>
+                                    <td className="text-center">{truncateDescription(app.description) || 'N/A'}
+                                        <br/>
+                                        {app.description && app.description.length > 200 &&
+                                            <Button variant="link" onClick={() => openEditModal(app)}>Read More</Button>}
+                                    </td>
+                                    <td className="text-center">{app.summary || 'N/A'}</td>
+                                    <td className="text-center">{app.release_date || 'N/A'}</td>
+                                    <td className="text-center">{app.version || 'N/A'}</td>
+                                    <td className="text-end" style={{ width: "150px" }}>
+                                        <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Add Review</Tooltip>}>
+                                            <a href="#" className="action-icon" onClick={() => openAddReviewModal(app)}>
+                                                <i className="mdi mdi-file-plus"></i>
+                                            </a>
+                                        </OverlayTrigger>
+                                        <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Edit</Tooltip>}>
+                                            <a href="#" className="action-icon" onClick={() => openEditModal(app)}>
+                                                <i className="mdi mdi-pencil"></i>
+                                            </a>
+                                        </OverlayTrigger>
+                                        <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
+                                            <a href="#" className="action-icon" onClick={() => openDeleteModal(app)}>
+                                                <i className="mdi mdi-delete"></i>
+                                            </a>
+                                        </OverlayTrigger>
+                                    </td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </Table>
+                    )}
+                </div>
+
+
             </div>
 
             {/* Edit Modal */}

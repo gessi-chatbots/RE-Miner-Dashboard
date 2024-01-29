@@ -23,6 +23,7 @@ class AppService {
             const jsonResponse = JSON.parse(textResponse);
             console.log(jsonResponse);
             return jsonResponse.map((item: any) => ({
+                id: item.id,
                 app_name: item.app_name,
                 description: item.description,
                 summary: item.summary,
