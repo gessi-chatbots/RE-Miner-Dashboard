@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
-import FileUploader, {FileUploaderProps} from "../../components/files/FileUploader";
+import FileUploader from "../../components/files/FileUploader";
 import AppService from "../../services/AppService";
 import { toast } from 'react-toastify';
 import {AppDataDTO} from "../../DTOs/AppDataDTO";
@@ -20,8 +20,10 @@ const UploadApps = () => {
     const [releaseDate, setReleaseDate] = useState('');
     const [appVersion, setAppVersion] = useState('');
     const [isAppNameValid, setIsAppNameValid] = useState(false);
-    const [appDataList, setAppDataList] = useState<AppDataDTO[]>([]); // State to store AppDataList
+    const [appDataList, setAppDataList] = useState<AppDataDTO[]>([]);
     const fileUploaderRef = useRef<any>(null);
+    const [isCreateButtonClicked, setIsCreateButtonClicked] = useState(false);
+    const [isCreatingApp, setIsCreatingApp] = useState(false);
 
     const openCreateAppModal = () => {
         setIsCreateAppModalOpen(true);
@@ -43,14 +45,17 @@ const UploadApps = () => {
             release_date: releaseDate,
             version: appVersion
         };
+        setIsCreatingApp(true);
         const appService = new AppService();
         try {
             await appService.createApp([appData]);
             toast.success('App created successfully!');
-            return true; // Indicate success
+            return true;
         } catch (error) {
             console.error("Error creating app:", error);
-            return false; // Indicate failure
+            return false;
+        } finally {
+            setIsCreatingApp(false);
         }
     };
 
@@ -59,10 +64,13 @@ const UploadApps = () => {
     }, [appDataList]);
 
 
+    const handleAppNameChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+        setAppName(e.target.value);
+    };
     const handleCreateButtonClick = async () => {
-        if (!appName) {
+        setIsCreateButtonClicked(true);
+        if (!appName.trim()) {
             setIsAppNameValid(false);
-            alert("Please enter the App Name.");
             return;
         }
 
@@ -71,11 +79,6 @@ const UploadApps = () => {
         if (created) {
             closeModals();
         }
-    };
-
-    const handleAppNameChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
-        setAppName(e.target.value);
-        setIsAppNameValid(!!e.target.value);
     };
 
     const handleFileUpload = (files: File[], appDataList: AppDataDTO[]) => {
@@ -103,7 +106,7 @@ const UploadApps = () => {
             }
         ];
 
-        const data = JSON.stringify(templateData); // Provide your template data here
+        const data = JSON.stringify(templateData);
         const blob = new Blob([data], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -166,8 +169,15 @@ const UploadApps = () => {
                     <Row>
                         <Col className="col-md-12">
                             <label htmlFor="appName" className="form-label"><b className="text-danger">*</b>App Name</label>
-                            <input type="text" id="appName" value={appName} onChange={handleAppNameChange} className={`form-control ${!isAppNameValid && 'is-invalid'}`} placeholder="App Name" />
-                            {!isAppNameValid && <div className="invalid-feedback">App Name is required.</div>}
+                            <input
+                                type="text"
+                                id="appName"
+                                value={appName}
+                                onChange={handleAppNameChange}
+                                className={`form-control ${(!isAppNameValid && isCreateButtonClicked && !appName.trim()) && 'is-invalid'}`}
+                                placeholder="App Name"
+                            />
+                            {!isAppNameValid && isCreateButtonClicked && !appName.trim() && <div className="invalid-feedback">App Name is required.</div>}
                         </Col>
                     </Row>
                     <Row>
@@ -195,7 +205,13 @@ const UploadApps = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModals}>Close</Button>
-                    <Button variant="primary" onClick={handleCreateButtonClick}>Create</Button>
+                    <Button
+                        variant="primary"
+                        onClick={handleCreateButtonClick}
+                        disabled={isCreatingApp}
+                    >
+                        Create
+                    </Button>
                 </Modal.Footer>
             </Modal>
         </Container>

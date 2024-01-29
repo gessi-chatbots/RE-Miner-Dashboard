@@ -1,28 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { get } from 'aws-amplify/api'
-import DynamicTable from "../components/table/DynamicTable";
-import {Container} from "react-bootstrap"; // Import your API library
+import React from 'react';
+import {Container} from "react-bootstrap";
 
 
 
 const Dashboard = () => {
-    const [data, setData] = useState<Array<Record<string, any>>>([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const restOperation = get({
-                    apiName: 'appsAPI',
-                    path: '/apps'
-                });
-                const response = await restOperation.response;
-                console.log(response)
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-        fetchData();
-    }, []);
 
     return (
         <Container>
