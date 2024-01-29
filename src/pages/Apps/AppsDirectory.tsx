@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {Container, Table, Button, Modal, OverlayTrigger, Tooltip, Row, Col} from 'react-bootstrap';
+import {Table, Button, Modal, OverlayTrigger, Tooltip, Row, Col} from 'react-bootstrap';
 
 import { AppDataDTO } from "../../DTOs/AppDataDTO";
 import AppService from "../../services/AppService";
 import { toast } from 'react-toastify';
-import appService from "../../services/AppService";
 const defaultColumns = ['App Name', 'Description', 'Summary', 'Release Date', 'Version', 'Actions'];
 
 const AppsDirectory: React.FC = () => {
@@ -63,7 +62,6 @@ const AppsDirectory: React.FC = () => {
                     setData(mappedData);
                     setTotalPages(pages);
                 } else {
-                    // Handle the case where response is null
                     console.error('Response from fetchAllApps is null');
                 }
             } catch (error) {
@@ -244,20 +242,20 @@ const AppsDirectory: React.FC = () => {
                                     <nav>
                                         <ul className="pagination pagination-rounded mb-0">
                                             <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                                                <a className="page-link" href="javascript:void(0);" onClick={prevPage} aria-label="Previous">
+                                                <Button className="btn-primary page-link" onClick={prevPage} aria-label="Previous">
                                                     <span aria-hidden="true">&laquo;</span>
-                                                </a>
+                                                </Button>
                                             </li>
                                             {/* Page numbers */}
                                             {Array.from({ length: totalPages }, (_, index) => (
                                                 <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
-                                                    <Button className="page-link" onClick={() => setCurrentPage(index + 1)}>
+                                                    <Button className="btn-primary page-link" onClick={() => setCurrentPage(index + 1)}>
                                                         {index + 1}
                                                     </Button>
                                                 </li>
                                             ))}
                                             <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                                                <Button className="page-link" onClick={nextPage} aria-label="Next">
+                                                <Button className="btn-primary page-link" onClick={nextPage} aria-label="Next">
                                                     <span aria-hidden="true">&raquo;</span>
                                                 </Button>
                                             </li>

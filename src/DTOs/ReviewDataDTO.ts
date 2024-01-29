@@ -1,7 +1,8 @@
 export interface ReviewDataDTO {
-    reviewId: string;
+    app_name: string;
+    app_id: string;
+    id: string;
     review: string;
-    userName: string;
     score: number;
-    at: string;
+    date: string;
 }
