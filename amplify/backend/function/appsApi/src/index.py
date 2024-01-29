@@ -3,7 +3,7 @@ import awsgi
 import boto3
 from boto3.dynamodb.conditions import Key
 from botocore.exceptions import ClientError
-
+from math import ceil
 from flask_cors import CORS
 from flask import Flask, jsonify, request
 import uuid
@@ -135,15 +135,19 @@ def create_apps():
 def list_apps():
     print("[GET]: All apps from user")
     user_id = request.args.get('user_id')
+    page = int(request.args.get('page', 1))
+    page_size = int(request.args.get('page_size', 4))
     items = get_user_items(user_id)
     if not items:
         return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
+    
+    start_index = (page - 1) * page_size
+    end_index = start_index + page_size
+
     app_data_list = []
     for item in items:
         apps = item.get('apps', {}).get('L', [])
-        print(f"apps: {apps}")
-        for app_item in apps:
-            print(f"app item: {app_item}")
+        for app_item in apps[start_index:end_index]:
             app_data = {
                 'id': app_item.get('M', {}).get('id', {}).get('S', None),
                 'app_name': app_item.get('M', {}).get('app_name', {}).get('S', None),
@@ -153,9 +157,16 @@ def list_apps():
                 'version': app_item.get('M', {}).get('version', {}).get('S', 0)
             }
             app_data_list.append(app_data)
+    
+    total_app_qty = len(item.get('apps', {}).get('L', []))
+    total_pages = ceil(total_app_qty / page_size)    
     print(app_data_list)
-    return jsonify(app_data_list)
-
+    print(total_pages)
+    print(total_app_qty)
+    return jsonify({
+        'apps': app_data_list,
+        'total_pages': total_pages
+    })
 @app.route(BASE_ROUTE, methods=['DELETE'])
 def delete_app():
     print("[DELETE]: Delete an App")
