@@ -203,7 +203,7 @@ const ReviewsDirectory: React.FC = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModals}>Close</Button>
-                    <Button variant="danger" onClick={closeModals}>Delete</Button>
+                    <Button variant="danger" onClick={() => deleteReview(selectedReview?.app_id, selectedReview?.id)}>Delete</Button>
                 </Modal.Footer>
             </Modal>
         </div>

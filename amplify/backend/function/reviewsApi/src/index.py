@@ -220,24 +220,25 @@ def delete_review():
     for item in items:
         apps = item.get('apps', {}).get('L', [])
         for app_item_index, app_item in enumerate(apps):
-            app_item_id = app.get('M', {}).get('app_name', {}).get('id', {}).get('S', None)
+            app_item_id = app_item.get('M', {}).get('id', {}).get('S', None)
+            print(app_item_id)
             if app_item_id == app_id:
-                reviews = app_item.get('reviews', {}).get('L', []).get('M',{}).get('reviews', {}).get('L', [])
+                reviews = app_item.get('M',{}).get('reviews', {}).get('L', [])
                 for review_item in reviews:
                     review_item_id = review_item.get('M', {}).get('id', {}).get('S', None)
-                    if review_item_id is not None and review_item in review_item.get('M').get('id').get('S'):
+                    if review_item_id is not None and review_item_id in review_item.get('M').get('id').get('S'):
                         reviews.remove(review_item)
                         app_index = app_item_index
                         break
                 new_app_reviews.extend(reviews)
-    
+    if app_index is None:
+        return jsonify({"error": f"App with app_id {app_id} not found for user {user_id}"}), 404
     update_expression = f'SET apps[{app_index}].reviews = :review_list'
     expression_attribute_values = {}
-
     if new_app_reviews:
         expression_attribute_values[':review_list'] = {'L': new_app_reviews}
     else:
-        expression_attribute_values[':app_list'] = {'L': []}
+        expression_attribute_values[':review_list'] = {'L': []}
     client.update_item(
         TableName=TABLE,
         Key={
