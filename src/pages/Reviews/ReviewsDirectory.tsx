@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {Table, Button, Modal, Tooltip, OverlayTrigger, Row, Col} from 'react-bootstrap';
-
+import { Table, Button, Modal, Tooltip, OverlayTrigger, Row, Col } from 'react-bootstrap';
 import ReviewService from "../../services/ReviewService";
-import {ReviewDataDTO} from "../../DTOs/ReviewDataDTO";
-import {toast} from "react-toastify";
-import AppService from "../../services/AppService";
-import reviewService from "../../services/ReviewService";
-const defaultColumns = ['App Name', 'Review ID', 'Review', 'Score', 'Date', 'Actions'];
+import { ReviewDataDTO } from "../../DTOs/ReviewDataDTO";
+import { toast } from "react-toastify";
 
+const defaultColumns = ['App Name', 'Review ID', 'Review', 'Score', 'Date', 'Actions'];
 
 const ReviewsDirectory: React.FC = () => {
     const [data, setData] = useState<ReviewDataDTO[] | null>(null);
@@ -20,7 +17,7 @@ const ReviewsDirectory: React.FC = () => {
     const [review, setReview] = useState<string>('');
     const [date, setDate] = useState<string>('');
     const [score, setScore] = useState<number>(0);
-    const [isScoreValid, setIsScoreValid] = useState(true); // Set to true initially
+    const [isScoreValid, setIsScoreValid] = useState(true);
     const [isUpdateButtonClicked, setIsUpdateButtonClicked] = useState(false);
 
     const openEditModal = (review: ReviewDataDTO) => {
@@ -87,6 +84,7 @@ const ReviewsDirectory: React.FC = () => {
             closeModals();
         }
     };
+
     const updateReview = async (
         reviewData: ReviewDataDTO | null,
         review: string,
@@ -125,7 +123,6 @@ const ReviewsDirectory: React.FC = () => {
             setIsUpdating(false);
         }
     };
-
 
     const deleteReview = async (app_id: string | undefined, review_id: string | undefined) => {
         if (!app_id) {
@@ -174,6 +171,9 @@ const ReviewsDirectory: React.FC = () => {
         }
     };
 
+    const truncateReview = (review: string) => {
+        return review.length > 50 ? `${review.substring(0, 50)}...` : review;
+    };
     return (
         <div>
             <div>
@@ -207,7 +207,11 @@ const ReviewsDirectory: React.FC = () => {
                                 <tr key={review.id}>
                                     <td className="text-center">{review.app_name || 'N/A'}</td>
                                     <td className="text-center">{review.id || 'N/A'}</td>
-                                    <td className="text-center">{review.review || 'N/A'}</td>
+                                    <td className="text-center">{truncateReview(review.review) || 'N/A'}
+                                        <br/>
+                                        {review.review && review.review.length > 50 &&
+                                            <Button variant="link" onClick={() => openEditModal(review)}>Read More</Button>}
+                                    </td>
                                     <td className="text-center">{review.score || 'N/A'}</td>
                                     <td className="text-center">{review.date || 'N/A'}</td>
                                     <td className="text-end" style={{ width: "150px" }}>
@@ -235,14 +239,44 @@ const ReviewsDirectory: React.FC = () => {
                                                 <span aria-hidden="true">&laquo;</span>
                                             </Button>
                                         </li>
-                                        {/* Page numbers */}
-                                        {Array.from({ length: totalPages }, (_, index) => (
-                                            <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
-                                                <Button className="btn-primary page-link" onClick={() => setCurrentPage(index + 1)}>
-                                                    {index + 1}
+
+                                        {currentPage > 6 && (
+                                            <li className={`page-item ${currentPage === 1 ? 'active' : ''}`}>
+                                                <Button className="btn-primary page-link" onClick={() => setCurrentPage(1)}>
+                                                    1
+                                                </Button>
+                                            </li>
+                                        )}
+
+                                        {currentPage > 6 && (
+                                            <li className="page-item disabled">
+                                                <Button className="btn-primary page-link" disabled>
+                                                    ...
+                                                </Button>
+                                            </li>
+                                        )}
+
+                                        {Array.from({ length: Math.min(10, totalPages - Math.max(1, currentPage - 5)) }, (_, index) => (
+                                            <li key={index} className={`page-item ${currentPage === index + Math.max(1, currentPage - 5) ? 'active' : ''}`}>
+                                                <Button className="btn-primary page-link" onClick={() => setCurrentPage(index + Math.max(1, currentPage - 5))}>
+                                                    {index + Math.max(1, currentPage - 5)}
                                                 </Button>
                                             </li>
                                         ))}
+
+                                        {totalPages - currentPage > 5 && (
+                                            <li className="page-item disabled">
+                                                <Button className="btn-primary page-link" disabled>
+                                                    ...
+                                                </Button>
+                                            </li>
+                                        )}
+
+                                        <li className={`page-item ${currentPage === totalPages ? 'active' : ''}`}>
+                                            <Button className="btn-primary page-link" onClick={() => setCurrentPage(totalPages)}>
+                                                {totalPages}
+                                            </Button>
+                                        </li>
                                         <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
                                             <Button className="btn-primary page-link" onClick={nextPage} aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
@@ -251,7 +285,6 @@ const ReviewsDirectory: React.FC = () => {
                                     </ul>
                                 </nav>
                             </div>
-
                         )}
                     </>
                 )}
@@ -278,7 +311,7 @@ const ReviewsDirectory: React.FC = () => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="review" className="form-label">Review</label>
-                            <input type="text" id="review" className="form-control" defaultValue={selectedReview?.review} onChange={(e) => setReview(e.target.value)} />
+                            <textarea id="review" className="form-control" defaultValue={selectedReview?.review} onChange={(e) => setReview(e.target.value)} rows={5}  />
                         </div>
                     </div>
                     <div className="row">

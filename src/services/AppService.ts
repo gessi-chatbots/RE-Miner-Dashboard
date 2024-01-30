@@ -25,8 +25,6 @@ class AppService {
             const { body } = await restOperation.response;
             const textResponse = await body.text();
             const jsonResponse = JSON.parse(textResponse);
-            console.log(jsonResponse);
-
             const apps = jsonResponse.apps.map((item: any) => ({
                 id: item.id,
                 app_name: item.app_name,
@@ -79,7 +77,6 @@ class AppService {
 
                 const { body } = await restOperation.response;
                 const textResponse = await body.text();
-                console.log(textResponse);
             }
         } catch (error) {
             console.error("Error creating app:", error);
@@ -130,7 +127,6 @@ class AppService {
             });
             const { body } = await restOperation.response;
             const textResponse = await body.text();
-            console.log(textResponse)
         } catch (error) {
             console.error("Error creating app:", error);
             throw error;

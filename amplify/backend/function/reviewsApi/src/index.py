@@ -49,7 +49,6 @@ def delete_review():
         apps = item.get('apps', {}).get('L', [])
         for app_item_index, app_item in enumerate(apps):
             app_item_id = app_item.get('M', {}).get('id', {}).get('S', None)
-            print(app_item_id)
             if app_item_id == app_id:
                 reviews = app_item.get('M',{}).get('reviews', {}).get('L', [])
                 for review_item in reviews:
@@ -121,7 +120,6 @@ def update_review():
                         review_index = review_i
                         review_updated.get('M').update({'features': review_item_details.get('features')})
                         review_updated.get('M').update({'sentiments': review_item_details.get('sentiments')})
-                        print(f"review_updated: {review_updated}")
                         break_all_loops = True
                         break
             if break_all_loops:
@@ -140,16 +138,21 @@ def update_review():
                 ':updated_review': review_updated
             }
         )
-        print(response)
         return jsonify({"message": "Review updated successfully"}), 200
     else:
         return jsonify({"message": "Review not found"}), 404
  
     
+
 @app.route(BASE_ROUTE, methods=['POST'])
 def create_reviews():
-    print("[POST]: Create new Reviews")
-    reviews_json = json.loads(request.get_json())
+    print("[POST]: Create a new Review")
+
+    try:
+        review_json = json.loads(request.get_json())
+    except json.JSONDecodeError as e:
+        return jsonify({"error": "Malformed JSON in the request body"}), 400
+    print(review_json)
     user_id = request.args.get("user_id")
     if user_id is None:
         return jsonify({"error": "user_id is required in the request"}), 400
@@ -160,7 +163,8 @@ def create_reviews():
 
     items = get_user_items(user_id)
     if not items:
-        return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
+        return jsonify({"error": f"User with user_id {user_id} not found"}), 404
+
     app_index = None
     for item in items:
         apps = item.get('apps', {}).get('L', [])
@@ -168,47 +172,48 @@ def create_reviews():
             if app_item.get('M', {}).get('id', {}).get('S') == app_id:
                 app_index = index
                 break
+
     if app_index is not None:
-        reviews = reviews_json.get("reviews", [])
-        for review in reviews:
-            review_item = {
+        review_item = {
                 'M': {
-                    'id': {'S': review.get("review_id")},
-                    'review': {'S': review.get("app_name")},
-                    'score': {'N': review.get("score")},
-                    'date': {'S': review.get("date")},
-                    'features': {'L': []},
-                    'sentiments': {'L': []}
-                }
+                'id': {'S': review_json.get("review").get("id")},
+                'review': {'S': review_json.get("review").get("review")},
+                'score': {'N': review_json.get("review").get("score")},
+                'date': {'S': review_json.get("review").get("date")},
+                'features': {'L': []},
+                'sentiments': {'L': []}
             }
-            try:
+        }
+        print(f"review item {review_item}")
+        try:
+            client.update_item(
+                TableName=TABLE,
+                Key={
+                    'user_id': {'S': user_id}
+                },
+                UpdateExpression=f'SET apps[{app_index}].reviews = list_append(reviews, :review_item)',
+                ExpressionAttributeValues={
+                    ':review_item': {'L': [review_item]}
+                }
+            )
+        except ClientError as e:
+            if e.response['Error']['Code'] == 'ValidationException':
+                # no review list exists for that app, we create a new one
                 client.update_item(
                     TableName=TABLE,
                     Key={
                         'user_id': {'S': user_id}
                     },
-                    UpdateExpression=f'SET apps[{app_index}].reviews = list_append(reviews, :review_item)',
+                    UpdateExpression=f'SET apps[{app_index}].reviews = :review_list',
                     ExpressionAttributeValues={
-                        ':review_item': {'L': [review_item]}
+                        ':review_list': {'L': [review_item]}
                     }
                 )
-            except ClientError as e:
-                if e.response['Error']['Code'] == 'ValidationException':
-                    # no review list exists for that app, we create a new one
-                    client.update_item(
-                        TableName=TABLE,
-                            Key={
-                                'user_id': {'S': user_id}
-                            },
-                            UpdateExpression=f'SET apps[{app_index}].reviews = :review_list',
-                            ExpressionAttributeValues={
-                                ':review_list': {'L': [review_item]}
-                            }
-                )
-        return jsonify({"message": "App/s created successfully"}), 200
+        return jsonify({"message": "Reviews/s created successfully"}), 200
     else: 
         return jsonify({"message": "Reviews' App not found"}), 404
-    
+
+
 @app.route(BASE_ROUTE, methods=['GET'])
 def list_reviews():
     print("[GET]: All reviews from user")
@@ -224,12 +229,10 @@ def list_reviews():
     num_elements = page_size
     review_data_list = []
 
-    total_reviews_qty = 0
 
     for item in items:
         apps = item.get('apps', {}).get('L', [])
         for app_item in apps:
-            total_reviews_qty += len(app_item.get('M', {}).get('reviews', {}).get('L', []))
             reviews = app_item.get('M', {}).get('reviews', {}).get('L', [])
             for review_item in reviews:
                 if elements_to_skip > 0:
@@ -254,8 +257,13 @@ def list_reviews():
         if num_elements == 0:
             break
 
+    
+    total_reviews_qty = 0
+    for item in items:
+        apps = item.get('apps', {}).get('L', [])
+        for app_item in apps:
+            total_reviews_qty += len(app_item.get('M', {}).get('reviews', {}).get('L', []))
     total_pages = ceil(total_reviews_qty / page_size)
-
     return jsonify({
         'reviews': review_data_list,
         'total_pages': total_pages

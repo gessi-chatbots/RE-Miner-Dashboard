@@ -62,7 +62,6 @@ const UploadApps = () => {
     };
 
     useEffect(() => {
-        console.log("appDataList updated:", appDataList);
     }, [appDataList]);
 
 

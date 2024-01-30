@@ -69,7 +69,6 @@ def update_app():
                 ':updated_app': app_updated
             }
         )
-        print(response)
         return jsonify({"message": "App updated successfully"}), 200
     else:
         return jsonify({"message": "App not found"}), 404
@@ -90,7 +89,6 @@ def create_apps():
         return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
     
     apps = apps_json.get("apps", [])
-    print(f"apps to create: {apps}")
     for new_app in apps:
         app_reviews = new_app.get("reviews", [])
         reviews_list = []
@@ -117,7 +115,6 @@ def create_apps():
                 'reviews': {'L': reviews_list}
             }
         }
-        print(f"new app to be created with reviews {app_item}")
         try:
             client.update_item(
                 TableName=TABLE,
@@ -174,9 +171,6 @@ def list_apps():
     
     total_app_qty = len(item.get('apps', {}).get('L', []))
     total_pages = ceil(total_app_qty / page_size)    
-    print(app_data_list)
-    print(total_pages)
-    print(total_app_qty)
     return jsonify({
         'apps': app_data_list,
         'total_pages': total_pages
@@ -197,14 +191,12 @@ def delete_app():
     new_apps = []
     for item in items:
         apps = item.get('apps', {}).get('L', [])
-        print(f"Apps before deletion: {apps}")
         for app in apps:
             id = app.get('M', {}).get('app_name', {}).get('id', {}).get('S', None),
             if id is not None and app_id in app.get('M').get('id').get('S'):
                 apps.remove(app)
                 break
         new_apps.extend(apps)
-    print(f"Apps after deletion: {new_apps}")
 
     update_expression = 'SET apps = :app_list'
     expression_attribute_values = {}

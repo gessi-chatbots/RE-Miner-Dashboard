@@ -5,7 +5,7 @@ import {ReviewDataDTO} from "../DTOs/ReviewDataDTO";
 class ReviewService {
     API_NAME = 'reviewsAPI';
     PATH_NAME = '/reviews'
-    fetchAllReviews = async (page: number = 1, pageSize: number = 4): Promise<{ reviews: ReviewDataDTO[], total_pages: number } | null> => {
+    fetchAllReviews = async (page: number = 1, pageSize: number = 8): Promise<{ reviews: ReviewDataDTO[], total_pages: number } | null> => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
         const id = userData?.sub || "";
@@ -26,8 +26,6 @@ class ReviewService {
             const { body } = await restOperation.response;
             const textResponse = await body.text();
             const jsonResponse = JSON.parse(textResponse);
-            console.log(jsonResponse);
-
             const reviews = jsonResponse.reviews.map((item: any) => ({
                 app_id: item.app_id,
                 app_name: item.app_name,
@@ -46,12 +44,12 @@ class ReviewService {
             throw error;
         }
     };
-    createReview = async (appData: any) => {
+    createReview = async (reviewData: any) => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
         const id = userData?.sub || "";
         const request_body = {
-            apps: appData
+            review: reviewData
         };
         try {
             const restOperation = post({
@@ -63,14 +61,13 @@ class ReviewService {
                     },
                     queryParams: {
                         user_id: id,
-                        app_id: appData.id
+                        app_id: reviewData.app_id
                     },
                     body: JSON.stringify(request_body)
                 }
             });
             const { body } = await restOperation.response;
             const textResponse = await body.text();
-            console.log(textResponse)
         } catch (error) {
             console.error("Error creating app:", error);
             throw error;
@@ -123,7 +120,6 @@ class ReviewService {
             });
             const { body } = await restOperation.response;
             const textResponse = await body.text();
-            console.log(textResponse)
         } catch (error) {
             console.error("Error updating review:", error);
             throw error;
