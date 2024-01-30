@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {Container, Table, Button, Modal, OverlayTrigger, Tooltip, Row, Col} from 'react-bootstrap';
+import {Table, Button, Modal, OverlayTrigger, Tooltip, Row, Col} from 'react-bootstrap';
 
 import { AppDataDTO } from "../../DTOs/AppDataDTO";
 import AppService from "../../services/AppService";
 import { toast } from 'react-toastify';
-import appService from "../../services/AppService";
+import ReviewService from "../../services/ReviewService";
 const defaultColumns = ['App Name', 'Description', 'Summary', 'Release Date', 'Version', 'Actions'];
 
 const AppsDirectory: React.FC = () => {
@@ -22,10 +22,71 @@ const AppsDirectory: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
 
+    const [reviewId, setReviewId] = useState('');
+    const [reviewContent, setReviewContent] = useState('');
+    const [reviewDate, setReviewDate] = useState('');
+    const [score, setScore] = useState('');
+    const [reviewScoreError, setReviewScoreError] = useState<string>('');
+    const [isAddingReview, setIsAddingReview] = useState<boolean>(false);
+    const [isScoreValid, setIsScoreValid] = useState(false);
+    const [isScoreInputClicked, setIsScoreInputClicked] = useState(false);
+
     const openAddReviewModal = (app: AppDataDTO) => {
         setSelectedApp(app);
         setIsAddReviewModalOpen(true);
     };
+
+    const validateScore = (value: string) => {
+        setIsScoreInputClicked(true);
+        const numericScore = parseFloat(value);
+        setIsScoreValid(!isNaN(numericScore) && numericScore >= 0 && numericScore <= 5);
+    };
+
+
+    const handleScoreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setScore(e.target.value);
+        validateScore(e.target.value);
+    };
+
+    const addReview = async () => {
+        if (!selectedApp) {
+            console.error("Selected app is undefined.");
+            return;
+        }
+
+        let numericScore = parseFloat(score);
+
+        if (isNaN(numericScore) || numericScore < 0) {
+            setScore('0')
+        } else if (numericScore > 5) {
+            setScore('5')
+        }
+        const reviewDataDTO = {
+            app_id: selectedApp.id,
+            app_name: selectedApp.id,
+            id: reviewId,
+            review: reviewContent,
+            date: reviewDate,
+            score: score
+        };
+        setIsAddingReview(true);
+        const reviewService = new ReviewService();
+        try {
+            await reviewService.createReview(reviewDataDTO);
+            toast.success('Review created successfully!');
+            setIsAddReviewModalOpen(false);
+            setReviewContent('');
+            setReviewDate('');
+            setScore('');
+            return true;
+        } catch (error) {
+            toast.error('Error creating review');
+            return false;
+        } finally {
+            setIsAddingReview(false);
+        }
+    };
+
 
     const openEditModal = (app: AppDataDTO) => {
         setSelectedApp(app);
@@ -63,7 +124,6 @@ const AppsDirectory: React.FC = () => {
                     setData(mappedData);
                     setTotalPages(pages);
                 } else {
-                    // Handle the case where response is null
                     console.error('Response from fetchAllApps is null');
                 }
             } catch (error) {
@@ -244,27 +304,57 @@ const AppsDirectory: React.FC = () => {
                                     <nav>
                                         <ul className="pagination pagination-rounded mb-0">
                                             <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                                                <a className="page-link" href="javascript:void(0);" onClick={prevPage} aria-label="Previous">
+                                                <Button className="btn-primary page-link" onClick={prevPage} aria-label="Previous">
                                                     <span aria-hidden="true">&laquo;</span>
-                                                </a>
+                                                </Button>
                                             </li>
-                                            {/* Page numbers */}
-                                            {Array.from({ length: totalPages }, (_, index) => (
-                                                <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
-                                                    <Button className="page-link" onClick={() => setCurrentPage(index + 1)}>
-                                                        {index + 1}
+
+                                            {currentPage > 6 && (
+                                                <li className={`page-item ${currentPage === 1 ? 'active' : ''}`}>
+                                                    <Button className="btn-primary page-link" onClick={() => setCurrentPage(1)}>
+                                                        1
+                                                    </Button>
+                                                </li>
+                                            )}
+
+                                            {currentPage > 6 && (
+                                                <li className="page-item disabled">
+                                                    <Button className="btn-primary page-link" disabled>
+                                                        ...
+                                                    </Button>
+                                                </li>
+                                            )}
+
+                                            {Array.from({ length: Math.min(5, totalPages - Math.max(1, currentPage - 2)) }, (_, index) => (
+                                                <li key={index} className={`page-item ${currentPage === index + Math.max(1, currentPage - 2) ? 'active' : ''}`}>
+                                                    <Button className="btn-primary page-link" onClick={() => setCurrentPage(index + Math.max(1, currentPage - 2))}>
+                                                        {index + Math.max(1, currentPage - 2)}
                                                     </Button>
                                                 </li>
                                             ))}
+
+
+                                            {totalPages - currentPage > 2 && (
+                                                <li className="page-item disabled">
+                                                    <Button className="btn-primary page-link" disabled>
+                                                        ...
+                                                    </Button>
+                                                </li>
+                                            )}
+                                            {/* Render the last page */}
+                                            <li className={`page-item ${currentPage === totalPages ? 'active' : ''}`}>
+                                                <Button className="btn-primary page-link" onClick={() => setCurrentPage(totalPages)}>
+                                                    {totalPages}
+                                                </Button>
+                                            </li>
                                             <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                                                <Button className="page-link" onClick={nextPage} aria-label="Next">
+                                                <Button className="btn-primary page-link" onClick={nextPage} aria-label="Next">
                                                     <span aria-hidden="true">&raquo;</span>
                                                 </Button>
                                             </li>
                                         </ul>
                                     </nav>
                                 </div>
-
                             )}
                         </>
                     )}
@@ -360,42 +450,67 @@ const AppsDirectory: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className="row" >
+                    <div className="row">
                         <div className="mb-3">
                             <label htmlFor="reviewId" className="form-label"><b className="text-danger">*</b> Review ID</label>
-                            <input type="text" id="reviewId" className="form-control"/>
+                            <input
+                                type="text"
+                                id="reviewId"
+                                className="form-control"
+                                value={reviewId}
+                                onChange={(e) => setReviewId(e.target.value)}
+                            />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="review" className="form-label">Review Content</label>
-                            <textarea id="review" className="form-control"/>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-6">
-                            <div className="mb-3">
-                                <label htmlFor="userName" className="form-label">Review Username</label>
-                                <input className="form-control" id="userName" type="text" />
-                            </div>
-                        </div>
-                        <div className="col-md-6">
-                            <div className="mb-3">
-                                <label htmlFor="score" className="form-label">Score</label>
-                                <input type="number" id="score" className="form-control"/>
-                            </div>
+                            <textarea
+                                id="review"
+                                className="form-control"
+                                value={reviewContent}
+                                onChange={(e) => setReviewContent(e.target.value)}
+                            />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-6">
                             <div className="mb-3">
                                 <label htmlFor="reviewDate" className="form-label">Date</label>
-                                <input className="form-control" id="reviewDate" type="date"/>
+                                <input
+                                    className="form-control"
+                                    id="reviewDate"
+                                    type="date"
+                                    value={reviewDate}
+                                    onChange={(e) => setReviewDate(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                        <div className="col-md-6">
+                            <div className="mb-3">
+                                <label htmlFor="score" className="form-label">Score</label>
+                                <input
+                                    type="number"
+                                    id="score"
+                                    className={`form-control ${(!isScoreValid && isScoreInputClicked) ? 'is-invalid' : ''}`}
+                                    value={score}
+                                    onChange={(e) => handleScoreChange(e)}
+                                />
+
+                                {reviewScoreError && (
+                                    <div className="invalid-feedback">{reviewScoreError}</div>
+                                )}
                             </div>
                         </div>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModals}>Close</Button>
-                    <Button variant="primary" onClick={closeModals}>Save</Button>
+                    <Button
+                        variant="primary"
+                        onClick={addReview}
+                        disabled={isAddingReview}
+                    >
+                        Add review
+                    </Button>
                 </Modal.Footer>
             </Modal>
         </div>

@@ -44,10 +44,10 @@ def update_app():
         'M': {
             'id': {'S': app.get('id')},
             'app_name': {'S': app.get("app_name")},
-            'description': {'S': app.get("description")},
-            'summary': {'S': app.get("summary")},
-            'release_date': {'S': app.get("release_date")},
-            'version': {'S': app.get('version')}
+            'description': {'S': app.get("description", "N/A")},
+            'summary': {'S': app.get("summary", "N/A")},
+            'release_date': {'S': app.get("release_date", "N/A")},
+            'version': {'S': app.get('version', "N/A")}
         }
     }
     app_index = None
@@ -69,7 +69,6 @@ def update_app():
                 ':updated_app': app_updated
             }
         )
-        print(response)
         return jsonify({"message": "App updated successfully"}), 200
     else:
         return jsonify({"message": "App not found"}), 404
@@ -91,17 +90,29 @@ def create_apps():
     
     apps = apps_json.get("apps", [])
     for new_app in apps:
-        app_name = new_app.get("app_name")
-        print(f"New app {app_name}")
+        app_reviews = new_app.get("reviews", [])
+        reviews_list = []
+        for review in app_reviews:
+            review_dict = {
+                'M': {
+                    'id': {'S': review.get('id')}, 
+                    'review': {'S': review.get("review")},
+                    'score': {'N': str(review.get("score", 0))},
+                    'date': {'S': review.get("date", "N/A")},
+                    'features': {'L': []},
+                    'sentiments': {'L': []}
+                }
+            }
+            reviews_list.append(review_dict) 
         app_item = {
             'M': {
                 'id': {'S': str(uuid.uuid4())},
                 'app_name': {'S': new_app.get("app_name")},
-                'description': {'S': new_app.get("description")},
-                'summary': {'S': new_app.get("summary")},
-                'release_date': {'S': new_app.get("release_date")},
-                'version': {'S': new_app.get('version')},
-                'reviews': {'L': []}
+                'description': {'S': new_app.get("description", "N/A")},
+                'summary': {'S': new_app.get("summary", "N/A")},
+                'release_date': {'S': new_app.get("release_date", "N/A")},
+                'version': {'S': new_app.get('version', "N/A")},
+                'reviews': {'L': reviews_list}
             }
         }
         try:
@@ -160,9 +171,6 @@ def list_apps():
     
     total_app_qty = len(item.get('apps', {}).get('L', []))
     total_pages = ceil(total_app_qty / page_size)    
-    print(app_data_list)
-    print(total_pages)
-    print(total_app_qty)
     return jsonify({
         'apps': app_data_list,
         'total_pages': total_pages
@@ -183,14 +191,12 @@ def delete_app():
     new_apps = []
     for item in items:
         apps = item.get('apps', {}).get('L', [])
-        print(f"Apps before deletion: {apps}")
         for app in apps:
             id = app.get('M', {}).get('app_name', {}).get('id', {}).get('S', None),
             if id is not None and app_id in app.get('M').get('id').get('S'):
                 apps.remove(app)
                 break
         new_apps.extend(apps)
-    print(f"Apps after deletion: {new_apps}")
 
     update_expression = 'SET apps = :app_list'
     expression_attribute_values = {}

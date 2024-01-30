@@ -89,7 +89,7 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
             if (event.target && event.target.result) {
                 const jsonContent = event.target.result as string;
                 const jsonData = JSON.parse(jsonContent);
-                let appList: AppDataDTO[] = []; // Initialize appList as an empty array
+                let appList: AppDataDTO[] = [];
                 if (Array.isArray(jsonData)) {
                     jsonData.forEach((item: any) => {
                         appCount++;
@@ -101,12 +101,11 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
                             summary: item.summary,
                             release_date: item.release_date,
                             version: item.version,
-                            reviews: item.reviews.map((review: any) => ({
-                                reviewId: review.reviewId,
+                            reviews: item.reviews.slice(0, 10).map((review: any) => ({
+                                id: review.reviewId,
                                 review: review.review,
-                                userName: review.userName,
                                 score: review.score,
-                                at: review.at
+                                date: review.at
                             })) as ReviewDataDTO[]
                         };
                         appList.push(appData);
@@ -125,17 +124,6 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
 
     return (
         <>
-            <ToastContainer
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-            />
             <Dropzone {...props} onDrop={(acceptedFiles) => handleAcceptedFiles(acceptedFiles)}>
                 {({ getRootProps, getInputProps }) => (
                     <div className="dropzone" {...getRootProps()}>

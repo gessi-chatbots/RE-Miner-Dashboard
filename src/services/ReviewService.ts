@@ -1,10 +1,11 @@
 import { get, post, del, put } from 'aws-amplify/api';
 import { AppDataDTO } from '../DTOs/AppDataDTO';
 import AuthService from "./AuthService";
-class AppService {
-    API_NAME = 'appsAPI';
-    PATH_NAME = '/apps'
-    fetchAllApps = async (page: number = 1, pageSize: number = 4): Promise<{ apps: AppDataDTO[], total_pages: number } | null> => {
+import {ReviewDataDTO} from "../DTOs/ReviewDataDTO";
+class ReviewService {
+    API_NAME = 'reviewsAPI';
+    PATH_NAME = '/reviews'
+    fetchAllReviews = async (page: number = 1, pageSize: number = 8): Promise<{ reviews: ReviewDataDTO[], total_pages: number } | null> => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
         const id = userData?.sub || "";
@@ -25,17 +26,17 @@ class AppService {
             const { body } = await restOperation.response;
             const textResponse = await body.text();
             const jsonResponse = JSON.parse(textResponse);
-            const apps = jsonResponse.apps.map((item: any) => ({
-                id: item.id,
+            const reviews = jsonResponse.reviews.map((item: any) => ({
+                app_id: item.app_id,
                 app_name: item.app_name,
-                description: item.description,
-                summary: item.summary,
-                release_date: item.release_date,
-                version: item.version,
+                id: item.id,
+                review: item.review,
+                score: item.score,
+                date: item.date,
             }));
 
             return {
-                apps: apps,
+                reviews: reviews,
                 total_pages: jsonResponse.total_pages
             };
         } catch (error) {
@@ -43,73 +44,64 @@ class AppService {
             throw error;
         }
     };
-    createApp = async (appData: any) => {
+    createReview = async (reviewData: any) => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
         const id = userData?.sub || "";
-        const batchSize = 5;
-
+        const request_body = {
+            review: reviewData
+        };
         try {
-            const numBatches = Math.ceil(appData.length / batchSize);
-
-            for (let i = 0; i < numBatches; i++) {
-                const start = i * batchSize;
-                const end = Math.min((i + 1) * batchSize, appData.length);
-                const batchData = appData.slice(start, end);
-
-                const request_body = {
-                    apps: batchData
-                };
-
-                const restOperation = post({
-                    apiName: this.API_NAME,
-                    path: this.PATH_NAME,
-                    options: {
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        queryParams: {
-                            user_id: id
-                        },
-                        body: JSON.stringify(request_body)
-                    }
-                });
-
-                const { body } = await restOperation.response;
-                const textResponse = await body.text();
-            }
+            const restOperation = post({
+                apiName: this.API_NAME,
+                path: this.PATH_NAME,
+                options: {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    queryParams: {
+                        user_id: id,
+                        app_id: reviewData.app_id
+                    },
+                    body: JSON.stringify(request_body)
+                }
+            });
+            const { body } = await restOperation.response;
+            const textResponse = await body.text();
         } catch (error) {
             console.error("Error creating app:", error);
             throw error;
         }
     };
-
-    deleteApp = async (appId: string) => {
+    deleteReview = async (appId: string, reviewId: string) => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
-        const id = userData?.sub || "";
+        const userId = userData?.sub || "";
         try {
             const deleteOperation = del({
                 apiName: this.API_NAME,
                 path: this.PATH_NAME,
                 options: {
                     queryParams: {
-                        user_id: id,
-                        app_id: appId
+                        user_id: userId,
+                        app_id: appId,
+                        review_id: reviewId
                     }
                 }
             });
             await deleteOperation.response;
         } catch (error) {
-            console.error("Error deleting app:", error);
+            console.error("Error deleting review:", error);
             throw error;
         }
     };
 
-    updateApp = async (appData: AppDataDTO) => {
+    updateReview = async (review: ReviewDataDTO) => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
         const id = userData?.sub || "";
+        const reviewId = review?.id;
+        const appId = review?.app_id;
         try {
             const restOperation = put({
                 apiName: this.API_NAME,
@@ -120,18 +112,19 @@ class AppService {
                     },
                     queryParams: {
                         user_id: id,
-                        app_id: appData.id
+                        app_id: appId,
+                        review_id: reviewId
                     },
-                    body: JSON.stringify(appData)
+                    body: JSON.stringify(review)
                 }
             });
             const { body } = await restOperation.response;
             const textResponse = await body.text();
         } catch (error) {
-            console.error("Error creating app:", error);
+            console.error("Error updating review:", error);
             throw error;
         }
     }
 }
 
-export default AppService;
+export default ReviewService;
