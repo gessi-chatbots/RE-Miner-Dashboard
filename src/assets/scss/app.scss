@@ -1,0 +1,26 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/react-toastify/dist/ReactToastify.css";
+
+@import "./config/variables";
+@import "./config/light-color";
+@import "./config/dark-color";
+@import "./config/custom-variables";
+
+//Structure
+@import "./config/structure";
+@import "./config/topbar";
+@import "./config/page-head";
+@import "./config/horizontal-nav";
+
+// Icons
+@import './icons/materialdesignicons.scss';
+
+// Components
+@import "./components/nav.scss";
+@import "./components/dropzone.scss";
+@import "./components/tables.scss";
+@import "./components/modal.scss";
+@import "./components/footer.scss";
+@import "./components/pagination.scss";

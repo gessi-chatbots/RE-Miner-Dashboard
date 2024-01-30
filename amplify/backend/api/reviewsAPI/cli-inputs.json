@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "paths": {
+    "/reviews": {
+      "name": "/reviews",
+      "lambdaFunction": "reviewsApi",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "paths": {
+    "/apps": {
+      "name": "/apps",
+      "lambdaFunction": "appsApi",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}

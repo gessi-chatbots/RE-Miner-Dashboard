@@ -1,0 +1,10 @@
+{
+  "resourceName": "reviewMinerDB",
+  "tableName": "users",
+  "partitionKey": {
+    "fieldName": "user_id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
