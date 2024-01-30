@@ -46,34 +46,47 @@ class AppService {
         }
     };
     createApp = async (appData: any) => {
-         const authService = new AuthService();
-         const userData = await authService.getUserData();
-         const id = userData?.sub || "";
-         const request_body = {
-             apps: appData
-         };
+        const authService = new AuthService();
+        const userData = await authService.getUserData();
+        const id = userData?.sub || "";
+        const batchSize = 5;
+
         try {
-            const restOperation = post({
-                apiName: this.API_NAME,
-                path: this.PATH_NAME,
-                options: {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    queryParams: {
-                        user_id: id
-                    },
-                    body: JSON.stringify(request_body)
-                }
-            });
-            const { body } = await restOperation.response;
-            const textResponse = await body.text();
-            console.log(textResponse)
+            const numBatches = Math.ceil(appData.length / batchSize);
+
+            for (let i = 0; i < numBatches; i++) {
+                const start = i * batchSize;
+                const end = Math.min((i + 1) * batchSize, appData.length);
+                const batchData = appData.slice(start, end);
+
+                const request_body = {
+                    apps: batchData
+                };
+
+                const restOperation = post({
+                    apiName: this.API_NAME,
+                    path: this.PATH_NAME,
+                    options: {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        queryParams: {
+                            user_id: id
+                        },
+                        body: JSON.stringify(request_body)
+                    }
+                });
+
+                const { body } = await restOperation.response;
+                const textResponse = await body.text();
+                console.log(textResponse);
+            }
         } catch (error) {
             console.error("Error creating app:", error);
             throw error;
         }
     };
+
     deleteApp = async (appId: string) => {
         const authService = new AuthService();
         const userData = await authService.getUserData();

@@ -24,6 +24,7 @@ const UploadApps = () => {
     const fileUploaderRef = useRef<any>(null);
     const [isCreateButtonClicked, setIsCreateButtonClicked] = useState(false);
     const [isCreatingApp, setIsCreatingApp] = useState(false);
+    const [isUploading, setIsUploading] = useState(false);
 
     const openCreateAppModal = () => {
         setIsCreateAppModalOpen(true);
@@ -46,6 +47,7 @@ const UploadApps = () => {
             version: appVersion
         };
         setIsCreatingApp(true);
+        setIsUploading(true);
         const appService = new AppService();
         try {
             await appService.createApp([appData]);
@@ -124,6 +126,7 @@ const UploadApps = () => {
         }
 
         try {
+            setIsUploading(true);
             const appService = new AppService();
             await appService.createApp(appDataList);
             toast.success('Apps uploaded successfully!');
@@ -133,6 +136,8 @@ const UploadApps = () => {
         } catch (error) {
             console.error('Error uploading apps:', error);
             toast.error('Failed to upload apps. Please try again later.');
+        } finally {
+            setIsUploading(false);
         }
     };
 
@@ -157,7 +162,13 @@ const UploadApps = () => {
                     <Button className="btn-secondary" onClick={openCreateAppModal}><i className="mdi mdi-hand-back-right"/> Upload App Manually</Button>
                 </div>
                 <div className="col-auto">
-                    <Button className="button-primary" onClick={handleUploadButtonClick}><i className="mdi mdi-upload"/> Upload</Button>
+                    <Button
+                        className="button-primary"
+                        onClick={handleUploadButtonClick}
+                        disabled={isCreatingApp || isUploading}
+                    >
+                        <i className="mdi mdi-upload"/> Upload
+                    </Button>
                 </div>
             </Row>
 

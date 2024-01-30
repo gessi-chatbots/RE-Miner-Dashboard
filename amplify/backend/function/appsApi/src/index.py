@@ -44,10 +44,10 @@ def update_app():
         'M': {
             'id': {'S': app.get('id')},
             'app_name': {'S': app.get("app_name")},
-            'description': {'S': app.get("description")},
-            'summary': {'S': app.get("summary")},
-            'release_date': {'S': app.get("release_date")},
-            'version': {'S': app.get('version')}
+            'description': {'S': app.get("description", "N/A")},
+            'summary': {'S': app.get("summary", "N/A")},
+            'release_date': {'S': app.get("release_date", "N/A")},
+            'version': {'S': app.get('version', "N/A")}
         }
     }
     app_index = None
@@ -90,20 +90,34 @@ def create_apps():
         return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
     
     apps = apps_json.get("apps", [])
+    print(f"apps to create: {apps}")
     for new_app in apps:
-        app_name = new_app.get("app_name")
-        print(f"New app {app_name}")
+        app_reviews = new_app.get("reviews", [])
+        reviews_list = []
+        for review in app_reviews:
+            review_dict = {
+                'M': {
+                    'id': {'S': review.get('id')}, 
+                    'review': {'S': review.get("review")},
+                    'score': {'N': str(review.get("score", 0))},
+                    'date': {'S': review.get("date", "N/A")},
+                    'features': {'L': []},
+                    'sentiments': {'L': []}
+                }
+            }
+            reviews_list.append(review_dict) 
         app_item = {
             'M': {
                 'id': {'S': str(uuid.uuid4())},
                 'app_name': {'S': new_app.get("app_name")},
-                'description': {'S': new_app.get("description")},
-                'summary': {'S': new_app.get("summary")},
-                'release_date': {'S': new_app.get("release_date")},
-                'version': {'S': new_app.get('version')},
-                'reviews': {'L': []}
+                'description': {'S': new_app.get("description", "N/A")},
+                'summary': {'S': new_app.get("summary", "N/A")},
+                'release_date': {'S': new_app.get("release_date", "N/A")},
+                'version': {'S': new_app.get('version', "N/A")},
+                'reviews': {'L': reviews_list}
             }
         }
+        print(f"new app to be created with reviews {app_item}")
         try:
             client.update_item(
                 TableName=TABLE,

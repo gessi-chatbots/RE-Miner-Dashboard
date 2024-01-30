@@ -4,6 +4,8 @@ import {Table, Button, Modal, Tooltip, OverlayTrigger, Row, Col} from 'react-boo
 import ReviewService from "../../services/ReviewService";
 import {ReviewDataDTO} from "../../DTOs/ReviewDataDTO";
 import {toast} from "react-toastify";
+import AppService from "../../services/AppService";
+import reviewService from "../../services/ReviewService";
 const defaultColumns = ['App Name', 'Review ID', 'Review', 'Score', 'Date', 'Actions'];
 
 
@@ -158,6 +160,20 @@ const ReviewsDirectory: React.FC = () => {
         }
     };
 
+    const nextPage = async () => {
+        if (currentPage < totalPages) {
+            const nextPageNumber = currentPage + 1;
+            setCurrentPage(nextPageNumber);
+        }
+    };
+
+    const prevPage = async () => {
+        if (currentPage > 1) {
+            const prevPageNumber = currentPage - 1;
+            setCurrentPage(prevPageNumber);
+        }
+    };
+
     return (
         <div>
             <div>
@@ -177,41 +193,69 @@ const ReviewsDirectory: React.FC = () => {
                     </div>
                 )}
                 {data && data.length > 0 && (
-                    <Table className="table table-bordered table-centered table-striped table-hover mt-4">
-                        <thead>
-                        <tr>
-                            {defaultColumns.map(column => (
-                                <th className="text-center" key={column}>{column}</th>
-                            ))}
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {data && data.map(review => (
-                            <tr key={review.id}>
-                                <td className="text-center">{review.app_name || 'N/A'}</td>
-                                <td className="text-center">{review.id || 'N/A'}</td>
-                                <td className="text-center">{review.review || 'N/A'}</td>
-                                <td className="text-center">{review.score || 'N/A'}</td>
-                                <td className="text-center">{review.date || 'N/A'}</td>
-                                <td className="text-end" style={{ width: "150px" }}>
-                                    <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Edit</Tooltip>}>
-                                        <a href="#" className="action-icon" onClick={() => openEditModal(review)}>
-                                            <i className="mdi mdi-pencil"></i>
-                                        </a>
-                                    </OverlayTrigger>
-                                    <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
-                                        <a href="#" className="action-icon" onClick={() => openDeleteModal(review)}>
-                                            <i className="mdi mdi-delete"></i>
-                                        </a>
-                                    </OverlayTrigger>
-                                </td>
+                    <>
+                        <Table className="table table-bordered table-centered table-striped table-hover mt-4">
+                            <thead>
+                            <tr>
+                                {defaultColumns.map(column => (
+                                    <th className="text-center" key={column}>{column}</th>
+                                ))}
                             </tr>
-                        ))}
-                        </tbody>
-                    </Table>
+                            </thead>
+                            <tbody>
+                            {data && data.map(review => (
+                                <tr key={review.id}>
+                                    <td className="text-center">{review.app_name || 'N/A'}</td>
+                                    <td className="text-center">{review.id || 'N/A'}</td>
+                                    <td className="text-center">{review.review || 'N/A'}</td>
+                                    <td className="text-center">{review.score || 'N/A'}</td>
+                                    <td className="text-center">{review.date || 'N/A'}</td>
+                                    <td className="text-end" style={{ width: "150px" }}>
+                                        <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Edit</Tooltip>}>
+                                            <a href="#" className="action-icon" onClick={() => openEditModal(review)}>
+                                                <i className="mdi mdi-pencil"></i>
+                                            </a>
+                                        </OverlayTrigger>
+                                        <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
+                                            <a href="#" className="action-icon" onClick={() => openDeleteModal(review)}>
+                                                <i className="mdi mdi-delete"></i>
+                                            </a>
+                                        </OverlayTrigger>
+                                    </td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </Table>
+                        {totalPages > 1 && (
+                            <div className="d-flex justify-content-center align-items-center">
+                                <nav>
+                                    <ul className="pagination pagination-rounded mb-0">
+                                        <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                                            <Button className="btn-primary page-link" onClick={prevPage} aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </Button>
+                                        </li>
+                                        {/* Page numbers */}
+                                        {Array.from({ length: totalPages }, (_, index) => (
+                                            <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
+                                                <Button className="btn-primary page-link" onClick={() => setCurrentPage(index + 1)}>
+                                                    {index + 1}
+                                                </Button>
+                                            </li>
+                                        ))}
+                                        <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                                            <Button className="btn-primary page-link" onClick={nextPage} aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </Button>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+
+                        )}
+                    </>
                 )}
             </div>
-
 
             {/* Edit Modal */}
             <Modal show={isEditModalOpen} backdrop="static" keyboard={false} onHide={closeModals}>
@@ -255,7 +299,7 @@ const ReviewsDirectory: React.FC = () => {
                                     min={0}
                                     max={5}
                                     placeholder="Enter a score between 0 and 5"
-                                    onChange={(e) => setScore(e.target.valueAsNumber)}
+                                    onChange={(e) => setScore(parseInt(e.target.value, 10))}
                                 />
                                 {!isScoreValid && isUpdateButtonClicked  && <div className="invalid-feedback">Score between 0 & 5</div>}
                             </div>
