@@ -1,6 +1,7 @@
 import json
 import awsgi
 import boto3
+import random
 from boto3.dynamodb.conditions import Key
 from botocore.exceptions import ClientError
 from math import ceil
@@ -93,6 +94,14 @@ def create_apps():
         app_reviews = new_app.get("reviews", [])
         reviews_list = []
         for review in app_reviews:
+            sentiment_list = []
+            for i in range(random.randint(0, 3)):
+                sentiment_dict = {
+                    'M': {
+                        'sentiment': {'S': random.choice(['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'])}
+                    }
+                }
+                sentiment_list.append(sentiment_dict)
             review_dict = {
                 'M': {
                     'id': {'S': review.get('id')}, 
@@ -100,7 +109,7 @@ def create_apps():
                     'score': {'N': str(review.get("score", 0))},
                     'date': {'S': review.get("date", "N/A")},
                     'features': {'L': []},
-                    'sentiments': {'L': []}
+                    'sentiments': {'L': sentiment_list}
                 }
             }
             reviews_list.append(review_dict) 
