@@ -99,18 +99,19 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
                             app_name: item.app_name,
                             description: item.description,
                             summary: item.summary,
-                            release_date: item.release_date,
+                            release_date: new Date(item.release_date).toLocaleDateString('en-GB'),
                             version: item.version,
                             reviews: item.reviews.slice(0, 10).map((review: any) => ({
                                 id: review.reviewId,
                                 review: review.review,
                                 score: review.score,
-                                date: review.at
+                                date: new Date(review.at).toLocaleDateString('en-GB')
                             })) as ReviewDataDTO[]
                         };
                         appList.push(appData);
                     });
                 }
+                console.log(appList)
                 setAppDataList(appList);
                 setAppNamesCount(prevCount => prevCount + appCount);
                 setReviewsCount(prevCount => prevCount + reviewCount);

@@ -95,7 +95,7 @@ def create_apps():
         reviews_list = []
         for review in app_reviews:
             sentiment_list = []
-            for i in range(random.randint(0, 3)):
+            for i in range(random.randint(1, 3)):
                 sentiment_dict = {
                     'M': {
                         'sentiment': {'S': random.choice(['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'])}

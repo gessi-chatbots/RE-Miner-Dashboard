@@ -5,4 +5,6 @@ export interface ReviewDataDTO {
     review: string;
     score: number;
     date: string;
+    features: string[] | null;
+    sentiments: string[] | null;
 }

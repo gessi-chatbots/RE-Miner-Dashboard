@@ -5,7 +5,7 @@ import {ReviewDataDTO} from "../DTOs/ReviewDataDTO";
 class ReviewService {
     API_NAME = 'reviewsAPI';
     PATH_NAME = '/reviews'
-    fetchAllReviews = async (page: number = 1, pageSize: number = 8): Promise<{ reviews: ReviewDataDTO[], total_pages: number } | null> => {
+    fetchAllReviewsPaginated = async (page: number = 1, pageSize: number = 8): Promise<{ reviews: ReviewDataDTO[], total_pages: number } | null> => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
         const id = userData?.sub || "";
@@ -44,6 +44,45 @@ class ReviewService {
             throw error;
         }
     };
+
+    fetchAllReviewsDetailed = async (): Promise<{ reviews: ReviewDataDTO[], total_pages: number } | null> => {
+        const authService = new AuthService();
+        const userData = await authService.getUserData();
+        const id = userData?.sub || "";
+
+        try {
+            const restOperation = get({
+                apiName: this.API_NAME,
+                path: this.PATH_NAME + '/detailed',
+                options: {
+                    queryParams: {
+                        user_id: id,
+                    }
+                }
+            });
+
+            const { body } = await restOperation.response;
+            const textResponse = await body.text();
+            const jsonResponse = JSON.parse(textResponse);
+            const reviews = jsonResponse.reviews.map((item: any) => ({
+                app_id: item.app_id,
+                app_name: item.app_name,
+                id: item.id,
+                review: item.review,
+                score: item.score,
+                date: item.date,
+                sentiments: item.sentiments
+            }));
+
+            return {
+                reviews: reviews,
+                total_pages: jsonResponse.total_pages
+            };
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+        }
+    };
     createReview = async (reviewData: any) => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
@@ -69,7 +108,7 @@ class ReviewService {
             const { body } = await restOperation.response;
             const textResponse = await body.text();
         } catch (error) {
-            console.error("Error creating app:", error);
+            console.error("Error creating review:", error);
             throw error;
         }
     };
