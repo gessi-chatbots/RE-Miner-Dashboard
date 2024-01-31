@@ -11,9 +11,10 @@ import {
 } from 'chart.js';
 import ReviewService from '../../services/ReviewService';
 import { ReviewDataDTO } from '../../DTOs/ReviewDataDTO';
-import {Col, Row} from "react-bootstrap";
-import {AppDataDTO} from "../../DTOs/AppDataDTO";
-import AppService from "../../services/AppService";
+import {Button, Col, Container, Row} from 'react-bootstrap';
+import { AppDataDTO } from '../../DTOs/AppDataDTO';
+import AppService from '../../services/AppService';
+
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, Title);
 
@@ -23,8 +24,9 @@ const SentimentHistogram = () => {
     const [endDate, setEndDate] = useState<string>('');
     const [selectedSentiments, setSelectedSentiments] = useState<string[]>([]);
     const [selectedApp, setSelectedApp] = useState<string | null>(null);
-    const SENTIMENT_OPTIONS = ['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'];
     const [appData, setAppData] = useState<AppDataDTO[] | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const SENTIMENT_OPTIONS = ['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'];
 
     useEffect(() => {
         const fetchAppDataFromService = async () => {
@@ -89,7 +91,8 @@ const SentimentHistogram = () => {
     const chartData = (reviews: ReviewDataDTO[] | null) => {
         const filteredReviews = filterData(reviews || []);
         const dateSentimentCounts = countSentimentsByDate(filteredReviews);
-        const dates = Object.keys(dateSentimentCounts);
+        let dates = Object.keys(dateSentimentCounts);
+        dates = dates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
 
         const colors: { [key: string]: string } = {
             Happiness: 'rgba(255, 99, 132, 0.7)',
@@ -165,9 +168,12 @@ const SentimentHistogram = () => {
     };
 
     return (
-        <div>
-            <Row className="align-items-start">
-                <Col className="col-md-3">
+        <Container className="sentiment-histogram-container py-3">
+            <Row>
+                <label className="text-secondary mb-2">Sentiment Histogram</label>
+            </Row>
+            <Row>
+                <Col className="col-md-4">
                     <label>Start Date: </label>
                     <input
                         type="date"
@@ -175,7 +181,7 @@ const SentimentHistogram = () => {
                         onChange={(e) => setStartDate(e.target.value)}
                     />
                 </Col>
-                <Col className="col-md-3">
+                <Col className="col-md-4">
                     <label>End Date: </label>
                     <input
                         type="date"
@@ -183,8 +189,18 @@ const SentimentHistogram = () => {
                         onChange={(e) => setEndDate(e.target.value)}
                     />
                 </Col>
-                <Col className="col-md-6">
-                    <label>APP: </label>
+                <Col className="col-md-4 d-flex align-self-end justify-content-end">
+                    <Button
+                        className="btn-secondary btn-sm btn-square"
+                        onClick={() => setIsModalOpen(true)}
+                    >
+                        <i className="mdi mdi-arrow-expand"/>
+                    </Button>
+                </Col>
+            </Row>
+            <Row>
+                <Col className="col-md-4 mb-4">
+                    <label>App: </label>
                     <select
                         value={selectedApp || ''}
                         onChange={(e) => {
@@ -195,7 +211,9 @@ const SentimentHistogram = () => {
                             }
                         }}
                     >
-                        <option value="" disabled>Select an App</option>
+                        <option value="" disabled>
+                            Select an App
+                        </option>
                         {appData?.map((app) => (
                             <option key={app.id} value={app.id}>
                                 {app.app_name}
@@ -206,31 +224,53 @@ const SentimentHistogram = () => {
             </Row>
             <Row className="mb-2">
                 {appData && data && SENTIMENT_OPTIONS.map((sentiment, index) => (
-                    <Col key={sentiment} className={`ml-${index === 0 ? 1 : 2}`}>
-                        <input
-                            type="checkbox"
-                            id={sentiment}
-                            value={sentiment}
-                            checked={selectedSentiments.includes(sentiment)}
-                            onChange={(e) => {
-                                const isChecked = e.target.checked;
-                                setSelectedSentiments((prev) =>
-                                    isChecked
-                                        ? [...prev, sentiment]
-                                        : prev.filter((s) => s !== sentiment)
-                                );
-                            }}
-                        />
-                        <label htmlFor={sentiment} className="ml-1">{sentiment}</label>
+                    <Col key={sentiment}>
+                        <Row>
+                            <input
+                                type="checkbox"
+                                id={sentiment}
+                                value={sentiment}
+                                checked={selectedSentiments.includes(sentiment)}
+                                onChange={(e) => {
+                                    const isChecked = e.target.checked;
+                                    setSelectedSentiments((prev) =>
+                                        isChecked
+                                            ? [...prev, sentiment]
+                                            : prev.filter((s) => s !== sentiment)
+                                    );
+                                }}
+                            />
+                        </Row>
+                        <Row>
+                            <label htmlFor={sentiment} className="ml-1">
+                                {sentiment}
+                            </label>
+                        </Row>
                     </Col>
                 ))}
             </Row>
-            {selectedApp && selectedSentiments.length > 0 && data ? (
-                <Bar data={chartData(data)} options={options} />
-            ) : (
-                <p>Select an App and Sentiments to view the chart.</p>
-            )}
-        </div>
+            <Row>
+                <Bar className="sentiment-histogram-chart" data={chartData(data)} options={options} />
+            </Row>
+
+            {isModalOpen && selectedApp && selectedSentiments.length > 0 && data ? (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <Row className="justify-content-end align-self-end">
+                            <Col>
+                                <Button
+                                    className="btn-danger close-button mb-2"
+                                    onClick={() => setIsModalOpen(false)}
+                                >
+                                    <i className="mdi mdi-close"/>
+                                </Button>
+                            </Col>
+                        </Row>
+                        <Bar className="sentiment-histogram-chart" data={chartData(data)} options={options} />
+                    </div>
+                </div>
+            ) : null}
+        </Container>
     );
 };
 
