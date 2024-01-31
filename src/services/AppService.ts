@@ -43,6 +43,40 @@ class AppService {
             throw error;
         }
     };
+
+    fetchAllAppsNames = async (): Promise<{ apps: AppDataDTO[]} | null> => {
+        const authService = new AuthService();
+        const userData = await authService.getUserData();
+        const id = userData?.sub || "";
+
+        try {
+            const restOperation = get({
+                apiName: this.API_NAME,
+                path: this.PATH_NAME + '/names',
+                options: {
+                    queryParams: {
+                        user_id: id,
+                    }
+                }
+            });
+
+            const { body } = await restOperation.response;
+            const textResponse = await body.text();
+            const jsonResponse = JSON.parse(textResponse);
+            const apps = jsonResponse.apps.map((item: any) => ({
+                id: item.id,
+                app_name: item.app_name,
+            }));
+
+            return {
+                apps: apps,
+            };
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+        }
+    };
+
     createApp = async (appData: any) => {
         const authService = new AuthService();
         const userData = await authService.getUserData();

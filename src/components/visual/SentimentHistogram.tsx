@@ -11,62 +11,79 @@ import {
 } from 'chart.js';
 import ReviewService from '../../services/ReviewService';
 import { ReviewDataDTO } from '../../DTOs/ReviewDataDTO';
+import {Col, Row} from "react-bootstrap";
+import {AppDataDTO} from "../../DTOs/AppDataDTO";
+import AppService from "../../services/AppService";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, Title);
 
-const StackedBarChart = () => {
+const SentimentHistogram = () => {
     const [data, setData] = useState<ReviewDataDTO[] | null>(null);
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
     const [selectedSentiments, setSelectedSentiments] = useState<string[]>([]);
+    const [selectedApp, setSelectedApp] = useState<string | null>(null);
     const SENTIMENT_OPTIONS = ['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'];
+    const [appData, setAppData] = useState<AppDataDTO[] | null>(null);
 
     useEffect(() => {
-        const fetchDataFromApi = async () => {
-            const reviewService = new ReviewService();
+        const fetchAppDataFromService = async () => {
+            const appService = new AppService();
             try {
-                const response = await reviewService.fetchAllReviewsDetailed();
+                const response = await appService.fetchAllAppsNames();
                 if (response !== null) {
-                    const { reviews: mappedData } = response;
-                    setData(mappedData);
+                    const { apps: appData } = response;
+                    setAppData(appData);
                 } else {
-                    console.error('Response from fetch all reviews is null');
+                    console.error('Response from fetch all apps is null');
                 }
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching app data:', error);
             }
         };
-        fetchDataFromApi();
+
+        fetchAppDataFromService();
     }, []);
+
+    const fetchDataFromApi = async (appId: string) => {
+        const reviewService = new ReviewService();
+        try {
+            const response = await reviewService.fetchAllReviewsDetailedFromApp(appId);
+            if (response !== null) {
+                const { reviews: mappedData } = response;
+                setData(mappedData);
+            } else {
+                console.error('Response from fetch all reviews is null');
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    const fetchReviewDataFromApp = async () => {
+        if (selectedApp) {
+            fetchDataFromApi(selectedApp);
+        }
+    };
 
     const filterData = (reviews: ReviewDataDTO[]) => {
         return reviews.filter((review) => {
-            const reviewDate = new Date(review.date);
+            const dateParts = review.date.split('/');
+            const reviewDate = new Date(`${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`);
+
             const startDateCondition = !startDate || reviewDate >= new Date(startDate);
             const endDateCondition = !endDate || reviewDate <= new Date(endDate);
 
             return (
                 startDateCondition &&
                 endDateCondition &&
+                selectedApp &&
                 (!selectedSentiments.length ||
                     (review.sentiments || []).some((sentiment: string) =>
                         selectedSentiments.includes(sentiment)
                     ))
             );
         });
-    };
-
-    const countSentiments = (reviews: ReviewDataDTO[]) => {
-        const sentimentCounts: Record<string, number> = {};
-
-        reviews.forEach((review) => {
-            (review.sentiments || []).forEach((sentiment: string) => {
-                sentimentCounts[sentiment] =
-                    (sentimentCounts[sentiment] || 0) + 1;
-            });
-        });
-
-        return sentimentCounts;
     };
 
     const chartData = (reviews: ReviewDataDTO[] | null) => {
@@ -107,7 +124,8 @@ const StackedBarChart = () => {
         const dateSentimentCounts: Record<string, Record<string, number>> = {};
 
         reviews.forEach((review) => {
-            const reviewDate = new Date(review.date).toLocaleDateString('en-GB');
+            const dateParts = review.date.split('/');
+            const reviewDate = new Date(`${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`).toDateString();
             dateSentimentCounts[reviewDate] = dateSentimentCounts[reviewDate] || {};
 
             (review.sentiments || []).forEach((sentiment: string) => {
@@ -148,26 +166,47 @@ const StackedBarChart = () => {
 
     return (
         <div>
-            <div>
-                <label>Start Date: </label>
-                <input
-                    type="date"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>End Date: </label>
-                <input
-                    type="date"
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>Select Sentiments: </label>
-                {SENTIMENT_OPTIONS.map((sentiment) => (
-                    <div key={sentiment}>
+            <Row className="align-items-start">
+                <Col className="col-md-3">
+                    <label>Start Date: </label>
+                    <input
+                        type="date"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                    />
+                </Col>
+                <Col className="col-md-3">
+                    <label>End Date: </label>
+                    <input
+                        type="date"
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                    />
+                </Col>
+                <Col className="col-md-6">
+                    <label>APP: </label>
+                    <select
+                        value={selectedApp || ''}
+                        onChange={(e) => {
+                            const selectedAppId = e.target.value || null;
+                            setSelectedApp(selectedAppId);
+                            if (selectedAppId) {
+                                fetchReviewDataFromApp();
+                            }
+                        }}
+                    >
+                        <option value="" disabled>Select an App</option>
+                        {appData?.map((app) => (
+                            <option key={app.id} value={app.id}>
+                                {app.app_name}
+                            </option>
+                        ))}
+                    </select>
+                </Col>
+            </Row>
+            <Row className="mb-2">
+                {appData && data && SENTIMENT_OPTIONS.map((sentiment, index) => (
+                    <Col key={sentiment} className={`ml-${index === 0 ? 1 : 2}`}>
                         <input
                             type="checkbox"
                             id={sentiment}
@@ -182,17 +221,17 @@ const StackedBarChart = () => {
                                 );
                             }}
                         />
-                        <label htmlFor={sentiment}>{sentiment}</label>
-                    </div>
+                        <label htmlFor={sentiment} className="ml-1">{sentiment}</label>
+                    </Col>
                 ))}
-            </div>
-            {data ? (
+            </Row>
+            {selectedApp && selectedSentiments.length > 0 && data ? (
                 <Bar data={chartData(data)} options={options} />
             ) : (
-                <p>Loading...</p>
+                <p>Select an App and Sentiments to view the chart.</p>
             )}
         </div>
     );
 };
 
-export default StackedBarChart;
+export default SentimentHistogram;

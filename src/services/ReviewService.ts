@@ -83,6 +83,45 @@ class ReviewService {
             throw error;
         }
     };
+
+
+    fetchAllReviewsDetailedFromApp = async (appId: string): Promise<{ reviews: ReviewDataDTO[]} | null> => {
+        const authService = new AuthService();
+        const userData = await authService.getUserData();
+        const id = userData?.sub || "";
+
+        try {
+            const restOperation = get({
+                apiName: this.API_NAME,
+                path: this.PATH_NAME + '/detailed/app',
+                options: {
+                    queryParams: {
+                        user_id: id,
+                        app_id: appId
+                    }
+                }
+            });
+
+            const { body } = await restOperation.response;
+            const textResponse = await body.text();
+            const jsonResponse = JSON.parse(textResponse);
+            const reviews = jsonResponse.reviews.map((item: any) => ({
+                app_id: item.app_id,
+                app_name: item.app_name,
+                id: item.id,
+                date: item.date,
+                sentiments: item.sentiments
+            }));
+
+            return {
+                reviews: reviews,
+            };
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+        }
+    };
+
     createReview = async (reviewData: any) => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
