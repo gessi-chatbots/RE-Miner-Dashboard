@@ -71,7 +71,8 @@ class ReviewService {
                 review: item.review,
                 score: item.score,
                 date: item.date,
-                sentiments: item.sentiments
+                sentiments: item.sentiments,
+                features: item.features
             }));
 
             return {
@@ -110,7 +111,8 @@ class ReviewService {
                 app_name: item.app_name,
                 id: item.id,
                 date: item.date,
-                sentiments: item.sentiments
+                sentiments: item.sentiments,
+                features: item.features
             }));
 
             return {

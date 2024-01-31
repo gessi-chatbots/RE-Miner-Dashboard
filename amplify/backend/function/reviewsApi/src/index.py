@@ -183,18 +183,27 @@ def create_reviews():
                 }
             }
             sentiment_list.append(sentiment_dict)
-        print(sentiment_list)
+
+        feature_list = []
+        features = ['Feature1', 'Feature2', 'Feature3', 'Feature4', 'Feature5', 'Feature6', 'Feature7', 'Feature8', 'Feature9', 'Feature10', 'Feature11', 'Feature12', 'Feature13', 'Feature14', 'Feature15']
+        for i in range(random.randint(1, 3)):
+            feature_dict = {
+                'M': {
+                    'feature': {'S': random.choice(features)}
+                }
+            }
+            feature_list.append(feature_dict)
+
         review_item = {
                 'M': {
                 'id': {'S': review_json.get("review").get("id")},
                 'review': {'S': review_json.get("review").get("review")},
                 'score': {'N': review_json.get("review").get("score")},
                 'date': {'S': review_json.get("review").get("date")},
-                'features': {'L': []},
+                'features': {'L': feature_list},
                 'sentiments': {'L': sentiment_list}
             }
         }
-        print(f"review item {review_item}")
         try:
             client.update_item(
                 TableName=TABLE,
@@ -267,7 +276,6 @@ def list_paginated_reviews():
         if num_elements == 0:
             break
 
-    
     total_reviews_qty = 0
     for item in items:
         apps = item.get('apps', {}).get('L', [])
@@ -298,7 +306,10 @@ def list_detailed_reviews():
                 sentiment_list = []
                 for sentiment in review_item.get('M', {}).get('sentiments', {}).get('L', []):
                     sentiment_list.append(sentiment.get('M').get('sentiment').get('S'))
-                print(review_item)
+                
+                feature_list = []
+                for feature in review_item.get('M', {}).get('features', {}).get('L', []):
+                    feature_list.append(feature.get('M').get('feature').get('S'))
                 review_data = {
                     'app_id': app_item.get('M', {}).get('id', {}).get('S', None),
                     'app_name':  app_item.get('M', {}).get('app_name', {}).get('S', None),
@@ -306,10 +317,11 @@ def list_detailed_reviews():
                     'review': review_item.get('M', {}).get('review', {}).get('S', None),
                     'date': review_item.get('M', {}).get('date', {}).get('S', None),
                     'score': review_item.get('M', {}).get('score', {}).get('N', 0),
-                    'sentiments': sentiment_list
+                    'sentiments': sentiment_list,
+                    'features': feature_list
                 }
                 review_data_list.append(review_data)
-    print(review_data_list)
+
     return jsonify({
         'reviews': review_data_list,
     })
@@ -335,7 +347,11 @@ def list_detailed_reviews_app():
                     sentiment_list = []
                     for sentiment in review_item.get('M', {}).get('sentiments', {}).get('L', []):
                         sentiment_list.append(sentiment.get('M').get('sentiment').get('S'))
-                    print(review_item)
+                    
+                    feature_list = []
+                    for feature in review_item.get('M', {}).get('features', {}).get('L', []):
+                        feature_list.append(feature.get('M').get('feature').get('S'))
+
                     review_data = {
                         'app_id': app_item.get('M', {}).get('id', {}).get('S', None),
                         'app_name':  app_item.get('M', {}).get('app_name', {}).get('S', None),
@@ -343,7 +359,8 @@ def list_detailed_reviews_app():
                         'review': review_item.get('M', {}).get('review', {}).get('S', None),
                         'date': review_item.get('M', {}).get('date', {}).get('S', None),
                         'score': review_item.get('M', {}).get('score', {}).get('N', 0),
-                        'sentiments': sentiment_list
+                        'sentiments': sentiment_list,
+                        'features': feature_list
                     }
                     review_data_list.append(review_data)
     print(review_data_list)
