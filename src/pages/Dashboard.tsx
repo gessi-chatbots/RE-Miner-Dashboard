@@ -2,17 +2,18 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import SentimentHistogram from '../components/visual/SentimentHistogram';
 import PolarAreaChart from "../components/visual/PolarAreaChart";
+import VerticalBarChart from "../components/visual/VerticalBarChart";
 
 const Dashboard = () => {
     return (
         <>
-            <h1 className="text-secondary">Dashboard</h1>
+            <h1 className="text-secondary mb-3">Dashboard</h1>
             <Row className="mb-4">
                 <Col className="col-md-6 mb-4 mr-5">
                     <PolarAreaChart />
                 </Col>
                 <Col className="col-md-6 mb-4 ml-5">
-                    <SentimentHistogram />
+                    <VerticalBarChart />
                 </Col>
             </Row>
             <Row>

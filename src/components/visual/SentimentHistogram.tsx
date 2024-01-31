@@ -31,7 +31,7 @@ const generateColors = (sentiments: string[]) => {
 };
 
 const SentimentHistogram = () => {
-    const [data, setData] = useState<ReviewDataDTO[] | null>(null);
+    const [data, setData] = useState<ReviewDataDTO[]>([]);
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
     const [selectedApp, setSelectedApp] = useState<string | null>(null);
@@ -59,26 +59,32 @@ const SentimentHistogram = () => {
         fetchAppDataFromService();
     }, []);
 
-    const fetchDataFromApi = async (appId: string) => {
-        const reviewService = new ReviewService();
-        try {
-            const response = await reviewService.fetchAllReviewsDetailedFromApp(appId);
-            if (response !== null) {
-                const reviews = response.reviews;
-                const sentiments = extractSentimentsFromReviews(reviews);
-                setLabels(sentiments);
-                setData(reviews);
-            } else {
-                console.error('Response from fetch all reviews is null');
-            }
-        } catch (error) {
-            console.error('Error fetching data:', error);
+    useEffect(() => {
+        if (selectedApp) {
+            fetchReviewDataFromApp();
         }
-    };
+    }, [selectedApp]); // Trigger when selectedApp changes
+
+
 
     const fetchReviewDataFromApp = async () => {
         if (selectedApp) {
-            fetchDataFromApi(selectedApp);
+            const reviewService = new ReviewService();
+            try {
+                const response = await reviewService.fetchAllReviewsDetailedFromApp(selectedApp);
+                if (response !== null) {
+                    const reviews = response.reviews;
+                    const sentiments = extractSentimentsFromReviews(reviews);
+
+                    // Use callback form of state update functions
+                    setData(prevData => [...reviews]); // Using spread to create a new array
+                    setLabels(prevLabels => [...sentiments]); // Using spread to create a new array
+                } else {
+                    console.error('Response from fetch all reviews is null');
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
         }
     };
 
@@ -151,7 +157,6 @@ const SentimentHistogram = () => {
 
     const options = {
         responsive: true,
-        maintainAspectRatio: false,
         scales: {
             x: {
                 stacked: true,

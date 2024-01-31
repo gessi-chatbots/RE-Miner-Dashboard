@@ -1,124 +1,137 @@
 import React, { useEffect, useState } from 'react';
-import { PolarArea } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import {
-    ArcElement,
-    CategoryScale,
     Chart as ChartJS,
-    Legend,
     LinearScale,
-    LineElement,
-    PointElement, PolarAreaController, RadialLinearScale,
-    TimeScale,
+    Tooltip,
+    Legend,
     Title,
-    Tooltip
 } from 'chart.js';
 import ReviewService from '../../services/ReviewService';
 import { ReviewDataDTO } from '../../DTOs/ReviewDataDTO';
 import { Container, Row } from 'react-bootstrap';
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    TimeScale,
-    Title,
-    Tooltip,
-    Legend,
-    PolarAreaController, RadialLinearScale, LineElement, ArcElement
-);
-const generateColors = (sentiments: string[]) => {
-    const defaultColors: { [key: string]: string } = {
-        Happiness: 'rgba(255, 99, 132, 0.7)',
-        Sadness: 'rgba(54, 162, 235, 0.7)',
-        Anger: 'rgba(255, 206, 86, 0.7)',
-        Surprise: 'rgba(75, 192, 192, 0.7)',
-        Fear: 'rgba(153, 102, 255, 0.7)',
-        Disgust: 'rgba(255, 159, 64, 0.7)',
-    };
-    return sentiments.map((sentiment) => defaultColors[sentiment]);
-};
-
-const SENTIMENT_OPTIONS = ['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'];
+// Register necessary components from chart.js
+ChartJS.register(LinearScale, Tooltip, Legend, Title);
 
 const VerticalBarChart = () => {
-    const [data, setData] = useState<number[]>([]);
-    const [labels, setLabels] = useState(SENTIMENT_OPTIONS);
-    const [colors, setColors] = useState(generateColors(SENTIMENT_OPTIONS));
+    const [data, setData] = useState<ReviewDataDTO[] | null>(null);
+    const [labels, setLabels] = useState<string[]>([]);
+    const [colors, setColors] = useState<string[]>([]);
 
     useEffect(() => {
-        const fetchReviewData = async () => {
+        const fetchDataFromApi = async () => {
             const reviewService = new ReviewService();
             try {
                 const response = await reviewService.fetchAllReviewsDetailed();
                 if (response !== null) {
                     const reviews = response.reviews;
-                    const sentiments = extractSentimentsFromReviews(reviews);
-                    setLabels(sentiments);
-                    setData(countSentiments(reviews, sentiments));
+                    const topFeatures = extractTopFeaturesFromReviews(reviews, 5);
+                    setData(reviews);
                 } else {
                     console.error('Response from fetch all reviews is null');
                 }
             } catch (error) {
-                console.error('Error fetching review data:', error);
+                console.error('Error fetching data:', error);
             }
         };
 
-        fetchReviewData();
+        fetchDataFromApi();
     }, []);
 
-    const extractSentimentsFromReviews = (reviews: ReviewDataDTO[]) => {
-        const allSentiments = reviews.reduce(
-            (sentiments, review) => sentiments.concat(review.sentiments || []),
-            [] as string[]
-        );
-        return Array.from(new Set(allSentiments));
+    const getRandomColor = () => {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
     };
 
-    const countSentiments = (reviews: ReviewDataDTO[], sentiments: string[]) => {
-        return sentiments.map((sentiment) =>
-            reviews.reduce((count, review) => count + (review.sentiments?.includes(sentiment) ? 1 : 0), 0)
-        );
+    const generateColors = (count: number) => {
+        const colors = [];
+        for (let i = 0; i < count; i++) {
+            colors.push(getRandomColor());
+        }
+        return colors;
     };
 
-    const chartData = {
-        labels: labels,
-        datasets: [
-            {
-                data: data,
-                backgroundColor: colors,
-            },
-        ],
+    const extractTopFeaturesFromReviews = (reviews: ReviewDataDTO[], limit: number = 5) => {
+        const featureCounts: { [feature: string]: number } = {};
+
+        // Count occurrences of each feature in all reviews
+        reviews.forEach((review) => {
+            if (review.features) {
+                review.features.forEach((feature) => {
+                    featureCounts[feature] = (featureCounts[feature] || 0) + 1;
+                });
+            }
+        });
+
+        // Sort features by count in descending order
+        const sortedFeatures = Object.keys(featureCounts).sort(
+            (a, b) => featureCounts[b] - featureCounts[a]
+        );
+
+        // Get the top features up to the specified limit
+        const topFeatures = sortedFeatures.slice(0, limit);
+
+        // Update labels and colors for the chart
+        setLabels(topFeatures);
+        setColors(generateColors(topFeatures.length));
+
+        return topFeatures;
     };
+
+    const chartData = () => {
+        return {
+            labels: labels,
+            datasets: data
+                ? [{
+                    data: labels.map((feature) =>
+                        data.reduce((count, review) =>
+                                count + (review.features ? review.features.filter((f) => f === feature).length : 0),
+                            0
+                        )
+                    ),
+                    backgroundColor: colors,
+                    barThickness: 'flex' as any,
+                }]
+                : [],
+        };
+    };
+
 
     const options = {
-        plugins: {
-            title: {
-            },
-        },
         responsive: true,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
         scales: {
-            r: {
-                pointLabels: {
+            x: {
+                title: {
                     display: true,
-                    centerPointLabels: true,
-                    font: {
-                        size: 18,
-                    },
+                    text: 'Top Features',
+                },
+            },
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Count',
                 },
             },
         },
-
     };
 
     return (
         <Container className="sentiment-histogram-container py-3">
             <Row>
-                <label className="text-secondary mb-2">Sentiment polar area</label>
+                <label className="text-secondary mb-2">Top 5 Features</label>
             </Row>
-            <Row>
-                <PolarArea data={chartData} options={options} />
-            </Row>
+            <Bar className="sentiment-histogram-chart" data={chartData()} options={options} />
         </Container>
     );
 };
