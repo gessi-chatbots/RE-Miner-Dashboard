@@ -11,22 +11,34 @@ import {
 } from 'chart.js';
 import ReviewService from '../../services/ReviewService';
 import { ReviewDataDTO } from '../../DTOs/ReviewDataDTO';
-import {Button, Col, Container, Row} from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { AppDataDTO } from '../../DTOs/AppDataDTO';
 import AppService from '../../services/AppService';
 
-
+// Register necessary components from chart.js
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, Title);
+const SENTIMENT_OPTIONS = ['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'];
+const generateColors = (sentiments: string[]) => {
+    const defaultColors: { [key: string]: string } = {
+        Happiness: 'rgba(255, 99, 132, 0.7)',
+        Sadness: 'rgba(54, 162, 235, 0.7)',
+        Anger: 'rgba(255, 206, 86, 0.7)',
+        Surprise: 'rgba(75, 192, 192, 0.7)',
+        Fear: 'rgba(153, 102, 255, 0.7)',
+        Disgust: 'rgba(255, 159, 64, 0.7)',
+    };
+    return sentiments.map((sentiment) => defaultColors[sentiment]);
+};
 
 const SentimentHistogram = () => {
     const [data, setData] = useState<ReviewDataDTO[] | null>(null);
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
-    const [selectedSentiments, setSelectedSentiments] = useState<string[]>([]);
     const [selectedApp, setSelectedApp] = useState<string | null>(null);
     const [appData, setAppData] = useState<AppDataDTO[] | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const SENTIMENT_OPTIONS = ['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'];
+    const [labels, setLabels] = useState(SENTIMENT_OPTIONS);
+    const [colors, setColors] = useState(generateColors(SENTIMENT_OPTIONS));
 
     useEffect(() => {
         const fetchAppDataFromService = async () => {
@@ -52,8 +64,10 @@ const SentimentHistogram = () => {
         try {
             const response = await reviewService.fetchAllReviewsDetailedFromApp(appId);
             if (response !== null) {
-                const { reviews: mappedData } = response;
-                setData(mappedData);
+                const reviews = response.reviews;
+                const sentiments = extractSentimentsFromReviews(reviews);
+                setLabels(sentiments);
+                setData(reviews);
             } else {
                 console.error('Response from fetch all reviews is null');
             }
@@ -79,41 +93,36 @@ const SentimentHistogram = () => {
             return (
                 startDateCondition &&
                 endDateCondition &&
-                selectedApp &&
-                (!selectedSentiments.length ||
-                    (review.sentiments || []).some((sentiment: string) =>
-                        selectedSentiments.includes(sentiment)
-                    ))
+                selectedApp
             );
         });
     };
 
-    const chartData = (reviews: ReviewDataDTO[] | null) => {
-        const filteredReviews = filterData(reviews || []);
+    const extractSentimentsFromReviews = (reviews: ReviewDataDTO[]) => {
+        const allSentiments = reviews.reduce(
+            (sentiments, review) => sentiments.concat(review.sentiments || []),
+            [] as string[]
+        );
+        return Array.from(new Set(allSentiments));
+    };
+
+    const chartData = () => {
+        const filteredReviews = filterData(data || []);
         const dateSentimentCounts = countSentimentsByDate(filteredReviews);
         let dates = Object.keys(dateSentimentCounts);
         dates = dates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
 
-        const colors: { [key: string]: string } = {
-            Happiness: 'rgba(255, 99, 132, 0.7)',
-            Sadness: 'rgba(54, 162, 235, 0.7)',
-            Anger: 'rgba(255, 206, 86, 0.7)',
-            Surprise: 'rgba(75, 192, 192, 0.7)',
-            Fear: 'rgba(153, 102, 255, 0.7)',
-            Disgust: 'rgba(255, 159, 64, 0.7)',
-        };
 
-        const datasets = selectedSentiments.map((selectedSentiment) => {
+        const datasets = labels.map((sentiment) => {
             const dataPoints = dates.map((date) =>
-                dateSentimentCounts[date][selectedSentiment] || 0
+                dateSentimentCounts[date][sentiment] || 0
             );
 
             return {
-                label: selectedSentiment,
                 data: dataPoints,
-                backgroundColor: colors[selectedSentiment],
                 borderWidth: 1,
-                key: selectedSentiment,
+                label: sentiment,
+                backgroundColor: colors[labels.indexOf(sentiment)],
             };
         });
 
@@ -141,12 +150,6 @@ const SentimentHistogram = () => {
     };
 
     const options = {
-        plugins: {
-            title: {
-                display: true,
-                text: 'Emotions per date',
-            },
-        },
         responsive: true,
         scales: {
             x: {
@@ -222,38 +225,11 @@ const SentimentHistogram = () => {
                     </select>
                 </Col>
             </Row>
-            <Row className="mb-2">
-                {appData && data && SENTIMENT_OPTIONS.map((sentiment, index) => (
-                    <Col key={sentiment}>
-                        <Row>
-                            <input
-                                type="checkbox"
-                                id={sentiment}
-                                value={sentiment}
-                                checked={selectedSentiments.includes(sentiment)}
-                                onChange={(e) => {
-                                    const isChecked = e.target.checked;
-                                    setSelectedSentiments((prev) =>
-                                        isChecked
-                                            ? [...prev, sentiment]
-                                            : prev.filter((s) => s !== sentiment)
-                                    );
-                                }}
-                            />
-                        </Row>
-                        <Row>
-                            <label htmlFor={sentiment} className="ml-1">
-                                {sentiment}
-                            </label>
-                        </Row>
-                    </Col>
-                ))}
-            </Row>
             <Row>
-                <Bar className="sentiment-histogram-chart" data={chartData(data)} options={options} />
+                <Bar className="sentiment-histogram-chart" data={chartData()} options={options} />
             </Row>
 
-            {isModalOpen && selectedApp && selectedSentiments.length > 0 && data ? (
+            {isModalOpen && selectedApp && data ? (
                 <div className="modal-overlay">
                     <div className="modal-content">
                         <Row className="justify-content-end align-self-end">
@@ -266,7 +242,7 @@ const SentimentHistogram = () => {
                                 </Button>
                             </Col>
                         </Row>
-                        <Bar className="sentiment-histogram-chart" data={chartData(data)} options={options} />
+                        <Bar className="sentiment-histogram-chart" data={chartData()} options={options} />
                     </div>
                 </div>
             ) : null}

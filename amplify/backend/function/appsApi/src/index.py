@@ -94,6 +94,7 @@ def create_apps():
         app_reviews = new_app.get("reviews", [])
         reviews_list = []
         for review in app_reviews:
+
             sentiment_list = []
             for i in range(random.randint(1, 3)):
                 sentiment_dict = {
@@ -102,13 +103,24 @@ def create_apps():
                     }
                 }
                 sentiment_list.append(sentiment_dict)
+
+            feature_list = []
+            features = ['Feature1', 'Feature2', 'Feature3', 'Feature4', 'Feature5', 'Feature6', 'Feature7', 'Feature8', 'Feature9', 'Feature10', 'Feature11', 'Feature12', 'Feature13', 'Feature14', 'Feature15']
+            for i in range(random.randint(1, 3)):
+                feature_dict = {
+                    'M': {
+                        'feature': {'S': random.choice(features)}
+                    }
+                }
+                feature_list.append(feature_dict)
+                
             review_dict = {
                 'M': {
                     'id': {'S': review.get('id')}, 
                     'review': {'S': review.get("review")},
                     'score': {'N': str(review.get("score", 0))},
                     'date': {'S': review.get("date", "N/A")},
-                    'features': {'L': []},
+                    'features': {'L': feature_list},
                     'sentiments': {'L': sentiment_list}
                 }
             }
