@@ -1,6 +1,7 @@
 import json
 import awsgi
 import boto3
+import random
 from boto3.dynamodb.conditions import Key
 from botocore.exceptions import ClientError
 from math import ceil
@@ -93,6 +94,14 @@ def create_apps():
         app_reviews = new_app.get("reviews", [])
         reviews_list = []
         for review in app_reviews:
+            sentiment_list = []
+            for i in range(random.randint(1, 3)):
+                sentiment_dict = {
+                    'M': {
+                        'sentiment': {'S': random.choice(['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'])}
+                    }
+                }
+                sentiment_list.append(sentiment_dict)
             review_dict = {
                 'M': {
                     'id': {'S': review.get('id')}, 
@@ -100,7 +109,7 @@ def create_apps():
                     'score': {'N': str(review.get("score", 0))},
                     'date': {'S': review.get("date", "N/A")},
                     'features': {'L': []},
-                    'sentiments': {'L': []}
+                    'sentiments': {'L': sentiment_list}
                 }
             }
             reviews_list.append(review_dict) 
@@ -141,9 +150,8 @@ def create_apps():
                 )
     return jsonify({"message": "App/s created successfully"}), 200
 
-
 @app.route(BASE_ROUTE, methods=['GET'])
-def list_apps():
+def list_apps_paginated():
     print("[GET]: All apps from user")
     user_id = request.args.get('user_id')
     page = int(request.args.get('page', 1))
@@ -175,6 +183,27 @@ def list_apps():
         'apps': app_data_list,
         'total_pages': total_pages
     })
+
+@app.route(BASE_ROUTE + '/names', methods=['GET'])
+def list_apps_names():
+    print("[GET]: All apps names")
+    user_id = request.args.get('user_id')
+    items = get_user_items(user_id)
+    if not items:
+        return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
+    app_data_list = []
+    for item in items:
+        apps = item.get('apps', {}).get('L', [])
+        for app_item in apps:
+            app_data = {
+                'id': app_item.get('M', {}).get('id', {}).get('S', None),
+                'app_name': app_item.get('M', {}).get('app_name', {}).get('S', None)
+            }
+            app_data_list.append(app_data)
+    return jsonify({
+        'apps': app_data_list,
+    })    
+    
 @app.route(BASE_ROUTE, methods=['DELETE'])
 def delete_app():
     print("[DELETE]: Delete an App")

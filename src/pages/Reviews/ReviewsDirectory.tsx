@@ -37,7 +37,7 @@ const ReviewsDirectory: React.FC = () => {
     };
 
     async function updateReviewsDirectory(reviewService: ReviewService) {
-        const response = await reviewService.fetchAllReviews(currentPage);
+        const response = await reviewService.fetchAllReviewsPaginated(currentPage);
         if (response !== null) {
             const { reviews: mappedData, total_pages: pages } = response;
             if (mappedData !== undefined) {
@@ -51,7 +51,7 @@ const ReviewsDirectory: React.FC = () => {
         const fetchDataFromApi = async () => {
             const reviewService = new ReviewService();
             try {
-                const response = await reviewService.fetchAllReviews(currentPage);
+                const response = await reviewService.fetchAllReviewsPaginated(currentPage);
                 if (response !== null) {
                     const { reviews: mappedData, total_pages: pages } = response;
                     setData(mappedData);
@@ -98,6 +98,8 @@ const ReviewsDirectory: React.FC = () => {
         const id = reviewData?.id
         const app_id = reviewData?.app_id
         const app_name = reviewData?.app_name
+        const features = null;
+        const sentiments = null
         setIsUpdating(true);
 
         const reviewService = new ReviewService();
@@ -108,7 +110,9 @@ const ReviewsDirectory: React.FC = () => {
                 id,
                 review,
                 score,
-                date
+                date,
+                features,
+                sentiments
             });
             setEditModalIsOpen(false);
             await updateReviewsDirectory(reviewService);
@@ -138,7 +142,7 @@ const ReviewsDirectory: React.FC = () => {
         const reviewService = new ReviewService();
         try {
             await reviewService.deleteReview(app_id, review_id);
-            const response = await reviewService.fetchAllReviews();
+            const response = await reviewService.fetchAllReviewsPaginated();
             if (response !== null) {
                 const { reviews: mappedData, total_pages: pages } = response;
                 if (mappedData !== undefined) {

@@ -99,7 +99,6 @@ const UploadApps = () => {
                     {
                         "reviewId": "reviewID",
                         "review": "review",
-                        "userName": "userName",
                         "score": 4,
                         "at": "Sep 15, 2022"
                     }

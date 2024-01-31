@@ -1,5 +1,6 @@
 import React from 'react';
-import {Container} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
+import SentimentHistogram from "../components/visual/SentimentHistogram";
 
 
 
@@ -9,6 +10,11 @@ const Dashboard = () => {
         <Container>
             <div>
                 <h1 className="text-secondary">Dashboard</h1>
+                <Row>
+                    <Col>
+                        <SentimentHistogram />
+                    </Col>
+                </Row>
             </div>
         </Container>
 

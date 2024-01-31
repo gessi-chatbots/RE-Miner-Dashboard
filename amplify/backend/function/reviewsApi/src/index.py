@@ -1,6 +1,7 @@
 import json
 import awsgi
 import boto3
+import random
 from boto3.dynamodb.conditions import Key
 from botocore.exceptions import ClientError
 from math import ceil
@@ -174,6 +175,15 @@ def create_reviews():
                 break
 
     if app_index is not None:
+        sentiment_list = []
+        for i in range(random.randint(1, 3)):
+            sentiment_dict = {
+                'M': {
+                    'sentiment': {'S': random.choice(['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'])}
+                }
+            }
+            sentiment_list.append(sentiment_dict)
+        print(sentiment_list)
         review_item = {
                 'M': {
                 'id': {'S': review_json.get("review").get("id")},
@@ -181,7 +191,7 @@ def create_reviews():
                 'score': {'N': review_json.get("review").get("score")},
                 'date': {'S': review_json.get("review").get("date")},
                 'features': {'L': []},
-                'sentiments': {'L': []}
+                'sentiments': {'L': sentiment_list}
             }
         }
         print(f"review item {review_item}")
@@ -215,7 +225,7 @@ def create_reviews():
 
 
 @app.route(BASE_ROUTE, methods=['GET'])
-def list_reviews():
+def list_paginated_reviews():
     print("[GET]: All reviews from user")
     user_id = request.args.get('user_id')
     
@@ -268,6 +278,79 @@ def list_reviews():
         'reviews': review_data_list,
         'total_pages': total_pages
     })
+
+@app.route(BASE_ROUTE + '/detailed', methods=['GET'])
+def list_detailed_reviews():
+    print("[GET]: All detailed reviews from user")
+    user_id = request.args.get('user_id')
+    
+    items = get_user_items(user_id)
+    if not items:
+        return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
+
+    review_data_list = []
+
+    for item in items:
+        apps = item.get('apps', {}).get('L', [])
+        for app_item in apps:
+            reviews = app_item.get('M', {}).get('reviews', {}).get('L', [])
+            for review_item in reviews:
+                sentiment_list = []
+                for sentiment in review_item.get('M', {}).get('sentiments', {}).get('L', []):
+                    sentiment_list.append(sentiment.get('M').get('sentiment').get('S'))
+                print(review_item)
+                review_data = {
+                    'app_id': app_item.get('M', {}).get('id', {}).get('S', None),
+                    'app_name':  app_item.get('M', {}).get('app_name', {}).get('S', None),
+                    'id': review_item.get('M', {}).get('id', {}).get('S', None),
+                    'review': review_item.get('M', {}).get('review', {}).get('S', None),
+                    'date': review_item.get('M', {}).get('date', {}).get('S', None),
+                    'score': review_item.get('M', {}).get('score', {}).get('N', 0),
+                    'sentiments': sentiment_list
+                }
+                review_data_list.append(review_data)
+    print(review_data_list)
+    return jsonify({
+        'reviews': review_data_list,
+    })
+
+@app.route(BASE_ROUTE + '/detailed/app', methods=['GET'])
+def list_detailed_reviews_app():
+    print("[GET]: All detailed reviews of an app from user")
+    user_id = request.args.get('user_id')
+    app_id = request.args.get('app_id')
+
+    items = get_user_items(user_id)
+    if not items:
+        return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
+
+    review_data_list = []
+
+    for item in items:
+        apps = item.get('apps', {}).get('L', [])
+        for app_item in apps:
+            if app_id != app_item.get('M').get('id').get('S'):
+                reviews = app_item.get('M', {}).get('reviews', {}).get('L', [])
+                for review_item in reviews:
+                    sentiment_list = []
+                    for sentiment in review_item.get('M', {}).get('sentiments', {}).get('L', []):
+                        sentiment_list.append(sentiment.get('M').get('sentiment').get('S'))
+                    print(review_item)
+                    review_data = {
+                        'app_id': app_item.get('M', {}).get('id', {}).get('S', None),
+                        'app_name':  app_item.get('M', {}).get('app_name', {}).get('S', None),
+                        'id': review_item.get('M', {}).get('id', {}).get('S', None),
+                        'review': review_item.get('M', {}).get('review', {}).get('S', None),
+                        'date': review_item.get('M', {}).get('date', {}).get('S', None),
+                        'score': review_item.get('M', {}).get('score', {}).get('N', 0),
+                        'sentiments': sentiment_list
+                    }
+                    review_data_list.append(review_data)
+    print(review_data_list)
+    return jsonify({
+        'reviews': review_data_list,
+    })
+
 
 def handler(event, context):
     print('[Apps API]: Received Event')
