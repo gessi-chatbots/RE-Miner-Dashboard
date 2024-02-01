@@ -220,16 +220,12 @@ const CrossFeatureSentiments = () => {
         responsive: true,
         scales: {
             x: {
-                stacked: true,
-
                 title: {
                     display: true,
                     text: 'Dates',
                 },
             },
             y: {
-                stacked: true,
-
                 beginAtZero: true,
                 title: {
                     display: true,
