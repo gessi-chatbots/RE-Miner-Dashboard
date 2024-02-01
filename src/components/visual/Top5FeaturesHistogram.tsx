@@ -14,7 +14,7 @@ import { Container, Row } from 'react-bootstrap';
 // Register necessary components from chart.js
 ChartJS.register(LinearScale, Tooltip, Legend, Title);
 
-const VerticalBarChart = () => {
+const Top5FeaturesHistogram = () => {
     const [data, setData] = useState<ReviewDataDTO[] | null>(null);
     const [labels, setLabels] = useState<string[]>([]);
     const [colors, setColors] = useState<string[]>([]);
@@ -136,4 +136,4 @@ const VerticalBarChart = () => {
     );
 };
 
-export default VerticalBarChart;
+export default Top5FeaturesHistogram;

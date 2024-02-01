@@ -31,9 +31,6 @@ const DropdownMenuReviews: React.FC<{ closeDropdowns: CloseDropdownsFunction }> 
             <Dropdown.Item as={Link} to="/reviews" onClick={handleItemClick}>
                 <i className="mdi mdi-eye"/> View Reviews
             </Dropdown.Item>
-            <Dropdown.Item as={Link} to="/reviews/process" onClick={handleItemClick}>
-                <i className="mdi mdi-orbit-variant"/> Process Reviews
-            </Dropdown.Item>
         </Dropdown.Menu>
     );
 };
