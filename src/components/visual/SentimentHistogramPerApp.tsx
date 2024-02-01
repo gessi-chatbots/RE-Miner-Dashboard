@@ -11,7 +11,7 @@ import {
 } from 'chart.js';
 import ReviewService from '../../services/ReviewService';
 import { ReviewDataDTO } from '../../DTOs/ReviewDataDTO';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
 import { AppDataDTO } from '../../DTOs/AppDataDTO';
 import AppService from '../../services/AppService';
 
@@ -30,7 +30,7 @@ const generateColors = (sentiments: string[]) => {
     return sentiments.map((sentiment) => defaultColors[sentiment]);
 };
 
-const SentimentHistogram = () => {
+const SentimentHistogramPerApp = () => {
     const [data, setData] = useState<ReviewDataDTO[]>([]);
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
@@ -63,7 +63,7 @@ const SentimentHistogram = () => {
         if (selectedApp) {
             fetchReviewDataFromApp();
         }
-    }, [selectedApp]); // Trigger when selectedApp changes
+    }, [selectedApp]);
 
 
 
@@ -75,10 +75,8 @@ const SentimentHistogram = () => {
                 if (response !== null) {
                     const reviews = response.reviews;
                     const sentiments = extractSentimentsFromReviews(reviews);
-
-                    // Use callback form of state update functions
-                    setData(prevData => [...reviews]); // Using spread to create a new array
-                    setLabels(prevLabels => [...sentiments]); // Using spread to create a new array
+                    setData(prevData => [...reviews]);
+                    setLabels(prevLabels => [...sentiments]);
                 } else {
                     console.error('Response from fetch all reviews is null');
                 }
@@ -112,12 +110,29 @@ const SentimentHistogram = () => {
         return Array.from(new Set(allSentiments));
     };
 
+
+
+    const countSentimentsByDate = (reviews: ReviewDataDTO[]) => {
+        const dateSentimentCounts: Record<string, Record<string, number>> = {};
+
+        reviews.forEach((review) => {
+            const dateParts = review.date.split('/');
+            const reviewDate = new Date(`${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`).toDateString();
+            dateSentimentCounts[reviewDate] = dateSentimentCounts[reviewDate] || {};
+
+            (review.sentiments || []).forEach((sentiment: string) => {
+                dateSentimentCounts[reviewDate][sentiment] =
+                    (dateSentimentCounts[reviewDate][sentiment] || 0) + 1;
+            });
+        });
+
+        return dateSentimentCounts;
+    };
     const chartData = () => {
         const filteredReviews = filterData(data || []);
         const dateSentimentCounts = countSentimentsByDate(filteredReviews);
         let dates = Object.keys(dateSentimentCounts);
         dates = dates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
-
 
         const datasets = labels.map((sentiment) => {
             const dataPoints = dates.map((date) =>
@@ -137,24 +152,6 @@ const SentimentHistogram = () => {
             datasets: datasets,
         };
     };
-
-    const countSentimentsByDate = (reviews: ReviewDataDTO[]) => {
-        const dateSentimentCounts: Record<string, Record<string, number>> = {};
-
-        reviews.forEach((review) => {
-            const dateParts = review.date.split('/');
-            const reviewDate = new Date(`${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`).toDateString();
-            dateSentimentCounts[reviewDate] = dateSentimentCounts[reviewDate] || {};
-
-            (review.sentiments || []).forEach((sentiment: string) => {
-                dateSentimentCounts[reviewDate][sentiment] =
-                    (dateSentimentCounts[reviewDate][sentiment] || 0) + 1;
-            });
-        });
-
-        return dateSentimentCounts;
-    };
-
     const options = {
         responsive: true,
         scales: {
@@ -177,26 +174,10 @@ const SentimentHistogram = () => {
     };
 
     return (
-        <Container className="sentiment-histogram-container py-3">
-            <Row>
-                <label className="text-secondary mb-2">Sentiment Histogram</label>
-            </Row>
-            <Row>
-                <Col className="col-md-4">
-                    <label>Start Date: </label>
-                    <input
-                        type="date"
-                        value={startDate}
-                        onChange={(e) => setStartDate(e.target.value)}
-                    />
-                </Col>
-                <Col className="col-md-4">
-                    <label>End Date: </label>
-                    <input
-                        type="date"
-                        value={endDate}
-                        onChange={(e) => setEndDate(e.target.value)}
-                    />
+        <Container className="sentiment-histogram-container">
+            <Row className="mt-4">
+                <Col>
+                    <label className="text-secondary mb-2">Sentiment Histogram</label>
                 </Col>
                 <Col className="col-md-4 d-flex align-self-end justify-content-end">
                     <Button
@@ -207,11 +188,32 @@ const SentimentHistogram = () => {
                     </Button>
                 </Col>
             </Row>
-            <Row>
-                <Col className="col-md-4 mb-4">
-                    <label>App: </label>
+            <Row className="mb-2">
+                <Col md={6}>
+                    <label className="form-label">Start Date: </label>
+                    <input
+                        type="date"
+                        className="form-control"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                    />
+                </Col>
+                <Col md={6}>
+                    <label className="form-label">End Date: </label>
+                    <input
+                        type="date"
+                        className="form-control"
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                    />
+                </Col>
+            </Row>
+            <Row className="mb-2">
+                <Col md={6}>
+                    <label className="form-label">App: </label>
                     <select
                         value={selectedApp || ''}
+                        className="form-select"
                         onChange={(e) => {
                             const selectedAppId = e.target.value || null;
                             setSelectedApp(selectedAppId);
@@ -231,29 +233,29 @@ const SentimentHistogram = () => {
                     </select>
                 </Col>
             </Row>
-            <Row>
-                <Bar className="sentiment-histogram-chart" data={chartData()} options={options} />
-            </Row>
+            {selectedApp ? (
+                <Row>
+                    <Bar className="sentiment-histogram-chart" data={chartData()} options={options} />
+                </Row>
+            ) : (
+                <Row>
+                    <p className="text-secondary">Select an application</p>
+                </Row>
+            )}
+
 
             {isModalOpen && selectedApp && data ? (
-                <div className="modal-overlay">
-                    <div className="modal-content">
-                        <Row className="justify-content-end align-self-end">
-                            <Col>
-                                <Button
-                                    className="btn-danger close-button mb-2"
-                                    onClick={() => setIsModalOpen(false)}
-                                >
-                                    <i className="mdi mdi-close"/>
-                                </Button>
-                            </Col>
-                        </Row>
+                <Modal show={isModalOpen} onHide={() => setIsModalOpen(false)} size="lg" centered style={{ maxWidth: '95vw', maxHeight: '95vh' }}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Sentiment Histogram</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
                         <Bar className="sentiment-histogram-chart" data={chartData()} options={options} />
-                    </div>
-                </div>
+                    </Modal.Body>
+                </Modal>
             ) : null}
         </Container>
     );
 };
 
-export default SentimentHistogram;
+export default SentimentHistogramPerApp;

@@ -41,7 +41,7 @@ const generateColors = (sentiments: string[]) => {
 
 const SENTIMENT_OPTIONS = ['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'];
 
-const PolarAreaChart = () => {
+const AllSentimentsPolarAreaChart = () => {
     const [data, setData] = useState<number[]>([]);
     const [labels, setLabels] = useState(SENTIMENT_OPTIONS);
     const [colors, setColors] = useState(generateColors(SENTIMENT_OPTIONS));
@@ -119,4 +119,4 @@ const PolarAreaChart = () => {
     );
 };
 
-export default PolarAreaChart;
+export default AllSentimentsPolarAreaChart;
