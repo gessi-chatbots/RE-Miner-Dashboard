@@ -33,11 +33,52 @@ class ReviewService {
                 review: item.review,
                 score: item.score,
                 date: item.date,
+                sentiments: item.sentiments,
+                feature: item.features
             }));
 
             return {
                 reviews: reviews,
                 total_pages: jsonResponse.total_pages
+            };
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+        }
+    };
+
+    fetchReview = async (reviewId: string): Promise<{ review: ReviewDataDTO } | null> => {
+        const authService = new AuthService();
+        const userData = await authService.getUserData();
+        const id = userData?.sub || "";
+        try {
+            const restOperation = get({
+                apiName: this.API_NAME,
+                path: this.PATH_NAME + '/review' + '/' + reviewId,
+                options: {
+                    queryParams: {
+                        user_id: id
+                    }
+                }
+            });
+
+            const { body } = await restOperation.response;
+            const textResponse = await body.text();
+            const jsonResponse = JSON.parse(textResponse);
+            console.log(jsonResponse)
+            const reviewFromJson = jsonResponse.review;
+            const review: ReviewDataDTO = {
+                app_id: reviewFromJson.app_id,
+                app_name: reviewFromJson.app_name,
+                id: reviewFromJson.id,
+                review: reviewFromJson.review,
+                score: reviewFromJson.score,
+                date: reviewFromJson.date,
+                sentiments: reviewFromJson.sentiments,
+                features: reviewFromJson.features
+            };
+            return {
+                review: review
             };
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -84,7 +125,6 @@ class ReviewService {
             throw error;
         }
     };
-
     fetchAllReviewsDetailedFromApp = async (appId: string): Promise<{ reviews: ReviewDataDTO[]} | null> => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
@@ -122,9 +162,6 @@ class ReviewService {
             throw error;
         }
     };
-
-
-
     createReview = async (reviewData: any) => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
@@ -176,7 +213,6 @@ class ReviewService {
             throw error;
         }
     };
-
     updateReview = async (review: ReviewDataDTO) => {
         const authService = new AuthService();
         const userData = await authService.getUserData();

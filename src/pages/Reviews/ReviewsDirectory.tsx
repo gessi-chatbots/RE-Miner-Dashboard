@@ -25,6 +25,7 @@ const ReviewsDirectory: React.FC = () => {
     const [isWizardModalOpen, setWizardModalOpen] = useState<boolean>(false);
     const location = useLocation();
     const { state } = location;
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (state) {
@@ -199,8 +200,15 @@ const ReviewsDirectory: React.FC = () => {
         }
     };
 
-
-
+    const hasSentimentsOrFeatures = (review: ReviewDataDTO): boolean => {
+        return (
+            (review?.features?.length ?? 0) > 0 ||
+            (review?.sentiments?.length ?? 0) > 0
+        );
+    };
+    const analyzeReviewAction = (review: ReviewDataDTO) => {
+        navigate(`/reviews/${review.id}/analyze`);
+    };
 
     const truncateReview = (review: string) => {
         return review.length > 50 ? `${review.substring(0, 50)}...` : review;
@@ -256,6 +264,13 @@ const ReviewsDirectory: React.FC = () => {
                                         <td className="text-center">{review.score || 'N/A'}</td>
                                         <td className="text-center">{review.date || 'N/A'}</td>
                                         <td className="text-end" style={{ width: "150px" }}>
+                                            {hasSentimentsOrFeatures(review) && (
+                                                <OverlayTrigger overlay={<Tooltip id="analyze-tooltip">Analyze Review</Tooltip>}>
+                                                    <a href="javascript:void(0)" className="action-icon" onClick={() => analyzeReviewAction(review)}>
+                                                        <i className="mdi mdi-eye"></i>
+                                                    </a>
+                                                </OverlayTrigger>
+                                            )}
                                             <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Edit</Tooltip>}>
                                                 <a href="#" className="action-icon" onClick={() => openEditModal(review)}>
                                                     <i className="mdi mdi-pencil"></i>
