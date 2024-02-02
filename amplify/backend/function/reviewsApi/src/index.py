@@ -233,6 +233,53 @@ def create_reviews():
         return jsonify({"message": "Reviews' App not found"}), 404
 
 
+@app.route(BASE_ROUTE + '/review/<string:reviewId>', methods=['GET'])
+def get_user_review(reviewId):
+    print("[GET]: Review from user")
+    user_id = request.args.get('user_id')
+
+    items = get_user_items(user_id)
+    if not items:
+        return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
+    
+    review = None
+    review_found = False
+    for item in items:
+        apps = item.get('apps', {}).get('L', [])
+        for app_item in apps:
+            reviews = app_item.get('M', {}).get('reviews', {}).get('L', [])
+            for review_item in reviews:
+                if review_item.get('M', {}).get('id', {}).get('S') == reviewId:
+                    sentiment_list = []
+                    for sentiment in review_item.get('M', {}).get('sentiments', {}).get('L', []):
+                        sentiment_list.append(sentiment.get('M').get('sentiment').get('S'))
+                    
+                    feature_list = []
+                    for feature in review_item.get('M', {}).get('features', {}).get('L', []):
+                        feature_list.append(feature.get('M').get('feature').get('S'))
+                    review_data = {
+                        'app_id': app_item.get('M', {}).get('id', {}).get('S', None),
+                        'app_name':  app_item.get('M', {}).get('app_name', {}).get('S', None),
+                        'id': review_item.get('M', {}).get('id', {}).get('S', None),
+                        'review': review_item.get('M', {}).get('review', {}).get('S', None),
+                        'date': review_item.get('M', {}).get('date', {}).get('S', None),
+                        'score': review_item.get('M', {}).get('score', {}).get('N', 0),
+                        'sentiments': sentiment_list,
+                        'features': feature_list
+                    }
+                    review = review_data
+                    review_found = True
+                    break
+            if review_found:
+                break
+        if review_found:
+            break
+
+    return jsonify({
+        'review': review
+    })
+
+
 @app.route(BASE_ROUTE, methods=['GET'])
 def list_paginated_reviews():
     print("[GET]: All reviews from user")
@@ -257,7 +304,13 @@ def list_paginated_reviews():
                 if elements_to_skip > 0:
                     elements_to_skip -= 1
                     continue
-
+                sentiment_list = []
+                for sentiment in review_item.get('M', {}).get('sentiments', {}).get('L', []):
+                    sentiment_list.append(sentiment.get('M').get('sentiment').get('S'))
+                
+                feature_list = []
+                for feature in review_item.get('M', {}).get('features', {}).get('L', []):
+                    feature_list.append(feature.get('M').get('feature').get('S'))
                 review_data = {
                     'app_id': app_item.get('M', {}).get('id', {}).get('S', None),
                     'app_name':  app_item.get('M', {}).get('app_name', {}).get('S', None),
@@ -265,6 +318,8 @@ def list_paginated_reviews():
                     'review': review_item.get('M', {}).get('review', {}).get('S', None),
                     'date': review_item.get('M', {}).get('date', {}).get('S', None),
                     'score': review_item.get('M', {}).get('score', {}).get('N', 0),
+                    'sentiments': sentiment_list,
+                    'features': feature_list
                 }
                 review_data_list.append(review_data)
                 num_elements -= 1
