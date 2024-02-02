@@ -19,6 +19,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
+    "react-form-wizard-component": "^0.1.7",
     "react-hook-form": "^7.27.1",
     "react-i18next": "^11.15.6",
     "react-router-bootstrap": "^0.26.2",
