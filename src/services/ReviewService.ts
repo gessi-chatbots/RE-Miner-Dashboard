@@ -85,7 +85,6 @@ class ReviewService {
         }
     };
 
-
     fetchAllReviewsDetailedFromApp = async (appId: string): Promise<{ reviews: ReviewDataDTO[]} | null> => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
@@ -123,6 +122,8 @@ class ReviewService {
             throw error;
         }
     };
+
+
 
     createReview = async (reviewData: any) => {
         const authService = new AuthService();

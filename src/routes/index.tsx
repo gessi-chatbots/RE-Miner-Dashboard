@@ -7,6 +7,7 @@ import ReviewsDirectory from "../pages/Reviews/ReviewsDirectory";
 import AppsDirectory from "../pages/Apps/AppsDirectory";
 import UploadApps from "../pages/Apps/UploadApps";
 import Footer from "../components/footer/Footer";
+import ReviewProcessingWizard from "../pages/Reviews/ReviewProcessingWizard";
 import {Container} from "react-bootstrap";
 
 

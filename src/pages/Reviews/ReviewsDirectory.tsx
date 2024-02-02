@@ -3,8 +3,10 @@ import { Table, Button, Modal, Tooltip, OverlayTrigger, Row, Col } from 'react-b
 import ReviewService from "../../services/ReviewService";
 import { ReviewDataDTO } from "../../DTOs/ReviewDataDTO";
 import { toast } from "react-toastify";
+import {useLocation, useNavigate} from 'react-router-dom';
+import ReviewProcessingWizard from "./ReviewProcessingWizard";
 
-const defaultColumns = ['App Name', 'Review ID', 'Review', 'Score', 'Date', 'Actions'];
+const defaultColumns = ['Select', 'App Name', 'Review ID', 'Review', 'Score', 'Date', 'Actions'];
 
 const ReviewsDirectory: React.FC = () => {
     const [data, setData] = useState<ReviewDataDTO[] | null>(null);
@@ -19,10 +21,32 @@ const ReviewsDirectory: React.FC = () => {
     const [score, setScore] = useState<number>(0);
     const [isScoreValid, setIsScoreValid] = useState(true);
     const [isUpdateButtonClicked, setIsUpdateButtonClicked] = useState(false);
+    const [selectedReviews, setSelectedReviews] = useState<string[]>([]);
+    const [isWizardModalOpen, setWizardModalOpen] = useState<boolean>(false);
+    const location = useLocation();
+    const { state } = location;
 
+    useEffect(() => {
+        if (state) {
+            const { reviewsData, selectedReviews } = state;
+            setData(reviewsData);
+            setSelectedReviews(selectedReviews);
+        }
+    }, [state]);
     const openEditModal = (review: ReviewDataDTO) => {
         setSelectedReview(review);
         setEditModalIsOpen(true);
+    };
+
+    const handleCheckboxChange = (reviewId: string) => {
+        const updatedSelectedReviews = [...selectedReviews];
+        if (updatedSelectedReviews.includes(reviewId)) {
+            updatedSelectedReviews.splice(updatedSelectedReviews.indexOf(reviewId), 1);
+        } else {
+            updatedSelectedReviews.push(reviewId);
+        }
+
+        setSelectedReviews(updatedSelectedReviews);
     };
 
     const openDeleteModal = (review: ReviewDataDTO) => {
@@ -175,6 +199,9 @@ const ReviewsDirectory: React.FC = () => {
         }
     };
 
+
+
+
     const truncateReview = (review: string) => {
         return review.length > 50 ? `${review.substring(0, 50)}...` : review;
     };
@@ -200,38 +227,48 @@ const ReviewsDirectory: React.FC = () => {
                     <>
                         <Table className="table table-bordered table-centered table-striped table-hover mt-4">
                             <thead>
-                            <tr>
-                                {defaultColumns.map(column => (
-                                    <th className="text-center" key={column}>{column}</th>
-                                ))}
-                            </tr>
+                                <tr>
+                                    <th className="text-center">
+                                        Select
+                                    </th>
+                                    {defaultColumns.slice(1).map(column => (
+                                        <th className="text-center" key={column}>{column}</th>
+                                    ))}
+                                </tr>
                             </thead>
                             <tbody>
-                            {data && data.map(review => (
-                                <tr key={review.id}>
-                                    <td className="text-center">{review.app_name || 'N/A'}</td>
-                                    <td className="text-center">{review.id || 'N/A'}</td>
-                                    <td className="text-center">{truncateReview(review.review) || 'N/A'}
-                                        <br/>
-                                        {review.review && review.review.length > 50 &&
-                                            <Button variant="link" onClick={() => openEditModal(review)}>Read More</Button>}
-                                    </td>
-                                    <td className="text-center">{review.score || 'N/A'}</td>
-                                    <td className="text-center">{review.date || 'N/A'}</td>
-                                    <td className="text-end" style={{ width: "150px" }}>
-                                        <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Edit</Tooltip>}>
-                                            <a href="#" className="action-icon" onClick={() => openEditModal(review)}>
-                                                <i className="mdi mdi-pencil"></i>
-                                            </a>
-                                        </OverlayTrigger>
-                                        <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
-                                            <a href="#" className="action-icon" onClick={() => openDeleteModal(review)}>
-                                                <i className="mdi mdi-delete"></i>
-                                            </a>
-                                        </OverlayTrigger>
-                                    </td>
-                                </tr>
-                            ))}
+                                {data && data.map(review => (
+                                    <tr key={review.id}>
+                                        <td className="text-center">
+                                            <input
+                                                type="checkbox"
+                                                checked={selectedReviews.includes(review.id)}
+                                                onChange={() => handleCheckboxChange(review.id)}
+                                            />
+                                        </td>
+                                        <td className="text-center">{review.app_name || 'N/A'}</td>
+                                        <td className="text-center">{review.id || 'N/A'}</td>
+                                        <td className="text-center">{truncateReview(review.review) || 'N/A'}
+                                            <br/>
+                                            {review.review && review.review.length > 50 &&
+                                                <Button variant="link" onClick={() => openEditModal(review)}>Read More</Button>}
+                                        </td>
+                                        <td className="text-center">{review.score || 'N/A'}</td>
+                                        <td className="text-center">{review.date || 'N/A'}</td>
+                                        <td className="text-end" style={{ width: "150px" }}>
+                                            <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Edit</Tooltip>}>
+                                                <a href="#" className="action-icon" onClick={() => openEditModal(review)}>
+                                                    <i className="mdi mdi-pencil"></i>
+                                                </a>
+                                            </OverlayTrigger>
+                                            <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
+                                                <a href="#" className="action-icon" onClick={() => openDeleteModal(review)}>
+                                                    <i className="mdi mdi-delete"></i>
+                                                </a>
+                                            </OverlayTrigger>
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </Table>
                         {totalPages > 1 && (
@@ -288,6 +325,13 @@ const ReviewsDirectory: React.FC = () => {
                                         </li>
                                     </ul>
                                 </nav>
+                            </div>
+                        )}
+                        {selectedReviews.length > 0 && (
+                            <div className="d-flex justify-content-end mt-2">
+                                <Button variant="primary" onClick={() => setWizardModalOpen(true)}>
+                                    Process Reviews
+                                </Button>
                             </div>
                         )}
                     </>
@@ -375,7 +419,21 @@ const ReviewsDirectory: React.FC = () => {
                     <Button variant="danger" onClick={() => deleteReview(selectedReview?.app_id, selectedReview?.id)}>Delete</Button>
                 </Modal.Footer>
             </Modal>
+
+            {isWizardModalOpen && (
+                <ReviewProcessingWizard
+                    reviewsData={data || []}
+                    selectedReviews={selectedReviews}
+                    onHide={() => setWizardModalOpen(false)}
+                    onDiscardReview={(reviewId) => {
+                        const updatedSelectedReviews = selectedReviews.filter(id => id !== reviewId);
+                        setSelectedReviews(updatedSelectedReviews);
+                    }}
+                />
+            )}
+
         </div>
+
     );
 };
 
