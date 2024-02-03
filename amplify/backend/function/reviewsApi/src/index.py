@@ -179,7 +179,8 @@ def create_reviews():
         for i in range(random.randint(1, 3)):
             sentiment_dict = {
                 'M': {
-                    'sentiment': {'S': random.choice(['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'])}
+                    'sentiment': {'S': random.choice(['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'])},
+                    'sentence': {'S': ""}
                 }
             }
             sentiment_list.append(sentiment_dict)
@@ -252,7 +253,11 @@ def get_user_review(reviewId):
                 if review_item.get('M', {}).get('id', {}).get('S') == reviewId:
                     sentiment_list = []
                     for sentiment in review_item.get('M', {}).get('sentiments', {}).get('L', []):
-                        sentiment_list.append(sentiment.get('M').get('sentiment').get('S'))
+                        sentiment_data = {
+                            'sentiment': sentiment.get('M').get('sentiment').get('S'),
+                            'sentence': sentiment.get('M').get('sentence').get('S')
+                        }
+                        sentiment_list.append(sentiment_data)
                     
                     feature_list = []
                     for feature in review_item.get('M', {}).get('features', {}).get('L', []):
@@ -278,7 +283,6 @@ def get_user_review(reviewId):
     return jsonify({
         'review': review
     })
-
 
 @app.route(BASE_ROUTE, methods=['GET'])
 def list_paginated_reviews():
@@ -306,7 +310,11 @@ def list_paginated_reviews():
                     continue
                 sentiment_list = []
                 for sentiment in review_item.get('M', {}).get('sentiments', {}).get('L', []):
-                    sentiment_list.append(sentiment.get('M').get('sentiment').get('S'))
+                    sentiment_data = {
+                        'sentiment': sentiment.get('M').get('sentiment').get('S'),
+                        'sentence': sentiment.get('M').get('sentence').get('S')
+                    }
+                    sentiment_list.append(sentiment_data)
                 
                 feature_list = []
                 for feature in review_item.get('M', {}).get('features', {}).get('L', []):
@@ -360,8 +368,11 @@ def list_detailed_reviews():
             for review_item in reviews:
                 sentiment_list = []
                 for sentiment in review_item.get('M', {}).get('sentiments', {}).get('L', []):
-                    sentiment_list.append(sentiment.get('M').get('sentiment').get('S'))
-                
+                    sentiment_data = {
+                        'sentiment': sentiment.get('M').get('sentiment').get('S'),
+                        'sentence': sentiment.get('M').get('sentence').get('S')
+                    }
+                    sentiment_list.append(sentiment_data)
                 feature_list = []
                 for feature in review_item.get('M', {}).get('features', {}).get('L', []):
                     feature_list.append(feature.get('M').get('feature').get('S'))
@@ -401,8 +412,11 @@ def list_detailed_reviews_app():
                 for review_item in reviews:
                     sentiment_list = []
                     for sentiment in review_item.get('M', {}).get('sentiments', {}).get('L', []):
-                        sentiment_list.append(sentiment.get('M').get('sentiment').get('S'))
-                    
+                        sentiment_data = {
+                            'sentiment': sentiment.get('M').get('sentiment').get('S'),
+                            'sentence': sentiment.get('M').get('sentence').get('S')
+                        }
+                        sentiment_list.append(sentiment_data)
                     feature_list = []
                     for feature in review_item.get('M', {}).get('features', {}).get('L', []):
                         feature_list.append(feature.get('M').get('feature').get('S'))

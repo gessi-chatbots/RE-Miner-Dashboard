@@ -14,8 +14,8 @@ import { ReviewDataDTO } from '../../DTOs/ReviewDataDTO';
 import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
 import { AppDataDTO } from '../../DTOs/AppDataDTO';
 import AppService from '../../services/AppService';
+import {SentimentDataDTO} from "../../DTOs/SentimentDataDTO";
 
-// Register necessary components from chart.js
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, Title);
 const SENTIMENT_OPTIONS = ['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'];
 const generateColors = (sentiments: string[]) => {
@@ -104,11 +104,12 @@ const SentimentHistogramPerApp = () => {
 
     const extractSentimentsFromReviews = (reviews: ReviewDataDTO[]) => {
         const allSentiments = reviews.reduce(
-            (sentiments, review) => sentiments.concat(review.sentiments || []),
+            (sentiments, review) => sentiments.concat((review.sentiments || []).map(sentimentObj => sentimentObj.sentiment)),
             [] as string[]
         );
         return Array.from(new Set(allSentiments));
     };
+
 
 
 
@@ -120,9 +121,9 @@ const SentimentHistogramPerApp = () => {
             const reviewDate = new Date(`${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`).toDateString();
             dateSentimentCounts[reviewDate] = dateSentimentCounts[reviewDate] || {};
 
-            (review.sentiments || []).forEach((sentiment: string) => {
-                dateSentimentCounts[reviewDate][sentiment] =
-                    (dateSentimentCounts[reviewDate][sentiment] || 0) + 1;
+            (review.sentiments || []).forEach((sentiment: SentimentDataDTO) => {
+                dateSentimentCounts[reviewDate][sentiment.sentiment] =
+                    (dateSentimentCounts[reviewDate][sentiment.sentiment] || 0) + 1;
             });
         });
 

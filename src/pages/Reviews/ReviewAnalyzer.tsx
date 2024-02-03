@@ -57,8 +57,10 @@ const ReviewAnalyzer = () => {
         }
 
         const sentimentCounts: { [key: string]: number } = {};
+
         data?.sentiments?.forEach((sentiment) => {
-            sentimentCounts[sentiment] = (sentimentCounts[sentiment] || 0) + 1;
+            const sentimentKey = sentiment.sentiment;
+            sentimentCounts[sentimentKey] = (sentimentCounts[sentimentKey] || 0) + 1;
         });
 
         const chartLabels = Object.keys(sentimentCounts);
