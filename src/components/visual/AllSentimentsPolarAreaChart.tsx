@@ -69,15 +69,15 @@ const AllSentimentsPolarAreaChart = () => {
 
     const extractSentimentsFromReviews = (reviews: ReviewDataDTO[]) => {
         const allSentiments = reviews.reduce(
-            (sentiments, review) => sentiments.concat(review.sentiments || []),
+            (sentiments, review) => sentiments.concat((review.sentiments || []).map(sentimentObj => sentimentObj.sentiment)),
             [] as string[]
         );
         return Array.from(new Set(allSentiments));
     };
-
     const countSentiments = (reviews: ReviewDataDTO[], sentiments: string[]) => {
         return sentiments.map((sentiment) =>
-            reviews.reduce((count, review) => count + (review.sentiments?.includes(sentiment) ? 1 : 0), 0)
+            reviews.reduce((count, review) =>
+                count + (review.sentiments?.some(sentimentObj => sentimentObj.sentiment === sentiment) ? 1 : 0), 0)
         );
     };
 

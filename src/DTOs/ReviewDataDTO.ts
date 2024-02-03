@@ -1,3 +1,5 @@
+import {SentimentDataDTO} from "./SentimentDataDTO";
+
 export interface ReviewDataDTO {
     app_name: string;
     app_id: string;
@@ -6,5 +8,5 @@ export interface ReviewDataDTO {
     score: number;
     date: string;
     features: string[] | null;
-    sentiments: string[] | null;
+    sentiments: SentimentDataDTO[] | null;
 }

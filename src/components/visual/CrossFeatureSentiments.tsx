@@ -17,6 +17,7 @@ import AppService from '../../services/AppService';
 import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
 import { ReviewDataDTO } from '../../DTOs/ReviewDataDTO';
 import { AppDataDTO } from '../../DTOs/AppDataDTO';
+import {SentimentDataDTO} from "../../DTOs/SentimentDataDTO";
 
 ChartJS.register(
     LinearScale,
@@ -122,7 +123,7 @@ const CrossFeatureSentiments = () => {
 
     const extractSentimentsFromReviews = (reviews: ReviewDataDTO[]) => {
         const allSentiments = reviews.reduce(
-            (sentiments, review) => sentiments.concat(review.sentiments || []),
+            (sentiments, review) => sentiments.concat((review.sentiments || []).map(sentimentObj => sentimentObj.sentiment)),
             [] as string[]
         );
         return Array.from(new Set(allSentiments));
@@ -163,9 +164,9 @@ const CrossFeatureSentiments = () => {
             const reviewDate = new Date(`${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`).toDateString();
             dateSentimentCounts[reviewDate] = dateSentimentCounts[reviewDate] || {};
 
-            (review.sentiments || []).forEach((sentiment: string) => {
-                dateSentimentCounts[reviewDate][sentiment] =
-                    (dateSentimentCounts[reviewDate][sentiment] || 0) + 1;
+            (review.sentiments || []).forEach((sentiment: SentimentDataDTO) => {
+                dateSentimentCounts[reviewDate][sentiment.sentiment] =
+                    (dateSentimentCounts[reviewDate][sentiment.sentiment] || 0) + 1;
             });
         });
 
