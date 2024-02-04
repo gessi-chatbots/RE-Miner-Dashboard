@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReviewService from "../../services/ReviewService";
 import { ReviewDataDTO } from "../../DTOs/ReviewDataDTO";
 import { useParams } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
 
 const SENTIMENT_OPTIONS = ['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'];
@@ -24,6 +24,7 @@ const ReviewAnalyzer = () => {
     const { reviewId } = useParams();
     const [labels, setLabels] = useState(SENTIMENT_OPTIONS);
     const [colors, setColors] = useState(generateColors(SENTIMENT_OPTIONS));
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     useEffect(() => {
         const fetchReviewFromApi = async () => {
@@ -64,12 +65,12 @@ const ReviewAnalyzer = () => {
         });
 
         const chartLabels = Object.keys(sentimentCounts);
-        const chartDataValues = Object.values(sentimentCounts);
+        const chartDataValues = chartLabels.map((sentiment) => sentimentCounts[sentiment]);
 
         const dataset = {
-            label: 'Sentiment Count',
+            label: 'Sentiment',
             data: chartDataValues,
-            backgroundColor: colors,
+            backgroundColor: chartLabels.map((sentiment) => colors[SENTIMENT_OPTIONS.indexOf(sentiment)]),
         };
 
         return {
@@ -91,6 +92,44 @@ const ReviewAnalyzer = () => {
 
         return <p dangerouslySetInnerHTML={{ __html: markedReview }} />;
     };
+
+    const markSentimentsInReview = () => {
+
+        if (!data || !data.sentiments || data.sentiments.length === 0 || !data.features || data.features.length === 0) {
+            return <p>{data?.review}</p>;
+        }
+
+        const markedReview = data.sentiments.map((sentiment, index) => {
+            const color = colors[SENTIMENT_OPTIONS.indexOf(sentiment.sentiment)];
+
+            return (
+                <OverlayTrigger
+                    key={index}
+                    placement="right"
+                    overlay={
+                        <Tooltip id={`tooltip-right`}>
+                            {`${sentiment.sentiment}`}
+                        </Tooltip>
+                    }
+                >
+                    <span
+                        style={{ backgroundColor: hoveredIndex === index ? color : "transparent" }}
+                        onMouseEnter={() => setHoveredIndex(index)}
+                        onMouseLeave={() => setHoveredIndex(null)}
+                    >
+                        {`${sentiment.sentence} `}
+                    </span>
+                </OverlayTrigger>
+            );
+        });
+
+        return <p>{markedReview}</p>;
+    };
+
+
+
+
+
 
     const options = {
         responsive: true,
@@ -128,6 +167,10 @@ const ReviewAnalyzer = () => {
                             </Row>
                             <Row>
                                 <h2> Review Content: </h2>
+                                {markSentimentsInReview()}
+                            </Row>
+                            <Row>
+                                <h2> Review Marked Features: </h2>
                                 {markFeaturesInReview()}
                             </Row>
                         </div>

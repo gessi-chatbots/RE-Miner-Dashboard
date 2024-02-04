@@ -17,6 +17,16 @@ client = boto3.client("dynamodb")
 TABLE = "users-dev"
 
 
+def split_sentences(text):
+    punctuation_marks = ['.', '!', '?']
+    sentences = [sentence.strip() for sentence in text.split('.') if sentence]
+    
+    for mark in punctuation_marks[1:]:
+        sentences = [sent.strip() + mark if sent.endswith(mark) else sent for sent in sentences]
+
+    return sentences
+
+
 def get_user_items(user_id): 
     response = client.query(
         TableName=TABLE,
@@ -72,10 +82,7 @@ def update_app():
         )
         return jsonify({"message": "App updated successfully"}), 200
     else:
-        return jsonify({"message": "App not found"}), 404
-
-
-  
+        return jsonify({"message": "App not found"}), 404 
     
 @app.route(BASE_ROUTE, methods=['POST'])
 def create_apps():
@@ -95,13 +102,16 @@ def create_apps():
         reviews_list = []
         for review in app_reviews:
             sentiment_list = []
-            for i in range(random.randint(1, 3)):
-                sentiment_dict = {
-                    'M': {
-                        'sentiment': {'S': random.choice(['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'])},
-                        'sentence': {'S': "a"}
+            review_text = review.get("review")
+            sentences = split_sentences(review_text)
+            for sentence in sentences:
+                if sentence:
+                    sentiment_dict = {
+                        'M': {
+                            'sentiment': {'S': random.choice(['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'])},
+                            'sentence': {'S': sentence.strip()}
+                        }
                     }
-                }
                 sentiment_list.append(sentiment_dict)
 
             feature_list = []
@@ -259,7 +269,6 @@ def delete_app():
 def handler(event, context):
     print('[Apps API]: Received Event')
     print(event)
-
     flask_response = awsgi.response(app, event, context)
 
     flask_response['headers'] = {
