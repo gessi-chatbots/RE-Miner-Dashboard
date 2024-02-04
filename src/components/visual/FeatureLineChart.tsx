@@ -185,15 +185,20 @@ const FeatureLineChart = () => {
         }
     };
 
+
     const handleAddButtonClick = () => {
         if (selectedFeature) {
-            const updatedSelectedFeatures = [...selectedFeatures, selectedFeature];
-            setSelectedFeatures(updatedSelectedFeatures);
-            setSelectedFeatures(updatedSelectedFeatures);
+            if (!selectedFeatures.includes(selectedFeature)) {
+                const updatedSelectedFeatures = [...selectedFeatures, selectedFeature];
+                setSelectedFeatures(updatedSelectedFeatures);
+                setSelectedFeature('');
+            } else {
+                console.error('Feature already added.');
+            }
         } else {
             console.error('Please select a feature before adding to the chart.');
         }
-    };
+    }
 
     return (
         <Container className="sentiment-histogram-container">
@@ -240,7 +245,7 @@ const FeatureLineChart = () => {
                             const selectedAppId = e.target.value || null;
                             setSelectedApp(selectedAppId);
                             if (selectedAppId) {
-                                setSelectedFeatures([]); // Reset selected features when changing the app
+                                setSelectedFeatures([]);
                                 fetchReviewDataFromApp();
                             }
                         }}

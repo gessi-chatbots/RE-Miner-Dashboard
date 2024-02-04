@@ -85,6 +85,10 @@ const CrossFeatureSentiments = () => {
         }
     }, [selectedApp]);
 
+    useEffect(() => {
+        updateChartData();
+    }, [selectedFeatures, selectedFeature, data, startDate, endDate]);
+
     const getRandomColor = () => {
         const letters = '0123456789ABCDEF';
         let color = '#';
@@ -156,7 +160,7 @@ const CrossFeatureSentiments = () => {
         return featureCount;
     };
 
-    const countSentimentsByDate = (reviews: ReviewDataDTO[]) => {
+    const countSentimentsByDate = (reviews: ReviewDataDTO[], selectedFeatures: string[]) => {
         const dateSentimentCounts: Record<string, Record<string, number>> = {};
 
         reviews.forEach((review) => {
@@ -164,10 +168,12 @@ const CrossFeatureSentiments = () => {
             const reviewDate = new Date(`${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`).toDateString();
             dateSentimentCounts[reviewDate] = dateSentimentCounts[reviewDate] || {};
 
-            (review.sentiments || []).forEach((sentiment: SentimentDataDTO) => {
-                dateSentimentCounts[reviewDate][sentiment.sentiment] =
-                    (dateSentimentCounts[reviewDate][sentiment.sentiment] || 0) + 1;
-            });
+            if (selectedFeatures.length === 0 || selectedFeatures.some(feature => (review.features || []).includes(feature))) {
+                (review.sentiments || []).forEach((sentiment: SentimentDataDTO) => {
+                    dateSentimentCounts[reviewDate][sentiment.sentiment] =
+                        (dateSentimentCounts[reviewDate][sentiment.sentiment] || 0) + 1;
+                });
+            }
         });
 
         return dateSentimentCounts;
@@ -176,7 +182,7 @@ const CrossFeatureSentiments = () => {
     const updateChartData = () => {
         if (selectedApp && data && selectedFeatures.length > 0) {
             const featureDateCounts = countFeatureOccurrencesByDate(data);
-            const sentimentDateCounts = countSentimentsByDate(data);
+            const sentimentDateCounts = countSentimentsByDate(data, selectedFeatures);
             let dates = Object.keys(featureDateCounts);
             dates = dates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
             dates = dates.filter((date) => {
@@ -195,7 +201,7 @@ const CrossFeatureSentiments = () => {
                     label: feature,
                     borderColor: featureColors[index],
                     fill: false,
-                }
+                };
             });
 
             const sentimentDatasets = labels.map((sentiment, index) => {
@@ -206,17 +212,17 @@ const CrossFeatureSentiments = () => {
                     borderWidth: 1,
                     label: sentiment,
                     backgroundColor: sentimentColors[index],
-                }
+                };
             });
+
             const chartData = {
                 labels: dates,
                 datasets: [...featureDatasets, ...sentimentDatasets],
             };
-            return chartData
+            return chartData;
         }
         return null;
     };
-
     const options = {
         responsive: true,
         scales: {
@@ -242,6 +248,20 @@ const CrossFeatureSentiments = () => {
             return <Chart type='bar' data={chartData} options={options}/>;
         } else {
             return <p>Select an app and at least one feature.</p>;
+        }
+    };
+
+    const addFeature = () => {
+        if (selectedFeature) {
+            if (!selectedFeatures.includes(selectedFeature)) {
+                const updatedSelectedFeatures = [...selectedFeatures, selectedFeature];
+                setSelectedFeatures(updatedSelectedFeatures);
+                setSelectedFeature('');
+            } else {
+                console.error('Feature already added.');
+            }
+        } else {
+            console.error('Please select a feature before adding to the chart.');
         }
     };
 
@@ -290,7 +310,7 @@ const CrossFeatureSentiments = () => {
                             const selectedAppId = e.target.value || null;
                             setSelectedApp(selectedAppId);
                             if (selectedAppId) {
-                                setSelectedFeatures([]); // Reset selected features when changing the app
+                                setSelectedFeatures([]);
                                 fetchReviewDataFromApp();
                             }
                         }}
@@ -328,15 +348,7 @@ const CrossFeatureSentiments = () => {
                 <Col md={2} className="d-flex align-items-end">
                     <Button
                         className="btn-secondary btn-sm btn-square"
-                        onClick={() => {
-                            if (selectedFeature) {
-                                const updatedSelectedFeatures = [...selectedFeatures, selectedFeature];
-                                setSelectedFeatures(updatedSelectedFeatures);
-                                setSelectedFeature('');
-                            } else {
-                                console.error('Please select a feature before adding to the chart.');
-                            }
-                        }}
+                        onClick={addFeature}
                     >
                         <i className="mdi mdi-plus" />
                     </Button>

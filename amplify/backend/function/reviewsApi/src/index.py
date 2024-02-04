@@ -16,6 +16,14 @@ BASE_ROUTE = "/reviews"
 client = boto3.client("dynamodb")
 TABLE = "users-dev"
 
+def split_sentences(text):
+    punctuation_marks = ['.', '!', '?']
+    sentences = [sentence.strip() for sentence in text.split('.') if sentence]
+    
+    for mark in punctuation_marks[1:]:
+        sentences = [sent.strip() + mark if sent.endswith(mark) else sent for sent in sentences]
+
+    return sentences
 
 def get_user_items(user_id): 
     response = client.query(
@@ -153,7 +161,7 @@ def create_reviews():
         review_json = json.loads(request.get_json())
     except json.JSONDecodeError as e:
         return jsonify({"error": "Malformed JSON in the request body"}), 400
-    print(review_json)
+
     user_id = request.args.get("user_id")
     if user_id is None:
         return jsonify({"error": "user_id is required in the request"}), 400
@@ -176,14 +184,18 @@ def create_reviews():
 
     if app_index is not None:
         sentiment_list = []
-        for i in range(random.randint(1, 3)):
-            sentiment_dict = {
-                'M': {
-                    'sentiment': {'S': random.choice(['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'])},
-                    'sentence': {'S': ""}
+        review_text = review_json.get("review").get("review")
+        sentences = split_sentences(review_text)        
+        for sentence in sentences:
+            if sentence:
+                sentiment_dict = {
+                    'M': {
+                        'sentiment': {'S': random.choice(['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'])},
+                        'sentence': {'S': sentence.strip()}
+                    }
                 }
-            }
             sentiment_list.append(sentiment_dict)
+
 
         feature_list = []
         features = ['Feature1', 'Feature2', 'Feature3', 'Feature4', 'Feature5', 'Feature6', 'Feature7', 'Feature8', 'Feature9', 'Feature10', 'Feature11', 'Feature12', 'Feature13', 'Feature14', 'Feature15']
@@ -232,7 +244,6 @@ def create_reviews():
         return jsonify({"message": "Reviews/s created successfully"}), 200
     else: 
         return jsonify({"message": "Reviews' App not found"}), 404
-
 
 @app.route(BASE_ROUTE + '/review/<string:reviewId>', methods=['GET'])
 def get_user_review(reviewId):
@@ -441,7 +452,6 @@ def list_detailed_reviews_app():
 def handler(event, context):
     print('[Apps API]: Received Event')
     print(event)
-
     flask_response = awsgi.response(app, event, context)
 
     flask_response['headers'] = {
