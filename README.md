@@ -23,11 +23,10 @@ The RE-Miner Dashboard [RE-Miner Dashboard](https://uat.reminer-app) (still in d
 ### User cases
 
 The user engagement follows a structured workflow. Upon user creation, access permissions to the application and associated APIs are granted. Once an user is authenticated, the dashboard provides two primary user cases:
-
-| User Case                  | Description                                                                                     |
-| -------------------------- | ----------------------------------------------------------------------------------------------- |
-| Single Review Analysis     | Users can select an application review and extract its features and/or emotions using some of the RE-Miner integrated NLP Models.                |
-| Batch Review Analysis and Visual Analytics | Users can select multiple application reviews, extract features and/or emotions using RE-Miner integrated NLP Models, and analyze key statistical charts via the Dashboard. |
+| User Case                  | Description                                                                                     | Image |
+| -------------------------- | ----------------------------------------------------------------------------------------------- | ----- |
+| Single Review Analysis     | Users can select an application review and extract its features and/or emotions using some of the RE-Miner integrated NLP Models.                | ![reviewAnalysis](https://github.com/gessi-chatbots/RE-Miner-Dashboard/assets/55029168/6276bd65-57f4-41c4-b460-07ed9526c118.png) |
+| Batch Review Analysis and Visual Analytics | Users can select multiple application reviews, extract features and/or emotions using RE-Miner integrated NLP Models, and analyze key statistical charts via the Dashboard. | ![Dashboard](https://github.com/gessi-chatbots/RE-Miner-Dashboard/assets/55029168/dd505437-d8c9-4c89-a000-504873558d60.png)  |
 
 ## Technologies
 | Technology                 | Description                               |
