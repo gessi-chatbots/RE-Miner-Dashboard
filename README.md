@@ -1,5 +1,5 @@
 # RE-Miner Dashboard
-The RE-Miner dashboard is a key software component within the RE-Miner Ecosystem (see figure below). 
+The RE-Miner dashboard is a key software component within the RE-Miner Ecosystem (see figure below).
 
 ![RE-Miner ecosystem](https://github.com/gessi-chatbots/RE-Miner-Dashboard/assets/55029168/5feeead6-9429-48bc-99e5-1c642f51eaaa)
 
@@ -7,18 +7,29 @@ Its development was inspired by the [REFSQ 2024](https://2024.refsq.org/) confer
 
 ## Description
 
-The [RE-Miner Dashboard](uat.reminer-app) (still in development), it is a software component primarily designed as a visualization analytical software component. 
+The [RE-Miner Dashboard](https://uat.reminer-app) (still in development) is a software component primarily designed as a visualization and analytical tool.
 
-The Dashboard encompassses several key components:
+The Dashboard encompasses several key components:
 
 1. React Front-end application
 2. Authorization & Authentication system
 3. API Gateway
 4. Backend:
-  - Applications API
-  - Reviews API
-  - User creation module
+    1. Applications API
+    2. Reviews API
+    3. User creation module
 5. NoSQL document-based database
+
+### User Workflow
+Upon user creation, access permissions to the application and associated APIs are granted.
+Once logged in, the application distinguishes two main user cases:
+
+ User Case        | Description                                        |
+|------------------|----------------------------------------------------|
+| Single Review Analysis    |  |
+| Batch Review Analysis and visual analytics     |  |
+
+
 
 ## Technologies
 
