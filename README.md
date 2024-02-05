@@ -1,79 +1,106 @@
 # RE-Miner Dashboard
-The RE-Miner dashboard is a key software component within the RE-Miner Ecosystem (see figure below).
 
-![RE-Miner ecosystem](https://github.com/gessi-chatbots/RE-Miner-Dashboard/assets/55029168/5feeead6-9429-48bc-99e5-1c642f51eaaa)
+The RE-Miner Dashboard stands as a pivotal software element within the broader RE-Miner Ecosystem, as illustrated in the accompanying figure.
 
-Its development was inspired by the [REFSQ 2024](https://2024.refsq.org/) conference.
+![RE-Miner-Ecosystem](https://github.com/gessi-chatbots/RE-Miner-Dashboard/assets/55029168/08cfdc74-1154-4ea0-a2de-2cab3786845d)
+
+
+Its conceptualization drew inspiration from the esteemed [REFSQ 2024](https://2024.refsq.org/) conference.
 
 ## Description
 
-The [RE-Miner Dashboard](https://uat.reminer-app) (still in development) is a software component primarily designed as a visualization and analytical tool.
+The ongoing development of the [RE-Miner Dashboard](https://uat.reminer-app) signifies a crucial advancement in the realm of requirements engineering. Positioned as an analytical and visualization tool, this software component comprises several integral facets:
 
-The Dashboard encompasses several key components:
+1. **React Front-end Application**
+2. **Authorization & Authentication System**
+3. **API Gateway**
+4. **Backend:**
+    - Applications API
+    - Reviews API
+    - User creation module
+5. **NoSQL Document-Based Database**
 
-1. React Front-end application
-2. Authorization & Authentication system
-3. API Gateway
-4. Backend:
-    1. Applications API
-    2. Reviews API
-    3. User creation module
-5. NoSQL document-based database
+### User cases
 
-### User Workflow
-Upon user creation, access permissions to the application and associated APIs are granted.
-Once logged in, the application distinguishes two main user cases:
+The user engagement follows a structured workflow. Upon user creation, access permissions to the application and associated APIs are granted. Once an user is authenticated, the dashboard provides two primary user cases:
 
- User Case        | Description                                        |
-|------------------|----------------------------------------------------|
-| Single Review Analysis    |  |
-| Batch Review Analysis and visual analytics     |  |
-
-
+| User Case                  | Description                                                                                     |
+| -------------------------- | ----------------------------------------------------------------------------------------------- |
+| Single Review Analysis     | Users can select an application review and extract its features and/or emotions using some of the RE-Miner integrated NLP Models.                |
+| Batch Review Analysis and Visual Analytics | Users can select multiple application reviews, extract features and/or emotions using RE-Miner integrated NLP Models, and analyze key statistical charts via the Dashboard. |
 
 ## Technologies
+- React: Frontend application
+- Amazon Cognito: Authentication and Authorization
+- AWS API Gateway: API Management
+- AWS Lambda: Serverless API Coding
+- DynamoDB: NoSQL Database
+- AWS Amplify Framework: Resource Provisioning and CI/CD
+## How to Install
+### Frontend React Application
 
-## How to install
+1. **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/gessi-chatbots/RE-Miner-Dashboard
+    cd RE-Miner-Dashboard
+    ```
+
+2. **Install dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+### AWS Amplify Backend
+
+#### Prerequisites
+
+- [Amplify CLI installed](https://docs.amplify.aws/cli/start/install)
+
+#### Steps
+
+1. **Configure Amplify:**
+
+    ```bash
+    amplify configure
+    ```
+
+    Follow the prompts to set up your AWS credentials and region.
+
+2. **Initialize Amplify:**
+
+    ```bash
+    amplify init
+    ```
+
+    Follow the prompts to initialize your Amplify project.
+
+3. **Add backend services:**
+
+    ```bash
+    amplify add auth # for Cognito
+    amplify add api # for API Gateway and Lambdas (copy & paste the codes from the cloned lambdas)
+    amplify add storage # for DynamoDB
+    ```
 
 ## How to deploy
+### **Deploy backend:**
 
+```bash
+    amplify push
+```
+
+This will create and configure the backend resources in your AWS account.
+    
+### **Deploy frontend:**
+
+```bash
+    npm run build
+    amplify publish # if you want to deploy it as well in AWS
+```
 ## License
+This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) - see the [LICENSE.md](LICENSE.md) file for details.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
