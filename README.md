@@ -5,7 +5,7 @@ The RE-Miner Dashboard stands as a pivotal software element within the broader R
 ![RE-Miner-Ecosystem](https://github.com/gessi-chatbots/RE-Miner-Dashboard/assets/55029168/08cfdc74-1154-4ea0-a2de-2cab3786845d)
 
 
-Its conceptualization drew inspiration from the esteemed [REFSQ 2024](https://2024.refsq.org/) conference.
+Its development has been inspired by the [REFSQ 2024](https://2024.refsq.org/) conference.
 
 ## Description
 
