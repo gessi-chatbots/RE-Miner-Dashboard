@@ -1,11 +1,21 @@
 # RE-Miner Dashboard
-The RE-Miner dashboard is a key software component within the RE-Miner Ecosystem (see figure below). ![RE-Miner ecosystem](https://github.com/gessi-chatbots/RE-Miner-Dashboard/assets/55029168/5feeead6-9429-48bc-99e5-1c642f51eaaa).  
+The RE-Miner dashboard is a key software component within the RE-Miner Ecosystem (see figure below). 
+
+![RE-Miner ecosystem](https://github.com/gessi-chatbots/RE-Miner-Dashboard/assets/55029168/5feeead6-9429-48bc-99e5-1c642f51eaaa)
 
 Its development was inspired by the [REFSQ 2024](https://2024.refsq.org/) conference.
 
-## Available Scripts
+## Description
 
 In the project directory, you can run:
+
+## Technologies
+
+## How to install
+
+## How to deploy
+
+## License
 
 ### `npm start`
 
