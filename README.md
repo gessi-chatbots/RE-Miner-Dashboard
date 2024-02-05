@@ -1,9 +1,7 @@
-# refsq-2024-web-app
-REFSQ 2024 Miner
+# RE-Miner Dashboard
+The RE-Miner dashboard is a key software component within the ![RE-Miner ecosystem](https://github.com/gessi-chatbots/RE-Miner-Dashboard/assets/55029168/5feeead6-9429-48bc-99e5-1c642f51eaaa).  
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Its development was inspired by the [REFSQ 2024](https://2024.refsq.org/) conference.
 
 ## Available Scripts
 
