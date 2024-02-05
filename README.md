@@ -30,12 +30,15 @@ The user engagement follows a structured workflow. Upon user creation, access pe
 | Batch Review Analysis and Visual Analytics | Users can select multiple application reviews, extract features and/or emotions using RE-Miner integrated NLP Models, and analyze key statistical charts via the Dashboard. |
 
 ## Technologies
-- React: Frontend application
-- Amazon Cognito: Authentication and Authorization
-- AWS API Gateway: API Management
-- AWS Lambda: Serverless API Coding
-- DynamoDB: NoSQL Database
-- AWS Amplify Framework: Resource Provisioning and CI/CD
+| Technology                 | Description                               |
+| -------------------------- | ----------------------------------------- |
+| React                      | Frontend application                      |
+| Amazon Cognito             | Authentication and Authorization          |
+| AWS API Gateway            | API Management                            |
+| AWS Lambda                 | Serverless API Coding                     |
+| DynamoDB                   | NoSQL Database                            |
+| AWS Amplify Framework      | Resource Provisioning and CI/CD           |
+
 ## How to Install
 ### Frontend React Application
 
