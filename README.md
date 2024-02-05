@@ -7,7 +7,18 @@ Its development was inspired by the [REFSQ 2024](https://2024.refsq.org/) confer
 
 ## Description
 
-In the project directory, you can run:
+The [RE-Miner Dashboard](uat.reminer-app) (still in development), it is a software component primarily designed as a visualization analytical software component. 
+
+The Dashboard encompassses several key components:
+
+1. React Front-end application
+2. Authorization & Authentication system
+3. API Gateway
+4. Backend:
+  - Applications API
+  - Reviews API
+  - User creation module
+5. NoSQL document-based database
 
 ## Technologies
 
