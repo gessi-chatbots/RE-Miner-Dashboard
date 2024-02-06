@@ -34,7 +34,8 @@ class ReviewService {
                 score: item.score,
                 date: item.date,
                 sentiments: item.sentiments,
-                feature: item.features
+                feature: item.features,
+                analyzed: item.analyzed
             }));
 
             return {
@@ -75,7 +76,8 @@ class ReviewService {
                 score: reviewFromJson.score,
                 date: reviewFromJson.date,
                 sentiments: reviewFromJson.sentiments,
-                features: reviewFromJson.features
+                features: reviewFromJson.features,
+                analyzed: reviewFromJson.analyzed
             };
             return {
                 review: review
@@ -113,7 +115,8 @@ class ReviewService {
                 score: item.score,
                 date: item.date,
                 sentiments: item.sentiments,
-                features: item.features
+                features: item.features,
+                analyzed: item.analyzed
             }));
 
             return {
@@ -151,7 +154,8 @@ class ReviewService {
                 id: item.id,
                 date: item.date,
                 sentiments: item.sentiments,
-                features: item.features
+                features: item.features,
+                analyzed: item.analyzed
             }));
 
             return {
@@ -239,6 +243,43 @@ class ReviewService {
             const textResponse = await body.text();
         } catch (error) {
             console.error("Error updating review:", error);
+            throw error;
+        }
+    }
+
+    analyzeReviews = async (reviews: ReviewDataDTO[],
+                            featureExtraction: boolean,
+                            sentimentExtraction: boolean,
+                            featureModel: string | null,
+                            sentimentModel: string | null) => {
+        const authService = new AuthService();
+        const userData = await authService.getUserData();
+        const id = userData?.sub || "";
+        const jsonBody = {
+            "featureExtraction": featureExtraction,
+            "sentimentExtraction": sentimentExtraction,
+            "featureModel": featureModel,
+            "sentimentModel": sentimentModel,
+            "reviews": reviews
+        }
+        try {
+            const restOperation = post({
+                apiName: this.API_NAME,
+                path: this.PATH_NAME + '/analyze',
+                options: {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    queryParams: {
+                        user_id: id
+                    },
+                    body: JSON.stringify(jsonBody)
+                }
+            });
+            const { body } = await restOperation.response;
+            const textResponse = await body.text();
+        } catch (error) {
+            console.error("Error analyzing reviews:", error);
             throw error;
         }
     }

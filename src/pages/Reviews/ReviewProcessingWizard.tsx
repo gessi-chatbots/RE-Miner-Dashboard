@@ -3,12 +3,14 @@ import {Button, Col, Form, Modal, ModalBody, ModalHeader, OverlayTrigger, Row, T
 import { ReviewDataDTO } from "../../DTOs/ReviewDataDTO";
 import FormWizard from "react-form-wizard-component";
 import "react-form-wizard-component/dist/style.css";
+import ReviewService from "../../services/ReviewService";
 
 interface ReviewProcessingWizardProps {
     reviewsData: ReviewDataDTO[];
     selectedReviews: string[];
     onHide: () => void;
     onDiscardReview: (reviewId: string) => void;
+    onUpdateDirectory: () => void;
 }
 
 interface SelectedTasks {
@@ -30,23 +32,42 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
 
     const [selectedSentimentModel, setSelectedSentimentModel] = React.useState<string>("");
     const [selectedFeatureModel, setSelectedFeatureModel] = React.useState<string>("");
+    const [loading, setLoading] = React.useState<boolean>(false);
 
-    const handleComplete = () => {
-        console.log("Form completed!");
-        // Handle form completion logic here
+    const handleComplete = async () => {
+        try {
+            setLoading(true);
+            const reviewService = new ReviewService();
+            for (const reviewId of selectedReviews) {
+                const review = reviewsData.find((review) => review.id === reviewId);
+                if (review) {
+                    await reviewService.analyzeReviews(
+                        [review],
+                        selectedTasks.featureExtraction,
+                        selectedTasks.sentimentAnalysis,
+                        selectedFeatureModel,
+                        selectedSentimentModel
+                    );
+                }
+            }
+        } catch (error) {
+            console.error("Error processing reviews:", error);
+        } finally {
+            setLoading(false);
+            onHide();
+        }
     };
 
     const tabChanged = ({ prevIndex, nextIndex }: { prevIndex: number; nextIndex: number }) => {
-        console.log("prevIndex", prevIndex);
-        console.log("nextIndex", nextIndex);
+        // console.log("prevIndex", prevIndex);
+        // console.log("nextIndex", nextIndex);
     };
 
     const goBackToReviews = () => {
-        onHide(); // Close the modal using onHide prop
+        onHide();
     };
 
     const discardReview = (reviewId: string) => {
-        // Call the onDiscardReview function to remove the review from the selectedReviews
         onDiscardReview(reviewId);
     };
     const handleTaskSelectionChange = (task: string) => {

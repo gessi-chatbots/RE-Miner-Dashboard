@@ -24,11 +24,11 @@
         },
         "reviewsApi": {
           "deploymentBucketName": "amplify-gessiappreviewminer-dev-145611-deployment",
-          "s3Key": "amplify-builds/reviewsApi-33676e37394338457179-build.zip"
+          "s3Key": "amplify-builds/reviewsApi-615169337973714c3252-build.zip"
         },
         "appsApi": {
           "deploymentBucketName": "amplify-gessiappreviewminer-dev-145611-deployment",
-          "s3Key": "amplify-builds/appsApi-45304c77364a52775637-build.zip"
+          "s3Key": "amplify-builds/appsApi-7a783435667743756e72-build.zip"
         }
       },
       "api": {

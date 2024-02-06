@@ -123,6 +123,7 @@ const ReviewsDirectory: React.FC = () => {
         const id = reviewData?.id
         const app_id = reviewData?.app_id
         const app_name = reviewData?.app_name
+        const analyzed = reviewData?.analyzed
         const features = null;
         const sentiments = null
         setIsUpdating(true);
@@ -137,7 +138,8 @@ const ReviewsDirectory: React.FC = () => {
                 score,
                 date,
                 features,
-                sentiments
+                sentiments,
+                analyzed
             });
             setEditModalIsOpen(false);
             await updateReviewsDirectory(reviewService);
@@ -201,10 +203,7 @@ const ReviewsDirectory: React.FC = () => {
     };
 
     const hasSentimentsOrFeatures = (review: ReviewDataDTO): boolean => {
-        return (
-            (review?.features?.length ?? 0) > 0 ||
-            (review?.sentiments?.length ?? 0) > 0
-        );
+        return (review?.features?.length ?? 0) > 0 as boolean;
     };
     const analyzeReviewAction = (review: ReviewDataDTO) => {
         navigate(`/reviews/${review.id}/analyze`);
@@ -213,6 +212,27 @@ const ReviewsDirectory: React.FC = () => {
     const truncateReview = (review: string) => {
         return review.length > 50 ? `${review.substring(0, 50)}...` : review;
     };
+    const fetchDataFromApi = async () => {
+        const reviewService = new ReviewService();
+        try {
+            const response = await reviewService.fetchAllReviewsPaginated(currentPage);
+            if (response !== null) {
+                const { reviews: mappedData, total_pages: pages } = response;
+                setData(mappedData);
+                setTotalPages(pages);
+            } else {
+                console.error('Response from fetch all reviews is null');
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    const handleWizardClose = () => {
+        setWizardModalOpen(false);
+        fetchDataFromApi();
+    };
+
     return (
         <div>
             <div>
@@ -264,7 +284,7 @@ const ReviewsDirectory: React.FC = () => {
                                         <td className="text-center">{review.score || 'N/A'}</td>
                                         <td className="text-center">{review.date || 'N/A'}</td>
                                         <td className="text-end" style={{ width: "150px" }}>
-                                            {hasSentimentsOrFeatures(review) && (
+                                            {review?.analyzed && (
                                                 <OverlayTrigger overlay={<Tooltip id="analyze-tooltip">Analyze Review</Tooltip>}>
                                                     <a href="javascript:void(0)" className="action-icon" onClick={() => analyzeReviewAction(review)}>
                                                         <i className="mdi mdi-eye"></i>
@@ -439,11 +459,12 @@ const ReviewsDirectory: React.FC = () => {
                 <ReviewProcessingWizard
                     reviewsData={data || []}
                     selectedReviews={selectedReviews}
-                    onHide={() => setWizardModalOpen(false)}
+                    onHide={handleWizardClose}
                     onDiscardReview={(reviewId) => {
-                        const updatedSelectedReviews = selectedReviews.filter(id => id !== reviewId);
+                        const updatedSelectedReviews = selectedReviews.filter((id) => id !== reviewId);
                         setSelectedReviews(updatedSelectedReviews);
                     }}
+                    onUpdateDirectory={fetchDataFromApi}
                 />
             )}
 

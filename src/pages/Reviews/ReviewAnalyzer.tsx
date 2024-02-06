@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
 
-const SENTIMENT_OPTIONS = ['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'];
+const SENTIMENT_OPTIONS = ['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust', 'Not relevant'];
 
 const generateColors = (sentiments: string[]) => {
     const defaultColors: { [key: string]: string } = {
@@ -70,21 +70,25 @@ const ReviewAnalyzer = () => {
         const dataset = {
             label: 'Sentiment',
             data: chartDataValues,
-            backgroundColor: chartLabels.map((sentiment) => colors[SENTIMENT_OPTIONS.indexOf(sentiment)]),
+            backgroundColor: chartLabels.map(sentiment =>
+                sentiment === 'Not relevant' ? 'rgb(213,212,212)' : colors[SENTIMENT_OPTIONS.indexOf(sentiment)]
+            ),
         };
+
 
         return {
             labels: chartLabels,
             datasets: [dataset],
         };
     };
-
     const markFeaturesInReview = () => {
         if (!data || !data.features || data.features.length === 0) {
             return <p>{data?.review}</p>;
         }
+
         const sortedFeatures = data.features.sort((a, b) => b.length - a.length);
         let markedReview = data.review;
+
         sortedFeatures.forEach((feature) => {
             const marker = `<span class="feature-marker">${feature}<span class="feature-tag">Feature</span></span>`;
             markedReview = markedReview.replace(new RegExp(feature, 'gi'), marker);
@@ -93,14 +97,19 @@ const ReviewAnalyzer = () => {
         return <p dangerouslySetInnerHTML={{ __html: markedReview }} />;
     };
 
-    const markSentimentsInReview = () => {
 
-        if (!data || !data.sentiments || data.sentiments.length === 0 || !data.features || data.features.length === 0) {
+
+    const markSentimentsInReview = () => {
+        if (!data || !data.sentiments || data.sentiments.length === 0) {
             return <p>{data?.review}</p>;
         }
 
         const markedReview = data.sentiments.map((sentiment, index) => {
-            const color = colors[SENTIMENT_OPTIONS.indexOf(sentiment.sentiment)];
+            let color: string
+            if (sentiment.sentiment === 'Not relevant')
+                color = 'rgb(213,212,212)'
+            else
+                color = colors[SENTIMENT_OPTIONS.indexOf(sentiment.sentiment)];
 
             return (
                 <OverlayTrigger
@@ -112,13 +121,11 @@ const ReviewAnalyzer = () => {
                         </Tooltip>
                     }
                 >
-                    <span
-                        style={{ backgroundColor: hoveredIndex === index ? color : "transparent" }}
-                        onMouseEnter={() => setHoveredIndex(index)}
-                        onMouseLeave={() => setHoveredIndex(null)}
-                    >
-                        {`${sentiment.sentence} `}
-                    </span>
+                <span
+                    style={{ backgroundColor: color }}
+                >
+                    {`${sentiment.sentence} `}
+                </span>
                 </OverlayTrigger>
             );
         });

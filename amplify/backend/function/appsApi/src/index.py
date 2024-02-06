@@ -108,14 +108,31 @@ def create_apps():
                 if sentence:
                     sentiment_dict = {
                         'M': {
-                            'sentiment': {'S': random.choice(['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'])},
+                            #'sentiment': {'S': random.choice(['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'])},
+                            'sentiment': {'S': 'Not relevant'},
                             'sentence': {'S': sentence.strip()}
                         }
                     }
                 sentiment_list.append(sentiment_dict)
-
             feature_list = []
-            features = ['Feature1', 'Feature2', 'Feature3', 'Feature4', 'Feature5', 'Feature6', 'Feature7', 'Feature8', 'Feature9', 'Feature10', 'Feature11', 'Feature12', 'Feature13', 'Feature14', 'Feature15']
+            '''
+            features = [
+                'App Installation Date',
+                'Push Notification Preferences',
+                'In-App Purchases History',
+                'Background Process Usage',
+                'App Permissions Settings',
+                'Screen Rotation Preferences',
+                'Offline Mode Availability',
+                'Touchscreen Sensitivity',
+                'Location Services Usage',
+                'Gesture Recognition',
+                'Dark Mode Preference',
+                'App Theme Selection',
+                'Synchronization Frequency',
+                'Data Compression Option',
+                'Multi-Language Support'
+            ]
             for i in range(random.randint(1, 3)):
                 feature_dict = {
                     'M': {
@@ -123,15 +140,16 @@ def create_apps():
                     }
                 }
                 feature_list.append(feature_dict)
-                
+            '''
             review_dict = {
                 'M': {
                     'id': {'S': review.get('id')}, 
                     'review': {'S': review.get("review")},
                     'score': {'N': str(review.get("score", 0))},
                     'date': {'S': review.get("date", "N/A")},
+                    'analyzed': {'BOOL': False},
                     'features': {'L': feature_list},
-                    'sentiments': {'L': sentiment_list}
+                    'sentiments': {'L': sentiment_list},
                 }
             }
             reviews_list.append(review_dict) 

@@ -9,4 +9,5 @@ export interface ReviewDataDTO {
     date: string;
     features: string[] | null;
     sentiments: SentimentDataDTO[] | null;
+    analyzed: boolean
 }
