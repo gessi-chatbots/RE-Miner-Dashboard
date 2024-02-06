@@ -4,9 +4,6 @@ The RE-Miner Dashboard is a software component within the RE-Miner Ecosystem, il
 
 ![RE-Miner-Ecosystem](https://github.com/gessi-chatbots/RE-Miner-Dashboard/assets/55029168/08cfdc74-1154-4ea0-a2de-2cab3786845d)
 
-
-Its development has been inspired by the [REFSQ 2024](https://2024.refsq.org/) conference.
-
 ## Description
 
 The RE-Miner Dashboard [RE-Miner Dashboard](https://uat.reminer-app) (still in development). Is an analytical and visualization tool. This software component comprises several integral elements:
