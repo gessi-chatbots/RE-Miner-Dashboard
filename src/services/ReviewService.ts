@@ -88,7 +88,7 @@ class ReviewService {
         }
     };
 
-    fetchAllReviewsDetailed = async (): Promise<{ reviews: ReviewDataDTO[], total_pages: number } | null> => {
+    fetchAllReviewsDetailed = async (): Promise<{ reviews: ReviewDataDTO[]} | null> => {
         const authService = new AuthService();
         const userData = await authService.getUserData();
         const id = userData?.sub || "";
@@ -120,8 +120,7 @@ class ReviewService {
             }));
 
             return {
-                reviews: reviews,
-                total_pages: jsonResponse.total_pages
+                reviews: reviews
             };
         } catch (error) {
             console.error('Error fetching data:', error);

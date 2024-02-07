@@ -114,9 +114,11 @@ const CrossFeatureSentiments = () => {
                     const reviews = response.reviews;
                     const features = extractFeaturesFromReviews(reviews);
                     const sentiments = extractSentimentsFromReviews(reviews);
+                    const filteredSentiments = sentiments.filter(sentiment =>
+                        sentiment.toLowerCase() !== 'not relevant');
                     setData(reviews);
                     setFeatures(features);
-                    setSentiments(sentiments)
+                    setSentiments(filteredSentiments)
                     setFeatureColors(generateRandomColors(features.length));
                 } else {
                     console.error('Response from fetch all reviews is null');

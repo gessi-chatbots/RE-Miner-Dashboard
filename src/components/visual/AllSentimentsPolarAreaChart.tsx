@@ -56,8 +56,10 @@ const AllSentimentsPolarAreaChart = () => {
                 if (response !== null) {
                     const reviews = response.reviews;
                     const sentiments = extractSentimentsFromReviews(reviews);
-                    setLabels(sentiments);
-                    setData(countSentiments(reviews, sentiments));
+                    const filteredSentiments = sentiments.filter(sentiment =>
+                        sentiment.toLowerCase() !== 'not relevant' && sentiment.toLowerCase() !== 'not-relevant'
+                    );                    setLabels(filteredSentiments);
+                    setData(countSentiments(reviews, filteredSentiments));
                 } else {
                     console.error('Response from fetch all reviews is null');
                 }

@@ -98,6 +98,7 @@ def create_apps():
     
     apps = apps_json.get("apps", [])
     for new_app in apps:
+        print(f"Creating app: {new_app}")
         app_reviews = new_app.get("reviews", [])
         reviews_list = []
         for review in app_reviews:
@@ -108,39 +109,12 @@ def create_apps():
                 if sentence:
                     sentiment_dict = {
                         'M': {
-                            #'sentiment': {'S': random.choice(['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust'])},
                             'sentiment': {'S': 'Not relevant'},
                             'sentence': {'S': sentence.strip()}
                         }
                     }
                 sentiment_list.append(sentiment_dict)
             feature_list = []
-            '''
-            features = [
-                'App Installation Date',
-                'Push Notification Preferences',
-                'In-App Purchases History',
-                'Background Process Usage',
-                'App Permissions Settings',
-                'Screen Rotation Preferences',
-                'Offline Mode Availability',
-                'Touchscreen Sensitivity',
-                'Location Services Usage',
-                'Gesture Recognition',
-                'Dark Mode Preference',
-                'App Theme Selection',
-                'Synchronization Frequency',
-                'Data Compression Option',
-                'Multi-Language Support'
-            ]
-            for i in range(random.randint(1, 3)):
-                feature_dict = {
-                    'M': {
-                        'feature': {'S': random.choice(features)}
-                    }
-                }
-                feature_list.append(feature_dict)
-            '''
             review_dict = {
                 'M': {
                     'id': {'S': review.get('id')}, 
@@ -176,6 +150,7 @@ def create_apps():
                 }
             )
         except ClientError as e:
+            print("[ERROR]: No app list detected, creating new one")
             if e.response['Error']['Code'] == 'ValidationException':
                 # no app list exists for that user, we create a new one
                 client.update_item(
@@ -188,6 +163,16 @@ def create_apps():
                             ':app_list': {'L': [app_item]}
                         }
                 )
+        finally:
+            waiter = client.get_waiter('table_exists')
+            waiter.wait(
+                TableName=TABLE,
+                WaiterConfig={
+                    'Delay': 5,
+                    'MaxAttempts': 20
+                }
+            )
+
     return jsonify({"message": "App/s created successfully"}), 200
 
 @app.route(BASE_ROUTE, methods=['GET'])

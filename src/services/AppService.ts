@@ -81,7 +81,7 @@ class AppService {
         const authService = new AuthService();
         const userData = await authService.getUserData();
         const id = userData?.sub || "";
-        const batchSize = 5;
+        const batchSize = 1;
 
         try {
             const numBatches = Math.ceil(appData.length / batchSize);
@@ -111,12 +111,14 @@ class AppService {
 
                 const { body } = await restOperation.response;
                 const textResponse = await body.text();
+                await new Promise(resolve => setTimeout(resolve, 10000));
             }
         } catch (error) {
             console.error("Error creating app:", error);
             throw error;
         }
     };
+
 
     deleteApp = async (appId: string) => {
         const authService = new AuthService();

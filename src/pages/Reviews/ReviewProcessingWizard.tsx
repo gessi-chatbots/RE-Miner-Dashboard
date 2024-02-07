@@ -32,11 +32,10 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
 
     const [selectedSentimentModel, setSelectedSentimentModel] = React.useState<string>("");
     const [selectedFeatureModel, setSelectedFeatureModel] = React.useState<string>("");
-    const [loading, setLoading] = React.useState<boolean>(false);
 
     const handleComplete = async () => {
         try {
-            setLoading(true);
+            onHide();
             const reviewService = new ReviewService();
             for (const reviewId of selectedReviews) {
                 const review = reviewsData.find((review) => review.id === reviewId);
@@ -52,9 +51,6 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
             }
         } catch (error) {
             console.error("Error processing reviews:", error);
-        } finally {
-            setLoading(false);
-            onHide();
         }
     };
 
@@ -91,7 +87,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                 <ModalHeader>
                     <h2 className="text-secondary">Process Reviews Wizard</h2>
                     <Button className="btn-secondary" onClick={goBackToReviews}>
-                        <i className="mdi mdi-arrow-left" /> Back
+                        <i className="mdi mdi-close" />
                     </Button>
                 </ModalHeader>
                 <ModalBody>

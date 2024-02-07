@@ -420,7 +420,7 @@ def list_detailed_reviews_app():
     for item in items:
         apps = item.get('apps', {}).get('L', [])
         for app_item in apps:
-            if app_id != app_item.get('M').get('id').get('S'):
+            if app_id == app_item.get('M').get('id').get('S'):
                 reviews = app_item.get('M', {}).get('reviews', {}).get('L', [])
                 for review_item in reviews:
                     sentiment_list = []
@@ -549,8 +549,15 @@ def analyze_reviews():
                 ':updated_review': review_updated
             }
         )
+        waiter = client.get_waiter('table_exists')
+        waiter.wait(
+            TableName=TABLE,
+            WaiterConfig={
+                'Delay': 5,
+                'MaxAttempts': 20
+            }
+        )
         return jsonify({"message": "Review updated successfully"}), 200
-        print(review)
     return jsonify({"success": "ok"}), 200
 
 

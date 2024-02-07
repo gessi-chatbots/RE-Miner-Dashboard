@@ -78,8 +78,10 @@ const SentimentHistogramPerApp = () => {
                 if (response !== null) {
                     const reviews = response.reviews;
                     const sentiments = extractSentimentsFromReviews(reviews);
+                    const filteredSentiments = sentiments.filter(sentiment =>
+                        sentiment.toLowerCase() !== 'not relevant');
                     setData(prevData => [...reviews]);
-                    setLabels(prevLabels => [...sentiments]);
+                    setLabels(prevLabels => [...filteredSentiments]);
                 } else {
                     console.error('Response from fetch all reviews is null');
                 }

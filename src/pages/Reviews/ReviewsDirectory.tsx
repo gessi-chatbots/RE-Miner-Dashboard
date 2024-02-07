@@ -9,6 +9,7 @@ import ReviewProcessingWizard from "./ReviewProcessingWizard";
 const defaultColumns = ['Select', 'App Name', 'Review ID', 'Review', 'Score', 'Date', 'Actions'];
 
 const ReviewsDirectory: React.FC = () => {
+    const [selectAll, setSelectAll] = useState(false);
     const [data, setData] = useState<ReviewDataDTO[] | null>(null);
     const [isEditModalOpen, setEditModalIsOpen] = useState<boolean>(false);
     const [isDeleteModalOpen, setDeleteModalIsOpen] = useState<boolean>(false);

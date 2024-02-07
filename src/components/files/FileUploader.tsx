@@ -101,7 +101,8 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
                             summary: item.summary,
                             release_date: new Date(item.release_date).toLocaleDateString('en-GB'),
                             version: item.version,
-                            reviews: item.reviews.slice(0, 10).map((review: any) => ({
+                            //reviews: item.reviews.slice(0, 10).map((review: any) => ({
+                            reviews: item.reviews.map((review: any) => ({
                                 id: review.reviewId,
                                 review: review.review,
                                 score: review.score,
