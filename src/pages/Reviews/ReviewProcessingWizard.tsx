@@ -159,6 +159,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                                                 <option value="">Choose a Sentiment Analysis Model</option>
                                                 <option value="BERT">BERT</option>
                                                 <option value="BETO">BETO</option>
+                                                <option value="GPT-3.5">GPT 3.5</option>
                                             </Form.Select>
                                         </Form.Group>
                                     )}

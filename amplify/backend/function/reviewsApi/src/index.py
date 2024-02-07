@@ -475,7 +475,7 @@ def analyze_reviews():
         sentiment_model = body.get('sentimentModel')
         if sentiment_model is None: 
             return jsonify({"error": "Sentiment extraction selected but no model requested"}), 400
-    print(f"[MODEL] {feature_model}")
+
     reviews = body.get('reviews')
     if reviews is None: 
         return jsonify({"error": "No reviews selected for processing"}), 400
@@ -501,19 +501,21 @@ def analyze_reviews():
             if analysis:
                 emotions = analysis[0]['text']['emotions']
                 features = analysis[0]['text']['features']
-                
+                print(f"emotions in analysis: {emotions}")
+                print(f"features in analysis: {features}")
                 feature_list = [{'S': feature} for feature in features]
-                
-                emotion_list = [{'M': {'sentence': {'S': sentence}, 'sentiment': {'S': "Not relevant"}}}]
-                
-                for emotion in emotions:
-                    emotion_element = {
-                        'M': {
-                            'sentence': {'S': sentence},
-                            'sentiment': {'S': emotion}
+                emotion_list = []
+                if len(emotions) == 0:
+                    emotion_list = [{'M': {'sentence': {'S': sentence}, 'sentiment': {'S': "Not relevant"}}}]
+                else: 
+                    for emotion in emotions:
+                        emotion_element = {
+                            'M': {
+                                'sentence': {'S': sentence},
+                                'sentiment': {'S': emotion}
+                            }
                         }
-                    }
-                    emotion_list.append(emotion_element)
+                        emotion_list.append(emotion_element)
                 review_updated['M']['features']['L'].extend(feature_list)
                 review_updated['M']['sentiments']['L'].extend(emotion_list)
 
@@ -549,8 +551,6 @@ def analyze_reviews():
         )
         return jsonify({"message": "Review updated successfully"}), 200
         print(review)
-    
-
     return jsonify({"success": "ok"}), 200
 
 
@@ -558,16 +558,18 @@ def analyze_reviews_for_sentence(sentiment_model, feature_model, sentence):
     try:
         http = urllib3.PoolManager()
         endpoint_url = ""
-        print(sentiment_model)
-        print(feature_model)
-        print(sentence)
-        if sentiment_model is not None and feature_model is not None:
-            endpoint_url = f"https://c1a7-79-157-114-161.ngrok-free.app/analyze-reviews?model_emotion={sentiment_model}&model_features={feature_model}"
-        elif sentiment_model is not None and feature_model is None:
-            endpoint_url = f"https://c1a7-79-157-114-161.ngrok-free.app/analyze-reviews?model_emotion={sentiment_model}"
-        elif feature_model is not None and sentiment_model is None:
-            endpoint_url = f"https://c1a7-79-157-114-161.ngrok-free.app/analyze-reviews?model_features={feature_model}"
+        url = "https://d855-79-157-114-161.ngrok-free.app"
+        if sentiment_model != "" and feature_model != "":
+            print(f"feature model: {feature_model}, sentiment model: {sentiment_model}")
+            endpoint_url = f"{url}/analyze-reviews?model_emotion={sentiment_model}&model_features={feature_model}"
+        elif sentiment_model != "" and feature_model == "":
+            print(f"sentiment model: {sentiment_model}")
+            endpoint_url = f"{url}/analyze-reviews?model_emotion={sentiment_model}"
+        elif feature_model != None and sentiment_model == "":
+            print(f"feature model: {feature_model}")
+            endpoint_url = f"{url}/analyze-reviews?model_features={feature_model}"
         
+        print(f"endpoint url: {endpoint_url}")
         payload = {
             "text": [
                 {

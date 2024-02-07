@@ -5,16 +5,16 @@ import { useParams } from "react-router-dom";
 import { Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
 
-const SENTIMENT_OPTIONS = ['Happiness', 'Sadness', 'Anger', 'Surprise', 'Fear', 'Disgust', 'Not relevant'];
+const SENTIMENT_OPTIONS = ['happiness', 'sadness', 'anger', 'surprise', 'fear', 'disgust', 'Not relevant'];
 
 const generateColors = (sentiments: string[]) => {
     const defaultColors: { [key: string]: string } = {
-        Happiness: 'rgba(255, 99, 132, 0.7)',
-        Sadness: 'rgba(54, 162, 235, 0.7)',
-        Anger: 'rgba(255, 206, 86, 0.7)',
-        Surprise: 'rgba(75, 192, 192, 0.7)',
-        Fear: 'rgba(153, 102, 255, 0.7)',
-        Disgust: 'rgba(255, 159, 64, 0.7)',
+        happiness: 'rgba(255, 99, 132, 0.7)',
+        sadness: 'rgba(54, 162, 235, 0.7)',
+        anger: 'rgba(255, 206, 86, 0.7)',
+        surprise: 'rgba(75, 192, 192, 0.7)',
+        fear: 'rgba(153, 102, 255, 0.7)',
+        disgust: 'rgba(255, 159, 64, 0.7)',
     };
     return sentiments.map((sentiment) => defaultColors[sentiment]);
 };
@@ -106,10 +106,10 @@ const ReviewAnalyzer = () => {
 
         const markedReview = data.sentiments.map((sentiment, index) => {
             let color: string
+            color = colors[SENTIMENT_OPTIONS.indexOf(sentiment.sentiment)];
             if (sentiment.sentiment === 'Not relevant')
                 color = 'rgb(213,212,212)'
-            else
-                color = colors[SENTIMENT_OPTIONS.indexOf(sentiment.sentiment)];
+
 
             return (
                 <OverlayTrigger
