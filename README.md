@@ -79,9 +79,15 @@ The user engagement follows a structured workflow. Upon user creation, access pe
 
     ```bash
     amplify add auth # for Cognito
-    amplify add api # for API Gateway and Lambdas (copy & paste the codes from the cloned lambdas)
+    amplify add api # for API Gateway
     amplify add storage # for DynamoDB
     ```
+4. **Create the lambda functions**
+   ```bash
+    amplify add function
+   ```
+   Select Python runtime. Copy paste the source code from the [3 functions](/amplify/backend/function)
+   In the Amplify console copy & paste the [amplify.yml](amplify.yml) for correct building
 
 ## How to deploy
 ### **Deploy backend:**
