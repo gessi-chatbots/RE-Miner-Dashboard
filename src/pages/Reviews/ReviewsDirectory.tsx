@@ -3,10 +3,13 @@ import { Table, Button, Modal, Tooltip, OverlayTrigger, Row, Col } from 'react-b
 import ReviewService from "../../services/ReviewService";
 import { ReviewDataDTO } from "../../DTOs/ReviewDataDTO";
 import { toast } from "react-toastify";
+import {useLocation, useNavigate} from 'react-router-dom';
+import ReviewProcessingWizard from "./ReviewProcessingWizard";
 
-const defaultColumns = ['App Name', 'Review ID', 'Review', 'Score', 'Date', 'Actions'];
+const defaultColumns = ['Select', 'App Name', 'Review ID', 'Review', 'Score', 'Date', 'Actions'];
 
 const ReviewsDirectory: React.FC = () => {
+    const [selectAll, setSelectAll] = useState(false);
     const [data, setData] = useState<ReviewDataDTO[] | null>(null);
     const [isEditModalOpen, setEditModalIsOpen] = useState<boolean>(false);
     const [isDeleteModalOpen, setDeleteModalIsOpen] = useState<boolean>(false);
@@ -19,10 +22,44 @@ const ReviewsDirectory: React.FC = () => {
     const [score, setScore] = useState<number>(0);
     const [isScoreValid, setIsScoreValid] = useState(true);
     const [isUpdateButtonClicked, setIsUpdateButtonClicked] = useState(false);
+    const [selectedReviews, setSelectedReviews] = useState<string[]>([]);
+    const [isWizardModalOpen, setWizardModalOpen] = useState<boolean>(false);
+    const location = useLocation();
+    const { state } = location;
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        if (state) {
+            const { reviewsData, selectedReviews } = state;
+            setData(reviewsData);
+            setSelectedReviews(selectedReviews);
+        }
+    }, [state]);
     const openEditModal = (review: ReviewDataDTO) => {
         setSelectedReview(review);
         setEditModalIsOpen(true);
+    };
+
+    const handleSelectAllChange = () => {
+        setSelectAll(!selectAll);
+        const allReviewIds = data?.map(review => review.id) || [];
+        setSelectedReviews(selectAll ? [] : allReviewIds);
+    };
+
+
+    const handleCheckboxChange = (reviewId: string) => {
+        const updatedSelectedReviews = [...selectedReviews];
+        if (selectAll) {
+            setSelectAll(false);
+        }
+
+        if (updatedSelectedReviews.includes(reviewId)) {
+            updatedSelectedReviews.splice(updatedSelectedReviews.indexOf(reviewId), 1);
+        } else {
+            updatedSelectedReviews.push(reviewId);
+        }
+
+        setSelectedReviews(updatedSelectedReviews);
     };
 
     const openDeleteModal = (review: ReviewDataDTO) => {
@@ -37,7 +74,7 @@ const ReviewsDirectory: React.FC = () => {
     };
 
     async function updateReviewsDirectory(reviewService: ReviewService) {
-        const response = await reviewService.fetchAllReviews(currentPage);
+        const response = await reviewService.fetchAllReviewsPaginated(currentPage);
         if (response !== null) {
             const { reviews: mappedData, total_pages: pages } = response;
             if (mappedData !== undefined) {
@@ -51,7 +88,7 @@ const ReviewsDirectory: React.FC = () => {
         const fetchDataFromApi = async () => {
             const reviewService = new ReviewService();
             try {
-                const response = await reviewService.fetchAllReviews(currentPage);
+                const response = await reviewService.fetchAllReviewsPaginated(currentPage);
                 if (response !== null) {
                     const { reviews: mappedData, total_pages: pages } = response;
                     setData(mappedData);
@@ -98,6 +135,9 @@ const ReviewsDirectory: React.FC = () => {
         const id = reviewData?.id
         const app_id = reviewData?.app_id
         const app_name = reviewData?.app_name
+        const analyzed = reviewData?.analyzed
+        const features = null;
+        const sentiments = null
         setIsUpdating(true);
 
         const reviewService = new ReviewService();
@@ -108,7 +148,10 @@ const ReviewsDirectory: React.FC = () => {
                 id,
                 review,
                 score,
-                date
+                date,
+                features,
+                sentiments,
+                analyzed
             });
             setEditModalIsOpen(false);
             await updateReviewsDirectory(reviewService);
@@ -138,7 +181,7 @@ const ReviewsDirectory: React.FC = () => {
         const reviewService = new ReviewService();
         try {
             await reviewService.deleteReview(app_id, review_id);
-            const response = await reviewService.fetchAllReviews();
+            const response = await reviewService.fetchAllReviewsPaginated();
             if (response !== null) {
                 const { reviews: mappedData, total_pages: pages } = response;
                 if (mappedData !== undefined) {
@@ -171,8 +214,39 @@ const ReviewsDirectory: React.FC = () => {
         }
     };
 
+    const hasSentimentsOrFeatures = (review: ReviewDataDTO): boolean => {
+        return (review?.features?.length ?? 0) > 0 as boolean;
+    };
+    const analyzeReviewAction = (review: ReviewDataDTO) => {
+        navigate(`/reviews/${review.id}/analyze`);
+    };
+
     const truncateReview = (review: string) => {
         return review.length > 50 ? `${review.substring(0, 50)}...` : review;
+    };
+    const fetchDataFromApi = async () => {
+        const reviewService = new ReviewService();
+        try {
+            const response = await reviewService.fetchAllReviewsPaginated(currentPage);
+            if (response !== null) {
+                const { reviews: mappedData, total_pages: pages } = response;
+                setData(mappedData);
+                setTotalPages(pages);
+            } else {
+                console.error('Response from fetch all reviews is null');
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    const handleWizardClose = () => {
+        setWizardModalOpen(false);
+        fetchDataFromApi();
+    };
+    const convertDateFormat = (inputDate: string) => {
+        const [day, month, year] = inputDate.split('/');
+        return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
     };
     return (
         <div>
@@ -196,38 +270,59 @@ const ReviewsDirectory: React.FC = () => {
                     <>
                         <Table className="table table-bordered table-centered table-striped table-hover mt-4">
                             <thead>
-                            <tr>
-                                {defaultColumns.map(column => (
-                                    <th className="text-center" key={column}>{column}</th>
-                                ))}
-                            </tr>
+                                <tr>
+                                    <th className="text-center">
+                                        <input
+                                            type="checkbox"
+                                            checked={selectAll}
+                                            onChange={handleSelectAllChange}
+                                        />
+                                    </th>
+                                    {defaultColumns.slice(1).map(column => (
+                                        <th className="text-center" key={column}>{column}</th>
+                                    ))}
+                                </tr>
                             </thead>
                             <tbody>
-                            {data && data.map(review => (
-                                <tr key={review.id}>
-                                    <td className="text-center">{review.app_name || 'N/A'}</td>
-                                    <td className="text-center">{review.id || 'N/A'}</td>
-                                    <td className="text-center">{truncateReview(review.review) || 'N/A'}
-                                        <br/>
-                                        {review.review && review.review.length > 50 &&
-                                            <Button variant="link" onClick={() => openEditModal(review)}>Read More</Button>}
-                                    </td>
-                                    <td className="text-center">{review.score || 'N/A'}</td>
-                                    <td className="text-center">{review.date || 'N/A'}</td>
-                                    <td className="text-end" style={{ width: "150px" }}>
-                                        <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Edit</Tooltip>}>
-                                            <a href="#" className="action-icon" onClick={() => openEditModal(review)}>
-                                                <i className="mdi mdi-pencil"></i>
-                                            </a>
-                                        </OverlayTrigger>
-                                        <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
-                                            <a href="#" className="action-icon" onClick={() => openDeleteModal(review)}>
-                                                <i className="mdi mdi-delete"></i>
-                                            </a>
-                                        </OverlayTrigger>
-                                    </td>
-                                </tr>
-                            ))}
+                                {data && data.map(review => (
+                                    <tr key={review.id}>
+                                        <td className="text-center">
+                                            <input
+                                                type="checkbox"
+                                                checked={selectedReviews.includes(review.id)}
+                                                onChange={() => handleCheckboxChange(review.id)}
+                                            />
+                                        </td>
+                                        <td className="text-center">{review.app_name || 'N/A'}</td>
+                                        <td className="text-center">{review.id || 'N/A'}</td>
+                                        <td className="text-center">{truncateReview(review.review) || 'N/A'}
+                                            <br/>
+                                            {review.review && review.review.length > 50 &&
+                                                <Button variant="link" onClick={() => openEditModal(review)}>Read More</Button>}
+                                        </td>
+                                        <td className="text-center">{review.score || 'N/A'}</td>
+                                        <td className="text-center">{review.date || 'N/A'}</td>
+                                        <td className="text-end" style={{ width: "150px" }}>
+                                            {review?.analyzed && (
+                                                <OverlayTrigger overlay={<Tooltip id="analyze-tooltip">Analyze Review</Tooltip>}>
+                                                    <a href="javascript:void(0)" className="action-icon" onClick={() => analyzeReviewAction(review)}>
+                                                        <i className="mdi mdi-eye"></i>
+                                                    </a>
+                                                </OverlayTrigger>
+                                            )}
+                                            <OverlayTrigger overlay={<Tooltip id="edit-tooltip">Edit</Tooltip>}>
+                                                <a href="#" className="action-icon" onClick={() => openEditModal(review)}>
+                                                    <i className="mdi mdi-pencil"></i>
+                                                </a>
+                                            </OverlayTrigger>
+                                            <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
+                                                <a href="#" className="action-icon" onClick={() => openDeleteModal(review)}>
+                                                    <i className="mdi mdi-delete"></i>
+                                                </a>
+                                            </OverlayTrigger>
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </Table>
                         {totalPages > 1 && (
@@ -286,6 +381,13 @@ const ReviewsDirectory: React.FC = () => {
                                 </nav>
                             </div>
                         )}
+                        {selectedReviews.length > 0 && (
+                            <div className="d-flex justify-content-end mt-2">
+                                <Button variant="primary" onClick={() => setWizardModalOpen(true)}>
+                                    Process Reviews
+                                </Button>
+                            </div>
+                        )}
                     </>
                 )}
             </div>
@@ -293,7 +395,7 @@ const ReviewsDirectory: React.FC = () => {
             {/* Edit Modal */}
             <Modal show={isEditModalOpen} backdrop="static" keyboard={false} onHide={closeModals}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Edit App</Modal.Title>
+                    <Modal.Title>Edit Review</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className="row">
@@ -318,7 +420,13 @@ const ReviewsDirectory: React.FC = () => {
                         <div className="col-md-6">
                             <div className="mb-3">
                                 <label htmlFor="appReleaseDate" className="form-label">Date</label>
-                                <input className="form-control" id="example-date" type="date" defaultValue={selectedReview?.date} onChange={(e) => setDate(e.target.value)} />
+                                <input
+                                    className="form-control"
+                                    id="example-date"
+                                    type="date"
+                                    defaultValue={selectedReview?.date ? convertDateFormat(selectedReview.date) : ''}
+                                    onChange={(e) => setDate(e.target.value)}
+                                />
                             </div>
                         </div>
                         <div className="col-md-6">
@@ -371,7 +479,22 @@ const ReviewsDirectory: React.FC = () => {
                     <Button variant="danger" onClick={() => deleteReview(selectedReview?.app_id, selectedReview?.id)}>Delete</Button>
                 </Modal.Footer>
             </Modal>
+
+            {isWizardModalOpen && (
+                <ReviewProcessingWizard
+                    reviewsData={data || []}
+                    selectedReviews={selectedReviews}
+                    onHide={handleWizardClose}
+                    onDiscardReview={(reviewId) => {
+                        const updatedSelectedReviews = selectedReviews.filter((id) => id !== reviewId);
+                        setSelectedReviews(updatedSelectedReviews);
+                    }}
+                    onUpdateDirectory={fetchDataFromApi}
+                />
+            )}
+
         </div>
+
     );
 };
 

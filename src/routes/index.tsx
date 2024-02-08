@@ -8,6 +8,7 @@ import AppsDirectory from "../pages/Apps/AppsDirectory";
 import UploadApps from "../pages/Apps/UploadApps";
 import Footer from "../components/footer/Footer";
 import {Container} from "react-bootstrap";
+import ReviewAnalyzer from "../pages/Reviews/ReviewAnalyzer";
 
 
 interface LayoutProps {
@@ -48,6 +49,10 @@ const Routes = () => {
         {
             path: '/reviews',
             element: <DefaultLayout><ReviewsDirectory /></DefaultLayout>
+        },
+        {
+            path: '/reviews/:reviewId/analyze',
+            element: <DefaultLayout><ReviewAnalyzer /></DefaultLayout>
         }
     ]);
 };

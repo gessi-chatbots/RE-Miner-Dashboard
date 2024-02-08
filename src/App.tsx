@@ -44,7 +44,7 @@ const authenticationComponents = {
               padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
               level={3}
           >
-            Sign In in ReMiner App
+            Sign In RE-Miner Dashboard
           </Heading>
       );
     },
@@ -75,7 +75,7 @@ const authenticationComponents = {
               padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
               level={5}
           >
-            Create a new account in ReMine
+            Create a new account in RE-Miner
           </Heading>
       );
     },

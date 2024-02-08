@@ -1,6 +1,7 @@
 import json
 import awsgi
 import boto3
+import random
 from boto3.dynamodb.conditions import Key
 from botocore.exceptions import ClientError
 from math import ceil
@@ -14,6 +15,16 @@ CORS(app)
 BASE_ROUTE = "/apps"
 client = boto3.client("dynamodb")
 TABLE = "users-dev"
+
+
+def split_sentences(text):
+    punctuation_marks = ['.', '!', '?']
+    sentences = [sentence.strip() for sentence in text.split('.') if sentence]
+    
+    for mark in punctuation_marks[1:]:
+        sentences = [sent.strip() + mark if sent.endswith(mark) else sent for sent in sentences]
+
+    return sentences
 
 
 def get_user_items(user_id): 
@@ -71,10 +82,7 @@ def update_app():
         )
         return jsonify({"message": "App updated successfully"}), 200
     else:
-        return jsonify({"message": "App not found"}), 404
-
-
-  
+        return jsonify({"message": "App not found"}), 404 
     
 @app.route(BASE_ROUTE, methods=['POST'])
 def create_apps():
@@ -90,17 +98,32 @@ def create_apps():
     
     apps = apps_json.get("apps", [])
     for new_app in apps:
+        print(f"Creating app: {new_app}")
         app_reviews = new_app.get("reviews", [])
         reviews_list = []
         for review in app_reviews:
+            sentiment_list = []
+            review_text = review.get("review")
+            sentences = split_sentences(review_text)
+            for sentence in sentences:
+                if sentence:
+                    sentiment_dict = {
+                        'M': {
+                            'sentiment': {'S': 'Not relevant'},
+                            'sentence': {'S': sentence.strip()}
+                        }
+                    }
+                sentiment_list.append(sentiment_dict)
+            feature_list = []
             review_dict = {
                 'M': {
                     'id': {'S': review.get('id')}, 
                     'review': {'S': review.get("review")},
                     'score': {'N': str(review.get("score", 0))},
                     'date': {'S': review.get("date", "N/A")},
-                    'features': {'L': []},
-                    'sentiments': {'L': []}
+                    'analyzed': {'BOOL': False},
+                    'features': {'L': feature_list},
+                    'sentiments': {'L': sentiment_list},
                 }
             }
             reviews_list.append(review_dict) 
@@ -127,6 +150,7 @@ def create_apps():
                 }
             )
         except ClientError as e:
+            print("[ERROR]: No app list detected, creating new one")
             if e.response['Error']['Code'] == 'ValidationException':
                 # no app list exists for that user, we create a new one
                 client.update_item(
@@ -139,11 +163,20 @@ def create_apps():
                             ':app_list': {'L': [app_item]}
                         }
                 )
+        finally:
+            waiter = client.get_waiter('table_exists')
+            waiter.wait(
+                TableName=TABLE,
+                WaiterConfig={
+                    'Delay': 5,
+                    'MaxAttempts': 20
+                }
+            )
+
     return jsonify({"message": "App/s created successfully"}), 200
 
-
 @app.route(BASE_ROUTE, methods=['GET'])
-def list_apps():
+def list_apps_paginated():
     print("[GET]: All apps from user")
     user_id = request.args.get('user_id')
     page = int(request.args.get('page', 1))
@@ -175,6 +208,27 @@ def list_apps():
         'apps': app_data_list,
         'total_pages': total_pages
     })
+
+@app.route(BASE_ROUTE + '/names', methods=['GET'])
+def list_apps_names():
+    print("[GET]: All apps names")
+    user_id = request.args.get('user_id')
+    items = get_user_items(user_id)
+    if not items:
+        return jsonify({"error": f"User with user_id {user_id} not found"}), 404 
+    app_data_list = []
+    for item in items:
+        apps = item.get('apps', {}).get('L', [])
+        for app_item in apps:
+            app_data = {
+                'id': app_item.get('M', {}).get('id', {}).get('S', None),
+                'app_name': app_item.get('M', {}).get('app_name', {}).get('S', None)
+            }
+            app_data_list.append(app_data)
+    return jsonify({
+        'apps': app_data_list,
+    })    
+    
 @app.route(BASE_ROUTE, methods=['DELETE'])
 def delete_app():
     print("[DELETE]: Delete an App")
@@ -218,7 +272,6 @@ def delete_app():
 def handler(event, context):
     print('[Apps API]: Received Event')
     print(event)
-
     flask_response = awsgi.response(app, event, context)
 
     flask_response['headers'] = {

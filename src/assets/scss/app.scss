@@ -16,7 +16,8 @@
 
 // Icons
 @import './icons/materialdesignicons.scss';
-
+// Pages
+@import "./pages/reviewAnalyzer.scss";
 // Components
 @import "./components/nav.scss";
 @import "./components/dropzone.scss";
@@ -24,3 +25,4 @@
 @import "./components/modal.scss";
 @import "./components/footer.scss";
 @import "./components/pagination.scss";
+@import "./components/sentimentHistogram.scss";
