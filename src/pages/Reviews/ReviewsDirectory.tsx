@@ -40,8 +40,19 @@ const ReviewsDirectory: React.FC = () => {
         setEditModalIsOpen(true);
     };
 
+    const handleSelectAllChange = () => {
+        setSelectAll(!selectAll);
+        const allReviewIds = data?.map(review => review.id) || [];
+        setSelectedReviews(selectAll ? [] : allReviewIds);
+    };
+
+
     const handleCheckboxChange = (reviewId: string) => {
         const updatedSelectedReviews = [...selectedReviews];
+        if (selectAll) {
+            setSelectAll(false);
+        }
+
         if (updatedSelectedReviews.includes(reviewId)) {
             updatedSelectedReviews.splice(updatedSelectedReviews.indexOf(reviewId), 1);
         } else {
@@ -233,7 +244,10 @@ const ReviewsDirectory: React.FC = () => {
         setWizardModalOpen(false);
         fetchDataFromApi();
     };
-
+    const convertDateFormat = (inputDate: string) => {
+        const [day, month, year] = inputDate.split('/');
+        return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    };
     return (
         <div>
             <div>
@@ -258,7 +272,11 @@ const ReviewsDirectory: React.FC = () => {
                             <thead>
                                 <tr>
                                     <th className="text-center">
-                                        Select
+                                        <input
+                                            type="checkbox"
+                                            checked={selectAll}
+                                            onChange={handleSelectAllChange}
+                                        />
                                     </th>
                                     {defaultColumns.slice(1).map(column => (
                                         <th className="text-center" key={column}>{column}</th>
@@ -377,7 +395,7 @@ const ReviewsDirectory: React.FC = () => {
             {/* Edit Modal */}
             <Modal show={isEditModalOpen} backdrop="static" keyboard={false} onHide={closeModals}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Edit App</Modal.Title>
+                    <Modal.Title>Edit Review</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className="row">
@@ -402,7 +420,13 @@ const ReviewsDirectory: React.FC = () => {
                         <div className="col-md-6">
                             <div className="mb-3">
                                 <label htmlFor="appReleaseDate" className="form-label">Date</label>
-                                <input className="form-control" id="example-date" type="date" defaultValue={selectedReview?.date} onChange={(e) => setDate(e.target.value)} />
+                                <input
+                                    className="form-control"
+                                    id="example-date"
+                                    type="date"
+                                    defaultValue={selectedReview?.date ? convertDateFormat(selectedReview.date) : ''}
+                                    onChange={(e) => setDate(e.target.value)}
+                                />
                             </div>
                         </div>
                         <div className="col-md-6">

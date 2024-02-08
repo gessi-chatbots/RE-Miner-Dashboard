@@ -231,6 +231,11 @@ const AppsDirectory: React.FC = () => {
             return false;
         }
     };
+
+    const convertDateFormat = (inputDate: string) => {
+        const [day, month, year] = inputDate.split('/');
+        return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    };
     return (
         <div>
             <div>
@@ -388,7 +393,14 @@ const AppsDirectory: React.FC = () => {
                         <div className="col-md-6">
                             <div className="mb-3">
                                 <label htmlFor="appReleaseDate" className="form-label">Release Date</label>
-                                <input className="form-control" id="example-date" type="date" value={release_date} onChange={(e) => setAppReleaseDate(e.target.value)} />
+
+                                <input
+                                    className="form-control"
+                                    id="example-date"
+                                    type="date"
+                                    defaultValue={selectedApp?.release_date ? convertDateFormat(selectedApp?.release_date) : ''}
+                                    onChange={(e) => setAppReleaseDate(e.target.value)}
+                                />
                             </div>
                         </div>
                         <div className="col-md-6">
@@ -419,7 +431,6 @@ const AppsDirectory: React.FC = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-
             {/* Delete Modal */}
             <Modal show={isDeleteModalOpen} backdrop="static" keyboard={false} onHide={closeModals}>
                 <Modal.Header closeButton>

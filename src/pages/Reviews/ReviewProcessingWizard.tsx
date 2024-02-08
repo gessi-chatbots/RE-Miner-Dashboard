@@ -32,10 +32,11 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
 
     const [selectedSentimentModel, setSelectedSentimentModel] = React.useState<string>("");
     const [selectedFeatureModel, setSelectedFeatureModel] = React.useState<string>("");
+    const [loading, setLoading] = React.useState<boolean>(false);
 
     const handleComplete = async () => {
         try {
-            onHide();
+            setLoading(true);
             const reviewService = new ReviewService();
             for (const reviewId of selectedReviews) {
                 const review = reviewsData.find((review) => review.id === reviewId);
@@ -51,6 +52,9 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
             }
         } catch (error) {
             console.error("Error processing reviews:", error);
+        } finally {
+            setLoading(false);
+            onHide();
         }
     };
 
@@ -193,7 +197,11 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                         </FormWizard.TabContent>
                         <FormWizard.TabContent title="Send" icon="ti-stats-up">
                             <h2 className="text-secondary">Send</h2>
-                            <p>The reviews will be sent to the <b>RE-Miner Hub</b>, do you want to proceed?</p>
+                            {loading ? (
+                                <p>Analyzing. Please wait until this modal closes automatically.</p>
+                            ) : (
+                                <p>The reviews will be sent to the <b>RE-Miner Hub</b>, do you want to proceed?</p>
+                            )}
                         </FormWizard.TabContent>
                     </FormWizard>
                     {/* add style */}
