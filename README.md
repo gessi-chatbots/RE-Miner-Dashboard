@@ -86,8 +86,9 @@ The user engagement follows a structured workflow. Upon user creation, access pe
    ```bash
     amplify add function
    ```
-   Select Python runtime. Copy paste the source code from the [3 functions](/amplify/backend/function)
-   In the Amplify console copy & paste the [amplify.yml](amplify.yml) for correct building
+   - Select Python runtime.
+   - Copy paste the source code from the [3 functions](/amplify/backend/function)
+   - In the Amplify console copy & paste the [amplify.yml](amplify.yml) for correct building
 
 ## How to deploy
 ### **Deploy backend:**
