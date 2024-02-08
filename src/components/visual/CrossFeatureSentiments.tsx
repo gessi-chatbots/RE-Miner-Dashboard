@@ -375,7 +375,7 @@ const CrossFeatureSentiments = () => {
                     style={{ maxWidth: '95vw', maxHeight: '95vh' }}
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>Combined Chart</Modal.Title>
+                        <Modal.Title>Features and sentiments Chart</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>{data && selectedApp ? renderChart() : <p>Select an app and at least one feature</p>}</Modal.Body>
                 </Modal>
