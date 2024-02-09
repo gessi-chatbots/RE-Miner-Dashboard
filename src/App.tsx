@@ -5,6 +5,7 @@ import '@aws-amplify/ui-react/styles.css';
 import {Amplify} from "aws-amplify";
 import config from './amplifyconfiguration.json';
 import './assets/scss/app.scss';
+import Logo from './assets/static/images/logos/logo-GESSI.jpg';
 import AppRoutes from "./routes/AppRoutes";
 Amplify.configure(config);
 const authenticationComponents = {
@@ -12,24 +13,36 @@ const authenticationComponents = {
     const { tokens } = useTheme();
     return (
         <View textAlign="center" padding={tokens.space.large}>
-          <Image
-              alt="UPC logo"
-              src="https://www.upc.edu/comunicacio/ca/identitat/descarrega-arxius-grafics/fitxers-marca-principal/upc-positiu-p3005-interior-blanc.png"
-          />
+          <a href="https://gessi.upc.edu/en" target="_blank">
+            <Image
+                alt="GESSI logo"
+                src={Logo}
+            />
+          </a>
         </View>
     );
   },
 
   Footer() {
     const { tokens } = useTheme();
-
+    const currentYear = new Date().getFullYear();
     return (
         <View textAlign="center" padding={tokens.space.large}>
           <Text color={tokens.colors.neutral[80]}>
-            &copy; All Rights Reserved
-          </Text>
-          <Text color={tokens.colors.neutral[80]}>
-            GESSI - Max Tiessler
+            {currentYear} © <a
+                href="https://gessi.upc.edu/en"
+                target="_blank"
+                style={{ textDecoration: "none", color: "inherit" }}
+            >
+              GESSI
+            </a>{" - "}
+            <a
+                href="https://github.com/mtiessler"
+                target="_blank"
+                style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Max Tiessler
+            </a>
           </Text>
         </View>
     );
@@ -73,9 +86,9 @@ const authenticationComponents = {
       return (
           <Heading
               padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
-              level={5}
+              level={6}
           >
-            Create a new account in RE-Miner
+            Create a new account in RE-Miner Dashboard
           </Heading>
       );
     },
