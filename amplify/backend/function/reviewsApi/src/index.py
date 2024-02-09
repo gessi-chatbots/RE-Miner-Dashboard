@@ -565,7 +565,7 @@ def analyze_reviews_for_sentence(sentiment_model, feature_model, sentence):
     try:
         http = urllib3.PoolManager()
         endpoint_url = ""
-        url = "https://f1bc-79-157-114-161.ngrok-free.app"
+        url = "https://1b30-79-157-114-161.ngrok-free.app"
         if sentiment_model != "" and feature_model != "":
             print(f"feature model: {feature_model}, sentiment model: {sentiment_model}")
             endpoint_url = f"{url}/analyze-reviews?model_emotion={sentiment_model}&model_features={feature_model}"

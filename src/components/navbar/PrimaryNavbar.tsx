@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Container, Navbar, Button, Row, Dropdown } from 'react-bootstrap';
-import Logo from '../../assets/static/images/logos/logo.png';
+import Logo from '../../assets/static/images/logos/logo-GESSI.jpg';
 import { Link } from "react-router-dom";
 import AuthService from "../../services/AuthService";
 
@@ -67,8 +67,8 @@ const PrimaryNavBar = () => {
         <Navbar className="bg-white py-lg-3">
             <Container>
                 <Navbar.Brand className="me-lg-5">
-                    <a href="https://www.upc.edu/ca" target="_blank">
-                        <img src={Logo} style={{ width: '50%' }} alt="Logo" />
+                    <a href="https://gessi.upc.edu/en" target="_blank">
+                        <img src={Logo} style={{ width: '40%' }} alt="Logo GESSI" />
                     </a>
                 </Navbar.Brand>
 
