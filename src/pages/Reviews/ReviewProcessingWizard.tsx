@@ -1,15 +1,28 @@
 import React from "react";
-import {Button, Col, Form, Modal, ModalBody, ModalHeader, OverlayTrigger, Row, Table, Tooltip} from "react-bootstrap";
+import {
+    Button,
+    Col,
+    Form,
+    Modal,
+    ModalBody,
+    ModalHeader,
+    OverlayTrigger,
+    Pagination,
+    Row,
+    Table,
+    Tooltip
+} from "react-bootstrap";
 import { ReviewDataDTO } from "../../DTOs/ReviewDataDTO";
 import FormWizard from "react-form-wizard-component";
 import "react-form-wizard-component/dist/style.css";
 import ReviewService from "../../services/ReviewService";
+import { toast } from "react-toastify";
 
 interface ReviewProcessingWizardProps {
     reviewsData: ReviewDataDTO[];
     selectedReviews: string[];
     onHide: () => void;
-    onDiscardReview: (reviewId: string) => void;
+    onDiscardReview: (review: ReviewDataDTO) => void;
     onUpdateDirectory: () => void;
 }
 
@@ -18,6 +31,13 @@ interface SelectedTasks {
     sentimentAnalysis: boolean;
     featureExtraction: boolean;
 }
+
+interface PaginationProps {
+    currentPage: number;
+    totalPages: number;
+    onPageChange: (page: number) => void;
+}
+
 
 const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                                                                            reviewsData,
@@ -29,17 +49,31 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
         sentimentAnalysis: false,
         featureExtraction: false,
     });
+    const [wizardData, setWizardData] = React.useState<ReviewDataDTO[]>(reviewsData);
 
     const [selectedSentimentModel, setSelectedSentimentModel] = React.useState<string>("");
     const [selectedFeatureModel, setSelectedFeatureModel] = React.useState<string>("");
     const [loading, setLoading] = React.useState<boolean>(false);
+    const itemsPerPage = 8;
+    const totalPages = Math.ceil(wizardData.length / itemsPerPage);
 
+    const [currentPage, setCurrentPage] = React.useState<number>(1);
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage, wizardData.length);
     const handleComplete = async () => {
         try {
             setLoading(true);
             const reviewService = new ReviewService();
+            toast.info('Analyzing reviews', {
+                autoClose: false,
+                closeOnClick: false,
+                onClose: () => {
+                    toast.success('Reviews analyzed!');
+                },
+            });
             for (const reviewId of selectedReviews) {
-                const review = reviewsData.find((review) => review.id === reviewId);
+                const review = wizardData.find((review) => review.id === reviewId);
                 if (review) {
                     await reviewService.analyzeReviews(
                         [review],
@@ -54,21 +88,20 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
             console.error("Error processing reviews:", error);
         } finally {
             setLoading(false);
+            toast.dismiss();
             onHide();
         }
     };
 
-    const tabChanged = ({ prevIndex, nextIndex }: { prevIndex: number; nextIndex: number }) => {
-        // console.log("prevIndex", prevIndex);
-        // console.log("nextIndex", nextIndex);
-    };
 
     const goBackToReviews = () => {
         onHide();
     };
 
-    const discardReview = (reviewId: string) => {
-        onDiscardReview(reviewId);
+    const discardReview = (review: ReviewDataDTO) => {
+        onDiscardReview(review);
+        const updatedWizardData = wizardData.filter((r) => r.id !== review.id);
+        setWizardData(updatedWizardData);
     };
     const handleTaskSelectionChange = (task: string) => {
         setSelectedTasks((prevSelectedTasks) => ({
@@ -85,6 +118,21 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
         setSelectedFeatureModel(model);
     };
 
+
+    const nextPage = async () => {
+        if (currentPage < totalPages) {
+            const nextPageNumber = currentPage + 1;
+            setCurrentPage(nextPageNumber);
+        }
+    };
+
+    const prevPage = async () => {
+        if (currentPage > 1) {
+            const prevPageNumber = currentPage - 1;
+            setCurrentPage(prevPageNumber);
+        }
+    };
+
     return (
         <>
             <Modal size="xl" show onHide={onHide}>
@@ -97,46 +145,105 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                 <ModalBody>
 
 
-                    <FormWizard onComplete={handleComplete} onTabChange={tabChanged}>
-                        <FormWizard.TabContent title="Check Reviews" icon="ti-ruler-pencil">
-                            <h3 className="text-secondary">Selected reviews</h3>
-                            <Table className="table table-bordered table-centered table-striped table-hover mt-4">
-                                <thead>
-                                <tr>
-                                    <th className="text-center">App Name</th>
-                                    <th className="text-center">Review ID</th>
-                                    <th className="text-center">Review</th>
-                                    <th className="text-center">Score</th>
-                                    <th className="text-center">Date</th>
-                                    <th className="text-center">Actions</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {reviewsData
-                                    .filter((review) => selectedReviews.includes(review.id))
-                                    .map((review: ReviewDataDTO) => (
-                                        <tr key={review.id}>
-                                            <td className="text-center">{review.app_name || "N/A"}</td>
-                                            <td className="text-center">{review.id || "N/A"}</td>
-                                            <td className="text-center">{review.review || "N/A"}</td>
-                                            <td className="text-center">{review.score || "N/A"}</td>
-                                            <td className="text-center">{review.date || "N/A"}</td>
-                                            <td className="text-end" style={{ width: "150px" }}>
-                                                <OverlayTrigger overlay={<Tooltip>Discard</Tooltip>}>
-                                                    <a
-                                                        href="#"
-                                                        className="action-icon"
-                                                        onClick={() => discardReview(review.id)}
-                                                    >
-                                                        <i className="mdi mdi-close-thick"></i>
-                                                    </a>
-                                                </OverlayTrigger>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </Table>
-                        </FormWizard.TabContent>
+                    <FormWizard onComplete={handleComplete}>
+
+                            <FormWizard.TabContent title="Check Reviews" icon="ti-ruler-pencil">
+                                <h3 className="text-secondary">Selected reviews</h3>
+                                <Table className="table table-bordered table-centered table-striped table-hover mt-4">
+                                    <thead>
+                                    <tr>
+                                        <th className="text-center">App Name</th>
+                                        <th className="text-center">Review ID</th>
+                                        <th className="text-center">Review</th>
+                                        <th className="text-center">Score</th>
+                                        <th className="text-center">Date</th>
+                                        <th className="text-center">Actions</th>
+                                    </tr>
+                                    </thead>
+
+                                        <tbody>
+                                        {wizardData
+                                            .slice(startIndex, endIndex)
+                                            .map((review: ReviewDataDTO) => (
+                                                <tr key={review.id}>
+                                                    <td className="text-center">{review.app_name || "N/A"}</td>
+                                                    <td className="text-center">{review.id || "N/A"}</td>
+                                                    <td className="text-center">{review.review || "N/A"}</td>
+                                                    <td className="text-center">{review.score || "N/A"}</td>
+                                                    <td className="text-center">{review.date || "N/A"}</td>
+                                                    <td className="text-end" style={{ width: "150px" }}>
+                                                        <OverlayTrigger overlay={<Tooltip>Discard</Tooltip>}>
+                                                            <a
+                                                                href="#"
+                                                                className="action-icon"
+                                                                onClick={() => discardReview(review)}
+                                                            >
+                                                                <i className="mdi mdi-close-thick"></i>
+                                                            </a>
+                                                        </OverlayTrigger>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                </Table>
+                                {totalPages > 1 ? (
+                                    <div className="d-flex justify-content-center align-items-center">
+                                        <nav>
+                                            <ul className="pagination pagination-rounded mb-0">
+                                                <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                                                    <Button className="btn-primary page-link" onClick={prevPage} aria-label="Previous">
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                    </Button>
+                                                </li>
+
+                                                {currentPage > 6 && (
+                                                    <li className={`page-item ${currentPage === 1 ? 'active' : ''}`}>
+                                                        <Button className="btn-primary page-link" onClick={() => setCurrentPage(1)}>
+                                                            1
+                                                        </Button>
+                                                    </li>
+                                                )}
+
+                                                {currentPage > 6 && (
+                                                    <li className="page-item disabled">
+                                                        <Button className="btn-primary page-link" disabled>
+                                                            ...
+                                                        </Button>
+                                                    </li>
+                                                )}
+
+                                                {Array.from({ length: Math.min(10, totalPages - Math.max(1, currentPage - 5)) }, (_, index) => (
+                                                    <li key={index} className={`page-item ${currentPage === index + Math.max(1, currentPage - 5) ? 'active' : ''}`}>
+                                                        <Button className="btn-primary page-link" onClick={() => setCurrentPage(index + Math.max(1, currentPage - 5))}>
+                                                            {index + Math.max(1, currentPage - 5)}
+                                                        </Button>
+                                                    </li>
+                                                ))}
+
+                                                {totalPages - currentPage > 5 && (
+                                                    <li className="page-item disabled">
+                                                        <Button className="btn-primary page-link" disabled>
+                                                            ...
+                                                        </Button>
+                                                    </li>
+                                                )}
+
+                                                <li className={`page-item ${currentPage === totalPages ? 'active' : ''}`}>
+                                                    <Button className="btn-primary page-link" onClick={() => setCurrentPage(totalPages)}>
+                                                        {totalPages}
+                                                    </Button>
+                                                </li>
+                                                <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                                                    <Button className="btn-primary page-link" onClick={nextPage} aria-label="Next">
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                    </Button>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                ) : null}
+                            </FormWizard.TabContent>
+
                         <FormWizard.TabContent title="Task selection" icon="ti-panel">
                             <Row className="task-selection-container">
                                 <Col xs={12} sm={6} md={6}>
