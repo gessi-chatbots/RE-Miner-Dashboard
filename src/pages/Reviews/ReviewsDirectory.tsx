@@ -42,53 +42,56 @@ const ReviewsDirectory: React.FC = () => {
     };
 
     const handleSelectAllChange = async () => {
-        setSelectAll(!selectAll);
-        const reviewService = new ReviewService();
-        try {
-            const allReviews = await reviewService.fetchAllReviewsDetailed()
-            if (allReviews !== null) {
-                const allReviewIds = pageData?.map(review => review.id) || [];
-                setSelectedReviews(selectAll ? [] : allReviewIds);
-                setWizardData(allReviews.reviews)
-            } else {
-                console.error('Response from fetch all reviews is null');
+        const newSelectAll = !selectAll;
+        setSelectAll(newSelectAll);
+
+        if (newSelectAll) {
+            const reviewService = new ReviewService();
+            try {
+                const allReviews = await reviewService.fetchAllReviewsDetailed()
+                if (allReviews !== null) {
+                    const allReviewIds = pageData?.map(review => review.id) || [];
+                    setSelectedReviews(newSelectAll ? allReviewIds : []);
+                    setWizardData(newSelectAll ? allReviews.reviews : []);
+                } else {
+                    console.error('Response from fetch all reviews is null');
+                }
+            } catch (error) {
+                console.error('Error fetching all reviews:', error);
             }
-        } catch (error) {
-            console.error('Error fetching all reviews:', error);
-        }
-    };
-
-
-    const handleCheckboxChange = async (reviewId: string) => {
-        const updatedSelectedReviews = [...selectedReviews];
-        if (selectAll) {
-            setSelectAll(false);
-        }
-
-        if (updatedSelectedReviews.includes(reviewId)) {
-            updatedSelectedReviews.splice(updatedSelectedReviews.indexOf(reviewId), 1);
         } else {
-            updatedSelectedReviews.push(reviewId);
-        }
-        setSelectedReviews(updatedSelectedReviews);
-        const reviewService = new ReviewService();
-        try {
-            const response = await reviewService.fetchReview(reviewId);
-            if (response !== null) {
-                const review = response.review;
-                setWizardData((prevWizardData) => {
-                    if (prevWizardData === null) {
-                        return [review];
-                    } else {
-                        return [...prevWizardData, review];
-                    }
-                });
-            }
-        } catch (error) {
-            console.error('Error fetching data:', error);
+            setWizardData([]);
+            setSelectedReviews([]);
         }
     };
 
+
+    const handleCheckboxChange = async (review: ReviewDataDTO) => {
+        setSelectAll(false);
+
+        setSelectedReviews((prevSelectedReviews) => {
+            const updatedSelectedReviews = [...prevSelectedReviews];
+            const index = updatedSelectedReviews.indexOf(review.id);
+
+            if (index !== -1) {
+                updatedSelectedReviews.splice(index, 1);
+            } else {
+                updatedSelectedReviews.push(review.id);
+            }
+
+            return updatedSelectedReviews;
+        });
+
+        setWizardData((prevWizardData) => {
+            if (!prevWizardData || prevWizardData.length === 0) {
+                return [review];
+            } else if (!prevWizardData.some((r) => r.id === review.id)) {
+                return [...prevWizardData, review];
+            } else {
+                return prevWizardData.filter((r) => r.id !== review.id);
+            }
+        });
+    };
     const openDeleteModal = (review: ReviewDataDTO) => {
         setSelectedReview(review);
         setDeleteModalIsOpen(true);
@@ -314,7 +317,7 @@ const ReviewsDirectory: React.FC = () => {
                                             <input
                                                 type="checkbox"
                                                 checked={selectedReviews.includes(review.id)}
-                                                onChange={() => handleCheckboxChange(review.id)}
+                                                onChange={() => handleCheckboxChange(review)}
                                             />
                                         </td>
                                         <td className="text-center">{review.app_name || 'N/A'}</td>
@@ -405,7 +408,7 @@ const ReviewsDirectory: React.FC = () => {
                                 </nav>
                             </div>
                         )}
-                        {selectedReviews.length > 0 && (
+                        {wizardData && wizardData.length > 0 && (
                             <div className="d-flex justify-content-end mt-2">
                                 <Button variant="primary" onClick={() => setWizardModalOpen(true)}>
                                     Process Reviews

@@ -16,6 +16,7 @@ import { ReviewDataDTO } from "../../DTOs/ReviewDataDTO";
 import FormWizard from "react-form-wizard-component";
 import "react-form-wizard-component/dist/style.css";
 import ReviewService from "../../services/ReviewService";
+import { toast } from "react-toastify";
 
 interface ReviewProcessingWizardProps {
     reviewsData: ReviewDataDTO[];
@@ -64,6 +65,13 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
         try {
             setLoading(true);
             const reviewService = new ReviewService();
+            toast.info('Analyzing reviews', {
+                autoClose: false,
+                closeOnClick: false,
+                onClose: () => {
+                    toast.success('Reviews analyzed!');
+                },
+            });
             for (const reviewId of selectedReviews) {
                 const review = wizardData.find((review) => review.id === reviewId);
                 if (review) {
@@ -80,6 +88,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
             console.error("Error processing reviews:", error);
         } finally {
             setLoading(false);
+            toast.dismiss();
             onHide();
         }
     };

@@ -6,8 +6,7 @@ const AppRoutes = () => {
     return (
         <BrowserRouter>
             <ToastContainer
-                autoClose={5000}
-                hideProgressBar={false}
+                hideProgressBar={true}
                 newestOnTop={false}
                 closeOnClick
                 rtl={false}
