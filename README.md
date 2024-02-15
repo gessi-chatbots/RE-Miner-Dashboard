@@ -88,6 +88,7 @@ The user engagement follows a structured workflow. Upon user creation, access pe
    ```
    - Select Python runtime.
    - Copy paste the source code from the [3 functions](/amplify/backend/function)
+   - Create a `backend_url` environment variable and assign the [RE-Miner HUB URL](https://github.com/gessi-chatbots/RE-Miner-HUB)
    - In the Amplify console copy & paste the [amplify.yml](amplify.yml) for correct building
 
 ## How to deploy
