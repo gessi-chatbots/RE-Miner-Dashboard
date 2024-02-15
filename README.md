@@ -121,6 +121,16 @@ This will create and configure the backend resources in your AWS account.
 ```
 ## Datasets
 
+Within the [data folder](/data), three datasets are provided, each serving distinct purposes:
+
+1. [Meaningful Small Dataset](/data/meaningful_small_dataset.json): This dataset features four popular apps, accompanied by selected genuine reviews that consistently offer valuable insights when analyzed using the RE-Miner App.
+
+2. [Small Dataset](/data/small_dataset.json): This dataset features four popular apps, accompanied by genuine, albeit randomly selected, reviews.
+
+3. [Very Small Dataset](/data/very_small_dataset.json): This dataset encompasses three apps and a some randomly chosen and genuine reviews.
+
+In the latest release, an additional dataset named `full_dataset.json` is introduced. This dataset is extensive, containing a vast array of applications and genuine reviews, offering a comprehensive dataset for diverse analysis.
+
 ## License
 This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) - see the [LICENSE.md](LICENSE.md) file for details.
 
