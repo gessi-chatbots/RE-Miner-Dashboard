@@ -27,6 +27,9 @@
     "storagereviewMinerDBStreamArn": {
       "Type": "String",
       "Default": "storagereviewMinerDBStreamArn"
+    },
+    "backendUrl": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -90,6 +93,9 @@
             },
             "STORAGE_REVIEWMINERDB_STREAMARN": {
               "Ref": "storagereviewMinerDBStreamArn"
+            },
+            "backend_url": {
+              "Ref": "backendUrl"
             }
           }
         },

@@ -9,5 +9,11 @@
       ]
     }
   },
-  "lambdaLayers": []
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "backendUrl",
+      "environmentVariableName": "backend_url"
+    }
+  ]
 }

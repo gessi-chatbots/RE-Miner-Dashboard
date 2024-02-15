@@ -159,6 +159,14 @@
         }
       ]
     },
+    "AMPLIFY_function_reviewsApi_backendUrl": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reviewsApi"
+        }
+      ]
+    },
     "AMPLIFY_function_reviewsApi_deploymentBucketName": {
       "usedBy": [
         {
