@@ -4,6 +4,19 @@ The RE-Miner Dashboard is a software component within the RE-Miner Ecosystem, il
 
 ![RE-Miner-Ecosystem](https://github.com/gessi-chatbots/RE-Miner-Dashboard/assets/55029168/08cfdc74-1154-4ea0-a2de-2cab3786845d)
 
+## Table of Contents
+1. [Description](#description)
+2. [User Cases](#user-cases)
+3. [Technologies](#technologies)
+4. [How to Install](#how-to-install)
+    - [Frontend React Application](#frontend-react-application)
+    - [AWS Amplify Backend](#aws-amplify-backend)
+5. [How to Deploy](#how-to-deploy)
+    - [Deploy Backend](#deploy-backend)
+    - [Deploy Frontend](#deploy-frontend)
+6. [Datasets](#datasets)
+7. [License](#license)
+
 ## Description
 
 The RE-Miner Dashboard [RE-Miner Dashboard](https://uat.reminer-app) (still in development). Is an analytical and visualization tool. This software component comprises several integral elements:
@@ -106,6 +119,8 @@ This will create and configure the backend resources in your AWS account.
     npm run build
     amplify publish # if you want to deploy it as well in AWS
 ```
+## Datasets
+
 ## License
 This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) - see the [LICENSE.md](LICENSE.md) file for details.
 
