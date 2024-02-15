@@ -7,7 +7,7 @@ from botocore.exceptions import ClientError
 from math import ceil
 from flask_cors import CORS
 from flask import Flask, jsonify, request
-import uuid
+import os
 from datetime import datetime
 
 app = Flask(__name__)
@@ -565,7 +565,7 @@ def analyze_reviews_for_sentence(sentiment_model, feature_model, sentence):
     try:
         http = urllib3.PoolManager()
         endpoint_url = ""
-        url = "https://4da1-79-157-114-161.ngrok-free.app"
+        url = os.environ.get('backend_url')
         if sentiment_model != "" and feature_model != "":
             print(f"feature model: {feature_model}, sentiment model: {sentiment_model}")
             endpoint_url = f"{url}/analyze-reviews?model_emotion={sentiment_model}&model_features={feature_model}"

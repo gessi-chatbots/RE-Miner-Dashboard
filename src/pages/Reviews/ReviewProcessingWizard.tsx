@@ -65,31 +65,29 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
         try {
             setLoading(true);
             const reviewService = new ReviewService();
-            toast.info('Analyzing reviews', {
+
+            const infoToast = toast.info('Analyzing reviews', {
                 autoClose: false,
                 closeOnClick: false,
-                onClose: () => {
-                    toast.success('Reviews analyzed!');
-                },
+                closeButton: false,
             });
-            for (const reviewId of selectedReviews) {
-                const review = wizardData.find((review) => review.id === reviewId);
-                if (review) {
-                    await reviewService.analyzeReviews(
-                        [review],
-                        selectedTasks.featureExtraction,
-                        selectedTasks.sentimentAnalysis,
-                        selectedFeatureModel,
-                        selectedSentimentModel
-                    );
-                }
+
+            for (const review of reviewsData) {
+                await reviewService.analyzeReviews(
+                    [review],
+                    selectedTasks.featureExtraction,
+                    selectedTasks.sentimentAnalysis,
+                    selectedFeatureModel,
+                    selectedSentimentModel
+                );
             }
+            toast.dismiss(infoToast);
+            toast.success('Reviews analyzed!');
         } catch (error) {
-            console.error("Error processing reviews:", error);
+            console.error('Error analyzing reviews:', error);
+            toast.error('Error analyzing reviews');
         } finally {
             setLoading(false);
-            toast.dismiss();
-            onHide();
         }
     };
 
