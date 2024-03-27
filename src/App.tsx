@@ -2,12 +2,9 @@ import {
   Authenticator,
   Button, Heading, useAuthenticator, useTheme, View, Text, Image} from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
-import {Amplify} from "aws-amplify";
-import config from './amplifyconfiguration.json';
 import './assets/scss/app.scss';
-import Logo from './assets/static/images/logos/logo-GESSI.jpg';
+import Logo from './assets/static/images/logos/logo-GESSI.jpg'; 
 import AppRoutes from "./routes/AppRoutes";
-Amplify.configure(config);
 const authenticationComponents = {
   Header() {
     const { tokens } = useTheme();
