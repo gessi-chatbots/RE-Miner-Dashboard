@@ -7,7 +7,8 @@ import ReviewsDirectory from "../pages/Reviews/ReviewsDirectory";
 import AppsDirectory from "../pages/Apps/AppsDirectory";
 import UploadApps from "../pages/Apps/UploadApps";
 import Footer from "../components/footer/Footer";
-import SignUpForm from "../pages/Auth/SignUpForm";
+import SignUpForm from "../pages/Auth/SignUp/SignUpForm";
+import LoginForm from "../pages/Auth/Login/LoginForm";
 import {Container} from "react-bootstrap";
 import ReviewAnalyzer from "../pages/Reviews/ReviewAnalyzer";
 
@@ -58,6 +59,11 @@ const Routes = () => {
         {
             path: '/sign-up',
             element: <SignUpForm />
+        }
+        ,
+        {
+            path: '/login',
+            element: <LoginForm />
         }
     ]);
 };

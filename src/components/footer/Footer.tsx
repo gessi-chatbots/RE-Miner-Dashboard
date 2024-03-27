@@ -8,10 +8,10 @@ const Footer = () => {
     };
 
     return (
-        <footer className="footer align-items-center">
+        <footer className="align-items-center">
             <div className="container-fluid">
                 <Row className="justify-content-center">
-                    <Col md={6} className="text-secondary text-center">
+                    <Col xs={12} md={6} className="text-secondary text-center">
                         {currentYear} © <a style={linkStyle} className="text-secondary" href="https://gessi.upc.edu/en" target="_blank" rel="noopener noreferrer">GESSI</a> - <a style={linkStyle} className="text-secondary" href="https://github.com/mtiessler" target="_blank" rel="noopener noreferrer">Max Tiessler</a>
                     </Col>
                 </Row>
