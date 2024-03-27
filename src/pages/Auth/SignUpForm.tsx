@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Row, Col, Form, Button, Container } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 import Footer from "../../components/footer/Footer";
 import Logo from '../../assets/static/images/logos/logo-GESSI.jpg'; 
 import './SignUpForm.css'; // Import CSS file for styling
+import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,8 @@ const SignUpForm = () => {
     email: '',
     password: '',
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,10 +33,9 @@ const SignUpForm = () => {
         body: formDataToSend
       });
       if (response.ok) {
-        // User signed up successfully, redirect to login page
+        navigate('/login');
 
       } else {
-        // Handle error response
         console.error('Sign-up failed:', response.statusText);
       }
     } catch (error) {
@@ -54,7 +56,7 @@ const SignUpForm = () => {
             </a>
         </div>
         </Container>
-        <h1 className="form-title">Sign Up in RE-Miner App</h1>
+        <h1 className="form-title">Sign Up in RE-Miner</h1>
         <Container className="form-container">
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="name">
@@ -97,9 +99,20 @@ const SignUpForm = () => {
               required
             />
           </Form.Group>
+          <Row>
+            <Col>
+            <Button className="mt-5 mr-2" variant="secondary" onClick={() => navigate('/login')}>
+            Back
+          </Button>
+            </Col>
+            <Col>
+            
           <Button className="mt-5" variant="primary" type="submit">
             Sign Up
           </Button>
+            </Col>
+
+          </Row>
         </Form>
       </Container>
       <div className="mt-5">
