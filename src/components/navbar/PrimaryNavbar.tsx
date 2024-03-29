@@ -46,7 +46,7 @@ const DropdownMenuUser = () => {
             <Dropdown.Item>
                 <Button
                     onClick={handleSignOut}
-                    style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}
+                    style={{ color: 'white', textDecoration: 'none', cursor: 'pointer' }} // Change color to white
                 >
                     <i className="mdi mdi-export"/> Sign out
                 </Button>
@@ -62,10 +62,42 @@ const PrimaryNavBar = () => {
 
     useEffect(() => {
         const fetchUserData = async () => {
-            setUserData(userData);
+            try {
+                const userId = localStorage.getItem('USER_ID');
+                const accessToken = localStorage.getItem('ACCESS_TOKEN');
+                const refreshToken = localStorage.getItem('REFRESH_TOKEN');
+                if (!userId || !accessToken || !refreshToken) {
+                    throw new Error('User ID, access token, or refresh token not found in local storage');
+                }
+
+                const response = await fetch(`http://127.0.0.1:3001/api/v1/users/${userId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`, // Send access token as Bearer token
+                        'Cookie': `access_token_cookie=${accessToken}; session=${refreshToken}`, // Send the tokens as cookies
+                        'User-Agent': 'PostmanRuntime/7.37.0',
+                        'Accept': '*/*',
+                        'Accept-Encoding': 'gzip, deflate, br',
+                        'Connection': 'keep-alive'
+                    },
+                    credentials: 'include'
+
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    const { name, family_name } = data.user;
+                    setUserData({ name, family_name });
+                } else {
+                    throw new Error('Failed to fetch user data');
+                }
+            } catch (error:any) {
+                console.error('Error fetching user data:', error.message);
+            }
         };
         fetchUserData();
     }, []);
+
 
     const toggleUserDropdown = () => {
         setUserDropdownOpen(!userDropdownOpen);
