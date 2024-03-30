@@ -170,7 +170,7 @@ const ReviewAnalyzer = () => {
                             </Row>
                             <Row>
                                 <h2>Review Id</h2>
-                                <p>{data.id} </p>
+                                <p>{data.reviewId} </p>
                             </Row>
                             <Row>
                                 <h2> Review Content: </h2>

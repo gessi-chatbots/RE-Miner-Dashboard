@@ -50,7 +50,7 @@ const ReviewsDirectory: React.FC = () => {
             try {
                 const allReviews = await reviewService.fetchAllReviewsDetailed()
                 if (allReviews !== null) {
-                    const allReviewIds = pageData?.map(review => review.id) || [];
+                    const allReviewIds = pageData?.map(review => review.reviewId) || [];
                     setSelectedReviews(newSelectAll ? allReviewIds : []);
                     setWizardData(newSelectAll ? allReviews.reviews : []);
                 } else {
@@ -71,12 +71,12 @@ const ReviewsDirectory: React.FC = () => {
 
         setSelectedReviews((prevSelectedReviews) => {
             const updatedSelectedReviews = [...prevSelectedReviews];
-            const index = updatedSelectedReviews.indexOf(review.id);
+            const index = updatedSelectedReviews.indexOf(review.reviewId);
 
             if (index !== -1) {
                 updatedSelectedReviews.splice(index, 1);
             } else {
-                updatedSelectedReviews.push(review.id);
+                updatedSelectedReviews.push(review.reviewId);
             }
 
             return updatedSelectedReviews;
@@ -85,10 +85,10 @@ const ReviewsDirectory: React.FC = () => {
         setWizardData((prevWizardData) => {
             if (!prevWizardData || prevWizardData.length === 0) {
                 return [review];
-            } else if (!prevWizardData.some((r) => r.id === review.id)) {
+            } else if (!prevWizardData.some((r) => r.reviewId === review.reviewId)) {
                 return [...prevWizardData, review];
             } else {
-                return prevWizardData.filter((r) => r.id !== review.id);
+                return prevWizardData.filter((r) => r.reviewId !== review.reviewId);
             }
         });
     };
@@ -162,7 +162,7 @@ const ReviewsDirectory: React.FC = () => {
             console.error("Review is undefined or null.");
             return false;
         }
-        const id = reviewData?.id
+        const id = reviewData?.reviewId
         const app_id = reviewData?.app_id
         const app_name = reviewData?.app_name
         const analyzed = reviewData?.analyzed
@@ -175,7 +175,7 @@ const ReviewsDirectory: React.FC = () => {
             await reviewService.updateReview({
                 app_name,
                 app_id,
-                id,
+                reviewId: id,
                 review,
                 score,
                 date,
@@ -245,7 +245,7 @@ const ReviewsDirectory: React.FC = () => {
     };
 
     const analyzeReviewAction = (review: ReviewDataDTO) => {
-        navigate(`/reviews/${review.id}/analyze`);
+        navigate(`/reviews/${review.reviewId}/analyze`);
     };
 
     const truncateReview = (review: string) => {
@@ -312,16 +312,16 @@ const ReviewsDirectory: React.FC = () => {
                             </thead>
                             <tbody>
                                 {pageData && pageData.map(review => (
-                                    <tr key={review.id}>
+                                    <tr key={review.reviewId}>
                                         <td className="text-center">
                                             <input
                                                 type="checkbox"
-                                                checked={selectedReviews.includes(review.id)}
+                                                checked={selectedReviews.includes(review.reviewId)}
                                                 onChange={() => handleCheckboxChange(review)}
                                             />
                                         </td>
                                         <td className="text-center">{review.app_name || 'N/A'}</td>
-                                        <td className="text-center">{review.id || 'N/A'}</td>
+                                        <td className="text-center">{review.reviewId || 'N/A'}</td>
                                         <td className="text-center">{truncateReview(review.review) || 'N/A'}
                                             <br/>
                                             {review.review && review.review.length > 50 &&
@@ -436,7 +436,7 @@ const ReviewsDirectory: React.FC = () => {
                     <div className="row" >
                         <div className="mb-3">
                             <label htmlFor="reviewID" className="form-label">Review ID</label>
-                            <input type="text" id="reviewID" className="form-control" defaultValue={selectedReview?.id} readOnly />
+                            <input type="text" id="reviewID" className="form-control" defaultValue={selectedReview?.reviewId} readOnly />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="review" className="form-label">Review</label>
@@ -498,12 +498,12 @@ const ReviewsDirectory: React.FC = () => {
                     <Modal.Title>Delete App</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {selectedReview && <p>Do you really want to <b>delete</b> the review: {selectedReview?.id}?</p>}
+                    {selectedReview && <p>Do you really want to <b>delete</b> the review: {selectedReview?.reviewId}?</p>}
                     <p>This step is <b>irreversible</b></p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModals}>Close</Button>
-                    <Button variant="danger" onClick={() => deleteReview(selectedReview?.app_id, selectedReview?.id)}>Delete</Button>
+                    <Button variant="danger" onClick={() => deleteReview(selectedReview?.app_id, selectedReview?.reviewId)}>Delete</Button>
                 </Modal.Footer>
             </Modal>
 
@@ -513,7 +513,7 @@ const ReviewsDirectory: React.FC = () => {
                     selectedReviews={selectedReviews}
                     onHide={handleWizardClose}
                     onDiscardReview={(review) => {
-                        const updatedSelectedReviews = selectedReviews.filter((id) => id !== review.id);
+                        const updatedSelectedReviews = selectedReviews.filter((id) => id !== review.reviewId);
                         setSelectedReviews(updatedSelectedReviews);
                     }}
                     onUpdateDirectory={fetchDataFromApi}

@@ -71,7 +71,7 @@ class ReviewService {
             const review: ReviewDataDTO = {
                 app_id: reviewFromJson.app_id,
                 app_name: reviewFromJson.app_name,
-                id: reviewFromJson.id,
+                reviewId: reviewFromJson.id,
                 review: reviewFromJson.review,
                 score: reviewFromJson.score,
                 date: reviewFromJson.date,
@@ -220,7 +220,7 @@ class ReviewService {
         const authService = new AuthService();
         const userData = await authService.getUserData();
         const id = userData?.sub || "";
-        const reviewId = review?.id;
+        const reviewId = review?.reviewId;
         const appId = review?.app_id;
         try {
             const restOperation = put({

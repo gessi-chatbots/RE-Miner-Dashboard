@@ -51,30 +51,16 @@ class AppService {
 
     createApp = async (appData: any) => {
         const id = localStorage.getItem('USER_ID')
-        const batchSize = 1;
-
         try {
-            const numBatches = Math.ceil(appData.length / batchSize);
-
-            for (let i = 0; i < numBatches; i++) {
-                const start = i * batchSize;
-                const end = Math.min((i + 1) * batchSize, appData.length);
-                const batchData = appData.slice(start, end);
-
-                const request_body = {
-                    apps: batchData
-                };
-
-                await fetch(`${this.API_URL}${this.PATH_NAME}?user_id=${id}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(request_body)
-                });
-
-                await new Promise(resolve => setTimeout(resolve, 10000));
-            }
+            await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(appData)
+            });
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            
         } catch (error) {
             console.error("Error creating app:", error);
             throw error;

@@ -146,7 +146,8 @@ const UploadApps = () => {
                     <Col className="col-md-8">
                         <h1 className="text-secondary">Upload Applications</h1>
                     </Col>
-                    <Col className="col-md-4 d-flex justify-content-end align-items-center">
+                    <Col className="col-md-2"></Col>
+                    <Col className="col-md-2 d-flex justify-content-end align-items-center">
                         <Button className="btn-secondary" onClick={handleDownload}><i className="mdi mdi-download"/> Template File</Button>
                     </Col>
                 </Row>
