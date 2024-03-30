@@ -1,37 +1,20 @@
-import { get, post, del, put } from 'aws-amplify/api';
 import { AppDataDTO } from '../DTOs/AppDataDTO';
-import AuthService from "./AuthService";
+import { AppDataSimpleDTO } from '../DTOs/AppDataSimpleDTO';
 class AppService {
-    API_NAME = 'appsAPI';
-    PATH_NAME = '/apps'
-    fetchAllApps = async (page: number = 1, pageSize: number = 4): Promise<{ apps: AppDataDTO[], total_pages: number } | null> => {
-        const authService = new AuthService();
-        const userData = await authService.getUserData();
-        const id = userData?.sub || "";
 
+    API_URL = 'http://127.0.0.1:3001/api/v1'; 
+    PATH_NAME = '/users';
+
+    
+    fetchAllApps = async (page = 1, pageSize = 4): Promise<{ apps: AppDataSimpleDTO[], total_pages: number } | null> => {
+        const id = localStorage.getItem('USER_ID')
         try {
-            const restOperation = get({
-                apiName: this.API_NAME,
-                path: this.PATH_NAME,
-                options: {
-                    queryParams: {
-                        user_id: id,
-                        page: page.toString(),
-                        page_size: pageSize.toString()
-                    }
-                }
-            });
-
-            const { body } = await restOperation.response;
-            const textResponse = await body.text();
-            const jsonResponse = JSON.parse(textResponse);
-            const apps = jsonResponse.apps.map((item: any) => ({
-                id: item.id,
-                app_name: item.app_name,
-                description: item.description,
-                summary: item.summary,
-                release_date: item.release_date,
-                version: item.version,
+            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications`);
+            const jsonResponse = await response.json();
+            const apps = jsonResponse.map((item: any) => ({
+                id: item.data.id,
+                app_name: item.data.name,
+                review_size: item.reviews.length
             }));
 
             return {
@@ -44,25 +27,13 @@ class AppService {
         }
     };
 
-    fetchAllAppsNames = async (): Promise<{ apps: AppDataDTO[]} | null> => {
-        const authService = new AuthService();
-        const userData = await authService.getUserData();
-        const id = userData?.sub || "";
+
+    fetchAllAppsNames = async (): Promise<{ apps: AppDataDTO[] } | null> => {
+        const id = localStorage.getItem('USER_ID')
 
         try {
-            const restOperation = get({
-                apiName: this.API_NAME,
-                path: this.PATH_NAME + '/names',
-                options: {
-                    queryParams: {
-                        user_id: id,
-                    }
-                }
-            });
-
-            const { body } = await restOperation.response;
-            const textResponse = await body.text();
-            const jsonResponse = JSON.parse(textResponse);
+            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/names?user_id=${id}`);
+            const jsonResponse = await response.json();
             const apps = jsonResponse.apps.map((item: any) => ({
                 id: item.id,
                 app_name: item.app_name,
@@ -77,10 +48,9 @@ class AppService {
         }
     };
 
+
     createApp = async (appData: any) => {
-        const authService = new AuthService();
-        const userData = await authService.getUserData();
-        const id = userData?.sub || "";
+        const id = localStorage.getItem('USER_ID')
         const batchSize = 1;
 
         try {
@@ -95,22 +65,14 @@ class AppService {
                     apps: batchData
                 };
 
-                const restOperation = post({
-                    apiName: this.API_NAME,
-                    path: this.PATH_NAME,
-                    options: {
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        queryParams: {
-                            user_id: id
-                        },
-                        body: JSON.stringify(request_body)
-                    }
+                await fetch(`${this.API_URL}${this.PATH_NAME}?user_id=${id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(request_body)
                 });
 
-                const { body } = await restOperation.response;
-                const textResponse = await body.text();
                 await new Promise(resolve => setTimeout(resolve, 10000));
             }
         } catch (error) {
@@ -119,55 +81,17 @@ class AppService {
         }
     };
 
-
     deleteApp = async (appId: string) => {
-        const authService = new AuthService();
-        const userData = await authService.getUserData();
-        const id = userData?.sub || "";
+        const id = localStorage.getItem('USER_ID')
         try {
-            const deleteOperation = del({
-                apiName: this.API_NAME,
-                path: this.PATH_NAME,
-                options: {
-                    queryParams: {
-                        user_id: id,
-                        app_id: appId
-                    }
-                }
+            await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications/${appId}`, {
+                method: 'DELETE'
             });
-            await deleteOperation.response;
         } catch (error) {
             console.error("Error deleting app:", error);
             throw error;
         }
     };
-
-    updateApp = async (appData: AppDataDTO) => {
-        const authService = new AuthService();
-        const userData = await authService.getUserData();
-        const id = userData?.sub || "";
-        try {
-            const restOperation = put({
-                apiName: this.API_NAME,
-                path: this.PATH_NAME,
-                options: {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    queryParams: {
-                        user_id: id,
-                        app_id: appData.id
-                    },
-                    body: JSON.stringify(appData)
-                }
-            });
-            const { body } = await restOperation.response;
-            const textResponse = await body.text();
-        } catch (error) {
-            console.error("Error creating app:", error);
-            throw error;
-        }
-    }
 }
 
 export default AppService;
