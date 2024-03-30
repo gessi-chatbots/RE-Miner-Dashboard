@@ -158,7 +158,7 @@ const UploadApps = () => {
             </div>
             <Row className="justify-content-end mt-3">
                 <div className="col-auto">
-                    <Button className="btn-secondary" onClick={openCreateAppModal}><i className="mdi mdi-hand-back-right"/> Upload App Manually</Button>
+                {/*<Button className="btn-secondary" onClick={openCreateAppModal}><i className="mdi mdi-hand-back-right"/> Upload App Manually</Button>*/}
                 </div>
                 <div className="col-auto">
                     <Button
