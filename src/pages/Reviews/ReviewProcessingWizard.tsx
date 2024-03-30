@@ -17,12 +17,13 @@ import FormWizard from "react-form-wizard-component";
 import "react-form-wizard-component/dist/style.css";
 import ReviewService from "../../services/ReviewService";
 import { toast } from "react-toastify";
+import { ReviewDataSimpleDTO } from "../../DTOs/ReviewDataSimpleDTO";
 
 interface ReviewProcessingWizardProps {
-    reviewsData: ReviewDataDTO[];
+    reviewsData: ReviewDataSimpleDTO[];
     selectedReviews: string[];
     onHide: () => void;
-    onDiscardReview: (review: ReviewDataDTO) => void;
+    onDiscardReview: (review: ReviewDataSimpleDTO) => void;
     onUpdateDirectory: () => void;
 }
 
@@ -49,7 +50,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
         sentimentAnalysis: false,
         featureExtraction: false,
     });
-    const [wizardData, setWizardData] = React.useState<ReviewDataDTO[]>(reviewsData);
+    const [wizardData, setWizardData] = React.useState<ReviewDataSimpleDTO[]>(reviewsData);
 
     const [selectedSentimentModel, setSelectedSentimentModel] = React.useState<string>("");
     const [selectedFeatureModel, setSelectedFeatureModel] = React.useState<string>("");
@@ -96,7 +97,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
         onHide();
     };
 
-    const discardReview = (review: ReviewDataDTO) => {
+    const discardReview = (review: ReviewDataSimpleDTO) => {
         onDiscardReview(review);
         const updatedWizardData = wizardData.filter((r) => r.reviewId !== review.reviewId);
         setWizardData(updatedWizardData);
@@ -162,13 +163,12 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                                         <tbody>
                                         {wizardData
                                             .slice(startIndex, endIndex)
-                                            .map((review: ReviewDataDTO) => (
+                                            .map((review: ReviewDataSimpleDTO) => (
                                                 <tr key={review.reviewId}>
                                                     <td className="text-center">{review.app_name || "N/A"}</td>
                                                     <td className="text-center">{review.reviewId || "N/A"}</td>
                                                     <td className="text-center">{review.review || "N/A"}</td>
-                                                    <td className="text-center">{review.score || "N/A"}</td>
-                                                    <td className="text-center">{review.date || "N/A"}</td>
+
                                                     <td className="text-end" style={{ width: "150px" }}>
                                                         <OverlayTrigger overlay={<Tooltip>Discard</Tooltip>}>
                                                             <a
