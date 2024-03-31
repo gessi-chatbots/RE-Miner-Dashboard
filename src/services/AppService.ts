@@ -9,14 +9,13 @@ class AppService {
     fetchAllApps = async (page = 1, pageSize = 4): Promise<{ apps: AppDataSimpleDTO[], total_pages: number } | null> => {
         const id = localStorage.getItem('USER_ID')
         try {
-            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications`);
+            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications?page=${page}&pageSize=${pageSize}`);
             const jsonResponse = await response.json();
-            const apps = jsonResponse.map((item: any) => ({
+            const apps = jsonResponse.applications.map((item: any) => ({
                 id: item.data.id,
                 app_name: item.data.name,
                 review_size: item.reviews.length
             }));
-
             return {
                 apps: apps,
                 total_pages: jsonResponse.total_pages
