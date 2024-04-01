@@ -136,14 +136,15 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
         <>
             <Modal size="xl" show onHide={onHide}>
                 <ModalHeader>
+                <Col className="md-10">
                     <h2 className="text-secondary">Process Reviews Wizard</h2>
-                    <Button className="btn-secondary" onClick={goBackToReviews}>
-                        <i className="mdi mdi-close" />
-                    </Button>
+                </Col>
+
+                <Col className="md-1 d-flex justify-content-end">
+                    <i className="px-4 mdi mdi-close" style={{ cursor: 'pointer' }} onClick={goBackToReviews} />
+                </Col>
                 </ModalHeader>
                 <ModalBody>
-
-
                     <FormWizard onComplete={handleComplete}>
 
                             <FormWizard.TabContent title="Check Reviews" icon="ti-ruler-pencil">
@@ -154,8 +155,6 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                                         <th className="text-center">App Name</th>
                                         <th className="text-center">Review ID</th>
                                         <th className="text-center">Review</th>
-                                        <th className="text-center">Score</th>
-                                        <th className="text-center">Date</th>
                                         <th className="text-center">Actions</th>
                                     </tr>
                                     </thead>

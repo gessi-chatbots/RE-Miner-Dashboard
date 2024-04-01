@@ -22,7 +22,7 @@ const ReviewsDirectory: React.FC = () => {
     const [review, setReview] = useState<string>('');
     const [date, setDate] = useState<string>('');
     const [score, setScore] = useState<number>(0);
-    const [isScoreValid, setIsScoreValid] = useState(true);
+    const [expanded, setExpanded] = useState(false);
     const [isUpdateButtonClicked, setIsUpdateButtonClicked] = useState(false);
     const [selectedReviews, setSelectedReviews] = useState<string[]>([]);
     const [isWizardModalOpen, setWizardModalOpen] = useState<boolean>(false);
@@ -41,7 +41,9 @@ const ReviewsDirectory: React.FC = () => {
         setSelectedReview(review);
         setEditModalIsOpen(true);
     };
-
+    const toggleExpand = () => {
+        setExpanded(!expanded);
+    };
     const handleSelectAllChange = async () => {
         const newSelectAll = !selectAll;
         setSelectAll(newSelectAll);
@@ -248,15 +250,13 @@ const ReviewsDirectory: React.FC = () => {
                                         </td>
                                         <td className="text-center">{review.app_name || 'N/A'}</td>
                                         <td className="text-center">{review.reviewId || 'N/A'}</td>
-                                        <td className="text-center">{truncateReview(review.review) || 'N/A'}
-                                            <br/>
-                                            {review.review && review.review.length > 50 &&
-                                                <Button variant="link" onClick={() => openEditModal(review)}>Read More</Button>}
+                                        <td className="text-center">{review.review || 'N/A'}
+
                                         </td>
 
                                         <td className="text-end" style={{ width: "150px" }}>
 
-                                                <OverlayTrigger overlay={<Tooltip id="analyze-tooltip">Analyze Review</Tooltip>}>
+                                                <OverlayTrigger overlay={<Tooltip id="analyze-tooltip">View Review</Tooltip>}>
                                                     <a href="javascript:void(0)" className="action-icon" onClick={() => analyzeReviewAction(review)}>
                                                         <i className="mdi mdi-eye"></i>
                                                     </a>
@@ -330,11 +330,20 @@ const ReviewsDirectory: React.FC = () => {
                             </div>
                         )}
                         {wizardData && wizardData.length > 0 && (
-                            <div className="d-flex justify-content-end mt-2">
-                                <Button variant="primary" onClick={() => setWizardModalOpen(true)}>
-                                    Process Reviews
-                                </Button>
-                            </div>
+                            <>                            
+                                <Row className="mt-2">
+                                    <Col className="md-5">
+                                    </Col>
+                                    <Col className="md-5">
+                                    </Col>
+                                    <Col className="md-2 d-flex justify-content-end">
+                                        <Button className="w-auto" variant="primary" onClick={() => setWizardModalOpen(true)}>
+                                            <i className="mdi mdi-lightning-bolt-outline"></i> Process Reviews
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </>
+
                         )}
                     </>
                 )}
