@@ -114,7 +114,7 @@ class ReviewService {
     deleteReview = async (appId: string, reviewId: string) => {
         const id = localStorage.getItem('USER_ID')
         try {
-            await fetch(`${this.API_NAME}${this.PATH_NAME}?user_id=${id}&app_id=${appId}&review_id=${reviewId}`, {
+            await fetch(`${this.API_NAME}${this.PATH_NAME}/${id}/applications/${appId}/reviews/${reviewId}`, {
                 method: 'DELETE'
             });
         } catch (error) {
