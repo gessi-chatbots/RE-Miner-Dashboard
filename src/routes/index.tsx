@@ -12,6 +12,7 @@ import LoginForm from "../pages/Auth/Login/LoginForm";
 import { Container } from "react-bootstrap";
 import ReviewAnalyzer from "../pages/Reviews/ReviewAnalyzer";
 import PrivateRoutes from './PrivateRoutes';
+import KGDirectory from '../pages/Apps/KGDirectory';
 
 interface LayoutProps {
     children: ReactNode;
@@ -37,6 +38,7 @@ const AuthenticatedRoutes: React.FC = () => {
             <Route element={<PrivateRoutes />}>
                 <Route path="/" element={<DefaultLayout><Root /></DefaultLayout>} />
                 <Route path="/dashboard" element={<DefaultLayout><Dashboard /></DefaultLayout>} />
+                <Route path="/apps/directory" element={<DefaultLayout><KGDirectory /></DefaultLayout>} />
                 <Route path="/apps" element={<DefaultLayout><AppsDirectory /></DefaultLayout>} />
                 <Route path="/apps/upload" element={<DefaultLayout><UploadApps /></DefaultLayout>} />
                 <Route path="/reviews" element={<DefaultLayout><ReviewsDirectory /></DefaultLayout>} />

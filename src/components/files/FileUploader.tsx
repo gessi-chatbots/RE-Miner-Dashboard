@@ -95,7 +95,7 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
                         appCount++;
                         reviewCount += item.reviews.length;
                         const appData: AppDataDTO = {
-                            id: "",
+                            package_name: item.package_name,
                             app_name: item.app_name,
                             description: item.description,
                             summary: item.summary,

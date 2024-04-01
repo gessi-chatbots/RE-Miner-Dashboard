@@ -323,7 +323,7 @@ const CrossFeatureSentiments = () => {
                             Select an App
                         </option>
                         {appData?.map((app) => (
-                            <option key={app.id} value={app.id}>
+                            <option key={app.package_name} value={app.package_name}>
                                 {app.app_name}
                             </option>
                         ))}

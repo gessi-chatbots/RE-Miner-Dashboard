@@ -85,11 +85,11 @@ const SecondaryNavBar = () => {
                         </Link>
                     </Nav.Item>
                     <Nav.Item as="li" className="mx-lg-1">
-                        <div>
+                        <Link to="/apps/directory">
                             <Button className="text-white">
-                                <i className="mdi mdi-notebook-multiple mdi-24px"/> Applications Directory 
+                                <i className="mdi mdi-notebook-multiple mdi-24px"/> Applications Directory
                             </Button>
-                        </div>
+                        </Link>
                     </Nav.Item>
                     <Nav.Item as="li" className="mx-lg-1">
                         <div ref={appsDropdownRef}>
