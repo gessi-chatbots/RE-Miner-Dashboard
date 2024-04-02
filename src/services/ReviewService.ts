@@ -24,6 +24,7 @@ class ReviewService {
                 app_name: review.app_name,
                 reviewId: review.review_id,
                 review: review.review,
+                date: review.date
             }));
             
             return {
@@ -173,7 +174,6 @@ class ReviewService {
                 const responseData = await response.json(); 
                 console.log("Reviews analyzed successfully:", responseData);
             } else {
-                // Handle other status codes
                 console.error("Unexpected status code:", response.status);
             }
         } catch (error) {

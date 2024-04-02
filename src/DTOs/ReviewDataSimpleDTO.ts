@@ -3,4 +3,5 @@ export interface ReviewDataSimpleDTO {
     app_name: string;
     reviewId: string;
     review: string;
+    date: Date;
 }

@@ -7,7 +7,7 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import ReviewProcessingWizard from "./ReviewProcessingWizard";
 import { ReviewDataSimpleDTO } from '../../DTOs/ReviewDataSimpleDTO';
 
-const defaultColumns = ['Select', 'App ID', 'App Name', 'Review ID', 'Review', 'Actions'];
+const defaultColumns = ['Select', 'App ID', 'App Name', 'Review ID', 'Review', 'Date', 'Actions'];
 const PAGE_SIZE = 8
 const ReviewsDirectory: React.FC = () => {
     
@@ -261,9 +261,9 @@ const ReviewsDirectory: React.FC = () => {
                                         <td className="text-center">{review.app_id || 'N/A'}</td>
                                         <td className="text-center">{review.app_name || 'N/A'}</td>
                                         <td className="text-center">{review.reviewId || 'N/A'}</td>
-                                        <td className="text-center">{review.review || 'N/A'}
+                                        <td className="text-center">{review.review || 'N/A'}</td>
+                                        <td className="text-center">{review.date.toString() || 'N/A'}</td>
 
-                                        </td>
 
                                         <td className="text-end" style={{ width: "150px" }}>
 
