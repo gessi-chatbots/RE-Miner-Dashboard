@@ -78,20 +78,25 @@ class AppService {
     createApp = async (appData: any) => {
         const id = localStorage.getItem('USER_ID')
         try {
-            await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications`, {
+            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(appData)
             });
-            await new Promise(resolve => setTimeout(resolve, 10000));
-            
+            if (response.status === 201) {
+                const responseData = await response.json();
+                console.log("Application created successfully:", responseData);
+            } else {
+                console.error("Unexpected status code:", response.status);
+            }
         } catch (error) {
             console.error("Error creating app:", error);
             throw error;
         }
     };
+    
 
     addAppFromDirectory = async (appName: any) => {
         const id = localStorage.getItem('USER_ID');

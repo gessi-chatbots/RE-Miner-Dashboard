@@ -72,9 +72,7 @@ class ReviewService {
 
 
     fetchAllReviewsDetailed = async (): Promise<{ reviews: ReviewDataDTO[] } | null> => {
-
         const id = localStorage.getItem('USER_ID')
-
         try {
             const response = await fetch(`${this.API_NAME}${this.PATH_NAME}/detailed?user_id=${id}`);
             const jsonResponse = await response.json();
@@ -162,13 +160,22 @@ class ReviewService {
         const jsonBody = reviews.map(review => ({ "reviewId": review.reviewId }));
     
         try {
-            await fetch(url, {
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(jsonBody)
             });
+    
+            if (response.status === 200) {
+
+                const responseData = await response.json(); 
+                console.log("Reviews analyzed successfully:", responseData);
+            } else {
+                // Handle other status codes
+                console.error("Unexpected status code:", response.status);
+            }
         } catch (error) {
             console.error("Error analyzing reviews:", error);
             throw error;

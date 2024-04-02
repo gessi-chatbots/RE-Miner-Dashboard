@@ -17,7 +17,7 @@ import AppService from '../../services/AppService';
 import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
 import { ReviewDataDTO } from '../../DTOs/ReviewDataDTO';
 import { AppDataDTO } from '../../DTOs/AppDataDTO';
-import {SentimentDataDTO} from "../../DTOs/SentimentDataDTO";
+import { SentenceDTO } from '../../DTOs/ReviewDataDTO';
 
 ChartJS.register(
     LinearScale,
@@ -129,57 +129,71 @@ const CrossFeatureSentiments = () => {
         }
     };
 
+
     const extractSentimentsFromReviews = (reviews: ReviewDataDTO[]) => {
-        const allSentiments = reviews.reduce(
-            (sentiments, review) => sentiments.concat((review.sentiments || []).map(sentimentObj => sentimentObj.sentiment)),
-            [] as string[]
-        );
+        const allSentiments: string[] = [];
+        reviews.forEach(review => {
+            review.sentences.forEach(sentence => {
+                if (sentence.sentimentData && sentence.sentimentData.sentiment) {
+                    allSentiments.push(sentence.sentimentData.sentiment);
+                }
+            });
+        });
         return Array.from(new Set(allSentiments));
     };
-
+    
     const extractFeaturesFromReviews = (reviews: ReviewDataDTO[]) => {
-        const allFeatures = reviews.reduce(
-            (features, review) => features.concat(review.features || []),
-            [] as string[]
-        );
+        const allFeatures: string[] = [];
+        reviews.forEach(review => {
+            review.sentences.forEach(sentence => {
+                if (sentence.featureData && sentence.featureData.feature) {
+                    allFeatures.push(sentence.featureData.feature);
+                }
+            });
+        });
         return Array.from(new Set(allFeatures));
     };
-
+    
     const countFeatureOccurrencesByDate = (reviews: ReviewDataDTO[]) => {
         const featureCount: Record<string, Record<string, number>> = {};
-
+    
         reviews.forEach((review) => {
             const dateParts = review.date.split('/');
             const reviewDate = new Date(
                 `${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`
             ).toDateString();
             featureCount[reviewDate] = featureCount[reviewDate] || {};
-
-            (review.features || []).forEach((feature: string) => {
-                featureCount[reviewDate][feature] =
-                    (featureCount[reviewDate][feature] || 0) + 1;
+    
+            review.sentences.forEach((sentence: SentenceDTO) => {
+                const feature = sentence.featureData?.feature;
+                if (feature) {
+                    featureCount[reviewDate][feature] =
+                        (featureCount[reviewDate][feature] || 0) + 1;
+                }
             });
         });
-
+    
         return featureCount;
     };
-
+    
     const countSentimentsByDate = (reviews: ReviewDataDTO[], selectedFeatures: string[]) => {
         const dateSentimentCounts: Record<string, Record<string, number>> = {};
-
+    
         reviews.forEach((review) => {
             const dateParts = review.date.split('/');
             const reviewDate = new Date(`${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`).toDateString();
             dateSentimentCounts[reviewDate] = dateSentimentCounts[reviewDate] || {};
-
-            if (selectedFeatures.length === 0 || selectedFeatures.some(feature => (review.features || []).includes(feature))) {
-                (review.sentiments || []).forEach((sentiment: SentimentDataDTO) => {
-                    dateSentimentCounts[reviewDate][sentiment.sentiment] =
-                        (dateSentimentCounts[reviewDate][sentiment.sentiment] || 0) + 1;
-                });
-            }
+    
+            review.sentences.forEach((sentence: SentenceDTO) => {
+                const sentiment = sentence.sentimentData?.sentiment;
+                const feature = sentence.featureData?.feature;
+                if ((!selectedFeatures.length || selectedFeatures.some(feature => features.includes(feature))) && sentiment) {
+                    dateSentimentCounts[reviewDate][sentiment] =
+                        (dateSentimentCounts[reviewDate][sentiment] || 0) + 1;
+                }
+            });
         });
-
+    
         return dateSentimentCounts;
     };
 

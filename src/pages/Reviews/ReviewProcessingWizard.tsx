@@ -84,6 +84,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
             }
             toast.dismiss(infoToast);
             toast.success('Reviews analyzed!');
+            onHide();
         } catch (error) {
             console.error('Error analyzing reviews:', error);
             toast.error('Error analyzing reviews');

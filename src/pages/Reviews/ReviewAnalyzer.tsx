@@ -50,7 +50,7 @@ const ReviewAnalyzer = () => {
     }, [reviewId]);
 
     const chartData = () => {
-        if (!data) {
+        if (!data || !data.sentences || data.sentences.length === 0) {
             return {
                 labels: [],
                 datasets: [],
@@ -156,7 +156,7 @@ const ReviewAnalyzer = () => {
             <h1 className="text-secondary mb-4">Review Analyzer</h1>
             {data && (
                 <Row>
-                    <Col md={6}>
+                    <Col md={data.sentences && data.sentences.length > 0 ? 6 : 12}>
                         <div className="px-4 py-4 sentiment-histogram-container">
                             <Row>
                                 <h2>App Review</h2>
@@ -167,29 +167,37 @@ const ReviewAnalyzer = () => {
                                 <p>{data.reviewId} </p>
                             </Row>
                             <Row>
-                                <h2> Review Content: </h2>
-                                {markSentimentsInReview()}
-                                <h2>Review Marked Features</h2>
-                                {markFeaturesInReview()}
+                                <h2>Review Text</h2>
+                                <p>{data.review} </p>
                             </Row>
+                            {(data.sentences && data.sentences.length > 0) && (
+                                <Row>
+                                    <h2> Review Content: </h2>
+                                    {markSentimentsInReview()}
+                                    <h2>Review Marked Features</h2>
+                                    {markFeaturesInReview()}
+                                </Row>
+                            )}
                         </div>
                     </Col>
-                    <Col md={6}>
-                        <div className="px-4 py-4 sentiment-histogram-container">
-                            <h2>Review Sentiments</h2>
-                            <Bar data={chartData()} options={options} />
-                        </div>
-                        <div className="px-4 py-4 mt-4 sentiment-histogram-container">
-                            <h2>Detected Features</h2>
-                            <ul>
-                                {data?.sentences?.map((sentence, index) => (
-                                    sentence.featureData && sentence.featureData.feature !== "" && (
-                                        <li key={index}>{sentence.featureData.feature}</li>
-                                    )
-                                ))}
-                            </ul>
-                        </div>
-                    </Col>
+                    {data.sentences && data.sentences.length > 0 && (
+                        <Col md={6}>
+                            <div className="px-4 py-4 sentiment-histogram-container">
+                                <h2>Review Sentiments</h2>
+                                <Bar data={chartData()} options={options} />
+                            </div>
+                            <div className="px-4 py-4 mt-4 sentiment-histogram-container">
+                                <h2>Detected Features</h2>
+                                <ul>
+                                    {data?.sentences?.map((sentence, index) => (
+                                        sentence.featureData && sentence.featureData.feature !== "" && (
+                                            <li key={index}>{sentence.featureData.feature}</li>
+                                        )
+                                    ))}
+                                </ul>
+                            </div>
+                        </Col>
+                    )}
                 </Row>
             )}
         </>

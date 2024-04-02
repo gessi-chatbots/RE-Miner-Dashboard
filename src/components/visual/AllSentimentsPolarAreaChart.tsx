@@ -13,7 +13,7 @@ import {
     Tooltip
 } from 'chart.js';
 import ReviewService from '../../services/ReviewService';
-import { ReviewDataDTO } from '../../DTOs/ReviewDataDTO';
+import { ReviewDataDTO, SentenceDTO } from '../../DTOs/ReviewDataDTO';
 import { Container, Row } from 'react-bootstrap';
 
 ChartJS.register(
@@ -42,7 +42,6 @@ const generateColors = (sentiments: string[]) => {
     return sentiments.map((sentiment) => defaultColors[sentiment]);
 };
 
-
 const AllSentimentsPolarAreaChart = () => {
     const [data, setData] = useState<number[]>([]);
     const [labels, setLabels] = useState(SENTIMENT_OPTIONS);
@@ -58,7 +57,8 @@ const AllSentimentsPolarAreaChart = () => {
                     const sentiments = extractSentimentsFromReviews(reviews);
                     const filteredSentiments = sentiments.filter(sentiment =>
                         sentiment.toLowerCase() !== 'not relevant' && sentiment.toLowerCase() !== 'not-relevant'
-                    );                    setLabels(filteredSentiments);
+                    );                    
+                    setLabels(filteredSentiments);
                     setData(countSentiments(reviews, filteredSentiments));
                 } else {
                     console.error('Response from fetch all reviews is null');
@@ -72,16 +72,23 @@ const AllSentimentsPolarAreaChart = () => {
     }, []);
 
     const extractSentimentsFromReviews = (reviews: ReviewDataDTO[]) => {
-        const allSentiments = reviews.reduce(
-            (sentiments, review) => sentiments.concat((review.sentiments || []).map(sentimentObj => sentimentObj.sentiment)),
-            [] as string[]
-        );
+        const allSentiments: string[] = [];
+        reviews.forEach(review => {
+            review.sentences.forEach(sentence => {
+                if (sentence.sentimentData && sentence.sentimentData.sentiment) {
+                    allSentiments.push(sentence.sentimentData.sentiment);
+                }
+            });
+        });
         return Array.from(new Set(allSentiments));
     };
+
     const countSentiments = (reviews: ReviewDataDTO[], sentiments: string[]) => {
         return sentiments.map((sentiment) =>
             reviews.reduce((count, review) =>
-                count + (review.sentiments?.some(sentimentObj => sentimentObj.sentiment === sentiment) ? 1 : 0), 0)
+                count + review.sentences.filter(sentence =>
+                    sentence.sentimentData && sentence.sentimentData.sentiment === sentiment
+                ).length, 0)
         );
     };
 

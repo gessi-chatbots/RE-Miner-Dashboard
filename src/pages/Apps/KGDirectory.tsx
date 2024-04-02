@@ -66,20 +66,30 @@ const KGDirectory: React.FC = () => {
 
     const addApp = async (app: AppDirectoryDataSimpleDTO | undefined) => {
         if (!app) {
-            console.error("App ID is undefined or null.");
+            console.error("App is undefined or null.");
             return false;
         }
 
-        const appService = new AppService();
         try {
+            const infoToast = toast.info('Importing application from directory', {
+                autoClose: false,
+                closeOnClick: false,
+                closeButton: false,
+            });
+
+            const appService = new AppService();
             await appService.addAppFromDirectory(app.name);
-            toast.success('App added successfully!');
+
+            toast.dismiss(infoToast);
+            toast.success('Application imported successfully!');
             return true;
         } catch (error) {
-            toast.error('Error deleting app');
+            console.error('Error importing app:', error);
+            toast.error('Error importing application');
             return false;
         }
     };
+
 
     const convertDateFormat = (inputDate: string) => {
         const [day, month, year] = inputDate.split('/');
