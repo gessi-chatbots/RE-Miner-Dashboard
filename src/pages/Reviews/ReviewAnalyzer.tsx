@@ -23,17 +23,18 @@ const ReviewAnalyzer = () => {
     const [data, setData] = useState<ReviewDataDTO | null>(null);
     const { reviewId } = useParams();
     const { appId } = useParams();
+    const [labels, setLabels] = useState(SENTIMENT_OPTIONS);
     const [colors, setColors] = useState(generateColors(SENTIMENT_OPTIONS));
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     useEffect(() => {
         const fetchReviewFromApi = async () => {
             const reviewService = new ReviewService();
             try {
-                if (reviewId !== undefined) { 
-                    const response = await reviewService.fetchReview(appId as string, reviewId as string); // Type assertion to treat reviewId as string
+                if (reviewId) {
+                    const response = await reviewService.fetchReview(appId as string, reviewId as string);
                     if (response !== null) {
-                        const { review: fetchedData } = response;
-                        setData(fetchedData);
+                        setData(response.review);
                     } else {
                         console.error("Response from fetch review is null");
                     }
@@ -44,9 +45,9 @@ const ReviewAnalyzer = () => {
                 console.error("Error fetching data:", error);
             }
         };
-    
+
         fetchReviewFromApi();
-    }, [reviewId, setData]);
+    }, [reviewId]);
 
     const chartData = () => {
         if (!data) {
@@ -58,7 +59,7 @@ const ReviewAnalyzer = () => {
 
         const sentimentCounts: { [key: string]: number } = {};
 
-        data.sentences.forEach((sentence: SentenceDTO) => {
+        data.sentences.forEach((sentence) => {
             const sentimentKey = sentence.sentimentData.sentiment;
             sentimentCounts[sentimentKey] = (sentimentCounts[sentimentKey] || 0) + 1;
         });
@@ -74,11 +75,80 @@ const ReviewAnalyzer = () => {
             ),
         };
 
-
         return {
             labels: chartLabels,
             datasets: [dataset],
         };
+    };
+
+    const markFeaturesInReview = () => {
+        if (!data || !data.sentences || data.sentences.length === 0) {
+            return <p>{data?.review}</p>;
+        }
+
+        const sortedFeatures = data.sentences
+            .filter(sentence => sentence.featureData !== null)
+            .map(sentence => sentence.featureData!.feature)
+            .sort((a, b) => b.length - a.length);
+
+        let markedReview = data.review;
+
+        sortedFeatures.forEach((feature) => {
+            const marker = `<span class="feature-marker">${feature}<span class="feature-tag">Feature</span></span>`;
+            markedReview = markedReview.replace(new RegExp(feature, 'gi'), marker);
+        });
+
+        return <p dangerouslySetInnerHTML={{ __html: markedReview }} />;
+    };
+
+    const markSentimentsInReview = () => {
+        if (!data || !data.sentences || data.sentences.length === 0) {
+            return <p>{data?.review}</p>;
+        }
+
+        const markedReview = data.sentences.map((sentence, index) => {
+            const sentiment = sentence.sentimentData.sentiment;
+            const color = sentiment === 'Not relevant' ? 'rgb(213,212,212)' : colors[SENTIMENT_OPTIONS.indexOf(sentiment)];
+
+            return (
+                <OverlayTrigger
+                    key={index}
+                    placement="right"
+                    overlay={
+                        <Tooltip id={`tooltip-right`}>
+                            {`${sentiment}`}
+                        </Tooltip>
+                    }
+                >
+                    <span
+                        style={{ backgroundColor: color }}
+                    >
+                        {`${sentence.text} `}
+                    </span>
+                </OverlayTrigger>
+            );
+        });
+
+        return <p>{markedReview}</p>;
+    };
+
+    const options = {
+        responsive: true,
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'Sentiments',
+                },
+            },
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Count',
+                },
+            },
+        },
     };
 
     return (
@@ -98,14 +168,26 @@ const ReviewAnalyzer = () => {
                             </Row>
                             <Row>
                                 <h2> Review Content: </h2>
-                                <p>{data.review}</p>
+                                {markSentimentsInReview()}
+                                <h2>Review Marked Features</h2>
+                                {markFeaturesInReview()}
                             </Row>
                         </div>
                     </Col>
                     <Col md={6}>
                         <div className="px-4 py-4 sentiment-histogram-container">
                             <h2>Review Sentiments</h2>
-                            <Bar data={chartData()} />
+                            <Bar data={chartData()} options={options} />
+                        </div>
+                        <div className="px-4 py-4 mt-4 sentiment-histogram-container">
+                            <h2>Detected Features</h2>
+                            <ul>
+                                {data?.sentences?.map((sentence, index) => (
+                                    sentence.featureData && sentence.featureData.feature !== "" && (
+                                        <li key={index}>{sentence.featureData.feature}</li>
+                                    )
+                                ))}
+                            </ul>
                         </div>
                     </Col>
                 </Row>
