@@ -38,11 +38,11 @@ const AuthenticatedRoutes: React.FC = () => {
             <Route element={<PrivateRoutes />}>
                 <Route path="/" element={<DefaultLayout><Root /></DefaultLayout>} />
                 <Route path="/dashboard" element={<DefaultLayout><Dashboard /></DefaultLayout>} />
-                <Route path="/apps/directory" element={<DefaultLayout><KGDirectory /></DefaultLayout>} />
-                <Route path="/apps" element={<DefaultLayout><AppsDirectory /></DefaultLayout>} />
-                <Route path="/apps/upload" element={<DefaultLayout><UploadApps /></DefaultLayout>} />
+                <Route path="/applications/directory" element={<DefaultLayout><KGDirectory /></DefaultLayout>} />
+                <Route path="/applications" element={<DefaultLayout><AppsDirectory /></DefaultLayout>} />
+                <Route path="/applications/upload" element={<DefaultLayout><UploadApps /></DefaultLayout>} />
                 <Route path="/reviews" element={<DefaultLayout><ReviewsDirectory /></DefaultLayout>} />
-                <Route path="/reviews/:reviewId/analyze" element={<DefaultLayout><ReviewAnalyzer /></DefaultLayout>} />
+                <Route path="applications/:appId/reviews/:reviewId/analyze" element={<DefaultLayout><ReviewAnalyzer /></DefaultLayout>} />
             </Route>
             <Route path="/sign-up" element={<SignUpForm />} />
             <Route path="/login" element={<LoginForm />} />

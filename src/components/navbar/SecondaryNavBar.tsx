@@ -11,10 +11,10 @@ const DropdownMenuApps: React.FC<{ closeDropdowns: CloseDropdownsFunction }> = (
 
     return (
         <Dropdown.Menu>
-            <Dropdown.Item as={Link} to="/apps/upload" onClick={handleItemClick}>
+            <Dropdown.Item as={Link} to="/applications/upload" onClick={handleItemClick}>
                 <i className="mdi mdi-upload"/> Upload Apps
             </Dropdown.Item>
-            <Dropdown.Item as={Link} to="/apps" onClick={handleItemClick}>
+            <Dropdown.Item as={Link} to="/applications" onClick={handleItemClick}>
                 <i className="mdi mdi-eye"/> View Apps
             </Dropdown.Item>
         </Dropdown.Menu>
@@ -85,7 +85,7 @@ const SecondaryNavBar = () => {
                         </Link>
                     </Nav.Item>
                     <Nav.Item as="li" className="mx-lg-1">
-                        <Link to="/apps/directory">
+                        <Link to="/applications/directory">
                             <Button className="text-white">
                                 <i className="mdi mdi-notebook-multiple mdi-24px"/> Applications Directory
                             </Button>

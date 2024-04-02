@@ -7,9 +7,10 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import ReviewProcessingWizard from "./ReviewProcessingWizard";
 import { ReviewDataSimpleDTO } from '../../DTOs/ReviewDataSimpleDTO';
 
-const defaultColumns = ['Select', 'App Name', 'Review ID', 'Review', 'Actions'];
-
+const defaultColumns = ['Select', 'App ID', 'App Name', 'Review ID', 'Review', 'Actions'];
+const PAGE_SIZE = 8
 const ReviewsDirectory: React.FC = () => {
+    
     const [selectAll, setSelectAll] = useState(false);
     const [pageData, setPageData] = useState<ReviewDataSimpleDTO[] | null>(null);
     const [wizardData, setWizardData] = useState<ReviewDataSimpleDTO[] | null>(null);
@@ -29,6 +30,8 @@ const ReviewsDirectory: React.FC = () => {
     const location = useLocation();
     const { state } = location;
     const navigate = useNavigate();
+    const [sortedPageData, setSortedPageData] = useState<ReviewDataSimpleDTO[] | null>(null);
+
 
     useEffect(() => {
         if (state) {
@@ -37,21 +40,22 @@ const ReviewsDirectory: React.FC = () => {
             setSelectedReviews(selectedReviews);
         }
     }, [state]);
-    const openEditModal = (review: ReviewDataSimpleDTO) => {
-        setSelectedReview(review);
-        setEditModalIsOpen(true);
-    };
-    const toggleExpand = () => {
-        setExpanded(!expanded);
+
+    const sortByAppId = () => {
+        if (pageData) {
+            const sortedReviews = [...pageData].sort((a, b) => {
+                return a.app_id.localeCompare(b.app_id);
+            });
+            setSortedPageData(sortedReviews);
+        }
     };
     const handleSelectAllChange = async () => {
         const newSelectAll = !selectAll;
         setSelectAll(newSelectAll);
-
         if (newSelectAll) {
             const reviewService = new ReviewService();
             try {
-                const allReviews = await reviewService.fetchAllReviewsDetailed()
+                const allReviews = await reviewService.fetchAllReviewsPaginated()
                 if (allReviews !== null) {
                     const allReviewIds = pageData?.map(review => review.reviewId) || [];
                     setSelectedReviews(newSelectAll ? allReviewIds : []);
@@ -105,13 +109,15 @@ const ReviewsDirectory: React.FC = () => {
         setDeleteModalIsOpen(false);
         setSelectedReview(null);
     };
-
+    useEffect(() => {
+        sortByAppId();
+    }, [pageData]);
 
     useEffect(() => {
         const fetchDataFromApi = async () => {
             const reviewService = new ReviewService();
             try {
-                const response = await reviewService.fetchAllReviewsPaginated(currentPage);
+                const response = await reviewService.fetchAllReviewsPaginated(currentPage, PAGE_SIZE);
                 if (response !== null) {
                     const { reviews: mappedData, total_pages: pages } = response;
                     setPageData(mappedData);
@@ -142,7 +148,7 @@ const ReviewsDirectory: React.FC = () => {
         const reviewService = new ReviewService();
         try {
             await reviewService.deleteReview(app_id, review_id);
-            const response = await reviewService.fetchAllReviewsPaginated();
+            const response = await reviewService.fetchAllReviewsPaginated(currentPage, PAGE_SIZE);
             if (response !== null) {
                 const { reviews: mappedData, total_pages: pages } = response;
                 if (mappedData !== undefined) {
@@ -176,7 +182,7 @@ const ReviewsDirectory: React.FC = () => {
     };
 
     const analyzeReviewAction = (review: ReviewDataSimpleDTO) => {
-        navigate(`/reviews/${review.reviewId}/analyze`);
+        navigate(`/applications/${review.app_id}/reviews/${review.reviewId}/analyze`);
     };
 
     const truncateReview = (review: string) => {
@@ -185,7 +191,7 @@ const ReviewsDirectory: React.FC = () => {
     const fetchDataFromApi = async () => {
         const reviewService = new ReviewService();
         try {
-            const response = await reviewService.fetchAllReviewsPaginated(currentPage);
+            const response = await reviewService.fetchAllReviewsPaginated(currentPage, PAGE_SIZE);
             if (response !== null) {
                 const { reviews: mappedData, total_pages: pages } = response;
                 setPageData(mappedData);
@@ -230,7 +236,7 @@ const ReviewsDirectory: React.FC = () => {
                                         <input
                                             type="checkbox"
                                             checked={selectAll}
-                                            onChange={handleSelectAllChange}
+                                            onChange={() => handleSelectAllChange()}
                                         />
                                     </th>
                                     {defaultColumns.slice(1).map(column => (
@@ -239,8 +245,8 @@ const ReviewsDirectory: React.FC = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {pageData && pageData.map(review => (
-                                    <tr key={review.reviewId}>
+                                {sortedPageData && sortedPageData.map(review => (
+                                    <tr key={review.app_id}>
                                         <td className="text-center">
                                             <input
                                                 type="checkbox"
@@ -248,6 +254,7 @@ const ReviewsDirectory: React.FC = () => {
                                                 onChange={() => handleCheckboxChange(review)}
                                             />
                                         </td>
+                                        <td className="text-center">{review.app_id || 'N/A'}</td>
                                         <td className="text-center">{review.app_name || 'N/A'}</td>
                                         <td className="text-center">{review.reviewId || 'N/A'}</td>
                                         <td className="text-center">{review.review || 'N/A'}
@@ -376,9 +383,7 @@ const ReviewsDirectory: React.FC = () => {
                     onUpdateDirectory={fetchDataFromApi}
                 />
             )}
-
         </div>
-
     );
 };
 

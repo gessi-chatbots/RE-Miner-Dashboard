@@ -4,60 +4,66 @@ class ReviewService {
     API_NAME = 'http://127.0.0.1:3001/api/v1';
     PATH_NAME = '/users'
 
-    fetchAllReviewsPaginated = async (page = 1, pageSize = 8): Promise<{ reviews: ReviewDataSimpleDTO[], total_pages: number } | null> => {
+    fetchAllReviewsPaginated = async (page?: number, pageSize?: number): Promise<{ reviews: ReviewDataSimpleDTO[], total_pages: number } | null> => {
         const id = localStorage.getItem('USER_ID');
+        let url = `${this.API_NAME}${this.PATH_NAME}/${id}/reviews`;
+    
+        if (page !== undefined && pageSize !== undefined) {
+            url += `?page=${page}&pageSize=${pageSize}`;
+        }
+    
         try {
-            const response = await fetch(`${this.API_NAME}${this.PATH_NAME}/${id}/reviews?page=${page}&pageSize=${pageSize}`);
+            const response = await fetch(url);
             const jsonResponse = await response.json();
-            const revs = [];
-    
-            for (const review of jsonResponse.reviews) { 
-                const rev = {
-                    app_id: review.app_id,
-                    app_name: review.app_name,
-                    reviewId: review.review_id,
-                    review: review.review,
-                };
-                revs.push(rev);
-            }
-    
+            const revs: ReviewDataSimpleDTO[] = jsonResponse.reviews.map((review: any) => ({ 
+                app_id: review.app_id,
+                app_name: review.app_name,
+                reviewId: review.review_id,
+                review: review.review,
+            }));
+            
             return {
                 reviews: revs,
                 total_pages: jsonResponse.total_pages
             };
         } catch (error) {
             console.error('Error fetching data:', error);
-            throw error;
+            return null;
         }
-    };
+    }
 
-    fetchReview = async (reviewId: string): Promise<{ review: ReviewDataDTO } | null> => {
-        const id = localStorage.getItem('USER_ID')
+    fetchReview = async (appId: string, reviewId: string): Promise<{ review: ReviewDataDTO } | null> => {
+        const id = localStorage.getItem('USER_ID');
         try {
-            const response = await fetch(`${this.API_NAME}${this.PATH_NAME}/review/${reviewId}?user_id=${id}`);
+            if (!id || !reviewId || !appId) {
+                console.error('USER_ID or app id or reviewId is not available');
+                return null;
+            }
+            
+            const response = await fetch(`${this.API_NAME}${this.PATH_NAME}/${id}/applications/${appId}/reviews/${reviewId}`);
             const jsonResponse = await response.json();
-
-            console.log(jsonResponse);
-
-            const reviewFromJson = jsonResponse.review;
-            const review: ReviewDataDTO = {
-                app_id: reviewFromJson.app_id,
-                app_name: reviewFromJson.app_name,
-                reviewId: reviewFromJson.id,
-                review: reviewFromJson.review,
-                score: reviewFromJson.score,
-                date: reviewFromJson.date,
-                sentiments: reviewFromJson.sentiments,
-                features: reviewFromJson.features,
-                analyzed: reviewFromJson.analyzed
+    
+            const reviewData: ReviewDataDTO = {
+                app_name: jsonResponse.application.name,
+                app_id: jsonResponse.application.id,
+                reviewId: jsonResponse.review_id,
+                review: jsonResponse.review_text,
+                sentences: jsonResponse.sentences.map((sentence: any) => ({
+                    id: sentence.id,
+                    text: sentence.text,
+                    featureData: sentence.featureData,
+                    sentimentData: sentence.sentimentData
+                }))
             };
-
-            return { review: review };
+    
+            return { review: reviewData };
         } catch (error) {
             console.error('Error fetching data:', error);
             throw error;
         }
     };
+    
+    
 
 
     fetchAllReviewsDetailed = async (): Promise<{ reviews: ReviewDataDTO[] } | null> => {
@@ -130,18 +136,28 @@ class ReviewService {
         featureModel: string | null,
         sentimentModel: string | null
     ) => {
-        const id = localStorage.getItem('USER_ID')
-
-        const jsonBody = {
-            "featureExtraction": featureExtraction,
-            "sentimentExtraction": sentimentExtraction,
-            "featureModel": featureModel,
-            "sentimentModel": sentimentModel,
-            "reviews": reviews
-        };
-
+        const id = localStorage.getItem('USER_ID');
+    
+        let url = `${this.API_NAME}${this.PATH_NAME}/${id}/analyze?`;
+    
+        if (featureExtraction) {
+            url += `featureExtraction=true&`;
+            if (featureModel) {
+                url += `feature_model=${featureModel}&`;
+            }
+        }
+    
+        if (sentimentExtraction) {
+            url += `sentimentExtraction=true&`;
+            if (sentimentModel) {
+                url += `sentiment_model=${sentimentModel}&`;
+            }
+        }
+    
+        const jsonBody = reviews.map(review => ({ "reviewId": review.reviewId }));
+    
         try {
-            await fetch(`${this.API_NAME}${this.PATH_NAME}/analyze?user_id=${id}`, {
+            await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -153,6 +169,7 @@ class ReviewService {
             throw error;
         }
     };
+    
 }
 
 export default ReviewService;
