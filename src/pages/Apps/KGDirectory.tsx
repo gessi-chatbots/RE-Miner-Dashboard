@@ -92,13 +92,18 @@ const KGDirectory: React.FC = () => {
                     {data && data.length === 0 && (
                         <div className="d-flex justify-content-center align-items-center">
                             <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
-                                <Row className="text-center">
-                                    <Col>
-                                        <i className="mdi mdi-emoticon-sad text-secondary" style={{ fontSize: '5rem' }} />
-                                        <h2>No apps found in the directory.</h2>
-                                        <Button className="btn-secondary" href="apps/upload"><i className="mdi mdi-upload"/> Upload Apps</Button>
-                                    </Col>
-                                </Row>
+                            <Row className="text-center">
+                                <Col>
+                                    <i className="mdi mdi-emoticon-sad text-secondary" style={{ fontSize: '5rem' }} />
+                                    <h2>No applications found in the directory.</h2>
+                                    <div style={{ width: 'fit-content', margin: '0 auto' }}> {/* Wrap the button inside a div */}
+                                        <Button className="mt-4 btn-secondary" href="/applications/upload">
+                                            <i className="mdi mdi-upload"/> Upload Apps
+                                        </Button>
+                                    </div>
+                                </Col>
+                            </Row>
+
                             </div>
                         </div>
 

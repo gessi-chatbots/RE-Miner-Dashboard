@@ -117,13 +117,17 @@ const AppsDirectory: React.FC = () => {
                         <div className="d-flex justify-content-center align-items-center">
                             <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
                                 <Row className="text-center">
-                                    <Col>
-                                        <i className="mdi mdi-emoticon-sad text-secondary" style={{ fontSize: '5rem' }} />
-                                        <h2>No apps uploaded yet.</h2>
-                                        <p>Why don't you upload some apps?</p>
-                                        <Button className="btn-secondary" href="apps/upload"><i className="mdi mdi-upload"/> Upload Apps</Button>
-                                    </Col>
-                                </Row>
+                                <Col>
+                                    <i className="mdi mdi-emoticon-sad text-secondary" style={{ fontSize: '5rem' }} />
+                                    <h2>No applications uploaded yet.</h2>
+                                    <p>Why don't you upload some apps?</p>
+                                    <div style={{ width: 'fit-content', margin: '0 auto' }}> {/* Wrap the button inside a div */}
+                                        <Button className="mt-4 btn-secondary" href="applications/upload">
+                                            <i className="mdi mdi-upload"/> Upload Apps
+                                        </Button>
+                                    </div>
+                                </Col>
+                            </Row>
                             </div>
                         </div>
 

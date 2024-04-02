@@ -218,10 +218,14 @@ const ReviewsDirectory: React.FC = () => {
                         <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
                             <Row className="text-center">
                                 <Col>
-                                    <i className="mdi mdi-emoticon-sad text-secondary" style={{ fontSize: '5rem' }} />
-                                    <h2>No reviews uploaded yet.</h2>
-                                    <p>Why don't you write down some reviews?</p>
-                                    <Button className="btn-secondary" href="apps"><i className="mdi mdi-eye"/> View Apps</Button>
+                                        <i className="mdi mdi-emoticon-sad text-secondary" style={{ fontSize: '5rem' }} />
+                                        <h2>No reviews uploaded yet.</h2>
+                                        <p>Why don't you write down some reviews?</p>
+                                        <div style={{ width: 'fit-content', margin: '0 auto' }}>
+                                            <Button className="mt-4 btn-secondary" href="applications">
+                                                <i className="mdi mdi-upload"/> View applications
+                                            </Button>
+                                        </div>
                                 </Col>
                             </Row>
                         </div>

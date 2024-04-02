@@ -4,7 +4,7 @@ class ReviewService {
     API_NAME = 'http://127.0.0.1:3001/api/v1';
     PATH_NAME = '/users'
 
-    fetchAllReviewsPaginated = async (page?: number, pageSize?: number): Promise<{ reviews: ReviewDataSimpleDTO[], total_pages: number } | null> => {
+    fetchAllReviewsPaginated = async (page?: number, pageSize?: number): Promise<{ reviews: ReviewDataSimpleDTO[], total_pages: number }> => {
         const id = localStorage.getItem('USER_ID');
         let url = `${this.API_NAME}${this.PATH_NAME}/${id}/reviews`;
     
@@ -14,6 +14,10 @@ class ReviewService {
     
         try {
             const response = await fetch(url);
+            if (response.status === 204) {
+                return { reviews: [], total_pages: 0 }; 
+            }
+    
             const jsonResponse = await response.json();
             const revs: ReviewDataSimpleDTO[] = jsonResponse.reviews.map((review: any) => ({ 
                 app_id: review.app_id,
@@ -28,9 +32,10 @@ class ReviewService {
             };
         } catch (error) {
             console.error('Error fetching data:', error);
-            return null;
+            return { reviews: [], total_pages: 0 }; // Return empty list and 0 total pages for error cases
         }
     }
+    
 
     fetchReview = async (appId: string, reviewId: string): Promise<{ review: ReviewDataDTO } | null> => {
         const id = localStorage.getItem('USER_ID');

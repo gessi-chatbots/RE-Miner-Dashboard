@@ -8,9 +8,12 @@ class AppService {
 
     
     fetchAllApps = async (page = 1, pageSize = 4): Promise<{ apps: AppDataSimpleDTO[], total_pages: number } | null> => {
-        const id = localStorage.getItem('USER_ID')
+        const id = localStorage.getItem('USER_ID');
         try {
             const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications?page=${page}&pageSize=${pageSize}`);
+            if (response.status === 204) {
+                return { apps: [], total_pages: 0 }; // Return empty array and 0 total pages for 204 response
+            }
             const jsonResponse = await response.json();
             const apps = jsonResponse.applications.map((item: any) => ({
                 id: item.data.id,
@@ -26,11 +29,14 @@ class AppService {
             throw error;
         }
     };
-
+    
 
     fetchAllDirectoryApps = async (page = 1, pageSize = 4): Promise<{ apps: AppDirectoryDataSimpleDTO[], total_pages: number } | null> => {
         try {
             const response = await fetch(`${this.API_URL}/applications/directory`);
+            if (response.status === 204) {
+                return { apps: [], total_pages: 0 };
+            }
             const jsonResponse = await response.json();
             const apps = jsonResponse.map((item: any) => ({
                 applicationPackage: item.applicationPackage,
@@ -46,6 +52,7 @@ class AppService {
             throw error;
         }
     };
+    
 
     fetchAllAppsNames = async (): Promise<{ apps: AppDataDTO[] } | null> => {
         const id = localStorage.getItem('USER_ID')
