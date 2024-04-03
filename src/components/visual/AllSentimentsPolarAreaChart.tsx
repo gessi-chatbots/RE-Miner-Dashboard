@@ -12,7 +12,8 @@ import {
     Title,
     Tooltip
 } from 'chart.js';
-import ReviewService from '../../services/ReviewService';
+import ApplicationService from '../../services/AppService';
+
 import { ReviewDataDTO, SentenceDTO } from '../../DTOs/ReviewDataDTO';
 import { Container, Row } from 'react-bootstrap';
 
@@ -46,30 +47,43 @@ const AllSentimentsPolarAreaChart = () => {
     const [data, setData] = useState<number[]>([]);
     const [labels, setLabels] = useState(SENTIMENT_OPTIONS);
     const [colors, setColors] = useState(generateColors(SENTIMENT_OPTIONS));
-
     useEffect(() => {
         const fetchReviewData = async () => {
-            const reviewService = new ReviewService();
+            const applicationService = new ApplicationService();
             try {
-                const response = await reviewService.fetchAllReviewsDetailed();
+                const response = await applicationService.fetchAllAppsNames();
                 if (response !== null) {
-                    const reviews = response.reviews;
-                    const sentiments = extractSentimentsFromReviews(reviews);
-                    const filteredSentiments = sentiments.filter(sentiment =>
-                        sentiment.toLowerCase() !== 'not relevant' && sentiment.toLowerCase() !== 'not-relevant'
-                    );                    
-                    setLabels(filteredSentiments);
-                    setData(countSentiments(reviews, filteredSentiments));
+                    const applicationsNamesList = response.apps.map(app => app.app_name);
+                    try {
+                        const sentimentResponse = await applicationService.fetchTopSentiments(applicationsNamesList);
+                        if (sentimentResponse !== null) {
+                            const sentiments: string[] = [];
+                            const occurrences: number[] = [];
+                            const topSentiments = sentimentResponse.topSentiments.topSentiments;
+                            topSentiments.forEach(item => {
+                                sentiments.push(item.sentimentName);
+                                occurrences.push(item.occurrences);
+                            });
+                            setLabels(sentiments);
+                            setData(occurrences);
+                        } else {
+                            console.error('Response from fetch top sentiments is null');
+                        }
+                    } catch (error) {
+                        console.error('Error fetching review data:', error);
+                    }
                 } else {
                     console.error('Response from fetch all reviews is null');
                 }
             } catch (error) {
                 console.error('Error fetching review data:', error);
             }
+            
         };
-
+    
         fetchReviewData();
     }, []);
+    
 
     const extractSentimentsFromReviews = (reviews: ReviewDataDTO[]) => {
         const allSentiments: string[] = [];

@@ -1,6 +1,7 @@
 import { AppDataDTO } from '../DTOs/AppDataDTO';
 import { AppDataSimpleDTO } from '../DTOs/AppDataSimpleDTO';
 import { AppDirectoryDataSimpleDTO } from '../DTOs/AppDirectoryDataSimpleDTO';
+import { TopSentimentsDTO, SentimentOccurrenceDTO } from '../DTOs/TopSentimentsDTO';
 class AppService {
 
     API_URL = 'http://127.0.0.1:3001/api/v1'; 
@@ -73,7 +74,50 @@ class AppService {
             throw error;
         }
     };
+    
+    fetchTopSentiments = async (data: string[]): Promise<{ topSentiments: TopSentimentsDTO } | null> => {
+        const id = localStorage.getItem('USER_ID');
+        try {
+            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/analyze/top-sentiments`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ data })
+            });
+            const jsonResponse: { occurrences: number; sentiment: string }[] = await response.json();
+            const sentiments: SentimentOccurrenceDTO[] = jsonResponse.map(item => ({
+                sentimentName: item.sentiment,
+                occurrences: item.occurrences
+            }));
+            const topSentiments: TopSentimentsDTO = {
+                topSentiments: sentiments
+            }
+            return { topSentiments };
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+        }
+    };
+    
 
+    fetchTopFeatures = async (data: string[]): Promise<{ appNames: string[] } | null> => {
+        const id = localStorage.getItem('USER_ID');
+        try {
+            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/analyze/top-features`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ data })
+            });
+            const jsonResponse = await response.json();
+            return jsonResponse;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+        }
+    };
 
     createApp = async (appData: any) => {
         const id = localStorage.getItem('USER_ID')

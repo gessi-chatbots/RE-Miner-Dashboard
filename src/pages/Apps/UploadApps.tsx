@@ -117,16 +117,25 @@ const UploadApps = () => {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
     };
+
     const handleUploadButtonClick = async () => {
         if (appDataList.length === 0) {
             console.log('No files uploaded.');
             return;
         }
-
+    
         try {
             setIsUploading(true);
+            const infoToast = toast.info('Uploading application', {
+                autoClose: false,
+                closeOnClick: false,
+                closeButton: false,
+            });
+    
             const appService = new AppService();
             await appService.createApp(appDataList);
+    
+            toast.dismiss(infoToast);
             toast.success('Apps uploaded successfully!');
             setAppDataList([]);
             handleFileUpload([], [])

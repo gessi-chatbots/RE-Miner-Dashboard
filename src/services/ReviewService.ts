@@ -69,8 +69,6 @@ class ReviewService {
         }
     };
     
-    
-
 
     fetchAllReviewsDetailed = async (): Promise<{ reviews: ReviewDataDTO[] } | null> => {
         const id = localStorage.getItem('USER_ID')
