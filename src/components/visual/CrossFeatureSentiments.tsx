@@ -17,7 +17,6 @@ import AppService from '../../services/AppService';
 import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
 import { ReviewDataDTO } from '../../DTOs/ReviewDataDTO';
 import { AppDataDTO } from '../../DTOs/AppDataDTO';
-import { SentenceDTO } from '../../DTOs/ReviewDataDTO';
 
 ChartJS.register(
     LinearScale,
@@ -154,50 +153,10 @@ const CrossFeatureSentiments = () => {
         return Array.from(new Set(allFeatures));
     };
     
-    const countFeatureOccurrencesByDate = (reviews: ReviewDataDTO[]) => {
-        const featureCount: Record<string, Record<string, number>> = {};
-    
-        reviews.forEach((review) => {
-            const dateParts = review.date.split('/');
-            const reviewDate = new Date(
-                `${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`
-            ).toDateString();
-            featureCount[reviewDate] = featureCount[reviewDate] || {};
-    
-            review.sentences.forEach((sentence: SentenceDTO) => {
-                const feature = sentence.featureData?.feature;
-                if (feature) {
-                    featureCount[reviewDate][feature] =
-                        (featureCount[reviewDate][feature] || 0) + 1;
-                }
-            });
-        });
-    
-        return featureCount;
-    };
-    
-    const countSentimentsByDate = (reviews: ReviewDataDTO[], selectedFeatures: string[]) => {
-        const dateSentimentCounts: Record<string, Record<string, number>> = {};
-    
-        reviews.forEach((review) => {
-            const dateParts = review.date.split('/');
-            const reviewDate = new Date(`${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`).toDateString();
-            dateSentimentCounts[reviewDate] = dateSentimentCounts[reviewDate] || {};
-    
-            review.sentences.forEach((sentence: SentenceDTO) => {
-                const sentiment = sentence.sentimentData?.sentiment;
-                const feature = sentence.featureData?.feature;
-                if ((!selectedFeatures.length || selectedFeatures.some(feature => features.includes(feature))) && sentiment) {
-                    dateSentimentCounts[reviewDate][sentiment] =
-                        (dateSentimentCounts[reviewDate][sentiment] || 0) + 1;
-                }
-            });
-        });
-    
-        return dateSentimentCounts;
-    };
+
 
     const updateChartData = () => {
+        /*
         if (selectedApp && data && selectedFeatures.length > 0) {
             const featureDateCounts = countFeatureOccurrencesByDate(data);
             const sentimentDateCounts = countSentimentsByDate(data, selectedFeatures);
@@ -239,6 +198,7 @@ const CrossFeatureSentiments = () => {
             };
             return chartData;
         }
+        */
         return null;
     };
     const options = {

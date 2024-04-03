@@ -1,6 +1,7 @@
 import { AppDataDTO } from '../DTOs/AppDataDTO';
 import { AppDataSimpleDTO } from '../DTOs/AppDataSimpleDTO';
 import { AppDirectoryDataSimpleDTO } from '../DTOs/AppDirectoryDataSimpleDTO';
+import { ApplicationDayStatisticsDTO } from '../DTOs/ApplicationDayStatisticsDTO';
 import { FeatureOccurrenceDTO, TopFeaturesDTO } from '../DTOs/TopFeaturesDTO';
 import { TopSentimentsDTO, SentimentOccurrenceDTO } from '../DTOs/TopSentimentsDTO';
 class AppService {
@@ -75,6 +76,27 @@ class AppService {
             throw error;
         }
     };
+
+    fetchAllAppsNamesSimple = async (): Promise<{ apps: AppDataSimpleDTO[] } | null> => {
+        const id = localStorage.getItem('USER_ID')
+
+        try {
+            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications`);
+            const jsonResponse = await response.json();
+            const apps = jsonResponse.applications.map((item: any) => ({
+                id: item.data.id,
+                app_name: item.data.name
+            }));
+
+            return {
+                apps: apps,
+            };
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+        }
+    };
+    
     
     fetchTopSentiments = async (data: string[]): Promise<{ topSentiments: TopSentimentsDTO } | null> => {
         const id = localStorage.getItem('USER_ID');
@@ -101,7 +123,47 @@ class AppService {
         }
     };
     
+    fetchAppFeatures = async (appId: string): Promise<{ features: string[] } | null> => {
+        const id = localStorage.getItem('USER_ID');
+        try {
+            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications/${appId}/features`, {
+                method: 'GET'
+            });
+            const features: string[] = await response.json();
+    
+            return { features };
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+        }
+    };
 
+        
+    getStatisticsOverTime = async (appName: string, startDate: Date, endDate?: Date): Promise<{ statistics: ApplicationDayStatisticsDTO[] } | null> => {
+        const id = localStorage.getItem('USER_ID');
+        const queryParams = new URLSearchParams();
+        queryParams.set('start_date', startDate.toISOString());
+        if (endDate) {
+            queryParams.set('end_date', endDate.toISOString());
+        }
+    
+        try {
+            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications/${appName}/statistics?${queryParams.toString()}`, {
+                method: 'GET'
+            });
+    
+            if (!response.ok) {
+                throw new Error(`Failed to fetch statistics data: ${response.statusText}`);
+            }
+    
+            const statistics: ApplicationDayStatisticsDTO[] = await response.json();
+            return { statistics };
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+        }
+    };
+    
     fetchTopFeatures = async (data: string[]): Promise<{ topFeatures: TopFeaturesDTO  } | null> => {
         const id = localStorage.getItem('USER_ID');
         try {

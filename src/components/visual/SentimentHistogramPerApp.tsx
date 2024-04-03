@@ -77,11 +77,10 @@ const SentimentHistogramPerApp = () => {
                 const response = await reviewService.fetchAllReviewsDetailedFromApp(selectedApp);
                 if (response !== null) {
                     const reviews = response.reviews;
-                    const sentiments = extractSentimentsFromReviews(reviews);
-                    const filteredSentiments = sentiments.filter(sentiment =>
-                        sentiment.toLowerCase() !== 'not relevant');
+                    //const filteredSentiments = sentiments.filter(sentiment =>
+                    //  sentiment.toLowerCase() !== 'not relevant');
                     setData(prevData => [...reviews]);
-                    setLabels(prevLabels => [...filteredSentiments]);
+                    //setLabels(prevLabels => [...filteredSentiments]);
                 } else {
                     console.error('Response from fetch all reviews is null');
                 }
@@ -92,6 +91,7 @@ const SentimentHistogramPerApp = () => {
     };
 
     const filterData = (reviews: ReviewDataDTO[]) => {
+        /*
         return reviews.filter((review) => {
             const dateParts = review.date.split('/');
             const reviewDate = new Date(`${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`);
@@ -104,17 +104,8 @@ const SentimentHistogramPerApp = () => {
                 endDateCondition &&
                 selectedApp
             );
-        });
+        });*/
     };
-
-    const extractSentimentsFromReviews = (reviews: ReviewDataDTO[]) => {
-        const allSentiments = reviews.reduce(
-            (sentiments, review) => sentiments.concat((review.sentiments || []).map(sentimentObj => sentimentObj.sentiment)),
-            [] as string[]
-        );
-        return Array.from(new Set(allSentiments));
-    };
-
 
 
 
@@ -122,6 +113,7 @@ const SentimentHistogramPerApp = () => {
         const dateSentimentCounts: Record<string, Record<string, number>> = {};
 
         reviews.forEach((review) => {
+            /*
             const dateParts = review.date.split('/');
             const reviewDate = new Date(`${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`).toDateString();
             dateSentimentCounts[reviewDate] = dateSentimentCounts[reviewDate] || {};
@@ -130,11 +122,13 @@ const SentimentHistogramPerApp = () => {
                 dateSentimentCounts[reviewDate][sentiment.sentiment] =
                     (dateSentimentCounts[reviewDate][sentiment.sentiment] || 0) + 1;
             });
+            */
         });
 
         return dateSentimentCounts;
     };
     const chartData = () => {
+        /*
         const filteredReviews = filterData(data || []);
         const dateSentimentCounts = countSentimentsByDate(filteredReviews);
         let dates = Object.keys(dateSentimentCounts);
@@ -151,11 +145,11 @@ const SentimentHistogramPerApp = () => {
                 label: sentiment,
                 backgroundColor: colors[labels.indexOf(sentiment)],
             };
-        });
+        });*/
 
         return {
-            labels: dates,
-            datasets: datasets,
+            labels: null,
+            datasets: null,
         };
     };
     const options = {
@@ -241,7 +235,7 @@ const SentimentHistogramPerApp = () => {
             </Row>
             {selectedApp ? (
                 <Row>
-                    <Bar className="sentiment-histogram-chart" data={chartData()} options={options} />
+                    {/*<Bar className="sentiment-histogram-chart" data={chartData()} options={options} />*/}
                 </Row>
             ) : (
                 <Row>
@@ -256,7 +250,7 @@ const SentimentHistogramPerApp = () => {
                         <Modal.Title>Sentiment Histogram</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Bar className="sentiment-histogram-chart" data={chartData()} options={options} />
+                    {/*<Bar className="sentiment-histogram-chart" data={chartData()} options={options} />*/}
                     </Modal.Body>
                 </Modal>
             ) : null}
