@@ -1,6 +1,7 @@
 import { AppDataDTO } from '../DTOs/AppDataDTO';
 import { AppDataSimpleDTO } from '../DTOs/AppDataSimpleDTO';
 import { AppDirectoryDataSimpleDTO } from '../DTOs/AppDirectoryDataSimpleDTO';
+import { FeatureOccurrenceDTO, TopFeaturesDTO } from '../DTOs/TopFeaturesDTO';
 import { TopSentimentsDTO, SentimentOccurrenceDTO } from '../DTOs/TopSentimentsDTO';
 class AppService {
 
@@ -101,7 +102,7 @@ class AppService {
     };
     
 
-    fetchTopFeatures = async (data: string[]): Promise<{ appNames: string[] } | null> => {
+    fetchTopFeatures = async (data: string[]): Promise<{ topFeatures: TopFeaturesDTO  } | null> => {
         const id = localStorage.getItem('USER_ID');
         try {
             const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/analyze/top-features`, {
@@ -111,8 +112,15 @@ class AppService {
                 },
                 body: JSON.stringify({ data })
             });
-            const jsonResponse = await response.json();
-            return jsonResponse;
+            const jsonResponse: { occurrences: number; feature: string }[] = await response.json();
+            const features: FeatureOccurrenceDTO[] = jsonResponse.map(item => ({
+                featureName: item.feature,
+                occurrences: item.occurrences
+            }));
+            const topFeatures: TopFeaturesDTO = {
+                topFeatures: features
+            }
+            return { topFeatures };
         } catch (error) {
             console.error('Error fetching data:', error);
             throw error;

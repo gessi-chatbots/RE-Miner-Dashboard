@@ -7,7 +7,7 @@ import {
     Legend,
     Title,
 } from 'chart.js';
-import ReviewService from '../../services/ReviewService';
+import ApplicationService from '../../services/AppService';
 import { ReviewDataDTO } from '../../DTOs/ReviewDataDTO';
 import { Container, Row } from 'react-bootstrap';
 
@@ -15,29 +15,45 @@ import { Container, Row } from 'react-bootstrap';
 ChartJS.register(LinearScale, Tooltip, Legend, Title);
 
 const Top5FeaturesHistogram = () => {
-    const [data, setData] = useState<ReviewDataDTO[] | null>(null);
+    const [data, setData] = useState<number[]>([]);
     const [labels, setLabels] = useState<string[]>([]);
     const [colors, setColors] = useState<string[]>([]);
-
     useEffect(() => {
-        const fetchDataFromApi = async () => {
-            const reviewService = new ReviewService();
+        const fetchReviewData = async () => {
+            const applicationService = new ApplicationService();
             try {
-                const response = await reviewService.fetchAllReviewsDetailed();
+                const response = await applicationService.fetchAllAppsNames();
                 if (response !== null) {
-                    const reviews = response.reviews;
-                    const topFeatures = extractTopFeaturesFromReviews(reviews, 5);
-                    setData(reviews);
+                    const applicationsNamesList = response.apps.map(app => app.app_name);
+                    try {
+                        const featureResponse = await applicationService.fetchTopFeatures(applicationsNamesList);
+                        if (featureResponse !== null) {
+                            const features: string[] = [];
+                            const occurrences: number[] = [];
+                            const topFeatures = featureResponse.topFeatures.topFeatures;
+                            topFeatures.forEach(item => {
+                                features.push(item.featureName);
+                                occurrences.push(item.occurrences);
+                            });
+                            setLabels(features);
+                            setData(occurrences);
+                            setColors(generateColors(features.length));
+                        } else {
+                            console.error('Response from fetch top sentiments is null');
+                        }
+                    } catch (error) {
+                        console.error('Error fetching review data:', error);
+                    }
                 } else {
                     console.error('Response from fetch all reviews is null');
                 }
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching review data:', error);
             }
         };
-
-        fetchDataFromApi();
+        fetchReviewData();
     }, []);
+
 
     const getRandomColor = () => {
         const letters = '0123456789ABCDEF';
@@ -56,51 +72,17 @@ const Top5FeaturesHistogram = () => {
         return colors;
     };
 
-    const extractTopFeaturesFromReviews = (reviews: ReviewDataDTO[], limit: number = 5) => {
-        const featureCounts: { [feature: string]: number } = {};
 
-        // Count occurrences of each feature in all reviews
-        reviews.forEach((review) => {
-            if (review.features) {
-                review.features.forEach((feature) => {
-                    featureCounts[feature] = (featureCounts[feature] || 0) + 1;
-                });
-            }
-        });
 
-        // Sort features by count in descending order
-        const sortedFeatures = Object.keys(featureCounts).sort(
-            (a, b) => featureCounts[b] - featureCounts[a]
-        );
-
-        // Get the top features up to the specified limit
-        const topFeatures = sortedFeatures.slice(0, limit);
-
-        // Update labels and colors for the chart
-        setLabels(topFeatures);
-        setColors(generateColors(topFeatures.length));
-
-        return topFeatures;
+    const chartData = {
+        labels: labels,
+        datasets: [
+            {
+                data: data,
+                backgroundColor: colors,
+            },
+        ],
     };
-
-    const chartData = () => {
-        return {
-            labels: labels,
-            datasets: data
-                ? [{
-                    data: labels.map((feature) =>
-                        data.reduce((count, review) =>
-                                count + (review.features ? review.features.filter((f) => f === feature).length : 0),
-                            0
-                        )
-                    ),
-                    backgroundColor: colors,
-                    barThickness: 'flex' as any,
-                }]
-                : [],
-        };
-    };
-
 
     const options = {
         responsive: true,
@@ -131,7 +113,7 @@ const Top5FeaturesHistogram = () => {
             <Row>
                 <label className="text-secondary mb-2">Top 5 Features</label>
             </Row>
-            <Bar className="sentiment-histogram-chart" data={chartData()} options={options} />
+            <Bar className="sentiment-histogram-chart" data={chartData} options={options} />
         </Container>
     );
 };

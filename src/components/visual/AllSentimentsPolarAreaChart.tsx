@@ -47,6 +47,7 @@ const AllSentimentsPolarAreaChart = () => {
     const [data, setData] = useState<number[]>([]);
     const [labels, setLabels] = useState(SENTIMENT_OPTIONS);
     const [colors, setColors] = useState(generateColors(SENTIMENT_OPTIONS));
+    
     useEffect(() => {
         const fetchReviewData = async () => {
             const applicationService = new ApplicationService();
@@ -78,33 +79,10 @@ const AllSentimentsPolarAreaChart = () => {
             } catch (error) {
                 console.error('Error fetching review data:', error);
             }
-            
         };
-    
         fetchReviewData();
     }, []);
-    
 
-    const extractSentimentsFromReviews = (reviews: ReviewDataDTO[]) => {
-        const allSentiments: string[] = [];
-        reviews.forEach(review => {
-            review.sentences.forEach(sentence => {
-                if (sentence.sentimentData && sentence.sentimentData.sentiment) {
-                    allSentiments.push(sentence.sentimentData.sentiment);
-                }
-            });
-        });
-        return Array.from(new Set(allSentiments));
-    };
-
-    const countSentiments = (reviews: ReviewDataDTO[], sentiments: string[]) => {
-        return sentiments.map((sentiment) =>
-            reviews.reduce((count, review) =>
-                count + review.sentences.filter(sentence =>
-                    sentence.sentimentData && sentence.sentimentData.sentiment === sentiment
-                ).length, 0)
-        );
-    };
 
     const chartData = {
         labels: labels,

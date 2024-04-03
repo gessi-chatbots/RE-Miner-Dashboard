@@ -1,8 +1,8 @@
-export interface FeatureOccurrence {
+export interface FeatureOccurrenceDTO {
     featureName: string;
     occurrences: number;
 }
 
 export interface TopFeaturesDTO {
-    topFeatures: FeatureOccurrence[];
+    topFeatures: FeatureOccurrenceDTO[];
 }
