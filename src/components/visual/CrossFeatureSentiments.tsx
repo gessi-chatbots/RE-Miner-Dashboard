@@ -12,11 +12,11 @@ import {
     BarController,
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
-import ReviewService from '../../services/ReviewService';
 import AppService from '../../services/AppService';
 import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
 import { ReviewDataDTO } from '../../DTOs/ReviewDataDTO';
-import { AppDataDTO } from '../../DTOs/AppDataDTO';
+import { AppDataSimpleDTO } from '../../DTOs/AppDataSimpleDTO';
+import { ApplicationDayStatisticsDTO } from '../../DTOs/ApplicationDayStatisticsDTO';
 
 ChartJS.register(
     LinearScale,
@@ -32,42 +32,31 @@ ChartJS.register(
 
 const SENTIMENT_OPTIONS = ['happiness', 'sadness', 'anger', 'surprise', 'fear', 'disgust', 'Not relevant'];
 
-const generateSentimentColors = (sentiments: string[]) => {
-    const defaultColors: { [key: string]: string } = {
-        happiness: 'rgba(255, 99, 132, 0.7)',
-        sadness: 'rgba(54, 162, 235, 0.7)',
-        anger: 'rgba(255, 206, 86, 0.7)',
-        surprise: 'rgba(75, 192, 192, 0.7)',
-        fear: 'rgba(153, 102, 255, 0.7)',
-        disgust: 'rgba(255, 159, 64, 0.7)',
-    };
-    return sentiments.map((sentiment) => defaultColors[sentiment]);
-};
-
-
 const CrossFeatureSentiments = () => {
     const [data, setData] = useState<ReviewDataDTO[]>([]);
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
     const [selectedApp, setSelectedApp] = useState<string | null>(null);
-    const [appData, setAppData] = useState<AppDataDTO[] | null>(null);
+    const [appData, setAppData] = useState<AppDataSimpleDTO[] | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [labels, setLabels] = useState(SENTIMENT_OPTIONS);
-    const [sentimentColors, setSentimentColors] = useState(generateSentimentColors(SENTIMENT_OPTIONS));
-    const [featureColors, setFeatureColors] = useState(generateSentimentColors(SENTIMENT_OPTIONS));
+    const [labels, setLabels] = useState<string[]>(SENTIMENT_OPTIONS);
+    const [sentimentColors, setSentimentColors] = useState<string[]>([]);
+    const [featureColors, setFeatureColors] = useState<string[]>([]);
     const [features, setFeatures] = useState<string[]>([]);
     const [sentiments, setSentiments] = useState<string[]>([]);
+    const [statisticsData, setStatisticsData] = useState<ApplicationDayStatisticsDTO[]>([]);
     const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
     const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
+    const [colors, setColors] = useState<string[]>([]);
+    const [chartData, setChartData] = useState<any>({});
 
     useEffect(() => {
         const fetchAppDataFromService = async () => {
             const appService = new AppService();
             try {
-                const response = await appService.fetchAllAppsNames();
-                if (response !== null) {
-                    const { apps: appData } = response;
-                    setAppData(appData);
+                const response = await appService.fetchAllAppsNamesSimple();
+                if (response !== null && response.apps) {
+                    setAppData(response.apps);
                 } else {
                     console.error('Response from fetch all apps is null');
                 }
@@ -82,13 +71,72 @@ const CrossFeatureSentiments = () => {
     useEffect(() => {
         if (selectedApp) {
             setSelectedFeatures([]);
-            fetchReviewDataFromApp();
         }
     }, [selectedApp]);
 
-    useEffect(() => {
-        updateChartData();
-    }, [selectedFeatures, selectedFeature, data, startDate, endDate]);
+    const handleAppChange = async (selectedAppId: string | null) => {
+        setSelectedApp(selectedAppId);
+        if (selectedAppId) {
+            await fetchFeaturesFromApp(selectedAppId);
+        }
+    };
+
+    const fetchFeaturesFromApp = async (selectedAppId: string) => {
+        const applicationService = new AppService();
+        try {
+            const response = await applicationService.fetchAppFeatures(selectedAppId);
+            if (response !== null && response.features) {
+                setFeatures(response.features);
+                setColors(generateColors(SENTIMENT_OPTIONS, response.features.length));
+            } else {
+                console.error('Response from fetch app features is null');
+            }
+        } catch (error) {
+            console.error('Error fetching features:', error);
+        }
+    };
+    const generateSentimentColors = (sentiments: string[]) => {
+        const defaultColors: { [key: string]: string } = {
+            happiness: 'rgba(255, 99, 132, 0.7)',
+            sadness: 'rgba(54, 162, 235, 0.7)',
+            anger: 'rgba(255, 206, 86, 0.7)',
+            surprise: 'rgba(75, 192, 192, 0.7)',
+            fear: 'rgba(153, 102, 255, 0.7)',
+            disgust: 'rgba(255, 159, 64, 0.7)',
+        };
+        return sentiments.map((sentiment) => defaultColors[sentiment]);
+    };
+
+    const generateColors = (sentiments: string[], featuresCount: number) => {
+        const defaultSentimentColors: { [key: string]: string } = {
+            happiness: 'rgba(255, 99, 132, 0.7)',
+            sadness: 'rgba(54, 162, 235, 0.7)',
+            anger: 'rgba(255, 206, 86, 0.7)',
+            surprise: 'rgba(75, 192, 192, 0.7)',
+            fear: 'rgba(153, 102, 255, 0.7)',
+            disgust: 'rgba(255, 159, 64, 0.7)',
+        };
+    
+        // Generate random colors for features
+        const featureColors = Array.from({ length: featuresCount }, () => getRandomColor());
+    
+        // Use default colors for sentiments and random colors for features
+        const colors: string[] = [];
+        sentiments.forEach((sentiment) => {
+            if (defaultSentimentColors[sentiment]) {
+                colors.push(defaultSentimentColors[sentiment]);
+            } else {
+                colors.push(getRandomColor());
+            }
+        });
+    
+        // Append random colors for the remaining features
+        for (let i = sentiments.length; i < featuresCount; i++) {
+            colors.push(featureColors[i - sentiments.length]);
+        }
+    
+        return colors;
+    };
 
     const getRandomColor = () => {
         const letters = '0123456789ABCDEF';
@@ -99,108 +147,6 @@ const CrossFeatureSentiments = () => {
         return color;
     };
 
-    const generateRandomColors = (count: number) => {
-        const colors = Array.from({ length: count }, () => getRandomColor());
-        return colors;
-    };
-
-    const fetchReviewDataFromApp = async () => {
-        if (selectedApp) {
-            const reviewService = new ReviewService();
-            try {
-                const response = await reviewService.fetchAllReviewsDetailedFromApp(selectedApp);
-                if (response !== null) {
-                    const reviews = response.reviews;
-                    const features = extractFeaturesFromReviews(reviews);
-                    const sentiments = extractSentimentsFromReviews(reviews);
-                    const filteredSentiments = sentiments.filter(sentiment =>
-                        sentiment.toLowerCase() !== 'not relevant');
-                    setData(reviews);
-                    setFeatures(features);
-                    setSentiments(filteredSentiments)
-                    setFeatureColors(generateRandomColors(features.length));
-                } else {
-                    console.error('Response from fetch all reviews is null');
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        }
-    };
-
-
-    const extractSentimentsFromReviews = (reviews: ReviewDataDTO[]) => {
-        const allSentiments: string[] = [];
-        reviews.forEach(review => {
-            review.sentences.forEach(sentence => {
-                if (sentence.sentimentData && sentence.sentimentData.sentiment) {
-                    allSentiments.push(sentence.sentimentData.sentiment);
-                }
-            });
-        });
-        return Array.from(new Set(allSentiments));
-    };
-    
-    const extractFeaturesFromReviews = (reviews: ReviewDataDTO[]) => {
-        const allFeatures: string[] = [];
-        reviews.forEach(review => {
-            review.sentences.forEach(sentence => {
-                if (sentence.featureData && sentence.featureData.feature) {
-                    allFeatures.push(sentence.featureData.feature);
-                }
-            });
-        });
-        return Array.from(new Set(allFeatures));
-    };
-    
-
-
-    const updateChartData = () => {
-        /*
-        if (selectedApp && data && selectedFeatures.length > 0) {
-            const featureDateCounts = countFeatureOccurrencesByDate(data);
-            const sentimentDateCounts = countSentimentsByDate(data, selectedFeatures);
-            let dates = Object.keys(featureDateCounts);
-            dates = dates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
-            dates = dates.filter((date) => {
-                const currentDate = new Date(date).getTime();
-                const start = startDate ? new Date(startDate).getTime() : 0;
-                const end = endDate ? new Date(endDate).getTime() : Infinity;
-                return currentDate >= start && currentDate <= end;
-            });
-
-            const featureDatasets = selectedFeatures.map((feature, index) => {
-                const dataPoints = dates.map((date) => featureDateCounts[date][feature] || 0);
-                return {
-                    data: dataPoints,
-                    type: 'line' as const,
-                    borderWidth: 1,
-                    label: feature,
-                    borderColor: featureColors[index],
-                    fill: false,
-                };
-            });
-
-            const sentimentDatasets = labels.map((sentiment, index) => {
-                const dataPoints = dates.map((date) => sentimentDateCounts[date][sentiment] || 0);
-                return {
-                    data: dataPoints,
-                    type: 'bar' as const,
-                    borderWidth: 1,
-                    label: sentiment,
-                    backgroundColor: sentimentColors[index],
-                };
-            });
-
-            const chartData = {
-                labels: dates,
-                datasets: [...featureDatasets, ...sentimentDatasets],
-            };
-            return chartData;
-        }
-        */
-        return null;
-    };
     const options = {
         responsive: true,
         scales: {
@@ -220,29 +166,92 @@ const CrossFeatureSentiments = () => {
         },
     };
 
-    const renderChart = () => {
-        const chartData = updateChartData();
-        if (chartData) {
-            return <Chart type='bar' data={chartData} options={options}/>;
-        } else {
-            return <p>Select an app and at least one feature.</p>;
-        }
-    };
+    const handleAddButtonClick = async () => {
+        if (selectedApp && selectedFeature && startDate && endDate) {
+            const parsedStartDate = new Date(startDate);
+            const parsedEndDate = new Date(endDate);
 
-    const addFeature = () => {
-        if (selectedFeature) {
-            if (!selectedFeatures.includes(selectedFeature)) {
-                const updatedSelectedFeatures = [...selectedFeatures, selectedFeature];
-                setSelectedFeatures(updatedSelectedFeatures);
-                setSelectedFeature('');
-            } else {
-                console.error('Feature already added.');
+            try {
+                const applicationService = new AppService();
+                const statisticsData = await applicationService.getStatisticsOverTime(selectedApp, parsedStartDate, parsedEndDate);
+                if (statisticsData != null) {
+                    const { statistics } = statisticsData;
+                    setStatisticsData(statistics);
+                    const filteredData = statistics.filter((data: any) => {
+                        return data.featureOccurrences.find((occurrence: any) => occurrence.featureName === selectedFeature);
+                    });
+                    if (filteredData && filteredData.length > 0) {
+                        formatChartData(filteredData);
+                    } else {
+                        console.error('Filtered data is null or empty.');
+                    }
+                    
+                }
+            } catch (error) {
+                console.error('Error fetching statistics data:', error);
             }
         } else {
-            console.error('Please select a feature before adding to the chart.');
+            console.error('Please select an app, feature, start date, and end date before adding to the chart.');
         }
     };
 
+    const formatChartData = (data: ApplicationDayStatisticsDTO[]) => {
+        const labels = data.map((entry) => {
+            const date = new Date(entry.date);
+            return `${date.getFullYear().toString().slice(-2)}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+        });
+    
+        const sentimentOccurrences: { [key: string]: number[] } = {};
+        const featureOccurrences: { [key: string]: number[] } = {};
+    
+        data.forEach((entry, dataIndex) => {
+            entry.sentimentOccurrences.forEach((sentimentOccurrence) => {
+                if (!sentimentOccurrences[sentimentOccurrence.sentimentName]) {
+                    sentimentOccurrences[sentimentOccurrence.sentimentName] = Array(labels.length).fill(0);
+                }
+                sentimentOccurrences[sentimentOccurrence.sentimentName][dataIndex] = sentimentOccurrence.occurrences;
+            });
+    
+            entry.featureOccurrences.forEach((featureOccurrence) => {
+                if (!featureOccurrences[featureOccurrence.featureName]) {
+                    featureOccurrences[featureOccurrence.featureName] = Array(labels.length).fill(0);
+                }
+                featureOccurrences[featureOccurrence.featureName][dataIndex] = featureOccurrence.occurrences;
+            });
+        });
+    
+        const sentimentData: any[] = [];
+        const featureData: any[] = [];
+    
+        Object.keys(sentimentOccurrences).forEach((sentimentName, index) => {
+            sentimentData.push({
+                label: sentimentName,
+                backgroundColor:generateSentimentColors([sentimentName])[0],
+                data: sentimentOccurrences[sentimentName],
+                type: 'bar'
+            });
+        });
+    
+        if (selectedFeature) {
+            const featureColorIndex = features.indexOf(selectedFeature) % featureColors.length;
+            featureData.push({
+                label: selectedFeature,
+                borderColor: 'rgb(75, 192, 192)',
+                data: featureOccurrences[selectedFeature] || Array(labels.length).fill(0), 
+                fill: false,
+                type: 'line'
+            });
+        }
+    
+        // Update chart data state
+        setChartData({
+            labels,
+            datasets: [...sentimentData, ...featureData]
+        });
+    };
+    
+    
+    
     return (
         <Container className="sentiment-histogram-container">
             <Row className="mt-4">
@@ -281,27 +290,23 @@ const CrossFeatureSentiments = () => {
             <Row className="mb-4">
                 <Col md={4}>
                     <label className="form-label">App: </label>
-                    <select
-                        className="form-select"
-                        value={selectedApp || ''}
-                        onChange={(e) => {
-                            const selectedAppId = e.target.value || null;
-                            setSelectedApp(selectedAppId);
-                            if (selectedAppId) {
-                                setSelectedFeatures([]);
-                                fetchReviewDataFromApp();
-                            }
-                        }}
-                    >
-                        <option value="" disabled>
-                            Select an App
-                        </option>
-                        {appData?.map((app) => (
-                            <option key={app.package_name} value={app.package_name}>
-                                {app.app_name}
+                        <select
+                            className="form-select"
+                            value={selectedApp || ''}
+                            onChange={(e) => {
+                                const selectedAppId = e.target.value || null;
+                                handleAppChange(selectedAppId);
+                            }}
+                        >
+                            <option value="" disabled>
+                                Select an App
                             </option>
-                        ))}
-                    </select>
+                            {appData?.map((app) => (
+                                <option key={app.id} value={app.id}>
+                                    {app.app_name}
+                                </option>
+                            ))}
+                        </select>
                 </Col>
                 <Col md={4}>
                     <label className="form-label">Feature: </label>
@@ -326,17 +331,17 @@ const CrossFeatureSentiments = () => {
                 <Col md={2} className="d-flex align-items-end">
                     <Button
                         className="btn-secondary btn-sm btn-square"
-                        onClick={addFeature}
+                        onClick={handleAddButtonClick}
                     >
-                        <i className="mdi mdi-plus" />
+                        <i className="mdi mdi-plus"/>
                     </Button>
                 </Col>
             </Row>
             <Row>
-                {data ? (
-                    renderChart()
+                {chartData.labels && chartData.datasets ? (
+                    <Chart type='bar' data={chartData} options={options}/>
                 ) : (
-                    <p className="text-secondary">Select an app and at least one feature</p>
+                    <p>Loading chart data...</p>
                 )}
             </Row>
             {isModalOpen && selectedApp && data ? (
@@ -351,7 +356,7 @@ const CrossFeatureSentiments = () => {
                     <Modal.Header closeButton>
                         <Modal.Title>Features and sentiments Chart</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>{data && selectedApp ? renderChart() : <p>Select an app and at least one feature</p>}</Modal.Body>
+                    <Modal.Body>{data && selectedApp ? <Chart type='bar' data={chartData} options={options}/> : <p>Select an app and at least one feature</p>}</Modal.Body>
                 </Modal>
             ) : null}
         </Container>
