@@ -341,7 +341,7 @@ const CrossFeatureSentiments = () => {
                 {chartData.labels && chartData.datasets ? (
                     <Chart type='bar' data={chartData} options={options}/>
                 ) : (
-                    <p>Loading chart data...</p>
+                    null
                 )}
             </Row>
             {isModalOpen && selectedApp && data ? (

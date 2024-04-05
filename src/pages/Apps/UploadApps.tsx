@@ -126,7 +126,7 @@ const UploadApps = () => {
     
         try {
             setIsUploading(true);
-            const infoToast = toast.info('Uploading application', {
+            const infoToast = toast.info('Uploading...', {
                 autoClose: false,
                 closeOnClick: false,
                 closeButton: false,
@@ -136,7 +136,7 @@ const UploadApps = () => {
             await appService.createApp(appDataList);
     
             toast.dismiss(infoToast);
-            toast.success('Apps uploaded successfully!');
+            toast.success('Applications uploaded successfully!');
             setAppDataList([]);
             handleFileUpload([], [])
             fileUploaderRef?.current?.clearSelectedFiles();

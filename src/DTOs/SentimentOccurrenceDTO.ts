@@ -1,5 +1,4 @@
-
-    export interface SentimentOccurrenceDTO {
-        sentimentName: string;
-        occurrences: number;
-    }
+export interface SentimentOccurrenceDTO {
+    sentimentName: string;
+    occurrences: number;
+}
