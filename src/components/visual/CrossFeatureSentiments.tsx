@@ -258,7 +258,7 @@ const CrossFeatureSentiments = () => {
                 <Col>
                     <label className="text-secondary mb-2">Features and sentiments chart</label>
                 </Col>
-                <Col className="col-md-4 d-flex align-self-end justify-content-end">
+                <Col md={2} className="d-flex align-items-end">
                     <Button
                         className="btn-secondary btn-sm btn-square"
                         onClick={() => setIsModalOpen(true)}
