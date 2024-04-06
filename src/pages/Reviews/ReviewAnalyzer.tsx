@@ -18,7 +18,6 @@ const generateColors = (sentiments: string[]) => {
     };
     return sentiments.map((sentiment) => defaultColors[sentiment]);
 };
-
 const ReviewAnalyzer = () => {
     const [data, setData] = useState<ReviewDataDTO | null>(null);
     const { reviewId } = useParams();
@@ -60,7 +59,7 @@ const ReviewAnalyzer = () => {
         const sentimentCounts: { [key: string]: number } = {};
 
         data.sentences.forEach((sentence) => {
-            const sentimentKey = sentence.sentimentData.sentiment;
+            const sentimentKey = sentence?.sentimentData?.sentiment;
             sentimentCounts[sentimentKey] = (sentimentCounts[sentimentKey] || 0) + 1;
         });
 
@@ -107,7 +106,7 @@ const ReviewAnalyzer = () => {
         }
 
         const markedReview = data.sentences.map((sentence, index) => {
-            const sentiment = sentence.sentimentData.sentiment;
+            const sentiment = sentence?.sentimentData?.sentiment;
             const color = sentiment === 'Not relevant' ? 'rgb(213,212,212)' : colors[SENTIMENT_OPTIONS.indexOf(sentiment)];
 
             return (
@@ -180,12 +179,15 @@ const ReviewAnalyzer = () => {
                             )}
                         </div>
                     </Col>
-                    {data.sentences && data.sentences.length > 0 && (
-                        <Col md={6}>
+
+                    <Col md={6}>
+                        {(data.sentences && data.sentences.length > 0 && data.sentences.some(sentence => sentence.sentimentData)) && (
                             <div className="px-4 py-4 sentiment-histogram-container">
                                 <h2>Review Sentiments</h2>
                                 <Bar data={chartData()} options={options} />
                             </div>
+                        )}
+                        {(data.sentences && data.sentences.length > 0 && data.sentences.some(sentence => sentence.featureData && sentence.featureData.feature !== "")) && (
                             <div className="px-4 py-4 mt-4 sentiment-histogram-container">
                                 <h2>Detected Features</h2>
                                 <ul>
@@ -196,8 +198,8 @@ const ReviewAnalyzer = () => {
                                     ))}
                                 </ul>
                             </div>
-                        </Col>
-                    )}
+                        )}
+                    </Col>
                 </Row>
             )}
         </>
