@@ -17,12 +17,13 @@ import FormWizard from "react-form-wizard-component";
 import "react-form-wizard-component/dist/style.css";
 import ReviewService from "../../services/ReviewService";
 import { toast } from "react-toastify";
+import { ReviewDataSimpleDTO } from "../../DTOs/ReviewDataSimpleDTO";
 
 interface ReviewProcessingWizardProps {
-    reviewsData: ReviewDataDTO[];
+    reviewsData: ReviewDataSimpleDTO[];
     selectedReviews: string[];
     onHide: () => void;
-    onDiscardReview: (review: ReviewDataDTO) => void;
+    onDiscardReview: (review: ReviewDataSimpleDTO) => void;
     onUpdateDirectory: () => void;
 }
 
@@ -49,7 +50,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
         sentimentAnalysis: false,
         featureExtraction: false,
     });
-    const [wizardData, setWizardData] = React.useState<ReviewDataDTO[]>(reviewsData);
+    const [wizardData, setWizardData] = React.useState<ReviewDataSimpleDTO[]>(reviewsData);
 
     const [selectedSentimentModel, setSelectedSentimentModel] = React.useState<string>("");
     const [selectedFeatureModel, setSelectedFeatureModel] = React.useState<string>("");
@@ -83,6 +84,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
             }
             toast.dismiss(infoToast);
             toast.success('Reviews analyzed!');
+            onHide();
         } catch (error) {
             console.error('Error analyzing reviews:', error);
             toast.error('Error analyzing reviews');
@@ -96,9 +98,9 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
         onHide();
     };
 
-    const discardReview = (review: ReviewDataDTO) => {
+    const discardReview = (review: ReviewDataSimpleDTO) => {
         onDiscardReview(review);
-        const updatedWizardData = wizardData.filter((r) => r.id !== review.id);
+        const updatedWizardData = wizardData.filter((r) => r.reviewId !== review.reviewId);
         setWizardData(updatedWizardData);
     };
     const handleTaskSelectionChange = (task: string) => {
@@ -135,14 +137,15 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
         <>
             <Modal size="xl" show onHide={onHide}>
                 <ModalHeader>
+                <Col className="md-10">
                     <h2 className="text-secondary">Process Reviews Wizard</h2>
-                    <Button className="btn-secondary" onClick={goBackToReviews}>
-                        <i className="mdi mdi-close" />
-                    </Button>
+                </Col>
+
+                <Col className="md-1 d-flex justify-content-end">
+                    <i className="px-4 mdi mdi-close" style={{ cursor: 'pointer' }} onClick={goBackToReviews} />
+                </Col>
                 </ModalHeader>
                 <ModalBody>
-
-
                     <FormWizard onComplete={handleComplete}>
 
                             <FormWizard.TabContent title="Check Reviews" icon="ti-ruler-pencil">
@@ -153,8 +156,6 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                                         <th className="text-center">App Name</th>
                                         <th className="text-center">Review ID</th>
                                         <th className="text-center">Review</th>
-                                        <th className="text-center">Score</th>
-                                        <th className="text-center">Date</th>
                                         <th className="text-center">Actions</th>
                                     </tr>
                                     </thead>
@@ -162,13 +163,12 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                                         <tbody>
                                         {wizardData
                                             .slice(startIndex, endIndex)
-                                            .map((review: ReviewDataDTO) => (
-                                                <tr key={review.id}>
+                                            .map((review: ReviewDataSimpleDTO) => (
+                                                <tr key={review.reviewId}>
                                                     <td className="text-center">{review.app_name || "N/A"}</td>
-                                                    <td className="text-center">{review.id || "N/A"}</td>
+                                                    <td className="text-center">{review.reviewId || "N/A"}</td>
                                                     <td className="text-center">{review.review || "N/A"}</td>
-                                                    <td className="text-center">{review.score || "N/A"}</td>
-                                                    <td className="text-center">{review.date || "N/A"}</td>
+
                                                     <td className="text-end" style={{ width: "150px" }}>
                                                         <OverlayTrigger overlay={<Tooltip>Discard</Tooltip>}>
                                                             <a

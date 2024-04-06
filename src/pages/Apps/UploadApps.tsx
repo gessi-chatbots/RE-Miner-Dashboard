@@ -117,17 +117,26 @@ const UploadApps = () => {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
     };
+
     const handleUploadButtonClick = async () => {
         if (appDataList.length === 0) {
             console.log('No files uploaded.');
             return;
         }
-
+    
         try {
             setIsUploading(true);
+            const infoToast = toast.info('Uploading...', {
+                autoClose: false,
+                closeOnClick: false,
+                closeButton: false,
+            });
+    
             const appService = new AppService();
             await appService.createApp(appDataList);
-            toast.success('Apps uploaded successfully!');
+    
+            toast.dismiss(infoToast);
+            toast.success('Applications uploaded successfully!');
             setAppDataList([]);
             handleFileUpload([], [])
             fileUploaderRef?.current?.clearSelectedFiles();
@@ -146,7 +155,8 @@ const UploadApps = () => {
                     <Col className="col-md-8">
                         <h1 className="text-secondary">Upload Applications</h1>
                     </Col>
-                    <Col className="col-md-4 d-flex justify-content-end align-items-center">
+                    <Col className="col-md-2"></Col>
+                    <Col className="col-md-2 d-flex justify-content-end align-items-center">
                         <Button className="btn-secondary" onClick={handleDownload}><i className="mdi mdi-download"/> Template File</Button>
                     </Col>
                 </Row>
@@ -157,7 +167,7 @@ const UploadApps = () => {
             </div>
             <Row className="justify-content-end mt-3">
                 <div className="col-auto">
-                    <Button className="btn-secondary" onClick={openCreateAppModal}><i className="mdi mdi-hand-back-right"/> Upload App Manually</Button>
+                {/*<Button className="btn-secondary" onClick={openCreateAppModal}><i className="mdi mdi-hand-back-right"/> Upload App Manually</Button>*/}
                 </div>
                 <div className="col-auto">
                     <Button

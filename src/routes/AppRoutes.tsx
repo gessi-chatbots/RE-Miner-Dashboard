@@ -1,7 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
-import { Routes } from './index'
+import ApplicationRoutes from './index';
 import {ToastContainer} from "react-toastify";
-import React from "react";
 const AppRoutes = () => {
     return (
         <BrowserRouter>
@@ -15,7 +14,7 @@ const AppRoutes = () => {
                 pauseOnHover
                 theme="colored"
             />
-            <Routes />
+            <ApplicationRoutes />
         </BrowserRouter>
     );
 };

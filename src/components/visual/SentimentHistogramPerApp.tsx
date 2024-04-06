@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -9,12 +9,10 @@ import {
     Legend,
     Title,
 } from 'chart.js';
-import ReviewService from '../../services/ReviewService';
-import { ReviewDataDTO } from '../../DTOs/ReviewDataDTO';
-import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
-import { AppDataDTO } from '../../DTOs/AppDataDTO';
+import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
 import AppService from '../../services/AppService';
-import {SentimentDataDTO} from "../../DTOs/SentimentDataDTO";
+import { ApplicationDayStatisticsDTO } from '../../DTOs/ApplicationDayStatisticsDTO';
+import { AppDataSimpleDTO } from '../../DTOs/AppDataSimpleDTO';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, Title);
 
@@ -31,23 +29,50 @@ const generateColors = (sentiments: string[]) => {
     };
     return sentiments.map((sentiment) => defaultColors[sentiment]);
 };
-
-
+const options = {
+    responsive: true,
+    scales: {
+        x: {
+            stacked: true,
+            title: {
+                display: true,
+                text: 'Dates',
+            },
+            grid: {
+                display: true,
+                color: 'rgba(0, 0, 0, 1)',
+                lineWidth: 1, 
+                drawBorder: false, 
+                drawOnChartArea: false, 
+                drawTicks: true,
+            },
+        },
+        y: {
+            stacked: true,
+            beginAtZero: true,
+            title: {
+                display: true,
+                text: 'Count',
+            },
+            grid: {
+                display: false,
+            },
+        },
+    },
+};
 const SentimentHistogramPerApp = () => {
-    const [data, setData] = useState<ReviewDataDTO[]>([]);
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
     const [selectedApp, setSelectedApp] = useState<string | null>(null);
-    const [appData, setAppData] = useState<AppDataDTO[] | null>(null);
+    const [appData, setAppData] = useState<AppDataSimpleDTO[] | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [labels, setLabels] = useState(SENTIMENT_OPTIONS);
-    const [colors, setColors] = useState(generateColors(SENTIMENT_OPTIONS));
+    const [chartData, setChartData] = useState<any>({ labels: [], datasets: [] });
 
     useEffect(() => {
         const fetchAppDataFromService = async () => {
             const appService = new AppService();
             try {
-                const response = await appService.fetchAllAppsNames();
+                const response = await appService.fetchAllAppsNamesSimple();
                 if (response !== null) {
                     const { apps: appData } = response;
                     setAppData(appData);
@@ -62,135 +87,64 @@ const SentimentHistogramPerApp = () => {
         fetchAppDataFromService();
     }, []);
 
-    useEffect(() => {
-        if (selectedApp) {
-            fetchReviewDataFromApp();
-        }
-    }, [selectedApp]);
-
-
-
-    const fetchReviewDataFromApp = async () => {
-        if (selectedApp) {
-            const reviewService = new ReviewService();
+    const handleAddButtonClick = async () => {
+        if (selectedApp && startDate && endDate) {
+            const parsedStartDate = new Date(startDate);
+            const parsedEndDate = new Date(endDate);
+    
             try {
-                const response = await reviewService.fetchAllReviewsDetailedFromApp(selectedApp);
-                if (response !== null) {
-                    const reviews = response.reviews;
-                    const sentiments = extractSentimentsFromReviews(reviews);
-                    const filteredSentiments = sentiments.filter(sentiment =>
-                        sentiment.toLowerCase() !== 'not relevant');
-                    setData(prevData => [...reviews]);
-                    setLabels(prevLabels => [...filteredSentiments]);
-                } else {
-                    console.error('Response from fetch all reviews is null');
+                const applicationService = new AppService();
+                const statisticsData = await applicationService.getStatisticsOverTime(selectedApp, parsedStartDate, parsedEndDate);
+                if (statisticsData !== null) {
+                    const { statistics } = statisticsData;
+    
+                    const sentimentOccurrencesByDate: { [date: string]: { [sentiment: string]: number } } = {};
+                    statistics.forEach((dayStatistics: ApplicationDayStatisticsDTO) => {
+                        const currentDate = new Date(dayStatistics.date).toISOString().split('T')[0];
+                        if (!sentimentOccurrencesByDate[currentDate]) {
+                            sentimentOccurrencesByDate[currentDate] = {};
+                        }
+                        dayStatistics.sentimentOccurrences.forEach((sentiment) => {
+                            sentimentOccurrencesByDate[currentDate][sentiment.sentimentName] = (sentimentOccurrencesByDate[currentDate][sentiment.sentimentName] || 0) + sentiment.occurrences;
+                        });
+                    });
+    
+                    const uniqueSentiments = Array.from(new Set(statistics.flatMap((dayStatistics: ApplicationDayStatisticsDTO) => dayStatistics.sentimentOccurrences.map((sentiment) => sentiment.sentimentName))));
+                    uniqueSentiments.sort();
+
+    
+                    const chartData = {
+                        labels: Object.keys(sentimentOccurrencesByDate).sort(),
+                        datasets: uniqueSentiments.map((sentiment) => ({
+                            label: sentiment,
+                            data: Object.keys(sentimentOccurrencesByDate)
+                                .sort()
+                                .map((date) => sentimentOccurrencesByDate[date][sentiment] || 0),
+                            backgroundColor: generateColors([sentiment])[0],
+                        })),
+                    };
+                    
+                    setChartData(chartData);
                 }
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching statistics data:', error);
             }
+        } else {
+            console.error('Please select an app, start date, and end date before adding to the chart.');
         }
     };
-
-    const filterData = (reviews: ReviewDataDTO[]) => {
-        return reviews.filter((review) => {
-            const dateParts = review.date.split('/');
-            const reviewDate = new Date(`${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`);
-
-            const startDateCondition = !startDate || reviewDate >= new Date(startDate);
-            const endDateCondition = !endDate || reviewDate <= new Date(endDate);
-
-            return (
-                startDateCondition &&
-                endDateCondition &&
-                selectedApp
-            );
-        });
-    };
-
-    const extractSentimentsFromReviews = (reviews: ReviewDataDTO[]) => {
-        const allSentiments = reviews.reduce(
-            (sentiments, review) => sentiments.concat((review.sentiments || []).map(sentimentObj => sentimentObj.sentiment)),
-            [] as string[]
-        );
-        return Array.from(new Set(allSentiments));
-    };
-
-
-
-
-    const countSentimentsByDate = (reviews: ReviewDataDTO[]) => {
-        const dateSentimentCounts: Record<string, Record<string, number>> = {};
-
-        reviews.forEach((review) => {
-            const dateParts = review.date.split('/');
-            const reviewDate = new Date(`${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`).toDateString();
-            dateSentimentCounts[reviewDate] = dateSentimentCounts[reviewDate] || {};
-
-            (review.sentiments || []).forEach((sentiment: SentimentDataDTO) => {
-                dateSentimentCounts[reviewDate][sentiment.sentiment] =
-                    (dateSentimentCounts[reviewDate][sentiment.sentiment] || 0) + 1;
-            });
-        });
-
-        return dateSentimentCounts;
-    };
-    const chartData = () => {
-        const filteredReviews = filterData(data || []);
-        const dateSentimentCounts = countSentimentsByDate(filteredReviews);
-        let dates = Object.keys(dateSentimentCounts);
-        dates = dates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
-
-        const datasets = labels.map((sentiment) => {
-            const dataPoints = dates.map((date) =>
-                dateSentimentCounts[date][sentiment] || 0
-            );
-
-            return {
-                data: dataPoints,
-                borderWidth: 1,
-                label: sentiment,
-                backgroundColor: colors[labels.indexOf(sentiment)],
-            };
-        });
-
-        return {
-            labels: dates,
-            datasets: datasets,
-        };
-    };
-    const options = {
-        responsive: true,
-        scales: {
-            x: {
-                stacked: true,
-                title: {
-                    display: true,
-                    text: 'Dates',
-                },
-            },
-            y: {
-                stacked: true,
-                beginAtZero: true,
-                title: {
-                    display: true,
-                    text: 'Count',
-                },
-            },
-        },
-    };
-
     return (
         <Container className="sentiment-histogram-container">
             <Row className="mt-4">
                 <Col>
                     <label className="text-secondary mb-2">Sentiment Histogram</label>
                 </Col>
-                <Col className="col-md-4 d-flex align-self-end justify-content-end">
+                <Col md={2} className="d-flex align-items-end">
                     <Button
                         className="btn-secondary btn-sm btn-square"
                         onClick={() => setIsModalOpen(true)}
                     >
-                        <i className="mdi mdi-arrow-expand"/>
+                        <i className="mdi mdi-arrow-expand" />
                     </Button>
                 </Col>
             </Row>
@@ -220,13 +174,7 @@ const SentimentHistogramPerApp = () => {
                     <select
                         value={selectedApp || ''}
                         className="form-select"
-                        onChange={(e) => {
-                            const selectedAppId = e.target.value || null;
-                            setSelectedApp(selectedAppId);
-                            if (selectedAppId) {
-                                fetchReviewDataFromApp();
-                            }
-                        }}
+                        onChange={(e) => setSelectedApp(e.target.value)}
                     >
                         <option value="" disabled>
                             Select an App
@@ -238,28 +186,34 @@ const SentimentHistogramPerApp = () => {
                         ))}
                     </select>
                 </Col>
+                <Col md={2} className="d-flex align-items-end">
+                    <Button
+                        className="btn-secondary btn-sm btn-square"
+                        onClick={handleAddButtonClick}
+                    >
+                        <i className="mdi mdi-plus"/>
+                    </Button>
+                </Col>
             </Row>
-            {selectedApp ? (
-                <Row>
-                    <Bar className="sentiment-histogram-chart" data={chartData()} options={options} />
-                </Row>
-            ) : (
-                <Row>
-                    <p className="text-secondary">Select an application</p>
-                </Row>
-            )}
-
-
-            {isModalOpen && selectedApp && data ? (
+            <Row>
+                <Col>
+                    {selectedApp && startDate && endDate && (
+                        <Bar data={chartData} options={options} />
+                    )}
+                </Col>
+            </Row>
+            {isModalOpen && (
                 <Modal show={isModalOpen} onHide={() => setIsModalOpen(false)} size="lg" centered style={{ maxWidth: '95vw', maxHeight: '95vh' }}>
                     <Modal.Header closeButton>
                         <Modal.Title>Sentiment Histogram</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Bar className="sentiment-histogram-chart" data={chartData()} options={options} />
+                        {selectedApp && startDate && endDate && (
+                            <Bar data={chartData} options={options} />
+                        )}
                     </Modal.Body>
                 </Modal>
-            ) : null}
+            )}
         </Container>
     );
 };

@@ -1,39 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import {Bar, Line} from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
-import ReviewService from '../../services/ReviewService';
-import AppService from "../../services/AppService";
-import {Button, Col, Container, Modal, Row} from "react-bootstrap";
-import {ReviewDataDTO} from "../../DTOs/ReviewDataDTO";
-import {AppDataDTO} from "../../DTOs/AppDataDTO";
+import { Line } from 'react-chartjs-2';
+import AppService from '../../services/AppService';
+import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
+import { AppDataSimpleDTO } from '../../DTOs/AppDataSimpleDTO';
+import { ApplicationDayStatisticsDTO } from '../../DTOs/ApplicationDayStatisticsDTO';
 
-// Register necessary components from chart.js
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-);
 const FeatureLineChart = () => {
-    const [data, setData] = useState<ReviewDataDTO[] | null>(null);
     const [features, setFeatures] = useState<string[]>([]);
     const [colors, setColors] = useState<string[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedApp, setSelectedApp] = useState<string | null>(null);
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
-    const [appData, setAppData] = useState<AppDataDTO[] | null>(null);
+    const [appData, setAppData] = useState<AppDataSimpleDTO[] | null>(null);
     const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
     const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
+    const [statisticsData, setStatisticsData] = useState<ApplicationDayStatisticsDTO[]>([]);
+    const [chartData, setChartData] = useState<any>({});
 
     useEffect(() => {
         const fetchAppDataFromService = async () => {
             const appService = new AppService();
             try {
-                const response = await appService.fetchAllAppsNames();
+                const response = await appService.fetchAllAppsNamesSimple();
                 if (response !== null) {
                     const { apps: appData } = response;
                     setAppData(appData);
@@ -51,9 +40,79 @@ const FeatureLineChart = () => {
     useEffect(() => {
         if (selectedApp) {
             setSelectedFeatures([]);
-            fetchReviewDataFromApp();
         }
     }, [selectedApp]);
+
+    const handleAppChange = async (selectedAppId: string | null) => {
+        setSelectedApp(selectedAppId);
+        if (selectedAppId) {
+            await fetchFeaturesFromApp(selectedAppId);
+        }
+    };
+
+    const fetchFeaturesFromApp = async (selectedAppId: string) => {
+        if (selectedAppId) {
+            const applicationService = new AppService();
+            try {
+                const response = await applicationService.fetchAppFeatures(selectedAppId);
+                if (response !== null) {
+                    const features = response.features;
+                    setFeatures(features);
+                    setColors(generateColors(features.length));
+                } else {
+                    console.error('Response from fetch app features is null');
+                }
+            } catch (error) {
+                console.error('Error fetching features:', error);
+            }
+        }
+    };
+
+    const handleAddButtonClick = async () => {
+        if (selectedApp && selectedFeature && startDate && endDate) {
+            const parsedStartDate = new Date(startDate);
+            const parsedEndDate = new Date(endDate);
+    
+            try {
+                const applicationService = new AppService();
+                const statisticsData = await applicationService.getStatisticsOverTime(selectedApp, parsedStartDate, parsedEndDate);
+                if (statisticsData != null) {
+                    const { statistics } = statisticsData;
+                    setStatisticsData(statistics);
+                    const filteredData = statistics.filter((data: any) => {
+                        return data.featureOccurrences.find((occurrence: any) => occurrence.featureName === selectedFeature);
+                    });
+                    formatChartData(filteredData);
+                }
+            } catch (error) {
+                console.error('Error fetching statistics data:', error);
+            }
+        } else {
+            console.error('Please select an app, feature, start date, and end date before adding to the chart.');
+        }
+    };
+
+    const formatChartData = (data: any) => {
+        const labels = data.map((entry: any) => {
+            const date = new Date(entry.date);
+            return `${date.getFullYear().toString().slice(-2)}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+        });
+        const occurrences = data.map((entry: any) => {
+            const feature = entry.featureOccurrences.find((occurrence: any) => occurrence.featureName === selectedFeature);
+            return feature ? feature.occurrences : 0;
+        });
+    
+        setChartData({
+            labels: labels,
+            datasets: [{
+                label: selectedFeature,
+                data: occurrences,
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        });
+    };
 
     const getRandomColor = () => {
         const letters = '0123456789ABCDEF';
@@ -67,94 +126,6 @@ const FeatureLineChart = () => {
     const generateColors = (count: number) => {
         const colors = Array.from({ length: count }, () => getRandomColor());
         return colors;
-    };
-
-    const extractFeaturesFromReviews = (reviews: ReviewDataDTO[]) => {
-        const allFeatures = reviews.reduce(
-            (features, review) => features.concat(review.features || []),
-            [] as string[]
-        );
-        return Array.from(new Set(allFeatures));
-    };
-
-    const fetchReviewDataFromApp = async () => {
-        if (selectedApp) {
-            const reviewService = new ReviewService();
-            try {
-                const response = await reviewService.fetchAllReviewsDetailedFromApp(
-                    selectedApp
-                );
-                if (response !== null) {
-                    const reviews = response.reviews;
-                    const features = extractFeaturesFromReviews(reviews);
-                    setData(reviews);
-                    setFeatures(features);
-                    setColors(generateColors(features.length));
-                } else {
-                    console.error('Response from fetch all reviews is null');
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        }
-    };
-
-    const countFeatureOccurrencesByDate = (reviews: ReviewDataDTO[]) => {
-        const featureCount: Record<string, Record<string, number>> = {};
-
-        reviews.forEach((review) => {
-            const dateParts = review.date.split('/');
-            const reviewDate = new Date(
-                `${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`
-            ).toDateString();
-            featureCount[reviewDate] = featureCount[reviewDate] || {};
-
-            (review.features || []).forEach((feature: string) => {
-                featureCount[reviewDate][feature] =
-                    (featureCount[reviewDate][feature] || 0) + 1;
-            });
-        });
-
-        return featureCount;
-    };
-
-    const updateLineChartData = () => {
-        if (selectedApp && selectedFeatures.length > 0 && data) {
-            const featureDateCounts = countFeatureOccurrencesByDate(data);
-            let dates = Object.keys(featureDateCounts);
-            dates = dates.sort(
-                (a, b) => new Date(a).getTime() - new Date(b).getTime()
-            );
-
-            dates = dates.filter((date) => {
-                const currentDate = new Date(date).getTime();
-                const start = startDate ? new Date(startDate).getTime() : 0;
-                const end = endDate ? new Date(endDate).getTime() : Infinity;
-                return currentDate >= start && currentDate <= end;
-            });
-
-            const datasets = selectedFeatures.map((feature, index) => {
-                const dataPoints = dates.map(
-                    (date) => featureDateCounts[date][feature] || 0
-                );
-
-                return {
-                    data: dataPoints,
-                    borderWidth: 1,
-                    label: feature,
-                    borderColor: colors[index],
-                    fill: false,
-                };
-            });
-
-            const chartData = {
-                labels: dates,
-                datasets: datasets,
-            };
-
-            return chartData;
-        }
-        return null;
     };
 
     const options = {
@@ -176,37 +147,13 @@ const FeatureLineChart = () => {
         },
     };
 
-    const renderChart = () => {
-        const chartData = updateLineChartData();
-        if (chartData) {
-            return <Line data={chartData} options={options} />;
-        } else {
-            return <p>Select an app and at least one feature.</p>;
-        }
-    };
-
-
-    const handleAddButtonClick = () => {
-        if (selectedFeature) {
-            if (!selectedFeatures.includes(selectedFeature)) {
-                const updatedSelectedFeatures = [...selectedFeatures, selectedFeature];
-                setSelectedFeatures(updatedSelectedFeatures);
-                setSelectedFeature('');
-            } else {
-                console.error('Feature already added.');
-            }
-        } else {
-            console.error('Please select a feature before adding to the chart.');
-        }
-    }
-
     return (
         <Container className="sentiment-histogram-container">
             <Row className="mt-4">
                 <Col>
                     <label className="text-secondary mb-2">Features over time</label>
                 </Col>
-                <Col className="col-md-4 d-flex align-self-end justify-content-end">
+                <Col md={2} className="d-flex align-items-end">
                     <Button
                         className="btn-secondary btn-sm btn-square"
                         onClick={() => setIsModalOpen(true)}
@@ -243,11 +190,7 @@ const FeatureLineChart = () => {
                         value={selectedApp || ''}
                         onChange={(e) => {
                             const selectedAppId = e.target.value || null;
-                            setSelectedApp(selectedAppId);
-                            if (selectedAppId) {
-                                setSelectedFeatures([]);
-                                fetchReviewDataFromApp();
-                            }
+                            handleAppChange(selectedAppId);
                         }}
                     >
                         <option value="" disabled>
@@ -290,26 +233,33 @@ const FeatureLineChart = () => {
                 </Col>
             </Row>
             <Row>
-                {data ? (
-                    renderChart()
-                ) : (
-                    <p className="text-secondary">Select an app and at least one feature</p>
-                )}
+                <Col>
+                    {chartData.labels && chartData.datasets && (
+                        <Line data={chartData} options={options} />
+                    )}
+                </Col>
             </Row>
-            {isModalOpen && selectedApp && data ? (
-                <Modal fullscreen="xxl-down" show={isModalOpen} onHide={() => setIsModalOpen(false)} size="lg" centered style={{ maxWidth: '95vw', maxHeight: '95vh' }}>
+            {isModalOpen && (
+                <Modal
+                    fullscreen="xxl-down"
+                    show={isModalOpen}
+                    onHide={() => setIsModalOpen(false)}
+                    size="lg"
+                    centered
+                    style={{ maxWidth: '95vw', maxHeight: '95vh' }}
+                >
                     <Modal.Header closeButton>
                         <Modal.Title>Features over time</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        {data && selectedApp ? (
-                            renderChart()
-                        ) : (
-                            <p className="text-secondary">Select an app and at least one feature</p>
-                        )}
+                        <Col>
+                            {chartData.labels && chartData.datasets && (
+                                <Line data={chartData} options={options} />
+                            )}
+                        </Col>
                     </Modal.Body>
                 </Modal>
-            ) : null}
+            )}
         </Container>
     );
 };

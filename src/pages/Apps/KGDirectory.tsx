@@ -1,38 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import {Table, Button, Modal, OverlayTrigger, Tooltip, Row, Col} from 'react-bootstrap';
 
-import { AppDataSimpleDTO } from "../../DTOs/AppDataSimpleDTO";
 import AppService from "../../services/AppService";
 import { toast } from 'react-toastify';
-const defaultColumns = ['ID', 'App Name', '# Reviews', 'Actions'];
+import { AppDirectoryDataSimpleDTO } from '../../DTOs/AppDirectoryDataSimpleDTO';
+const defaultColumns = ['Application Package', 'Application Name', '# Reviews', 'Actions'];
 
-const AppsDirectory: React.FC = () => {
-    const [data, setData] = useState<AppDataSimpleDTO[] | null>(null);
+const KGDirectory: React.FC = () => {
+    const [data, setData] = useState<AppDirectoryDataSimpleDTO[] | null>(null);
     const [isDeleteModalOpen, setDeleteModalIsOpen] = useState<boolean>(false);
-    const [selectedApp, setSelectedApp] = useState<AppDataSimpleDTO | null>(null);
+    const [selectedApp, setSelectedApp] = useState<AppDirectoryDataSimpleDTO | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
 
-    const [reviewId, setReviewId] = useState('');
-    const [reviewContent, setReviewContent] = useState('');
-    const [reviewDate, setReviewDate] = useState('');
-    const [score, setScore] = useState('');
 
-    const openDeleteModal = (app: AppDataSimpleDTO) => {
-        setSelectedApp(app);
-        setDeleteModalIsOpen(true);
-    };
-
-    const closeModals = () => {
-        setDeleteModalIsOpen(false);
-        setSelectedApp(null);
-    };
 
     useEffect(() => {
         const fetchDataFromApi = async () => {
             const appService = new AppService();
             try {
-                const response = await appService.fetchAllApps(currentPage);
+                const response = await appService.fetchAllDirectoryApps(0);
                 if (response !== null) {
                     const { apps: mappedData, total_pages: pages } = response;
                     setData(mappedData);
@@ -67,7 +54,7 @@ const AppsDirectory: React.FC = () => {
 
 
     async function updateAppDirectory(appService: AppService) {
-        const response = await appService.fetchAllApps(currentPage);
+        const response = await appService.fetchAllDirectoryApps(currentPage);
         if (response !== null) {
             const {apps: mappedData, total_pages: pages} = response;
             if (mappedData !== undefined) {
@@ -77,33 +64,32 @@ const AppsDirectory: React.FC = () => {
         }
     }
 
-    const deleteApp = async (app_id: string | undefined) => {
-        if (!app_id) {
-            console.error("App ID is undefined or null.");
+    const addApp = async (app: AppDirectoryDataSimpleDTO | undefined) => {
+        if (!app) {
+            console.error("App is undefined or null.");
             return false;
         }
 
-        const appService = new AppService();
         try {
-            await appService.deleteApp(app_id);
-            const response = await appService.fetchAllApps();
-            if (response !== null) {
-                const {apps: mappedData, total_pages: pages} = response;
-                if (mappedData !== undefined) {
-                    setData(mappedData);
-                    setTotalPages(pages);
-                }
-            }
-            toast.success('App deleted successfully!');
-            setDeleteModalIsOpen(false);
+            const infoToast = toast.info('Importing application from directory', {
+                autoClose: false,
+                closeOnClick: false,
+                closeButton: false,
+            });
+
+            const appService = new AppService();
+            await appService.addAppFromDirectory(app.name);
+
+            toast.dismiss(infoToast);
+            toast.success('Application imported successfully!');
             return true;
         } catch (error) {
-            toast.error('Error deleting app');
-            console.error("Error deleting app:", error);
-            setDeleteModalIsOpen(false);
+            console.error('Error importing app:', error);
+            toast.error('Error importing application');
             return false;
         }
     };
+
 
     const convertDateFormat = (inputDate: string) => {
         const [day, month, year] = inputDate.split('/');
@@ -112,22 +98,22 @@ const AppsDirectory: React.FC = () => {
     return (
         <div>
             <div>
-                <h1 className="text-secondary">Applications</h1>
+                <h1 className="text-secondary">Applications Directory</h1>
                     {data && data.length === 0 && (
                         <div className="d-flex justify-content-center align-items-center">
                             <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
-                                <Row className="text-center">
+                            <Row className="text-center">
                                 <Col>
                                     <i className="mdi mdi-emoticon-sad text-secondary" style={{ fontSize: '5rem' }} />
-                                    <h2>No applications uploaded yet.</h2>
-                                    <p>Why don't you upload some apps?</p>
+                                    <h2>No applications found in the directory.</h2>
                                     <div style={{ width: 'fit-content', margin: '0 auto' }}> {/* Wrap the button inside a div */}
-                                        <Button className="mt-4 btn-secondary" href="applications/upload">
+                                        <Button className="mt-4 btn-secondary" href="/applications/upload">
                                             <i className="mdi mdi-upload"/> Upload Apps
                                         </Button>
                                     </div>
                                 </Col>
                             </Row>
+
                             </div>
                         </div>
 
@@ -146,14 +132,14 @@ const AppsDirectory: React.FC = () => {
                                     </thead>
                                     <tbody>
                                     {data.map(app => (
-                                        <tr key={app.id}>
-                                            <td className="text-center">{app.id || 'N/A'}</td>
-                                            <td className="text-center">{app.app_name || 'N/A'}</td>
-                                            <td className="text-center">{app.review_size || 'N/A'}</td>
+                                        <tr key={app.applicationPackage}>
+                                            <td className="text-center">{app.applicationPackage || 'N/A'}</td>
+                                            <td className="text-center">{app.name || 'N/A'}</td>
+                                            <td className="text-center">{app.reviewCount || 'N/A'}</td>
                                             <td className="text-end" style={{ width: "150px" }}>
-                                                <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
-                                                    <a href="#" className="action-icon" onClick={() => openDeleteModal(app)}>
-                                                        <i className="mdi mdi-delete"></i>
+                                                <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Add application</Tooltip>}>
+                                                    <a href="#" className="action-icon" onClick={() => addApp(app)}>
+                                                        <i className="mdi mdi-plus"></i>
                                                     </a>
                                                 </OverlayTrigger>
                                             </td>
@@ -223,22 +209,8 @@ const AppsDirectory: React.FC = () => {
                         </>
                     )}
                 </div>
-            {/* Delete Modal */}
-            <Modal show={isDeleteModalOpen} backdrop="static" keyboard={false} onHide={closeModals}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Delete App</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    {selectedApp && <p>Do you really want to <b>delete</b> the app: {selectedApp.app_name}?</p>}
-                    <p>This step is <b>irreversible</b></p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={closeModals}>Close</Button>
-                    <Button variant="danger" onClick={() => deleteApp(selectedApp?.id)}>Delete</Button>
-                </Modal.Footer>
-            </Modal>
         </div>
     );
 };
 
-export default AppsDirectory;
+export default KGDirectory;

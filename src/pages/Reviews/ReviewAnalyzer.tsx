@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReviewService from "../../services/ReviewService";
-import { ReviewDataDTO } from "../../DTOs/ReviewDataDTO";
+import { ReviewDataDTO, SentenceDTO } from "../../DTOs/ReviewDataDTO";
 import { useParams } from "react-router-dom";
 import { Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
@@ -22,6 +22,7 @@ const generateColors = (sentiments: string[]) => {
 const ReviewAnalyzer = () => {
     const [data, setData] = useState<ReviewDataDTO | null>(null);
     const { reviewId } = useParams();
+    const { appId } = useParams();
     const [labels, setLabels] = useState(SENTIMENT_OPTIONS);
     const [colors, setColors] = useState(generateColors(SENTIMENT_OPTIONS));
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -31,10 +32,9 @@ const ReviewAnalyzer = () => {
             const reviewService = new ReviewService();
             try {
                 if (reviewId) {
-                    const response = await reviewService.fetchReview(reviewId);
+                    const response = await reviewService.fetchReview(appId as string, reviewId as string);
                     if (response !== null) {
-                        const { review: fetchedData } = response;
-                        setData(fetchedData);
+                        setData(response.review);
                     } else {
                         console.error("Response from fetch review is null");
                     }
@@ -47,10 +47,10 @@ const ReviewAnalyzer = () => {
         };
 
         fetchReviewFromApi();
-    }, [reviewId, setData]);
+    }, [reviewId]);
 
     const chartData = () => {
-        if (!data) {
+        if (!data || !data.sentences || data.sentences.length === 0) {
             return {
                 labels: [],
                 datasets: [],
@@ -59,8 +59,8 @@ const ReviewAnalyzer = () => {
 
         const sentimentCounts: { [key: string]: number } = {};
 
-        data?.sentiments?.forEach((sentiment) => {
-            const sentimentKey = sentiment.sentiment;
+        data.sentences.forEach((sentence) => {
+            const sentimentKey = sentence.sentimentData.sentiment;
             sentimentCounts[sentimentKey] = (sentimentCounts[sentimentKey] || 0) + 1;
         });
 
@@ -75,18 +75,22 @@ const ReviewAnalyzer = () => {
             ),
         };
 
-
         return {
             labels: chartLabels,
             datasets: [dataset],
         };
     };
+
     const markFeaturesInReview = () => {
-        if (!data || !data.features || data.features.length === 0) {
+        if (!data || !data.sentences || data.sentences.length === 0) {
             return <p>{data?.review}</p>;
         }
 
-        const sortedFeatures = data.features.sort((a, b) => b.length - a.length);
+        const sortedFeatures = data.sentences
+            .filter(sentence => sentence.featureData !== null)
+            .map(sentence => sentence.featureData!.feature)
+            .sort((a, b) => b.length - a.length);
+
         let markedReview = data.review;
 
         sortedFeatures.forEach((feature) => {
@@ -97,19 +101,14 @@ const ReviewAnalyzer = () => {
         return <p dangerouslySetInnerHTML={{ __html: markedReview }} />;
     };
 
-
-
     const markSentimentsInReview = () => {
-        if (!data || !data.sentiments || data.sentiments.length === 0) {
+        if (!data || !data.sentences || data.sentences.length === 0) {
             return <p>{data?.review}</p>;
         }
 
-        const markedReview = data.sentiments.map((sentiment, index) => {
-            let color: string
-            color = colors[SENTIMENT_OPTIONS.indexOf(sentiment.sentiment)];
-            if (sentiment.sentiment === 'Not relevant')
-                color = 'rgb(213,212,212)'
-
+        const markedReview = data.sentences.map((sentence, index) => {
+            const sentiment = sentence.sentimentData.sentiment;
+            const color = sentiment === 'Not relevant' ? 'rgb(213,212,212)' : colors[SENTIMENT_OPTIONS.indexOf(sentiment)];
 
             return (
                 <OverlayTrigger
@@ -117,26 +116,21 @@ const ReviewAnalyzer = () => {
                     placement="right"
                     overlay={
                         <Tooltip id={`tooltip-right`}>
-                            {`${sentiment.sentiment}`}
+                            {`${sentiment}`}
                         </Tooltip>
                     }
                 >
-                <span
-                    style={{ backgroundColor: color }}
-                >
-                    {`${sentiment.sentence} `}
-                </span>
+                    <span
+                        style={{ backgroundColor: color }}
+                    >
+                        {`${sentence.text} `}
+                    </span>
                 </OverlayTrigger>
             );
         });
 
         return <p>{markedReview}</p>;
     };
-
-
-
-
-
 
     const options = {
         responsive: true,
@@ -162,7 +156,7 @@ const ReviewAnalyzer = () => {
             <h1 className="text-secondary mb-4">Review Analyzer</h1>
             {data && (
                 <Row>
-                    <Col md={6}>
+                    <Col md={data.sentences && data.sentences.length > 0 ? 6 : 12}>
                         <div className="px-4 py-4 sentiment-histogram-container">
                             <Row>
                                 <h2>App Review</h2>
@@ -170,33 +164,40 @@ const ReviewAnalyzer = () => {
                             </Row>
                             <Row>
                                 <h2>Review Id</h2>
-                                <p>{data.id} </p>
+                                <p>{data.reviewId} </p>
                             </Row>
                             <Row>
-                                <h2> Review Content: </h2>
-                                {markSentimentsInReview()}
+                                <h2>Review Text</h2>
+                                <p>{data.review} </p>
                             </Row>
-                            <Row>
-                                <h2> Review Marked Features: </h2>
-                                {markFeaturesInReview()}
-                            </Row>
+                            {(data.sentences && data.sentences.length > 0) && (
+                                <Row>
+                                    <h2> Review Content: </h2>
+                                    {markSentimentsInReview()}
+                                    <h2>Review Marked Features</h2>
+                                    {markFeaturesInReview()}
+                                </Row>
+                            )}
                         </div>
                     </Col>
-                    <Col md={6}>
-                        <div className="px-4 py-4 sentiment-histogram-container">
-                            <h2>Review Sentiments</h2>
-                            <Bar data={chartData()} options={options} />
-                        </div>
-
-                        <div className="px-4 py-4 mt-4 sentiment-histogram-container">
-                            <h2>Detected Features</h2>
-                            <ul>
-                                {data?.features?.map((feature, index) => (
-                                    <li key={index}>{feature}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    </Col>
+                    {data.sentences && data.sentences.length > 0 && (
+                        <Col md={6}>
+                            <div className="px-4 py-4 sentiment-histogram-container">
+                                <h2>Review Sentiments</h2>
+                                <Bar data={chartData()} options={options} />
+                            </div>
+                            <div className="px-4 py-4 mt-4 sentiment-histogram-container">
+                                <h2>Detected Features</h2>
+                                <ul>
+                                    {data?.sentences?.map((sentence, index) => (
+                                        sentence.featureData && sentence.featureData.feature !== "" && (
+                                            <li key={index}>{sentence.featureData.feature}</li>
+                                        )
+                                    ))}
+                                </ul>
+                            </div>
+                        </Col>
+                    )}
                 </Row>
             )}
         </>

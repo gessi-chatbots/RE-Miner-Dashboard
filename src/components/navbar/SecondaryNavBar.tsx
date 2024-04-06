@@ -11,10 +11,10 @@ const DropdownMenuApps: React.FC<{ closeDropdowns: CloseDropdownsFunction }> = (
 
     return (
         <Dropdown.Menu>
-            <Dropdown.Item as={Link} to="/apps/upload" onClick={handleItemClick}>
+            <Dropdown.Item as={Link} to="/applications/upload" onClick={handleItemClick}>
                 <i className="mdi mdi-upload"/> Upload Apps
             </Dropdown.Item>
-            <Dropdown.Item as={Link} to="/apps" onClick={handleItemClick}>
+            <Dropdown.Item as={Link} to="/applications" onClick={handleItemClick}>
                 <i className="mdi mdi-eye"/> View Apps
             </Dropdown.Item>
         </Dropdown.Menu>
@@ -85,9 +85,16 @@ const SecondaryNavBar = () => {
                         </Link>
                     </Nav.Item>
                     <Nav.Item as="li" className="mx-lg-1">
+                        <Link to="/applications/directory">
+                            <Button className="text-white">
+                                <i className="mdi mdi-notebook-multiple mdi-24px"/> Applications Directory
+                            </Button>
+                        </Link>
+                    </Nav.Item>
+                    <Nav.Item as="li" className="mx-lg-1">
                         <div ref={appsDropdownRef}>
                             <Button onClick={toggleAppsDropdown} className="text-white">
-                                <i className="mdi mdi-apps mdi-24px"/> Apps <i className={`mdi mdi-chevron-${appsDropdownOpen ? 'down' : 'right'}`}></i>
+                                <i className="mdi mdi-apps mdi-24px"/> User Applications <i className={`mdi mdi-chevron-${appsDropdownOpen ? 'down' : 'right'}`}></i>
                             </Button>
                             <Dropdown show={appsDropdownOpen} align="start">
                                 <DropdownMenuApps closeDropdowns={closeDropdowns} />

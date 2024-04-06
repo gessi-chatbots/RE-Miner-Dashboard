@@ -95,7 +95,7 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
                         appCount++;
                         reviewCount += item.reviews.length;
                         const appData: AppDataDTO = {
-                            id: "",
+                            package_name: item.package_name,
                             app_name: item.app_name,
                             description: item.description,
                             summary: item.summary,
@@ -103,7 +103,7 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
                             version: item.version,
                             //reviews: item.reviews.slice(0, 10).map((review: any) => ({
                             reviews: item.reviews.map((review: any) => ({
-                                id: review.reviewId,
+                                reviewId: review.reviewId,
                                 review: review.review,
                                 score: review.score,
                                 date: new Date(review.at).toLocaleDateString('en-GB')

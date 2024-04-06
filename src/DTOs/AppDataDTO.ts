@@ -1,7 +1,7 @@
     import {ReviewDataDTO} from "./ReviewDataDTO";
 
     export interface AppDataDTO {
-        id: string;
+        package_name: string;
         app_name: string;
         description: string;
         summary: string;
