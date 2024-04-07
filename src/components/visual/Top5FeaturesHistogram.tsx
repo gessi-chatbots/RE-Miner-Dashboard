@@ -32,7 +32,8 @@ const Top5FeaturesHistogram = () => {
                             const occurrences: number[] = [];
                             const topFeatures = featureResponse.topFeatures.topFeatures;
                             topFeatures.forEach(item => {
-                                features.push(item.featureName);
+                                const formattedFeatureName = item.featureName.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+                                features.push(formattedFeatureName);
                                 occurrences.push(item.occurrences);
                             });
                             setLabels(features);

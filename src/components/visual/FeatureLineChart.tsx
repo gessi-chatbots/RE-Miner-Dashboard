@@ -7,16 +7,15 @@ import { ApplicationDayStatisticsDTO } from '../../DTOs/ApplicationDayStatistics
 
 const FeatureLineChart = () => {
     const [features, setFeatures] = useState<string[]>([]);
-    const [colors, setColors] = useState<string[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedApp, setSelectedApp] = useState<string | null>(null);
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
     const [appData, setAppData] = useState<AppDataSimpleDTO[] | null>(null);
-    const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
     const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
     const [statisticsData, setStatisticsData] = useState<ApplicationDayStatisticsDTO[]>([]);
     const [chartData, setChartData] = useState<any>({});
+    const [colors, setColors] = useState<string[]>([]);
 
     useEffect(() => {
         const fetchAppDataFromService = async () => {
@@ -49,7 +48,11 @@ const FeatureLineChart = () => {
             await fetchFeaturesFromApp(selectedAppId);
         }
     };
-
+    useEffect(() => {
+        if (features.length > 0) {
+            setColors(generateColors(features.length));
+        }
+    }, [features]);
     const fetchFeaturesFromApp = async (selectedAppId: string) => {
         if (selectedAppId) {
             const applicationService = new AppService();
@@ -58,7 +61,6 @@ const FeatureLineChart = () => {
                 if (response !== null) {
                     const features = response.features;
                     setFeatures(features);
-                    setColors(generateColors(features.length));
                 } else {
                     console.error('Response from fetch app features is null');
                 }
@@ -68,50 +70,73 @@ const FeatureLineChart = () => {
         }
     };
 
-    const handleAddButtonClick = async () => {
-        if (selectedApp && selectedFeature && startDate && endDate) {
-            const parsedStartDate = new Date(startDate);
-            const parsedEndDate = new Date(endDate);
-    
-            try {
-                const applicationService = new AppService();
-                const statisticsData = await applicationService.getStatisticsOverTime(selectedApp, parsedStartDate, parsedEndDate);
-                if (statisticsData != null) {
-                    const { statistics } = statisticsData;
-                    setStatisticsData(statistics);
-                    const filteredData = statistics.filter((data: any) => {
-                        return data.featureOccurrences.find((occurrence: any) => occurrence.featureName === selectedFeature);
-                    });
-                    formatChartData(filteredData);
-                }
-            } catch (error) {
-                console.error('Error fetching statistics data:', error);
-            }
-        } else {
-            console.error('Please select an app, feature, start date, and end date before adding to the chart.');
-        }
+    const formatFeatureName = (feature: string | null) => {
+        return feature?.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
     };
 
-    const formatChartData = (data: any) => {
-        const labels = data.map((entry: any) => {
-            const date = new Date(entry.date);
-            return `${date.getFullYear().toString().slice(-2)}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
-        });
-        const occurrences = data.map((entry: any) => {
-            const feature = entry.featureOccurrences.find((occurrence: any) => occurrence.featureName === selectedFeature);
-            return feature ? feature.occurrences : 0;
-        });
+    const handleAddButtonClick = async () => {
+        if (!selectedApp || !startDate || !endDate) {
+            console.error('Please select an app, start date, and end date before adding to the chart.');
+            return;
+        }
     
-        setChartData({
-            labels: labels,
-            datasets: [{
-                label: selectedFeature,
-                data: occurrences,
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-            }]
-        });
+        if (selectedFeatures.length === 0) {
+            console.error('Please select at least one feature before adding to the chart.');
+            return;
+        }
+    
+        const parsedStartDate = new Date(startDate);
+        const parsedEndDate = new Date(endDate);
+    
+        try {
+            const applicationService = new AppService();
+            const statisticsData = await applicationService.getStatisticsOverTime(selectedApp, parsedStartDate, parsedEndDate);
+            if (statisticsData != null) {
+                const { statistics } = statisticsData;
+    
+                // Extract dates and occurrences for the selected features
+                const formattedData = statistics.reduce((accumulator: any, { date, featureOccurrences }: any) => {
+                    selectedFeatures.forEach((selectedFeature: string) => {
+                        const featureEntry = featureOccurrences.find((occurrence: any) => occurrence.featureName === selectedFeature);
+                        if (featureEntry) {
+                            const formattedDate = new Date(date).toLocaleDateString();
+                            accumulator.push({ date: formattedDate, feature: selectedFeature, occurrences: featureEntry.occurrences });
+                        }
+                    });
+                    return accumulator;
+                }, []);
+    
+                // Generate all dates in the range
+                const labels: string[] = [];
+                for (let date = new Date(parsedStartDate); date <= parsedEndDate; date.setDate(date.getDate() + 1)) {
+                    labels.push(date.toLocaleDateString());
+                }
+    
+                // Populate occurrences for each feature on each date
+                const datasets: any[] = [];
+                selectedFeatures.forEach((selectedFeature: string, index: number) => {
+                    const occurrences: number[] = labels.map(date => {
+                        const entry = formattedData.find((entry: any) => entry.date === date && entry.feature === selectedFeature);
+                        return entry ? entry.occurrences : 0;
+                    });
+                    datasets.push({
+                        label: formatFeatureName(selectedFeature),
+                        data: occurrences,
+                        fill: false,
+                        borderColor: index < colors.length ? colors[index] : getRandomColor(),
+                        tension: 0.1
+                    });
+                });
+    
+                // Set chart data
+                setChartData({
+                    labels: labels,
+                    datasets: datasets
+                });
+            }
+        } catch (error) {
+            console.error('Error fetching statistics data:', error);
+        }
     };
 
     const getRandomColor = () => {
@@ -203,26 +228,31 @@ const FeatureLineChart = () => {
                         ))}
                     </select>
                 </Col>
-                <Col md={4}>
-                    <label className="form-label">Feature: </label>
+                <Col md={6}>
+                    <label className="form-label">Feature(s): </label>
                     <select
                         className="form-select"
-                        value={selectedFeature || ''}
+                        multiple
+                        value={selectedFeatures}
                         onChange={(e) => {
-                            const feature = e.target.value || null;
-                            setSelectedFeature(feature);
+                            const selected = Array.from(e.target.selectedOptions, (option) => option.value);
+                            setSelectedFeatures(selected);
                         }}
-                    >
-                        <option value="" disabled>
-                            Select a Feature
-                        </option>
+                        style={{
+                            height: selectedApp ? '200px' : '35px', 
+                            minHeight: '35px', 
+                            border: '1px solid #ced4da', 
+                            borderRadius: '4px', 
+                        }}
+                        disabled={!selectedApp}
+                        >
                         {features.map((feature) => (
                             <option key={feature} value={feature}>
-                                {feature}
+                                {formatFeatureName(feature)}
                             </option>
                         ))}
-                    </select>
-                </Col>
+                        </select>
+                    </Col>
                 <Col md={2} className="d-flex align-items-end">
                     <Button
                         className="btn-secondary btn-sm btn-square"

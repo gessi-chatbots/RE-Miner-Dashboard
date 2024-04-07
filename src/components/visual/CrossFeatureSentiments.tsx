@@ -117,10 +117,8 @@ const CrossFeatureSentiments = () => {
             disgust: 'rgba(255, 159, 64, 0.7)',
         };
     
-        // Generate random colors for features
         const featureColors = Array.from({ length: featuresCount }, () => getRandomColor());
     
-        // Use default colors for sentiments and random colors for features
         const colors: string[] = [];
         sentiments.forEach((sentiment) => {
             if (defaultSentimentColors[sentiment]) {
@@ -130,7 +128,6 @@ const CrossFeatureSentiments = () => {
             }
         });
     
-        // Append random colors for the remaining features
         for (let i = sentiments.length; i < featuresCount; i++) {
             colors.push(featureColors[i - sentiments.length]);
         }
@@ -164,6 +161,11 @@ const CrossFeatureSentiments = () => {
                 },
             },
         },
+    };
+
+    
+    const formatFeatureName = (feature: string) => {
+        return feature.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
     };
 
     const handleAddButtonClick = async () => {
@@ -235,7 +237,7 @@ const CrossFeatureSentiments = () => {
         if (selectedFeature) {
             const featureColorIndex = features.indexOf(selectedFeature) % featureColors.length;
             featureData.push({
-                label: selectedFeature,
+                label: formatFeatureName(selectedFeature),
                 borderColor: 'rgb(75, 192, 192)',
                 data: featureOccurrences[selectedFeature] || Array(labels.length).fill(0), 
                 fill: false,
@@ -323,7 +325,7 @@ const CrossFeatureSentiments = () => {
                         </option>
                         {features.map((feature) => (
                             <option key={feature} value={feature}>
-                                {feature}
+                                {formatFeatureName(feature)}
                             </option>
                         ))}
                     </select>

@@ -59,15 +59,20 @@ class AppService {
 
     fetchAllAppsNames = async (): Promise<{ apps: AppDataDTO[] } | null> => {
         const id = localStorage.getItem('USER_ID')
-
+    
         try {
             const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications`);
+            
+            if (response.status === 204) {
+                return { apps: [] };
+            }
+            
             const jsonResponse = await response.json();
             const apps = jsonResponse.applications.map((item: any) => ({
                 id: item.data.id,
                 app_name: item.data.name
             }));
-
+    
             return {
                 apps: apps,
             };
@@ -82,6 +87,11 @@ class AppService {
 
         try {
             const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications`);
+            
+            if (response.status === 204) {
+                return { apps: [] };
+            }
+            
             const jsonResponse = await response.json();
             const apps = jsonResponse.applications.map((item: any) => ({
                 id: item.data.id,
@@ -96,8 +106,7 @@ class AppService {
             throw error;
         }
     };
-    
-    
+
     fetchTopSentiments = async (data: string[]): Promise<{ topSentiments: TopSentimentsDTO } | null> => {
         const id = localStorage.getItem('USER_ID');
         try {
@@ -108,6 +117,11 @@ class AppService {
                 },
                 body: JSON.stringify({ data })
             });
+
+            if (response.status === 500) {
+                return { topSentiments: { topSentiments: [] } };
+            }
+
             const jsonResponse: { occurrences: number; sentiment: string }[] = await response.json();
             const sentiments: SentimentOccurrenceDTO[] = jsonResponse.map(item => ({
                 sentimentName: item.sentiment,
@@ -122,6 +136,7 @@ class AppService {
             throw error;
         }
     };
+
     
     fetchAppFeatures = async (appId: string): Promise<{ features: string[] } | null> => {
         const id = localStorage.getItem('USER_ID');
@@ -164,7 +179,7 @@ class AppService {
         }
     };
     
-    fetchTopFeatures = async (data: string[]): Promise<{ topFeatures: TopFeaturesDTO  } | null> => {
+    fetchTopFeatures = async (data: string[]): Promise<{ topFeatures: TopFeaturesDTO } | null> => {
         const id = localStorage.getItem('USER_ID');
         try {
             const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/analyze/top-features`, {
@@ -174,6 +189,11 @@ class AppService {
                 },
                 body: JSON.stringify({ data })
             });
+    
+            if (response.status === 500) {
+                return { topFeatures: { topFeatures: [] } };
+            }
+    
             const jsonResponse: { occurrences: number; feature: string }[] = await response.json();
             const features: FeatureOccurrenceDTO[] = jsonResponse.map(item => ({
                 featureName: item.feature,

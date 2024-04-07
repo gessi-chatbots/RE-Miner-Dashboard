@@ -29,6 +29,7 @@ const generateColors = (sentiments: string[]) => {
     };
     return sentiments.map((sentiment) => defaultColors[sentiment]);
 };
+
 const options = {
     responsive: true,
     scales: {
@@ -60,6 +61,7 @@ const options = {
         },
     },
 };
+
 const SentimentHistogramPerApp = () => {
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
@@ -67,6 +69,7 @@ const SentimentHistogramPerApp = () => {
     const [appData, setAppData] = useState<AppDataSimpleDTO[] | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [chartData, setChartData] = useState<any>({ labels: [], datasets: [] });
+    const [showChart, setShowChart] = useState(false); // New state to control chart visibility
 
     useEffect(() => {
         const fetchAppDataFromService = async () => {
@@ -125,6 +128,7 @@ const SentimentHistogramPerApp = () => {
                     };
                     
                     setChartData(chartData);
+                    setShowChart(true); // Show chart when data is fetched and processed
                 }
             } catch (error) {
                 console.error('Error fetching statistics data:', error);
@@ -133,6 +137,7 @@ const SentimentHistogramPerApp = () => {
             console.error('Please select an app, start date, and end date before adding to the chart.');
         }
     };
+
     return (
         <Container className="sentiment-histogram-container">
             <Row className="mt-4">
@@ -197,7 +202,7 @@ const SentimentHistogramPerApp = () => {
             </Row>
             <Row>
                 <Col>
-                    {selectedApp && startDate && endDate && (
+                    {showChart && selectedApp && startDate && endDate && (
                         <Bar data={chartData} options={options} />
                     )}
                 </Col>
@@ -208,7 +213,7 @@ const SentimentHistogramPerApp = () => {
                         <Modal.Title>Sentiment Histogram</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        {selectedApp && startDate && endDate && (
+                        {showChart && selectedApp && startDate && endDate && (
                             <Bar data={chartData} options={options} />
                         )}
                     </Modal.Body>
