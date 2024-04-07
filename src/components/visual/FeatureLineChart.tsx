@@ -245,14 +245,14 @@ const FeatureLineChart = () => {
                             borderRadius: '4px', 
                         }}
                         disabled={!selectedApp}
-                        >
-                        {features.map((feature) => (
+                    >
+                        {features.sort().map((feature) => (
                             <option key={feature} value={feature}>
                                 {formatFeatureName(feature)}
                             </option>
                         ))}
-                        </select>
-                    </Col>
+                    </select>
+                </Col>
                 <Col md={2} className="d-flex align-items-end">
                     <Button
                         className="btn-secondary btn-sm btn-square"
