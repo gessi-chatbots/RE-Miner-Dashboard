@@ -93,12 +93,10 @@ const CrossFeatureSentiments = () => {
             if (statisticsData != null) {
                 const { statistics } = statisticsData;
     
-                // Prepare chart data
                 const labels: string[] = [];
                 const featureDatasets: any[] = [];
                 const sentimentDatasets: any[] = [];
     
-                // Extract all dates
                 statistics.forEach(stat => {
                     const formattedDate = new Date(stat.date).toLocaleDateString();
                     if (!labels.includes(formattedDate)) {
@@ -106,11 +104,9 @@ const CrossFeatureSentiments = () => {
                     }
                 });
     
-                // Initialize datasets for each selected feature
                 selectedFeatures.forEach((selectedFeature, index) => {
                     const data: number[] = [];
     
-                    // Populate data array with occurrences for each date
                     labels.forEach(label => {
                         const stat = statistics.find(stat => new Date(stat.date).toLocaleDateString() === label);
                         if (stat) {
@@ -124,19 +120,17 @@ const CrossFeatureSentiments = () => {
                     featureDatasets.push({
                         label: formatFeatureName(selectedFeature),
                         data: data,
-                        borderColor: index < colors.length ? colors[index] : getRandomColor(),
+                        borderColor: getRandomColor(),
                         tension: 0.1,
-                        fill: false,
+                        fill: true,
                         type: 'line',
                     });
                 });
     
-                // Extract sentiment data for histogram
-                SENTIMENT_OPTIONS.forEach((sentiment, index) => {
+              SENTIMENT_OPTIONS.forEach((sentiment, index) => {
                     const data: number[] = [];
     
-                    // Populate data array with occurrences for each date
-                    labels.forEach(label => {
+                 labels.forEach(label => {
                         const stat = statistics.find(stat => new Date(stat.date).toLocaleDateString() === label);
                         if (stat) {
                             const sentimentOccurrence = stat.sentimentOccurrences.find(s => s.sentimentName === sentiment);
@@ -147,14 +141,12 @@ const CrossFeatureSentiments = () => {
                     });
     
                     sentimentDatasets.push({
-                        label: capitalizeFirstLetter(sentiment), // Capitalize the first letter of the sentiment label
+                        label: capitalizeFirstLetter(sentiment),
                         data: data,
-                        backgroundColor: generateSentimentColors([sentiment]), // Call the function with `sentiment` as argument
-                        stack: 'Stack 0',
+                        backgroundColor: generateSentimentColors([sentiment]),
                     });
                 });
     
-                // Set chart data
                 setChartData({
                     labels: labels,
                     datasets: [...featureDatasets, ...sentimentDatasets]
@@ -331,7 +323,7 @@ const CrossFeatureSentiments = () => {
                     {chartData.labels && chartData.datasets ? (
                         <Chart type="bar" data={chartData} options={options} />
                     ) : (
-                        <p>No data to display</p>
+                        <p></p>
                     )}
                 </Col>
             </Row>
@@ -345,7 +337,7 @@ const CrossFeatureSentiments = () => {
                     style={{ maxWidth: '95vw', maxHeight: '95vh' }}
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>Features and sentiments Chart</Modal.Title>
+                        <Modal.Title>Features and sentiments chart</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         {chartData.labels && chartData.datasets ? (
