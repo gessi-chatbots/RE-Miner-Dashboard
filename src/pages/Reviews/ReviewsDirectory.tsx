@@ -262,7 +262,7 @@ const ReviewsDirectory: React.FC = () => {
                                         <td className="text-center">{review.app_name || 'N/A'}</td>
                                         <td className="text-center">{review.reviewId || 'N/A'}</td>
                                         <td className="text-center">{review.review || 'N/A'}</td>
-                                        <td className="text-center">{review.date.toString() || 'N/A'}</td>
+                                        <td className="text-center">{review.date?.toString() || 'N/A'}</td>
 
 
                                         <td className="text-end" style={{ width: "150px" }}>
