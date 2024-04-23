@@ -16,3 +16,8 @@ export interface ReviewDataDTO {
     review: string;
     sentences: SentenceDTO[];
 }
+
+export interface SimilarAppDTO {
+    title: string;
+    link: string;
+}

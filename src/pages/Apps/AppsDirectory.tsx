@@ -121,7 +121,7 @@ const AppsDirectory: React.FC = () => {
                                     <i className="mdi mdi-emoticon-sad text-secondary" style={{ fontSize: '5rem' }} />
                                     <h2>No applications uploaded yet.</h2>
                                     <p>Why don't you upload some apps?</p>
-                                    <div style={{ width: 'fit-content', margin: '0 auto' }}> {/* Wrap the button inside a div */}
+                                    <div style={{ width: 'fit-content', margin: '0 auto' }}> 
                                         <Button className="mt-4 btn-secondary" href="applications/upload">
                                             <i className="mdi mdi-upload"/> Upload Apps
                                         </Button>

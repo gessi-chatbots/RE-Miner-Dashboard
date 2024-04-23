@@ -95,23 +95,37 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
                         appCount++;
                         reviewCount += item.reviews.length;
                         const appData: AppDataDTO = {
-                            package_name: item.package_name,
                             app_name: item.app_name,
+                            categories: item.categories,
+                            category: item.category,
+                            categoryId: item.categoryId,
+                            changelog: item.changelog,
+                            current_version_release_date: new Date(item.current_version_release_date).toLocaleDateString('en-GB'),
                             description: item.description,
-                            summary: item.summary,
+                            developer: item.developer,
+                            developer_site: item.developer_site,
+                            features: item.features,
+                            in_app_purchases: item.in_app_purchases,
+                            is_open_source: item.is_open_source,
+                            other_apps: item.other_apps,
+                            package_name: item.package_name,
+                            play_store_link: item.play_store_link,
                             release_date: new Date(item.release_date).toLocaleDateString('en-GB'),
-                            version: item.version,
-                            //reviews: item.reviews.slice(0, 10).map((review: any) => ({
+                            repository: item.repository,
                             reviews: item.reviews.map((review: any) => ({
                                 reviewId: review.reviewId,
                                 review: review.review,
                                 score: review.score,
                                 date: new Date(review.at).toLocaleDateString('en-GB')
-                            })) as ReviewDataDTO[]
+                            })) as ReviewDataDTO[],
+                            similar_apps: item.similar_apps,
+                            summary: item.summary,
+                            tags: item.tags,
+                            version: item.version,
                         };
                         appList.push(appData);
                     });
-                }
+                }                
                 console.log(appList)
                 setAppDataList(appList);
                 setAppNamesCount(prevCount => prevCount + appCount);
