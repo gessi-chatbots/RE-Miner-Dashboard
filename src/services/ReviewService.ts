@@ -140,7 +140,7 @@ class ReviewService {
     ) => {
         const id = localStorage.getItem('USER_ID');
     
-        let url = `${this.API_NAME}${this.PATH_NAME}/${id}/analyze?`;
+        let url = `${this.API_NAME}${this.PATH_NAME}/${id}/analyze/v1?`;
     
         if (featureExtraction) {
             url += `featureExtraction=true&`;

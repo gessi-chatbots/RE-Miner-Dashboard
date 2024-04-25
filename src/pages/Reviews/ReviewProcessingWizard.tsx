@@ -73,15 +73,14 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                 closeButton: false,
             });
 
-            for (const review of reviewsData) {
-                await reviewService.analyzeReviews(
-                    [review],
-                    selectedTasks.featureExtraction,
-                    selectedTasks.sentimentAnalysis,
-                    selectedFeatureModel,
-                    selectedSentimentModel
-                );
-            }
+            await reviewService.analyzeReviews(
+                reviewsData,
+                selectedTasks.featureExtraction,
+                selectedTasks.sentimentAnalysis,
+                selectedFeatureModel,
+                selectedSentimentModel
+            );
+
             toast.dismiss(infoToast);
             toast.success('Reviews analyzed!');
             onHide();
@@ -309,7 +308,6 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                             )}
                         </FormWizard.TabContent>
                     </FormWizard>
-                    {/* add style */}
                     <style>{`
                         @import url("https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css");
                         .task-selection-container {
