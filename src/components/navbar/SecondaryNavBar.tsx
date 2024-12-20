@@ -111,6 +111,13 @@ const SecondaryNavBar = () => {
                             </Dropdown>
                         </div>
                     </Nav.Item>
+                    <Nav.Item as="li" className="mx-lg-1">
+                        <Link to="/test-feature">
+                            <Button className="text-white">
+                                <i className="mdi mdi-flask-outline mdi-24px"/> Test Feature
+                            </Button>
+                        </Link>
+                    </Nav.Item>
                 </Nav>
             </Container>
         </Navbar>
