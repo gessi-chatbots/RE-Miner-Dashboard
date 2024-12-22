@@ -17,6 +17,7 @@
     "react-bootstrap": "^2.2.0",
     "react-bootstrap-typeahead": "^6.0.0-alpha.9",
     "react-chartjs-2": "^5.2.0",
+    "react-d3-tree": "^3.6.2",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-form-wizard-component": "^0.1.7",

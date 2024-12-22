@@ -112,9 +112,9 @@ const SecondaryNavBar = () => {
                         </div>
                     </Nav.Item>
                     <Nav.Item as="li" className="mx-lg-1">
-                        <Link to="/test-feature">
+                        <Link to="/tree-analyzer">
                             <Button className="text-white">
-                                <i className="mdi mdi-flask-outline mdi-24px"/> Test Feature
+                                <i className="mdi mdi-sitemap mdi-24px"/> Tree Analyzer
                             </Button>
                         </Link>
                     </Nav.Item>

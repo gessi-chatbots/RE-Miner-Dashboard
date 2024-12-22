@@ -13,6 +13,7 @@ import { Container } from "react-bootstrap";
 import ReviewAnalyzer from "../pages/Reviews/ReviewAnalyzer";
 import PrivateRoutes from './PrivateRoutes';
 import KGDirectory from '../pages/Apps/KGDirectory';
+import TreeAnalyzer from "../pages/Reviews/TreeAnalyzer";
 
 interface LayoutProps {
     children: ReactNode;
@@ -43,6 +44,8 @@ const AuthenticatedRoutes: React.FC = () => {
                 <Route path="/applications/upload" element={<DefaultLayout><UploadApps /></DefaultLayout>} />
                 <Route path="/reviews" element={<DefaultLayout><ReviewsDirectory /></DefaultLayout>} />
                 <Route path="applications/:appId/reviews/:reviewId/analyze" element={<DefaultLayout><ReviewAnalyzer /></DefaultLayout>} />
+                <Route path="/tree-analyzer" element={<DefaultLayout><TreeAnalyzer /></DefaultLayout>} />
+
             </Route>
             <Route path="/sign-up" element={<SignUpForm />} />
             <Route path="/login" element={<LoginForm />} />
