@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 1.871173733894988,
+    "children": [
+        {
+            "id": 7,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "wonder full app"
+                },
+                {
+                    "id": 6,
+                    "label": "nice and wonder full app"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "distance": 0.8338155720637254,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "wow niece app may favorite food app"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.709686026257457,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "great app never problem"
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.6176790398931289,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "good communication app thank"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.49694220467953887,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "app help"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "app stop"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

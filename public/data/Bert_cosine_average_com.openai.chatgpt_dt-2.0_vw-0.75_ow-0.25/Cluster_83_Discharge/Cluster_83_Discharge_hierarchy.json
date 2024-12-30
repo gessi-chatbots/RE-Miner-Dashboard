@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.150987859288225,
+    "children": [
+        {
+            "id": 0,
+            "label": "discharge rupee"
+        },
+        {
+            "id": 1,
+            "label": "discharge battery"
+        }
+    ]
+}

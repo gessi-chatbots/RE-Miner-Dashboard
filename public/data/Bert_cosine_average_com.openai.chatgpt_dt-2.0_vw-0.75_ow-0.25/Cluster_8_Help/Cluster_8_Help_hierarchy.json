@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 1.615066264472428,
+    "children": [
+        {
+            "id": 10,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 6,
+                    "label": "mostly help"
+                },
+                {
+                    "id": 9,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 5,
+                            "label": "help"
+                        },
+                        {
+                            "id": 8,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "very help"
+                                },
+                                {
+                                    "id": 7,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "great everyday help"
+                                        },
+                                        {
+                                            "id": 3,
+                                            "label": "do help"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "distance": 1.3306321030792483,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "help study"
+                },
+                {
+                    "id": 1,
+                    "label": "enjoy help"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 1.9580985119991785,
+    "children": [
+        {
+            "id": 4,
+            "label": "fake all girl"
+        },
+        {
+            "id": 7,
+            "distance": 1.1216062904981228,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "dislike sharesheet"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.8017864055070834,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "dislike new update"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.6419851863306585,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "dislike app"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "dislike ai"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

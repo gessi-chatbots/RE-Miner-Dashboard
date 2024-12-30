@@ -45,7 +45,6 @@ const AuthenticatedRoutes: React.FC = () => {
                 <Route path="/reviews" element={<DefaultLayout><ReviewsDirectory /></DefaultLayout>} />
                 <Route path="applications/:appId/reviews/:reviewId/analyze" element={<DefaultLayout><ReviewAnalyzer /></DefaultLayout>} />
                 <Route path="/tree-analyzer" element={<DefaultLayout><TreeAnalyzer /></DefaultLayout>} />
-
             </Route>
             <Route path="/sign-up" element={<SignUpForm />} />
             <Route path="/login" element={<LoginForm />} />

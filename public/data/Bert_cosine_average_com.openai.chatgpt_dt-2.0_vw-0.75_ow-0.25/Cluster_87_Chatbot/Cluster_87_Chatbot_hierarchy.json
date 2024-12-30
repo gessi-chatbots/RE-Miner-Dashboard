@@ -1,0 +1,164 @@
+{
+    "id": 32,
+    "distance": 1.047747997621673,
+    "children": [
+        {
+            "id": 30,
+            "distance": 0.8281467695640917,
+            "children": [
+                {
+                    "id": 15,
+                    "label": "recommend chartgpt"
+                },
+                {
+                    "id": 16,
+                    "label": "recommend chatgpt"
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "distance": 0.8794624459138959,
+            "children": [
+                {
+                    "id": 28,
+                    "distance": 0.76769064464734,
+                    "children": [
+                        {
+                            "id": 13,
+                            "label": "recommend chatai"
+                        },
+                        {
+                            "id": 14,
+                            "label": "recommend good sarviss"
+                        }
+                    ]
+                },
+                {
+                    "id": 29,
+                    "distance": 0.7911004409617138,
+                    "children": [
+                        {
+                            "id": 12,
+                            "label": "recommend very very bad thank"
+                        },
+                        {
+                            "id": 27,
+                            "distance": 0.7566312384367667,
+                            "children": [
+                                {
+                                    "id": 11,
+                                    "label": "recommend book movie tv show"
+                                },
+                                {
+                                    "id": 26,
+                                    "distance": 0.7158070054659413,
+                                    "children": [
+                                        {
+                                            "id": 20,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 10,
+                                                    "label": "recommend high iq app"
+                                                },
+                                                {
+                                                    "id": 19,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 9,
+                                                            "label": "most recommend app"
+                                                        },
+                                                        {
+                                                            "id": 18,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 8,
+                                                                    "label": "recommend very nice app"
+                                                                },
+                                                                {
+                                                                    "id": 17,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 6,
+                                                                            "label": "recommend very amaze app"
+                                                                        },
+                                                                        {
+                                                                            "id": 7,
+                                                                            "label": "recommend app"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 25,
+                                            "distance": 0.68730241579158,
+                                            "children": [
+                                                {
+                                                    "id": 5,
+                                                    "label": "recommend five star"
+                                                },
+                                                {
+                                                    "id": 24,
+                                                    "distance": 0.6651321147478619,
+                                                    "children": [
+                                                        {
+                                                            "id": 4,
+                                                            "label": "recommend one"
+                                                        },
+                                                        {
+                                                            "id": 23,
+                                                            "distance": 0.5728294006864597,
+                                                            "children": [
+                                                                {
+                                                                    "id": 21,
+                                                                    "distance": 0.500406136359454,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 2,
+                                                                            "label": "recommend thing"
+                                                                        },
+                                                                        {
+                                                                            "id": 3,
+                                                                            "label": "recommend creative art idea"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 22,
+                                                                    "distance": 0.5056330720031267,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 0,
+                                                                            "label": "recommend student"
+                                                                        },
+                                                                        {
+                                                                            "id": 1,
+                                                                            "label": "recommend application"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

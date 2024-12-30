@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.8845916904705147,
+    "children": [
+        {
+            "id": 2,
+            "label": "refer app"
+        },
+        {
+            "id": 3,
+            "distance": 0.6305839558055734,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "very good pdf app studying"
+                },
+                {
+                    "id": 1,
+                    "label": "really good app approve"
+                }
+            ]
+        }
+    ]
+}

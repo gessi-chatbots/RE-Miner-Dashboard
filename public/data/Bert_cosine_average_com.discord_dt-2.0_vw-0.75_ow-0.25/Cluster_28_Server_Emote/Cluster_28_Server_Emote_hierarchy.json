@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.79192741532879,
+    "children": [
+        {
+            "id": 2,
+            "label": "recommend other server emote"
+        },
+        {
+            "id": 3,
+            "distance": 0.6351297438195664,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "recommend developer"
+                },
+                {
+                    "id": 1,
+                    "label": "recommend app"
+                }
+            ]
+        }
+    ]
+}

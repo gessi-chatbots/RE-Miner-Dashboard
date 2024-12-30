@@ -1,0 +1,84 @@
+{
+    "id": 16,
+    "distance": 1.9352261942400137,
+    "children": [
+        {
+            "id": 12,
+            "distance": 0.5804165687414545,
+            "children": [
+                {
+                    "id": 7,
+                    "label": "review thing"
+                },
+                {
+                    "id": 8,
+                    "label": "review specific detail"
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "distance": 0.7576198951756372,
+            "children": [
+                {
+                    "id": 6,
+                    "label": "recommend assistant"
+                },
+                {
+                    "id": 14,
+                    "distance": 0.7240646258431885,
+                    "children": [
+                        {
+                            "id": 5,
+                            "label": "recommend very bad experience"
+                        },
+                        {
+                            "id": 13,
+                            "distance": 0.6645702395818606,
+                            "children": [
+                                {
+                                    "id": 9,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "recommend artificial intelligence app"
+                                        },
+                                        {
+                                            "id": 4,
+                                            "label": "recommend app"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 11,
+                                    "distance": 0.5404780248242191,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "recommend gemini"
+                                        },
+                                        {
+                                            "id": 10,
+                                            "distance": 0.4774132562707219,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "recommend student"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "recommend task"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

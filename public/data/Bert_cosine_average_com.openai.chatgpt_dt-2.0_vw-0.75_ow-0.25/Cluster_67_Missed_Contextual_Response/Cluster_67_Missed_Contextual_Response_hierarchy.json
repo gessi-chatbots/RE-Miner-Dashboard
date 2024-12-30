@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 0.8051560471416229,
+    "children": [
+        {
+            "id": 6,
+            "label": "miss nuance"
+        },
+        {
+            "id": 11,
+            "distance": 0.7094542617300083,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "miss one"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.6747205173455924,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "also miss chat"
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.6320474878532344,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "miss key feature"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.5708364433598204,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "miss specific context"
+                                        },
+                                        {
+                                            "id": 7,
+                                            "distance": 0.528531433682941,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "miss contextual response"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "miss old voice"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

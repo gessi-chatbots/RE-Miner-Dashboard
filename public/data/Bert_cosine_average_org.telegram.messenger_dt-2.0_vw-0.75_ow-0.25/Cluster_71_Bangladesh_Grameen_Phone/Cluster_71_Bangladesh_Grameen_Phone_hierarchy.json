@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 1.898446907046291,
+    "children": [
+        {
+            "id": 5,
+            "distance": 0.9792406398887239,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "bangladesh grameen seem login code sms"
+                },
+                {
+                    "id": 4,
+                    "label": "grameen sim verification code problem"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "distance": 1.687116705529535,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "bangladesh garamine sime sms cad aste sana"
+                },
+                {
+                    "id": 6,
+                    "distance": 1.0176350850490046,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "bangladesh gamenphone loading code asce na"
+                        },
+                        {
+                            "id": 1,
+                            "label": "bangladesh graemephone sim login code sms problem"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

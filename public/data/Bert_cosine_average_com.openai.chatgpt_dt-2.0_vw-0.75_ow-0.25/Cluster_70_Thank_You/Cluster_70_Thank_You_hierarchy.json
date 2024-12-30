@@ -1,0 +1,184 @@
+{
+    "id": 36,
+    "distance": 1.833999611640157,
+    "children": [
+        {
+            "id": 31,
+            "distance": 0.9293650898087161,
+            "children": [
+                {
+                    "id": 18,
+                    "label": "bless sam altman"
+                },
+                {
+                    "id": 29,
+                    "distance": 0.8804246536662527,
+                    "children": [
+                        {
+                            "id": 17,
+                            "label": "bless producer"
+                        },
+                        {
+                            "id": 23,
+                            "distance": 0.6677776459483148,
+                            "children": [
+                                {
+                                    "id": 16,
+                                    "label": "bless team"
+                                },
+                                {
+                                    "id": 21,
+                                    "distance": 0.578624550819755,
+                                    "children": [
+                                        {
+                                            "id": 15,
+                                            "label": "bless inventor"
+                                        },
+                                        {
+                                            "id": 20,
+                                            "distance": 0.4775612625903323,
+                                            "children": [
+                                                {
+                                                    "id": 13,
+                                                    "label": "bless people"
+                                                },
+                                                {
+                                                    "id": 14,
+                                                    "label": "bless humanity"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 35,
+            "distance": 1.518937458221,
+            "children": [
+                {
+                    "id": 12,
+                    "label": "thank youuuuuu"
+                },
+                {
+                    "id": 34,
+                    "distance": 1.2947003356149738,
+                    "children": [
+                        {
+                            "id": 11,
+                            "label": "thank gtp othority"
+                        },
+                        {
+                            "id": 33,
+                            "distance": 1.074813128364299,
+                            "children": [
+                                {
+                                    "id": 10,
+                                    "label": "thank aapne meri bahut"
+                                },
+                                {
+                                    "id": 32,
+                                    "distance": 0.9740233857689228,
+                                    "children": [
+                                        {
+                                            "id": 9,
+                                            "label": "thank yuo"
+                                        },
+                                        {
+                                            "id": 30,
+                                            "distance": 0.893579379508192,
+                                            "children": [
+                                                {
+                                                    "id": 8,
+                                                    "label": "thank ad"
+                                                },
+                                                {
+                                                    "id": 28,
+                                                    "distance": 0.8678558565088096,
+                                                    "children": [
+                                                        {
+                                                            "id": 7,
+                                                            "label": "thank openai"
+                                                        },
+                                                        {
+                                                            "id": 27,
+                                                            "distance": 0.8407717427797087,
+                                                            "children": [
+                                                                {
+                                                                    "id": 6,
+                                                                    "label": "thank pashto language"
+                                                                },
+                                                                {
+                                                                    "id": 26,
+                                                                    "distance": 0.7949596016443699,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 5,
+                                                                            "label": "thank god"
+                                                                        },
+                                                                        {
+                                                                            "id": 25,
+                                                                            "distance": 0.7382576174339589,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 4,
+                                                                                    "label": "thank cgpt team"
+                                                                                },
+                                                                                {
+                                                                                    "id": 24,
+                                                                                    "distance": 0.7136729369693761,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 3,
+                                                                                            "label": "thank you guy"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 22,
+                                                                                            "distance": 0.6351297535849624,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 2,
+                                                                                                    "label": "thank app"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 19,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 0,
+                                                                                                            "label": "thank developer"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 1,
+                                                                                                            "label": "thank chatgpt developer"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

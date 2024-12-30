@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 3,
+            "label": "spend lot"
+        },
+        {
+            "id": 5,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "spend over3lakh"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "spend afew month"
+                        },
+                        {
+                            "id": 1,
+                            "label": "spend hour"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 0.6089959551559498,
+    "children": [
+        {
+            "id": 0,
+            "label": "wait response"
+        },
+        {
+            "id": 1,
+            "label": "wait monitor"
+        }
+    ]
+}

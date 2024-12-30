@@ -1,0 +1,114 @@
+{
+    "id": 22,
+    "distance": 0.7686801066102245,
+    "children": [
+        {
+            "id": 11,
+            "label": "show good assistant"
+        },
+        {
+            "id": 21,
+            "distance": 0.7316565783923173,
+            "children": [
+                {
+                    "id": 13,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 10,
+                            "label": "show other language"
+                        },
+                        {
+                            "id": 12,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 8,
+                                    "label": "show english language"
+                                },
+                                {
+                                    "id": 9,
+                                    "label": "show language"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 20,
+                    "distance": 0.6469055844223126,
+                    "children": [
+                        {
+                            "id": 7,
+                            "label": "show kannada text"
+                        },
+                        {
+                            "id": 19,
+                            "distance": 0.5879926544266855,
+                            "children": [
+                                {
+                                    "id": 17,
+                                    "distance": 0.5332110670709062,
+                                    "children": [
+                                        {
+                                            "id": 5,
+                                            "label": "show alarm page"
+                                        },
+                                        {
+                                            "id": 6,
+                                            "label": "show practical price"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 18,
+                                    "distance": 0.568725913299623,
+                                    "children": [
+                                        {
+                                            "id": 14,
+                                            "distance": 0.42406215769612104,
+                                            "children": [
+                                                {
+                                                    "id": 3,
+                                                    "label": "show image"
+                                                },
+                                                {
+                                                    "id": 4,
+                                                    "label": "show picture"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 16,
+                                            "distance": 0.5245018777326655,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "show mistake"
+                                                },
+                                                {
+                                                    "id": 15,
+                                                    "distance": 0.49567153610343817,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "show wrong answer"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "show message"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

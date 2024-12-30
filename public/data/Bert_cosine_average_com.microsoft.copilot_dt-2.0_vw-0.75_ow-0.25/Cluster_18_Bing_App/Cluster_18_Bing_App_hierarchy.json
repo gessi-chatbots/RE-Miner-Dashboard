@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.9826206703618077,
+    "children": [
+        {
+            "id": 2,
+            "label": "release broken app"
+        },
+        {
+            "id": 3,
+            "distance": 1.2730841253572638,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "go bing website app"
+                },
+                {
+                    "id": 1,
+                    "label": "download bing app"
+                }
+            ]
+        }
+    ]
+}

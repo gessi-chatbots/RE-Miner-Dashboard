@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 1.7784751953454088,
+    "children": [
+        {
+            "id": 4,
+            "label": "benefit more feature"
+        },
+        {
+            "id": 7,
+            "distance": 1.072154038982549,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "feature aviabale"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.9816290480076861,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "feature description"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.6410956292703504,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "also feature request"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "feature more minimal and clean look"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

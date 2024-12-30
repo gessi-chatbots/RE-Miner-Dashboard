@@ -1,0 +1,134 @@
+{
+    "id": 26,
+    "distance": 1.1214527539182253,
+    "children": [
+        {
+            "id": 13,
+            "label": "enter email mf"
+        },
+        {
+            "id": 25,
+            "distance": 0.9024450245750497,
+            "children": [
+                {
+                    "id": 12,
+                    "label": "enter dm"
+                },
+                {
+                    "id": 24,
+                    "distance": 0.8186610888613928,
+                    "children": [
+                        {
+                            "id": 16,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 10,
+                                    "label": "enter email"
+                                },
+                                {
+                                    "id": 11,
+                                    "label": "enter new email"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 23,
+                            "distance": 0.7013088866016652,
+                            "children": [
+                                {
+                                    "id": 9,
+                                    "label": "enter app"
+                                },
+                                {
+                                    "id": 22,
+                                    "distance": 0.6625595994527141,
+                                    "children": [
+                                        {
+                                            "id": 8,
+                                            "label": "enter account"
+                                        },
+                                        {
+                                            "id": 21,
+                                            "distance": 0.6200219276930893,
+                                            "children": [
+                                                {
+                                                    "id": 15,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 7,
+                                                            "label": "enter number"
+                                                        },
+                                                        {
+                                                            "id": 14,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 5,
+                                                                    "label": "enter new sim number"
+                                                                },
+                                                                {
+                                                                    "id": 6,
+                                                                    "label": "enter phone number"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 20,
+                                                    "distance": 0.6027760806849676,
+                                                    "children": [
+                                                        {
+                                                            "id": 4,
+                                                            "label": "enter strange group"
+                                                        },
+                                                        {
+                                                            "id": 19,
+                                                            "distance": 0.5766712697388222,
+                                                            "children": [
+                                                                {
+                                                                    "id": 3,
+                                                                    "label": "enter telegram"
+                                                                },
+                                                                {
+                                                                    "id": 18,
+                                                                    "distance": 0.5236039487823353,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 2,
+                                                                            "label": "enter channel"
+                                                                        },
+                                                                        {
+                                                                            "id": 17,
+                                                                            "distance": 0.4947960735982738,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 0,
+                                                                                    "label": "enter application"
+                                                                                },
+                                                                                {
+                                                                                    "id": 1,
+                                                                                    "label": "enter program"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

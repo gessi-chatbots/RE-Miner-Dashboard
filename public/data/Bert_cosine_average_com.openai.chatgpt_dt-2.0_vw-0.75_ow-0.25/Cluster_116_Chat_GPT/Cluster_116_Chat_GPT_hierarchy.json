@@ -1,0 +1,114 @@
+{
+    "id": 22,
+    "distance": 1.8252899870781858,
+    "children": [
+        {
+            "id": 11,
+            "label": "install chat gpt"
+        },
+        {
+            "id": 21,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 10,
+                    "label": "have chat"
+                },
+                {
+                    "id": 20,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 9,
+                            "label": "good chat bot"
+                        },
+                        {
+                            "id": 19,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 8,
+                                    "label": "chat gtp"
+                                },
+                                {
+                                    "id": 18,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 7,
+                                            "label": "like chat"
+                                        },
+                                        {
+                                            "id": 17,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 6,
+                                                    "label": "awesome chat"
+                                                },
+                                                {
+                                                    "id": 16,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 5,
+                                                            "label": "chat"
+                                                        },
+                                                        {
+                                                            "id": 15,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 4,
+                                                                    "label": "chat gpt lot"
+                                                                },
+                                                                {
+                                                                    "id": 14,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 3,
+                                                                            "label": "ily chat"
+                                                                        },
+                                                                        {
+                                                                            "id": 13,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 2,
+                                                                                    "label": "bookmark chat"
+                                                                                },
+                                                                                {
+                                                                                    "id": 12,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 0,
+                                                                                            "label": "one and only chat gpt"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 1,
+                                                                                            "label": "good chat gpt application"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

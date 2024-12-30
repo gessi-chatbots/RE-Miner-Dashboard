@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.6161778630802106,
+    "children": [
+        {
+            "id": 2,
+            "label": "view online member list"
+        },
+        {
+            "id": 3,
+            "distance": 0.5340370184453287,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "view image"
+                },
+                {
+                    "id": 1,
+                    "label": "view new message"
+                }
+            ]
+        }
+    ]
+}

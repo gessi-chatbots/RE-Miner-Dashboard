@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 2,
+            "label": "talk"
+        },
+        {
+            "id": 3,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "talk een"
+                },
+                {
+                    "id": 1,
+                    "label": "talk agian"
+                }
+            ]
+        }
+    ]
+}

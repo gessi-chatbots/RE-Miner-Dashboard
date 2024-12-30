@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.755856221189533,
+    "children": [
+        {
+            "id": 2,
+            "label": "include follow"
+        },
+        {
+            "id": 3,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "have follow"
+                },
+                {
+                    "id": 1,
+                    "label": "follow owner"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,74 @@
+{
+    "id": 14,
+    "distance": 1.0752300484128823,
+    "children": [
+        {
+            "id": 7,
+            "label": "click subthread"
+        },
+        {
+            "id": 13,
+            "distance": 0.6585896170290568,
+            "children": [
+                {
+                    "id": 11,
+                    "distance": 0.6288751196719984,
+                    "children": [
+                        {
+                            "id": 6,
+                            "label": "click voice set"
+                        },
+                        {
+                            "id": 10,
+                            "distance": 0.6029621663894932,
+                            "children": [
+                                {
+                                    "id": 5,
+                                    "label": "click forum post"
+                                },
+                                {
+                                    "id": 9,
+                                    "distance": 0.5179638374838402,
+                                    "children": [
+                                        {
+                                            "id": 4,
+                                            "label": "click image"
+                                        },
+                                        {
+                                            "id": 8,
+                                            "distance": 0.46057118195093383,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "click channel"
+                                                },
+                                                {
+                                                    "id": 3,
+                                                    "label": "click discord logo"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 12,
+                    "distance": 0.6485931066653118,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "click app"
+                        },
+                        {
+                            "id": 1,
+                            "label": "click button"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

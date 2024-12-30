@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 0.7634415034553934,
+    "children": [
+        {
+            "id": 5,
+            "label": "lose assistant"
+        },
+        {
+            "id": 9,
+            "distance": 0.566271546544814,
+            "children": [
+                {
+                    "id": 7,
+                    "distance": 0.5154269189301552,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "lose phone"
+                        },
+                        {
+                            "id": 4,
+                            "label": "lose sight"
+                        }
+                    ]
+                },
+                {
+                    "id": 8,
+                    "distance": 0.5379915731297771,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "lose thread"
+                        },
+                        {
+                            "id": 6,
+                            "distance": 0.5031164676218632,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "lose capability"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "lose interest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

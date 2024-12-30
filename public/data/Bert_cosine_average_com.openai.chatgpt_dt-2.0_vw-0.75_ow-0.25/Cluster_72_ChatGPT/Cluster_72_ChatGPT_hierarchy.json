@@ -1,0 +1,94 @@
+{
+    "id": 18,
+    "distance": 1.976344398287797,
+    "children": [
+        {
+            "id": 9,
+            "label": "single der jonno good app"
+        },
+        {
+            "id": 17,
+            "distance": 1.9478589493756253,
+            "children": [
+                {
+                    "id": 8,
+                    "label": "ist very nice and helpful app"
+                },
+                {
+                    "id": 16,
+                    "distance": 1.3206209190749025,
+                    "children": [
+                        {
+                            "id": 12,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 6,
+                                    "label": "very good app chat gpt"
+                                },
+                                {
+                                    "id": 7,
+                                    "label": "download app chat gpt"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 15,
+                            "distance": 0.9211575739089136,
+                            "children": [
+                                {
+                                    "id": 5,
+                                    "label": "but app chrashing"
+                                },
+                                {
+                                    "id": 14,
+                                    "distance": 0.7977976689173765,
+                                    "children": [
+                                        {
+                                            "id": 4,
+                                            "label": "good app very nice and example"
+                                        },
+                                        {
+                                            "id": 13,
+                                            "distance": 0.6681568044532765,
+                                            "children": [
+                                                {
+                                                    "id": 3,
+                                                    "label": "good app ai"
+                                                },
+                                                {
+                                                    "id": 11,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "app help"
+                                                        },
+                                                        {
+                                                            "id": 10,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 0,
+                                                                    "label": "good app help"
+                                                                },
+                                                                {
+                                                                    "id": 1,
+                                                                    "label": "boht achi app ha kafi help"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

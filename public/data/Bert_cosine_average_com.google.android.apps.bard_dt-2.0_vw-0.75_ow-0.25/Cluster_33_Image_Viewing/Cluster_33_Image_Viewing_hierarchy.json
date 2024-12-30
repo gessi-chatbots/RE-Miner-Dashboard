@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.9526378250683658,
+    "children": [
+        {
+            "id": 0,
+            "label": "link location"
+        },
+        {
+            "id": 1,
+            "label": "view image"
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 1.8876942268544696,
+    "children": [
+        {
+            "id": 8,
+            "distance": 0.7236845177099934,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "upgrade app"
+                },
+                {
+                    "id": 7,
+                    "distance": 0.58467475688278,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "upgrade phone"
+                        },
+                        {
+                            "id": 6,
+                            "distance": 0.4795642556875716,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "upgrade tech system"
+                                },
+                                {
+                                    "id": 3,
+                                    "label": "upgrade device"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "distance": 1.6520693991544206,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "integrate assistant"
+                },
+                {
+                    "id": 1,
+                    "label": "convert image"
+                }
+            ]
+        }
+    ]
+}

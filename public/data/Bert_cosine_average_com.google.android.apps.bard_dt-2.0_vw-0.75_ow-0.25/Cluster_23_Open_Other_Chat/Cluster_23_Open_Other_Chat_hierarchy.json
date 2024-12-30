@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.7909956226564223,
+    "children": [
+        {
+            "id": 4,
+            "distance": 0.6045520218611933,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "shut chat"
+                },
+                {
+                    "id": 3,
+                    "label": "shut conversation"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "distance": 0.6064368288827932,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "open many app"
+                },
+                {
+                    "id": 1,
+                    "label": "open other chat"
+                }
+            ]
+        }
+    ]
+}

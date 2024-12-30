@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 1.126898201089442,
+    "children": [
+        {
+            "id": 6,
+            "label": "separate family business and friend contact chat folder"
+        },
+        {
+            "id": 11,
+            "distance": 0.7482053660713177,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "contact few old contact"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.6091304873453849,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "contact app support"
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.5599037768913414,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "contact people"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.5219692009339405,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "contact long distance cousin"
+                                        },
+                                        {
+                                            "id": 7,
+                                            "distance": 0.4984619870633291,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "contact more thing"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "contact other"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

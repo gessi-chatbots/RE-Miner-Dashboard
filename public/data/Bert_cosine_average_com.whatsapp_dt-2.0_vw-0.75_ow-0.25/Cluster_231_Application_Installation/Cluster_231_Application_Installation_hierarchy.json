@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 4,
+            "label": "install vesy"
+        },
+        {
+            "id": 7,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "install application"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "install option"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "install watshap"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "install update"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

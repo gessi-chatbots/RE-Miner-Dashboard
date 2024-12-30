@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 0.7220451807030001,
+    "children": [
+        {
+            "id": 0,
+            "label": "lag good quality"
+        },
+        {
+            "id": 1,
+            "label": "lag notification"
+        }
+    ]
+}

@@ -1,0 +1,74 @@
+{
+    "id": 14,
+    "distance": 0.6861381759435803,
+    "children": [
+        {
+            "id": 7,
+            "label": "solve issue"
+        },
+        {
+            "id": 13,
+            "distance": 0.6498778958531887,
+            "children": [
+                {
+                    "id": 6,
+                    "label": "solve leg"
+                },
+                {
+                    "id": 12,
+                    "distance": 0.6325433092872879,
+                    "children": [
+                        {
+                            "id": 9,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 5,
+                                    "label": "solve auto logout account problem"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "solve problem"
+                                        },
+                                        {
+                                            "id": 4,
+                                            "label": "solve minor problem"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 11,
+                            "distance": 0.5910608877183324,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "solve telegram support"
+                                },
+                                {
+                                    "id": 10,
+                                    "distance": 0.5320448348683832,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "solve tele phone"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "solve late massage"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

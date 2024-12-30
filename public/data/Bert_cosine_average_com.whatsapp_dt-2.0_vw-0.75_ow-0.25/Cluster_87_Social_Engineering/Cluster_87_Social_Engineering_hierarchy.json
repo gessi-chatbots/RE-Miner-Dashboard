@@ -1,0 +1,94 @@
+{
+    "id": 18,
+    "distance": 0.8626025196102134,
+    "children": [
+        {
+            "id": 9,
+            "label": "hack what sapp"
+        },
+        {
+            "id": 17,
+            "distance": 0.7272067055849294,
+            "children": [
+                {
+                    "id": 14,
+                    "distance": 0.6392508646788752,
+                    "children": [
+                        {
+                            "id": 8,
+                            "label": "hack microsoft email"
+                        },
+                        {
+                            "id": 12,
+                            "distance": 0.508527626883728,
+                            "children": [
+                                {
+                                    "id": 6,
+                                    "label": "hack phone"
+                                },
+                                {
+                                    "id": 7,
+                                    "label": "hack whatsapp message"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 16,
+                    "distance": 0.7208917172485427,
+                    "children": [
+                        {
+                            "id": 13,
+                            "distance": 0.6056327641430008,
+                            "children": [
+                                {
+                                    "id": 5,
+                                    "label": "hack one"
+                                },
+                                {
+                                    "id": 11,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "hack phone number"
+                                        },
+                                        {
+                                            "id": 4,
+                                            "label": "hack whatsapp number"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 15,
+                            "distance": 0.6952832587476898,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "hack watt app"
+                                },
+                                {
+                                    "id": 10,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "hack previous account"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "hack other account"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

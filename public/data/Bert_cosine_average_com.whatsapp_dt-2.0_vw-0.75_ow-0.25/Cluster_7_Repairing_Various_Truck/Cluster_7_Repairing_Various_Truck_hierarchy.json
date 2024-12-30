@@ -1,0 +1,174 @@
+{
+    "id": 34,
+    "distance": 1.9696872581239007,
+    "children": [
+        {
+            "id": 17,
+            "label": "swap camera"
+        },
+        {
+            "id": 33,
+            "distance": 1.6839981108392879,
+            "children": [
+                {
+                    "id": 24,
+                    "distance": 0.6695685766398192,
+                    "children": [
+                        {
+                            "id": 16,
+                            "label": "repair quality status"
+                        },
+                        {
+                            "id": 22,
+                            "distance": 0.6327914468493173,
+                            "children": [
+                                {
+                                    "id": 14,
+                                    "label": "repair various truck"
+                                },
+                                {
+                                    "id": 15,
+                                    "label": "repair whatsapp account"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 32,
+                    "distance": 1.386609716367853,
+                    "children": [
+                        {
+                            "id": 30,
+                            "distance": 1.0862809883992104,
+                            "children": [
+                                {
+                                    "id": 13,
+                                    "label": "upgrade whatsapp"
+                                },
+                                {
+                                    "id": 29,
+                                    "distance": 0.7840386816432167,
+                                    "children": [
+                                        {
+                                            "id": 26,
+                                            "distance": 0.7077979254311061,
+                                            "children": [
+                                                {
+                                                    "id": 12,
+                                                    "label": "upgrade policy"
+                                                },
+                                                {
+                                                    "id": 18,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 10,
+                                                            "label": "upgrade high quality"
+                                                        },
+                                                        {
+                                                            "id": 11,
+                                                            "label": "upgrade status quality"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 28,
+                                            "distance": 0.7530878541351651,
+                                            "children": [
+                                                {
+                                                    "id": 9,
+                                                    "label": "upgrade messenger"
+                                                },
+                                                {
+                                                    "id": 27,
+                                                    "distance": 0.7458157239570163,
+                                                    "children": [
+                                                        {
+                                                            "id": 8,
+                                                            "label": "upgrade google translator"
+                                                        },
+                                                        {
+                                                            "id": 25,
+                                                            "distance": 0.7007132867362578,
+                                                            "children": [
+                                                                {
+                                                                    "id": 7,
+                                                                    "label": "upgrade app"
+                                                                },
+                                                                {
+                                                                    "id": 23,
+                                                                    "distance": 0.6353173014916912,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 6,
+                                                                            "label": "upgrade quality picture"
+                                                                        },
+                                                                        {
+                                                                            "id": 21,
+                                                                            "distance": 0.5977256602892346,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 19,
+                                                                                    "distance": 0.5521420205507788,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 4,
+                                                                                            "label": "upgrade meta"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 5,
+                                                                                            "label": "upgrade system"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "id": 20,
+                                                                                    "distance": 0.5773330887363636,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 2,
+                                                                                            "label": "upgrade mobile"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 3,
+                                                                                            "label": "upgrade phone"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 31,
+                            "distance": 1.2651632911520736,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "upgrade meta ai"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "upgrade status set"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,324 @@
+{
+    "id": 64,
+    "distance": 1.9991621173968008,
+    "children": [
+        {
+            "id": 32,
+            "label": "stream different app"
+        },
+        {
+            "id": 63,
+            "distance": 1.9878457050791978,
+            "children": [
+                {
+                    "id": 59,
+                    "distance": 1.7974303099656492,
+                    "children": [
+                        {
+                            "id": 30,
+                            "label": "upgrade multiple phone"
+                        },
+                        {
+                            "id": 31,
+                            "label": "do verification thing"
+                        }
+                    ]
+                },
+                {
+                    "id": 62,
+                    "distance": 1.9332428436714366,
+                    "children": [
+                        {
+                            "id": 40,
+                            "distance": 0.6961570159703183,
+                            "children": [
+                                {
+                                    "id": 28,
+                                    "label": "encounter more bug"
+                                },
+                                {
+                                    "id": 29,
+                                    "label": "encounter ultra rare error"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 61,
+                            "distance": 1.8785585420904403,
+                            "children": [
+                                {
+                                    "id": 57,
+                                    "distance": 1.7367674875622239,
+                                    "children": [
+                                        {
+                                            "id": 27,
+                                            "label": "accept40mb video"
+                                        },
+                                        {
+                                            "id": 53,
+                                            "distance": 1.566128076899197,
+                                            "children": [
+                                                {
+                                                    "id": 26,
+                                                    "label": "epic group chat app"
+                                                },
+                                                {
+                                                    "id": 52,
+                                                    "distance": 1.5091105370278781,
+                                                    "children": [
+                                                        {
+                                                            "id": 25,
+                                                            "label": "mess entires audio"
+                                                        },
+                                                        {
+                                                            "id": 51,
+                                                            "distance": 1.4191987601658547,
+                                                            "children": [
+                                                                {
+                                                                    "id": 24,
+                                                                    "label": "i amhave same issue"
+                                                                },
+                                                                {
+                                                                    "id": 50,
+                                                                    "distance": 1.3303835986362773,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 23,
+                                                                            "label": "verify log in location"
+                                                                        },
+                                                                        {
+                                                                            "id": 49,
+                                                                            "distance": 1.1977012421417919,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 21,
+                                                                                    "label": "detect more update more problem"
+                                                                                },
+                                                                                {
+                                                                                    "id": 22,
+                                                                                    "label": "date note accept plzzz solution problem"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 60,
+                                    "distance": 1.858352176381938,
+                                    "children": [
+                                        {
+                                            "id": 56,
+                                            "distance": 1.7358388944811116,
+                                            "children": [
+                                                {
+                                                    "id": 20,
+                                                    "label": "have split second delay"
+                                                },
+                                                {
+                                                    "id": 55,
+                                                    "distance": 1.6098836269610763,
+                                                    "children": [
+                                                        {
+                                                            "id": 19,
+                                                            "label": "purchase nitro clasic"
+                                                        },
+                                                        {
+                                                            "id": 48,
+                                                            "distance": 1.038856644220286,
+                                                            "children": [
+                                                                {
+                                                                    "id": 18,
+                                                                    "label": "cancel subscription"
+                                                                },
+                                                                {
+                                                                    "id": 46,
+                                                                    "distance": 0.9027781975585651,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 34,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 16,
+                                                                                    "label": "recently cancel nitro"
+                                                                                },
+                                                                                {
+                                                                                    "id": 17,
+                                                                                    "label": "cancel nitro"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": 42,
+                                                                            "distance": 0.7101533882375483,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 14,
+                                                                                    "label": "cancel event"
+                                                                                },
+                                                                                {
+                                                                                    "id": 15,
+                                                                                    "label": "cancel reset password"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 58,
+                                            "distance": 1.7850631089567972,
+                                            "children": [
+                                                {
+                                                    "id": 47,
+                                                    "distance": 0.9546029864943566,
+                                                    "children": [
+                                                        {
+                                                            "id": 13,
+                                                            "label": "report scammer"
+                                                        },
+                                                        {
+                                                            "id": 43,
+                                                            "distance": 0.7109579048041686,
+                                                            "children": [
+                                                                {
+                                                                    "id": 12,
+                                                                    "label": "report issue"
+                                                                },
+                                                                {
+                                                                    "id": 37,
+                                                                    "distance": 0.6042268237810327,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 11,
+                                                                            "label": "report people"
+                                                                        },
+                                                                        {
+                                                                            "id": 36,
+                                                                            "distance": 0.539614789618023,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 10,
+                                                                                    "label": "report discord server"
+                                                                                },
+                                                                                {
+                                                                                    "id": 35,
+                                                                                    "distance": 0.5017257620959495,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 8,
+                                                                                            "label": "report message"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 9,
+                                                                                            "label": "report bug"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 54,
+                                                    "distance": 1.581867881377671,
+                                                    "children": [
+                                                        {
+                                                            "id": 44,
+                                                            "distance": 0.7471311048104439,
+                                                            "children": [
+                                                                {
+                                                                    "id": 39,
+                                                                    "distance": 0.6952832597859852,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 7,
+                                                                            "label": "register app"
+                                                                        },
+                                                                        {
+                                                                            "id": 33,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 5,
+                                                                                    "label": "register new account"
+                                                                                },
+                                                                                {
+                                                                                    "id": 6,
+                                                                                    "label": "register account"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 41,
+                                                                    "distance": 0.7052433979410438,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 4,
+                                                                            "label": "register problem"
+                                                                        },
+                                                                        {
+                                                                            "id": 38,
+                                                                            "distance": 0.6622628103949475,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 2,
+                                                                                    "label": "register number phone"
+                                                                                },
+                                                                                {
+                                                                                    "id": 3,
+                                                                                    "label": "register date"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 45,
+                                                            "distance": 0.8770632526201555,
+                                                            "children": [
+                                                                {
+                                                                    "id": 0,
+                                                                    "label": "collect email"
+                                                                },
+                                                                {
+                                                                    "id": 1,
+                                                                    "label": "collect fund"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

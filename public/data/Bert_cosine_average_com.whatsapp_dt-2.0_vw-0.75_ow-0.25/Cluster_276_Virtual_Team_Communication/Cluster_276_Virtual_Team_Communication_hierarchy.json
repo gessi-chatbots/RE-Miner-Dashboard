@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.8619502934516967,
+    "children": [
+        {
+            "id": 0,
+            "label": "very nice post"
+        },
+        {
+            "id": 1,
+            "label": "very nice pic"
+        }
+    ]
+}

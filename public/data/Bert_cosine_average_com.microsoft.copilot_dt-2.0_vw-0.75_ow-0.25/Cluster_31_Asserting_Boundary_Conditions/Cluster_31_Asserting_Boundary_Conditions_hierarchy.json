@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.8064762701380876,
+    "children": [
+        {
+            "id": 0,
+            "label": "assert boundary"
+        },
+        {
+            "id": 1,
+            "label": "imply fact"
+        }
+    ]
+}

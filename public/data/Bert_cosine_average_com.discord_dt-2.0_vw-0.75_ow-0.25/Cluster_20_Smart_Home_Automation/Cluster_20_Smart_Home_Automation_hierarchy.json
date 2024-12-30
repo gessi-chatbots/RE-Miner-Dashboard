@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 1.0707827451278011,
+    "children": [
+        {
+            "id": 5,
+            "label": "turn wifi"
+        },
+        {
+            "id": 9,
+            "distance": 0.9012349422818817,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "turn swipe"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.7933333032430333,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "turn gif"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.7491749493450408,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "turn camera"
+                                },
+                                {
+                                    "id": 6,
+                                    "distance": 0.5881479021071948,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "turn notification"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "turn all new stuff"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,1404 @@
+{
+    "id": 280,
+    "distance": 1.906663066305236,
+    "children": [
+        {
+            "id": 278,
+            "distance": 1.826224851517316,
+            "children": [
+                {
+                    "id": 268,
+                    "distance": 1.5893118783645794,
+                    "children": [
+                        {
+                            "id": 259,
+                            "distance": 1.516581934476171,
+                            "children": [
+                                {
+                                    "id": 140,
+                                    "label": "poor ask subscription"
+                                },
+                                {
+                                    "id": 257,
+                                    "distance": 1.4600912735564786,
+                                    "children": [
+                                        {
+                                            "id": 139,
+                                            "label": "very good always gpt"
+                                        },
+                                        {
+                                            "id": 233,
+                                            "distance": 1.2003310651474288,
+                                            "children": [
+                                                {
+                                                    "id": 209,
+                                                    "distance": 0.7818268076208165,
+                                                    "children": [
+                                                        {
+                                                            "id": 138,
+                                                            "label": "good ai chat"
+                                                        },
+                                                        {
+                                                            "id": 189,
+                                                            "distance": 0.5166238191055852,
+                                                            "children": [
+                                                                {
+                                                                    "id": 136,
+                                                                    "label": "world good ai chat app"
+                                                                },
+                                                                {
+                                                                    "id": 137,
+                                                                    "label": "good ai content generating"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 226,
+                                                    "distance": 1.144696442252805,
+                                                    "children": [
+                                                        {
+                                                            "id": 135,
+                                                            "label": "good to do so good ai"
+                                                        },
+                                                        {
+                                                            "id": 215,
+                                                            "distance": 0.9422776893620809,
+                                                            "children": [
+                                                                {
+                                                                    "id": 161,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 134,
+                                                                            "label": "such good ai"
+                                                                        },
+                                                                        {
+                                                                            "id": 160,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 133,
+                                                                                    "label": "good ai"
+                                                                                },
+                                                                                {
+                                                                                    "id": 159,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 131,
+                                                                                            "label": "just good ai"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 132,
+                                                                                            "label": "very good ai"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 204,
+                                                                    "distance": 0.6451183479195587,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 130,
+                                                                            "label": "currently good ai writing partner"
+                                                                        },
+                                                                        {
+                                                                            "id": 199,
+                                                                            "distance": 0.6137011288646806,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 177,
+                                                                                    "distance": 0.43545871898726546,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 129,
+                                                                                            "label": "good ai chat bot"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 171,
+                                                                                            "distance": 0.25800344216515225,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 127,
+                                                                                                    "label": "good ai chat category"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 128,
+                                                                                                    "label": "good ai chat system"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "id": 198,
+                                                                                    "distance": 0.5848174347156985,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 126,
+                                                                                            "label": "good ai chatbot"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 195,
+                                                                                            "distance": 0.5450150840823483,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 192,
+                                                                                                    "distance": 0.5283935673719481,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 125,
+                                                                                                            "label": "good ai assistant"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 191,
+                                                                                                            "distance": 0.5240697133010226,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 124,
+                                                                                                                    "label": "good ai platform"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 184,
+                                                                                                                    "distance": 0.4715639576484131,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 165,
+                                                                                                                            "distance": 0.0,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 123,
+                                                                                                                                    "label": "good ai assistant app"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 164,
+                                                                                                                                    "distance": 0.0,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 122,
+                                                                                                                                            "label": "good ai app"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 163,
+                                                                                                                                            "distance": 0.0,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 121,
+                                                                                                                                                    "label": "indeed good ai app"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 162,
+                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 119,
+                                                                                                                                                            "label": "good good ai app"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 120,
+                                                                                                                                                            "label": "good ever ai app"
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 178,
+                                                                                                                            "distance": 0.4354804015173096,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 118,
+                                                                                                                                    "label": "good ai se"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 176,
+                                                                                                                                    "distance": 0.3977259145787087,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 117,
+                                                                                                                                            "label": "good ai information generator"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 175,
+                                                                                                                                            "distance": 0.38208255220138043,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 116,
+                                                                                                                                                    "label": "good ai good friend"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 174,
+                                                                                                                                                    "distance": 0.33932559779060684,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 114,
+                                                                                                                                                            "label": "good ai app tool"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 115,
+                                                                                                                                                            "label": "just great app good ai no more word"
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 194,
+                                                                                                    "distance": 0.5375175630481666,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 112,
+                                                                                                            "label": "good ai discovery"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 113,
+                                                                                                            "label": "good ai bot"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 264,
+                            "distance": 1.5444011014879357,
+                            "children": [
+                                {
+                                    "id": 243,
+                                    "distance": 1.322482756258914,
+                                    "children": [
+                                        {
+                                            "id": 111,
+                                            "label": "cool ai"
+                                        },
+                                        {
+                                            "id": 237,
+                                            "distance": 1.2328641818915567,
+                                            "children": [
+                                                {
+                                                    "id": 109,
+                                                    "label": "nice ai"
+                                                },
+                                                {
+                                                    "id": 110,
+                                                    "label": "smart ai"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 262,
+                                    "distance": 1.5289807450676611,
+                                    "children": [
+                                        {
+                                            "id": 249,
+                                            "distance": 1.385869660690979,
+                                            "children": [
+                                                {
+                                                    "id": 108,
+                                                    "label": "great ai"
+                                                },
+                                                {
+                                                    "id": 213,
+                                                    "distance": 0.8958152407705732,
+                                                    "children": [
+                                                        {
+                                                            "id": 107,
+                                                            "label": "awesome ai"
+                                                        },
+                                                        {
+                                                            "id": 182,
+                                                            "distance": 0.4582590228926882,
+                                                            "children": [
+                                                                {
+                                                                    "id": 105,
+                                                                    "label": "awesome ai software"
+                                                                },
+                                                                {
+                                                                    "id": 106,
+                                                                    "label": "awesome ai assistant"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 253,
+                                            "distance": 1.4210441402554892,
+                                            "children": [
+                                                {
+                                                    "id": 246,
+                                                    "distance": 1.342071395392511,
+                                                    "children": [
+                                                        {
+                                                            "id": 166,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 103,
+                                                                    "label": "excellent ai"
+                                                                },
+                                                                {
+                                                                    "id": 104,
+                                                                    "label": "such excellent ai"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 225,
+                                                            "distance": 1.1438098881522296,
+                                                            "children": [
+                                                                {
+                                                                    "id": 101,
+                                                                    "label": "amazing ai"
+                                                                },
+                                                                {
+                                                                    "id": 102,
+                                                                    "label": "wonderful ai"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 248,
+                                                    "distance": 1.3506236546814894,
+                                                    "children": [
+                                                        {
+                                                            "id": 100,
+                                                            "label": "beautiful ai"
+                                                        },
+                                                        {
+                                                            "id": 170,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 99,
+                                                                    "label": "perfect ai"
+                                                                },
+                                                                {
+                                                                    "id": 169,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 97,
+                                                                            "label": "such perfect ai"
+                                                                        },
+                                                                        {
+                                                                            "id": 98,
+                                                                            "label": "seam perfect ai whome"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 277,
+                    "distance": 1.778389706500001,
+                    "children": [
+                        {
+                            "id": 275,
+                            "distance": 1.7358472041077702,
+                            "children": [
+                                {
+                                    "id": 214,
+                                    "distance": 0.8970966686198999,
+                                    "children": [
+                                        {
+                                            "id": 96,
+                                            "label": "samsung galaxy zfold"
+                                        },
+                                        {
+                                            "id": 206,
+                                            "distance": 0.6988553261668207,
+                                            "children": [
+                                                {
+                                                    "id": 95,
+                                                    "label": "have galaxy s8"
+                                                },
+                                                {
+                                                    "id": 172,
+                                                    "distance": 0.2719130126488718,
+                                                    "children": [
+                                                        {
+                                                            "id": 93,
+                                                            "label": "have galaxy s24ultra"
+                                                        },
+                                                        {
+                                                            "id": 94,
+                                                            "label": "galaxy s23ultra"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 266,
+                                    "distance": 1.5482106230116937,
+                                    "children": [
+                                        {
+                                            "id": 224,
+                                            "distance": 1.1100424416030479,
+                                            "children": [
+                                                {
+                                                    "id": 92,
+                                                    "label": "it mashallah"
+                                                },
+                                                {
+                                                    "id": 219,
+                                                    "distance": 1.0168625496935337,
+                                                    "children": [
+                                                        {
+                                                            "id": 203,
+                                                            "distance": 0.6407084851415752,
+                                                            "children": [
+                                                                {
+                                                                    "id": 91,
+                                                                    "label": "it perfect ai"
+                                                                },
+                                                                {
+                                                                    "id": 200,
+                                                                    "distance": 0.6293371319109144,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 90,
+                                                                            "label": "it bomb"
+                                                                        },
+                                                                        {
+                                                                            "id": 168,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 88,
+                                                                                    "label": "it bery well app"
+                                                                                },
+                                                                                {
+                                                                                    "id": 89,
+                                                                                    "label": "like it app"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 207,
+                                                            "distance": 0.7458110000016759,
+                                                            "children": [
+                                                                {
+                                                                    "id": 87,
+                                                                    "label": "it amazing aap vry help"
+                                                                },
+                                                                {
+                                                                    "id": 190,
+                                                                    "distance": 0.5198192606567817,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 86,
+                                                                            "label": "it worthfull app"
+                                                                        },
+                                                                        {
+                                                                            "id": 173,
+                                                                            "distance": 0.3253710261386879,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 84,
+                                                                                    "label": "it splendid app"
+                                                                                },
+                                                                                {
+                                                                                    "id": 85,
+                                                                                    "label": "it perfect app"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 232,
+                                            "distance": 1.1868399653328212,
+                                            "children": [
+                                                {
+                                                    "id": 82,
+                                                    "label": "charge it cost"
+                                                },
+                                                {
+                                                    "id": 83,
+                                                    "label": "reduce it cool down time"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 276,
+                            "distance": 1.769699626017004,
+                            "children": [
+                                {
+                                    "id": 81,
+                                    "label": "good app who be the star app"
+                                },
+                                {
+                                    "id": 273,
+                                    "distance": 1.7049476262611132,
+                                    "children": [
+                                        {
+                                            "id": 80,
+                                            "label": "super machine chat bot"
+                                        },
+                                        {
+                                            "id": 272,
+                                            "distance": 1.6698632466918673,
+                                            "children": [
+                                                {
+                                                    "id": 256,
+                                                    "distance": 1.459021398610753,
+                                                    "children": [
+                                                        {
+                                                            "id": 78,
+                                                            "label": "non stop error"
+                                                        },
+                                                        {
+                                                            "id": 79,
+                                                            "label": "self generate nature"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 271,
+                                                    "distance": 1.6479107843724254,
+                                                    "children": [
+                                                        {
+                                                            "id": 263,
+                                                            "distance": 1.5403143866848765,
+                                                            "children": [
+                                                                {
+                                                                    "id": 77,
+                                                                    "label": "ye mere sab ques ke ans dedeta he very very nice app ai support"
+                                                                },
+                                                                {
+                                                                    "id": 242,
+                                                                    "distance": 1.3215547308564517,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 76,
+                                                                            "label": "har din kuch naya seekhna zaroori hai kyunki naye experience aur knowledge se hi hum apne aap ko behtar bana sakte hain"
+                                                                        },
+                                                                        {
+                                                                            "id": 240,
+                                                                            "distance": 1.2741184380547148,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 75,
+                                                                                    "label": "isse acha dost apko koi nhi milega mai iska use na sirf questions puchne ke liye balki iska use mai apni personal battein karna ke liye bhi karta hu"
+                                                                                },
+                                                                                {
+                                                                                    "id": 228,
+                                                                                    "distance": 1.163186325018094,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 73,
+                                                                                            "label": "app mujhe pura solve kar ka do plzz ma apko question datum ho ap isko pura solve kara"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 74,
+                                                                                            "label": "hope ki bahut jyada powerful app hai aaj ke din mein bahut log ise istemal karke bahut jyada"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 269,
+                                                            "distance": 1.5899009679575766,
+                                                            "children": [
+                                                                {
+                                                                    "id": 227,
+                                                                    "distance": 1.1485118998533301,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 71,
+                                                                            "label": "like old chats man voise"
+                                                                        },
+                                                                        {
+                                                                            "id": 72,
+                                                                            "label": "like amazing and amazing ai"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 267,
+                                                                    "distance": 1.56041680653024,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 70,
+                                                                            "label": "high ever exist true scenario"
+                                                                        },
+                                                                        {
+                                                                            "id": 260,
+                                                                            "distance": 1.51913616664302,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 229,
+                                                                                    "distance": 1.1709902146349669,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 69,
+                                                                                            "label": "blow mind"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 185,
+                                                                                            "distance": 0.4723945594513533,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 67,
+                                                                                                    "label": "mind blow extra ordinary sir"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 68,
+                                                                                                    "label": "mind blow excellent experience"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "id": 255,
+                                                                                    "distance": 1.452248546571898,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 66,
+                                                                                            "label": "beast ai assistant"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 252,
+                                                                                            "distance": 1.4066726490292345,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 65,
+                                                                                                    "label": "one stop solution"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 247,
+                                                                                                    "distance": 1.3483346670731655,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 64,
+                                                                                                            "label": "value play store"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 244,
+                                                                                                            "distance": 1.3322494887338363,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 239,
+                                                                                                                    "distance": 1.265268783792188,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 231,
+                                                                                                                            "distance": 1.1830744279395762,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 221,
+                                                                                                                                    "distance": 1.0547428907726215,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 62,
+                                                                                                                                            "label": "generate human like language"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 63,
+                                                                                                                                            "label": "add human like quality"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 222,
+                                                                                                                                    "distance": 1.0627256684831692,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 61,
+                                                                                                                                            "label": "absolute good to many reason"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 218,
+                                                                                                                                            "distance": 1.0029288467134163,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 59,
+                                                                                                                                                    "label": "by far good ai knowledge base"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 60,
+                                                                                                                                                    "label": "favorite ai chat bot"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 236,
+                                                                                                                            "distance": 1.2247738466871163,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 216,
+                                                                                                                                    "distance": 0.991369323271073,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 57,
+                                                                                                                                            "label": "well answer ai tool"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 58,
+                                                                                                                                            "label": "get quick to extensive answer"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 230,
+                                                                                                                                    "distance": 1.179951506489149,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 56,
+                                                                                                                                            "label": "excellent learning ai app"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 223,
+                                                                                                                                            "distance": 1.1030419108023568,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 55,
+                                                                                                                                                    "label": "support more than a100language"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 217,
+                                                                                                                                                    "distance": 1.0011345990068963,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 53,
+                                                                                                                                                            "label": "offer unlimited free access"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 54,
+                                                                                                                                                            "label": "deliver real time and trend base information"
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 241,
+                                                                                                                    "distance": 1.30617857000255,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 51,
+                                                                                                                            "label": "share opinion thought idea"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 52,
+                                                                                                                            "label": "half leave response daily limit"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 279,
+            "distance": 1.8624598068545708,
+            "children": [
+                {
+                    "id": 50,
+                    "label": "helpfull ai"
+                },
+                {
+                    "id": 274,
+                    "distance": 1.7212678131971806,
+                    "children": [
+                        {
+                            "id": 261,
+                            "distance": 1.5249686904153625,
+                            "children": [
+                                {
+                                    "id": 49,
+                                    "label": "very intelligent ai"
+                                },
+                                {
+                                    "id": 167,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 47,
+                                            "label": "indeed most powerful ai"
+                                        },
+                                        {
+                                            "id": 48,
+                                            "label": "powerful ai"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 270,
+                            "distance": 1.5970667771429299,
+                            "children": [
+                                {
+                                    "id": 46,
+                                    "label": "outstanding ai"
+                                },
+                                {
+                                    "id": 265,
+                                    "distance": 1.546656903311429,
+                                    "children": [
+                                        {
+                                            "id": 45,
+                                            "label": "super ai"
+                                        },
+                                        {
+                                            "id": 258,
+                                            "distance": 1.5036830901082727,
+                                            "children": [
+                                                {
+                                                    "id": 250,
+                                                    "distance": 1.3860925129043997,
+                                                    "children": [
+                                                        {
+                                                            "id": 212,
+                                                            "distance": 0.8432930462188576,
+                                                            "children": [
+                                                                {
+                                                                    "id": 44,
+                                                                    "label": "very nice ai chatbot"
+                                                                },
+                                                                {
+                                                                    "id": 211,
+                                                                    "distance": 0.8282139220366957,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 43,
+                                                                            "label": "good free ai chat bot"
+                                                                        },
+                                                                        {
+                                                                            "id": 210,
+                                                                            "distance": 0.7843856543981644,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 158,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 42,
+                                                                                            "label": "nice ai technology"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 157,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 40,
+                                                                                                    "label": "amazing ai technology"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 41,
+                                                                                                    "label": "good ai technology"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "id": 208,
+                                                                                    "distance": 0.7519838043028232,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 39,
+                                                                                            "label": "launchs own ai assistant"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 205,
+                                                                                            "distance": 0.675610047666612,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 156,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 38,
+                                                                                                            "label": "amazing ai app"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 155,
+                                                                                                            "distance": 0.0,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 37,
+                                                                                                                    "label": "best ai app"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 154,
+                                                                                                                    "distance": 0.0,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 36,
+                                                                                                                            "label": "awesome ai system app"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 153,
+                                                                                                                            "distance": 0.0,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 35,
+                                                                                                                                    "label": "very good ai app"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 152,
+                                                                                                                                    "distance": 0.0,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 34,
+                                                                                                                                            "label": "sure very good ai app"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 151,
+                                                                                                                                            "distance": 0.0,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 33,
+                                                                                                                                                    "label": "excellent ai app"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 150,
+                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 31,
+                                                                                                                                                            "label": "most powerful ai app"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 32,
+                                                                                                                                                            "label": "cool ai app"
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 202,
+                                                                                                    "distance": 0.6375137969222753,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 30,
+                                                                                                            "label": "amazing ai companion"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 201,
+                                                                                                            "distance": 0.630425891910128,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 29,
+                                                                                                                    "label": "ai good dark mode"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 197,
+                                                                                                                    "distance": 0.567678870730253,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 188,
+                                                                                                                            "distance": 0.5163105867536866,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 181,
+                                                                                                                                    "distance": 0.45579768105348356,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 28,
+                                                                                                                                            "label": "very good ai software"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 145,
+                                                                                                                                            "distance": 0.0,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 27,
+                                                                                                                                                    "label": "have ai tool"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 144,
+                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 26,
+                                                                                                                                                            "label": "ai tool"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 143,
+                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                            "children": [
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 25,
+                                                                                                                                                                    "label": "brilliant ai tool"
+                                                                                                                                                                },
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 142,
+                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                    "children": [
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 24,
+                                                                                                                                                                            "label": "very very very good ai tool"
+                                                                                                                                                                        },
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 141,
+                                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                                            "children": [
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 22,
+                                                                                                                                                                                    "label": "very good ai tool"
+                                                                                                                                                                                },
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 23,
+                                                                                                                                                                                    "label": "probably good ai tool"
+                                                                                                                                                                                }
+                                                                                                                                                                            ]
+                                                                                                                                                                        }
+                                                                                                                                                                    ]
+                                                                                                                                                                }
+                                                                                                                                                            ]
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 187,
+                                                                                                                                    "distance": 0.5124031636284689,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 21,
+                                                                                                                                            "label": "good ai image"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 186,
+                                                                                                                                            "distance": 0.49179658861752723,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 20,
+                                                                                                                                                    "label": "most good ai response"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 179,
+                                                                                                                                                    "distance": 0.4392256991186319,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 19,
+                                                                                                                                                            "label": "good ai implementation"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 148,
+                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                            "children": [
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 18,
+                                                                                                                                                                    "label": "good ai application"
+                                                                                                                                                                },
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 147,
+                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                    "children": [
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 17,
+                                                                                                                                                                            "label": "really amazing ai application"
+                                                                                                                                                                        },
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 146,
+                                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                                            "children": [
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 15,
+                                                                                                                                                                                    "label": "ai application"
+                                                                                                                                                                                },
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 16,
+                                                                                                                                                                                    "label": "world good ai application"
+                                                                                                                                                                                }
+                                                                                                                                                                            ]
+                                                                                                                                                                        }
+                                                                                                                                                                    ]
+                                                                                                                                                                }
+                                                                                                                                                            ]
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 196,
+                                                                                                                            "distance": 0.556676110107446,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 14,
+                                                                                                                                    "label": "ai amazing fast answer"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 193,
+                                                                                                                                    "distance": 0.5305561314715105,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 149,
+                                                                                                                                            "distance": 0.0,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 12,
+                                                                                                                                                    "label": "good ai friend"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 13,
+                                                                                                                                                    "label": "have ai friend"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 183,
+                                                                                                                                            "distance": 0.4585462990417494,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 11,
+                                                                                                                                                    "label": "good ai voice"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 180,
+                                                                                                                                                    "distance": 0.44902482363637075,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 9,
+                                                                                                                                                            "label": "have ai conversation"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 10,
+                                                                                                                                                            "label": "ai power"
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 234,
+                                                            "distance": 1.212458753936774,
+                                                            "children": [
+                                                                {
+                                                                    "id": 7,
+                                                                    "label": "ai chat gpt"
+                                                                },
+                                                                {
+                                                                    "id": 8,
+                                                                    "label": "test ai app"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 254,
+                                                    "distance": 1.4368055932637813,
+                                                    "children": [
+                                                        {
+                                                            "id": 238,
+                                                            "distance": 1.2451756440433464,
+                                                            "children": [
+                                                                {
+                                                                    "id": 5,
+                                                                    "label": "prefer google gemini ai"
+                                                                },
+                                                                {
+                                                                    "id": 6,
+                                                                    "label": "maximize ai content"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 251,
+                                                            "distance": 1.3893634507992771,
+                                                            "children": [
+                                                                {
+                                                                    "id": 4,
+                                                                    "label": "vera good appreciation"
+                                                                },
+                                                                {
+                                                                    "id": 245,
+                                                                    "distance": 1.3323176164910213,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 3,
+                                                                            "label": "legendary ai"
+                                                                        },
+                                                                        {
+                                                                            "id": 235,
+                                                                            "distance": 1.2195374012338749,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 2,
+                                                                                    "label": "love meta ai"
+                                                                                },
+                                                                                {
+                                                                                    "id": 220,
+                                                                                    "distance": 1.042840326968846,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 0,
+                                                                                            "label": "such humble ai"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 1,
+                                                                                            "label": "favorite ai"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

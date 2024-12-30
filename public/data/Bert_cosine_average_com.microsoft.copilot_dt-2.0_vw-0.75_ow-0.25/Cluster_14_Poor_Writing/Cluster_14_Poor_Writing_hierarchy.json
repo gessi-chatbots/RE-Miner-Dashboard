@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 1.3791009883913046,
+    "children": [
+        {
+            "id": 4,
+            "label": "produce both write and sound response"
+        },
+        {
+            "id": 7,
+            "distance": 0.7750963731663573,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "write poe"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.7278679391069273,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "write email"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.6223093502520228,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "write long message"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "write poor content"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.6088719656607153,
+    "children": [
+        {
+            "id": 2,
+            "label": "draw man"
+        },
+        {
+            "id": 3,
+            "distance": 0.4984594556149633,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "draw glass"
+                },
+                {
+                    "id": 1,
+                    "label": "draw image"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,94 @@
+{
+    "id": 18,
+    "distance": 1.9084600963044804,
+    "children": [
+        {
+            "id": 16,
+            "distance": 1.6970467931636726,
+            "children": [
+                {
+                    "id": 14,
+                    "distance": 1.3774430386753596,
+                    "children": [
+                        {
+                            "id": 8,
+                            "label": "impressive ai"
+                        },
+                        {
+                            "id": 9,
+                            "label": "great ai"
+                        }
+                    ]
+                },
+                {
+                    "id": 15,
+                    "distance": 1.5954025498273652,
+                    "children": [
+                        {
+                            "id": 7,
+                            "label": "bad ai"
+                        },
+                        {
+                            "id": 12,
+                            "distance": 0.8794495863360408,
+                            "children": [
+                                {
+                                    "id": 10,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 5,
+                                            "label": "good ai"
+                                        },
+                                        {
+                                            "id": 6,
+                                            "label": "very good ai"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 11,
+                                    "distance": 0.477054075292171,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "user friendly good ai companion"
+                                        },
+                                        {
+                                            "id": 4,
+                                            "label": "good ai app"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "distance": 1.7386224320251102,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "salute microsoft"
+                },
+                {
+                    "id": 13,
+                    "distance": 1.0526561466015145,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "thank microsoft"
+                        },
+                        {
+                            "id": 1,
+                            "label": "thank ui designer"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

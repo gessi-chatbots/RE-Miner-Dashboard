@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 0.8014086479128264,
+    "children": [
+        {
+            "id": 3,
+            "label": "view ad"
+        },
+        {
+            "id": 5,
+            "distance": 0.624071016072098,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "view post"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.5959993692661487,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "view incoming message"
+                        },
+                        {
+                            "id": 1,
+                            "label": "view code"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

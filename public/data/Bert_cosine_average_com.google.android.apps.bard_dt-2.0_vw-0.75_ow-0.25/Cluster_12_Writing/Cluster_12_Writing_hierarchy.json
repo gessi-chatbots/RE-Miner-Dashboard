@@ -1,0 +1,104 @@
+{
+    "id": 20,
+    "distance": 1.2770522988307276,
+    "children": [
+        {
+            "id": 10,
+            "label": "give write information"
+        },
+        {
+            "id": 19,
+            "distance": 0.7894899526928864,
+            "children": [
+                {
+                    "id": 9,
+                    "label": "write email"
+                },
+                {
+                    "id": 18,
+                    "distance": 0.7174537077581427,
+                    "children": [
+                        {
+                            "id": 15,
+                            "distance": 0.614220663411839,
+                            "children": [
+                                {
+                                    "id": 13,
+                                    "distance": 0.5704017226228155,
+                                    "children": [
+                                        {
+                                            "id": 7,
+                                            "label": "write code"
+                                        },
+                                        {
+                                            "id": 8,
+                                            "label": "write character"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 14,
+                                    "distance": 0.5995322077341979,
+                                    "children": [
+                                        {
+                                            "id": 6,
+                                            "label": "write work"
+                                        },
+                                        {
+                                            "id": 12,
+                                            "distance": 0.5666335155112315,
+                                            "children": [
+                                                {
+                                                    "id": 5,
+                                                    "label": "write daddy"
+                                                },
+                                                {
+                                                    "id": 11,
+                                                    "distance": 0.5372455288899183,
+                                                    "children": [
+                                                        {
+                                                            "id": 3,
+                                                            "label": "write paragraph suggestion"
+                                                        },
+                                                        {
+                                                            "id": 4,
+                                                            "label": "write message"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 17,
+                            "distance": 0.6853815076410255,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "write long review"
+                                },
+                                {
+                                    "id": 16,
+                                    "distance": 0.6465585230198049,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "write research paper"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "write information"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

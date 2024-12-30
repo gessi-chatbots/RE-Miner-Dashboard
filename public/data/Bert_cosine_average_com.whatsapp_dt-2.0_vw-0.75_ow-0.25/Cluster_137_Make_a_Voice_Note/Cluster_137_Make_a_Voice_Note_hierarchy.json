@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 6,
+            "label": "make day"
+        },
+        {
+            "id": 11,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "make whatsapp"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "make voice note"
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "make"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "make boring day"
+                                        },
+                                        {
+                                            "id": 7,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "make how much impact"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "make emoji"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

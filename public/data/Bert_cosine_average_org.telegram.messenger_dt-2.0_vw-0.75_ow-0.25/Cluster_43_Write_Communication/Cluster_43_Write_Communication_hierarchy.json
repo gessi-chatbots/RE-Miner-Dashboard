@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 0.9520960066309142,
+    "children": [
+        {
+            "id": 3,
+            "label": "write mail"
+        },
+        {
+            "id": 5,
+            "distance": 0.8052545152421121,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "write policy"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.6056327610528552,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "write one and only messenger"
+                        },
+                        {
+                            "id": 1,
+                            "label": "write phone number"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

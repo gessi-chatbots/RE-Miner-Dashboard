@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.9001485585619304,
+    "children": [
+        {
+            "id": 2,
+            "label": "clarify concept"
+        },
+        {
+            "id": 3,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "clarify doubt"
+                },
+                {
+                    "id": 1,
+                    "label": "clarify all doubt"
+                }
+            ]
+        }
+    ]
+}

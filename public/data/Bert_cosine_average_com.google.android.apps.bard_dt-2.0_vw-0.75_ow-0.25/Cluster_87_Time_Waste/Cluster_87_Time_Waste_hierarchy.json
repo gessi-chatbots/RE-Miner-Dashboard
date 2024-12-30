@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 2,
+            "label": "just waste"
+        },
+        {
+            "id": 3,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "waste far more time"
+                },
+                {
+                    "id": 1,
+                    "label": "waste so much time"
+                }
+            ]
+        }
+    ]
+}

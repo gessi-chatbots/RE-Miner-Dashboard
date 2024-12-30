@@ -1,0 +1,124 @@
+{
+    "id": 24,
+    "distance": 1.8718156594023996,
+    "children": [
+        {
+            "id": 19,
+            "distance": 1.5647630108610162,
+            "children": [
+                {
+                    "id": 11,
+                    "label": "set plz help"
+                },
+                {
+                    "id": 12,
+                    "label": "need set"
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "distance": 1.7848781114505996,
+            "children": [
+                {
+                    "id": 10,
+                    "label": "try set"
+                },
+                {
+                    "id": 22,
+                    "distance": 1.7139212207438952,
+                    "children": [
+                        {
+                            "id": 16,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 9,
+                                    "label": "set group"
+                                },
+                                {
+                                    "id": 15,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 8,
+                                            "label": "have set"
+                                        },
+                                        {
+                                            "id": 14,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 7,
+                                                    "label": "like set"
+                                                },
+                                                {
+                                                    "id": 13,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 5,
+                                                            "label": "set time"
+                                                        },
+                                                        {
+                                                            "id": 6,
+                                                            "label": "set right"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 21,
+                            "distance": 1.6636179072034927,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "add set"
+                                },
+                                {
+                                    "id": 20,
+                                    "distance": 1.581714034835551,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "use set"
+                                        },
+                                        {
+                                            "id": 18,
+                                            "distance": 1.3385822131365246,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "check all set"
+                                                },
+                                                {
+                                                    "id": 17,
+                                                    "distance": 1.151395992301566,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "adjust set"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "affect set"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

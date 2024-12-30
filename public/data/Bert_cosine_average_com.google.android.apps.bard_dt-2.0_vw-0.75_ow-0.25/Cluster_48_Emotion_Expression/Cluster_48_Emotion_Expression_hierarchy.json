@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.6911303858365992,
+    "children": [
+        {
+            "id": 2,
+            "label": "express feel"
+        },
+        {
+            "id": 3,
+            "distance": 0.6096108101554026,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "express emotion"
+                },
+                {
+                    "id": 1,
+                    "label": "express strong interest"
+                }
+            ]
+        }
+    ]
+}

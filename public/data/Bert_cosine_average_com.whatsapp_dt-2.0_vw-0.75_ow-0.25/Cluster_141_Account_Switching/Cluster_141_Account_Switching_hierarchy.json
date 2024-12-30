@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.7334045097343924,
+    "children": [
+        {
+            "id": 3,
+            "label": "give switch"
+        },
+        {
+            "id": 5,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "switch account"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "switch account option"
+                        },
+                        {
+                            "id": 1,
+                            "label": "switch theme"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

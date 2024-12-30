@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 2,
+            "label": "open tomato"
+        },
+        {
+            "id": 3,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "open short cut"
+                },
+                {
+                    "id": 1,
+                    "label": "open chat group"
+                }
+            ]
+        }
+    ]
+}

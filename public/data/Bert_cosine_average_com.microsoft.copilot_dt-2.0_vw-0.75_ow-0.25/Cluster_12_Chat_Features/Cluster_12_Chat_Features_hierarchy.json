@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 1.7220617524870474,
+    "children": [
+        {
+            "id": 10,
+            "distance": 1.1136113209863727,
+            "children": [
+                {
+                    "id": 6,
+                    "label": "chat gpt"
+                },
+                {
+                    "id": 9,
+                    "distance": 0.9085339543689313,
+                    "children": [
+                        {
+                            "id": 7,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "still chat history"
+                                },
+                                {
+                                    "id": 5,
+                                    "label": "have chat history"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 8,
+                            "distance": 0.6079049120147938,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "delete chat feature"
+                                },
+                                {
+                                    "id": 3,
+                                    "label": "chat buddy"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "distance": 1.3570643783479839,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "enable voice feature"
+                },
+                {
+                    "id": 1,
+                    "label": "enable chat pin"
+                }
+            ]
+        }
+    ]
+}

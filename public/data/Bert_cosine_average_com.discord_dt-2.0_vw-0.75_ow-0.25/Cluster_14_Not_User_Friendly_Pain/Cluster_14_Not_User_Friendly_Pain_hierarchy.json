@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.9219860625083371,
+    "children": [
+        {
+            "id": 0,
+            "label": "not user friendly pain"
+        },
+        {
+            "id": 1,
+            "label": "hire crusty"
+        }
+    ]
+}

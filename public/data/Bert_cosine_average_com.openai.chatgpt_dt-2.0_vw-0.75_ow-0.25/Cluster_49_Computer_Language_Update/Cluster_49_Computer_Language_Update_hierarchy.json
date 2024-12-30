@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.935327181403159,
+    "children": [
+        {
+            "id": 3,
+            "label": "bengali algorithm update"
+        },
+        {
+            "id": 5,
+            "distance": 1.717186425537066,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "repair own gadget"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.6904203326889008,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "upgrade pashto language"
+                        },
+                        {
+                            "id": 1,
+                            "label": "upgrade brain"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.7579221348881027,
+    "children": [
+        {
+            "id": 4,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "call justin"
+                },
+                {
+                    "id": 3,
+                    "label": "call shot"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "distance": 1.6561714221800194,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "fix call audio"
+                },
+                {
+                    "id": 1,
+                    "label": "join call"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,74 @@
+{
+    "id": 14,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 7,
+            "label": "inspire write"
+        },
+        {
+            "id": 13,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 6,
+                    "label": "write uanswer"
+                },
+                {
+                    "id": 12,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 5,
+                            "label": "write novel"
+                        },
+                        {
+                            "id": 11,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "write book"
+                                },
+                                {
+                                    "id": 10,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "write review"
+                                        },
+                                        {
+                                            "id": 9,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "write content"
+                                                },
+                                                {
+                                                    "id": 8,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "write block saver"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "write song"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

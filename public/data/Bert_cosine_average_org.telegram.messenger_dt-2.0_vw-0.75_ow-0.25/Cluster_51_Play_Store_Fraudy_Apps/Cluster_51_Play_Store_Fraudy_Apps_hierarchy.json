@@ -1,0 +1,84 @@
+{
+    "id": 16,
+    "distance": 1.903117290323488,
+    "children": [
+        {
+            "id": 8,
+            "label": "suspect foul play"
+        },
+        {
+            "id": 15,
+            "distance": 1.0094669215674208,
+            "children": [
+                {
+                    "id": 7,
+                    "label": "play mucis"
+                },
+                {
+                    "id": 14,
+                    "distance": 0.9788236121321455,
+                    "children": [
+                        {
+                            "id": 6,
+                            "label": "play minigame"
+                        },
+                        {
+                            "id": 13,
+                            "distance": 0.958769412908479,
+                            "children": [
+                                {
+                                    "id": 10,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 4,
+                                            "label": "play download video"
+                                        },
+                                        {
+                                            "id": 5,
+                                            "label": "play video"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 12,
+                                    "distance": 0.7525435984551266,
+                                    "children": [
+                                        {
+                                            "id": 9,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "play store fraudy app"
+                                                },
+                                                {
+                                                    "id": 3,
+                                                    "label": "play video app"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 11,
+                                            "distance": 0.6829859624065658,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "play game"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "play track"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

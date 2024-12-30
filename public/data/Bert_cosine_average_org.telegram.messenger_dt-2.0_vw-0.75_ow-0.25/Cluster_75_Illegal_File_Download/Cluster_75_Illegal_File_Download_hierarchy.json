@@ -1,0 +1,74 @@
+{
+    "id": 14,
+    "distance": 0.9770333078654262,
+    "children": [
+        {
+            "id": 7,
+            "label": "download one video"
+        },
+        {
+            "id": 13,
+            "distance": 0.6677057027515697,
+            "children": [
+                {
+                    "id": 10,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 6,
+                            "label": "download large video mkv file"
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 5,
+                                    "label": "download same file"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "download big file"
+                                        },
+                                        {
+                                            "id": 4,
+                                            "label": "download illegal file"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 12,
+                    "distance": 0.571581534973007,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "not download speed"
+                        },
+                        {
+                            "id": 11,
+                            "distance": 0.42960002879405296,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "not download photo"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "download multiple image"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

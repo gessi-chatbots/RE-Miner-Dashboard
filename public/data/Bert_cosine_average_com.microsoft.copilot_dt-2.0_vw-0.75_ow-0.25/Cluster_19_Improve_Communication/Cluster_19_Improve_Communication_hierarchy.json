@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.9683694585073896,
+    "children": [
+        {
+            "id": 0,
+            "label": "improve vic chat"
+        },
+        {
+            "id": 1,
+            "label": "ensure precise communication"
+        }
+    ]
+}

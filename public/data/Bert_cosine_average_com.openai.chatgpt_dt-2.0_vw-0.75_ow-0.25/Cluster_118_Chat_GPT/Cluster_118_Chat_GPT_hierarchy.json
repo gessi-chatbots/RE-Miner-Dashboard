@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.6524738687067597,
+    "children": [
+        {
+            "id": 3,
+            "label": "chat gpt late version"
+        },
+        {
+            "id": 5,
+            "distance": 1.4343962426466041,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "want chat gpt"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.9868336030217407,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "chat gpt good friend"
+                        },
+                        {
+                            "id": 1,
+                            "label": "chat gpt need chat gpt"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

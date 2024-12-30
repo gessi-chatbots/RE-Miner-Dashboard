@@ -1,0 +1,124 @@
+{
+    "id": 24,
+    "distance": 1.9877454095759557,
+    "children": [
+        {
+            "id": 12,
+            "label": "post more use"
+        },
+        {
+            "id": 23,
+            "distance": 1.9100789587298734,
+            "children": [
+                {
+                    "id": 14,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 10,
+                            "label": "pass exam"
+                        },
+                        {
+                            "id": 11,
+                            "label": "pass university exam"
+                        }
+                    ]
+                },
+                {
+                    "id": 22,
+                    "distance": 1.8701318038970203,
+                    "children": [
+                        {
+                            "id": 20,
+                            "distance": 1.7878800844251428,
+                            "children": [
+                                {
+                                    "id": 18,
+                                    "distance": 0.8225219788840219,
+                                    "children": [
+                                        {
+                                            "id": 8,
+                                            "label": "throw phone"
+                                        },
+                                        {
+                                            "id": 9,
+                                            "label": "throw search result"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 19,
+                                    "distance": 1.685897983518239,
+                                    "children": [
+                                        {
+                                            "id": 7,
+                                            "label": "introduce lite version"
+                                        },
+                                        {
+                                            "id": 13,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 5,
+                                                    "label": "implement feature"
+                                                },
+                                                {
+                                                    "id": 6,
+                                                    "label": "implement memory feature"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 21,
+                            "distance": 1.8024296258734305,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "collect personal datum"
+                                },
+                                {
+                                    "id": 17,
+                                    "distance": 0.749812924361906,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "receive update"
+                                        },
+                                        {
+                                            "id": 16,
+                                            "distance": 0.6404857028837613,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "receive photo"
+                                                },
+                                                {
+                                                    "id": 15,
+                                                    "distance": 0.5427155509413948,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "receive output"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "receive value"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

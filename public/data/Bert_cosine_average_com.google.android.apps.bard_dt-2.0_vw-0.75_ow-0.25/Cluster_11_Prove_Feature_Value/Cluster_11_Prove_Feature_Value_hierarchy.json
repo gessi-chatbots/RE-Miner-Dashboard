@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 1.9316947674676974,
+    "children": [
+        {
+            "id": 4,
+            "label": "attach custom screenshot"
+        },
+        {
+            "id": 7,
+            "distance": 1.7230469624095892,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "avoid poorly execute junk"
+                },
+                {
+                    "id": 6,
+                    "distance": 1.6806298168804674,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "minimize app"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.6960150750618488,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "prove value"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "prove feature"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

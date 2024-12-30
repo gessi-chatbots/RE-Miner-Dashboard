@@ -1,0 +1,264 @@
+{
+    "id": 52,
+    "distance": 1.9407359223802931,
+    "children": [
+        {
+            "id": 46,
+            "distance": 1.6278620236973436,
+            "children": [
+                {
+                    "id": 43,
+                    "distance": 0.9136644338798886,
+                    "children": [
+                        {
+                            "id": 26,
+                            "label": "speak czech"
+                        },
+                        {
+                            "id": 41,
+                            "distance": 0.7884742412006569,
+                            "children": [
+                                {
+                                    "id": 32,
+                                    "distance": 0.5474124380256218,
+                                    "children": [
+                                        {
+                                            "id": 24,
+                                            "label": "speak portuguese"
+                                        },
+                                        {
+                                            "id": 25,
+                                            "label": "speak fluent spanish"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 38,
+                                    "distance": 0.6744887764691087,
+                                    "children": [
+                                        {
+                                            "id": 28,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 22,
+                                                    "label": "speak other language"
+                                                },
+                                                {
+                                                    "id": 23,
+                                                    "label": "speak language"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 34,
+                                            "distance": 0.5748017032846009,
+                                            "children": [
+                                                {
+                                                    "id": 21,
+                                                    "label": "speak persian"
+                                                },
+                                                {
+                                                    "id": 29,
+                                                    "distance": 0.46818832215588124,
+                                                    "children": [
+                                                        {
+                                                            "id": 19,
+                                                            "label": "speak burmese"
+                                                        },
+                                                        {
+                                                            "id": 20,
+                                                            "label": "speak marathi"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 44,
+                    "distance": 1.430270036414086,
+                    "children": [
+                        {
+                            "id": 17,
+                            "label": "improve english or maybe other language speak fluency"
+                        },
+                        {
+                            "id": 18,
+                            "label": "talk language"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 51,
+            "distance": 1.924357941026546,
+            "children": [
+                {
+                    "id": 48,
+                    "distance": 1.7990713898675095,
+                    "children": [
+                        {
+                            "id": 15,
+                            "label": "think anything ai"
+                        },
+                        {
+                            "id": 16,
+                            "label": "look information"
+                        }
+                    ]
+                },
+                {
+                    "id": 50,
+                    "distance": 1.8786817620366099,
+                    "children": [
+                        {
+                            "id": 14,
+                            "label": "taste amazing picture"
+                        },
+                        {
+                            "id": 49,
+                            "distance": 1.8106173132296368,
+                            "children": [
+                                {
+                                    "id": 42,
+                                    "distance": 0.8803815440800364,
+                                    "children": [
+                                        {
+                                            "id": 13,
+                                            "label": "watch youtube video"
+                                        },
+                                        {
+                                            "id": 40,
+                                            "distance": 0.6918349119274955,
+                                            "children": [
+                                                {
+                                                    "id": 11,
+                                                    "label": "watch content"
+                                                },
+                                                {
+                                                    "id": 12,
+                                                    "label": "watch animation"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 47,
+                                    "distance": 1.7889721750990268,
+                                    "children": [
+                                        {
+                                            "id": 10,
+                                            "label": "spend more time"
+                                        },
+                                        {
+                                            "id": 45,
+                                            "distance": 1.6012047249869643,
+                                            "children": [
+                                                {
+                                                    "id": 37,
+                                                    "distance": 0.6324902339188941,
+                                                    "children": [
+                                                        {
+                                                            "id": 9,
+                                                            "label": "have hear problem"
+                                                        },
+                                                        {
+                                                            "id": 36,
+                                                            "distance": 0.6120314861588547,
+                                                            "children": [
+                                                                {
+                                                                    "id": 8,
+                                                                    "label": "hear gemini"
+                                                                },
+                                                                {
+                                                                    "id": 35,
+                                                                    "distance": 0.6084489642924753,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 7,
+                                                                            "label": "hear voice command"
+                                                                        },
+                                                                        {
+                                                                            "id": 33,
+                                                                            "distance": 0.5519432920813744,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 30,
+                                                                                    "distance": 0.48811175369795623,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 5,
+                                                                                            "label": "hear single word"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 6,
+                                                                                            "label": "hear correct name"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "id": 31,
+                                                                                    "distance": 0.5191947141959145,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 4,
+                                                                                            "label": "hear different accent"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 27,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 2,
+                                                                                                    "label": "hear voice"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 3,
+                                                                                                    "label": "hear only girl voice"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 39,
+                                                    "distance": 0.675621714533713,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "feel satisfaction"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "feel amazing experience"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

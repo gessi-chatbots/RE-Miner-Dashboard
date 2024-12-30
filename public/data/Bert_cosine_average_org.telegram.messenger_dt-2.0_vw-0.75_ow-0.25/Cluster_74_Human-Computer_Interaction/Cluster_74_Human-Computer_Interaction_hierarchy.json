@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 0.9299745585120283,
+    "children": [
+        {
+            "id": 4,
+            "label": "click download"
+        },
+        {
+            "id": 7,
+            "distance": 0.7376501349513441,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "click link"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.5826654282323994,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "click sms option"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "click button"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "click search button"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

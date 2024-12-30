@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 0.7409169840186198,
+    "children": [
+        {
+            "id": 6,
+            "label": "turn information"
+        },
+        {
+            "id": 11,
+            "distance": 0.6111521860768315,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "turn gemini"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.5797341874524616,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "turn picture"
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.5509786404237274,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "turn phone"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.5386256462318225,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "turn extremely basic hallway light"
+                                        },
+                                        {
+                                            "id": 7,
+                                            "distance": 0.49611872278664054,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "turn phone screen"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "turn device"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

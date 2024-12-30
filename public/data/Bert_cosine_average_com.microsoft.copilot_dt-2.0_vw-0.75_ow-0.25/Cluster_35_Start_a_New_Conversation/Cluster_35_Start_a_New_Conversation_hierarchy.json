@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 0.6534652929367395,
+    "children": [
+        {
+            "id": 4,
+            "label": "start new chat"
+        },
+        {
+            "id": 7,
+            "distance": 0.5344549078492361,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "start new topic"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.502844682771967,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "start trial"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.4428586877342454,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "start voice conversation"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "start drone"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

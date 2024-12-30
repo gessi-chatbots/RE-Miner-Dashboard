@@ -1,0 +1,154 @@
+{
+    "id": 30,
+    "distance": 1.9618541048787785,
+    "children": [
+        {
+            "id": 26,
+            "distance": 0.7693865836961574,
+            "children": [
+                {
+                    "id": 15,
+                    "label": "update google assistant"
+                },
+                {
+                    "id": 23,
+                    "distance": 0.701644912459404,
+                    "children": [
+                        {
+                            "id": 14,
+                            "label": "update app"
+                        },
+                        {
+                            "id": 21,
+                            "distance": 0.6265346048233249,
+                            "children": [
+                                {
+                                    "id": 18,
+                                    "distance": 0.542608422135184,
+                                    "children": [
+                                        {
+                                            "id": 12,
+                                            "label": "update memory"
+                                        },
+                                        {
+                                            "id": 13,
+                                            "label": "update phone"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 19,
+                                    "distance": 0.5463054600321801,
+                                    "children": [
+                                        {
+                                            "id": 10,
+                                            "label": "update ai"
+                                        },
+                                        {
+                                            "id": 11,
+                                            "label": "update gemini"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "distance": 0.8918977709235337,
+            "children": [
+                {
+                    "id": 9,
+                    "label": "replace assitant"
+                },
+                {
+                    "id": 28,
+                    "distance": 0.7896050867004367,
+                    "children": [
+                        {
+                            "id": 25,
+                            "distance": 0.7553508348662116,
+                            "children": [
+                                {
+                                    "id": 8,
+                                    "label": "replace app"
+                                },
+                                {
+                                    "id": 24,
+                                    "distance": 0.7246657432110523,
+                                    "children": [
+                                        {
+                                            "id": 7,
+                                            "label": "replace invalid link"
+                                        },
+                                        {
+                                            "id": 22,
+                                            "distance": 0.6693989792331732,
+                                            "children": [
+                                                {
+                                                    "id": 6,
+                                                    "label": "replace google update transmission go"
+                                                },
+                                                {
+                                                    "id": 20,
+                                                    "distance": 0.5478141845258877,
+                                                    "children": [
+                                                        {
+                                                            "id": 4,
+                                                            "label": "replace genuine learning"
+                                                        },
+                                                        {
+                                                            "id": 5,
+                                                            "label": "replace function product"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 27,
+                            "distance": 0.772933170359858,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "replace human"
+                                },
+                                {
+                                    "id": 17,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "replace regular google assistant"
+                                        },
+                                        {
+                                            "id": 16,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "replace assistant"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "replace google assistant"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

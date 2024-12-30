@@ -1,0 +1,94 @@
+{
+    "id": 18,
+    "distance": 1.8915672936396244,
+    "children": [
+        {
+            "id": 16,
+            "distance": 0.767390296715552,
+            "children": [
+                {
+                    "id": 9,
+                    "label": "express deep love"
+                },
+                {
+                    "id": 15,
+                    "distance": 0.6883467113739065,
+                    "children": [
+                        {
+                            "id": 8,
+                            "label": "express feel"
+                        },
+                        {
+                            "id": 14,
+                            "distance": 0.661612469567891,
+                            "children": [
+                                {
+                                    "id": 7,
+                                    "label": "express detailed reference content"
+                                },
+                                {
+                                    "id": 13,
+                                    "distance": 0.6139986265444441,
+                                    "children": [
+                                        {
+                                            "id": 6,
+                                            "label": "express idea"
+                                        },
+                                        {
+                                            "id": 12,
+                                            "distance": 0.6049644853483928,
+                                            "children": [
+                                                {
+                                                    "id": 5,
+                                                    "label": "express wish"
+                                                },
+                                                {
+                                                    "id": 11,
+                                                    "distance": 0.5349197958177924,
+                                                    "children": [
+                                                        {
+                                                            "id": 4,
+                                                            "label": "express interest"
+                                                        },
+                                                        {
+                                                            "id": 10,
+                                                            "distance": 0.4780452753695843,
+                                                            "children": [
+                                                                {
+                                                                    "id": 2,
+                                                                    "label": "express gratitude"
+                                                                },
+                                                                {
+                                                                    "id": 3,
+                                                                    "label": "express appreciation"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "distance": 0.9406363743126113,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "train write english"
+                },
+                {
+                    "id": 1,
+                    "label": "train english"
+                }
+            ]
+        }
+    ]
+}

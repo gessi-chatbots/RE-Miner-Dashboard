@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.9550852717468,
+    "children": [
+        {
+            "id": 0,
+            "label": "complete all homework"
+        },
+        {
+            "id": 1,
+            "label": "no possible may may son"
+        }
+    ]
+}

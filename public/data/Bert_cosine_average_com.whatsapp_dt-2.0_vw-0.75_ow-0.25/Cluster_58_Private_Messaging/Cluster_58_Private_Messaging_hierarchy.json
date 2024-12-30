@@ -1,0 +1,214 @@
+{
+    "id": 42,
+    "distance": 1.9504805423088267,
+    "children": [
+        {
+            "id": 40,
+            "distance": 1.036556687867016,
+            "children": [
+                {
+                    "id": 32,
+                    "distance": 0.6400247348510729,
+                    "children": [
+                        {
+                            "id": 20,
+                            "label": "review mu request"
+                        },
+                        {
+                            "id": 21,
+                            "label": "review people status"
+                        }
+                    ]
+                },
+                {
+                    "id": 37,
+                    "distance": 0.7950307777019432,
+                    "children": [
+                        {
+                            "id": 19,
+                            "label": "review privacy policy"
+                        },
+                        {
+                            "id": 35,
+                            "distance": 0.7165647167047225,
+                            "children": [
+                                {
+                                    "id": 18,
+                                    "label": "review acount"
+                                },
+                                {
+                                    "id": 34,
+                                    "distance": 0.6983973803193574,
+                                    "children": [
+                                        {
+                                            "id": 17,
+                                            "label": "review wasp"
+                                        },
+                                        {
+                                            "id": 33,
+                                            "distance": 0.6802560299048448,
+                                            "children": [
+                                                {
+                                                    "id": 16,
+                                                    "label": "review public account"
+                                                },
+                                                {
+                                                    "id": 31,
+                                                    "distance": 0.6325533938307752,
+                                                    "children": [
+                                                        {
+                                                            "id": 15,
+                                                            "label": "review status"
+                                                        },
+                                                        {
+                                                            "id": 29,
+                                                            "distance": 0.614558047528877,
+                                                            "children": [
+                                                                {
+                                                                    "id": 27,
+                                                                    "distance": 0.5696487275511187,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 14,
+                                                                            "label": "review resume"
+                                                                        },
+                                                                        {
+                                                                            "id": 26,
+                                                                            "distance": 0.5372264508483364,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 13,
+                                                                                    "label": "review request"
+                                                                                },
+                                                                                {
+                                                                                    "id": 23,
+                                                                                    "distance": 0.46593254930317207,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 11,
+                                                                                            "label": "review mistake"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 12,
+                                                                                            "label": "review i"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 28,
+                                                                    "distance": 0.586246758396384,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 9,
+                                                                            "label": "review set"
+                                                                        },
+                                                                        {
+                                                                            "id": 10,
+                                                                            "label": "review un ban whatsapp number"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 41,
+            "distance": 1.8646618142974605,
+            "children": [
+                {
+                    "id": 8,
+                    "label": "recommended whatsapp"
+                },
+                {
+                    "id": 39,
+                    "distance": 1.0078993640523548,
+                    "children": [
+                        {
+                            "id": 36,
+                            "distance": 0.7201111680824943,
+                            "children": [
+                                {
+                                    "id": 22,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 6,
+                                            "label": "recommend app"
+                                        },
+                                        {
+                                            "id": 7,
+                                            "label": "recommend amazing app"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 30,
+                                    "distance": 0.626016636515821,
+                                    "children": [
+                                        {
+                                            "id": 5,
+                                            "label": "recommend whatsapp feature"
+                                        },
+                                        {
+                                            "id": 25,
+                                            "distance": 0.5344634348444388,
+                                            "children": [
+                                                {
+                                                    "id": 4,
+                                                    "label": "recommend people"
+                                                },
+                                                {
+                                                    "id": 24,
+                                                    "distance": 0.5176360772771733,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "recommend friend"
+                                                        },
+                                                        {
+                                                            "id": 3,
+                                                            "label": "recommend signal"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 38,
+                            "distance": 0.8023331614065975,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "recommend whatapp"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "recommend whatsapp"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.1267978397660028,
+    "children": [
+        {
+            "id": 2,
+            "label": "log in problem"
+        },
+        {
+            "id": 3,
+            "distance": 0.5886547630412973,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "log code"
+                },
+                {
+                    "id": 1,
+                    "label": "log phone number"
+                }
+            ]
+        }
+    ]
+}

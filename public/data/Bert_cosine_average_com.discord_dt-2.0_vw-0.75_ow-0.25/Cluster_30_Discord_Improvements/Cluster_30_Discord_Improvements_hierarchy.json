@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.9150956187797306,
+    "children": [
+        {
+            "id": 4,
+            "distance": 0.6405962476798049,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "increase stream bitrate"
+                },
+                {
+                    "id": 3,
+                    "label": "increase size"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "distance": 0.6991032332147804,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "improve notification system"
+                },
+                {
+                    "id": 1,
+                    "label": "improve discord experience"
+                }
+            ]
+        }
+    ]
+}

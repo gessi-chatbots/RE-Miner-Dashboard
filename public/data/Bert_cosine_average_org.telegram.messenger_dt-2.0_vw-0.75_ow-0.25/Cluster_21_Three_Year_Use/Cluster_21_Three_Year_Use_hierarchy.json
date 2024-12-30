@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 6,
+            "label": "easy to use and good app"
+        },
+        {
+            "id": 11,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "wt use"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "use three year"
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "use long year"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "multiple use"
+                                        },
+                                        {
+                                            "id": 7,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "use"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "use username"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

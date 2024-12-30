@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.9918794079351592,
+    "children": [
+        {
+            "id": 2,
+            "label": "change chat gbt bot"
+        },
+        {
+            "id": 3,
+            "distance": 1.7543080081611766,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "enjoy chat"
+                },
+                {
+                    "id": 1,
+                    "label": "thank chat gpt"
+                }
+            ]
+        }
+    ]
+}

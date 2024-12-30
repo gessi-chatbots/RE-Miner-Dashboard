@@ -1,0 +1,164 @@
+{
+    "id": 32,
+    "distance": 1.9966715876085925,
+    "children": [
+        {
+            "id": 26,
+            "distance": 0.5323563188312985,
+            "children": [
+                {
+                    "id": 15,
+                    "label": "solve maths question"
+                },
+                {
+                    "id": 16,
+                    "label": "solve maths sum"
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "distance": 1.045929291722491,
+            "children": [
+                {
+                    "id": 14,
+                    "label": "solve simple maths"
+                },
+                {
+                    "id": 30,
+                    "distance": 0.7767928623698742,
+                    "children": [
+                        {
+                            "id": 13,
+                            "label": "solve sum"
+                        },
+                        {
+                            "id": 29,
+                            "distance": 0.5935529935717273,
+                            "children": [
+                                {
+                                    "id": 12,
+                                    "label": "solve math equation"
+                                },
+                                {
+                                    "id": 28,
+                                    "distance": 0.5701626660175244,
+                                    "children": [
+                                        {
+                                            "id": 11,
+                                            "label": "solve code"
+                                        },
+                                        {
+                                            "id": 27,
+                                            "distance": 0.5456352104000722,
+                                            "children": [
+                                                {
+                                                    "id": 23,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 10,
+                                                            "label": "solve more and more problem"
+                                                        },
+                                                        {
+                                                            "id": 22,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 9,
+                                                                    "label": "solve problem"
+                                                                },
+                                                                {
+                                                                    "id": 21,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 8,
+                                                                            "label": "solve maths problem"
+                                                                        },
+                                                                        {
+                                                                            "id": 20,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 7,
+                                                                                    "label": "solve physics and math problem"
+                                                                                },
+                                                                                {
+                                                                                    "id": 19,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 5,
+                                                                                            "label": "solve odia math problem"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 6,
+                                                                                            "label": "solve math problem"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 25,
+                                                    "distance": 0.4945226503314331,
+                                                    "children": [
+                                                        {
+                                                            "id": 4,
+                                                            "label": "solve hard thing"
+                                                        },
+                                                        {
+                                                            "id": 24,
+                                                            "distance": 0.41863297828595863,
+                                                            "children": [
+                                                                {
+                                                                    "id": 3,
+                                                                    "label": "solve math homework"
+                                                                },
+                                                                {
+                                                                    "id": 18,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 2,
+                                                                            "label": "solve math science computing and engineering question"
+                                                                        },
+                                                                        {
+                                                                            "id": 17,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 0,
+                                                                                    "label": "solve question"
+                                                                                },
+                                                                                {
+                                                                                    "id": 1,
+                                                                                    "label": "solve math and science question"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

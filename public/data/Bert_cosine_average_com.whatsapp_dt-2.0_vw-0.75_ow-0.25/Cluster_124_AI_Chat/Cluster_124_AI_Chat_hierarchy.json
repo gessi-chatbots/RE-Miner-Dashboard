@@ -1,0 +1,284 @@
+{
+    "id": 56,
+    "distance": 1.8617933249270098,
+    "children": [
+        {
+            "id": 41,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 28,
+                    "label": "not ai"
+                },
+                {
+                    "id": 40,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 27,
+                            "label": "ai must"
+                        },
+                        {
+                            "id": 39,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 26,
+                                    "label": "have ai"
+                                },
+                                {
+                                    "id": 38,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 25,
+                                            "label": "ai open"
+                                        },
+                                        {
+                                            "id": 37,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 24,
+                                                    "label": "very awesome especially ai"
+                                                },
+                                                {
+                                                    "id": 36,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 23,
+                                                            "label": "cool ai pp"
+                                                        },
+                                                        {
+                                                            "id": 35,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 22,
+                                                                    "label": "psl active meta ai"
+                                                                },
+                                                                {
+                                                                    "id": 34,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 21,
+                                                                            "label": "disable ai search"
+                                                                        },
+                                                                        {
+                                                                            "id": 33,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 19,
+                                                                                    "label": "like ai"
+                                                                                },
+                                                                                {
+                                                                                    "id": 20,
+                                                                                    "label": "recent ai version"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 55,
+            "distance": 1.8075912963212852,
+            "children": [
+                {
+                    "id": 52,
+                    "distance": 1.5709579197651302,
+                    "children": [
+                        {
+                            "id": 18,
+                            "label": "hate ai"
+                        },
+                        {
+                            "id": 43,
+                            "distance": 1.1888644510898911,
+                            "children": [
+                                {
+                                    "id": 16,
+                                    "label": "want ai chat"
+                                },
+                                {
+                                    "id": 17,
+                                    "label": "want ai"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 54,
+                    "distance": 1.6997771533539034,
+                    "children": [
+                        {
+                            "id": 51,
+                            "distance": 1.563583094130145,
+                            "children": [
+                                {
+                                    "id": 49,
+                                    "distance": 1.4841016281716712,
+                                    "children": [
+                                        {
+                                            "id": 47,
+                                            "distance": 1.3382358262711307,
+                                            "children": [
+                                                {
+                                                    "id": 15,
+                                                    "label": "keep ai"
+                                                },
+                                                {
+                                                    "id": 45,
+                                                    "distance": 1.3040358533749388,
+                                                    "children": [
+                                                        {
+                                                            "id": 14,
+                                                            "label": "allow ai"
+                                                        },
+                                                        {
+                                                            "id": 44,
+                                                            "distance": 1.2509841819677379,
+                                                            "children": [
+                                                                {
+                                                                    "id": 13,
+                                                                    "label": "why can not meta ai"
+                                                                },
+                                                                {
+                                                                    "id": 42,
+                                                                    "distance": 1.0120143753268498,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 12,
+                                                                            "label": "got meta ai"
+                                                                        },
+                                                                        {
+                                                                            "id": 32,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 11,
+                                                                                    "label": "get meta ai"
+                                                                                },
+                                                                                {
+                                                                                    "id": 31,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 10,
+                                                                                            "label": "get whatsapp ai"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 30,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 9,
+                                                                                                    "label": "get ai meta"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 29,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 7,
+                                                                                                            "label": "get ai"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 8,
+                                                                                                            "label": "get meta ai feature"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 48,
+                                            "distance": 1.4244244672541755,
+                                            "children": [
+                                                {
+                                                    "id": 6,
+                                                    "label": "give ai"
+                                                },
+                                                {
+                                                    "id": 46,
+                                                    "distance": 1.331370239739809,
+                                                    "children": [
+                                                        {
+                                                            "id": 4,
+                                                            "label": "connect ai chat"
+                                                        },
+                                                        {
+                                                            "id": 5,
+                                                            "label": "enjoy ai"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 50,
+                                    "distance": 1.5068625330399676,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "include ai"
+                                        },
+                                        {
+                                            "id": 3,
+                                            "label": "see ai"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 53,
+                            "distance": 1.6123317300129547,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "add ai"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "use ai feature"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

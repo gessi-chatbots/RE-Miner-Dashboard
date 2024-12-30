@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 1.0475362164780677,
+    "children": [
+        {
+            "id": 6,
+            "label": "speak watesapp"
+        },
+        {
+            "id": 11,
+            "distance": 0.965056191064496,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "speak country"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.6970638223279307,
+                    "children": [
+                        {
+                            "id": 7,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "speak language"
+                                },
+                                {
+                                    "id": 4,
+                                    "label": "speak different language"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.6529821623762031,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "speak afrikaans"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.6199016648610983,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "speak french"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "speak english"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

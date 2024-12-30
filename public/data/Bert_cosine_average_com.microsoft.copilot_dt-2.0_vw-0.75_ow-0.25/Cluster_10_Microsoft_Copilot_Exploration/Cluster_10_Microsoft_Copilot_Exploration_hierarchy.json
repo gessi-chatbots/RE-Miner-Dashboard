@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 1.8220486181664963,
+    "children": [
+        {
+            "id": 4,
+            "label": "discover full potential"
+        },
+        {
+            "id": 7,
+            "distance": 1.6702820864416352,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "explore microsoft copilot"
+                },
+                {
+                    "id": 6,
+                    "distance": 1.3531570084433135,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "explores use"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.47678785179157923,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "explore application"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "explore topic"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

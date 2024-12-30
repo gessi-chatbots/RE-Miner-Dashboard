@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.5061567285119286,
+    "children": [
+        {
+            "id": 3,
+            "label": "exchange crypto"
+        },
+        {
+            "id": 5,
+            "distance": 1.0634690219533143,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "good crypto earn app"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.713540494475563,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "do crypto mining"
+                        },
+                        {
+                            "id": 1,
+                            "label": "have crypto wallet"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

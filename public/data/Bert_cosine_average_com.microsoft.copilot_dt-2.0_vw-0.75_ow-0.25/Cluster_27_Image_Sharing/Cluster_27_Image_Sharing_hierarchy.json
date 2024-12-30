@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 0.9015300061132788,
+    "children": [
+        {
+            "id": 4,
+            "label": "send datum"
+        },
+        {
+            "id": 7,
+            "distance": 0.5423928606381941,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "send message"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.42683110197082097,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "send image"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.4123320774194519,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "send picture"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "send photo"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

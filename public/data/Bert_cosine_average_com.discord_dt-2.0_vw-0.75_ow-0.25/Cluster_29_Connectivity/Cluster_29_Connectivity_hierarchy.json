@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 0.9383621333126745,
+    "children": [
+        {
+            "id": 6,
+            "label": "solve plzz"
+        },
+        {
+            "id": 11,
+            "distance": 0.8155820752641073,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "solve captcha"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.6729711967577104,
+                    "children": [
+                        {
+                            "id": 8,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "solve bluetooth issue"
+                                },
+                                {
+                                    "id": 4,
+                                    "label": "solve issue"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.5978730591549458,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "solve connectivity thing"
+                                },
+                                {
+                                    "id": 7,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "solve problem"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "solve phone verify problem"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

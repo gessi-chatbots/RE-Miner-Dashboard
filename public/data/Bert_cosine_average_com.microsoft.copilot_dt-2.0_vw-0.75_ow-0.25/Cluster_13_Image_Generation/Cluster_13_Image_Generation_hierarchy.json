@@ -1,0 +1,644 @@
+{
+    "id": 128,
+    "distance": 1.9380591382264372,
+    "children": [
+        {
+            "id": 123,
+            "distance": 1.8244564844041133,
+            "children": [
+                {
+                    "id": 121,
+                    "distance": 1.7840062968188786,
+                    "children": [
+                        {
+                            "id": 64,
+                            "label": "bind previous experience"
+                        },
+                        {
+                            "id": 112,
+                            "distance": 1.6683996908684047,
+                            "children": [
+                                {
+                                    "id": 63,
+                                    "label": "introduce bug"
+                                },
+                                {
+                                    "id": 105,
+                                    "distance": 1.2073414169411179,
+                                    "children": [
+                                        {
+                                            "id": 61,
+                                            "label": "learn new thing"
+                                        },
+                                        {
+                                            "id": 62,
+                                            "label": "teach little sister"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 122,
+                    "distance": 1.8021458432561874,
+                    "children": [
+                        {
+                            "id": 114,
+                            "distance": 1.672806565737206,
+                            "children": [
+                                {
+                                    "id": 60,
+                                    "label": "assess correctness"
+                                },
+                                {
+                                    "id": 110,
+                                    "distance": 1.5342460626063636,
+                                    "children": [
+                                        {
+                                            "id": 58,
+                                            "label": "enhance user experience"
+                                        },
+                                        {
+                                            "id": 59,
+                                            "label": "achieve good"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 117,
+                            "distance": 1.7207504389974935,
+                            "children": [
+                                {
+                                    "id": 57,
+                                    "label": "develop app"
+                                },
+                                {
+                                    "id": 115,
+                                    "distance": 1.6749887914935386,
+                                    "children": [
+                                        {
+                                            "id": 56,
+                                            "label": "acquire information"
+                                        },
+                                        {
+                                            "id": 111,
+                                            "distance": 1.562977783450803,
+                                            "children": [
+                                                {
+                                                    "id": 54,
+                                                    "label": "resolve issue"
+                                                },
+                                                {
+                                                    "id": 55,
+                                                    "label": "manage conversation"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 127,
+            "distance": 1.9219537642671223,
+            "children": [
+                {
+                    "id": 125,
+                    "distance": 1.8658786155113418,
+                    "children": [
+                        {
+                            "id": 119,
+                            "distance": 1.7576040256358632,
+                            "children": [
+                                {
+                                    "id": 53,
+                                    "label": "buy subscription"
+                                },
+                                {
+                                    "id": 113,
+                                    "distance": 1.6706430533547967,
+                                    "children": [
+                                        {
+                                            "id": 108,
+                                            "distance": 1.412607121252517,
+                                            "children": [
+                                                {
+                                                    "id": 52,
+                                                    "label": "create ai image"
+                                                },
+                                                {
+                                                    "id": 102,
+                                                    "distance": 1.0565132363448022,
+                                                    "children": [
+                                                        {
+                                                            "id": 51,
+                                                            "label": "create as beautiful and precise image"
+                                                        },
+                                                        {
+                                                            "id": 101,
+                                                            "distance": 0.8962218939349342,
+                                                            "children": [
+                                                                {
+                                                                    "id": 50,
+                                                                    "label": "create husk"
+                                                                },
+                                                                {
+                                                                    "id": 100,
+                                                                    "distance": 0.8928548807951486,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 49,
+                                                                            "label": "create caption"
+                                                                        },
+                                                                        {
+                                                                            "id": 99,
+                                                                            "distance": 0.778253955659942,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 93,
+                                                                                    "distance": 0.67362186321644,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 47,
+                                                                                            "label": "create artificial intelligence"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 48,
+                                                                                            "label": "create such helpful assistant"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "id": 96,
+                                                                                    "distance": 0.7109937936912688,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 46,
+                                                                                            "label": "create perfect vegetarian diet"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 90,
+                                                                                            "distance": 0.666706715063855,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 45,
+                                                                                                    "label": "create new chat"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 88,
+                                                                                                    "distance": 0.6490334109468432,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 86,
+                                                                                                            "distance": 0.6306957484818587,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 44,
+                                                                                                                    "label": "create content"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 85,
+                                                                                                                    "distance": 0.6241700046551222,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 43,
+                                                                                                                            "label": "create more feature"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 83,
+                                                                                                                            "distance": 0.6108589916710726,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 42,
+                                                                                                                                    "label": "create scene"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 79,
+                                                                                                                                    "distance": 0.5773658299230865,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 74,
+                                                                                                                                            "distance": 0.5016358876478297,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 41,
+                                                                                                                                                    "label": "create fund commitment"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 73,
+                                                                                                                                                    "distance": 0.487481297114781,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 39,
+                                                                                                                                                            "label": "create new conversation"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 40,
+                                                                                                                                                            "label": "create exact imagination"
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 75,
+                                                                                                                                            "distance": 0.5272069270532829,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 38,
+                                                                                                                                                    "label": "create company logo"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 72,
+                                                                                                                                                    "distance": 0.4259081391959694,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 65,
+                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                            "children": [
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 36,
+                                                                                                                                                                    "label": "create image"
+                                                                                                                                                                },
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 37,
+                                                                                                                                                                    "label": "create single image"
+                                                                                                                                                                }
+                                                                                                                                                            ]
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 70,
+                                                                                                                                                            "distance": 0.412332088807931,
+                                                                                                                                                            "children": [
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 35,
+                                                                                                                                                                    "label": "create photo"
+                                                                                                                                                                },
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 66,
+                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                    "children": [
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 33,
+                                                                                                                                                                            "label": "create cool scary picture"
+                                                                                                                                                                        },
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 34,
+                                                                                                                                                                            "label": "create picture"
+                                                                                                                                                                        }
+                                                                                                                                                                    ]
+                                                                                                                                                                }
+                                                                                                                                                            ]
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 87,
+                                                                                                            "distance": 0.6332609135508975,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 31,
+                                                                                                                    "label": "create pic"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 32,
+                                                                                                                    "label": "create beneficial machine"
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 109,
+                                            "distance": 1.4212107281143325,
+                                            "children": [
+                                                {
+                                                    "id": 30,
+                                                    "label": "produce graphic warhammer40k type literature piece"
+                                                },
+                                                {
+                                                    "id": 106,
+                                                    "distance": 1.3382369070115523,
+                                                    "children": [
+                                                        {
+                                                            "id": 29,
+                                                            "label": "see ai generate text"
+                                                        },
+                                                        {
+                                                            "id": 91,
+                                                            "distance": 0.6682897639909824,
+                                                            "children": [
+                                                                {
+                                                                    "id": 28,
+                                                                    "label": "generate pic"
+                                                                },
+                                                                {
+                                                                    "id": 89,
+                                                                    "distance": 0.6535541538988322,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 78,
+                                                                            "distance": 0.5763466035899231,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 26,
+                                                                                    "label": "generate nonsense"
+                                                                                },
+                                                                                {
+                                                                                    "id": 27,
+                                                                                    "label": "generate thing"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": 81,
+                                                                            "distance": 0.6022994892343297,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 77,
+                                                                                    "distance": 0.5394227986476844,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 24,
+                                                                                            "label": "generate speech"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 25,
+                                                                                            "label": "generate response"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "id": 80,
+                                                                                    "distance": 0.5952551443595533,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 23,
+                                                                                            "label": "generate text"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 71,
+                                                                                            "distance": 0.4240621755438247,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 68,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 22,
+                                                                                                            "label": "generate image"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 67,
+                                                                                                            "distance": 0.0,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 20,
+                                                                                                                    "label": "generate one image"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 21,
+                                                                                                                    "label": "generate beautiful image"
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 69,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 18,
+                                                                                                            "label": "generate picture"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 19,
+                                                                                                            "label": "generate ai picture"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 124,
+                            "distance": 1.8387392351590486,
+                            "children": [
+                                {
+                                    "id": 17,
+                                    "label": "throw email"
+                                },
+                                {
+                                    "id": 118,
+                                    "distance": 1.756587644055485,
+                                    "children": [
+                                        {
+                                            "id": 16,
+                                            "label": "spread misinformation"
+                                        },
+                                        {
+                                            "id": 116,
+                                            "distance": 1.7054181590374016,
+                                            "children": [
+                                                {
+                                                    "id": 15,
+                                                    "label": "erase previous chat"
+                                                },
+                                                {
+                                                    "id": 107,
+                                                    "distance": 1.3804075707844479,
+                                                    "children": [
+                                                        {
+                                                            "id": 14,
+                                                            "label": "kill functionality"
+                                                        },
+                                                        {
+                                                            "id": 104,
+                                                            "distance": 1.1479304394218612,
+                                                            "children": [
+                                                                {
+                                                                    "id": 13,
+                                                                    "label": "destroy skype"
+                                                                },
+                                                                {
+                                                                    "id": 97,
+                                                                    "distance": 0.77332883157077,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 12,
+                                                                            "label": "destroy utility"
+                                                                        },
+                                                                        {
+                                                                            "id": 95,
+                                                                            "distance": 0.7046052015463441,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 11,
+                                                                                    "label": "destroy copilot experience"
+                                                                                },
+                                                                                {
+                                                                                    "id": 92,
+                                                                                    "distance": 0.6693033001986058,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 10,
+                                                                                            "label": "destroy app"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 84,
+                                                                                            "distance": 0.6181952113455189,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 9,
+                                                                                                    "label": "destroy layout"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 76,
+                                                                                                    "distance": 0.5363417218529096,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 7,
+                                                                                                            "label": "destroy user interface"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 8,
+                                                                                                            "label": "destroy fantastic software"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 126,
+                    "distance": 1.8801553812310456,
+                    "children": [
+                        {
+                            "id": 94,
+                            "distance": 0.69787980422004,
+                            "children": [
+                                {
+                                    "id": 5,
+                                    "label": "verify age"
+                                },
+                                {
+                                    "id": 6,
+                                    "label": "verify answer"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 120,
+                            "distance": 1.7752171223045867,
+                            "children": [
+                                {
+                                    "id": 98,
+                                    "distance": 0.7763942282257389,
+                                    "children": [
+                                        {
+                                            "id": 4,
+                                            "label": "maintain copilot project update"
+                                        },
+                                        {
+                                            "id": 82,
+                                            "distance": 0.6085635089957376,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "maintain open and positive attitude"
+                                                },
+                                                {
+                                                    "id": 3,
+                                                    "label": "maintain reputation"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 103,
+                                    "distance": 1.1198622870737693,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "restore old version"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "install old version"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

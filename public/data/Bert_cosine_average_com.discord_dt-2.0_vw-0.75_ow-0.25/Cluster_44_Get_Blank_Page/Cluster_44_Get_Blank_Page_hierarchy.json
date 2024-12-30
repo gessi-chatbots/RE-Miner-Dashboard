@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 1.9596104802858048,
+    "children": [
+        {
+            "id": 5,
+            "label": "get hang"
+        },
+        {
+            "id": 9,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "get free3month"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "get notif"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "get blank page"
+                                },
+                                {
+                                    "id": 6,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "get pass"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "get lot"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

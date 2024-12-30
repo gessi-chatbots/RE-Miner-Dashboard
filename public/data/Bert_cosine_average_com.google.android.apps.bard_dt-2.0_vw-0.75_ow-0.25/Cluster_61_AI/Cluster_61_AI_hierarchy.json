@@ -1,0 +1,274 @@
+{
+    "id": 54,
+    "distance": 1.8051896575564115,
+    "children": [
+        {
+            "id": 49,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 27,
+                    "label": "very helpful ai"
+                },
+                {
+                    "id": 48,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 26,
+                            "label": "really good ai"
+                        },
+                        {
+                            "id": 47,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 25,
+                                    "label": "very nice ai"
+                                },
+                                {
+                                    "id": 46,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 24,
+                                            "label": "great ai technology"
+                                        },
+                                        {
+                                            "id": 45,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 23,
+                                                    "label": "good ai model"
+                                                },
+                                                {
+                                                    "id": 44,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 22,
+                                                            "label": "like ai"
+                                                        },
+                                                        {
+                                                            "id": 43,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 21,
+                                                                    "label": "good ai module"
+                                                                },
+                                                                {
+                                                                    "id": 42,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 20,
+                                                                            "label": "simply amazing ai"
+                                                                        },
+                                                                        {
+                                                                            "id": 41,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 19,
+                                                                                    "label": "beats and metas ai system"
+                                                                                },
+                                                                                {
+                                                                                    "id": 40,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 18,
+                                                                                            "label": "really useful ai"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 39,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 17,
+                                                                                                    "label": "good ai tool"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 38,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 16,
+                                                                                                            "label": "absolutely good ai tool"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 37,
+                                                                                                            "distance": 0.0,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 15,
+                                                                                                                    "label": "have ai"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 36,
+                                                                                                                    "distance": 0.0,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 14,
+                                                                                                                            "label": "not ai"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 35,
+                                                                                                                            "distance": 0.0,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 13,
+                                                                                                                                    "label": "very bad ai"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 34,
+                                                                                                                                    "distance": 0.0,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 12,
+                                                                                                                                            "label": "great ai gemini"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 33,
+                                                                                                                                            "distance": 0.0,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 11,
+                                                                                                                                                    "label": "well ai"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 32,
+                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 10,
+                                                                                                                                                            "label": "only ai"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 31,
+                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                            "children": [
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 9,
+                                                                                                                                                                    "label": "ai"
+                                                                                                                                                                },
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 30,
+                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                    "children": [
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 8,
+                                                                                                                                                                            "label": "just right ai"
+                                                                                                                                                                        },
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 29,
+                                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                                            "children": [
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 7,
+                                                                                                                                                                                    "label": "very useful ai"
+                                                                                                                                                                                },
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 28,
+                                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                                    "children": [
+                                                                                                                                                                                        {
+                                                                                                                                                                                            "id": 5,
+                                                                                                                                                                                            "label": "cool interactive ai chatbot response"
+                                                                                                                                                                                        },
+                                                                                                                                                                                        {
+                                                                                                                                                                                            "id": 6,
+                                                                                                                                                                                            "label": "not bad but little good other ai tool"
+                                                                                                                                                                                        }
+                                                                                                                                                                                    ]
+                                                                                                                                                                                }
+                                                                                                                                                                            ]
+                                                                                                                                                                        }
+                                                                                                                                                                    ]
+                                                                                                                                                                }
+                                                                                                                                                            ]
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 53,
+            "distance": 1.774640303587164,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "well publish ai"
+                },
+                {
+                    "id": 52,
+                    "distance": 1.5828106121620724,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "fail ai game"
+                        },
+                        {
+                            "id": 51,
+                            "distance": 1.4931736745688604,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "enhance ai"
+                                },
+                                {
+                                    "id": 50,
+                                    "distance": 1.111180727121631,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "seem nice and adequate ai"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "treat ai"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

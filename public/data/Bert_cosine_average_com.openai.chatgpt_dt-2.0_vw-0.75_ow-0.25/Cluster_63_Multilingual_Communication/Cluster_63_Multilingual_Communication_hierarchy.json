@@ -1,0 +1,84 @@
+{
+    "id": 16,
+    "distance": 1.3003290092344202,
+    "children": [
+        {
+            "id": 8,
+            "label": "speak pashto"
+        },
+        {
+            "id": 15,
+            "distance": 1.0789147709050042,
+            "children": [
+                {
+                    "id": 7,
+                    "label": "speak chatgpt"
+                },
+                {
+                    "id": 14,
+                    "distance": 0.9271386193156447,
+                    "children": [
+                        {
+                            "id": 6,
+                            "label": "speak prblm"
+                        },
+                        {
+                            "id": 13,
+                            "distance": 0.6326303313573458,
+                            "children": [
+                                {
+                                    "id": 5,
+                                    "label": "speak english"
+                                },
+                                {
+                                    "id": 12,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 4,
+                                            "label": "speak language"
+                                        },
+                                        {
+                                            "id": 11,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 3,
+                                                    "label": "speak more than one language"
+                                                },
+                                                {
+                                                    "id": 10,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "speak odia language"
+                                                        },
+                                                        {
+                                                            "id": 9,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 0,
+                                                                    "label": "speak hindi language"
+                                                                },
+                                                                {
+                                                                    "id": 1,
+                                                                    "label": "speak several language"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,144 @@
+{
+    "id": 28,
+    "distance": 0.925418326833999,
+    "children": [
+        {
+            "id": 18,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 14,
+                    "label": "post precise short video"
+                },
+                {
+                    "id": 17,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 12,
+                            "label": "post one minute video"
+                        },
+                        {
+                            "id": 13,
+                            "label": "post long video"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "distance": 0.8804831034605378,
+            "children": [
+                {
+                    "id": 11,
+                    "label": "post more scam"
+                },
+                {
+                    "id": 26,
+                    "distance": 0.7958499290132846,
+                    "children": [
+                        {
+                            "id": 24,
+                            "distance": 0.7102763163931671,
+                            "children": [
+                                {
+                                    "id": 10,
+                                    "label": "post late update"
+                                },
+                                {
+                                    "id": 23,
+                                    "distance": 0.6485151999137948,
+                                    "children": [
+                                        {
+                                            "id": 20,
+                                            "distance": 0.5600134797585326,
+                                            "children": [
+                                                {
+                                                    "id": 9,
+                                                    "label": "post long message"
+                                                },
+                                                {
+                                                    "id": 19,
+                                                    "distance": 0.4240621685551639,
+                                                    "children": [
+                                                        {
+                                                            "id": 8,
+                                                            "label": "post many image"
+                                                        },
+                                                        {
+                                                            "id": 15,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 6,
+                                                                    "label": "post picture"
+                                                                },
+                                                                {
+                                                                    "id": 7,
+                                                                    "label": "post video picture"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 22,
+                                            "distance": 0.6244673902358784,
+                                            "children": [
+                                                {
+                                                    "id": 16,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 4,
+                                                            "label": "post video status"
+                                                        },
+                                                        {
+                                                            "id": 5,
+                                                            "label": "post one status"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 21,
+                                                    "distance": 0.5689485803181135,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "post bad thing"
+                                                        },
+                                                        {
+                                                            "id": 3,
+                                                            "label": "post many people"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 25,
+                            "distance": 0.7198186339749396,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "post audio"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "post high quality"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

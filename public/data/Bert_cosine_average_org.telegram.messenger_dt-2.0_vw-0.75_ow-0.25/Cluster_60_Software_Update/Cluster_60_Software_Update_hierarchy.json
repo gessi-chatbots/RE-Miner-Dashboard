@@ -1,0 +1,124 @@
+{
+    "id": 24,
+    "distance": 1.7225667118625165,
+    "children": [
+        {
+            "id": 22,
+            "distance": 0.8039123228545817,
+            "children": [
+                {
+                    "id": 12,
+                    "label": "update new email"
+                },
+                {
+                    "id": 21,
+                    "distance": 0.7636408189779171,
+                    "children": [
+                        {
+                            "id": 13,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 10,
+                                    "label": "update smart app"
+                                },
+                                {
+                                    "id": 11,
+                                    "label": "update app"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 20,
+                            "distance": 0.7297952219547496,
+                            "children": [
+                                {
+                                    "id": 9,
+                                    "label": "update information"
+                                },
+                                {
+                                    "id": 19,
+                                    "distance": 0.7235870923184441,
+                                    "children": [
+                                        {
+                                            "id": 8,
+                                            "label": "update plessss dn update"
+                                        },
+                                        {
+                                            "id": 18,
+                                            "distance": 0.6962995790356319,
+                                            "children": [
+                                                {
+                                                    "id": 7,
+                                                    "label": "update issue"
+                                                },
+                                                {
+                                                    "id": 17,
+                                                    "distance": 0.672401207098043,
+                                                    "children": [
+                                                        {
+                                                            "id": 6,
+                                                            "label": "update new feature"
+                                                        },
+                                                        {
+                                                            "id": 16,
+                                                            "distance": 0.6249910505492073,
+                                                            "children": [
+                                                                {
+                                                                    "id": 14,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 4,
+                                                                            "label": "update new version"
+                                                                        },
+                                                                        {
+                                                                            "id": 5,
+                                                                            "label": "update version"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 15,
+                                                                    "distance": 0.5995144731423766,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 2,
+                                                                            "label": "update proxy"
+                                                                        },
+                                                                        {
+                                                                            "id": 3,
+                                                                            "label": "update connect status"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "distance": 1.3116012177566994,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "like new update"
+                },
+                {
+                    "id": 1,
+                    "label": "update google pixel9pro"
+                }
+            ]
+        }
+    ]
+}

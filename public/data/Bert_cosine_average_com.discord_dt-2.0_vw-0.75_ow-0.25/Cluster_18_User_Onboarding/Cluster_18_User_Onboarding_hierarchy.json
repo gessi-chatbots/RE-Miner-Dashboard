@@ -1,0 +1,444 @@
+{
+    "id": 88,
+    "distance": 1.9622299311823137,
+    "children": [
+        {
+            "id": 81,
+            "distance": 0.8615682075252015,
+            "children": [
+                {
+                    "id": 44,
+                    "label": "verify good am account"
+                },
+                {
+                    "id": 79,
+                    "distance": 0.8234696877978515,
+                    "children": [
+                        {
+                            "id": 43,
+                            "label": "verify email"
+                        },
+                        {
+                            "id": 78,
+                            "distance": 0.8029540999513303,
+                            "children": [
+                                {
+                                    "id": 70,
+                                    "distance": 0.6763046855363342,
+                                    "children": [
+                                        {
+                                            "id": 42,
+                                            "label": "verify account"
+                                        },
+                                        {
+                                            "id": 66,
+                                            "distance": 0.629610805885981,
+                                            "children": [
+                                                {
+                                                    "id": 61,
+                                                    "distance": 0.5641900772041492,
+                                                    "children": [
+                                                        {
+                                                            "id": 40,
+                                                            "label": "verify password"
+                                                        },
+                                                        {
+                                                            "id": 41,
+                                                            "label": "verify phone"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 64,
+                                                    "distance": 0.6101077003755481,
+                                                    "children": [
+                                                        {
+                                                            "id": 55,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 39,
+                                                                    "label": "verify phone number"
+                                                                },
+                                                                {
+                                                                    "id": 54,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 38,
+                                                                            "label": "have verify number"
+                                                                        },
+                                                                        {
+                                                                            "id": 53,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 36,
+                                                                                    "label": "verify number"
+                                                                                },
+                                                                                {
+                                                                                    "id": 37,
+                                                                                    "label": "verify phken number"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 63,
+                                                            "distance": 0.5910251192893745,
+                                                            "children": [
+                                                                {
+                                                                    "id": 35,
+                                                                    "label": "verify problem"
+                                                                },
+                                                                {
+                                                                    "id": 59,
+                                                                    "distance": 0.5531173620156475,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 33,
+                                                                            "label": "verify different airdrop coin"
+                                                                        },
+                                                                        {
+                                                                            "id": 34,
+                                                                            "label": "verify code"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 77,
+                                    "distance": 0.7666589142204127,
+                                    "children": [
+                                        {
+                                            "id": 31,
+                                            "label": "verify discord"
+                                        },
+                                        {
+                                            "id": 32,
+                                            "label": "verify captcha"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 87,
+            "distance": 1.7368131811375687,
+            "children": [
+                {
+                    "id": 85,
+                    "distance": 1.6556464720858552,
+                    "children": [
+                        {
+                            "id": 30,
+                            "label": "move social group"
+                        },
+                        {
+                            "id": 84,
+                            "distance": 0.924142853747109,
+                            "children": [
+                                {
+                                    "id": 52,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 29,
+                                            "label": "buy afew nitro"
+                                        },
+                                        {
+                                            "id": 51,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 28,
+                                                    "label": "buy nitro"
+                                                },
+                                                {
+                                                    "id": 50,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 26,
+                                                            "label": "buy newly implement nitro"
+                                                        },
+                                                        {
+                                                            "id": 27,
+                                                            "label": "buy nitro sub"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 83,
+                                    "distance": 0.8855053897399142,
+                                    "children": [
+                                        {
+                                            "id": 25,
+                                            "label": "buy decoration"
+                                        },
+                                        {
+                                            "id": 71,
+                                            "distance": 0.6804930762662648,
+                                            "children": [
+                                                {
+                                                    "id": 62,
+                                                    "distance": 0.5858051920104745,
+                                                    "children": [
+                                                        {
+                                                            "id": 23,
+                                                            "label": "buy free trial"
+                                                        },
+                                                        {
+                                                            "id": 24,
+                                                            "label": "buy item"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 68,
+                                                    "distance": 0.6667684887592805,
+                                                    "children": [
+                                                        {
+                                                            "id": 21,
+                                                            "label": "buy all share"
+                                                        },
+                                                        {
+                                                            "id": 22,
+                                                            "label": "buy new phone"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 86,
+                    "distance": 1.6881986337196768,
+                    "children": [
+                        {
+                            "id": 80,
+                            "distance": 0.8243924617611661,
+                            "children": [
+                                {
+                                    "id": 20,
+                                    "label": "install discord"
+                                },
+                                {
+                                    "id": 73,
+                                    "distance": 0.7210390952566442,
+                                    "children": [
+                                        {
+                                            "id": 18,
+                                            "label": "install version"
+                                        },
+                                        {
+                                            "id": 19,
+                                            "label": "install app"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 82,
+                            "distance": 0.8798956072005405,
+                            "children": [
+                                {
+                                    "id": 75,
+                                    "distance": 0.7458995269746265,
+                                    "children": [
+                                        {
+                                            "id": 17,
+                                            "label": "create bot"
+                                        },
+                                        {
+                                            "id": 49,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 15,
+                                                    "label": "create whole new acc"
+                                                },
+                                                {
+                                                    "id": 16,
+                                                    "label": "create acc"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 76,
+                                    "distance": 0.749484280570562,
+                                    "children": [
+                                        {
+                                            "id": 14,
+                                            "label": "create such horrible ui"
+                                        },
+                                        {
+                                            "id": 74,
+                                            "distance": 0.7341070385484059,
+                                            "children": [
+                                                {
+                                                    "id": 13,
+                                                    "label": "create new acount"
+                                                },
+                                                {
+                                                    "id": 72,
+                                                    "distance": 0.6949289429288429,
+                                                    "children": [
+                                                        {
+                                                            "id": 12,
+                                                            "label": "create bad app"
+                                                        },
+                                                        {
+                                                            "id": 69,
+                                                            "distance": 0.6753672131045061,
+                                                            "children": [
+                                                                {
+                                                                    "id": 11,
+                                                                    "label": "create own account work"
+                                                                },
+                                                                {
+                                                                    "id": 67,
+                                                                    "distance": 0.6380675625491039,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 48,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 10,
+                                                                                    "label": "create new email account"
+                                                                                },
+                                                                                {
+                                                                                    "id": 47,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 9,
+                                                                                            "label": "create new account"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 46,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 7,
+                                                                                                    "label": "create account"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 8,
+                                                                                                    "label": "create first account"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": 65,
+                                                                            "distance": 0.619256989945708,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 6,
+                                                                                    "label": "create problem"
+                                                                                },
+                                                                                {
+                                                                                    "id": 60,
+                                                                                    "distance": 0.5559008812175819,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 56,
+                                                                                            "distance": 0.4695304702231691,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 4,
+                                                                                                    "label": "create i"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 5,
+                                                                                                    "label": "create new thread"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 58,
+                                                                                            "distance": 0.5241685766898327,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 3,
+                                                                                                    "label": "create new password"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 57,
+                                                                                                    "distance": 0.5096393779444968,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 2,
+                                                                                                            "label": "create lock channel"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 45,
+                                                                                                            "distance": 0.0,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 0,
+                                                                                                                    "label": "create server"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 1,
+                                                                                                                    "label": "create many server"
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

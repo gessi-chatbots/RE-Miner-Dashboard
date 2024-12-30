@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 0.904797541290631,
+    "children": [
+        {
+            "id": 5,
+            "label": "click archive chat history"
+        },
+        {
+            "id": 9,
+            "distance": 0.6486509287303837,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "click button"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.5742064150549486,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "click regenerate response"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.5465707832602397,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "click edit message"
+                                },
+                                {
+                                    "id": 6,
+                                    "distance": 0.4123320661433651,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "click photo"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "click picture"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

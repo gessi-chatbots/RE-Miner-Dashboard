@@ -1,0 +1,254 @@
+{
+    "id": 50,
+    "distance": 1.941816398363792,
+    "children": [
+        {
+            "id": 34,
+            "distance": 0.5526429809538541,
+            "children": [
+                {
+                    "id": 24,
+                    "label": "increase voice"
+                },
+                {
+                    "id": 25,
+                    "label": "increase time delay"
+                }
+            ]
+        },
+        {
+            "id": 49,
+            "distance": 1.8706117211661413,
+            "children": [
+                {
+                    "id": 47,
+                    "distance": 1.09484131669162,
+                    "children": [
+                        {
+                            "id": 23,
+                            "label": "great experience ai work"
+                        },
+                        {
+                            "id": 46,
+                            "distance": 0.8694553254265127,
+                            "children": [
+                                {
+                                    "id": 21,
+                                    "label": "experience good ui"
+                                },
+                                {
+                                    "id": 22,
+                                    "label": "experience technical difficulty"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 48,
+                    "distance": 1.666040389047554,
+                    "children": [
+                        {
+                            "id": 20,
+                            "label": "reduce work"
+                        },
+                        {
+                            "id": 45,
+                            "distance": 0.8410188859028681,
+                            "children": [
+                                {
+                                    "id": 19,
+                                    "label": "improve search result"
+                                },
+                                {
+                                    "id": 44,
+                                    "distance": 0.7479293201500743,
+                                    "children": [
+                                        {
+                                            "id": 28,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 17,
+                                                    "label": "improve gemini zulu language"
+                                                },
+                                                {
+                                                    "id": 18,
+                                                    "label": "improve language"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 43,
+                                            "distance": 0.7167377469583528,
+                                            "children": [
+                                                {
+                                                    "id": 27,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 16,
+                                                            "label": "improve image quality"
+                                                        },
+                                                        {
+                                                            "id": 26,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 14,
+                                                                    "label": "improve information source quality"
+                                                                },
+                                                                {
+                                                                    "id": 15,
+                                                                    "label": "improve quality"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 42,
+                                                    "distance": 0.6873459095163958,
+                                                    "children": [
+                                                        {
+                                                            "id": 13,
+                                                            "label": "improve math answer type formay"
+                                                        },
+                                                        {
+                                                            "id": 41,
+                                                            "distance": 0.6534058812806798,
+                                                            "children": [
+                                                                {
+                                                                    "id": 39,
+                                                                    "distance": 0.6158024470499739,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 11,
+                                                                            "label": "improve productivity level"
+                                                                        },
+                                                                        {
+                                                                            "id": 12,
+                                                                            "label": "improve multiple language mode"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 40,
+                                                                    "distance": 0.6265293891907417,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 37,
+                                                                            "distance": 0.5904450883927421,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 10,
+                                                                                    "label": "improve knowledge"
+                                                                                },
+                                                                                {
+                                                                                    "id": 35,
+                                                                                    "distance": 0.5701589609678571,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 9,
+                                                                                            "label": "improve answer"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 33,
+                                                                                            "distance": 0.5360337908993777,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 30,
+                                                                                                    "distance": 0.4761579355221554,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 7,
+                                                                                                            "label": "improve voice"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 8,
+                                                                                                            "label": "improve microphone"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 32,
+                                                                                                    "distance": 0.5190175130078166,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 6,
+                                                                                                            "label": "improve thing"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 31,
+                                                                                                            "distance": 0.48341664300998527,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 5,
+                                                                                                                    "label": "improve mood"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 29,
+                                                                                                                    "distance": 0.43898877097103745,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 3,
+                                                                                                                            "label": "improve ability"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 4,
+                                                                                                                            "label": "improve mistake"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": 38,
+                                                                            "distance": 0.5994519280524098,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 2,
+                                                                                    "label": "improve future interaction"
+                                                                                },
+                                                                                {
+                                                                                    "id": 36,
+                                                                                    "distance": 0.5865095004543436,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 0,
+                                                                                            "label": "improve calculation"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 1,
+                                                                                            "label": "improve datum security"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

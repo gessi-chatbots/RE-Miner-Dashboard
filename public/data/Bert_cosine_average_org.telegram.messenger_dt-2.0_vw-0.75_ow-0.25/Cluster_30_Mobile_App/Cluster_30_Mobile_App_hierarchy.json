@@ -1,0 +1,234 @@
+{
+    "id": 46,
+    "distance": 1.9868905455295476,
+    "children": [
+        {
+            "id": 23,
+            "label": "proceed transaction"
+        },
+        {
+            "id": 45,
+            "distance": 1.982109907900504,
+            "children": [
+                {
+                    "id": 38,
+                    "distance": 1.6571740929442786,
+                    "children": [
+                        {
+                            "id": 21,
+                            "label": "abuses trust"
+                        },
+                        {
+                            "id": 22,
+                            "label": "afford last task"
+                        }
+                    ]
+                },
+                {
+                    "id": 44,
+                    "distance": 1.9414226211152907,
+                    "children": [
+                        {
+                            "id": 42,
+                            "distance": 1.8902507336962113,
+                            "children": [
+                                {
+                                    "id": 20,
+                                    "label": "terminate device"
+                                },
+                                {
+                                    "id": 32,
+                                    "distance": 0.6719871747371294,
+                                    "children": [
+                                        {
+                                            "id": 30,
+                                            "distance": 0.5831959335079652,
+                                            "children": [
+                                                {
+                                                    "id": 19,
+                                                    "label": "verify user"
+                                                },
+                                                {
+                                                    "id": 27,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 17,
+                                                            "label": "verify account"
+                                                        },
+                                                        {
+                                                            "id": 18,
+                                                            "label": "verify telegram account"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 31,
+                                            "distance": 0.585296294168131,
+                                            "children": [
+                                                {
+                                                    "id": 26,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 15,
+                                                            "label": "verify phone number"
+                                                        },
+                                                        {
+                                                            "id": 16,
+                                                            "label": "verify number"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 29,
+                                                    "distance": 0.5688604910604195,
+                                                    "children": [
+                                                        {
+                                                            "id": 24,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 13,
+                                                                    "label": "verify code problem"
+                                                                },
+                                                                {
+                                                                    "id": 14,
+                                                                    "label": "verify problem"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 28,
+                                                            "distance": 0.5213806886511057,
+                                                            "children": [
+                                                                {
+                                                                    "id": 12,
+                                                                    "label": "verify nin slip"
+                                                                },
+                                                                {
+                                                                    "id": 25,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 10,
+                                                                            "label": "verify country code"
+                                                                        },
+                                                                        {
+                                                                            "id": 11,
+                                                                            "label": "verify code"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 43,
+                            "distance": 1.8940768188300283,
+                            "children": [
+                                {
+                                    "id": 40,
+                                    "distance": 1.7954308824261738,
+                                    "children": [
+                                        {
+                                            "id": 9,
+                                            "label": "commit suicide"
+                                        },
+                                        {
+                                            "id": 39,
+                                            "distance": 1.6766341735720658,
+                                            "children": [
+                                                {
+                                                    "id": 8,
+                                                    "label": "maintain credibility"
+                                                },
+                                                {
+                                                    "id": 36,
+                                                    "distance": 1.6348913967974341,
+                                                    "children": [
+                                                        {
+                                                            "id": 7,
+                                                            "label": "develop app"
+                                                        },
+                                                        {
+                                                            "id": 33,
+                                                            "distance": 0.7628595081659485,
+                                                            "children": [
+                                                                {
+                                                                    "id": 5,
+                                                                    "label": "manage storage"
+                                                                },
+                                                                {
+                                                                    "id": 6,
+                                                                    "label": "manage simple app"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 41,
+                                    "distance": 1.829914565344093,
+                                    "children": [
+                                        {
+                                            "id": 4,
+                                            "label": "gain access"
+                                        },
+                                        {
+                                            "id": 37,
+                                            "distance": 1.6480559546895543,
+                                            "children": [
+                                                {
+                                                    "id": 34,
+                                                    "distance": 0.7679593366775234,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "minimize problem"
+                                                        },
+                                                        {
+                                                            "id": 3,
+                                                            "label": "minimize app"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 35,
+                                                    "distance": 0.7683983991091866,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "reduce risk"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "reduce gap"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,174 @@
+{
+    "id": 34,
+    "distance": 1.9474808008736415,
+    "children": [
+        {
+            "id": 21,
+            "distance": 0.5700009524242294,
+            "children": [
+                {
+                    "id": 16,
+                    "label": "do file attachment"
+                },
+                {
+                    "id": 17,
+                    "label": "file civil lawsuit"
+                }
+            ]
+        },
+        {
+            "id": 33,
+            "distance": 1.5777483986416052,
+            "children": [
+                {
+                    "id": 30,
+                    "distance": 1.260923837414376,
+                    "children": [
+                        {
+                            "id": 26,
+                            "distance": 0.863762664729673,
+                            "children": [
+                                {
+                                    "id": 15,
+                                    "label": "log what be app"
+                                },
+                                {
+                                    "id": 25,
+                                    "distance": 0.7296609808258328,
+                                    "children": [
+                                        {
+                                            "id": 14,
+                                            "label": "log self"
+                                        },
+                                        {
+                                            "id": 24,
+                                            "distance": 0.6774342823332629,
+                                            "children": [
+                                                {
+                                                    "id": 19,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 13,
+                                                            "label": "log mt account"
+                                                        },
+                                                        {
+                                                            "id": 18,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 11,
+                                                                    "label": "log wa account"
+                                                                },
+                                                                {
+                                                                    "id": 12,
+                                                                    "label": "log old account"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 23,
+                                                    "distance": 0.6335188585122102,
+                                                    "children": [
+                                                        {
+                                                            "id": 10,
+                                                            "label": "log different whatsapp number"
+                                                        },
+                                                        {
+                                                            "id": 22,
+                                                            "distance": 0.581776347357422,
+                                                            "children": [
+                                                                {
+                                                                    "id": 9,
+                                                                    "label": "log phone"
+                                                                },
+                                                                {
+                                                                    "id": 20,
+                                                                    "distance": 0.5389399336387752,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 7,
+                                                                            "label": "log people"
+                                                                        },
+                                                                        {
+                                                                            "id": 8,
+                                                                            "label": "log companion device"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 27,
+                            "distance": 1.1068965456714006,
+                            "children": [
+                                {
+                                    "id": 5,
+                                    "label": "show recently log in device"
+                                },
+                                {
+                                    "id": 6,
+                                    "label": "log in problem"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 32,
+                    "distance": 1.5249240323409563,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "separate call log and chat log history"
+                        },
+                        {
+                            "id": 31,
+                            "distance": 1.3838180623047265,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "put log out or sign out feature"
+                                },
+                                {
+                                    "id": 29,
+                                    "distance": 1.2518883511510692,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "add log out function"
+                                        },
+                                        {
+                                            "id": 28,
+                                            "distance": 1.1438348997482997,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "provide log out option"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "get log in not avaliable right now error"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

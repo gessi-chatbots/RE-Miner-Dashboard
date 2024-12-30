@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.9074165795583597,
+    "children": [
+        {
+            "id": 2,
+            "label": "include at least do not disturn mode"
+        },
+        {
+            "id": 3,
+            "distance": 1.7582706031988466,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "consist ample space"
+                },
+                {
+                    "id": 1,
+                    "label": "occur issue"
+                }
+            ]
+        }
+    ]
+}

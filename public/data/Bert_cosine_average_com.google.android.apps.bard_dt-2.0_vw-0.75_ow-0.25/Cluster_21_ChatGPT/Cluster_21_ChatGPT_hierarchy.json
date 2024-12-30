@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.3587681202903357,
+    "children": [
+        {
+            "id": 0,
+            "label": "chat gpt"
+        },
+        {
+            "id": 1,
+            "label": "prefer chat gpt"
+        }
+    ]
+}

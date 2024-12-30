@@ -1,0 +1,144 @@
+{
+    "id": 28,
+    "distance": 1.9639863560611694,
+    "children": [
+        {
+            "id": 25,
+            "distance": 0.7984131355586195,
+            "children": [
+                {
+                    "id": 14,
+                    "label": "copy part"
+                },
+                {
+                    "id": 24,
+                    "distance": 0.7283615166861883,
+                    "children": [
+                        {
+                            "id": 13,
+                            "label": "copy whole or part"
+                        },
+                        {
+                            "id": 23,
+                            "distance": 0.664312215283785,
+                            "children": [
+                                {
+                                    "id": 16,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 11,
+                                            "label": "copy all feature"
+                                        },
+                                        {
+                                            "id": 12,
+                                            "label": "copy gb feature"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 19,
+                                    "distance": 0.6336478863864933,
+                                    "children": [
+                                        {
+                                            "id": 9,
+                                            "label": "copy specific text"
+                                        },
+                                        {
+                                            "id": 10,
+                                            "label": "copy whole message"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "distance": 1.0040887244662164,
+            "children": [
+                {
+                    "id": 21,
+                    "distance": 0.6555409075799019,
+                    "children": [
+                        {
+                            "id": 7,
+                            "label": "access meta ai option"
+                        },
+                        {
+                            "id": 8,
+                            "label": "access locked chat"
+                        }
+                    ]
+                },
+                {
+                    "id": 26,
+                    "distance": 0.9043363869603268,
+                    "children": [
+                        {
+                            "id": 6,
+                            "label": "access old messegae"
+                        },
+                        {
+                            "id": 22,
+                            "distance": 0.6578524327716058,
+                            "children": [
+                                {
+                                    "id": 5,
+                                    "label": "access chat"
+                                },
+                                {
+                                    "id": 20,
+                                    "distance": 0.6498214745436285,
+                                    "children": [
+                                        {
+                                            "id": 17,
+                                            "distance": 0.615444814853626,
+                                            "children": [
+                                                {
+                                                    "id": 3,
+                                                    "label": "access previous message"
+                                                },
+                                                {
+                                                    "id": 4,
+                                                    "label": "access new whatsapp official"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 18,
+                                            "distance": 0.6202969203231627,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "access set"
+                                                },
+                                                {
+                                                    "id": 15,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "access ai"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "access meta ai"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

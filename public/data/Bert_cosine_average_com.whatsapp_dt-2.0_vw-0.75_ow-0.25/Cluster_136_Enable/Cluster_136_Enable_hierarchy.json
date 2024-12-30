@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 2,
+            "label": "enable sir"
+        },
+        {
+            "id": 3,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "enable"
+                },
+                {
+                    "id": 1,
+                    "label": "enable username"
+                }
+            ]
+        }
+    ]
+}

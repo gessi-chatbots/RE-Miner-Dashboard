@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.963818542208134,
+    "children": [
+        {
+            "id": 3,
+            "label": "learner disciplined farmer"
+        },
+        {
+            "id": 5,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "disrupt status user experience"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "disrupt receipt"
+                        },
+                        {
+                            "id": 1,
+                            "label": "disrupt daily activity"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

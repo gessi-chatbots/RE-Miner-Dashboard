@@ -1,0 +1,194 @@
+{
+    "id": 38,
+    "distance": 1.9792326072579935,
+    "children": [
+        {
+            "id": 36,
+            "distance": 1.7932214512749614,
+            "children": [
+                {
+                    "id": 19,
+                    "label": "cancel card"
+                },
+                {
+                    "id": 23,
+                    "distance": 0.5575583423588952,
+                    "children": [
+                        {
+                            "id": 17,
+                            "label": "notify telegram"
+                        },
+                        {
+                            "id": 18,
+                            "label": "notify tablet"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 37,
+            "distance": 1.9410353668964366,
+            "children": [
+                {
+                    "id": 34,
+                    "distance": 0.8975463277249699,
+                    "children": [
+                        {
+                            "id": 27,
+                            "distance": 0.6081355522239267,
+                            "children": [
+                                {
+                                    "id": 15,
+                                    "label": "report scam"
+                                },
+                                {
+                                    "id": 16,
+                                    "label": "report scammer"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 33,
+                            "distance": 0.8324265325809503,
+                            "children": [
+                                {
+                                    "id": 14,
+                                    "label": "report porn"
+                                },
+                                {
+                                    "id": 32,
+                                    "distance": 0.7538238834942127,
+                                    "children": [
+                                        {
+                                            "id": 13,
+                                            "label": "report spammy or fake account"
+                                        },
+                                        {
+                                            "id": 31,
+                                            "distance": 0.7006121854816274,
+                                            "children": [
+                                                {
+                                                    "id": 12,
+                                                    "label": "report issue"
+                                                },
+                                                {
+                                                    "id": 30,
+                                                    "distance": 0.6621902794935284,
+                                                    "children": [
+                                                        {
+                                                            "id": 28,
+                                                            "distance": 0.6129582034988309,
+                                                            "children": [
+                                                                {
+                                                                    "id": 10,
+                                                                    "label": "report cyber crime"
+                                                                },
+                                                                {
+                                                                    "id": 11,
+                                                                    "label": "report incident"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 29,
+                                                            "distance": 0.6278611446209469,
+                                                            "children": [
+                                                                {
+                                                                    "id": 9,
+                                                                    "label": "report account"
+                                                                },
+                                                                {
+                                                                    "id": 26,
+                                                                    "distance": 0.602156141347325,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 8,
+                                                                            "label": "report spam group"
+                                                                        },
+                                                                        {
+                                                                            "id": 25,
+                                                                            "distance": 0.5778497978226433,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 7,
+                                                                                    "label": "report user"
+                                                                                },
+                                                                                {
+                                                                                    "id": 24,
+                                                                                    "distance": 0.5612436275738496,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 6,
+                                                                                            "label": "report person"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 22,
+                                                                                            "distance": 0.5289568640223938,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 5,
+                                                                                                    "label": "report scam activity"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 21,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 4,
+                                                                                                            "label": "report channel"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 20,
+                                                                                                            "distance": 0.0,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 2,
+                                                                                                                    "label": "report fake channel"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 3,
+                                                                                                                    "label": "report illegal channel"
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 35,
+                    "distance": 0.9861945373356032,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "new review now thank"
+                        },
+                        {
+                            "id": 1,
+                            "label": "review paragraraph"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

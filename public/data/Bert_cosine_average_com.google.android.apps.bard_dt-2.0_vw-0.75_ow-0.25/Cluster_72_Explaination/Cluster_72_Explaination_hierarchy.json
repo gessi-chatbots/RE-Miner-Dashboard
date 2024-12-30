@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.843959016398826,
+    "children": [
+        {
+            "id": 0,
+            "label": "explain thought"
+        },
+        {
+            "id": 1,
+            "label": "explain lay"
+        }
+    ]
+}

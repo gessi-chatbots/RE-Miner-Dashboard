@@ -1,0 +1,114 @@
+{
+    "id": 22,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 11,
+            "label": "take very long time"
+        },
+        {
+            "id": 21,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 10,
+                    "label": "take time"
+                },
+                {
+                    "id": 20,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 9,
+                            "label": "take three whole day"
+                        },
+                        {
+                            "id": 19,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 8,
+                                    "label": "take about two hour"
+                                },
+                                {
+                                    "id": 18,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 7,
+                                            "label": "take year"
+                                        },
+                                        {
+                                            "id": 17,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 6,
+                                                    "label": "take bit time"
+                                                },
+                                                {
+                                                    "id": 16,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 5,
+                                                            "label": "take over an hour"
+                                                        },
+                                                        {
+                                                            "id": 15,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 4,
+                                                                    "label": "take so many time"
+                                                                },
+                                                                {
+                                                                    "id": 14,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 3,
+                                                                            "label": "take little bit"
+                                                                        },
+                                                                        {
+                                                                            "id": 13,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 2,
+                                                                                    "label": "take lot"
+                                                                                },
+                                                                                {
+                                                                                    "id": 12,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 0,
+                                                                                            "label": "take whole24hour"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 1,
+                                                                                            "label": "take one month"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

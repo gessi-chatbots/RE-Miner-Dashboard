@@ -1,0 +1,74 @@
+{
+    "id": 14,
+    "distance": 1.885832509677142,
+    "children": [
+        {
+            "id": 11,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 7,
+                    "label": "have ig"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 6,
+                            "label": "have back"
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 5,
+                                    "label": "have sm"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "have livescore"
+                                        },
+                                        {
+                                            "id": 4,
+                                            "label": "have or freedom"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "distance": 1.7391580598506657,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "have xiaomi phone"
+                },
+                {
+                    "id": 12,
+                    "distance": 1.6102255425926644,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "have gut"
+                        },
+                        {
+                            "id": 1,
+                            "label": "have well control"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

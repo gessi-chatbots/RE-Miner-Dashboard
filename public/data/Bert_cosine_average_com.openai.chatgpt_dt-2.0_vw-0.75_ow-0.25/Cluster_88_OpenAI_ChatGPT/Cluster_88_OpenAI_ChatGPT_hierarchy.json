@@ -1,0 +1,324 @@
+{
+    "id": 64,
+    "distance": 1.9961645823536867,
+    "children": [
+        {
+            "id": 62,
+            "distance": 1.16836743614245,
+            "children": [
+                {
+                    "id": 60,
+                    "distance": 0.8796694681755747,
+                    "children": [
+                        {
+                            "id": 58,
+                            "distance": 0.7871666500874853,
+                            "children": [
+                                {
+                                    "id": 31,
+                                    "label": "love aap"
+                                },
+                                {
+                                    "id": 32,
+                                    "label": "love gtp"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 59,
+                            "distance": 0.8054834989827615,
+                            "children": [
+                                {
+                                    "id": 30,
+                                    "label": "love technology"
+                                },
+                                {
+                                    "id": 57,
+                                    "distance": 0.7588830374143107,
+                                    "children": [
+                                        {
+                                            "id": 55,
+                                            "distance": 0.7160023056289404,
+                                            "children": [
+                                                {
+                                                    "id": 28,
+                                                    "label": "love transparency"
+                                                },
+                                                {
+                                                    "id": 29,
+                                                    "label": "love specially voice assistant"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 56,
+                                            "distance": 0.7251346632489527,
+                                            "children": [
+                                                {
+                                                    "id": 27,
+                                                    "label": "love think"
+                                                },
+                                                {
+                                                    "id": 54,
+                                                    "distance": 0.698705865412356,
+                                                    "children": [
+                                                        {
+                                                            "id": 36,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 26,
+                                                                    "label": "love good app"
+                                                                },
+                                                                {
+                                                                    "id": 35,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 25,
+                                                                            "label": "love wonderful app"
+                                                                        },
+                                                                        {
+                                                                            "id": 34,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 24,
+                                                                                    "label": "love great app"
+                                                                                },
+                                                                                {
+                                                                                    "id": 33,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 22,
+                                                                                            "label": "love amazing app"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 23,
+                                                                                            "label": "love very very very nice app"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 53,
+                                                            "distance": 0.6670420683889605,
+                                                            "children": [
+                                                                {
+                                                                    "id": 21,
+                                                                    "label": "love new version"
+                                                                },
+                                                                {
+                                                                    "id": 52,
+                                                                    "distance": 0.6367205222376968,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 20,
+                                                                            "label": "love new voice feature"
+                                                                        },
+                                                                        {
+                                                                            "id": 50,
+                                                                            "distance": 0.6045735647184755,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 19,
+                                                                                    "label": "love it"
+                                                                                },
+                                                                                {
+                                                                                    "id": 49,
+                                                                                    "distance": 0.5985019823846537,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 37,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 17,
+                                                                                                    "label": "love open ai"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 18,
+                                                                                                    "label": "love ai"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 48,
+                                                                                            "distance": 0.559526913943891,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 46,
+                                                                                                    "distance": 0.5065616515118314,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 43,
+                                                                                                            "distance": 0.43703388958383155,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 16,
+                                                                                                                    "label": "love thisss application"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 41,
+                                                                                                                    "distance": 0.4119150068756866,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 14,
+                                                                                                                            "label": "love easy interface"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 15,
+                                                                                                                            "label": "love knowledge specification"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 44,
+                                                                                                            "distance": 0.44956573834226227,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 12,
+                                                                                                                    "label": "love long voice interaction"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 13,
+                                                                                                                    "label": "love feedback"
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 47,
+                                                                                                    "distance": 0.5097651072904061,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 10,
+                                                                                                            "label": "love little guy"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 11,
+                                                                                                            "label": "love conversation"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 61,
+                    "distance": 1.0752134143863075,
+                    "children": [
+                        {
+                            "id": 9,
+                            "label": "love photo taking feature"
+                        },
+                        {
+                            "id": 45,
+                            "distance": 0.4644685395907365,
+                            "children": [
+                                {
+                                    "id": 8,
+                                    "label": "love ai app"
+                                },
+                                {
+                                    "id": 42,
+                                    "distance": 0.4323902466466846,
+                                    "children": [
+                                        {
+                                            "id": 7,
+                                            "label": "love ai speaker"
+                                        },
+                                        {
+                                            "id": 40,
+                                            "distance": 0.3280931859761957,
+                                            "children": [
+                                                {
+                                                    "id": 6,
+                                                    "label": "love ai voice feedback"
+                                                },
+                                                {
+                                                    "id": 39,
+                                                    "distance": 0.3166756206268828,
+                                                    "children": [
+                                                        {
+                                                            "id": 5,
+                                                            "label": "love ai tool"
+                                                        },
+                                                        {
+                                                            "id": 38,
+                                                            "distance": 0.3096425718440365,
+                                                            "children": [
+                                                                {
+                                                                    "id": 3,
+                                                                    "label": "love open ai product"
+                                                                },
+                                                                {
+                                                                    "id": 4,
+                                                                    "label": "love ai application"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 63,
+            "distance": 1.6143178916268441,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "love chat gptis"
+                },
+                {
+                    "id": 51,
+                    "distance": 0.6084805042946677,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "love chat gpt app"
+                        },
+                        {
+                            "id": 1,
+                            "label": "love chat gt"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

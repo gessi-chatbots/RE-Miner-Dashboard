@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.7365703556167076,
+    "children": [
+        {
+            "id": 2,
+            "label": "share full review"
+        },
+        {
+            "id": 3,
+            "distance": 0.653689757847796,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "share incredible experience"
+                },
+                {
+                    "id": 1,
+                    "label": "share conversation"
+                }
+            ]
+        }
+    ]
+}

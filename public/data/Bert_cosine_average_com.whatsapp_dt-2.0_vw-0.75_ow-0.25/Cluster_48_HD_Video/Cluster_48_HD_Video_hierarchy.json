@@ -1,0 +1,274 @@
+{
+    "id": 54,
+    "distance": 1.9695660218141302,
+    "children": [
+        {
+            "id": 27,
+            "label": "give less mp update"
+        },
+        {
+            "id": 53,
+            "distance": 1.5700653516863456,
+            "children": [
+                {
+                    "id": 50,
+                    "distance": 1.4991154845177477,
+                    "children": [
+                        {
+                            "id": 26,
+                            "label": "status time hd pic not update blure and low quality photo and video upload"
+                        },
+                        {
+                            "id": 43,
+                            "distance": 1.1858225474129014,
+                            "children": [
+                                {
+                                    "id": 25,
+                                    "label": "hd dj tea"
+                                },
+                                {
+                                    "id": 37,
+                                    "distance": 0.9347973230176747,
+                                    "children": [
+                                        {
+                                            "id": 24,
+                                            "label": "upload hd video"
+                                        },
+                                        {
+                                            "id": 34,
+                                            "distance": 0.6076719595341957,
+                                            "children": [
+                                                {
+                                                    "id": 22,
+                                                    "label": "upload hd photo"
+                                                },
+                                                {
+                                                    "id": 23,
+                                                    "label": "have hd option"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 52,
+                    "distance": 1.5418236229409694,
+                    "children": [
+                        {
+                            "id": 35,
+                            "distance": 0.6238197694848995,
+                            "children": [
+                                {
+                                    "id": 21,
+                                    "label": "send hd video"
+                                },
+                                {
+                                    "id": 32,
+                                    "distance": 0.5479981907295843,
+                                    "children": [
+                                        {
+                                            "id": 19,
+                                            "label": "send hd picture"
+                                        },
+                                        {
+                                            "id": 20,
+                                            "label": "send hd quality"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 51,
+                            "distance": 1.5058687817804484,
+                            "children": [
+                                {
+                                    "id": 33,
+                                    "distance": 0.566811318009018,
+                                    "children": [
+                                        {
+                                            "id": 17,
+                                            "label": "post hd photo"
+                                        },
+                                        {
+                                            "id": 18,
+                                            "label": "post hd video"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 49,
+                                    "distance": 1.4401918936171034,
+                                    "children": [
+                                        {
+                                            "id": 47,
+                                            "distance": 1.380058637347051,
+                                            "children": [
+                                                {
+                                                    "id": 15,
+                                                    "label": "upgrade hd resolution"
+                                                },
+                                                {
+                                                    "id": 16,
+                                                    "label": "improve hd quality feature"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 48,
+                                            "distance": 1.38457579394108,
+                                            "children": [
+                                                {
+                                                    "id": 14,
+                                                    "label": "share hd picture"
+                                                },
+                                                {
+                                                    "id": 46,
+                                                    "distance": 1.290552529506824,
+                                                    "children": [
+                                                        {
+                                                            "id": 30,
+                                                            "distance": 0.43859835577421674,
+                                                            "children": [
+                                                                {
+                                                                    "id": 12,
+                                                                    "label": "need hd status"
+                                                                },
+                                                                {
+                                                                    "id": 13,
+                                                                    "label": "need hd feature"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 45,
+                                                            "distance": 1.21444481241122,
+                                                            "children": [
+                                                                {
+                                                                    "id": 29,
+                                                                    "distance": 0.4317737521754138,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 10,
+                                                                            "label": "add hd feature"
+                                                                        },
+                                                                        {
+                                                                            "id": 11,
+                                                                            "label": "add hd option"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 44,
+                                                                    "distance": 1.195785202657781,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 9,
+                                                                            "label": "provide hd quality"
+                                                                        },
+                                                                        {
+                                                                            "id": 42,
+                                                                            "distance": 1.1447249206370615,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 40,
+                                                                                    "distance": 1.053527372506066,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 38,
+                                                                                            "distance": 1.0057004221485086,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 7,
+                                                                                                    "label": "bring hd feature"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 8,
+                                                                                                    "label": "give well hd quality"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 39,
+                                                                                            "distance": 1.0317679902052894,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 6,
+                                                                                                    "label": "have poor hd view"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 36,
+                                                                                                    "distance": 0.8956163440084309,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 5,
+                                                                                                            "label": "get hd medium upload quality thing"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 31,
+                                                                                                            "distance": 0.46925145369846655,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 4,
+                                                                                                                    "label": "make hd button"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 28,
+                                                                                                                    "distance": 0.38289861960904314,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 2,
+                                                                                                                            "label": "make hd system"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 3,
+                                                                                                                            "label": "make hd choice"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "id": 41,
+                                                                                    "distance": 1.0705703090621543,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 0,
+                                                                                            "label": "include hd feature"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 1,
+                                                                                            "label": "use hd feature"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 0.5669853367441469,
+    "children": [
+        {
+            "id": 0,
+            "label": "return response"
+        },
+        {
+            "id": 1,
+            "label": "return new pixel"
+        }
+    ]
+}

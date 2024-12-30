@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 0.7125286249945777,
+    "children": [
+        {
+            "id": 0,
+            "label": "launch new app"
+        },
+        {
+            "id": 1,
+            "label": "launch such feature"
+        }
+    ]
+}

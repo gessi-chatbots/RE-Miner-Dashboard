@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 1.4109397741569385,
+    "children": [
+        {
+            "id": 5,
+            "label": "make killing"
+        },
+        {
+            "id": 9,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "make genius app"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "well make"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "make day"
+                                },
+                                {
+                                    "id": 6,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "make spped"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "make boaring"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

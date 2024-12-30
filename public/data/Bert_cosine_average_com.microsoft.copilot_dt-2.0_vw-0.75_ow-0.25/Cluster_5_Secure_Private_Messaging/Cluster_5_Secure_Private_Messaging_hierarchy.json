@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 0,
+            "label": "more finite chat"
+        },
+        {
+            "id": 1,
+            "label": "delete chat history"
+        }
+    ]
+}

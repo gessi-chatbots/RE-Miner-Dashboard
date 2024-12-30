@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 0.6956350027310745,
+    "children": [
+        {
+            "id": 10,
+            "distance": 0.6732212554190299,
+            "children": [
+                {
+                    "id": 6,
+                    "label": "turn voice mode"
+                },
+                {
+                    "id": 9,
+                    "distance": 0.6032635767385018,
+                    "children": [
+                        {
+                            "id": 5,
+                            "label": "turn world"
+                        },
+                        {
+                            "id": 8,
+                            "distance": 0.5777142030524024,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "turn simple word"
+                                },
+                                {
+                                    "id": 7,
+                                    "distance": 0.51470503464798,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "turn phone"
+                                        },
+                                        {
+                                            "id": 3,
+                                            "label": "turn vibration"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "distance": 0.6875354781597426,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "turn text"
+                },
+                {
+                    "id": 1,
+                    "label": "turn voice note"
+                }
+            ]
+        }
+    ]
+}

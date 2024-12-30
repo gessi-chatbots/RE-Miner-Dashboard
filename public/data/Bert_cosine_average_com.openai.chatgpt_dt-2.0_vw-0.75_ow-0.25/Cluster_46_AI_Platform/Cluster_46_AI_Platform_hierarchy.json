@@ -1,0 +1,224 @@
+{
+    "id": 44,
+    "distance": 1.5592102760617284,
+    "children": [
+        {
+            "id": 42,
+            "distance": 1.3026028774273832,
+            "children": [
+                {
+                    "id": 22,
+                    "label": "try voice regognition"
+                },
+                {
+                    "id": 41,
+                    "distance": 1.216247760182481,
+                    "children": [
+                        {
+                            "id": 21,
+                            "label": "try adifferent wifnetwork"
+                        },
+                        {
+                            "id": 40,
+                            "distance": 1.193926747741574,
+                            "children": [
+                                {
+                                    "id": 24,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 19,
+                                            "label": "try other gpt"
+                                        },
+                                        {
+                                            "id": 20,
+                                            "label": "try gpt"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 37,
+                                    "distance": 0.7768370054951276,
+                                    "children": [
+                                        {
+                                            "id": 18,
+                                            "label": "try platform"
+                                        },
+                                        {
+                                            "id": 36,
+                                            "distance": 0.7279653343887443,
+                                            "children": [
+                                                {
+                                                    "id": 17,
+                                                    "label": "try possible way"
+                                                },
+                                                {
+                                                    "id": 35,
+                                                    "distance": 0.6712310981084343,
+                                                    "children": [
+                                                        {
+                                                            "id": 33,
+                                                            "distance": 0.6064368402329438,
+                                                            "children": [
+                                                                {
+                                                                    "id": 16,
+                                                                    "label": "try advanced voice chat"
+                                                                },
+                                                                {
+                                                                    "id": 23,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 14,
+                                                                            "label": "try very nice app"
+                                                                        },
+                                                                        {
+                                                                            "id": 15,
+                                                                            "label": "try app"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 34,
+                                                            "distance": 0.6203157802803816,
+                                                            "children": [
+                                                                {
+                                                                    "id": 13,
+                                                                    "label": "try all feature"
+                                                                },
+                                                                {
+                                                                    "id": 32,
+                                                                    "distance": 0.5972603915358292,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 12,
+                                                                            "label": "try everything"
+                                                                        },
+                                                                        {
+                                                                            "id": 31,
+                                                                            "distance": 0.5881355999886893,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 11,
+                                                                                    "label": "try accent"
+                                                                                },
+                                                                                {
+                                                                                    "id": 30,
+                                                                                    "distance": 0.5460459193527475,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 10,
+                                                                                            "label": "try option"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 29,
+                                                                                            "distance": 0.5176422190902146,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 26,
+                                                                                                    "distance": 0.4383658432285089,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 8,
+                                                                                                            "label": "try conversation"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 9,
+                                                                                                            "label": "try question"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 28,
+                                                                                                    "distance": 0.48105433555571375,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 25,
+                                                                                                            "distance": 0.4057525630839431,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 6,
+                                                                                                                    "label": "try method"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 7,
+                                                                                                                    "label": "try various solution"
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 27,
+                                                                                                            "distance": 0.446612847758676,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 4,
+                                                                                                                    "label": "try large project"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 5,
+                                                                                                                    "label": "try all suggestion"
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 43,
+            "distance": 1.3637469742949775,
+            "children": [
+                {
+                    "id": 38,
+                    "distance": 1.1122735596132887,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "try other ai"
+                        },
+                        {
+                            "id": 3,
+                            "label": "find other ai"
+                        }
+                    ]
+                },
+                {
+                    "id": 39,
+                    "distance": 1.1282124155513757,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "try ai platform"
+                        },
+                        {
+                            "id": 1,
+                            "label": "try claude ai"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

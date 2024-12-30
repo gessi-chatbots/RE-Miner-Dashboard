@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 1.0037110298637384,
+    "children": [
+        {
+            "id": 6,
+            "label": "enter few10minute"
+        },
+        {
+            "id": 11,
+            "distance": 0.7515869858646104,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "enter birth date"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.6693348142223904,
+                    "children": [
+                        {
+                            "id": 8,
+                            "distance": 0.5790123933950617,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "enter number"
+                                },
+                                {
+                                    "id": 7,
+                                    "distance": 0.5650703379521737,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "enter channel"
+                                        },
+                                        {
+                                            "id": 3,
+                                            "label": "enter discord auth code"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.6064368421150991,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "enter app"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "enter voice chat"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,194 @@
+{
+    "id": 38,
+    "distance": 1.817980671957984,
+    "children": [
+        {
+            "id": 19,
+            "label": "watch ad"
+        },
+        {
+            "id": 37,
+            "distance": 1.6569881350971336,
+            "children": [
+                {
+                    "id": 35,
+                    "distance": 1.2185338044741376,
+                    "children": [
+                        {
+                            "id": 18,
+                            "label": "understand feel emotion"
+                        },
+                        {
+                            "id": 34,
+                            "distance": 1.0716817312621914,
+                            "children": [
+                                {
+                                    "id": 17,
+                                    "label": "feel dificultie"
+                                },
+                                {
+                                    "id": 32,
+                                    "distance": 0.7692093295549151,
+                                    "children": [
+                                        {
+                                            "id": 29,
+                                            "distance": 0.6485931118485756,
+                                            "children": [
+                                                {
+                                                    "id": 15,
+                                                    "label": "feel when there be button"
+                                                },
+                                                {
+                                                    "id": 16,
+                                                    "label": "feel really nice app"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 31,
+                                            "distance": 0.7290757099719443,
+                                            "children": [
+                                                {
+                                                    "id": 14,
+                                                    "label": "feel noice"
+                                                },
+                                                {
+                                                    "id": 30,
+                                                    "distance": 0.6633734660536857,
+                                                    "children": [
+                                                        {
+                                                            "id": 13,
+                                                            "label": "feel bad experience"
+                                                        },
+                                                        {
+                                                            "id": 25,
+                                                            "distance": 0.549730430789836,
+                                                            "children": [
+                                                                {
+                                                                    "id": 12,
+                                                                    "label": "feel fear"
+                                                                },
+                                                                {
+                                                                    "id": 23,
+                                                                    "distance": 0.4920603792844233,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 11,
+                                                                            "label": "feel emotion"
+                                                                        },
+                                                                        {
+                                                                            "id": 22,
+                                                                            "distance": 0.44826077891503796,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 9,
+                                                                                    "label": "feel frustration"
+                                                                                },
+                                                                                {
+                                                                                    "id": 10,
+                                                                                    "label": "feel need"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 36,
+                    "distance": 1.483656836716916,
+                    "children": [
+                        {
+                            "id": 8,
+                            "label": "increase hear power"
+                        },
+                        {
+                            "id": 33,
+                            "distance": 0.7789304408009377,
+                            "children": [
+                                {
+                                    "id": 7,
+                                    "label": "hear alot"
+                                },
+                                {
+                                    "id": 28,
+                                    "distance": 0.6078657244982683,
+                                    "children": [
+                                        {
+                                            "id": 6,
+                                            "label": "hear perfect command"
+                                        },
+                                        {
+                                            "id": 27,
+                                            "distance": 0.5606666145642356,
+                                            "children": [
+                                                {
+                                                    "id": 21,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 5,
+                                                            "label": "hear male voice"
+                                                        },
+                                                        {
+                                                            "id": 20,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 3,
+                                                                    "label": "hear voice"
+                                                                },
+                                                                {
+                                                                    "id": 4,
+                                                                    "label": "hear own voice"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 26,
+                                                    "distance": 0.5579943683115649,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "hear opinion"
+                                                        },
+                                                        {
+                                                            "id": 24,
+                                                            "distance": 0.508749744204161,
+                                                            "children": [
+                                                                {
+                                                                    "id": 0,
+                                                                    "label": "hear word"
+                                                                },
+                                                                {
+                                                                    "id": 1,
+                                                                    "label": "hear good thing"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

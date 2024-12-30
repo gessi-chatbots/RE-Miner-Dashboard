@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 1.4937038421301918,
+    "children": [
+        {
+            "id": 5,
+            "label": "fix spotify issue"
+        },
+        {
+            "id": 9,
+            "distance": 0.6489570259874298,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "spotify control"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.5696834074232127,
+                    "children": [
+                        {
+                            "id": 6,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "spotify integration"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "have spotify integration"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "spotify extension"
+                                },
+                                {
+                                    "id": 3,
+                                    "label": "have spotify extension"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

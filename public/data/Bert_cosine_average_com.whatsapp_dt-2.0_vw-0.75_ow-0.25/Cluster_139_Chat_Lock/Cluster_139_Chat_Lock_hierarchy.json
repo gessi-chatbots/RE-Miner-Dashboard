@@ -1,0 +1,74 @@
+{
+    "id": 14,
+    "distance": 1.818020874025844,
+    "children": [
+        {
+            "id": 7,
+            "label": "know lock"
+        },
+        {
+            "id": 13,
+            "distance": 1.535942643174604,
+            "children": [
+                {
+                    "id": 6,
+                    "label": "reveal chat lock"
+                },
+                {
+                    "id": 12,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 5,
+                            "label": "access lock chat"
+                        },
+                        {
+                            "id": 11,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "access lock chart folder"
+                                },
+                                {
+                                    "id": 10,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "have lock"
+                                        },
+                                        {
+                                            "id": 9,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "lock whatsapp"
+                                                },
+                                                {
+                                                    "id": 8,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "why can not chat lock"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "have chat lock"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

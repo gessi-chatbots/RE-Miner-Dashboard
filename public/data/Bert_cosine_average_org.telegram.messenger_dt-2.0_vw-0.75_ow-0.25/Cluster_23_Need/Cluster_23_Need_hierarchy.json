@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 6,
+            "label": "need such bandwidth"
+        },
+        {
+            "id": 11,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "need people nearby option"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "need telegram account"
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "need gf"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "need"
+                                        },
+                                        {
+                                            "id": 7,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "why need"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "need otp"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 3,
+            "label": "good messaging app"
+        },
+        {
+            "id": 5,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "great messaging platform"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "safe and secure messaging app"
+                        },
+                        {
+                            "id": 1,
+                            "label": "great messaging app"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

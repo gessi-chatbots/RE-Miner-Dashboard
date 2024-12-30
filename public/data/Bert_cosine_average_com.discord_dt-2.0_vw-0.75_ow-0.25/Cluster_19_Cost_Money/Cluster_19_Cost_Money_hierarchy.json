@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.9889745754692283,
+    "children": [
+        {
+            "id": 0,
+            "label": "cost money"
+        },
+        {
+            "id": 1,
+            "label": "afford nitro price"
+        }
+    ]
+}

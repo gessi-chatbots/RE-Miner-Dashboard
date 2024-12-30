@@ -1,0 +1,194 @@
+{
+    "id": 38,
+    "distance": 1.908677341023111,
+    "children": [
+        {
+            "id": 35,
+            "distance": 1.2321542412576392,
+            "children": [
+                {
+                    "id": 19,
+                    "label": "contact whatsapp help center"
+                },
+                {
+                    "id": 34,
+                    "distance": 1.1674245273702877,
+                    "children": [
+                        {
+                            "id": 18,
+                            "label": "add voice note reply whatsapp ai"
+                        },
+                        {
+                            "id": 33,
+                            "distance": 1.116396558845484,
+                            "children": [
+                                {
+                                    "id": 17,
+                                    "label": "have whatsapp ai"
+                                },
+                                {
+                                    "id": 31,
+                                    "distance": 0.9336022353563216,
+                                    "children": [
+                                        {
+                                            "id": 15,
+                                            "label": "enjoy whatsapp ai"
+                                        },
+                                        {
+                                            "id": 16,
+                                            "label": "remove useless whatsapp ai"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 37,
+            "distance": 1.7196600138174478,
+            "children": [
+                {
+                    "id": 27,
+                    "distance": 0.7927484454251671,
+                    "children": [
+                        {
+                            "id": 14,
+                            "label": "have whatsap app"
+                        },
+                        {
+                            "id": 26,
+                            "distance": 0.7437269604156694,
+                            "children": [
+                                {
+                                    "id": 13,
+                                    "label": "whatsap new feature update"
+                                },
+                                {
+                                    "id": 24,
+                                    "distance": 0.6904410663394213,
+                                    "children": [
+                                        {
+                                            "id": 12,
+                                            "label": "hello whatsap team"
+                                        },
+                                        {
+                                            "id": 21,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 10,
+                                                    "label": "whatsap verifection code problem"
+                                                },
+                                                {
+                                                    "id": 11,
+                                                    "label": "whatsap business problem"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 36,
+                    "distance": 1.3358781649623677,
+                    "children": [
+                        {
+                            "id": 29,
+                            "distance": 0.849487779946795,
+                            "children": [
+                                {
+                                    "id": 9,
+                                    "label": "whatsapp injoy individual"
+                                },
+                                {
+                                    "id": 25,
+                                    "distance": 0.7313050115353418,
+                                    "children": [
+                                        {
+                                            "id": 7,
+                                            "label": "whatsapp have hudre"
+                                        },
+                                        {
+                                            "id": 8,
+                                            "label": "whatsapp not open nahi hora hai problem issue mobile"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 32,
+                            "distance": 0.9714732308656838,
+                            "children": [
+                                {
+                                    "id": 6,
+                                    "label": "please whatsapp activiti"
+                                },
+                                {
+                                    "id": 30,
+                                    "distance": 0.8775012520022558,
+                                    "children": [
+                                        {
+                                            "id": 5,
+                                            "label": "download whatsapp bcz"
+                                        },
+                                        {
+                                            "id": 28,
+                                            "distance": 0.8043317772473508,
+                                            "children": [
+                                                {
+                                                    "id": 4,
+                                                    "label": "support whatsapp new policy"
+                                                },
+                                                {
+                                                    "id": 23,
+                                                    "distance": 0.6864452374579575,
+                                                    "children": [
+                                                        {
+                                                            "id": 20,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 2,
+                                                                    "label": "love whatsapp chat"
+                                                                },
+                                                                {
+                                                                    "id": 3,
+                                                                    "label": "whatsapp chat"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 22,
+                                                            "distance": 0.5464648425399549,
+                                                            "children": [
+                                                                {
+                                                                    "id": 0,
+                                                                    "label": "whatsapp say"
+                                                                },
+                                                                {
+                                                                    "id": 1,
+                                                                    "label": "unlock whatsapp plz help"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

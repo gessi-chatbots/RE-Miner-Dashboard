@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.7062768144330496,
+    "children": [
+        {
+            "id": 2,
+            "label": "encounter issue"
+        },
+        {
+            "id": 3,
+            "distance": 0.5912391368429991,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "encounter error"
+                },
+                {
+                    "id": 1,
+                    "label": "encounter problem"
+                }
+            ]
+        }
+    ]
+}

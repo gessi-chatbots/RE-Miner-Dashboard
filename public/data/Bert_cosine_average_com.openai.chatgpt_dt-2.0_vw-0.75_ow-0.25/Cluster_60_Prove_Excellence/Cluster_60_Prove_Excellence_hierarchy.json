@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 1.7547315197515074,
+    "children": [
+        {
+            "id": 8,
+            "distance": 1.6629962013747015,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "pursue b"
+                },
+                {
+                    "id": 7,
+                    "distance": 0.7185391400955029,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "prove all answer"
+                        },
+                        {
+                            "id": 4,
+                            "label": "prove excellence"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "distance": 1.707056831867222,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "attach video"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.7154106974483685,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "commit suicide"
+                        },
+                        {
+                            "id": 1,
+                            "label": "commit homicide"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

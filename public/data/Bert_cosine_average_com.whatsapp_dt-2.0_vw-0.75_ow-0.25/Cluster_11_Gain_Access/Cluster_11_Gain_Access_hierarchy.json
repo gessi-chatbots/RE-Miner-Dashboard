@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 0.8136831063593565,
+    "children": [
+        {
+            "id": 3,
+            "label": "gain information"
+        },
+        {
+            "id": 5,
+            "distance": 0.7290918891231064,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "gain app"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.6852401930636618,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "gain visibility"
+                        },
+                        {
+                            "id": 1,
+                            "label": "gain access"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

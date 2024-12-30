@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 1.9948843975233406,
+    "children": [
+        {
+            "id": 6,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "see lot"
+                },
+                {
+                    "id": 5,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "see anyone status"
+                        },
+                        {
+                            "id": 3,
+                            "label": "see day"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "distance": 1.6583561196378858,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "see ringing"
+                },
+                {
+                    "id": 1,
+                    "label": "see chatting"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.7649992557833072,
+    "children": [
+        {
+            "id": 2,
+            "label": "build website"
+        },
+        {
+            "id": 3,
+            "distance": 0.5308140365337463,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "build entirely functional application"
+                },
+                {
+                    "id": 1,
+                    "label": "build business plan"
+                }
+            ]
+        }
+    ]
+}

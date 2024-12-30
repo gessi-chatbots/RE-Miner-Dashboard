@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 2,
+            "label": "very nice helping app"
+        },
+        {
+            "id": 3,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "very helping app"
+                },
+                {
+                    "id": 1,
+                    "label": "very good helping app"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 1.5120161132987702,
+    "children": [
+        {
+            "id": 5,
+            "label": "submit help request"
+        },
+        {
+            "id": 9,
+            "distance": 0.6493672391541265,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "submit review"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.563262367941162,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "submit report"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.509303384593488,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "submit request"
+                                },
+                                {
+                                    "id": 6,
+                                    "distance": 0.42415306508303147,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "submit explanation"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "submit feedback"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

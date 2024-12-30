@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.585332011960773,
+    "children": [
+        {
+            "id": 0,
+            "label": "imagine power"
+        },
+        {
+            "id": 1,
+            "label": "imagine woke copilot"
+        }
+    ]
+}

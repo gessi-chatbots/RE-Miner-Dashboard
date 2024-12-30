@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 2,
+            "label": "copy lot"
+        },
+        {
+            "id": 3,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "basically copy"
+                },
+                {
+                    "id": 1,
+                    "label": "copy message"
+                }
+            ]
+        }
+    ]
+}

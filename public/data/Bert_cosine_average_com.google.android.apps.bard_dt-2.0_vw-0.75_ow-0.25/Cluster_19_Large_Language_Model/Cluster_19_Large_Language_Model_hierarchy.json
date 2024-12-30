@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 1.9659961584133239,
+    "children": [
+        {
+            "id": 5,
+            "label": "search various article"
+        },
+        {
+            "id": 9,
+            "distance": 1.8967657225163017,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "replicate duplicate"
+                },
+                {
+                    "id": 8,
+                    "distance": 1.6993257211276267,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "occupy more than5gb storage"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 1.6308718494344472,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "sell llm"
+                                },
+                                {
+                                    "id": 6,
+                                    "distance": 0.7192730758387443,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "explore gemeni"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "explore knowledge"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

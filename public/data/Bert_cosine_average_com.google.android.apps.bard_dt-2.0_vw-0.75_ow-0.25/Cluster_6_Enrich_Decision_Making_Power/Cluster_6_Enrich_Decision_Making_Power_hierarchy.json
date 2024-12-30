@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.8181903628582083,
+    "children": [
+        {
+            "id": 0,
+            "label": "enrich decision making power"
+        },
+        {
+            "id": 1,
+            "label": "adjust volume set"
+        }
+    ]
+}

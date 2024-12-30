@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.9435415616811604,
+    "children": [
+        {
+            "id": 4,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "amazing live chat feature"
+                },
+                {
+                    "id": 3,
+                    "label": "have feature"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "distance": 1.9094490708103256,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "enjoy feature"
+                },
+                {
+                    "id": 1,
+                    "label": "good ai feature"
+                }
+            ]
+        }
+    ]
+}

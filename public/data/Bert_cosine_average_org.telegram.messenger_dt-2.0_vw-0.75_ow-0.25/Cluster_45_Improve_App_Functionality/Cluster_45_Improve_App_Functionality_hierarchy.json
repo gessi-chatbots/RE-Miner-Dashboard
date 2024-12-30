@@ -1,0 +1,104 @@
+{
+    "id": 20,
+    "distance": 1.8854532572444083,
+    "children": [
+        {
+            "id": 13,
+            "distance": 0.6361704693404664,
+            "children": [
+                {
+                    "id": 10,
+                    "label": "increase feature"
+                },
+                {
+                    "id": 11,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 8,
+                            "label": "increase download speed"
+                        },
+                        {
+                            "id": 9,
+                            "label": "increase playback speed"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "distance": 1.3808947263421931,
+            "children": [
+                {
+                    "id": 7,
+                    "label": "improve video and audio connectivity calling"
+                },
+                {
+                    "id": 18,
+                    "distance": 0.7670922375885878,
+                    "children": [
+                        {
+                            "id": 6,
+                            "label": "improve app"
+                        },
+                        {
+                            "id": 17,
+                            "distance": 0.7336460236525535,
+                            "children": [
+                                {
+                                    "id": 15,
+                                    "distance": 0.6710235225093916,
+                                    "children": [
+                                        {
+                                            "id": 5,
+                                            "label": "improve support team"
+                                        },
+                                        {
+                                            "id": 14,
+                                            "distance": 0.637272285211649,
+                                            "children": [
+                                                {
+                                                    "id": 4,
+                                                    "label": "improve feature"
+                                                },
+                                                {
+                                                    "id": 12,
+                                                    "distance": 0.5677429760863988,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "improve so many people"
+                                                        },
+                                                        {
+                                                            "id": 3,
+                                                            "label": "improve security"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 16,
+                                    "distance": 0.6929640973634033,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "improve self job"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "improve function"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

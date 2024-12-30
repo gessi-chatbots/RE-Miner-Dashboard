@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 1.7826730947193123,
+    "children": [
+        {
+            "id": 6,
+            "label": "summarise webpage"
+        },
+        {
+            "id": 11,
+            "distance": 0.6511747176207809,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "summarize lengthy report book research paper"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.6296209581672338,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "summarize study work"
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.5305590256874184,
+                            "children": [
+                                {
+                                    "id": 7,
+                                    "distance": 0.4891031303590713,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "summarize conversation"
+                                        },
+                                        {
+                                            "id": 3,
+                                            "label": "summarize stuff"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.5041455073886671,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "summarize late scientific breakthrough"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "summarize large document"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

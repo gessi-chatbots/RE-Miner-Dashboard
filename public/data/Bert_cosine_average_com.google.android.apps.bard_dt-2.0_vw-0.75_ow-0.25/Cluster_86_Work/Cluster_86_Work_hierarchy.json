@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 1.8360773460043938,
+    "children": [
+        {
+            "id": 6,
+            "label": "help work"
+        },
+        {
+            "id": 11,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "still work"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "plz work"
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "work good"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "should more work"
+                                        },
+                                        {
+                                            "id": 7,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "do work"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "not work"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

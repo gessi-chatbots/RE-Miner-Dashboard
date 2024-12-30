@@ -1,0 +1,204 @@
+{
+    "id": 40,
+    "distance": 1.418373853491244,
+    "children": [
+        {
+            "id": 38,
+            "distance": 1.240835465614656,
+            "children": [
+                {
+                    "id": 20,
+                    "label": "enter chanel"
+                },
+                {
+                    "id": 37,
+                    "distance": 1.094005087429657,
+                    "children": [
+                        {
+                            "id": 19,
+                            "label": "enter whatsapp"
+                        },
+                        {
+                            "id": 35,
+                            "distance": 1.0410376755384758,
+                            "children": [
+                                {
+                                    "id": 18,
+                                    "label": "enter key"
+                                },
+                                {
+                                    "id": 34,
+                                    "distance": 0.85147799159309,
+                                    "children": [
+                                        {
+                                            "id": 17,
+                                            "label": "enter whasapp"
+                                        },
+                                        {
+                                            "id": 33,
+                                            "distance": 0.7189023902502016,
+                                            "children": [
+                                                {
+                                                    "id": 28,
+                                                    "distance": 0.6485931285271794,
+                                                    "children": [
+                                                        {
+                                                            "id": 16,
+                                                            "label": "have enter button"
+                                                        },
+                                                        {
+                                                            "id": 24,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 14,
+                                                                    "label": "enter status lag app"
+                                                                },
+                                                                {
+                                                                    "id": 15,
+                                                                    "label": "enter app"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 32,
+                                                    "distance": 0.6924332861515587,
+                                                    "children": [
+                                                        {
+                                                            "id": 13,
+                                                            "label": "enter whatsapp account"
+                                                        },
+                                                        {
+                                                            "id": 31,
+                                                            "distance": 0.6906021689959589,
+                                                            "children": [
+                                                                {
+                                                                    "id": 12,
+                                                                    "label": "enter video call"
+                                                                },
+                                                                {
+                                                                    "id": 30,
+                                                                    "distance": 0.679663252192872,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 11,
+                                                                            "label": "enter birthday"
+                                                                        },
+                                                                        {
+                                                                            "id": 29,
+                                                                            "distance": 0.656493209735066,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 10,
+                                                                                    "label": "enter profile info"
+                                                                                },
+                                                                                {
+                                                                                    "id": 27,
+                                                                                    "distance": 0.6175002358051013,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 9,
+                                                                                            "label": "enter group"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 26,
+                                                                                            "distance": 0.5906555455528423,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 23,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 7,
+                                                                                                            "label": "enter number"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 8,
+                                                                                                            "label": "enter phone number"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 25,
+                                                                                                    "distance": 0.5721968577705302,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 6,
+                                                                                                            "label": "enter face"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 22,
+                                                                                                            "distance": 0.0,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 5,
+                                                                                                                    "label": "enter secret code"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 21,
+                                                                                                                    "distance": 0.0,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 3,
+                                                                                                                            "label": "enter code"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 4,
+                                                                                                                            "label": "enter recent code"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 39,
+            "distance": 1.324924136368014,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "pass enter number menu"
+                },
+                {
+                    "id": 36,
+                    "distance": 1.0567892267113799,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "enter lock chat"
+                        },
+                        {
+                            "id": 1,
+                            "label": "bring enter button"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

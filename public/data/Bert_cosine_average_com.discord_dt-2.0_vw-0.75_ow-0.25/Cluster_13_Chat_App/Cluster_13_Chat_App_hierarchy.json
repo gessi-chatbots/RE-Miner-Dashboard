@@ -1,0 +1,124 @@
+{
+    "id": 24,
+    "distance": 1.932093804612201,
+    "children": [
+        {
+            "id": 18,
+            "distance": 1.4107536855857141,
+            "children": [
+                {
+                    "id": 15,
+                    "distance": 0.7592783660403959,
+                    "children": [
+                        {
+                            "id": 12,
+                            "label": "chat app"
+                        },
+                        {
+                            "id": 14,
+                            "distance": 0.7060827521082385,
+                            "children": [
+                                {
+                                    "id": 11,
+                                    "label": "chat loading issue"
+                                },
+                                {
+                                    "id": 13,
+                                    "distance": 0.5689485801522909,
+                                    "children": [
+                                        {
+                                            "id": 9,
+                                            "label": "chat favorite thing"
+                                        },
+                                        {
+                                            "id": 10,
+                                            "label": "chat people"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 16,
+                    "distance": 1.2942830346261014,
+                    "children": [
+                        {
+                            "id": 7,
+                            "label": "save chat history"
+                        },
+                        {
+                            "id": 8,
+                            "label": "add chat bubble feature"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "distance": 1.8481136071596334,
+            "children": [
+                {
+                    "id": 6,
+                    "label": "redesign app"
+                },
+                {
+                    "id": 22,
+                    "distance": 1.7791871371918355,
+                    "children": [
+                        {
+                            "id": 5,
+                            "label": "quit app"
+                        },
+                        {
+                            "id": 21,
+                            "distance": 1.5817201354400097,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "love app die"
+                                },
+                                {
+                                    "id": 20,
+                                    "distance": 1.5115308562410166,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "still broken app"
+                                        },
+                                        {
+                                            "id": 19,
+                                            "distance": 1.4472961437593703,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "drive app"
+                                                },
+                                                {
+                                                    "id": 17,
+                                                    "distance": 1.323209655619689,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "freeze app"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "offer functional android app"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

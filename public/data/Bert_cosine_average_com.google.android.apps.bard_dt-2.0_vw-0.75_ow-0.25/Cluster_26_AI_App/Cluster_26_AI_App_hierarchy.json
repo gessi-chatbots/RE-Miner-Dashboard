@@ -1,0 +1,304 @@
+{
+    "id": 60,
+    "distance": 1.985076727997715,
+    "children": [
+        {
+            "id": 45,
+            "distance": 0.7644680434354452,
+            "children": [
+                {
+                    "id": 30,
+                    "label": "thank google team"
+                },
+                {
+                    "id": 44,
+                    "distance": 0.7254399797319441,
+                    "children": [
+                        {
+                            "id": 36,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 28,
+                                    "label": "thank app"
+                                },
+                                {
+                                    "id": 29,
+                                    "label": "thank good app"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 43,
+                            "distance": 0.6642163795313731,
+                            "children": [
+                                {
+                                    "id": 27,
+                                    "label": "thank gemini ai team"
+                                },
+                                {
+                                    "id": 37,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 25,
+                                            "label": "thank boo great job"
+                                        },
+                                        {
+                                            "id": 26,
+                                            "label": "thank nice job"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 59,
+            "distance": 1.7996656217177467,
+            "children": [
+                {
+                    "id": 24,
+                    "label": "bad ai"
+                },
+                {
+                    "id": 58,
+                    "distance": 1.7589952937446856,
+                    "children": [
+                        {
+                            "id": 56,
+                            "distance": 1.6878086897404438,
+                            "children": [
+                                {
+                                    "id": 23,
+                                    "label": "boring ui"
+                                },
+                                {
+                                    "id": 51,
+                                    "distance": 1.3727939755624188,
+                                    "children": [
+                                        {
+                                            "id": 22,
+                                            "label": "perhaps poor ai"
+                                        },
+                                        {
+                                            "id": 48,
+                                            "distance": 0.9930179971747006,
+                                            "children": [
+                                                {
+                                                    "id": 21,
+                                                    "label": "hand dumb ai"
+                                                },
+                                                {
+                                                    "id": 35,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 19,
+                                                            "label": "most stupid ai"
+                                                        },
+                                                        {
+                                                            "id": 20,
+                                                            "label": "stupid ai"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 57,
+                            "distance": 1.697675542214984,
+                            "children": [
+                                {
+                                    "id": 49,
+                                    "distance": 1.2510952199459429,
+                                    "children": [
+                                        {
+                                            "id": 18,
+                                            "label": "see great ai"
+                                        },
+                                        {
+                                            "id": 34,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 16,
+                                                    "label": "such great ai"
+                                                },
+                                                {
+                                                    "id": 17,
+                                                    "label": "great ai"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 55,
+                                    "distance": 1.5827784330520678,
+                                    "children": [
+                                        {
+                                            "id": 46,
+                                            "distance": 0.8716600295533787,
+                                            "children": [
+                                                {
+                                                    "id": 33,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 15,
+                                                            "label": "good ever ai"
+                                                        },
+                                                        {
+                                                            "id": 32,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 14,
+                                                                    "label": "good ai"
+                                                                },
+                                                                {
+                                                                    "id": 31,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 12,
+                                                                            "label": "super good ai"
+                                                                        },
+                                                                        {
+                                                                            "id": 13,
+                                                                            "label": "very good ai"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 41,
+                                                    "distance": 0.5100530125661148,
+                                                    "children": [
+                                                        {
+                                                            "id": 11,
+                                                            "label": "good ai app"
+                                                        },
+                                                        {
+                                                            "id": 40,
+                                                            "distance": 0.48160961911586875,
+                                                            "children": [
+                                                                {
+                                                                    "id": 38,
+                                                                    "distance": 0.4161359560416788,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 9,
+                                                                            "label": "good ai assistant"
+                                                                        },
+                                                                        {
+                                                                            "id": 10,
+                                                                            "label": "good ai graphic designing"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 39,
+                                                                    "distance": 0.4405434514067,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 7,
+                                                                            "label": "good ai interaction"
+                                                                        },
+                                                                        {
+                                                                            "id": 8,
+                                                                            "label": "good ai companion"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 54,
+                                            "distance": 1.567451520676499,
+                                            "children": [
+                                                {
+                                                    "id": 52,
+                                                    "distance": 1.4448461429679815,
+                                                    "children": [
+                                                        {
+                                                            "id": 5,
+                                                            "label": "nice ai"
+                                                        },
+                                                        {
+                                                            "id": 6,
+                                                            "label": "perfect ai"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 53,
+                                                    "distance": 1.5290011244825443,
+                                                    "children": [
+                                                        {
+                                                            "id": 4,
+                                                            "label": "wonderful ai"
+                                                        },
+                                                        {
+                                                            "id": 50,
+                                                            "distance": 1.3155650122767375,
+                                                            "children": [
+                                                                {
+                                                                    "id": 3,
+                                                                    "label": "superb ai enhancement"
+                                                                },
+                                                                {
+                                                                    "id": 47,
+                                                                    "distance": 0.9014648317008916,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 2,
+                                                                            "label": "awesome ai"
+                                                                        },
+                                                                        {
+                                                                            "id": 42,
+                                                                            "distance": 0.5540503148514152,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 0,
+                                                                                    "label": "awesome ai assistant"
+                                                                                },
+                                                                                {
+                                                                                    "id": 1,
+                                                                                    "label": "awesome ai app"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,124 @@
+{
+    "id": 24,
+    "distance": 1.9945099923304292,
+    "children": [
+        {
+            "id": 22,
+            "distance": 1.8059231560349829,
+            "children": [
+                {
+                    "id": 12,
+                    "label": "listen paragraph"
+                },
+                {
+                    "id": 20,
+                    "distance": 0.9402162558082514,
+                    "children": [
+                        {
+                            "id": 11,
+                            "label": "remember datum"
+                        },
+                        {
+                            "id": 17,
+                            "distance": 0.558386692559958,
+                            "children": [
+                                {
+                                    "id": 10,
+                                    "label": "remember all chat"
+                                },
+                                {
+                                    "id": 16,
+                                    "distance": 0.4924557816212849,
+                                    "children": [
+                                        {
+                                            "id": 14,
+                                            "distance": 0.4242771731578432,
+                                            "children": [
+                                                {
+                                                    "id": 9,
+                                                    "label": "remember something"
+                                                },
+                                                {
+                                                    "id": 13,
+                                                    "distance": 0.40530494593749533,
+                                                    "children": [
+                                                        {
+                                                            "id": 7,
+                                                            "label": "remember thing"
+                                                        },
+                                                        {
+                                                            "id": 8,
+                                                            "label": "remember stuff"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 15,
+                                            "distance": 0.461277824691673,
+                                            "children": [
+                                                {
+                                                    "id": 5,
+                                                    "label": "remember conversation"
+                                                },
+                                                {
+                                                    "id": 6,
+                                                    "label": "remember afew time"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "distance": 1.917657202371231,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "conclude experience"
+                },
+                {
+                    "id": 21,
+                    "distance": 0.9879058150467014,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "consider difference"
+                        },
+                        {
+                            "id": 19,
+                            "distance": 0.6969604958009499,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "consider many unresolved issue"
+                                },
+                                {
+                                    "id": 18,
+                                    "distance": 0.5929427547649614,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "consider goat"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "consider feedback"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 0.7685838478473558,
+    "children": [
+        {
+            "id": 5,
+            "label": "solve math"
+        },
+        {
+            "id": 9,
+            "distance": 0.6869030674205351,
+            "children": [
+                {
+                    "id": 6,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "solve many minor daily issue"
+                        },
+                        {
+                            "id": 4,
+                            "label": "solve issue"
+                        }
+                    ]
+                },
+                {
+                    "id": 8,
+                    "distance": 0.5894317259609078,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "solve equation"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.46478708928925344,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "solve problem"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "solve daily task"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

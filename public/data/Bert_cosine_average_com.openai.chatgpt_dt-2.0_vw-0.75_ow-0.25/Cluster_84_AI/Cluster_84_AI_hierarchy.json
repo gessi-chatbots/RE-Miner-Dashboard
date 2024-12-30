@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.8938149789223213,
+    "children": [
+        {
+            "id": 0,
+            "label": "good analytical ai"
+        },
+        {
+            "id": 1,
+            "label": "direct ai"
+        }
+    ]
+}
