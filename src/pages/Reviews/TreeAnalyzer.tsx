@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Tree from "react-d3-tree";
 import TreeService from "../../services/TreeService";
 import Draggable from "react-draggable"; // For draggable windows
+import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const TreeAnalyzer = () => {
@@ -139,7 +140,8 @@ const TreeAnalyzer = () => {
     };
 
     return (
-        <div className="container-fluid vh-100 d-flex flex-column">
+        <Container className="mt-2 vh-100">
+            <h1 className="text-secondary">Tree Analyzer</h1>
             <div className="row flex-grow-1">
                 <div className="col-md-3">
                     <div className="row">
@@ -277,7 +279,7 @@ const TreeAnalyzer = () => {
                     ))}
                 </div>
             </div>
-        </div>
+        </Container>
     );
 };
 
