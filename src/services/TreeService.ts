@@ -1,5 +1,5 @@
 import { AppDataSimpleDTO } from "../DTOs/AppDataSimpleDTO";
-import { ClusterDataDTO } from "../DTOs/ClusterDataDTO";
+import { ClusterDataDTO, HierarchyNode } from "../DTOs/ClusterDataDTO";
 
 class TreeService {
     API_NAME = 'http://127.0.0.1:3001/api/v1';
@@ -49,14 +49,24 @@ class TreeService {
                 return null; // Return null if no hierarchy found
             }
             const jsonResponse = await response.json();
+            const parsedHierarchy = this.parseHierarchy(JSON.parse(jsonResponse.data));
             return {
                 cluster_name: clusterName,
-                hierarchy_data: jsonResponse.data
+                hierarchy_data: parsedHierarchy
             };
         } catch (error) {
             console.error(`Error fetching JSON hierarchy for cluster '${clusterName}' in app '${appName}':`, error);
             throw error;
         }
+    };
+
+    private parseHierarchy = (node: any): HierarchyNode => {
+        return {
+            id: node.id,
+            distance: node.distance,
+            label: node.label,
+            children: node.children?.map(this.parseHierarchy) // Recursively parse children
+        };
     };
 }
 
