@@ -20,17 +20,14 @@ interface LayoutProps {
 }
 
 const DefaultLayout: React.FC<LayoutProps> = ({ children }) => (
-    <>
+    <div className="d-flex flex-column min-vh-100">
         <Navbar />
-        <Container className="py-4">
+        <Container className="py-4 flex-fill">
             {children}
         </Container>
-        <div className="mt-5">
-            <Footer />
-        </div>
-    </>
+        <Footer />
+    </div>
 );
-
 
 
 const AuthenticatedRoutes: React.FC = () => {
