@@ -49,7 +49,7 @@ class TreeService {
                 return null; // Return null if no hierarchy found
             }
             const jsonResponse = await response.json();
-            const parsedHierarchy = this.parseHierarchy(JSON.parse(jsonResponse.data));
+            const parsedHierarchy = this.parseHierarchy(jsonResponse);
             return {
                 cluster_name: clusterName,
                 hierarchy_data: parsedHierarchy
@@ -65,7 +65,7 @@ class TreeService {
             id: node.id,
             distance: node.distance,
             label: node.label,
-            children: node.children?.map(this.parseHierarchy) // Recursively parse children
+            children: node.children?.map(this.parseHierarchy)
         };
     };
 }
