@@ -95,7 +95,7 @@ const TreeAnalyzer = () => {
             name: node.label || `Node ${node.id}`,
             children: children.length > 0 ? children : undefined,
             attributes: {
-                distance: node.distance ? node.distance.toFixed(2) : "N/A",
+                distance: node.distance,
                 id: node.id,
             },
             rawData: node,
