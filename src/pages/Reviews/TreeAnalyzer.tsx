@@ -115,18 +115,42 @@ const TreeAnalyzer = () => {
         setMetadataWindows((prevWindows) => [...prevWindows, newMetadata]);
     };
 
-    const handleSelectAllChildren = (childrenIds: number[]) => {
+    const handleSelectAllChildren = (childrenIds: number[], hierarchyData: any) => {
+        const collectAllDescendants = (nodeId: number): number[] => {
+            const node = findNodeById(nodeId, hierarchyData);
+            if (!node || !node.children) return [];
+            return node.children
+                .map((child: any) => [child.id, ...collectAllDescendants(child.id)])
+                .flat();
+        };
+
+        const allDescendants = childrenIds
+            .map((childId) => [childId, ...collectAllDescendants(childId)])
+            .flat();
+
         setHighlightedNodes((prev) => {
             const newSet = new Set(prev);
-            childrenIds.forEach((childId) => newSet.add(childId));
+            allDescendants.forEach((id) => newSet.add(id));
             return newSet;
         });
     };
 
-    const handleUnselectAllChildren = (childrenIds: number[]) => {
+    const handleUnselectAllChildren = (childrenIds: number[], hierarchyData: any) => {
+        const collectAllDescendants = (nodeId: number): number[] => {
+            const node = findNodeById(nodeId, hierarchyData);
+            if (!node || !node.children) return [];
+            return node.children
+                .map((child: any) => [child.id, ...collectAllDescendants(child.id)])
+                .flat();
+        };
+
+        const allDescendants = childrenIds
+            .map((childId) => [childId, ...collectAllDescendants(childId)])
+            .flat();
+
         setHighlightedNodes((prev) => {
             const newSet = new Set(prev);
-            childrenIds.forEach((childId) => newSet.delete(childId));
+            allDescendants.forEach((id) => newSet.delete(id));
             return newSet;
         });
     };
@@ -166,6 +190,18 @@ const TreeAnalyzer = () => {
         if (originalTreeData) {
             setTreeData(transformToTreeFormat(originalTreeData, newThreshold));
         }
+    };
+
+    const findNodeById = (id: number, hierarchyData: any): any => {
+        if (!hierarchyData) return null;
+        if (hierarchyData.id === id) return hierarchyData;
+        if (!hierarchyData.children) return null;
+
+        for (const child of hierarchyData.children) {
+            const found = findNodeById(id, child);
+            if (found) return found;
+        }
+        return null;
     };
 
     return (
@@ -323,7 +359,7 @@ const TreeAnalyzer = () => {
                                     <Col>
                                         <Button
                                             className="btn-primary btn-sm"
-                                            onClick={() => handleSelectAllChildren(window.childrenIds)}
+                                            onClick={() => handleSelectAllChildren(window.childrenIds, originalTreeData)}
                                         >
                                             Select All
                                         </Button>
@@ -331,7 +367,7 @@ const TreeAnalyzer = () => {
                                     <Col>
                                         <Button
                                             className="btn-warning btn-sm"
-                                            onClick={() => handleUnselectAllChildren(window.childrenIds)}
+                                            onClick={() => handleUnselectAllChildren(window.childrenIds, originalTreeData)}
                                         >
                                             Unselect All
                                         </Button>
@@ -342,7 +378,7 @@ const TreeAnalyzer = () => {
                                         <Button
                                             className="btn btn-danger btn-sm"
                                             onClick={() => {
-                                                handleUnselectAllChildren(window.childrenIds);
+                                                handleUnselectAllChildren(window.childrenIds, originalTreeData);
                                                 handleCloseMetadata(window.id);
                                             }}
                                         >
