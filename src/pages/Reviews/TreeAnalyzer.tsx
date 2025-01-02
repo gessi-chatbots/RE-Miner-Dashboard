@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Tree from "react-d3-tree";
 import TreeService from "../../services/TreeService";
 import Draggable from "react-draggable"; // For draggable windows
-import { Container } from "react-bootstrap";
+import { Container, Button, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const TreeAnalyzer = () => {
@@ -16,8 +16,8 @@ const TreeAnalyzer = () => {
     const [threshold, setThreshold] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(false);
     const [isThresholdTuningActive, setIsThresholdTuningActive] = useState<boolean>(false);
-    const [metadataWindows, setMetadataWindows] = useState<any[]>([]); // Store multiple metadata windows
-    const [highlightedNodes, setHighlightedNodes] = useState<Set<number>>(new Set()); // Track highlighted nodes
+    const [metadataWindows, setMetadataWindows] = useState<any[]>([]);
+    const [highlightedNodes, setHighlightedNodes] = useState<Set<number>>(new Set());
 
     const treeService = new TreeService();
 
@@ -43,7 +43,7 @@ const TreeAnalyzer = () => {
                 setSelectedCluster("");
                 const clusterData = await treeService.fetchClustersForApp(selectedApp);
                 setClusters(clusterData.map((cluster) => cluster.cluster_name));
-                setTreeData(null); // Clear the tree view when switching apps
+                setTreeData(null);
                 setOriginalTreeData(null);
             } catch (error) {
                 console.error(`Error fetching clusters for app '${selectedApp}':`, error);
@@ -102,41 +102,70 @@ const TreeAnalyzer = () => {
         };
     };
 
-    const handleThresholdChange = (newThreshold: number) => {
-        setThreshold(newThreshold);
-        if (originalTreeData) {
-            const flattenedData = transformToTreeFormat(originalTreeData, newThreshold);
-            setTreeData(flattenedData);
-        }
-    };
-
-    const handleThresholdToggle = () => {
-        setIsThresholdTuningActive((prev) => !prev);
-
-        if (isThresholdTuningActive && originalTreeData) {
-            setTreeData(transformToTreeFormat(originalTreeData, maxDistance));
-        }
-    };
-
     const handleNodeClick = (nodeData: any) => {
         const nodeId = nodeData.attributes.id;
         const newMetadata = {
             id: nodeId,
             name: nodeData.name,
             distance: nodeData.attributes.distance,
+            childrenIds: nodeData.rawData.children?.map((child: any) => child.id) || [],
         };
 
-        setHighlightedNodes((prev) => new Set(prev).add(nodeId)); // Highlight the node
+        setHighlightedNodes((prev) => new Set(prev).add(nodeId));
         setMetadataWindows((prevWindows) => [...prevWindows, newMetadata]);
+    };
+
+    const handleSelectAllChildren = (childrenIds: number[]) => {
+        setHighlightedNodes((prev) => {
+            const newSet = new Set(prev);
+            childrenIds.forEach((childId) => newSet.add(childId));
+            return newSet;
+        });
+    };
+
+    const handleUnselectAllChildren = (childrenIds: number[]) => {
+        setHighlightedNodes((prev) => {
+            const newSet = new Set(prev);
+            childrenIds.forEach((childId) => newSet.delete(childId));
+            return newSet;
+        });
     };
 
     const handleCloseMetadata = (id: number) => {
         setMetadataWindows((prevWindows) => prevWindows.filter((window) => window.id !== id));
         setHighlightedNodes((prev) => {
             const newSet = new Set(prev);
-            newSet.delete(id); // Remove highlight
+            newSet.delete(id);
             return newSet;
         });
+    };
+
+    const handleDownloadJSON = () => {
+        const data = Array.from(highlightedNodes);
+        const json = JSON.stringify(data, null, 2);
+        const blob = new Blob([json], { type: "application/json" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "selected-nodes.json";
+        link.click();
+    };
+
+    const handleViewReviews = () => {
+        alert("View Reviews clicked for selected nodes: " + Array.from(highlightedNodes).join(", "));
+    };
+
+    const handleThresholdToggle = () => {
+        setIsThresholdTuningActive((prev) => !prev);
+        if (!isThresholdTuningActive && originalTreeData) {
+            setTreeData(transformToTreeFormat(originalTreeData, maxDistance));
+        }
+    };
+
+    const handleThresholdChange = (newThreshold: number) => {
+        setThreshold(newThreshold);
+        if (originalTreeData) {
+            setTreeData(transformToTreeFormat(originalTreeData, newThreshold));
+        }
     };
 
     return (
@@ -144,74 +173,96 @@ const TreeAnalyzer = () => {
             <h1 className="text-secondary">Tree Analyzer</h1>
             <div className="row flex-grow-1">
                 <div className="col-md-3">
-                    <div className="row">
-                        <div className="bg-light p-3">
-                            <h3>Select App</h3>
-                            <select
-                                className="form-select mb-3"
-                                value={selectedApp}
-                                onChange={(e) => setSelectedApp(e.target.value)}
-                            >
-                                <option value="">--Select an App--</option>
-                                {apps.map((app) => (
-                                    <option key={app} value={app}>
-                                        {app}
-                                    </option>
-                                ))}
-                            </select>
+                    <div className="bg-light p-3">
+                        <h3>Select App</h3>
+                        <select
+                            className="form-select mb-3"
+                            value={selectedApp}
+                            onChange={(e) => setSelectedApp(e.target.value)}
+                        >
+                            <option value="">--Select an App--</option>
+                            {apps.map((app) => (
+                                <option key={app} value={app}>
+                                    {app}
+                                </option>
+                            ))}
+                        </select>
 
-                            {selectedApp && (
-                                <>
-                                    <h3>Select Cluster</h3>
-                                    <select
-                                        className="form-select mb-3"
-                                        value={selectedCluster}
-                                        onChange={(e) => setSelectedCluster(e.target.value)}
-                                    >
-                                        <option value="">--Select a Cluster--</option>
-                                        {clusters.map((cluster) => (
-                                            <option key={cluster} value={cluster}>
-                                                {cluster}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </>
-                            )}
+                        {selectedApp && (
+                            <>
+                                <h3>Select Cluster</h3>
+                                <select
+                                    className="form-select mb-3"
+                                    value={selectedCluster}
+                                    onChange={(e) => setSelectedCluster(e.target.value)}
+                                >
+                                    <option value="">--Select a Cluster--</option>
+                                    {clusters.map((cluster) => (
+                                        <option key={cluster} value={cluster}>
+                                            {cluster}
+                                        </option>
+                                    ))}
+                                </select>
+                            </>
+                        )}
 
-                            {selectedApp && selectedCluster && (
-                                <>
-                                    <h3>Sibling Threshold Tuning</h3>
-                                    <div className="form-check">
+                        {selectedApp && selectedCluster && (
+                            <>
+                                <h3>Sibling Threshold Tuning</h3>
+                                <div className="form-check">
+                                    <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        checked={isThresholdTuningActive}
+                                        onChange={handleThresholdToggle}
+                                    />
+                                    <label className="form-check-label">Enable Tuning</label>
+                                </div>
+
+                                {isThresholdTuningActive && (
+                                    <>
+                                        <label htmlFor="thresholdSlider" className="form-label">
+                                            Threshold
+                                        </label>
                                         <input
-                                            className="form-check-input"
-                                            type="checkbox"
-                                            checked={isThresholdTuningActive}
-                                            onChange={handleThresholdToggle}
+                                            id="thresholdSlider"
+                                            type="range"
+                                            className="form-range"
+                                            min="0"
+                                            max={maxDistance}
+                                            step="0.1"
+                                            value={threshold}
+                                            onChange={(e) => handleThresholdChange(Number(e.target.value))}
                                         />
-                                        <label className="form-check-label">Enable Tuning</label>
-                                    </div>
+                                        <p>Threshold: {threshold.toFixed(2)}</p>
+                                    </>
+                                )}
+                            </>
+                        )}
 
-                                    {isThresholdTuningActive && (
-                                        <>
-                                            <label htmlFor="thresholdSlider" className="form-label">
-                                                Threshold
-                                            </label>
-                                            <input
-                                                id="thresholdSlider"
-                                                type="range"
-                                                className="form-range"
-                                                min="0"
-                                                max={maxDistance}
-                                                step="0.1"
-                                                value={threshold}
-                                                onChange={(e) => handleThresholdChange(Number(e.target.value))}
-                                            />
-                                            <p>Threshold: {threshold.toFixed(2)}</p>
-                                        </>
-                                    )}
-                                </>
-                            )}
-                        </div>
+                        {highlightedNodes.size > 0 && (
+                            <>
+                                <h3>Actions</h3>
+                                <div className="d-flex flex-column">
+                                    <Button
+                                        className="btn-primary mb-2"
+                                        onClick={handleViewReviews}
+                                        aria-label="View Reviews"
+                                    >
+                                        <i className="mdi mdi-eye me-2"></i>
+                                        View Reviews
+                                    </Button>
+                                    <Button
+                                        className="btn-success"
+                                        onClick={handleDownloadJSON}
+                                        aria-label="Download JSON"
+                                    >
+                                        <i className="mdi mdi-download me-2"></i>
+                                        Download JSON
+                                    </Button>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
 
@@ -261,19 +312,44 @@ const TreeAnalyzer = () => {
                                     zIndex: 1000,
                                 }}
                             >
-                                <h4>{window.name} Metadata</h4>
+                                <h4 className="text-center mb-3">{window.name} Metadata</h4>
                                 <p>
                                     <strong>ID:</strong> {window.id}
                                 </p>
                                 <p>
                                     <strong>Distance:</strong> {window.distance}
                                 </p>
-                                <button
-                                    className="btn btn-danger btn-sm"
-                                    onClick={() => handleCloseMetadata(window.id)}
-                                >
-                                    Close
-                                </button>
+                                <Row className="d-flex justify-content-between mt-3">
+                                    <Col>
+                                        <Button
+                                            className="btn-primary btn-sm"
+                                            onClick={() => handleSelectAllChildren(window.childrenIds)}
+                                        >
+                                            Select All
+                                        </Button>
+                                    </Col>
+                                    <Col>
+                                        <Button
+                                            className="btn-warning btn-sm"
+                                            onClick={() => handleUnselectAllChildren(window.childrenIds)}
+                                        >
+                                            Unselect All
+                                        </Button>
+                                    </Col>
+                                </Row>
+                                <Row className="mt-3">
+                                    <Col className="text-center">
+                                        <Button
+                                            className="btn btn-danger btn-sm"
+                                            onClick={() => {
+                                                handleUnselectAllChildren(window.childrenIds);
+                                                handleCloseMetadata(window.id);
+                                            }}
+                                        >
+                                            Close
+                                        </Button>
+                                    </Col>
+                                </Row>
                             </div>
                         </Draggable>
                     ))}
