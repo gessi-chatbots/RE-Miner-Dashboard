@@ -165,14 +165,38 @@ const TreeAnalyzer = () => {
     };
 
     const handleDownloadJSON = () => {
-        const data = Array.from(highlightedNodes);
-        const json = JSON.stringify(data, null, 2);
+        const collectSubtree = (nodeId: number, hierarchyData: any): any => {
+            const node = findNodeById(nodeId, hierarchyData);
+            if (!node) return null;
+
+            return {
+                id: node.id,
+                label: node.label || `Node ${node.id}`,
+                distance: node.distance,
+                children: node.children?.map((child: any) => collectSubtree(child.id, hierarchyData)) || [],
+            };
+        };
+
+        const isTopLevelNode = (nodeId: number): boolean => {
+            const node = findNodeById(nodeId, originalTreeData);
+            if (!node || !node.parent) return true; // Root node is top-level if it has no parent.
+            return !highlightedNodes.has(node.parent.id); // A node is top-level if its parent is not selected.
+        };
+
+        // Find the uppermost selected nodes.
+        const topLevelNodes = Array.from(highlightedNodes).filter(isTopLevelNode);
+
+        // Collect the hierarchy for each top-level node.
+        const hierarchies = topLevelNodes.map((nodeId) => collectSubtree(nodeId, originalTreeData));
+
+        const json = JSON.stringify(hierarchies, null, 2);
         const blob = new Blob([json], { type: "application/json" });
         const link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
-        link.download = "selected-nodes.json";
+        link.download = "top-level-hierarchy.json";
         link.click();
     };
+
 
     const handleViewReviews = () => {
         alert("View Reviews clicked for selected nodes: " + Array.from(highlightedNodes).join(", "));
