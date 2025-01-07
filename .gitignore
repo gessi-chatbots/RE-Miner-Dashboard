@@ -45,3 +45,7 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/RE-Miner-Dashboard.iml
+/.idea/vcs.xml
