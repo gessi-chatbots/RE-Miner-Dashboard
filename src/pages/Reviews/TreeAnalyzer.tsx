@@ -389,16 +389,37 @@ const TreeAnalyzer = () => {
 
 const CustomNode = ({ nodeDatum, onNodeClick, isSelected }: any) => (
     <g onClick={() => onNodeClick(nodeDatum)} style={{ cursor: "pointer" }}>
+        {/* Node Background */}
         <rect
-            width="150"
-            height="50"
-            x="-75"
-            y="-25"
-            fill={isSelected ? "skyblue" : "white"}
-            stroke="#999"
+            width="180" // Increased width for better spacing
+            height="50" // Adjusted height
+            x="-90" // Centered horizontally
+            y="-25" // Centered vertically
+            fill={isSelected ? "#4A90E2" : "#FFFFFF"} // Clear background for unselected nodes
+            stroke="#333" // Darker border for better contrast
+            rx="10" // Rounded corners for improved look
+            ry="10"
+            style={{
+                strokeWidth: 1.5, // Slightly thicker border
+            }}
         />
-        <text x="0" y="0" textAnchor="middle" alignmentBaseline="middle" style={{ fontSize: "12px" }}>
-            {nodeDatum.name}
+
+        {/* Node Label */}
+        <text
+            x="0"
+            y="0"
+            textAnchor="middle"
+            alignmentBaseline="middle"
+            style={{
+                fontSize: "14px", // Increased font size
+                fontWeight: "400", // Normal weight for better readability
+                fontFamily: "Arial, sans-serif", // Clean font
+                fill: "#333", // Dark text for good contrast
+            }}
+        >
+            {nodeDatum.name.length > 20
+                ? `${nodeDatum.name.substring(0, 20)}...` // Truncate if too long
+                : nodeDatum.name}
         </text>
     </g>
 );
