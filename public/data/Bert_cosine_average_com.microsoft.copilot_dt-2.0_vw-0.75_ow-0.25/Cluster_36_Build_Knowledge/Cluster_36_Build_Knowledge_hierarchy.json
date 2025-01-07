@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.049515549773908,
+    "children": [
+        {
+            "id": 3,
+            "label": "build real stargate"
+        },
+        {
+            "id": 5,
+            "distance": 0.5915559056367133,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "build relationship"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.5573064704421904,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "build idea"
+                        },
+                        {
+                            "id": 1,
+                            "label": "build knowledge"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.7541202528950908,
+    "children": [
+        {
+            "id": 2,
+            "label": "open yourself"
+        },
+        {
+            "id": 3,
+            "distance": 0.679109238165872,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "shut internet connection"
+                },
+                {
+                    "id": 1,
+                    "label": "shut other app"
+                }
+            ]
+        }
+    ]
+}

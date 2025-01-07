@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.9530353132518077,
+    "children": [
+        {
+            "id": 3,
+            "label": "s good and very simple reliable application"
+        },
+        {
+            "id": 5,
+            "distance": 1.8471435990755531,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "pl support"
+                },
+                {
+                    "id": 4,
+                    "distance": 1.7843344146065792,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "sm issue"
+                        },
+                        {
+                            "id": 1,
+                            "label": "sk say"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

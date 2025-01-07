@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 1.930173638803541,
+    "children": [
+        {
+            "id": 6,
+            "distance": 0.6442649162389854,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "work just premium version"
+                },
+                {
+                    "id": 4,
+                    "label": "not work error message"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "distance": 1.825790569886271,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "depict modest village home"
+                },
+                {
+                    "id": 5,
+                    "distance": 0.6066030579605912,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "cover whole image"
+                        },
+                        {
+                            "id": 1,
+                            "label": "cover lot"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

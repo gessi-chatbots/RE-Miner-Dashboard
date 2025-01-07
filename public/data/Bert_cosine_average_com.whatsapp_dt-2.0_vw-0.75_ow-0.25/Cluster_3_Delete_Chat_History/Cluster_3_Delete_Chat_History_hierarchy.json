@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 1.1496157425306888,
+    "children": [
+        {
+            "id": 5,
+            "label": "delete more than100chat"
+        },
+        {
+            "id": 9,
+            "distance": 0.9477626114613449,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "delete all datum"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.9186677650628857,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "delete all chat and media history"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.6887853298665345,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "delete all chat"
+                                },
+                                {
+                                    "id": 6,
+                                    "distance": 0.6228913008510368,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "delete all backup chat"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "delete all photo"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

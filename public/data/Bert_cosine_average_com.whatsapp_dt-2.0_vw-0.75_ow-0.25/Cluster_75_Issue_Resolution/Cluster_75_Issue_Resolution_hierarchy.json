@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 1.995962615121001,
+    "children": [
+        {
+            "id": 6,
+            "distance": 0.6807226531921847,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "rectify issue"
+                },
+                {
+                    "id": 5,
+                    "distance": 0.6242191550991384,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "rectify wire"
+                        },
+                        {
+                            "id": 3,
+                            "label": "rectify problem"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "distance": 0.8481363934009404,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "reopen what be app"
+                },
+                {
+                    "id": 1,
+                    "label": "reopen whatsapp number"
+                }
+            ]
+        }
+    ]
+}

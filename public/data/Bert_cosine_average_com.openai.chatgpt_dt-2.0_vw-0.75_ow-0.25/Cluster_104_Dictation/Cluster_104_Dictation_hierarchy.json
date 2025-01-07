@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 0.7172404867576346,
+    "children": [
+        {
+            "id": 0,
+            "label": "dictate society"
+        },
+        {
+            "id": 1,
+            "label": "dictate important stuff"
+        }
+    ]
+}

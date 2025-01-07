@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 0.948252923760226,
+    "children": [
+        {
+            "id": 5,
+            "label": "start download"
+        },
+        {
+            "id": 9,
+            "distance": 0.8289424026697314,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "start movie"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.7882021713998708,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "start discount pleace"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.7357423849207341,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "start app"
+                                },
+                                {
+                                    "id": 6,
+                                    "distance": 0.6097342017120795,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "start same problem"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "start message"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

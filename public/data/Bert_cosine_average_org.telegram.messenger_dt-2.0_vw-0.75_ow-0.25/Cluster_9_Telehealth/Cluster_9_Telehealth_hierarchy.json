@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 6,
+            "label": "get codewhy"
+        },
+        {
+            "id": 11,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "get otp"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "get well rating"
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "get sm"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "get sort"
+                                        },
+                                        {
+                                            "id": 7,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "get sim"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "get lot"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

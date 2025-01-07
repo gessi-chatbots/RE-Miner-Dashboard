@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 1.5874988764333229,
+    "children": [
+        {
+            "id": 5,
+            "label": "enhance learning"
+        },
+        {
+            "id": 9,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "nice learning app"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "excellent english learning app"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "good learning companion"
+                                },
+                                {
+                                    "id": 6,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "facilitate learning"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "very nice learning app"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

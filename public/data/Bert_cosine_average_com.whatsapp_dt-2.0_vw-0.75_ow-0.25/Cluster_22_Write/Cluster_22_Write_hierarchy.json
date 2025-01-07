@@ -1,0 +1,104 @@
+{
+    "id": 20,
+    "distance": 1.9846099274534237,
+    "children": [
+        {
+            "id": 10,
+            "label": "imagine pay version"
+        },
+        {
+            "id": 19,
+            "distance": 1.0681713893434368,
+            "children": [
+                {
+                    "id": 9,
+                    "label": "write spam"
+                },
+                {
+                    "id": 18,
+                    "distance": 0.898225746435252,
+                    "children": [
+                        {
+                            "id": 8,
+                            "label": "write mail"
+                        },
+                        {
+                            "id": 17,
+                            "distance": 0.6642960889992616,
+                            "children": [
+                                {
+                                    "id": 7,
+                                    "label": "write text"
+                                },
+                                {
+                                    "id": 16,
+                                    "distance": 0.6519483839500695,
+                                    "children": [
+                                        {
+                                            "id": 6,
+                                            "label": "write two star"
+                                        },
+                                        {
+                                            "id": 15,
+                                            "distance": 0.6075313367575756,
+                                            "children": [
+                                                {
+                                                    "id": 5,
+                                                    "label": "write status"
+                                                },
+                                                {
+                                                    "id": 14,
+                                                    "distance": 0.5944751522166467,
+                                                    "children": [
+                                                        {
+                                                            "id": 4,
+                                                            "label": "write whatsapp customer support"
+                                                        },
+                                                        {
+                                                            "id": 13,
+                                                            "distance": 0.5808369268441573,
+                                                            "children": [
+                                                                {
+                                                                    "id": 3,
+                                                                    "label": "write code"
+                                                                },
+                                                                {
+                                                                    "id": 12,
+                                                                    "distance": 0.5193608309581342,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 2,
+                                                                            "label": "write mobile name"
+                                                                        },
+                                                                        {
+                                                                            "id": 11,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 0,
+                                                                                    "label": "write message"
+                                                                                },
+                                                                                {
+                                                                                    "id": 1,
+                                                                                    "label": "write big apparition message"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

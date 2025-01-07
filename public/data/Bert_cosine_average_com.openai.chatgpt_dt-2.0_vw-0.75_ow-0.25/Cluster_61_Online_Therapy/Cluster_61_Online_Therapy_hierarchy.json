@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 1.91860109805607,
+    "children": [
+        {
+            "id": 6,
+            "label": "attain information"
+        },
+        {
+            "id": 11,
+            "distance": 1.846746454644165,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "preserve life"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.6584954804386075,
+                    "children": [
+                        {
+                            "id": 7,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "afford premium version"
+                                },
+                                {
+                                    "id": 4,
+                                    "label": "afford pro version"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.4957394812479769,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "afford premium"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.4472159812816957,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "afford current pricing"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "afford therapy"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

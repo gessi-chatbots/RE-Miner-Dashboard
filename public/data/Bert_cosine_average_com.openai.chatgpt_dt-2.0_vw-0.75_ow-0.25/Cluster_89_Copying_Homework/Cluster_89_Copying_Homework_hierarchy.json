@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.7433342594910863,
+    "children": [
+        {
+            "id": 2,
+            "label": "copy write"
+        },
+        {
+            "id": 3,
+            "distance": 0.5429577250661032,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "copy homework"
+                },
+                {
+                    "id": 1,
+                    "label": "copy definition"
+                }
+            ]
+        }
+    ]
+}

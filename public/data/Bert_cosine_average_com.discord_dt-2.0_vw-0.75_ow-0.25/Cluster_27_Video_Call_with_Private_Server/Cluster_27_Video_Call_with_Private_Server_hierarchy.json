@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.9478039695243121,
+    "children": [
+        {
+            "id": 3,
+            "label": "go video"
+        },
+        {
+            "id": 5,
+            "distance": 0.8155086352098616,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "run amoc"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.7327544559934419,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "run private server"
+                        },
+                        {
+                            "id": 1,
+                            "label": "run dc"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

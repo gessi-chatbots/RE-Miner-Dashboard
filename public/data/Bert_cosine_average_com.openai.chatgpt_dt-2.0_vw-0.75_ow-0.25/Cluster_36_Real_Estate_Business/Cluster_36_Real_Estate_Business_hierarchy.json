@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.6710909122934919,
+    "children": [
+        {
+            "id": 2,
+            "label": "elevate experience"
+        },
+        {
+            "id": 3,
+            "distance": 0.5159317594492797,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "elevate already revolutionary product"
+                },
+                {
+                    "id": 1,
+                    "label": "elevate toronto real estate business"
+                }
+            ]
+        }
+    ]
+}

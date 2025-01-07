@@ -1,0 +1,84 @@
+{
+    "id": 16,
+    "distance": 0.7732901142442299,
+    "children": [
+        {
+            "id": 8,
+            "label": "show wrong email"
+        },
+        {
+            "id": 15,
+            "distance": 0.7094727252010145,
+            "children": [
+                {
+                    "id": 7,
+                    "label": "show reference link"
+                },
+                {
+                    "id": 14,
+                    "distance": 0.6661750641563823,
+                    "children": [
+                        {
+                            "id": 6,
+                            "label": "show pic"
+                        },
+                        {
+                            "id": 13,
+                            "distance": 0.6134663160925223,
+                            "children": [
+                                {
+                                    "id": 5,
+                                    "label": "show expression"
+                                },
+                                {
+                                    "id": 12,
+                                    "distance": 0.5811544410047076,
+                                    "children": [
+                                        {
+                                            "id": 10,
+                                            "distance": 0.42406215769612104,
+                                            "children": [
+                                                {
+                                                    "id": 4,
+                                                    "label": "show image"
+                                                },
+                                                {
+                                                    "id": 9,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "show picture"
+                                                        },
+                                                        {
+                                                            "id": 3,
+                                                            "label": "show amazing picture"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 11,
+                                            "distance": 0.5388638620399643,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "show lock screen suggestion"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "show answer"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

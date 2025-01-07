@@ -1,0 +1,84 @@
+{
+    "id": 16,
+    "distance": 1.951428355147213,
+    "children": [
+        {
+            "id": 14,
+            "distance": 0.6528370231665436,
+            "children": [
+                {
+                    "id": 11,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 8,
+                            "label": "encounter issue"
+                        },
+                        {
+                            "id": 10,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 7,
+                                    "label": "encounter numerous issue"
+                                },
+                                {
+                                    "id": 9,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 5,
+                                            "label": "encounter unexpected issue"
+                                        },
+                                        {
+                                            "id": 6,
+                                            "label": "encounter frustrating issue"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 13,
+                    "distance": 0.5812563381426153,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "encounter problem"
+                        },
+                        {
+                            "id": 12,
+                            "distance": 0.490270352992787,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "encounter dialogue box"
+                                },
+                                {
+                                    "id": 3,
+                                    "label": "encounter error message"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "distance": 1.7462840763873224,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "impact communication"
+                },
+                {
+                    "id": 1,
+                    "label": "easy communication sharing"
+                }
+            ]
+        }
+    ]
+}

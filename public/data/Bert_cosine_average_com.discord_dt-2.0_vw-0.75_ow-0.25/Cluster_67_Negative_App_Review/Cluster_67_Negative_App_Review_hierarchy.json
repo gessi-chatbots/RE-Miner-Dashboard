@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.8080215239199235,
+    "children": [
+        {
+            "id": 0,
+            "label": "terrible app"
+        },
+        {
+            "id": 1,
+            "label": "horrible app"
+        }
+    ]
+}

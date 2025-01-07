@@ -1,0 +1,284 @@
+{
+    "id": 56,
+    "distance": 1.9820501911182191,
+    "children": [
+        {
+            "id": 54,
+            "distance": 1.875460580327304,
+            "children": [
+                {
+                    "id": 52,
+                    "distance": 1.3814865950269426,
+                    "children": [
+                        {
+                            "id": 28,
+                            "label": "blocks account"
+                        },
+                        {
+                            "id": 51,
+                            "distance": 1.1400857204778152,
+                            "children": [
+                                {
+                                    "id": 27,
+                                    "label": "block everytime new number"
+                                },
+                                {
+                                    "id": 50,
+                                    "distance": 1.020617689805693,
+                                    "children": [
+                                        {
+                                            "id": 47,
+                                            "distance": 0.9377575982195892,
+                                            "children": [
+                                                {
+                                                    "id": 26,
+                                                    "label": "block watsap"
+                                                },
+                                                {
+                                                    "id": 43,
+                                                    "distance": 0.7933283001040751,
+                                                    "children": [
+                                                        {
+                                                            "id": 24,
+                                                            "label": "block whatspp"
+                                                        },
+                                                        {
+                                                            "id": 25,
+                                                            "label": "block own whatsapp"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 49,
+                                            "distance": 0.9962527953707235,
+                                            "children": [
+                                                {
+                                                    "id": 23,
+                                                    "label": "block real scammer"
+                                                },
+                                                {
+                                                    "id": 46,
+                                                    "distance": 0.8784642878547099,
+                                                    "children": [
+                                                        {
+                                                            "id": 22,
+                                                            "label": "block what sapp"
+                                                        },
+                                                        {
+                                                            "id": 45,
+                                                            "distance": 0.8492134062824781,
+                                                            "children": [
+                                                                {
+                                                                    "id": 21,
+                                                                    "label": "block ca nt ibe"
+                                                                },
+                                                                {
+                                                                    "id": 42,
+                                                                    "distance": 0.7870424497975342,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 20,
+                                                                            "label": "block ac"
+                                                                        },
+                                                                        {
+                                                                            "id": 41,
+                                                                            "distance": 0.7728589438246886,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 19,
+                                                                                    "label": "block unknown contact"
+                                                                                },
+                                                                                {
+                                                                                    "id": 40,
+                                                                                    "distance": 0.6958766410355416,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 32,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 18,
+                                                                                                    "label": "block own account"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 31,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 16,
+                                                                                                            "label": "block real account"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 17,
+                                                                                                            "label": "why there block account"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 38,
+                                                                                            "distance": 0.6479171132795072,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 35,
+                                                                                                    "distance": 0.5777288216596949,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 15,
+                                                                                                            "label": "block entire device model"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 34,
+                                                                                                            "distance": 0.5402407805982157,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 14,
+                                                                                                                    "label": "block us"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 30,
+                                                                                                                    "distance": 0.0,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 12,
+                                                                                                                            "label": "block unkown people"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 13,
+                                                                                                                            "label": "block people"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 36,
+                                                                                                    "distance": 0.5806367936815895,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 11,
+                                                                                                            "label": "block automatic inclusion"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 29,
+                                                                                                            "distance": 0.0,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 9,
+                                                                                                                    "label": "block unknown number"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 10,
+                                                                                                                    "label": "block phone number"
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 53,
+                    "distance": 1.738991524315115,
+                    "children": [
+                        {
+                            "id": 8,
+                            "label": "hi whatsapp team whatspp account status"
+                        },
+                        {
+                            "id": 39,
+                            "distance": 0.6948677832670427,
+                            "children": [
+                                {
+                                    "id": 7,
+                                    "label": "love group chat feature"
+                                },
+                                {
+                                    "id": 33,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 5,
+                                            "label": "group chat"
+                                        },
+                                        {
+                                            "id": 6,
+                                            "label": "whatsapp group chat"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 55,
+            "distance": 1.950693984564916,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "effect paragraphing"
+                },
+                {
+                    "id": 48,
+                    "distance": 0.9756896820908506,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "force ai stuff"
+                        },
+                        {
+                            "id": 44,
+                            "distance": 0.8076613130650965,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "force compulsory updation"
+                                },
+                                {
+                                    "id": 37,
+                                    "distance": 0.6438050390434045,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "force stop"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "force people"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

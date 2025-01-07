@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.7313557127327877,
+    "children": [
+        {
+            "id": 0,
+            "label": "preffer old version"
+        },
+        {
+            "id": 1,
+            "label": "henerate image"
+        }
+    ]
+}

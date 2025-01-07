@@ -1,0 +1,204 @@
+{
+    "id": 40,
+    "distance": 1.8556284491944264,
+    "children": [
+        {
+            "id": 20,
+            "label": "love whatapp chatting voice"
+        },
+        {
+            "id": 39,
+            "distance": 1.698155138600509,
+            "children": [
+                {
+                    "id": 28,
+                    "distance": 0.7891976809245481,
+                    "children": [
+                        {
+                            "id": 18,
+                            "label": "unbanne what be app"
+                        },
+                        {
+                            "id": 19,
+                            "label": "unbanne what be app account"
+                        }
+                    ]
+                },
+                {
+                    "id": 38,
+                    "distance": 1.6249177918225601,
+                    "children": [
+                        {
+                            "id": 34,
+                            "distance": 1.1476967576879336,
+                            "children": [
+                                {
+                                    "id": 16,
+                                    "label": "use what be app"
+                                },
+                                {
+                                    "id": 17,
+                                    "label": "what be whatsapp pay"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 37,
+                            "distance": 1.3325726874159305,
+                            "children": [
+                                {
+                                    "id": 32,
+                                    "distance": 1.0391904436696913,
+                                    "children": [
+                                        {
+                                            "id": 15,
+                                            "label": "what snumber"
+                                        },
+                                        {
+                                            "id": 30,
+                                            "distance": 0.9224954684096798,
+                                            "children": [
+                                                {
+                                                    "id": 14,
+                                                    "label": "what be app not login"
+                                                },
+                                                {
+                                                    "id": 29,
+                                                    "distance": 0.791597752890647,
+                                                    "children": [
+                                                        {
+                                                            "id": 21,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 12,
+                                                                    "label": "open tha what be app"
+                                                                },
+                                                                {
+                                                                    "id": 13,
+                                                                    "label": "good official what be app"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 25,
+                                                            "distance": 0.6670020790743519,
+                                                            "children": [
+                                                                {
+                                                                    "id": 10,
+                                                                    "label": "what next pop up ad"
+                                                                },
+                                                                {
+                                                                    "id": 11,
+                                                                    "label": "like what not massage"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 36,
+                                    "distance": 1.1956899624844692,
+                                    "children": [
+                                        {
+                                            "id": 22,
+                                            "distance": 0.34926057452042586,
+                                            "children": [
+                                                {
+                                                    "id": 8,
+                                                    "label": "update what be app status"
+                                                },
+                                                {
+                                                    "id": 9,
+                                                    "label": "update what be app account"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 35,
+                                            "distance": 1.1546819766779866,
+                                            "children": [
+                                                {
+                                                    "id": 27,
+                                                    "distance": 0.7292106673381464,
+                                                    "children": [
+                                                        {
+                                                            "id": 7,
+                                                            "label": "what be app spurt"
+                                                        },
+                                                        {
+                                                            "id": 26,
+                                                            "distance": 0.6692145357335879,
+                                                            "children": [
+                                                                {
+                                                                    "id": 6,
+                                                                    "label": "what we problem"
+                                                                },
+                                                                {
+                                                                    "id": 24,
+                                                                    "distance": 0.6352114826378483,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 5,
+                                                                            "label": "what be app messenger download"
+                                                                        },
+                                                                        {
+                                                                            "id": 23,
+                                                                            "distance": 0.5446500585881321,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 3,
+                                                                                    "label": "access what be app account"
+                                                                                },
+                                                                                {
+                                                                                    "id": 4,
+                                                                                    "label": "hello what be app contact status issue"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 33,
+                                                    "distance": 1.0576997937661818,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "unlock what be app account"
+                                                        },
+                                                        {
+                                                            "id": 31,
+                                                            "distance": 0.929743216619005,
+                                                            "children": [
+                                                                {
+                                                                    "id": 0,
+                                                                    "label": "block what be app spam"
+                                                                },
+                                                                {
+                                                                    "id": 1,
+                                                                    "label": "request what be app team"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

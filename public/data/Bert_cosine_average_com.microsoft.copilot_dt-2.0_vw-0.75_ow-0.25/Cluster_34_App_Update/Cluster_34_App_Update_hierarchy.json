@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.5347224059686442,
+    "children": [
+        {
+            "id": 3,
+            "label": "update copilot"
+        },
+        {
+            "id": 5,
+            "distance": 0.8194994798235151,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "update pixel8"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.7210390656233229,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "like update version"
+                        },
+                        {
+                            "id": 1,
+                            "label": "update app"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

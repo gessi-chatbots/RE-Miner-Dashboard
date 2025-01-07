@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.8239328041421983,
+    "children": [
+        {
+            "id": 0,
+            "label": "express appreciation"
+        },
+        {
+            "id": 1,
+            "label": "train ai"
+        }
+    ]
+}

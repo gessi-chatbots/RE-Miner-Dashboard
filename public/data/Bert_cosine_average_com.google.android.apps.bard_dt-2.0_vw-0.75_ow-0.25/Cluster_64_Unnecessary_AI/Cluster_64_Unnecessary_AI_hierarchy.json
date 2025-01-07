@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.8425486769444757,
+    "children": [
+        {
+            "id": 2,
+            "label": "create ai"
+        },
+        {
+            "id": 3,
+            "distance": 1.7523416803465979,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "learn ai"
+                },
+                {
+                    "id": 1,
+                    "label": "really useless and poorly develop ai"
+                }
+            ]
+        }
+    ]
+}

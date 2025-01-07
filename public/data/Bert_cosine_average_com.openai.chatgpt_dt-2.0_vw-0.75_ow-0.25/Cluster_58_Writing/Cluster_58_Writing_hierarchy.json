@@ -1,0 +1,224 @@
+{
+    "id": 44,
+    "distance": 0.7994129624392301,
+    "children": [
+        {
+            "id": 22,
+            "label": "write email"
+        },
+        {
+            "id": 43,
+            "distance": 0.78495004870627,
+            "children": [
+                {
+                    "id": 41,
+                    "distance": 0.707939255564888,
+                    "children": [
+                        {
+                            "id": 21,
+                            "label": "write professional work product draft"
+                        },
+                        {
+                            "id": 40,
+                            "distance": 0.7038870219837094,
+                            "children": [
+                                {
+                                    "id": 20,
+                                    "label": "write good review"
+                                },
+                                {
+                                    "id": 39,
+                                    "distance": 0.6848376252320697,
+                                    "children": [
+                                        {
+                                            "id": 19,
+                                            "label": "write only four star"
+                                        },
+                                        {
+                                            "id": 38,
+                                            "distance": 0.6732202240183421,
+                                            "children": [
+                                                {
+                                                    "id": 18,
+                                                    "label": "write equation"
+                                                },
+                                                {
+                                                    "id": 37,
+                                                    "distance": 0.6619666747695929,
+                                                    "children": [
+                                                        {
+                                                            "id": 31,
+                                                            "distance": 0.5638226561162234,
+                                                            "children": [
+                                                                {
+                                                                    "id": 16,
+                                                                    "label": "write professional email letter quiz"
+                                                                },
+                                                                {
+                                                                    "id": 17,
+                                                                    "label": "write exam"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 36,
+                                                            "distance": 0.6408897732933538,
+                                                            "children": [
+                                                                {
+                                                                    "id": 15,
+                                                                    "label": "write diy book"
+                                                                },
+                                                                {
+                                                                    "id": 35,
+                                                                    "distance": 0.6153634757128755,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 14,
+                                                                            "label": "write post"
+                                                                        },
+                                                                        {
+                                                                            "id": 34,
+                                                                            "distance": 0.592751558533406,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 13,
+                                                                                    "label": "write compare and contrast essay"
+                                                                                },
+                                                                                {
+                                                                                    "id": 33,
+                                                                                    "distance": 0.580651874815243,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 24,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 11,
+                                                                                                    "label": "write paragraph"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 12,
+                                                                                                    "label": "write one paragraph"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 32,
+                                                                                            "distance": 0.5645735309836932,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 10,
+                                                                                                    "label": "write prompt"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 30,
+                                                                                                    "distance": 0.5540071714559781,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 9,
+                                                                                                            "label": "write chemical compound"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 29,
+                                                                                                            "distance": 0.5332522296531939,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 26,
+                                                                                                                    "distance": 0.4997331351587529,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 7,
+                                                                                                                            "label": "write wrong spelling"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 8,
+                                                                                                                            "label": "write grant"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 28,
+                                                                                                                    "distance": 0.5149111185473969,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 25,
+                                                                                                                            "distance": 0.46120340402424037,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 6,
+                                                                                                                                    "label": "write short story"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 23,
+                                                                                                                                    "distance": 0.0,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 4,
+                                                                                                                                            "label": "write proper business letter"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 5,
+                                                                                                                                            "label": "write business letter"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 27,
+                                                                                                                            "distance": 0.5067658056512406,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 2,
+                                                                                                                                    "label": "write lyric"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 3,
+                                                                                                                                    "label": "write python script"
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 42,
+                    "distance": 0.7574139068775528,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "write urdu"
+                        },
+                        {
+                            "id": 1,
+                            "label": "write documentation"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

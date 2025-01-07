@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.2358090961467023,
+    "children": [
+        {
+            "id": 2,
+            "label": "review gpt"
+        },
+        {
+            "id": 3,
+            "distance": 0.8225395026904277,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "review thing"
+                },
+                {
+                    "id": 1,
+                    "label": "review write"
+                }
+            ]
+        }
+    ]
+}

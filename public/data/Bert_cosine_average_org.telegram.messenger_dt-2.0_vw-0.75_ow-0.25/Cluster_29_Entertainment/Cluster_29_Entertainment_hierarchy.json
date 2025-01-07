@@ -1,0 +1,74 @@
+{
+    "id": 14,
+    "distance": 1.7927198157165676,
+    "children": [
+        {
+            "id": 12,
+            "distance": 0.9443468682968618,
+            "children": [
+                {
+                    "id": 7,
+                    "label": "watch video"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.747623138028516,
+                    "children": [
+                        {
+                            "id": 6,
+                            "label": "watch video clip"
+                        },
+                        {
+                            "id": 8,
+                            "distance": 0.6854161280457678,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "watch movie"
+                                },
+                                {
+                                    "id": 5,
+                                    "label": "watch chinese korean drama series"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "distance": 1.6348104493407525,
+            "children": [
+                {
+                    "id": 9,
+                    "distance": 0.719009438904025,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "feel pain"
+                        },
+                        {
+                            "id": 3,
+                            "label": "like feel ha cartoon character"
+                        }
+                    ]
+                },
+                {
+                    "id": 11,
+                    "distance": 0.8830306456529226,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "hear audio"
+                        },
+                        {
+                            "id": 1,
+                            "label": "hear great thing"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

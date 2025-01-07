@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 0.7407736730674983,
+    "children": [
+        {
+            "id": 4,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "encounter issue"
+                },
+                {
+                    "id": 3,
+                    "label": "encounter numerous issue"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "distance": 0.6386910571546176,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "encounter multiple instance"
+                },
+                {
+                    "id": 1,
+                    "label": "encounter problem"
+                }
+            ]
+        }
+    ]
+}

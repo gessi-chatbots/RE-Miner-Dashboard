@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.8980407387443083,
+    "children": [
+        {
+            "id": 2,
+            "label": "share datum"
+        },
+        {
+            "id": 3,
+            "distance": 0.6709578299076095,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "share picture"
+                },
+                {
+                    "id": 1,
+                    "label": "share personal problem"
+                }
+            ]
+        }
+    ]
+}

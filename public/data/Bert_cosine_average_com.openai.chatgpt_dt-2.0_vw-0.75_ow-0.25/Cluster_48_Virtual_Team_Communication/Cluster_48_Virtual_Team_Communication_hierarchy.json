@@ -1,0 +1,434 @@
+{
+    "id": 86,
+    "distance": 1.96216244112106,
+    "children": [
+        {
+            "id": 82,
+            "distance": 1.8611914471834266,
+            "children": [
+                {
+                    "id": 73,
+                    "distance": 1.6940406494228917,
+                    "children": [
+                        {
+                            "id": 54,
+                            "distance": 0.8362520601300988,
+                            "children": [
+                                {
+                                    "id": 42,
+                                    "label": "purchase pro version"
+                                },
+                                {
+                                    "id": 43,
+                                    "label": "purchase pro subscription"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 62,
+                            "distance": 1.1759904437673103,
+                            "children": [
+                                {
+                                    "id": 41,
+                                    "label": "cancel subscribtion"
+                                },
+                                {
+                                    "id": 58,
+                                    "distance": 0.9268883882872337,
+                                    "children": [
+                                        {
+                                            "id": 45,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 39,
+                                                    "label": "cancel premium subscription"
+                                                },
+                                                {
+                                                    "id": 40,
+                                                    "label": "cancel subscription"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 52,
+                                            "distance": 0.7093479536771605,
+                                            "children": [
+                                                {
+                                                    "id": 38,
+                                                    "label": "cancel account"
+                                                },
+                                                {
+                                                    "id": 48,
+                                                    "distance": 0.6357490063874466,
+                                                    "children": [
+                                                        {
+                                                            "id": 36,
+                                                            "label": "cancel page"
+                                                        },
+                                                        {
+                                                            "id": 37,
+                                                            "label": "cancel current bill one"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 79,
+                    "distance": 1.8054742007146272,
+                    "children": [
+                        {
+                            "id": 35,
+                            "label": "visit kamburupitiya town"
+                        },
+                        {
+                            "id": 61,
+                            "distance": 1.0670006419133975,
+                            "children": [
+                                {
+                                    "id": 34,
+                                    "label": "access chat history"
+                                },
+                                {
+                                    "id": 47,
+                                    "distance": 0.5933636147357606,
+                                    "children": [
+                                        {
+                                            "id": 32,
+                                            "label": "access previous question response"
+                                        },
+                                        {
+                                            "id": 33,
+                                            "label": "access fantastic ai"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 85,
+            "distance": 1.9303570650729298,
+            "children": [
+                {
+                    "id": 53,
+                    "distance": 0.7533538219977449,
+                    "children": [
+                        {
+                            "id": 30,
+                            "label": "translate language"
+                        },
+                        {
+                            "id": 31,
+                            "label": "translate content"
+                        }
+                    ]
+                },
+                {
+                    "id": 84,
+                    "distance": 1.903914044350235,
+                    "children": [
+                        {
+                            "id": 81,
+                            "distance": 1.8420121914064518,
+                            "children": [
+                                {
+                                    "id": 76,
+                                    "distance": 1.7439028591782826,
+                                    "children": [
+                                        {
+                                            "id": 29,
+                                            "label": "preview code output"
+                                        },
+                                        {
+                                            "id": 60,
+                                            "distance": 1.0406873450532153,
+                                            "children": [
+                                                {
+                                                    "id": 27,
+                                                    "label": "press read out aloud option"
+                                                },
+                                                {
+                                                    "id": 28,
+                                                    "label": "press back button"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 77,
+                                    "distance": 1.7485073027047802,
+                                    "children": [
+                                        {
+                                            "id": 49,
+                                            "distance": 0.6470321206979283,
+                                            "children": [
+                                                {
+                                                    "id": 25,
+                                                    "label": "report chatgpt application"
+                                                },
+                                                {
+                                                    "id": 26,
+                                                    "label": "report issue"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 74,
+                                            "distance": 1.7206608780291253,
+                                            "children": [
+                                                {
+                                                    "id": 24,
+                                                    "label": "consult problem"
+                                                },
+                                                {
+                                                    "id": 66,
+                                                    "distance": 1.5174607771117377,
+                                                    "children": [
+                                                        {
+                                                            "id": 23,
+                                                            "label": "research practically every productivity app"
+                                                        },
+                                                        {
+                                                            "id": 59,
+                                                            "distance": 0.9679334315494815,
+                                                            "children": [
+                                                                {
+                                                                    "id": 21,
+                                                                    "label": "good ai writing creator app"
+                                                                },
+                                                                {
+                                                                    "id": 22,
+                                                                    "label": "good writing ai tool"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 83,
+                            "distance": 1.8694196369262468,
+                            "children": [
+                                {
+                                    "id": 20,
+                                    "label": "do assignment content writing"
+                                },
+                                {
+                                    "id": 80,
+                                    "distance": 1.815873137899532,
+                                    "children": [
+                                        {
+                                            "id": 19,
+                                            "label": "dominate chatgpt"
+                                        },
+                                        {
+                                            "id": 78,
+                                            "distance": 1.7559173630147094,
+                                            "children": [
+                                                {
+                                                    "id": 71,
+                                                    "distance": 1.6663124379171859,
+                                                    "children": [
+                                                        {
+                                                            "id": 56,
+                                                            "distance": 0.8780909187767231,
+                                                            "children": [
+                                                                {
+                                                                    "id": 18,
+                                                                    "label": "collect datum"
+                                                                },
+                                                                {
+                                                                    "id": 46,
+                                                                    "distance": 0.45550749344559827,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 17,
+                                                                            "label": "collect phone data"
+                                                                        },
+                                                                        {
+                                                                            "id": 44,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 15,
+                                                                                    "label": "collect more and more accurate information"
+                                                                                },
+                                                                                {
+                                                                                    "id": 16,
+                                                                                    "label": "collect information"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 67,
+                                                            "distance": 1.5227203887283598,
+                                                            "children": [
+                                                                {
+                                                                    "id": 57,
+                                                                    "distance": 0.9009065661002553,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 14,
+                                                                            "label": "interpret handout"
+                                                                        },
+                                                                        {
+                                                                            "id": 55,
+                                                                            "distance": 0.8738372394971533,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 12,
+                                                                                    "label": "interpret poetry"
+                                                                                },
+                                                                                {
+                                                                                    "id": 13,
+                                                                                    "label": "interpret ultrasound result"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 65,
+                                                                    "distance": 1.4803203762563906,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 10,
+                                                                            "label": "exchange musical staff notation"
+                                                                        },
+                                                                        {
+                                                                            "id": 11,
+                                                                            "label": "capture bangla language"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 75,
+                                                    "distance": 1.7383564990163949,
+                                                    "children": [
+                                                        {
+                                                            "id": 70,
+                                                            "distance": 1.6469148017664925,
+                                                            "children": [
+                                                                {
+                                                                    "id": 9,
+                                                                    "label": "approach conversation"
+                                                                },
+                                                                {
+                                                                    "id": 64,
+                                                                    "distance": 1.4400848419389256,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 7,
+                                                                            "label": "design several task"
+                                                                        },
+                                                                        {
+                                                                            "id": 8,
+                                                                            "label": "process regular task"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 72,
+                                                            "distance": 1.6920809889275852,
+                                                            "children": [
+                                                                {
+                                                                    "id": 6,
+                                                                    "label": "coordinate thought"
+                                                                },
+                                                                {
+                                                                    "id": 69,
+                                                                    "distance": 1.5891580936895842,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 63,
+                                                                            "distance": 1.242829109396561,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 5,
+                                                                                    "label": "boost learning skill"
+                                                                                },
+                                                                                {
+                                                                                    "id": 51,
+                                                                                    "distance": 0.6851152901054316,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 3,
+                                                                                            "label": "boost productivity"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 4,
+                                                                                            "label": "boost own service"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": 68,
+                                                                            "distance": 1.5272726237430287,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 2,
+                                                                                    "label": "integrate ai guardians"
+                                                                                },
+                                                                                {
+                                                                                    "id": 50,
+                                                                                    "distance": 0.6817407869686686,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 0,
+                                                                                            "label": "transform life"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 1,
+                                                                                            "label": "transform voice"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

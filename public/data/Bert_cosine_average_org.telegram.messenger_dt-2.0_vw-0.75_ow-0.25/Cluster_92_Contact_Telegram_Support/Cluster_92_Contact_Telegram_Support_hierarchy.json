@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.9550059079262112,
+    "children": [
+        {
+            "id": 0,
+            "label": "contact telegram support team"
+        },
+        {
+            "id": 1,
+            "label": "contact telegram support group"
+        }
+    ]
+}

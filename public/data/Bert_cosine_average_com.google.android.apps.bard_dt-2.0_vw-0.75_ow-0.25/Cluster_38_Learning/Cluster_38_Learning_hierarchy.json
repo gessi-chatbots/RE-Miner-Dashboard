@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 0.6693710763170341,
+    "children": [
+        {
+            "id": 0,
+            "label": "gain more feature"
+        },
+        {
+            "id": 1,
+            "label": "gain knowledge"
+        }
+    ]
+}

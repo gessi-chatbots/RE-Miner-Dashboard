@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.8034530192716827,
+    "children": [
+        {
+            "id": 0,
+            "label": "generate2image"
+        },
+        {
+            "id": 1,
+            "label": "generate3image"
+        }
+    ]
+}

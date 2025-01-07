@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 0.7753964235404628,
+    "children": [
+        {
+            "id": 4,
+            "label": "beat human"
+        },
+        {
+            "id": 7,
+            "distance": 0.6921807266149814,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "beat app"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.5857660516695493,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "beat hard game"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.538912396051255,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "beat other ai tool"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "beat most search machine"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

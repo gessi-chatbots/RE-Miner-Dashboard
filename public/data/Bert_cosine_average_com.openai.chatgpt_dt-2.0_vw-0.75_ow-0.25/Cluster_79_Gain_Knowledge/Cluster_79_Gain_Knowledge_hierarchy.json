@@ -1,0 +1,94 @@
+{
+    "id": 18,
+    "distance": 1.265278269340051,
+    "children": [
+        {
+            "id": 9,
+            "label": "gain over10k sub"
+        },
+        {
+            "id": 17,
+            "distance": 0.8317619773915004,
+            "children": [
+                {
+                    "id": 8,
+                    "label": "gain alot"
+                },
+                {
+                    "id": 16,
+                    "distance": 0.708923616308315,
+                    "children": [
+                        {
+                            "id": 12,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 7,
+                                    "label": "gain accuracy information"
+                                },
+                                {
+                                    "id": 11,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 5,
+                                            "label": "gain more information"
+                                        },
+                                        {
+                                            "id": 6,
+                                            "label": "gain information"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 15,
+                            "distance": 0.6215505907239867,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "gain confidence"
+                                },
+                                {
+                                    "id": 14,
+                                    "distance": 0.5644498442185941,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "gain clarity"
+                                        },
+                                        {
+                                            "id": 13,
+                                            "distance": 0.5348263696580612,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "gain understand"
+                                                },
+                                                {
+                                                    "id": 10,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "gain general knowledge"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "gain knowledge"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

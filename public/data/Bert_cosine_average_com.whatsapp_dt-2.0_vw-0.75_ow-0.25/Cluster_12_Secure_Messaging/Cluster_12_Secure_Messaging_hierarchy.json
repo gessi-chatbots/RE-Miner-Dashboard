@@ -1,0 +1,114 @@
+{
+    "id": 22,
+    "distance": 1.8194000450936494,
+    "children": [
+        {
+            "id": 19,
+            "distance": 0.7450932825211366,
+            "children": [
+                {
+                    "id": 11,
+                    "label": "pass information"
+                },
+                {
+                    "id": 15,
+                    "distance": 0.615236659960543,
+                    "children": [
+                        {
+                            "id": 10,
+                            "label": "pass time"
+                        },
+                        {
+                            "id": 13,
+                            "distance": 0.5847244634247561,
+                            "children": [
+                                {
+                                    "id": 8,
+                                    "label": "pass appointment"
+                                },
+                                {
+                                    "id": 9,
+                                    "label": "pass message"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "distance": 1.1702414475041902,
+            "children": [
+                {
+                    "id": 7,
+                    "label": "download work relate datum"
+                },
+                {
+                    "id": 20,
+                    "distance": 0.7600745610693681,
+                    "children": [
+                        {
+                            "id": 6,
+                            "label": "work information"
+                        },
+                        {
+                            "id": 18,
+                            "distance": 0.7137221143919993,
+                            "children": [
+                                {
+                                    "id": 5,
+                                    "label": "work very bad app"
+                                },
+                                {
+                                    "id": 17,
+                                    "distance": 0.6431870072637988,
+                                    "children": [
+                                        {
+                                            "id": 14,
+                                            "distance": 0.6080175490867532,
+                                            "children": [
+                                                {
+                                                    "id": 3,
+                                                    "label": "work hard pay"
+                                                },
+                                                {
+                                                    "id": 4,
+                                                    "label": "thing dey work pass"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 16,
+                                            "distance": 0.6185856494562023,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "work whit landline number"
+                                                },
+                                                {
+                                                    "id": 12,
+                                                    "distance": 0.4749380237490482,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "work full application"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "work plese recovery the number"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,94 @@
+{
+    "id": 18,
+    "distance": 1.8901694274245981,
+    "children": [
+        {
+            "id": 9,
+            "label": "listen song"
+        },
+        {
+            "id": 17,
+            "distance": 0.8686476132874145,
+            "children": [
+                {
+                    "id": 8,
+                    "label": "remember shhit"
+                },
+                {
+                    "id": 16,
+                    "distance": 0.6266548170707118,
+                    "children": [
+                        {
+                            "id": 7,
+                            "label": "remember location"
+                        },
+                        {
+                            "id": 15,
+                            "distance": 0.5906551640552493,
+                            "children": [
+                                {
+                                    "id": 13,
+                                    "distance": 0.5228854282024284,
+                                    "children": [
+                                        {
+                                            "id": 6,
+                                            "label": "remember command"
+                                        },
+                                        {
+                                            "id": 10,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 4,
+                                                    "label": "remember detail"
+                                                },
+                                                {
+                                                    "id": 5,
+                                                    "label": "remember important detail"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 14,
+                                    "distance": 0.5708276327885393,
+                                    "children": [
+                                        {
+                                            "id": 11,
+                                            "distance": 0.4924932060582644,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "remember two thing"
+                                                },
+                                                {
+                                                    "id": 3,
+                                                    "label": "remember conversation"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 12,
+                                            "distance": 0.5193608285319586,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "remember previous message"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "remember name"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

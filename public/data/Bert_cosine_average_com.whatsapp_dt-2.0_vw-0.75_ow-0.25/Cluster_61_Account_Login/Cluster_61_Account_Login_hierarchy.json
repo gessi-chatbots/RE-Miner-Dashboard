@@ -1,0 +1,94 @@
+{
+    "id": 18,
+    "distance": 1.9415582569638754,
+    "children": [
+        {
+            "id": 9,
+            "label": "loged account"
+        },
+        {
+            "id": 17,
+            "distance": 1.7651963078624562,
+            "children": [
+                {
+                    "id": 8,
+                    "label": "please account login"
+                },
+                {
+                    "id": 16,
+                    "distance": 1.4381329487690628,
+                    "children": [
+                        {
+                            "id": 14,
+                            "distance": 0.7366910651680505,
+                            "children": [
+                                {
+                                    "id": 12,
+                                    "distance": 0.6732638792253148,
+                                    "children": [
+                                        {
+                                            "id": 10,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 6,
+                                                    "label": "login whatsapp number"
+                                                },
+                                                {
+                                                    "id": 7,
+                                                    "label": "login new number"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 11,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 4,
+                                                    "label": "login two account"
+                                                },
+                                                {
+                                                    "id": 5,
+                                                    "label": "login old active account"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 13,
+                                    "distance": 0.7046492632690027,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "login new version"
+                                        },
+                                        {
+                                            "id": 3,
+                                            "label": "login issue"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 15,
+                            "distance": 1.251662863566714,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "unable to login due to spam"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "get login otp"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

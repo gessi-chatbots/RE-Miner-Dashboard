@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 2,
+            "label": "watch anime"
+        },
+        {
+            "id": 3,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "watch lot"
+                },
+                {
+                    "id": 1,
+                    "label": "watch third season"
+                }
+            ]
+        }
+    ]
+}

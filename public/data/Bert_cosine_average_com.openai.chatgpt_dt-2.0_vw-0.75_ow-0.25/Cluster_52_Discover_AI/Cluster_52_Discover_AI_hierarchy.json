@@ -1,0 +1,154 @@
+{
+    "id": 30,
+    "distance": 1.963498685280822,
+    "children": [
+        {
+            "id": 15,
+            "label": "application crash force stop"
+        },
+        {
+            "id": 29,
+            "distance": 1.8316036800988653,
+            "children": [
+                {
+                    "id": 14,
+                    "label": "compete one sentence"
+                },
+                {
+                    "id": 28,
+                    "distance": 1.5274040558384359,
+                    "children": [
+                        {
+                            "id": 25,
+                            "distance": 0.6961169654808275,
+                            "children": [
+                                {
+                                    "id": 13,
+                                    "label": "discover app"
+                                },
+                                {
+                                    "id": 23,
+                                    "distance": 0.6209685503501206,
+                                    "children": [
+                                        {
+                                            "id": 12,
+                                            "label": "discover all feature"
+                                        },
+                                        {
+                                            "id": 21,
+                                            "distance": 0.5893000492721128,
+                                            "children": [
+                                                {
+                                                    "id": 17,
+                                                    "distance": 0.5091251337510901,
+                                                    "children": [
+                                                        {
+                                                            "id": 10,
+                                                            "label": "discover power"
+                                                        },
+                                                        {
+                                                            "id": 11,
+                                                            "label": "discover many thing"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 19,
+                                                    "distance": 0.5536002334843431,
+                                                    "children": [
+                                                        {
+                                                            "id": 8,
+                                                            "label": "discover ai feature"
+                                                        },
+                                                        {
+                                                            "id": 9,
+                                                            "label": "discover innovative application"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 27,
+                            "distance": 0.8438438946468734,
+                            "children": [
+                                {
+                                    "id": 7,
+                                    "label": "explore dark theme"
+                                },
+                                {
+                                    "id": 26,
+                                    "distance": 0.7129381694241257,
+                                    "children": [
+                                        {
+                                            "id": 6,
+                                            "label": "explore world information"
+                                        },
+                                        {
+                                            "id": 24,
+                                            "distance": 0.635068794553212,
+                                            "children": [
+                                                {
+                                                    "id": 20,
+                                                    "distance": 0.5729256143508723,
+                                                    "children": [
+                                                        {
+                                                            "id": 4,
+                                                            "label": "explore world"
+                                                        },
+                                                        {
+                                                            "id": 5,
+                                                            "label": "explore body"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 22,
+                                                    "distance": 0.6001732835805712,
+                                                    "children": [
+                                                        {
+                                                            "id": 3,
+                                                            "label": "explore programme"
+                                                        },
+                                                        {
+                                                            "id": 18,
+                                                            "distance": 0.5351925187897754,
+                                                            "children": [
+                                                                {
+                                                                    "id": 2,
+                                                                    "label": "explore new thing"
+                                                                },
+                                                                {
+                                                                    "id": 16,
+                                                                    "distance": 0.46158616230198646,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 0,
+                                                                            "label": "explore capability"
+                                                                        },
+                                                                        {
+                                                                            "id": 1,
+                                                                            "label": "explore concept"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 0.7470455499228529,
+    "children": [
+        {
+            "id": 5,
+            "label": "recommend app"
+        },
+        {
+            "id": 9,
+            "distance": 0.6920634488647869,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "recommend more interesting update"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.5816093027938725,
+                    "children": [
+                        {
+                            "id": 6,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "recommend people"
+                                },
+                                {
+                                    "id": 3,
+                                    "label": "recommend all people"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.5203325409895807,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "recommend signal"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "try all recommend fix"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

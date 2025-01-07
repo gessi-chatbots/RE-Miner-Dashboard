@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 1.890319775524702,
+    "children": [
+        {
+            "id": 5,
+            "label": "have feel"
+        },
+        {
+            "id": 9,
+            "distance": 1.8361974336940219,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "hurt feel"
+                },
+                {
+                    "id": 8,
+                    "distance": 1.7871311808334072,
+                    "children": [
+                        {
+                            "id": 6,
+                            "distance": 1.5980641268513254,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "see feel"
+                                },
+                                {
+                                    "id": 3,
+                                    "label": "know feel"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 7,
+                            "distance": 1.6393945228843836,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "say feel"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "help feel"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

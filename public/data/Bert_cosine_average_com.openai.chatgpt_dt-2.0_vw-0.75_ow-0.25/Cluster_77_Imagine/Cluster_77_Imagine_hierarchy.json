@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 0.8919549143524866,
+    "children": [
+        {
+            "id": 4,
+            "label": "imagine excellent app download"
+        },
+        {
+            "id": 7,
+            "distance": 0.7474183901588153,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "imagine false information"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.6576175312284749,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "imagine life"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.6174490840997865,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "imagine photo"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "just imagine chatgpt work"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

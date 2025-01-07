@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 0.8254404705815115,
+    "children": [
+        {
+            "id": 3,
+            "label": "arrange other app"
+        },
+        {
+            "id": 5,
+            "distance": 0.7896993283785125,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "arrange separate dedicated column"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.6883309494742936,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "arrange whatsapp status update"
+                        },
+                        {
+                            "id": 1,
+                            "label": "arrange status"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

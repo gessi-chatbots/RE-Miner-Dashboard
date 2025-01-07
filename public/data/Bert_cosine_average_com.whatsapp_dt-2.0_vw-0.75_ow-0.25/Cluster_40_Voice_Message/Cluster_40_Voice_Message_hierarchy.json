@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 1.793037202621417,
+    "children": [
+        {
+            "id": 6,
+            "distance": 0.5749406294302062,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "listen voice note"
+                },
+                {
+                    "id": 4,
+                    "label": "listen voice message"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "distance": 0.6110432878303397,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "remember previous chat"
+                },
+                {
+                    "id": 5,
+                    "distance": 0.4891031213293176,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "remember conversation"
+                        },
+                        {
+                            "id": 1,
+                            "label": "remember stuff"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

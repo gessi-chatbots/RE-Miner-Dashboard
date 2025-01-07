@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 5,
+            "label": "love whatsaap"
+        },
+        {
+            "id": 9,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "hi love"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "love private"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "love allah"
+                                },
+                                {
+                                    "id": 6,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "love usin"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "love ittt"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

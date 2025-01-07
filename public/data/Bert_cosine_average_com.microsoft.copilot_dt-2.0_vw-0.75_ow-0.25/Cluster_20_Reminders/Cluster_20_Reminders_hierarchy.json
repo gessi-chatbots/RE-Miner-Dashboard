@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.5089778742137929,
+    "children": [
+        {
+            "id": 2,
+            "label": "remember thing"
+        },
+        {
+            "id": 3,
+            "distance": 0.4763989827410111,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "remember conversation"
+                },
+                {
+                    "id": 1,
+                    "label": "remember situation"
+                }
+            ]
+        }
+    ]
+}

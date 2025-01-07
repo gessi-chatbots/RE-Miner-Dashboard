@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.7777227338396733,
+    "children": [
+        {
+            "id": 2,
+            "label": "banglalink sim login code problem please new code"
+        },
+        {
+            "id": 3,
+            "distance": 1.3739450573679668,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "bangladesh banglaling sim loing code sm problem"
+                },
+                {
+                    "id": 1,
+                    "label": "bangladesh banglaink sim loing code sm problem"
+                }
+            ]
+        }
+    ]
+}

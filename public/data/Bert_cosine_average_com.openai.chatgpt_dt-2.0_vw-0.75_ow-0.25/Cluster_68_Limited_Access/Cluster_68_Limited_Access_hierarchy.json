@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 1.5185501873314167,
+    "children": [
+        {
+            "id": 6,
+            "distance": 0.6645506853622064,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "have limited chat"
+                },
+                {
+                    "id": 5,
+                    "distance": 0.5607605373477257,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "have limited image creation"
+                        },
+                        {
+                            "id": 3,
+                            "label": "have limited conversation"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "distance": 1.2887710251173792,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "do limited search"
+                },
+                {
+                    "id": 1,
+                    "label": "have limited time"
+                }
+            ]
+        }
+    ]
+}

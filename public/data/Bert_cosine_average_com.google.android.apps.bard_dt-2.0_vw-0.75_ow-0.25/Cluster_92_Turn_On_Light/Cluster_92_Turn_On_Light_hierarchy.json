@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 0,
+            "label": "turn light"
+        },
+        {
+            "id": 1,
+            "label": "turn hallway light"
+        }
+    ]
+}

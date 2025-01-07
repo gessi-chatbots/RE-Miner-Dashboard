@@ -1,0 +1,114 @@
+{
+    "id": 22,
+    "distance": 1.9884328508288254,
+    "children": [
+        {
+            "id": 20,
+            "distance": 0.6861629861942061,
+            "children": [
+                {
+                    "id": 17,
+                    "distance": 0.6087165168734234,
+                    "children": [
+                        {
+                            "id": 14,
+                            "distance": 0.531610442207602,
+                            "children": [
+                                {
+                                    "id": 10,
+                                    "label": "share feedback"
+                                },
+                                {
+                                    "id": 11,
+                                    "label": "share all problem"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 15,
+                            "distance": 0.5428422437926559,
+                            "children": [
+                                {
+                                    "id": 8,
+                                    "label": "share personal thing"
+                                },
+                                {
+                                    "id": 9,
+                                    "label": "share thought"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 18,
+                    "distance": 0.6532555800114573,
+                    "children": [
+                        {
+                            "id": 12,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "share picture"
+                                },
+                                {
+                                    "id": 5,
+                                    "label": "share one picture"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 13,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 6,
+                                    "label": "share own feel"
+                                },
+                                {
+                                    "id": 7,
+                                    "label": "share feel"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "distance": 0.7108856718907792,
+            "children": [
+                {
+                    "id": 16,
+                    "distance": 0.5787823995716144,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "gather information"
+                        },
+                        {
+                            "id": 3,
+                            "label": "gather info"
+                        }
+                    ]
+                },
+                {
+                    "id": 19,
+                    "distance": 0.6593923615791081,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "gather basic knowledge"
+                        },
+                        {
+                            "id": 1,
+                            "label": "gather possible answer"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

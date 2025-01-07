@@ -1,0 +1,854 @@
+{
+    "id": 170,
+    "distance": 1.9837462516200257,
+    "children": [
+        {
+            "id": 168,
+            "distance": 1.9564293597914248,
+            "children": [
+                {
+                    "id": 153,
+                    "distance": 1.3248654100425472,
+                    "children": [
+                        {
+                            "id": 125,
+                            "distance": 0.6658632885449723,
+                            "children": [
+                                {
+                                    "id": 85,
+                                    "label": "pop archive feature"
+                                },
+                                {
+                                    "id": 117,
+                                    "distance": 0.5906925866574528,
+                                    "children": [
+                                        {
+                                            "id": 91,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 84,
+                                                    "label": "get pop up message notification"
+                                                },
+                                                {
+                                                    "id": 90,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 82,
+                                                            "label": "enable pop up notification"
+                                                        },
+                                                        {
+                                                            "id": 83,
+                                                            "label": "get pop up notification"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 106,
+                                            "distance": 0.5419179515712971,
+                                            "children": [
+                                                {
+                                                    "id": 80,
+                                                    "label": "get pop up error message"
+                                                },
+                                                {
+                                                    "id": 81,
+                                                    "label": "do pop sound"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 148,
+                            "distance": 1.1613206975356454,
+                            "children": [
+                                {
+                                    "id": 139,
+                                    "distance": 1.0468523170538138,
+                                    "children": [
+                                        {
+                                            "id": 78,
+                                            "label": "see pop up notification"
+                                        },
+                                        {
+                                            "id": 79,
+                                            "label": "use pop up notification"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 144,
+                                    "distance": 1.1146673493917316,
+                                    "children": [
+                                        {
+                                            "id": 77,
+                                            "label": "activate pop up notification"
+                                        },
+                                        {
+                                            "id": 141,
+                                            "distance": 1.0597864047406933,
+                                            "children": [
+                                                {
+                                                    "id": 75,
+                                                    "label": "check pop up notification"
+                                                },
+                                                {
+                                                    "id": 76,
+                                                    "label": "remove pop up ad"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 167,
+                    "distance": 1.8866116812944291,
+                    "children": [
+                        {
+                            "id": 133,
+                            "distance": 0.9481613436774906,
+                            "children": [
+                                {
+                                    "id": 73,
+                                    "label": "inform whatapps"
+                                },
+                                {
+                                    "id": 74,
+                                    "label": "inform user"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 166,
+                            "distance": 1.828029271048527,
+                            "children": [
+                                {
+                                    "id": 163,
+                                    "distance": 1.7141248306126564,
+                                    "children": [
+                                        {
+                                            "id": 123,
+                                            "distance": 0.6420852845326465,
+                                            "children": [
+                                                {
+                                                    "id": 71,
+                                                    "label": "react app"
+                                                },
+                                                {
+                                                    "id": 72,
+                                                    "label": "react option"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 161,
+                                            "distance": 1.6460476967632023,
+                                            "children": [
+                                                {
+                                                    "id": 92,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 69,
+                                                            "label": "occupy too much space"
+                                                        },
+                                                        {
+                                                            "id": 70,
+                                                            "label": "occupy more space"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 159,
+                                                    "distance": 1.5618670109483592,
+                                                    "children": [
+                                                        {
+                                                            "id": 68,
+                                                            "label": "discover two other phone"
+                                                        },
+                                                        {
+                                                            "id": 145,
+                                                            "distance": 1.1271228248300347,
+                                                            "children": [
+                                                                {
+                                                                    "id": 67,
+                                                                    "label": "explore takentsvand"
+                                                                },
+                                                                {
+                                                                    "id": 127,
+                                                                    "distance": 0.710321420073309,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 66,
+                                                                            "label": "explore new way"
+                                                                        },
+                                                                        {
+                                                                            "id": 120,
+                                                                            "distance": 0.6311359887686281,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 65,
+                                                                                    "label": "explore world"
+                                                                                },
+                                                                                {
+                                                                                    "id": 109,
+                                                                                    "distance": 0.5553903819108925,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 63,
+                                                                                            "label": "explore more channel"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 64,
+                                                                                            "label": "explore new feature"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 164,
+                                    "distance": 1.750085770636034,
+                                    "children": [
+                                        {
+                                            "id": 129,
+                                            "distance": 0.7585911228135667,
+                                            "children": [
+                                                {
+                                                    "id": 61,
+                                                    "label": "opt contact"
+                                                },
+                                                {
+                                                    "id": 62,
+                                                    "label": "again opt time"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 162,
+                                            "distance": 1.6998209459539697,
+                                            "children": [
+                                                {
+                                                    "id": 60,
+                                                    "label": "recover recruitment process outsourcing"
+                                                },
+                                                {
+                                                    "id": 160,
+                                                    "distance": 1.6178560349446152,
+                                                    "children": [
+                                                        {
+                                                            "id": 59,
+                                                            "label": "compare other app"
+                                                        },
+                                                        {
+                                                            "id": 158,
+                                                            "distance": 1.5600485888541047,
+                                                            "children": [
+                                                                {
+                                                                    "id": 122,
+                                                                    "distance": 0.6380808428066591,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 57,
+                                                                            "label": "integrate calendar"
+                                                                        },
+                                                                        {
+                                                                            "id": 58,
+                                                                            "label": "integrate feature"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 157,
+                                                                    "distance": 1.4090316955437077,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 56,
+                                                                            "label": "incorporate ai"
+                                                                        },
+                                                                        {
+                                                                            "id": 135,
+                                                                            "distance": 0.9749042699173767,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 55,
+                                                                                    "label": "extend status video"
+                                                                                },
+                                                                                {
+                                                                                    "id": 102,
+                                                                                    "distance": 0.5085980940364595,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 53,
+                                                                                            "label": "extend limit"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 54,
+                                                                                            "label": "extend update time"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 169,
+            "distance": 1.9699146347103698,
+            "children": [
+                {
+                    "id": 137,
+                    "distance": 1.0364607416597729,
+                    "children": [
+                        {
+                            "id": 51,
+                            "label": "search same long video"
+                        },
+                        {
+                            "id": 52,
+                            "label": "search one number"
+                        }
+                    ]
+                },
+                {
+                    "id": 165,
+                    "distance": 1.7782693961127851,
+                    "children": [
+                        {
+                            "id": 50,
+                            "label": "crash all lock chat"
+                        },
+                        {
+                            "id": 156,
+                            "distance": 1.3837638855216694,
+                            "children": [
+                                {
+                                    "id": 154,
+                                    "distance": 1.349637604568021,
+                                    "children": [
+                                        {
+                                            "id": 131,
+                                            "distance": 0.9012968182414898,
+                                            "children": [
+                                                {
+                                                    "id": 89,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 49,
+                                                            "label": "clear chat history"
+                                                        },
+                                                        {
+                                                            "id": 88,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 48,
+                                                                    "label": "loose chat history"
+                                                                },
+                                                                {
+                                                                    "id": 87,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 46,
+                                                                            "label": "chat history"
+                                                                        },
+                                                                        {
+                                                                            "id": 47,
+                                                                            "label": "only one day chat history"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 130,
+                                                    "distance": 0.8901495363034386,
+                                                    "children": [
+                                                        {
+                                                            "id": 45,
+                                                            "label": "chat plos dwn lo nd tjes abb"
+                                                        },
+                                                        {
+                                                            "id": 128,
+                                                            "distance": 0.7344620392405703,
+                                                            "children": [
+                                                                {
+                                                                    "id": 44,
+                                                                    "label": "clear chat specific date"
+                                                                },
+                                                                {
+                                                                    "id": 126,
+                                                                    "distance": 0.6812659249943258,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 118,
+                                                                            "distance": 0.6055151960808669,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 43,
+                                                                                    "label": "very good chat app"
+                                                                                },
+                                                                                {
+                                                                                    "id": 115,
+                                                                                    "distance": 0.5872729198521016,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 41,
+                                                                                            "label": "chat both personal and group chat"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 42,
+                                                                                            "label": "access chat lock menu"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": 124,
+                                                                            "distance": 0.662408139705764,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 40,
+                                                                                    "label": "chat one"
+                                                                                },
+                                                                                {
+                                                                                    "id": 121,
+                                                                                    "distance": 0.631169499767083,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 39,
+                                                                                            "label": "chat far different place"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 113,
+                                                                                            "distance": 0.5820063858774142,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 110,
+                                                                                                    "distance": 0.5635522857355029,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 86,
+                                                                                                            "distance": 0.0,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 37,
+                                                                                                                    "label": "chat people"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 38,
+                                                                                                                    "label": "chat new people"
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 107,
+                                                                                                            "distance": 0.543518917448892,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 36,
+                                                                                                                    "label": "lack multi account chat backup"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 105,
+                                                                                                                    "distance": 0.5178184412784885,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 35,
+                                                                                                                            "label": "absolute unspeakably garbage chat transfer"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 99,
+                                                                                                                            "distance": 0.47012433116339314,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 33,
+                                                                                                                                    "label": "chat device"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 34,
+                                                                                                                                    "label": "have chat backup facility"
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 112,
+                                                                                                    "distance": 0.5777081826476703,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 32,
+                                                                                                            "label": "chat voice message"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 111,
+                                                                                                            "distance": 0.5698507659851444,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 31,
+                                                                                                                    "label": "chat pin"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 108,
+                                                                                                                    "distance": 0.5516008958453901,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 103,
+                                                                                                                            "distance": 0.5098516718969642,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 30,
+                                                                                                                                    "label": "chat acquaintance"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 101,
+                                                                                                                                    "distance": 0.4865349015644734,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 29,
+                                                                                                                                            "label": "chat girlfriend"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 97,
+                                                                                                                                            "distance": 0.4518697320674464,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 28,
+                                                                                                                                                    "label": "chat family"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 96,
+                                                                                                                                                    "distance": 0.43778564598184794,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 26,
+                                                                                                                                                            "label": "chat old friend"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 27,
+                                                                                                                                                            "label": "chat parent"
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 104,
+                                                                                                                            "distance": 0.5153463401685549,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 25,
+                                                                                                                                    "label": "open private chat lock"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 95,
+                                                                                                                                    "distance": 0.42492260516853503,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 23,
+                                                                                                                                            "label": "chat witch"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 24,
+                                                                                                                                            "label": "chat mack"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 151,
+                                            "distance": 1.2365647563541144,
+                                            "children": [
+                                                {
+                                                    "id": 147,
+                                                    "distance": 1.1376159091239968,
+                                                    "children": [
+                                                        {
+                                                            "id": 114,
+                                                            "distance": 0.5827363738323228,
+                                                            "children": [
+                                                                {
+                                                                    "id": 21,
+                                                                    "label": "restore chat history"
+                                                                },
+                                                                {
+                                                                    "id": 22,
+                                                                    "label": "restore chat backup"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 146,
+                                                            "distance": 1.1309647306567743,
+                                                            "children": [
+                                                                {
+                                                                    "id": 138,
+                                                                    "distance": 1.0457835006828384,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 19,
+                                                                            "label": "find chat lock option"
+                                                                        },
+                                                                        {
+                                                                            "id": 20,
+                                                                            "label": "save chat backup file"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 143,
+                                                                    "distance": 1.0788458916621158,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 132,
+                                                                            "distance": 0.9336411048149823,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 17,
+                                                                                    "label": "get chat lock contract"
+                                                                                },
+                                                                                {
+                                                                                    "id": 18,
+                                                                                    "label": "chat meta ai"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": 140,
+                                                                            "distance": 1.058330773166531,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 134,
+                                                                                    "distance": 0.9738338182548256,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 16,
+                                                                                            "label": "make chat theme"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 119,
+                                                                                            "distance": 0.6211961452507453,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 15,
+                                                                                                    "label": "remove chat history"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 93,
+                                                                                                    "distance": 0.32993564368863415,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 13,
+                                                                                                            "label": "remove chat filter option"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 14,
+                                                                                                            "label": "remove chat filter"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "id": 136,
+                                                                                    "distance": 1.02325214287251,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 12,
+                                                                                            "label": "fix chat ui"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 94,
+                                                                                            "distance": 0.41717780507552554,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 10,
+                                                                                                    "label": "give chat notification"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 11,
+                                                                                                    "label": "give chat lock option"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 150,
+                                                    "distance": 1.178023110108692,
+                                                    "children": [
+                                                        {
+                                                            "id": 100,
+                                                            "distance": 0.47512089343364233,
+                                                            "children": [
+                                                                {
+                                                                    "id": 8,
+                                                                    "label": "add more pin chat pl"
+                                                                },
+                                                                {
+                                                                    "id": 9,
+                                                                    "label": "add chat lock"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 142,
+                                                            "distance": 1.0598763577608392,
+                                                            "children": [
+                                                                {
+                                                                    "id": 6,
+                                                                    "label": "so lock chat set"
+                                                                },
+                                                                {
+                                                                    "id": 7,
+                                                                    "label": "use chat lock"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 155,
+                                    "distance": 1.3696855548829565,
+                                    "children": [
+                                        {
+                                            "id": 5,
+                                            "label": "miss almost chat new message notification"
+                                        },
+                                        {
+                                            "id": 152,
+                                            "distance": 1.246545754249289,
+                                            "children": [
+                                                {
+                                                    "id": 4,
+                                                    "label": "need chat transfer"
+                                                },
+                                                {
+                                                    "id": 149,
+                                                    "distance": 1.1689536385667652,
+                                                    "children": [
+                                                        {
+                                                            "id": 3,
+                                                            "label": "change chat color"
+                                                        },
+                                                        {
+                                                            "id": 116,
+                                                            "distance": 0.5897620484544437,
+                                                            "children": [
+                                                                {
+                                                                    "id": 2,
+                                                                    "label": "transfer chat history"
+                                                                },
+                                                                {
+                                                                    "id": 98,
+                                                                    "distance": 0.457675747652065,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 0,
+                                                                            "label": "chat transfer issue"
+                                                                        },
+                                                                        {
+                                                                            "id": 1,
+                                                                            "label": "stupid transfer chat feature"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

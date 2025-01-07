@@ -1,0 +1,214 @@
+{
+    "id": 42,
+    "distance": 1.4724863438579772,
+    "children": [
+        {
+            "id": 21,
+            "label": "lose saving money"
+        },
+        {
+            "id": 41,
+            "distance": 0.9486535256140195,
+            "children": [
+                {
+                    "id": 23,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 19,
+                            "label": "lose datum"
+                        },
+                        {
+                            "id": 20,
+                            "label": "lose all datum"
+                        }
+                    ]
+                },
+                {
+                    "id": 40,
+                    "distance": 0.8725350195800183,
+                    "children": [
+                        {
+                            "id": 18,
+                            "label": "lose acc"
+                        },
+                        {
+                            "id": 39,
+                            "distance": 0.7348191859921246,
+                            "children": [
+                                {
+                                    "id": 36,
+                                    "distance": 0.6677038305367945,
+                                    "children": [
+                                        {
+                                            "id": 16,
+                                            "label": "lose access"
+                                        },
+                                        {
+                                            "id": 17,
+                                            "label": "lose all contact"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 38,
+                                    "distance": 0.7064306090319149,
+                                    "children": [
+                                        {
+                                            "id": 15,
+                                            "label": "lose sim card"
+                                        },
+                                        {
+                                            "id": 37,
+                                            "distance": 0.677534286914037,
+                                            "children": [
+                                                {
+                                                    "id": 14,
+                                                    "label": "lose hamster kombat progress"
+                                                },
+                                                {
+                                                    "id": 35,
+                                                    "distance": 0.654758143773565,
+                                                    "children": [
+                                                        {
+                                                            "id": 33,
+                                                            "distance": 0.6192794067814263,
+                                                            "children": [
+                                                                {
+                                                                    "id": 31,
+                                                                    "distance": 0.5845425559193969,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 13,
+                                                                            "label": "lose thousand"
+                                                                        },
+                                                                        {
+                                                                            "id": 26,
+                                                                            "distance": 0.499785688431489,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 11,
+                                                                                    "label": "lose large amount"
+                                                                                },
+                                                                                {
+                                                                                    "id": 12,
+                                                                                    "label": "lose phone number number"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 32,
+                                                                    "distance": 0.6099457662729417,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 10,
+                                                                            "label": "lose phone"
+                                                                        },
+                                                                        {
+                                                                            "id": 30,
+                                                                            "distance": 0.580195324828194,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 9,
+                                                                                    "label": "lose money"
+                                                                                },
+                                                                                {
+                                                                                    "id": 29,
+                                                                                    "distance": 0.5502145338840199,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 25,
+                                                                                            "distance": 0.47723528229250933,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 7,
+                                                                                                    "label": "lose interest"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 8,
+                                                                                                    "label": "lose sell"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 28,
+                                                                                            "distance": 0.5394882370297926,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 6,
+                                                                                                    "label": "lose all support"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 27,
+                                                                                                    "distance": 0.5061844978749338,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 5,
+                                                                                                            "label": "lose backup"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 24,
+                                                                                                            "distance": 0.4553696121884341,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 4,
+                                                                                                                    "label": "lose energy"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 22,
+                                                                                                                    "distance": 0.0,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 2,
+                                                                                                                            "label": "lose crypto asset"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 3,
+                                                                                                                            "label": "lose asset"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 34,
+                                                            "distance": 0.6442008123376589,
+                                                            "children": [
+                                                                {
+                                                                    "id": 0,
+                                                                    "label": "lose all most important chat"
+                                                                },
+                                                                {
+                                                                    "id": 1,
+                                                                    "label": "lose account"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,104 @@
+{
+    "id": 20,
+    "distance": 1.0198052002869717,
+    "children": [
+        {
+            "id": 10,
+            "label": "verry nice app watsapp"
+        },
+        {
+            "id": 19,
+            "distance": 0.9988031991031805,
+            "children": [
+                {
+                    "id": 9,
+                    "label": "verry goood"
+                },
+                {
+                    "id": 18,
+                    "distance": 0.8039777840850408,
+                    "children": [
+                        {
+                            "id": 13,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 8,
+                                    "label": "verry bad app"
+                                },
+                                {
+                                    "id": 12,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 7,
+                                            "label": "verry nice nd awesome app"
+                                        },
+                                        {
+                                            "id": 11,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 5,
+                                                    "label": "verry nice app"
+                                                },
+                                                {
+                                                    "id": 6,
+                                                    "label": "verry good app"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 17,
+                            "distance": 0.7450461989149787,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "verry good sarvis"
+                                },
+                                {
+                                    "id": 16,
+                                    "distance": 0.7111071308500274,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "verry good experience"
+                                        },
+                                        {
+                                            "id": 15,
+                                            "distance": 0.6597608212305925,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "verry good service"
+                                                },
+                                                {
+                                                    "id": 14,
+                                                    "distance": 0.5924877799680939,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "verry bad status"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "verry clarity"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

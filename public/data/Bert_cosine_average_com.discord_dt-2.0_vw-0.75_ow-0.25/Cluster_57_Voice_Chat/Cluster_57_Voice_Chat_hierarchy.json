@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 3,
+            "label": "voice chat"
+        },
+        {
+            "id": 5,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "edit chat"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "chat friend"
+                        },
+                        {
+                            "id": 1,
+                            "label": "chat box application"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

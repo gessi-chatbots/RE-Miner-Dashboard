@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.3781767704023034,
+    "children": [
+        {
+            "id": 2,
+            "label": "get logging problem"
+        },
+        {
+            "id": 3,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "bangla desh airtel sim logging sms problem"
+                },
+                {
+                    "id": 1,
+                    "label": "have logging problem"
+                }
+            ]
+        }
+    ]
+}

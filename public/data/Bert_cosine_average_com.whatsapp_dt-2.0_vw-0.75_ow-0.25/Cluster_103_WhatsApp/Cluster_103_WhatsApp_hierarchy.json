@@ -1,0 +1,214 @@
+{
+    "id": 42,
+    "distance": 1.6383528845372362,
+    "children": [
+        {
+            "id": 37,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 20,
+                    "label": "download official watsapp"
+                },
+                {
+                    "id": 21,
+                    "label": "update watsapp"
+                }
+            ]
+        },
+        {
+            "id": 41,
+            "distance": 1.2594371355658756,
+            "children": [
+                {
+                    "id": 36,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 18,
+                            "label": "review whatsaap"
+                        },
+                        {
+                            "id": 19,
+                            "label": "download whatsaap"
+                        }
+                    ]
+                },
+                {
+                    "id": 40,
+                    "distance": 1.0939103465560769,
+                    "children": [
+                        {
+                            "id": 35,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 17,
+                                    "label": "access whatsapp help"
+                                },
+                                {
+                                    "id": 34,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 16,
+                                            "label": "recover whatsapp"
+                                        },
+                                        {
+                                            "id": 33,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 15,
+                                                    "label": "like more whatsapp"
+                                                },
+                                                {
+                                                    "id": 32,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 14,
+                                                            "label": "oo whatsapp"
+                                                        },
+                                                        {
+                                                            "id": 31,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 13,
+                                                                    "label": "download official direct whatsapp"
+                                                                },
+                                                                {
+                                                                    "id": 30,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 12,
+                                                                            "label": "official whatsapp need"
+                                                                        },
+                                                                        {
+                                                                            "id": 29,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 11,
+                                                                                    "label": "initialize whatsapp"
+                                                                                },
+                                                                                {
+                                                                                    "id": 28,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 10,
+                                                                                            "label": "like whatsapp"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 27,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 9,
+                                                                                                    "label": "download original whatsapp"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 26,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 8,
+                                                                                                            "label": "download officical whatsapp"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 25,
+                                                                                                            "distance": 0.0,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 7,
+                                                                                                                    "label": "download appropriate whatsapp"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 24,
+                                                                                                                    "distance": 0.0,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 6,
+                                                                                                                            "label": "uptade whatsapp"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 23,
+                                                                                                                            "distance": 0.0,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 5,
+                                                                                                                                    "label": "do aboutmy whatsapp"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 22,
+                                                                                                                                    "distance": 0.0,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 3,
+                                                                                                                                            "label": "like new whatsapp"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 4,
+                                                                                                                                            "label": "like ther whatsapp"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 39,
+                            "distance": 0.8570992908206512,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "need tge official whatsapp"
+                                },
+                                {
+                                    "id": 38,
+                                    "distance": 0.6555679427276686,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "open whatsapp be block"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "dear team please official whatsapp"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

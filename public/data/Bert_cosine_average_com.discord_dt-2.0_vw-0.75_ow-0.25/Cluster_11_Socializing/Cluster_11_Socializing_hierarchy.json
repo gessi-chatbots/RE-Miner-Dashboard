@@ -1,0 +1,244 @@
+{
+    "id": 48,
+    "distance": 1.8645932730584873,
+    "children": [
+        {
+            "id": 46,
+            "distance": 1.8144253872570637,
+            "children": [
+                {
+                    "id": 39,
+                    "distance": 0.6671489997385484,
+                    "children": [
+                        {
+                            "id": 23,
+                            "label": "watch stream"
+                        },
+                        {
+                            "id": 24,
+                            "label": "watch youtube link"
+                        }
+                    ]
+                },
+                {
+                    "id": 45,
+                    "distance": 1.6819219949876618,
+                    "children": [
+                        {
+                            "id": 22,
+                            "label": "touch grass"
+                        },
+                        {
+                            "id": 44,
+                            "distance": 1.5611708601769179,
+                            "children": [
+                                {
+                                    "id": 21,
+                                    "label": "feel need"
+                                },
+                                {
+                                    "id": 42,
+                                    "distance": 0.8645759332013309,
+                                    "children": [
+                                        {
+                                            "id": 33,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 20,
+                                                    "label": "hear audio"
+                                                },
+                                                {
+                                                    "id": 32,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 18,
+                                                            "label": "hear mic audio"
+                                                        },
+                                                        {
+                                                            "id": 19,
+                                                            "label": "hear game audio"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 41,
+                                            "distance": 0.7636088647185744,
+                                            "children": [
+                                                {
+                                                    "id": 17,
+                                                    "label": "hear voice discord"
+                                                },
+                                                {
+                                                    "id": 38,
+                                                    "distance": 0.6045430172380704,
+                                                    "children": [
+                                                        {
+                                                            "id": 16,
+                                                            "label": "hear call"
+                                                        },
+                                                        {
+                                                            "id": 37,
+                                                            "distance": 0.5460475485719402,
+                                                            "children": [
+                                                                {
+                                                                    "id": 15,
+                                                                    "label": "hear friend"
+                                                                },
+                                                                {
+                                                                    "id": 35,
+                                                                    "distance": 0.502629949385424,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 14,
+                                                                            "label": "hear sound"
+                                                                        },
+                                                                        {
+                                                                            "id": 34,
+                                                                            "distance": 0.4644044444547939,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 12,
+                                                                                    "label": "hear voice"
+                                                                                },
+                                                                                {
+                                                                                    "id": 13,
+                                                                                    "label": "hear screen"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 47,
+            "distance": 1.8531072902871863,
+            "children": [
+                {
+                    "id": 11,
+                    "label": "look issue"
+                },
+                {
+                    "id": 43,
+                    "distance": 0.9135793170874777,
+                    "children": [
+                        {
+                            "id": 10,
+                            "label": "meet new peep"
+                        },
+                        {
+                            "id": 40,
+                            "distance": 0.7576161069443258,
+                            "children": [
+                                {
+                                    "id": 9,
+                                    "label": "meet discord"
+                                },
+                                {
+                                    "id": 36,
+                                    "distance": 0.5402680432211022,
+                                    "children": [
+                                        {
+                                            "id": 27,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 3,
+                                                    "label": "meet good friend"
+                                                },
+                                                {
+                                                    "id": 26,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "meet first true friend"
+                                                        },
+                                                        {
+                                                            "id": 25,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 0,
+                                                                    "label": "meet new friend"
+                                                                },
+                                                                {
+                                                                    "id": 1,
+                                                                    "label": "meet cool friend"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 31,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 8,
+                                                    "label": "meet really nice people"
+                                                },
+                                                {
+                                                    "id": 30,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 7,
+                                                            "label": "meet so many people"
+                                                        },
+                                                        {
+                                                            "id": 29,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 6,
+                                                                    "label": "meet so many nice people"
+                                                                },
+                                                                {
+                                                                    "id": 28,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 4,
+                                                                            "label": "meet interesting people"
+                                                                        },
+                                                                        {
+                                                                            "id": 5,
+                                                                            "label": "meet new people"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

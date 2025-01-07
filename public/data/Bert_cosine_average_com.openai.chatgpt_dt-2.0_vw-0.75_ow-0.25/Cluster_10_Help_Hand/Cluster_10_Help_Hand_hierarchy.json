@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.7745731800951923,
+    "children": [
+        {
+            "id": 0,
+            "label": "hand"
+        },
+        {
+            "id": 1,
+            "label": "help hand"
+        }
+    ]
+}

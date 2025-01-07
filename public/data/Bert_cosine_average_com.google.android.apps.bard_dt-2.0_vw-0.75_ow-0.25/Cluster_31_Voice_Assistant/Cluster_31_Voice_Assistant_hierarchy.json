@@ -1,0 +1,194 @@
+{
+    "id": 38,
+    "distance": 1.9336603680726407,
+    "children": [
+        {
+            "id": 19,
+            "label": "changes language"
+        },
+        {
+            "id": 37,
+            "distance": 1.8529423609891955,
+            "children": [
+                {
+                    "id": 33,
+                    "distance": 0.915128870669046,
+                    "children": [
+                        {
+                            "id": 17,
+                            "label": "cut bluetooth audio"
+                        },
+                        {
+                            "id": 18,
+                            "label": "cut bs"
+                        }
+                    ]
+                },
+                {
+                    "id": 36,
+                    "distance": 1.6967575858635544,
+                    "children": [
+                        {
+                            "id": 16,
+                            "label": "transfer print calendar"
+                        },
+                        {
+                            "id": 35,
+                            "distance": 1.1984311654586284,
+                            "children": [
+                                {
+                                    "id": 15,
+                                    "label": "change device set"
+                                },
+                                {
+                                    "id": 34,
+                                    "distance": 1.047430157115986,
+                                    "children": [
+                                        {
+                                            "id": 14,
+                                            "label": "change ai voice assistant"
+                                        },
+                                        {
+                                            "id": 32,
+                                            "distance": 0.8191432367221049,
+                                            "children": [
+                                                {
+                                                    "id": 13,
+                                                    "label": "change part"
+                                                },
+                                                {
+                                                    "id": 31,
+                                                    "distance": 0.766808779355233,
+                                                    "children": [
+                                                        {
+                                                            "id": 12,
+                                                            "label": "change assistant"
+                                                        },
+                                                        {
+                                                            "id": 30,
+                                                            "distance": 0.7304971429620143,
+                                                            "children": [
+                                                                {
+                                                                    "id": 11,
+                                                                    "label": "change language"
+                                                                },
+                                                                {
+                                                                    "id": 29,
+                                                                    "distance": 0.7098636240626018,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 10,
+                                                                            "label": "change life"
+                                                                        },
+                                                                        {
+                                                                            "id": 28,
+                                                                            "distance": 0.6693358871644306,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 9,
+                                                                                    "label": "change rating"
+                                                                                },
+                                                                                {
+                                                                                    "id": 27,
+                                                                                    "distance": 0.6221600278481704,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 8,
+                                                                                            "label": "change mind"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 26,
+                                                                                            "distance": 0.602483188492546,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 7,
+                                                                                                    "label": "change default contact number"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 25,
+                                                                                                    "distance": 0.562367318861436,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 21,
+                                                                                                            "distance": 0.0,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 6,
+                                                                                                                    "label": "change chemin voice"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 20,
+                                                                                                                    "distance": 0.0,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 4,
+                                                                                                                            "label": "change assistant voice"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 5,
+                                                                                                                            "label": "change voice"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 24,
+                                                                                                            "distance": 0.548967891389096,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 3,
+                                                                                                                    "label": "change logo"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 23,
+                                                                                                                    "distance": 0.5035277845636694,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 2,
+                                                                                                                            "label": "change subject"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 22,
+                                                                                                                            "distance": 0.47096608782314214,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 0,
+                                                                                                                                    "label": "change gemini setting"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 1,
+                                                                                                                                    "label": "change reminder"
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

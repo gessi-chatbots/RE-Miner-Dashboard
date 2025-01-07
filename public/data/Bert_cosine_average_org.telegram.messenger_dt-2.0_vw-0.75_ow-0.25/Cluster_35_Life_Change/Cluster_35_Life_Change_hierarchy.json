@@ -1,0 +1,144 @@
+{
+    "id": 28,
+    "distance": 1.9901290810544852,
+    "children": [
+        {
+            "id": 14,
+            "label": "because many worry"
+        },
+        {
+            "id": 27,
+            "distance": 1.9264613759121607,
+            "children": [
+                {
+                    "id": 13,
+                    "label": "cut dkhi"
+                },
+                {
+                    "id": 26,
+                    "distance": 1.89814524110219,
+                    "children": [
+                        {
+                            "id": 12,
+                            "label": "loss all old data"
+                        },
+                        {
+                            "id": 25,
+                            "distance": 1.711243951181291,
+                            "children": [
+                                {
+                                    "id": 11,
+                                    "label": "transfer money"
+                                },
+                                {
+                                    "id": 24,
+                                    "distance": 1.5262310686065448,
+                                    "children": [
+                                        {
+                                            "id": 10,
+                                            "label": "life change app"
+                                        },
+                                        {
+                                            "id": 23,
+                                            "distance": 1.0637979537734936,
+                                            "children": [
+                                                {
+                                                    "id": 9,
+                                                    "label": "change username i d"
+                                                },
+                                                {
+                                                    "id": 22,
+                                                    "distance": 0.7673899496011839,
+                                                    "children": [
+                                                        {
+                                                            "id": 8,
+                                                            "label": "change policy"
+                                                        },
+                                                        {
+                                                            "id": 21,
+                                                            "distance": 0.7141671364340905,
+                                                            "children": [
+                                                                {
+                                                                    "id": 15,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 6,
+                                                                            "label": "change whole life"
+                                                                        },
+                                                                        {
+                                                                            "id": 7,
+                                                                            "label": "change life"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 20,
+                                                                    "distance": 0.6817125266050311,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 17,
+                                                                            "distance": 0.5862467639616922,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 4,
+                                                                                    "label": "change set"
+                                                                                },
+                                                                                {
+                                                                                    "id": 5,
+                                                                                    "label": "change phone number"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": 19,
+                                                                            "distance": 0.65389194347978,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 3,
+                                                                                    "label": "change default storage"
+                                                                                },
+                                                                                {
+                                                                                    "id": 18,
+                                                                                    "distance": 0.6210173046456593,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 2,
+                                                                                            "label": "change crypto feature"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 16,
+                                                                                            "distance": 0.5720989747365952,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 0,
+                                                                                                    "label": "change phone"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 1,
+                                                                                                    "label": "change device"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

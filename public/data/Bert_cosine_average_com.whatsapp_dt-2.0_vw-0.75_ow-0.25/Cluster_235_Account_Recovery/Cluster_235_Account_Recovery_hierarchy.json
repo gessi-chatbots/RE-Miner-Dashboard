@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 4,
+            "label": "please account"
+        },
+        {
+            "id": 7,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "plz account"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "even even account"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "unblock account"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "spam whatapp account"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

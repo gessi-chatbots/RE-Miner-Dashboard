@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 3,
+            "label": "love last version"
+        },
+        {
+            "id": 5,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "love copilot"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "love transformation"
+                        },
+                        {
+                            "id": 1,
+                            "label": "love microsoft"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

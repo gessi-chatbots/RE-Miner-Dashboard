@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 0,
+            "label": "not service"
+        },
+        {
+            "id": 1,
+            "label": "good help service"
+        }
+    ]
+}

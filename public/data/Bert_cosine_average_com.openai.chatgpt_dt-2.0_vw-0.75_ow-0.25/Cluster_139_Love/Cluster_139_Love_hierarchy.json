@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 3,
+            "label": "hello love"
+        },
+        {
+            "id": 5,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "love appsuper"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "love chat gpt"
+                        },
+                        {
+                            "id": 1,
+                            "label": "love user friendly mechanism"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

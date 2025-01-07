@@ -1,0 +1,104 @@
+{
+    "id": 20,
+    "distance": 0.8989768337654969,
+    "children": [
+        {
+            "id": 10,
+            "label": "upload late official datum"
+        },
+        {
+            "id": 19,
+            "distance": 0.6685888125664325,
+            "children": [
+                {
+                    "id": 9,
+                    "label": "upload new version"
+                },
+                {
+                    "id": 18,
+                    "distance": 0.6416613625740248,
+                    "children": [
+                        {
+                            "id": 8,
+                            "label": "upload pic"
+                        },
+                        {
+                            "id": 17,
+                            "distance": 0.6074784943661691,
+                            "children": [
+                                {
+                                    "id": 7,
+                                    "label": "upload image text"
+                                },
+                                {
+                                    "id": 16,
+                                    "distance": 0.42544663687254275,
+                                    "children": [
+                                        {
+                                            "id": 14,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 6,
+                                                    "label": "upload three image"
+                                                },
+                                                {
+                                                    "id": 13,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 4,
+                                                            "label": "upload image"
+                                                        },
+                                                        {
+                                                            "id": 5,
+                                                            "label": "upload more image"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 15,
+                                            "distance": 0.4123320838453588,
+                                            "children": [
+                                                {
+                                                    "id": 3,
+                                                    "label": "upload photo"
+                                                },
+                                                {
+                                                    "id": 12,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "upload picture"
+                                                        },
+                                                        {
+                                                            "id": 11,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 0,
+                                                                    "label": "upload as much picture"
+                                                                },
+                                                                {
+                                                                    "id": 1,
+                                                                    "label": "upload one picture"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

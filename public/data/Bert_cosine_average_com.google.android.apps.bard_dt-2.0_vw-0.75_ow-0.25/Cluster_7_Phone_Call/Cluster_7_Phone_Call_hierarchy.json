@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 0.7892321030480538,
+    "children": [
+        {
+            "id": 6,
+            "label": "call contact"
+        },
+        {
+            "id": 11,
+            "distance": 0.6574958684600815,
+            "children": [
+                {
+                    "id": 9,
+                    "distance": 0.6056327601810189,
+                    "children": [
+                        {
+                            "id": 5,
+                            "label": "call one"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "call specific number"
+                                },
+                                {
+                                    "id": 4,
+                                    "label": "call number"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 10,
+                    "distance": 0.6260911436407146,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "call place"
+                        },
+                        {
+                            "id": 8,
+                            "distance": 0.5837903928228393,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "call people"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "call stupid program"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

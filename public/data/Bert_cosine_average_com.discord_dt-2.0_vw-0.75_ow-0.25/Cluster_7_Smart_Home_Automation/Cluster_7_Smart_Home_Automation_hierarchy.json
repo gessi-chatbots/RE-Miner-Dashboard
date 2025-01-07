@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 1.9261568139153458,
+    "children": [
+        {
+            "id": 4,
+            "label": "ping people"
+        },
+        {
+            "id": 7,
+            "distance": 0.8339226520252426,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "set bidet"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.7644626911356636,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "set date"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.6526263506139878,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "set notification"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "set simple card"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

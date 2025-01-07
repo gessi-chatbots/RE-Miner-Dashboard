@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 1.7509546388470687,
+    "children": [
+        {
+            "id": 8,
+            "distance": 0.8216751809463988,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "commit scam"
+                },
+                {
+                    "id": 5,
+                    "label": "commit such mistake"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "distance": 1.6810485649641849,
+            "children": [
+                {
+                    "id": 6,
+                    "distance": 0.692931317111148,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "minimize amount"
+                        },
+                        {
+                            "id": 3,
+                            "label": "minimize app"
+                        }
+                    ]
+                },
+                {
+                    "id": 7,
+                    "distance": 0.6991425968964591,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "prove efficiency"
+                        },
+                        {
+                            "id": 1,
+                            "label": "prove video call"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

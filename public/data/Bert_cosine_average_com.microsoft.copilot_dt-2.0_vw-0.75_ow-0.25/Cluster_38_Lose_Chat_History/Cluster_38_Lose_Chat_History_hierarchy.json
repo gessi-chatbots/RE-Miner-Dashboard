@@ -1,0 +1,144 @@
+{
+    "id": 28,
+    "distance": 1.4234508297753035,
+    "children": [
+        {
+            "id": 14,
+            "label": "lose all chat history"
+        },
+        {
+            "id": 27,
+            "distance": 1.0819758237149177,
+            "children": [
+                {
+                    "id": 13,
+                    "label": "lose gpt4"
+                },
+                {
+                    "id": 26,
+                    "distance": 0.933189150598113,
+                    "children": [
+                        {
+                            "id": 12,
+                            "label": "lose liveliness"
+                        },
+                        {
+                            "id": 25,
+                            "distance": 0.8781022766625185,
+                            "children": [
+                                {
+                                    "id": 15,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 10,
+                                            "label": "lose chat history"
+                                        },
+                                        {
+                                            "id": 11,
+                                            "label": "lose history"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 24,
+                                    "distance": 0.8008796202445645,
+                                    "children": [
+                                        {
+                                            "id": 9,
+                                            "label": "lose important part"
+                                        },
+                                        {
+                                            "id": 23,
+                                            "distance": 0.7467005125861528,
+                                            "children": [
+                                                {
+                                                    "id": 8,
+                                                    "label": "lose war"
+                                                },
+                                                {
+                                                    "id": 22,
+                                                    "distance": 0.6747824051759669,
+                                                    "children": [
+                                                        {
+                                                            "id": 7,
+                                                            "label": "lose access"
+                                                        },
+                                                        {
+                                                            "id": 21,
+                                                            "distance": 0.5904922178080337,
+                                                            "children": [
+                                                                {
+                                                                    "id": 19,
+                                                                    "distance": 0.5463078842067978,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 16,
+                                                                            "distance": 0.4533109969725634,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 5,
+                                                                                    "label": "lose all privacy"
+                                                                                },
+                                                                                {
+                                                                                    "id": 6,
+                                                                                    "label": "lose huge chunk"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": 18,
+                                                                            "distance": 0.5237223018473658,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 4,
+                                                                                    "label": "lose friend"
+                                                                                },
+                                                                                {
+                                                                                    "id": 17,
+                                                                                    "distance": 0.4882681507839097,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 2,
+                                                                                            "label": "lose previous conversation"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 3,
+                                                                                            "label": "lose personality"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 20,
+                                                                    "distance": 0.5552884521213272,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 0,
+                                                                            "label": "lose context"
+                                                                        },
+                                                                        {
+                                                                            "id": 1,
+                                                                            "label": "lose great functionality"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

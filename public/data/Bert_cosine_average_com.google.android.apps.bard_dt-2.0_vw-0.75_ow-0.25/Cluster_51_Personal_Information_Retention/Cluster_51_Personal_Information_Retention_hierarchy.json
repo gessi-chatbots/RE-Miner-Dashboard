@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.7017119192731438,
+    "children": [
+        {
+            "id": 2,
+            "label": "retain context"
+        },
+        {
+            "id": 3,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "retain information"
+                },
+                {
+                    "id": 1,
+                    "label": "retain personal information"
+                }
+            ]
+        }
+    ]
+}

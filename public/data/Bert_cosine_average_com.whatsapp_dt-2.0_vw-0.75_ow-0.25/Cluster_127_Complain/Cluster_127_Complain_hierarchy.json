@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.8556824926155813,
+    "children": [
+        {
+            "id": 3,
+            "label": "want complain"
+        },
+        {
+            "id": 5,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "complain"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "complain athousand time"
+                        },
+                        {
+                            "id": 1,
+                            "label": "and complain"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

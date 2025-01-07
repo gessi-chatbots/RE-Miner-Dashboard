@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.9241667433183873,
+    "children": [
+        {
+            "id": 0,
+            "label": "solve may problem"
+        },
+        {
+            "id": 1,
+            "label": "solve all wish"
+        }
+    ]
+}

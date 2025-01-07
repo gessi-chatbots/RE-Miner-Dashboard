@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.6781448359943585,
+    "children": [
+        {
+            "id": 3,
+            "label": "know help"
+        },
+        {
+            "id": 5,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "know hd"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "know time"
+                        },
+                        {
+                            "id": 1,
+                            "label": "know way"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

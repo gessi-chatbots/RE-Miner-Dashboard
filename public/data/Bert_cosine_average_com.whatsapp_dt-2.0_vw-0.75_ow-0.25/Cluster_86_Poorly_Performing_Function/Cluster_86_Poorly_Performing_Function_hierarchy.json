@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.881411884717525,
+    "children": [
+        {
+            "id": 2,
+            "label": "perform function"
+        },
+        {
+            "id": 3,
+            "distance": 0.7505703526601326,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "perform bad result"
+                },
+                {
+                    "id": 1,
+                    "label": "perform huge conference"
+                }
+            ]
+        }
+    ]
+}

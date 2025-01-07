@@ -1,0 +1,74 @@
+{
+    "id": 14,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 7,
+            "label": "get long way"
+        },
+        {
+            "id": 13,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 6,
+                    "label": "get kind"
+                },
+                {
+                    "id": 12,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 5,
+                            "label": "get pegus"
+                        },
+                        {
+                            "id": 11,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "get way"
+                                },
+                                {
+                                    "id": 10,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "get prompt"
+                                        },
+                                        {
+                                            "id": 9,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "get same time"
+                                                },
+                                                {
+                                                    "id": 8,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "get lot"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "get straight a"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,154 @@
+{
+    "id": 30,
+    "distance": 1.9420843456145098,
+    "children": [
+        {
+            "id": 24,
+            "distance": 0.6829689396051736,
+            "children": [
+                {
+                    "id": 14,
+                    "label": "replace google"
+                },
+                {
+                    "id": 15,
+                    "label": "replace manual control button"
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "distance": 1.757494047551637,
+            "children": [
+                {
+                    "id": 13,
+                    "label": "advance ai version"
+                },
+                {
+                    "id": 28,
+                    "distance": 1.2005187857556863,
+                    "children": [
+                        {
+                            "id": 12,
+                            "label": "update chat gpt"
+                        },
+                        {
+                            "id": 27,
+                            "distance": 1.0103352434760806,
+                            "children": [
+                                {
+                                    "id": 11,
+                                    "label": "update phone os"
+                                },
+                                {
+                                    "id": 26,
+                                    "distance": 0.6923709190563494,
+                                    "children": [
+                                        {
+                                            "id": 10,
+                                            "label": "update app"
+                                        },
+                                        {
+                                            "id": 25,
+                                            "distance": 0.6851726350733743,
+                                            "children": [
+                                                {
+                                                    "id": 9,
+                                                    "label": "update bea"
+                                                },
+                                                {
+                                                    "id": 23,
+                                                    "distance": 0.667709125779703,
+                                                    "children": [
+                                                        {
+                                                            "id": 8,
+                                                            "label": "update play store error"
+                                                        },
+                                                        {
+                                                            "id": 22,
+                                                            "distance": 0.6452884516460606,
+                                                            "children": [
+                                                                {
+                                                                    "id": 7,
+                                                                    "label": "update version"
+                                                                },
+                                                                {
+                                                                    "id": 21,
+                                                                    "distance": 0.6355829366180076,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 6,
+                                                                            "label": "update feature"
+                                                                        },
+                                                                        {
+                                                                            "id": 20,
+                                                                            "distance": 0.5594564583193516,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 18,
+                                                                                    "distance": 0.5345263386994505,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 4,
+                                                                                            "label": "update code"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 5,
+                                                                                            "label": "update payment method"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "id": 19,
+                                                                                    "distance": 0.5358317957794747,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 3,
+                                                                                            "label": "update ai"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 17,
+                                                                                            "distance": 0.4703990129991175,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 2,
+                                                                                                    "label": "update logo and art creation"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 16,
+                                                                                                    "distance": 0.4347796004530824,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 0,
+                                                                                                            "label": "update new voice interface"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 1,
+                                                                                                            "label": "fully update android"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

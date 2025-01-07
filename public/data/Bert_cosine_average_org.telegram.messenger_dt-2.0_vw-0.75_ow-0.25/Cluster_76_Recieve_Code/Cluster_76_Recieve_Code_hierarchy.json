@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 0.808562913666017,
+    "children": [
+        {
+            "id": 3,
+            "label": "recieve sms"
+        },
+        {
+            "id": 5,
+            "distance": 0.6774211012989253,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "recieve call"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.6152163918419267,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "recieve code"
+                        },
+                        {
+                            "id": 1,
+                            "label": "recieve waste"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

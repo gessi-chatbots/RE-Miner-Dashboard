@@ -1,0 +1,144 @@
+{
+    "id": 28,
+    "distance": 1.96679054181822,
+    "children": [
+        {
+            "id": 23,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 14,
+                    "label": "so far pretty tight ai app"
+                },
+                {
+                    "id": 22,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 13,
+                            "label": "lovely ai"
+                        },
+                        {
+                            "id": 21,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 12,
+                                    "label": "good ai tool"
+                                },
+                                {
+                                    "id": 20,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 11,
+                                            "label": "exceptionally advanced ai"
+                                        },
+                                        {
+                                            "id": 19,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 10,
+                                                    "label": "very user friendly ai"
+                                                },
+                                                {
+                                                    "id": 18,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 9,
+                                                            "label": "well ai"
+                                                        },
+                                                        {
+                                                            "id": 17,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 8,
+                                                                    "label": "ai"
+                                                                },
+                                                                {
+                                                                    "id": 16,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 6,
+                                                                            "label": "most friendly ai"
+                                                                        },
+                                                                        {
+                                                                            "id": 7,
+                                                                            "label": "really awesome ai"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "distance": 1.8582883214987673,
+            "children": [
+                {
+                    "id": 24,
+                    "distance": 1.4687852576173892,
+                    "children": [
+                        {
+                            "id": 5,
+                            "label": "hate ai"
+                        },
+                        {
+                            "id": 15,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "want useful ai"
+                                },
+                                {
+                                    "id": 4,
+                                    "label": "want ai"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 26,
+                    "distance": 1.7974042395893035,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "ask ai"
+                        },
+                        {
+                            "id": 25,
+                            "distance": 1.5994803591058604,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "see ai"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "make ai picture"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

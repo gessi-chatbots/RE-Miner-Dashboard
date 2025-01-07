@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 1.8397488543369367,
+    "children": [
+        {
+            "id": 6,
+            "distance": 0.8824740308404069,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "thank you"
+                },
+                {
+                    "id": 5,
+                    "label": "thank mr durov"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "distance": 1.814745347127122,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "curse emoji"
+                },
+                {
+                    "id": 8,
+                    "distance": 1.70891088368113,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "pray all telegram"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 1.127734017701932,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "bless country"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "bless yu"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

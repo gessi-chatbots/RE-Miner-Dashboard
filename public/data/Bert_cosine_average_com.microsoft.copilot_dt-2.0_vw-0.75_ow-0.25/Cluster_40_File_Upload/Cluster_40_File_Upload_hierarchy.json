@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 1.141659395187259,
+    "children": [
+        {
+            "id": 6,
+            "label": "upload as many file"
+        },
+        {
+            "id": 11,
+            "distance": 0.6777086762109414,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "upload small file"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.6427395907439011,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "upload pic"
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.42590812425275354,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "upload image"
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.4123320838453588,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "upload photo"
+                                        },
+                                        {
+                                            "id": 7,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "upload picture"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "upload unlimited picture"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

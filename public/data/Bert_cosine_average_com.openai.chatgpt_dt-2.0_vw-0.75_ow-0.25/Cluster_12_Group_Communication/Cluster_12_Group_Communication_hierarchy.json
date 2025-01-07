@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 1.867480440189089,
+    "children": [
+        {
+            "id": 3,
+            "label": "want to idea"
+        },
+        {
+            "id": 5,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "want voice chat"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "want quick way"
+                        },
+                        {
+                            "id": 1,
+                            "label": "want more updateshon"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

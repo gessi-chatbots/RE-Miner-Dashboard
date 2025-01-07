@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.880115516647791,
+    "children": [
+        {
+            "id": 0,
+            "label": "like iit"
+        },
+        {
+            "id": 1,
+            "label": "have own smarty pant"
+        }
+    ]
+}

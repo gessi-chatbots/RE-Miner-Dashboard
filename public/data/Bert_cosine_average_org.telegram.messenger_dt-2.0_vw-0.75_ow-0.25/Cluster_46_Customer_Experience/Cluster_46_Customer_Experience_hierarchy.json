@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 1.6436991447056215,
+    "children": [
+        {
+            "id": 4,
+            "label": "continue bad and cheap experience"
+        },
+        {
+            "id": 7,
+            "distance": 0.6648638994291378,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "experience frustrating issue"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.5825463637694833,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "experience too much bug"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "experience same problem"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "experience even single problem"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

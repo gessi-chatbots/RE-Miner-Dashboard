@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 3,
+            "label": "solve doubt"
+        },
+        {
+            "id": 5,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "solve mathmatic"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "good ai question solve app"
+                        },
+                        {
+                            "id": 1,
+                            "label": "solve lot"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

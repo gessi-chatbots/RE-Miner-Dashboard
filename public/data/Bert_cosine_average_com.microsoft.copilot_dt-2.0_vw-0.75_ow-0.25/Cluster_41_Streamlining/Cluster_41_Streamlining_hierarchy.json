@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 0.9219672438517931,
+    "children": [
+        {
+            "id": 2,
+            "label": "streamline goal"
+        },
+        {
+            "id": 3,
+            "distance": 0.6556773121130953,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "streamline work"
+                },
+                {
+                    "id": 1,
+                    "label": "streamline research"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 1.755024053457611,
+    "children": [
+        {
+            "id": 4,
+            "label": "bangladesh airtel sim loging code problemplese help"
+        },
+        {
+            "id": 7,
+            "distance": 0.6765498832026916,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "not login account"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.6616139264197318,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "login old phone display"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.5748549183094216,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "login new phone"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "login very bad network"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

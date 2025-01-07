@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 5,
+            "label": "work assistant"
+        },
+        {
+            "id": 9,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "helpful and nicely work"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "not work"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "work very well issue"
+                                },
+                                {
+                                    "id": 6,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "well work"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "do work"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

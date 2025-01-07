@@ -1,0 +1,234 @@
+{
+    "id": 46,
+    "distance": 1.800892188012303,
+    "children": [
+        {
+            "id": 23,
+            "label": "pin chat"
+        },
+        {
+            "id": 45,
+            "distance": 1.658709477484041,
+            "children": [
+                {
+                    "id": 40,
+                    "distance": 1.4869447831716445,
+                    "children": [
+                        {
+                            "id": 22,
+                            "label": "increase photo and chat limit"
+                        },
+                        {
+                            "id": 37,
+                            "distance": 1.305486837249231,
+                            "children": [
+                                {
+                                    "id": 20,
+                                    "label": "use chat gpt app"
+                                },
+                                {
+                                    "id": 21,
+                                    "label": "try voice chat function"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 44,
+                    "distance": 1.5530745971174371,
+                    "children": [
+                        {
+                            "id": 41,
+                            "distance": 1.510802497487402,
+                            "children": [
+                                {
+                                    "id": 19,
+                                    "label": "recommend chat gpt"
+                                },
+                                {
+                                    "id": 39,
+                                    "distance": 1.331469981999278,
+                                    "children": [
+                                        {
+                                            "id": 35,
+                                            "distance": 1.1989738420530351,
+                                            "children": [
+                                                {
+                                                    "id": 17,
+                                                    "label": "ask chat gpt"
+                                                },
+                                                {
+                                                    "id": 18,
+                                                    "label": "find chat gpt"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 38,
+                                            "distance": 1.312731801196903,
+                                            "children": [
+                                                {
+                                                    "id": 16,
+                                                    "label": "marry chat gpt"
+                                                },
+                                                {
+                                                    "id": 33,
+                                                    "distance": 1.0697655096862289,
+                                                    "children": [
+                                                        {
+                                                            "id": 14,
+                                                            "label": "appreciate chat gpt"
+                                                        },
+                                                        {
+                                                            "id": 15,
+                                                            "label": "keep chat history"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 43,
+                            "distance": 1.5311633358594563,
+                            "children": [
+                                {
+                                    "id": 32,
+                                    "distance": 1.0209061679569205,
+                                    "children": [
+                                        {
+                                            "id": 12,
+                                            "label": "chat gpt ia good ai"
+                                        },
+                                        {
+                                            "id": 13,
+                                            "label": "good ai chat app"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 42,
+                                    "distance": 1.5155955654270492,
+                                    "children": [
+                                        {
+                                            "id": 11,
+                                            "label": "ilove chat gpt"
+                                        },
+                                        {
+                                            "id": 36,
+                                            "distance": 1.2052465239643075,
+                                            "children": [
+                                                {
+                                                    "id": 31,
+                                                    "distance": 1.0195010755829048,
+                                                    "children": [
+                                                        {
+                                                            "id": 9,
+                                                            "label": "chat gpt"
+                                                        },
+                                                        {
+                                                            "id": 10,
+                                                            "label": "good free chat assist"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 34,
+                                                    "distance": 1.1193367909417156,
+                                                    "children": [
+                                                        {
+                                                            "id": 8,
+                                                            "label": "chat gpedit"
+                                                        },
+                                                        {
+                                                            "id": 30,
+                                                            "distance": 0.9907542862480262,
+                                                            "children": [
+                                                                {
+                                                                    "id": 7,
+                                                                    "label": "chat gpt jann"
+                                                                },
+                                                                {
+                                                                    "id": 29,
+                                                                    "distance": 0.8567772617343253,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 6,
+                                                                            "label": "chat bot"
+                                                                        },
+                                                                        {
+                                                                            "id": 28,
+                                                                            "distance": 0.8004696424000379,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 5,
+                                                                                    "label": "chat gpt appa"
+                                                                                },
+                                                                                {
+                                                                                    "id": 27,
+                                                                                    "distance": 0.6241182728416688,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 25,
+                                                                                            "distance": 0.5735951404889337,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 4,
+                                                                                                    "label": "chat gpt help"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 24,
+                                                                                                    "distance": 0.5139216085979915,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 2,
+                                                                                                            "label": "waste chat token"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 3,
+                                                                                                            "label": "chat support"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 26,
+                                                                                            "distance": 0.5835640978193637,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 0,
+                                                                                                    "label": "undoubtedly good chat ai"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 1,
+                                                                                                    "label": "chat company"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

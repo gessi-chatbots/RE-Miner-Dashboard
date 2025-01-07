@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.9304436642002205,
+    "children": [
+        {
+            "id": 0,
+            "label": "open messaging app"
+        },
+        {
+            "id": 1,
+            "label": "open bluetooth setting"
+        }
+    ]
+}

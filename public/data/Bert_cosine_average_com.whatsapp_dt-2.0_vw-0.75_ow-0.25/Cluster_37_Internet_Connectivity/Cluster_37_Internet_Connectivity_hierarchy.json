@@ -1,0 +1,214 @@
+{
+    "id": 42,
+    "distance": 1.5052056762372237,
+    "children": [
+        {
+            "id": 21,
+            "label": "20year experience cold storage operate"
+        },
+        {
+            "id": 41,
+            "distance": 1.1186692240512615,
+            "children": [
+                {
+                    "id": 28,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 19,
+                            "label": "experience frustrating glitch"
+                        },
+                        {
+                            "id": 20,
+                            "label": "experience minor glitch"
+                        }
+                    ]
+                },
+                {
+                    "id": 40,
+                    "distance": 1.1161406840583241,
+                    "children": [
+                        {
+                            "id": 18,
+                            "label": "experience buned account"
+                        },
+                        {
+                            "id": 39,
+                            "distance": 0.7670229644189617,
+                            "children": [
+                                {
+                                    "id": 17,
+                                    "label": "experience yas marina"
+                                },
+                                {
+                                    "id": 38,
+                                    "distance": 0.75134724213056,
+                                    "children": [
+                                        {
+                                            "id": 27,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 15,
+                                                    "label": "well experience good app"
+                                                },
+                                                {
+                                                    "id": 16,
+                                                    "label": "well experience app"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 37,
+                                            "distance": 0.7369231393130883,
+                                            "children": [
+                                                {
+                                                    "id": 14,
+                                                    "label": "experience banding"
+                                                },
+                                                {
+                                                    "id": 36,
+                                                    "distance": 0.6913693085513724,
+                                                    "children": [
+                                                        {
+                                                            "id": 33,
+                                                            "distance": 0.6490700141680918,
+                                                            "children": [
+                                                                {
+                                                                    "id": 13,
+                                                                    "label": "experience persistent crash"
+                                                                },
+                                                                {
+                                                                    "id": 32,
+                                                                    "distance": 0.5991792518495035,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 30,
+                                                                            "distance": 0.5423179701097243,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 12,
+                                                                                    "label": "experience new technique"
+                                                                                },
+                                                                                {
+                                                                                    "id": 26,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 10,
+                                                                                            "label": "experience autoback problem"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 11,
+                                                                                            "label": "experience big problem"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": 31,
+                                                                            "distance": 0.5722784908387654,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 9,
+                                                                                    "label": "experience unnecessary ban"
+                                                                                },
+                                                                                {
+                                                                                    "id": 29,
+                                                                                    "distance": 0.47256432956600514,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 8,
+                                                                                            "label": "experience unstable internet connection"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 25,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 7,
+                                                                                                    "label": "experience many thing"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 24,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 6,
+                                                                                                            "label": "experience impossible thing"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 23,
+                                                                                                            "distance": 0.0,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 4,
+                                                                                                                    "label": "experience new good thing"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 5,
+                                                                                                                    "label": "experience good thing"
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 35,
+                                                            "distance": 0.6800699800022656,
+                                                            "children": [
+                                                                {
+                                                                    "id": 3,
+                                                                    "label": "experience excellent service"
+                                                                },
+                                                                {
+                                                                    "id": 34,
+                                                                    "distance": 0.6547765619019381,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 2,
+                                                                            "label": "experience long last data usage"
+                                                                        },
+                                                                        {
+                                                                            "id": 22,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 0,
+                                                                                    "label": "experience bad issue"
+                                                                                },
+                                                                                {
+                                                                                    "id": 1,
+                                                                                    "label": "experience same issue"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

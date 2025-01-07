@@ -1,0 +1,174 @@
+{
+    "id": 34,
+    "distance": 1.6562824857525655,
+    "children": [
+        {
+            "id": 17,
+            "label": "upload hd quality status"
+        },
+        {
+            "id": 33,
+            "distance": 1.6102914195618945,
+            "children": [
+                {
+                    "id": 16,
+                    "label": "ekdum bakwaas kardi hai video status upload karne ki full hd main karo video upload quality"
+                },
+                {
+                    "id": 32,
+                    "distance": 0.9198938348340845,
+                    "children": [
+                        {
+                            "id": 24,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 15,
+                                    "label": "upload high quality video"
+                                },
+                                {
+                                    "id": 23,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 13,
+                                            "label": "upload high quality resolution video"
+                                        },
+                                        {
+                                            "id": 14,
+                                            "label": "upload more then30second video"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 31,
+                            "distance": 0.6958391198805339,
+                            "children": [
+                                {
+                                    "id": 12,
+                                    "label": "upload large file"
+                                },
+                                {
+                                    "id": 30,
+                                    "distance": 0.646058882608418,
+                                    "children": [
+                                        {
+                                            "id": 28,
+                                            "distance": 0.6223818366437273,
+                                            "children": [
+                                                {
+                                                    "id": 22,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 10,
+                                                            "label": "upload pic"
+                                                        },
+                                                        {
+                                                            "id": 11,
+                                                            "label": "upload quality pic"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 26,
+                                                    "distance": 0.42738488386942797,
+                                                    "children": [
+                                                        {
+                                                            "id": 9,
+                                                            "label": "upload image"
+                                                        },
+                                                        {
+                                                            "id": 25,
+                                                            "distance": 0.4123320838453588,
+                                                            "children": [
+                                                                {
+                                                                    "id": 19,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 7,
+                                                                            "label": "upload picture"
+                                                                        },
+                                                                        {
+                                                                            "id": 8,
+                                                                            "label": "upload clear and neat picture"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 21,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 6,
+                                                                            "label": "upload photo"
+                                                                        },
+                                                                        {
+                                                                            "id": 20,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 4,
+                                                                                    "label": "upload video photo"
+                                                                                },
+                                                                                {
+                                                                                    "id": 5,
+                                                                                    "label": "upload high quality photo"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 29,
+                                            "distance": 0.6311422797569736,
+                                            "children": [
+                                                {
+                                                    "id": 3,
+                                                    "label": "upload thing"
+                                                },
+                                                {
+                                                    "id": 27,
+                                                    "distance": 0.5857357992822019,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "upload speed"
+                                                        },
+                                                        {
+                                                            "id": 18,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 0,
+                                                                    "label": "upload photo status"
+                                                                },
+                                                                {
+                                                                    "id": 1,
+                                                                    "label": "upload video status"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

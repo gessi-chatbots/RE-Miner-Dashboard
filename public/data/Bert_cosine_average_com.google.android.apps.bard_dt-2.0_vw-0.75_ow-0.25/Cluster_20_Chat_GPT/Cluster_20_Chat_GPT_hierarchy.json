@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.8480569885695608,
+    "children": [
+        {
+            "id": 2,
+            "label": "horrible inept and confused ai"
+        },
+        {
+            "id": 3,
+            "distance": 1.7446989194072646,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "goto generative ai app"
+                },
+                {
+                    "id": 1,
+                    "label": "exlent chat gpt"
+                }
+            ]
+        }
+    ]
+}

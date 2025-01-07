@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 0.7452174539282269,
+    "children": [
+        {
+            "id": 0,
+            "label": "follow step"
+        },
+        {
+            "id": 1,
+            "label": "follow guide"
+        }
+    ]
+}

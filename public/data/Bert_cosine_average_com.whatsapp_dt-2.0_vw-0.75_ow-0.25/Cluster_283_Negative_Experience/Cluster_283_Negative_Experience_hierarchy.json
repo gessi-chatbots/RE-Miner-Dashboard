@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.967700414684535,
+    "children": [
+        {
+            "id": 0,
+            "label": "awful experience"
+        },
+        {
+            "id": 1,
+            "label": "terrible experience"
+        }
+    ]
+}

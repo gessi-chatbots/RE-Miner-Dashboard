@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 0.7694379166867438,
+    "children": [
+        {
+            "id": 5,
+            "label": "submit ticket"
+        },
+        {
+            "id": 9,
+            "distance": 0.7016108084499586,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "submit age"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.6519675004669593,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "submit bunch"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.5788297019551523,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "submit review"
+                                },
+                                {
+                                    "id": 6,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "submit two bug report"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "submit report"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

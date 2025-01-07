@@ -1,0 +1,94 @@
+{
+    "id": 18,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 9,
+            "label": "fix"
+        },
+        {
+            "id": 17,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 8,
+                    "label": "fix lock chat issue"
+                },
+                {
+                    "id": 16,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 7,
+                            "label": "fix call issue"
+                        },
+                        {
+                            "id": 15,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 6,
+                                    "label": "fix status upload"
+                                },
+                                {
+                                    "id": 14,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 5,
+                                            "label": "fix karo"
+                                        },
+                                        {
+                                            "id": 13,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 4,
+                                                    "label": "fix ut"
+                                                },
+                                                {
+                                                    "id": 12,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 3,
+                                                            "label": "fix bug message delivery"
+                                                        },
+                                                        {
+                                                            "id": 11,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 2,
+                                                                    "label": "fix call quality"
+                                                                },
+                                                                {
+                                                                    "id": 10,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 0,
+                                                                            "label": "plz fix"
+                                                                        },
+                                                                        {
+                                                                            "id": 1,
+                                                                            "label": "fix bug sticker"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

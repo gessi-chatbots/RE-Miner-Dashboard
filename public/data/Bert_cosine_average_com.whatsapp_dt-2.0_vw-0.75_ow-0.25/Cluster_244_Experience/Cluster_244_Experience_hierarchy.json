@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 4,
+            "label": "well experience"
+        },
+        {
+            "id": 7,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 3,
+                    "label": "very experience"
+                },
+                {
+                    "id": 6,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "have4year experience"
+                        },
+                        {
+                            "id": 5,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "have well experience"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "experience"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,144 @@
+{
+    "id": 28,
+    "distance": 1.9777094991799173,
+    "children": [
+        {
+            "id": 26,
+            "distance": 1.1349757674095633,
+            "children": [
+                {
+                    "id": 14,
+                    "label": "replace skype"
+                },
+                {
+                    "id": 23,
+                    "distance": 0.7660946138796103,
+                    "children": [
+                        {
+                            "id": 18,
+                            "distance": 0.6679610720445142,
+                            "children": [
+                                {
+                                    "id": 12,
+                                    "label": "replace password"
+                                },
+                                {
+                                    "id": 13,
+                                    "label": "replace message app"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 21,
+                            "distance": 0.714602201938139,
+                            "children": [
+                                {
+                                    "id": 10,
+                                    "label": "replace discord"
+                                },
+                                {
+                                    "id": 11,
+                                    "label": "replace downgrade"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "distance": 1.7778356674505287,
+            "children": [
+                {
+                    "id": 9,
+                    "label": "release useless update"
+                },
+                {
+                    "id": 25,
+                    "distance": 0.8373511589173592,
+                    "children": [
+                        {
+                            "id": 8,
+                            "label": "update discord"
+                        },
+                        {
+                            "id": 24,
+                            "distance": 0.7684554848756918,
+                            "children": [
+                                {
+                                    "id": 20,
+                                    "distance": 0.7026080905819584,
+                                    "children": [
+                                        {
+                                            "id": 7,
+                                            "label": "update ui"
+                                        },
+                                        {
+                                            "id": 16,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 6,
+                                                    "label": "update mobile app"
+                                                },
+                                                {
+                                                    "id": 15,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 4,
+                                                            "label": "update trash app"
+                                                        },
+                                                        {
+                                                            "id": 5,
+                                                            "label": "update app"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 22,
+                                    "distance": 0.7572587680849318,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "update rating"
+                                        },
+                                        {
+                                            "id": 19,
+                                            "distance": 0.6914498686376587,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "update self"
+                                                },
+                                                {
+                                                    "id": 17,
+                                                    "distance": 0.5775154504540331,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "update phone"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "update client"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,144 @@
+{
+    "id": 28,
+    "distance": 0.9914969950567049,
+    "children": [
+        {
+            "id": 26,
+            "distance": 0.8583975364458892,
+            "children": [
+                {
+                    "id": 14,
+                    "label": "run whatsapp ad"
+                },
+                {
+                    "id": 23,
+                    "distance": 0.750189737164448,
+                    "children": [
+                        {
+                            "id": 15,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 12,
+                                    "label": "run app"
+                                },
+                                {
+                                    "id": 13,
+                                    "label": "clear run app"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 21,
+                            "distance": 0.6657933024981764,
+                            "children": [
+                                {
+                                    "id": 18,
+                                    "distance": 0.6120931416839959,
+                                    "children": [
+                                        {
+                                            "id": 16,
+                                            "distance": 0.5254474615376434,
+                                            "children": [
+                                                {
+                                                    "id": 10,
+                                                    "label": "run business"
+                                                },
+                                                {
+                                                    "id": 11,
+                                                    "label": "run education consultancy"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 17,
+                                            "distance": 0.563422223648889,
+                                            "children": [
+                                                {
+                                                    "id": 8,
+                                                    "label": "run verification"
+                                                },
+                                                {
+                                                    "id": 9,
+                                                    "label": "run internal storage"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 20,
+                                    "distance": 0.6492409701165118,
+                                    "children": [
+                                        {
+                                            "id": 7,
+                                            "label": "run smooth extensive and practical feature"
+                                        },
+                                        {
+                                            "id": 19,
+                                            "distance": 0.6207332706051893,
+                                            "children": [
+                                                {
+                                                    "id": 5,
+                                                    "label": "run very slow status"
+                                                },
+                                                {
+                                                    "id": 6,
+                                                    "label": "run good deal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "distance": 0.9314475554015649,
+            "children": [
+                {
+                    "id": 24,
+                    "distance": 0.8023331544527964,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "run whatsapp"
+                        },
+                        {
+                            "id": 4,
+                            "label": "run whatapp"
+                        }
+                    ]
+                },
+                {
+                    "id": 25,
+                    "distance": 0.8180221332556721,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "run watsapp"
+                        },
+                        {
+                            "id": 22,
+                            "distance": 0.7417920271896902,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "run whattsap"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "run wahatsapp"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

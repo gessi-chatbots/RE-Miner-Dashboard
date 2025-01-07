@@ -1,0 +1,184 @@
+{
+    "id": 36,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 18,
+            "label": "use biometric"
+        },
+        {
+            "id": 35,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 17,
+                    "label": "use"
+                },
+                {
+                    "id": 34,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 16,
+                            "label": "use fast"
+                        },
+                        {
+                            "id": 33,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 15,
+                                    "label": "use easy way"
+                                },
+                                {
+                                    "id": 32,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 14,
+                                            "label": "use ful"
+                                        },
+                                        {
+                                            "id": 31,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 13,
+                                                    "label": "use apo"
+                                                },
+                                                {
+                                                    "id": 30,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 12,
+                                                            "label": "use so many year"
+                                                        },
+                                                        {
+                                                            "id": 29,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 11,
+                                                                    "label": "use less"
+                                                                },
+                                                                {
+                                                                    "id": 28,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 10,
+                                                                            "label": "use only ig"
+                                                                        },
+                                                                        {
+                                                                            "id": 27,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 9,
+                                                                                    "label": "use hd"
+                                                                                },
+                                                                                {
+                                                                                    "id": 26,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 8,
+                                                                                            "label": "single not use"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 25,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 7,
+                                                                                                    "label": "use apt"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 24,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 6,
+                                                                                                            "label": "use wp"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 23,
+                                                                                                            "distance": 0.0,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 5,
+                                                                                                                    "label": "time use"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 22,
+                                                                                                                    "distance": 0.0,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 4,
+                                                                                                                            "label": "very use"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 21,
+                                                                                                                            "distance": 0.0,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 3,
+                                                                                                                                    "label": "use ap"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 20,
+                                                                                                                                    "distance": 0.0,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 2,
+                                                                                                                                            "label": "use plz"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 19,
+                                                                                                                                            "distance": 0.0,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 0,
+                                                                                                                                                    "label": "use long time"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 1,
+                                                                                                                                                    "label": "use samsung a335 g"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,154 @@
+{
+    "id": 30,
+    "distance": 1.5419924642871834,
+    "children": [
+        {
+            "id": 15,
+            "label": "love new ai"
+        },
+        {
+            "id": 29,
+            "distance": 1.1158017870959864,
+            "children": [
+                {
+                    "id": 18,
+                    "distance": 0.43716349593443815,
+                    "children": [
+                        {
+                            "id": 13,
+                            "label": "love ai buddy"
+                        },
+                        {
+                            "id": 14,
+                            "label": "love ai microsoft"
+                        }
+                    ]
+                },
+                {
+                    "id": 28,
+                    "distance": 0.7757478161346031,
+                    "children": [
+                        {
+                            "id": 12,
+                            "label": "love assistant"
+                        },
+                        {
+                            "id": 27,
+                            "distance": 0.6837231100226726,
+                            "children": [
+                                {
+                                    "id": 17,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 10,
+                                            "label": "love very nice app"
+                                        },
+                                        {
+                                            "id": 11,
+                                            "label": "love perfect and fabulous app"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 26,
+                                    "distance": 0.6614633564171594,
+                                    "children": [
+                                        {
+                                            "id": 9,
+                                            "label": "love new companion"
+                                        },
+                                        {
+                                            "id": 25,
+                                            "distance": 0.6305045200737303,
+                                            "children": [
+                                                {
+                                                    "id": 22,
+                                                    "distance": 0.5673195417611087,
+                                                    "children": [
+                                                        {
+                                                            "id": 7,
+                                                            "label": "love live talking option"
+                                                        },
+                                                        {
+                                                            "id": 8,
+                                                            "label": "love live mode"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 24,
+                                                    "distance": 0.5930738466312498,
+                                                    "children": [
+                                                        {
+                                                            "id": 21,
+                                                            "distance": 0.5463054543708651,
+                                                            "children": [
+                                                                {
+                                                                    "id": 6,
+                                                                    "label": "love both gemini"
+                                                                },
+                                                                {
+                                                                    "id": 16,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 4,
+                                                                            "label": "love ai"
+                                                                        },
+                                                                        {
+                                                                            "id": 5,
+                                                                            "label": "love open ai"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 23,
+                                                            "distance": 0.5735264649261187,
+                                                            "children": [
+                                                                {
+                                                                    "id": 19,
+                                                                    "distance": 0.47864296299869186,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 2,
+                                                                            "label": "love it"
+                                                                        },
+                                                                        {
+                                                                            "id": 3,
+                                                                            "label": "love many stuff"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 20,
+                                                                    "distance": 0.5154037195464231,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 0,
+                                                                            "label": "love image"
+                                                                        },
+                                                                        {
+                                                                            "id": 1,
+                                                                            "label": "love new british voice"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

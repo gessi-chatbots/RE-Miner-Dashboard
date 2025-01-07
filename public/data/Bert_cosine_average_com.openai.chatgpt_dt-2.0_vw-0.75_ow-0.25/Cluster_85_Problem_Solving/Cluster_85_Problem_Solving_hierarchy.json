@@ -1,0 +1,374 @@
+{
+    "id": 74,
+    "distance": 1.933337332200845,
+    "children": [
+        {
+            "id": 37,
+            "label": "satisfy curiosity"
+        },
+        {
+            "id": 73,
+            "distance": 1.9177397720841785,
+            "children": [
+                {
+                    "id": 36,
+                    "label": "very good and dout solving app"
+                },
+                {
+                    "id": 72,
+                    "distance": 1.5926139885476034,
+                    "children": [
+                        {
+                            "id": 70,
+                            "distance": 0.9144579681595926,
+                            "children": [
+                                {
+                                    "id": 35,
+                                    "label": "solve financial literacy"
+                                },
+                                {
+                                    "id": 69,
+                                    "distance": 0.8614643885229513,
+                                    "children": [
+                                        {
+                                            "id": 34,
+                                            "label": "solve ho kajaty hain lakin"
+                                        },
+                                        {
+                                            "id": 68,
+                                            "distance": 0.8294335665701872,
+                                            "children": [
+                                                {
+                                                    "id": 33,
+                                                    "label": "solve big proplem"
+                                                },
+                                                {
+                                                    "id": 67,
+                                                    "distance": 0.7435061197461764,
+                                                    "children": [
+                                                        {
+                                                            "id": 32,
+                                                            "label": "solve app"
+                                                        },
+                                                        {
+                                                            "id": 66,
+                                                            "distance": 0.7406004745304696,
+                                                            "children": [
+                                                                {
+                                                                    "id": 31,
+                                                                    "label": "solve advanced level math"
+                                                                },
+                                                                {
+                                                                    "id": 65,
+                                                                    "distance": 0.6864421084652381,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 30,
+                                                                            "label": "solve issue"
+                                                                        },
+                                                                        {
+                                                                            "id": 64,
+                                                                            "distance": 0.6754420879206363,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 29,
+                                                                                    "label": "solve parameter"
+                                                                                },
+                                                                                {
+                                                                                    "id": 63,
+                                                                                    "distance": 0.6600773839972959,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 61,
+                                                                                            "distance": 0.6307009494902788,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 27,
+                                                                                                    "label": "solve work"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 28,
+                                                                                                    "label": "solve picture"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 62,
+                                                                                            "distance": 0.6542811593132791,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 26,
+                                                                                                    "label": "solve all doubt"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 60,
+                                                                                                    "distance": 0.6118727245270807,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 25,
+                                                                                                            "label": "solve query"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 59,
+                                                                                                            "distance": 0.5844547037682595,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 53,
+                                                                                                                    "distance": 0.0,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 24,
+                                                                                                                            "label": "solve math equation"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 52,
+                                                                                                                            "distance": 0.0,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 22,
+                                                                                                                                    "label": "solve equation"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 23,
+                                                                                                                                    "label": "solve simple and abstract equation"
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 58,
+                                                                                                                    "distance": 0.548484979905574,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 56,
+                                                                                                                            "distance": 0.5097992934157433,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 21,
+                                                                                                                                    "label": "solve application"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 51,
+                                                                                                                                    "distance": 0.0,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 20,
+                                                                                                                                            "label": "solve complex problem"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 50,
+                                                                                                                                            "distance": 0.0,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 19,
+                                                                                                                                                    "label": "solve math problem"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 49,
+                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 18,
+                                                                                                                                                            "label": "solve problem"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 48,
+                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                            "children": [
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 17,
+                                                                                                                                                                    "label": "solve everyday problem"
+                                                                                                                                                                },
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 47,
+                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                    "children": [
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 16,
+                                                                                                                                                                            "label": "solve many problem"
+                                                                                                                                                                        },
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 46,
+                                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                                            "children": [
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 15,
+                                                                                                                                                                                    "label": "solve challenge problem"
+                                                                                                                                                                                },
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 45,
+                                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                                    "children": [
+                                                                                                                                                                                        {
+                                                                                                                                                                                            "id": 14,
+                                                                                                                                                                                            "label": "solve daily life problem"
+                                                                                                                                                                                        },
+                                                                                                                                                                                        {
+                                                                                                                                                                                            "id": 44,
+                                                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                                                            "children": [
+                                                                                                                                                                                                {
+                                                                                                                                                                                                    "id": 13,
+                                                                                                                                                                                                    "label": "solve simple problem"
+                                                                                                                                                                                                },
+                                                                                                                                                                                                {
+                                                                                                                                                                                                    "id": 43,
+                                                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                                                    "children": [
+                                                                                                                                                                                                        {
+                                                                                                                                                                                                            "id": 12,
+                                                                                                                                                                                                            "label": "solve all problem"
+                                                                                                                                                                                                        },
+                                                                                                                                                                                                        {
+                                                                                                                                                                                                            "id": 42,
+                                                                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                                                                            "children": [
+                                                                                                                                                                                                                {
+                                                                                                                                                                                                                    "id": 11,
+                                                                                                                                                                                                                    "label": "solve study relate problem"
+                                                                                                                                                                                                                },
+                                                                                                                                                                                                                {
+                                                                                                                                                                                                                    "id": 41,
+                                                                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                                                                    "children": [
+                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                            "id": 9,
+                                                                                                                                                                                                                            "label": "solve study problem"
+                                                                                                                                                                                                                        },
+                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                            "id": 10,
+                                                                                                                                                                                                                            "label": "solve great problem"
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                    ]
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                            ]
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                    ]
+                                                                                                                                                                                                }
+                                                                                                                                                                                            ]
+                                                                                                                                                                                        }
+                                                                                                                                                                                    ]
+                                                                                                                                                                                }
+                                                                                                                                                                            ]
+                                                                                                                                                                        }
+                                                                                                                                                                    ]
+                                                                                                                                                                }
+                                                                                                                                                            ]
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 57,
+                                                                                                                            "distance": 0.5197499978673205,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 8,
+                                                                                                                                    "label": "solve type"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 55,
+                                                                                                                                    "distance": 0.4890348614151767,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 7,
+                                                                                                                                            "label": "solve all thing"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 54,
+                                                                                                                                            "distance": 0.41863297828595863,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 38,
+                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 5,
+                                                                                                                                                            "label": "solve math homework"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 6,
+                                                                                                                                                            "label": "solve homework"
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 40,
+                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 4,
+                                                                                                                                                            "label": "solve statistic question"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 39,
+                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                            "children": [
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 2,
+                                                                                                                                                                    "label": "solve question"
+                                                                                                                                                                },
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 3,
+                                                                                                                                                                    "label": "solve difficult accounting question"
+                                                                                                                                                                }
+                                                                                                                                                            ]
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 71,
+                            "distance": 1.3449015589255005,
+                            "children": [
+                                {
+                                    "id": 0,
+                                    "label": "world famous and problem solving app"
+                                },
+                                {
+                                    "id": 1,
+                                    "label": "problem solve app"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

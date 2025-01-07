@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.8877625977098111,
+    "children": [
+        {
+            "id": 0,
+            "label": "put drawing"
+        },
+        {
+            "id": 1,
+            "label": "put lot"
+        }
+    ]
+}

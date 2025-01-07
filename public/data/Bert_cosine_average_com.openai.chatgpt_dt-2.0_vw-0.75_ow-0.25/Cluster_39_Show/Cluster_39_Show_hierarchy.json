@@ -1,0 +1,334 @@
+{
+    "id": 66,
+    "distance": 1.4473434116599269,
+    "children": [
+        {
+            "id": 63,
+            "distance": 1.1551040161001094,
+            "children": [
+                {
+                    "id": 33,
+                    "label": "show more relate information"
+                },
+                {
+                    "id": 62,
+                    "distance": 1.1105861127971437,
+                    "children": [
+                        {
+                            "id": 31,
+                            "label": "show ai symbol"
+                        },
+                        {
+                            "id": 32,
+                            "label": "show case ai"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 65,
+            "distance": 1.3393993492300378,
+            "children": [
+                {
+                    "id": 30,
+                    "label": "show exam relate important question"
+                },
+                {
+                    "id": 64,
+                    "distance": 1.1597477861906824,
+                    "children": [
+                        {
+                            "id": 29,
+                            "label": "show finished cv"
+                        },
+                        {
+                            "id": 61,
+                            "distance": 1.0416086102998103,
+                            "children": [
+                                {
+                                    "id": 28,
+                                    "label": "show retry transcription"
+                                },
+                                {
+                                    "id": 60,
+                                    "distance": 0.9651924307356737,
+                                    "children": [
+                                        {
+                                            "id": 27,
+                                            "label": "show video"
+                                        },
+                                        {
+                                            "id": 59,
+                                            "distance": 0.7781118743137108,
+                                            "children": [
+                                                {
+                                                    "id": 50,
+                                                    "distance": 0.6401343003838063,
+                                                    "children": [
+                                                        {
+                                                            "id": 25,
+                                                            "label": "show love"
+                                                        },
+                                                        {
+                                                            "id": 26,
+                                                            "label": "show gratitude"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 58,
+                                                    "distance": 0.7472759245198707,
+                                                    "children": [
+                                                        {
+                                                            "id": 39,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 23,
+                                                                    "label": "show amazing app"
+                                                                },
+                                                                {
+                                                                    "id": 24,
+                                                                    "label": "show app"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 57,
+                                                            "distance": 0.7159166999925002,
+                                                            "children": [
+                                                                {
+                                                                    "id": 52,
+                                                                    "distance": 0.6504251533944219,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 22,
+                                                                            "label": "show information"
+                                                                        },
+                                                                        {
+                                                                            "id": 38,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 21,
+                                                                                    "label": "show network configuration error"
+                                                                                },
+                                                                                {
+                                                                                    "id": 37,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 19,
+                                                                                            "label": "show network error"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 20,
+                                                                                            "label": "show error"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 56,
+                                                                    "distance": 0.6880567571310406,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 36,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 17,
+                                                                                    "label": "show full step"
+                                                                                },
+                                                                                {
+                                                                                    "id": 18,
+                                                                                    "label": "show step"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": 55,
+                                                                            "distance": 0.6827075201539019,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 16,
+                                                                                    "label": "show accurate pic"
+                                                                                },
+                                                                                {
+                                                                                    "id": 54,
+                                                                                    "distance": 0.6764916098553947,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 15,
+                                                                                            "label": "show text bar"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 53,
+                                                                                            "distance": 0.651074317312133,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 14,
+                                                                                                    "label": "show camera feature"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 51,
+                                                                                                    "distance": 0.6474560311965061,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 13,
+                                                                                                            "label": "show little dark effect"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 49,
+                                                                                                            "distance": 0.6368769672643717,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 12,
+                                                                                                                    "label": "show full reply"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 48,
+                                                                                                                    "distance": 0.6219836366182256,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 45,
+                                                                                                                            "distance": 0.5598878696390149,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 35,
+                                                                                                                                    "distance": 0.0,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 11,
+                                                                                                                                            "label": "show proportional number"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 34,
+                                                                                                                                            "distance": 0.0,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 9,
+                                                                                                                                                    "label": "show total lifetime number"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 10,
+                                                                                                                                                    "label": "show specific number"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 42,
+                                                                                                                                    "distance": 0.46046536820617284,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 7,
+                                                                                                                                            "label": "show thing"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 8,
+                                                                                                                                            "label": "show lot"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 47,
+                                                                                                                            "distance": 0.5912725382407249,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 40,
+                                                                                                                                    "distance": 0.42406215769612104,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 5,
+                                                                                                                                            "label": "show image"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 6,
+                                                                                                                                            "label": "show picture"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 46,
+                                                                                                                                    "distance": 0.583690351876058,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 4,
+                                                                                                                                            "label": "show exact content"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 44,
+                                                                                                                                            "distance": 0.5514048499760233,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 3,
+                                                                                                                                                    "label": "show graphical representation"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 43,
+                                                                                                                                                    "distance": 0.5323995695171686,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 2,
+                                                                                                                                                            "label": "show resource"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 41,
+                                                                                                                                                            "distance": 0.4531352795266557,
+                                                                                                                                                            "children": [
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 0,
+                                                                                                                                                                    "label": "show graphic"
+                                                                                                                                                                },
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 1,
+                                                                                                                                                                    "label": "show good creative tool"
+                                                                                                                                                                }
+                                                                                                                                                            ]
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

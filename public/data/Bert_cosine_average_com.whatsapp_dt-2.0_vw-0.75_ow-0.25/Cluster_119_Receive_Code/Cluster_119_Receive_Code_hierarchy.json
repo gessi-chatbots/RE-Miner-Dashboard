@@ -1,0 +1,114 @@
+{
+    "id": 22,
+    "distance": 1.7445428576081732,
+    "children": [
+        {
+            "id": 11,
+            "label": "recieve ai feature"
+        },
+        {
+            "id": 21,
+            "distance": 1.2127852323266208,
+            "children": [
+                {
+                    "id": 10,
+                    "label": "recieve meta ai update"
+                },
+                {
+                    "id": 20,
+                    "distance": 0.9982194775582577,
+                    "children": [
+                        {
+                            "id": 9,
+                            "label": "recieve video"
+                        },
+                        {
+                            "id": 19,
+                            "distance": 0.8368191143203904,
+                            "children": [
+                                {
+                                    "id": 8,
+                                    "label": "recieve otp"
+                                },
+                                {
+                                    "id": 18,
+                                    "distance": 0.7415084391004301,
+                                    "children": [
+                                        {
+                                            "id": 7,
+                                            "label": "recieve new update"
+                                        },
+                                        {
+                                            "id": 17,
+                                            "distance": 0.5976677676362073,
+                                            "children": [
+                                                {
+                                                    "id": 15,
+                                                    "distance": 0.5376739054360586,
+                                                    "children": [
+                                                        {
+                                                            "id": 6,
+                                                            "label": "recieve lot"
+                                                        },
+                                                        {
+                                                            "id": 14,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 5,
+                                                                    "label": "recieve code"
+                                                                },
+                                                                {
+                                                                    "id": 13,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 3,
+                                                                            "label": "recieve verification code"
+                                                                        },
+                                                                        {
+                                                                            "id": 4,
+                                                                            "label": "recieve conformation code"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 16,
+                                                    "distance": 0.5718694713156145,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "recieve help"
+                                                        },
+                                                        {
+                                                            "id": 12,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 0,
+                                                                    "label": "recieve message"
+                                                                },
+                                                                {
+                                                                    "id": 1,
+                                                                    "label": "recieve sms message"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

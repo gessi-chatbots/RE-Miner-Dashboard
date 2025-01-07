@@ -1,0 +1,144 @@
+{
+    "id": 28,
+    "distance": 1.9274152048146445,
+    "children": [
+        {
+            "id": 21,
+            "distance": 0.5402680432211022,
+            "children": [
+                {
+                    "id": 14,
+                    "label": "meet really nice people"
+                },
+                {
+                    "id": 17,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 13,
+                            "label": "meet so many friend"
+                        },
+                        {
+                            "id": 16,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 11,
+                                    "label": "meet nice friend"
+                                },
+                                {
+                                    "id": 12,
+                                    "label": "meet new friend"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "distance": 1.6235745726239288,
+            "children": [
+                {
+                    "id": 10,
+                    "label": "call issue plzz update app"
+                },
+                {
+                    "id": 26,
+                    "distance": 0.7259036571119446,
+                    "children": [
+                        {
+                            "id": 9,
+                            "label": "call little flower"
+                        },
+                        {
+                            "id": 25,
+                            "distance": 0.6161914065160303,
+                            "children": [
+                                {
+                                    "id": 23,
+                                    "distance": 0.5752162905231691,
+                                    "children": [
+                                        {
+                                            "id": 19,
+                                            "distance": 0.5127123013507762,
+                                            "children": [
+                                                {
+                                                    "id": 8,
+                                                    "label": "call attention"
+                                                },
+                                                {
+                                                    "id": 18,
+                                                    "distance": 0.48601805236251117,
+                                                    "children": [
+                                                        {
+                                                            "id": 7,
+                                                            "label": "call person"
+                                                        },
+                                                        {
+                                                            "id": 15,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 5,
+                                                                    "label": "call friend"
+                                                                },
+                                                                {
+                                                                    "id": 6,
+                                                                    "label": "call may friend"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 20,
+                                            "distance": 0.5212376573472737,
+                                            "children": [
+                                                {
+                                                    "id": 3,
+                                                    "label": "call customer support"
+                                                },
+                                                {
+                                                    "id": 4,
+                                                    "label": "call service provider"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 24,
+                                    "distance": 0.5957045229500944,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "call number"
+                                        },
+                                        {
+                                            "id": 22,
+                                            "distance": 0.5721576393984492,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "call waiting problem"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "call code"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

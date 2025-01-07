@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 0.992923562749145,
+    "children": [
+        {
+            "id": 3,
+            "label": "open several video"
+        },
+        {
+            "id": 5,
+            "distance": 0.6828576163343807,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "open other mini app game"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.6442008130894074,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "not open chat"
+                        },
+                        {
+                            "id": 1,
+                            "label": "open new telegram account"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

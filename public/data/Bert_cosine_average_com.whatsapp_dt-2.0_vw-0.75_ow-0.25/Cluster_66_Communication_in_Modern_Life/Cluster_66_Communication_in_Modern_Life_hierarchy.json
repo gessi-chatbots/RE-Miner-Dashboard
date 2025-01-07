@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 1.0612973589765893,
+    "children": [
+        {
+            "id": 5,
+            "label": "mean whatsapp"
+        },
+        {
+            "id": 9,
+            "distance": 0.6450022566398782,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "mean generic email message"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.6249214739366508,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "mean modren life"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.6089870210832089,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "mean communication"
+                                },
+                                {
+                                    "id": 6,
+                                    "distance": 0.5669718585052695,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "mean world"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "mean not enough space"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

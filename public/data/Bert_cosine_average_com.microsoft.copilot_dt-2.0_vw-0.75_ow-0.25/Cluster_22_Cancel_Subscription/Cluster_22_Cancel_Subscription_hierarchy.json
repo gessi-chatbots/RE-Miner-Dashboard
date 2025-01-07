@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 1.9422418940069932,
+    "children": [
+        {
+            "id": 10,
+            "distance": 0.745914657492011,
+            "children": [
+                {
+                    "id": 8,
+                    "distance": 0.6403978936000346,
+                    "children": [
+                        {
+                            "id": 6,
+                            "label": "replace google"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 4,
+                                    "label": "replace bing search"
+                                },
+                                {
+                                    "id": 5,
+                                    "label": "replace google search"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 9,
+                    "distance": 0.6804621280076869,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "replace need"
+                        },
+                        {
+                            "id": 3,
+                            "label": "replace previous one"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "distance": 1.3358284812505337,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "cancel whole microsoft365subscription"
+                },
+                {
+                    "id": 1,
+                    "label": "cancel subscription"
+                }
+            ]
+        }
+    ]
+}

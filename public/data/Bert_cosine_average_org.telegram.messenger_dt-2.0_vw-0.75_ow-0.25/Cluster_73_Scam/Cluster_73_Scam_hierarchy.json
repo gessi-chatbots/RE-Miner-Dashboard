@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 0.5682430187591785,
+    "children": [
+        {
+            "id": 0,
+            "label": "scam money"
+        },
+        {
+            "id": 1,
+            "label": "scam other people"
+        }
+    ]
+}

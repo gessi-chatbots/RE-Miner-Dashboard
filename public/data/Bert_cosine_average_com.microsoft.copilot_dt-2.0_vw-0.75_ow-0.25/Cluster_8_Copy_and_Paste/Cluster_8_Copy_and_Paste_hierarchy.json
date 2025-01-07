@@ -1,0 +1,84 @@
+{
+    "id": 16,
+    "distance": 1.937467393985991,
+    "children": [
+        {
+            "id": 8,
+            "label": "translate text"
+        },
+        {
+            "id": 15,
+            "distance": 1.142130988356848,
+            "children": [
+                {
+                    "id": 7,
+                    "label": "copy previously ask question"
+                },
+                {
+                    "id": 14,
+                    "distance": 0.6721826158668898,
+                    "children": [
+                        {
+                            "id": 6,
+                            "label": "copy own command"
+                        },
+                        {
+                            "id": 13,
+                            "distance": 0.6657928284986456,
+                            "children": [
+                                {
+                                    "id": 5,
+                                    "label": "copy old school"
+                                },
+                                {
+                                    "id": 12,
+                                    "distance": 0.6355274582187289,
+                                    "children": [
+                                        {
+                                            "id": 4,
+                                            "label": "copy message man"
+                                        },
+                                        {
+                                            "id": 11,
+                                            "distance": 0.6119867096727618,
+                                            "children": [
+                                                {
+                                                    "id": 3,
+                                                    "label": "copy ai"
+                                                },
+                                                {
+                                                    "id": 10,
+                                                    "distance": 0.582692901835394,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "copy own message"
+                                                        },
+                                                        {
+                                                            "id": 9,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 0,
+                                                                    "label": "copy own prompt"
+                                                                },
+                                                                {
+                                                                    "id": 1,
+                                                                    "label": "copy previous prompt"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

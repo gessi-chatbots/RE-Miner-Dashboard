@@ -1,0 +1,224 @@
+{
+    "id": 44,
+    "distance": 1.7889445546871883,
+    "children": [
+        {
+            "id": 22,
+            "label": "hang app"
+        },
+        {
+            "id": 43,
+            "distance": 1.3564841962121692,
+            "children": [
+                {
+                    "id": 21,
+                    "label": "send how many chat"
+                },
+                {
+                    "id": 42,
+                    "distance": 0.9431961131437803,
+                    "children": [
+                        {
+                            "id": 20,
+                            "label": "send nm"
+                        },
+                        {
+                            "id": 41,
+                            "distance": 0.9386753566439614,
+                            "children": [
+                                {
+                                    "id": 19,
+                                    "label": "send video"
+                                },
+                                {
+                                    "id": 40,
+                                    "distance": 0.7375563037216746,
+                                    "children": [
+                                        {
+                                            "id": 38,
+                                            "distance": 0.6665765042635167,
+                                            "children": [
+                                                {
+                                                    "id": 18,
+                                                    "label": "send afew pic"
+                                                },
+                                                {
+                                                    "id": 36,
+                                                    "distance": 0.6311419639511462,
+                                                    "children": [
+                                                        {
+                                                            "id": 34,
+                                                            "distance": 0.5948762742904516,
+                                                            "children": [
+                                                                {
+                                                                    "id": 16,
+                                                                    "label": "send many bug report"
+                                                                },
+                                                                {
+                                                                    "id": 17,
+                                                                    "label": "send resume"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 35,
+                                                            "distance": 0.6005737433081156,
+                                                            "children": [
+                                                                {
+                                                                    "id": 32,
+                                                                    "distance": 0.5420338796854791,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 15,
+                                                                            "label": "send definition"
+                                                                        },
+                                                                        {
+                                                                            "id": 28,
+                                                                            "distance": 0.468923789716986,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 13,
+                                                                                    "label": "send generation"
+                                                                                },
+                                                                                {
+                                                                                    "id": 14,
+                                                                                    "label": "send more amount"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": 33,
+                                                                    "distance": 0.5754213750381656,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 27,
+                                                                            "distance": 0.42544663864981885,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 12,
+                                                                                    "label": "send image"
+                                                                                },
+                                                                                {
+                                                                                    "id": 25,
+                                                                                    "distance": 0.4123320774194519,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 11,
+                                                                                            "label": "send photo"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 24,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 10,
+                                                                                                    "label": "send two picture"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 23,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 8,
+                                                                                                            "label": "send document file picture"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 9,
+                                                                                                            "label": "send picture"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": 31,
+                                                                            "distance": 0.5414543404394146,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 7,
+                                                                                    "label": "send message"
+                                                                                },
+                                                                                {
+                                                                                    "id": 30,
+                                                                                    "distance": 0.5203660606883249,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 26,
+                                                                                            "distance": 0.4191821685409043,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 5,
+                                                                                                    "label": "send question"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 6,
+                                                                                                    "label": "send long answer"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 29,
+                                                                                            "distance": 0.48860497498708894,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 3,
+                                                                                                    "label": "send lot"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 4,
+                                                                                                    "label": "send gift"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 39,
+                                            "distance": 0.6706718810031334,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "send reliable reference"
+                                                },
+                                                {
+                                                    "id": 37,
+                                                    "distance": 0.6421800775733848,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "send text"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "send information"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

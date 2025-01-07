@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.809571122527479,
+    "children": [
+        {
+            "id": 0,
+            "label": "good chat app"
+        },
+        {
+            "id": 1,
+            "label": "neat more optimization"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 0.7038101185332309,
+    "children": [
+        {
+            "id": 0,
+            "label": "force ai"
+        },
+        {
+            "id": 1,
+            "label": "force move"
+        }
+    ]
+}

@@ -1,0 +1,94 @@
+{
+    "id": 18,
+    "distance": 1.0894305924348433,
+    "children": [
+        {
+            "id": 9,
+            "label": "link whatsapp"
+        },
+        {
+            "id": 17,
+            "distance": 0.82931039037618,
+            "children": [
+                {
+                    "id": 8,
+                    "label": "link wa"
+                },
+                {
+                    "id": 16,
+                    "distance": 0.7113669767399876,
+                    "children": [
+                        {
+                            "id": 7,
+                            "label": "link advice android"
+                        },
+                        {
+                            "id": 15,
+                            "distance": 0.6480515239129536,
+                            "children": [
+                                {
+                                    "id": 13,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 6,
+                                            "label": "link bank account"
+                                        },
+                                        {
+                                            "id": 12,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 4,
+                                                    "label": "link google account"
+                                                },
+                                                {
+                                                    "id": 5,
+                                                    "label": "link whatsapp account"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 14,
+                                    "distance": 0.5999292092233042,
+                                    "children": [
+                                        {
+                                            "id": 3,
+                                            "label": "link phone number"
+                                        },
+                                        {
+                                            "id": 11,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "link companion device"
+                                                },
+                                                {
+                                                    "id": 10,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "link other device"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "link device"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

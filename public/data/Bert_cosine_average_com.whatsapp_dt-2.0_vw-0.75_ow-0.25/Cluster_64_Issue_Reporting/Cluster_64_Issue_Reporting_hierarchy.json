@@ -1,0 +1,354 @@
+{
+    "id": 70,
+    "distance": 1.2752325632670114,
+    "children": [
+        {
+            "id": 35,
+            "label": "solve profile screenshot dp issue"
+        },
+        {
+            "id": 69,
+            "distance": 1.0867854306196723,
+            "children": [
+                {
+                    "id": 34,
+                    "label": "solve whatsapp"
+                },
+                {
+                    "id": 68,
+                    "distance": 1.0260247264894318,
+                    "children": [
+                        {
+                            "id": 66,
+                            "distance": 0.9275712224415043,
+                            "children": [
+                                {
+                                    "id": 32,
+                                    "label": "solve probilem"
+                                },
+                                {
+                                    "id": 33,
+                                    "label": "solve emargency"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 67,
+                            "distance": 0.9882041406699709,
+                            "children": [
+                                {
+                                    "id": 31,
+                                    "label": "solve issu"
+                                },
+                                {
+                                    "id": 65,
+                                    "distance": 0.8702964291293988,
+                                    "children": [
+                                        {
+                                            "id": 62,
+                                            "distance": 0.7439868164834954,
+                                            "children": [
+                                                {
+                                                    "id": 58,
+                                                    "distance": 0.6952832610867541,
+                                                    "children": [
+                                                        {
+                                                            "id": 29,
+                                                            "label": "solve account"
+                                                        },
+                                                        {
+                                                            "id": 30,
+                                                            "label": "solve app"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 61,
+                                                    "distance": 0.7359249456607739,
+                                                    "children": [
+                                                        {
+                                                            "id": 56,
+                                                            "distance": 0.6775120104509208,
+                                                            "children": [
+                                                                {
+                                                                    "id": 27,
+                                                                    "label": "solve bug thank"
+                                                                },
+                                                                {
+                                                                    "id": 28,
+                                                                    "label": "solve emergency"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 60,
+                                                            "distance": 0.7198810014770515,
+                                                            "children": [
+                                                                {
+                                                                    "id": 26,
+                                                                    "label": "solve math"
+                                                                },
+                                                                {
+                                                                    "id": 59,
+                                                                    "distance": 0.7024827486811945,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 25,
+                                                                            "label": "solve group policy"
+                                                                        },
+                                                                        {
+                                                                            "id": 55,
+                                                                            "distance": 0.66301282324522,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 50,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 23,
+                                                                                            "label": "solve backup issue"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 24,
+                                                                                            "label": "solve issue"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "id": 54,
+                                                                                    "distance": 0.5924403621071621,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 52,
+                                                                                            "distance": 0.5268898492902185,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 22,
+                                                                                                    "label": "solve very high ban"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 51,
+                                                                                                    "distance": 0.4650669556111751,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 20,
+                                                                                                            "label": "solve question"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 21,
+                                                                                                            "label": "solve bug"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 53,
+                                                                                            "distance": 0.5649084029966545,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 19,
+                                                                                                    "label": "solve crime"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 49,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 18,
+                                                                                                            "label": "solve spam problem"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 48,
+                                                                                                            "distance": 0.0,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 17,
+                                                                                                                    "label": "solve business watsap problem"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 47,
+                                                                                                                    "distance": 0.0,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 16,
+                                                                                                                            "label": "solve sensor problem"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 46,
+                                                                                                                            "distance": 0.0,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 15,
+                                                                                                                                    "label": "solve unofficial problem"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 45,
+                                                                                                                                    "distance": 0.0,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 14,
+                                                                                                                                            "label": "solve lag problem"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 44,
+                                                                                                                                            "distance": 0.0,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 13,
+                                                                                                                                                    "label": "solve audio and video problem"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 43,
+                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 12,
+                                                                                                                                                            "label": "solve call voice mic problem"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 42,
+                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                            "children": [
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 11,
+                                                                                                                                                                    "label": "solve group ban problem"
+                                                                                                                                                                },
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 41,
+                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                    "children": [
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 10,
+                                                                                                                                                                            "label": "solve problem"
+                                                                                                                                                                        },
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 40,
+                                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                                            "children": [
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 9,
+                                                                                                                                                                                    "label": "solve status quality problem"
+                                                                                                                                                                                },
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 39,
+                                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                                    "children": [
+                                                                                                                                                                                        {
+                                                                                                                                                                                            "id": 8,
+                                                                                                                                                                                            "label": "solve whatsaap problem"
+                                                                                                                                                                                        },
+                                                                                                                                                                                        {
+                                                                                                                                                                                            "id": 38,
+                                                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                                                            "children": [
+                                                                                                                                                                                                {
+                                                                                                                                                                                                    "id": 7,
+                                                                                                                                                                                                    "label": "solve whatsapp problem"
+                                                                                                                                                                                                },
+                                                                                                                                                                                                {
+                                                                                                                                                                                                    "id": 37,
+                                                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                                                    "children": [
+                                                                                                                                                                                                        {
+                                                                                                                                                                                                            "id": 6,
+                                                                                                                                                                                                            "label": "solve mobile problem"
+                                                                                                                                                                                                        },
+                                                                                                                                                                                                        {
+                                                                                                                                                                                                            "id": 36,
+                                                                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                                                                            "children": [
+                                                                                                                                                                                                                {
+                                                                                                                                                                                                                    "id": 4,
+                                                                                                                                                                                                                    "label": "solve otp problem"
+                                                                                                                                                                                                                },
+                                                                                                                                                                                                                {
+                                                                                                                                                                                                                    "id": 5,
+                                                                                                                                                                                                                    "label": "solve account ban problem"
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                            ]
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                    ]
+                                                                                                                                                                                                }
+                                                                                                                                                                                            ]
+                                                                                                                                                                                        }
+                                                                                                                                                                                    ]
+                                                                                                                                                                                }
+                                                                                                                                                                            ]
+                                                                                                                                                                        }
+                                                                                                                                                                    ]
+                                                                                                                                                                }
+                                                                                                                                                            ]
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 64,
+                                            "distance": 0.8192824847520093,
+                                            "children": [
+                                                {
+                                                    "id": 57,
+                                                    "distance": 0.6927705732180908,
+                                                    "children": [
+                                                        {
+                                                            "id": 2,
+                                                            "label": "solve ishu"
+                                                        },
+                                                        {
+                                                            "id": 3,
+                                                            "label": "solve whatsapp unban"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 63,
+                                                    "distance": 0.7876616567816841,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "solve soliushion"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "solve prblm"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

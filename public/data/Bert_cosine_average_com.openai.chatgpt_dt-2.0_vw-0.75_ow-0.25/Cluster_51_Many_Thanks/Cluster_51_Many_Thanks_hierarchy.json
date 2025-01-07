@@ -1,0 +1,104 @@
+{
+    "id": 20,
+    "distance": 1.9890047048403328,
+    "children": [
+        {
+            "id": 17,
+            "distance": 1.7885018236354697,
+            "children": [
+                {
+                    "id": 15,
+                    "distance": 0.7099177767957014,
+                    "children": [
+                        {
+                            "id": 9,
+                            "label": "fall math exam"
+                        },
+                        {
+                            "id": 10,
+                            "label": "fall app"
+                        }
+                    ]
+                },
+                {
+                    "id": 16,
+                    "distance": 0.7894690991981759,
+                    "children": [
+                        {
+                            "id": 7,
+                            "label": "lift spirit"
+                        },
+                        {
+                            "id": 8,
+                            "label": "lift emotional state"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "distance": 1.9523318092711595,
+            "children": [
+                {
+                    "id": 13,
+                    "distance": 0.6664719110193936,
+                    "children": [
+                        {
+                            "id": 5,
+                            "label": "notice really annoying bug"
+                        },
+                        {
+                            "id": 6,
+                            "label": "notice one feature"
+                        }
+                    ]
+                },
+                {
+                    "id": 18,
+                    "distance": 1.8482755961061184,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "tinted chucky"
+                        },
+                        {
+                            "id": 14,
+                            "distance": 0.6939111269971394,
+                            "children": [
+                                {
+                                    "id": 3,
+                                    "label": "so many use"
+                                },
+                                {
+                                    "id": 12,
+                                    "distance": 0.5760627528202851,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "many mistake"
+                                        },
+                                        {
+                                            "id": 11,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 0,
+                                                    "label": "so many thank"
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "label": "many thank"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

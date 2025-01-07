@@ -1,0 +1,124 @@
+{
+    "id": 24,
+    "distance": 0.0,
+    "children": [
+        {
+            "id": 12,
+            "label": "also other chatting app"
+        },
+        {
+            "id": 23,
+            "distance": 0.0,
+            "children": [
+                {
+                    "id": 11,
+                    "label": "fast chatting app"
+                },
+                {
+                    "id": 22,
+                    "distance": 0.0,
+                    "children": [
+                        {
+                            "id": 10,
+                            "label": "good app foe chatting video call"
+                        },
+                        {
+                            "id": 21,
+                            "distance": 0.0,
+                            "children": [
+                                {
+                                    "id": 9,
+                                    "label": "great chatting app"
+                                },
+                                {
+                                    "id": 20,
+                                    "distance": 0.0,
+                                    "children": [
+                                        {
+                                            "id": 8,
+                                            "label": "good chatting app"
+                                        },
+                                        {
+                                            "id": 19,
+                                            "distance": 0.0,
+                                            "children": [
+                                                {
+                                                    "id": 7,
+                                                    "label": "very versatile chatting app"
+                                                },
+                                                {
+                                                    "id": 18,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 6,
+                                                            "label": "do chatting"
+                                                        },
+                                                        {
+                                                            "id": 17,
+                                                            "distance": 0.0,
+                                                            "children": [
+                                                                {
+                                                                    "id": 5,
+                                                                    "label": "amazing chatting app"
+                                                                },
+                                                                {
+                                                                    "id": 16,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 4,
+                                                                            "label": "very good chatting app"
+                                                                        },
+                                                                        {
+                                                                            "id": 15,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 3,
+                                                                                    "label": "nice chatting app"
+                                                                                },
+                                                                                {
+                                                                                    "id": 14,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 2,
+                                                                                            "label": "encrypt chatting"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 13,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 0,
+                                                                                                    "label": "like chatting"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 1,
+                                                                                                    "label": "very great chatting app"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

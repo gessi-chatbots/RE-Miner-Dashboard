@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 1.9783467394018324,
+    "children": [
+        {
+            "id": 0,
+            "label": "screenshot profile picture"
+        },
+        {
+            "id": 1,
+            "label": "screenshot profile photo"
+        }
+    ]
+}

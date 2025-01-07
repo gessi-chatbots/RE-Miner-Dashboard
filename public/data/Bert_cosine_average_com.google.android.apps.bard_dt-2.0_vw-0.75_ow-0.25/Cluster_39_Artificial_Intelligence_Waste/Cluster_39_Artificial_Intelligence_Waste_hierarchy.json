@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.7717741828482736,
+    "children": [
+        {
+            "id": 2,
+            "label": "spit bad information"
+        },
+        {
+            "id": 3,
+            "distance": 1.423450611519539,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "waste money"
+                },
+                {
+                    "id": 1,
+                    "label": "trash ai"
+                }
+            ]
+        }
+    ]
+}

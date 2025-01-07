@@ -1,0 +1,34 @@
+{
+    "id": 6,
+    "distance": 0.7363340720866262,
+    "children": [
+        {
+            "id": 3,
+            "label": "work bad app"
+        },
+        {
+            "id": 5,
+            "distance": 0.6953669977357111,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "work technical issue"
+                },
+                {
+                    "id": 4,
+                    "distance": 0.6220721492180601,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "work video message"
+                        },
+                        {
+                            "id": 1,
+                            "label": "work phone number"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

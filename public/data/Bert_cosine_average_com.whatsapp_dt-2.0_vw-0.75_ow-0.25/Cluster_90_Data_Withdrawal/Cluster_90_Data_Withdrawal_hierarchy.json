@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 0.7798819742365158,
+    "children": [
+        {
+            "id": 0,
+            "label": "withdraw feature"
+        },
+        {
+            "id": 1,
+            "label": "withdraw consent"
+        }
+    ]
+}

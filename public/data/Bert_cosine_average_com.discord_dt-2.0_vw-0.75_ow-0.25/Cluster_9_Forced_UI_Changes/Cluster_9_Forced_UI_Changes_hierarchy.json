@@ -1,0 +1,44 @@
+{
+    "id": 8,
+    "distance": 0.8313995754117269,
+    "children": [
+        {
+            "id": 6,
+            "distance": 0.6290951694793672,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "force more and more micro"
+                },
+                {
+                    "id": 5,
+                    "distance": 0.5282235841666583,
+                    "children": [
+                        {
+                            "id": 2,
+                            "label": "force unwanted change"
+                        },
+                        {
+                            "id": 3,
+                            "label": "force people"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "distance": 0.7623687589756073,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "force ad"
+                },
+                {
+                    "id": 1,
+                    "label": "force new ui"
+                }
+            ]
+        }
+    ]
+}

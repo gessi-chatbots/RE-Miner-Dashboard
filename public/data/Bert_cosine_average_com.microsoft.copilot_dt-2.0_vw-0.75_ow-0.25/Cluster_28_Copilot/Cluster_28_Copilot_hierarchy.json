@@ -1,0 +1,104 @@
+{
+    "id": 20,
+    "distance": 1.767509313082145,
+    "children": [
+        {
+            "id": 10,
+            "label": "choose copilot"
+        },
+        {
+            "id": 19,
+            "distance": 1.7173197769138973,
+            "children": [
+                {
+                    "id": 9,
+                    "label": "want old copilot"
+                },
+                {
+                    "id": 18,
+                    "distance": 1.6641991909693543,
+                    "children": [
+                        {
+                            "id": 16,
+                            "distance": 1.5166210721705218,
+                            "children": [
+                                {
+                                    "id": 7,
+                                    "label": "prefer copilot"
+                                },
+                                {
+                                    "id": 8,
+                                    "label": "break copilot"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 17,
+                            "distance": 1.5968071206337524,
+                            "children": [
+                                {
+                                    "id": 13,
+                                    "distance": 1.2164079919552109,
+                                    "children": [
+                                        {
+                                            "id": 5,
+                                            "label": "kill copilot"
+                                        },
+                                        {
+                                            "id": 6,
+                                            "label": "destroy copilot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 15,
+                                    "distance": 1.4435307012859258,
+                                    "children": [
+                                        {
+                                            "id": 12,
+                                            "distance": 1.193170439998832,
+                                            "children": [
+                                                {
+                                                    "id": 3,
+                                                    "label": "make copilot"
+                                                },
+                                                {
+                                                    "id": 4,
+                                                    "label": "get copilot"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 14,
+                                            "distance": 1.349486475520601,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "enjoy copilot"
+                                                },
+                                                {
+                                                    "id": 11,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "bring old copilot"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "bring original copilot"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

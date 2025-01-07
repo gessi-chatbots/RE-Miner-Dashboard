@@ -1,0 +1,64 @@
+{
+    "id": 12,
+    "distance": 1.1127823581270615,
+    "children": [
+        {
+            "id": 6,
+            "label": "revolutionise life"
+        },
+        {
+            "id": 11,
+            "distance": 0.9384694875156546,
+            "children": [
+                {
+                    "id": 5,
+                    "label": "revolutionize education"
+                },
+                {
+                    "id": 10,
+                    "distance": 0.730709032534942,
+                    "children": [
+                        {
+                            "id": 4,
+                            "label": "revolutionize internet search"
+                        },
+                        {
+                            "id": 9,
+                            "distance": 0.5997612626409401,
+                            "children": [
+                                {
+                                    "id": 7,
+                                    "distance": 0.5342435127385494,
+                                    "children": [
+                                        {
+                                            "id": 2,
+                                            "label": "revolutionize content creation"
+                                        },
+                                        {
+                                            "id": 3,
+                                            "label": "revolutionize productivity"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 8,
+                                    "distance": 0.5560459172107,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "revolutionize world"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "revolutionize conversation"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

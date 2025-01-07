@@ -1,0 +1,24 @@
+{
+    "id": 4,
+    "distance": 1.898915652381814,
+    "children": [
+        {
+            "id": 2,
+            "label": "good ai feature"
+        },
+        {
+            "id": 3,
+            "distance": 1.7604641703735948,
+            "children": [
+                {
+                    "id": 0,
+                    "label": "enjoy feature"
+                },
+                {
+                    "id": 1,
+                    "label": "have pin chat feature"
+                }
+            ]
+        }
+    ]
+}

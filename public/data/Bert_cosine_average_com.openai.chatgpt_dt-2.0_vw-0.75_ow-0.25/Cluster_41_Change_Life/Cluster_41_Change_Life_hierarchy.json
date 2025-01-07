@@ -1,0 +1,144 @@
+{
+    "id": 28,
+    "distance": 1.8319915525929071,
+    "children": [
+        {
+            "id": 26,
+            "distance": 1.1313856754001756,
+            "children": [
+                {
+                    "id": 14,
+                    "label": "change screenshot"
+                },
+                {
+                    "id": 24,
+                    "distance": 0.846892680222546,
+                    "children": [
+                        {
+                            "id": 13,
+                            "label": "change app text message background"
+                        },
+                        {
+                            "id": 23,
+                            "distance": 0.7647713771518311,
+                            "children": [
+                                {
+                                    "id": 12,
+                                    "label": "change language"
+                                },
+                                {
+                                    "id": 22,
+                                    "distance": 0.7227402183726348,
+                                    "children": [
+                                        {
+                                            "id": 11,
+                                            "label": "change rating"
+                                        },
+                                        {
+                                            "id": 21,
+                                            "distance": 0.7133597060566552,
+                                            "children": [
+                                                {
+                                                    "id": 19,
+                                                    "distance": 0.6442008194608521,
+                                                    "children": [
+                                                        {
+                                                            "id": 9,
+                                                            "label": "change account"
+                                                        },
+                                                        {
+                                                            "id": 10,
+                                                            "label": "change chat"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 20,
+                                                    "distance": 0.6797753082541776,
+                                                    "children": [
+                                                        {
+                                                            "id": 8,
+                                                            "label": "change life"
+                                                        },
+                                                        {
+                                                            "id": 18,
+                                                            "distance": 0.6101900250986492,
+                                                            "children": [
+                                                                {
+                                                                    "id": 7,
+                                                                    "label": "change mind"
+                                                                },
+                                                                {
+                                                                    "id": 17,
+                                                                    "distance": 0.5997766235104014,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 15,
+                                                                            "distance": 0.5508088298309838,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 5,
+                                                                                    "label": "change already good thing"
+                                                                                },
+                                                                                {
+                                                                                    "id": 6,
+                                                                                    "label": "change tooth"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": 16,
+                                                                            "distance": 0.5586253689776877,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 3,
+                                                                                    "label": "change world"
+                                                                                },
+                                                                                {
+                                                                                    "id": 4,
+                                                                                    "label": "change voice"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "distance": 1.5959622766236954,
+            "children": [
+                {
+                    "id": 2,
+                    "label": "speed life"
+                },
+                {
+                    "id": 25,
+                    "distance": 1.0387596406689399,
+                    "children": [
+                        {
+                            "id": 0,
+                            "label": "life change app"
+                        },
+                        {
+                            "id": 1,
+                            "label": "life saving"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

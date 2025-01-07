@@ -1,0 +1,54 @@
+{
+    "id": 10,
+    "distance": 0.724880628116834,
+    "children": [
+        {
+            "id": 5,
+            "label": "miss half"
+        },
+        {
+            "id": 9,
+            "distance": 0.6586864096463922,
+            "children": [
+                {
+                    "id": 4,
+                    "label": "miss vital feature"
+                },
+                {
+                    "id": 8,
+                    "distance": 0.6237439066212013,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "miss internet access"
+                        },
+                        {
+                            "id": 7,
+                            "distance": 0.6101993641082839,
+                            "children": [
+                                {
+                                    "id": 2,
+                                    "label": "miss content"
+                                },
+                                {
+                                    "id": 6,
+                                    "distance": 0.5371174399079601,
+                                    "children": [
+                                        {
+                                            "id": 0,
+                                            "label": "miss key functionality"
+                                        },
+                                        {
+                                            "id": 1,
+                                            "label": "miss tidal spotify extension"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

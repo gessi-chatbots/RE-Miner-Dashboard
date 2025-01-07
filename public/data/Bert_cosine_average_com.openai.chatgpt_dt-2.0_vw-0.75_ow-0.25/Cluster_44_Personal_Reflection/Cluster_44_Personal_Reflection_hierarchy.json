@@ -1,0 +1,14 @@
+{
+    "id": 2,
+    "distance": 0.5434257628133626,
+    "children": [
+        {
+            "id": 0,
+            "label": "finish thought"
+        },
+        {
+            "id": 1,
+            "label": "finish homework"
+        }
+    ]
+}

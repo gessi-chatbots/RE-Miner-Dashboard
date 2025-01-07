@@ -1,0 +1,664 @@
+{
+    "id": 132,
+    "distance": 1.921752686027389,
+    "children": [
+        {
+            "id": 130,
+            "distance": 1.3510694236766247,
+            "children": [
+                {
+                    "id": 66,
+                    "label": "improve chatting skill"
+                },
+                {
+                    "id": 128,
+                    "distance": 1.1041693636308068,
+                    "children": [
+                        {
+                            "id": 65,
+                            "label": "improve instagram"
+                        },
+                        {
+                            "id": 126,
+                            "distance": 0.9419290512198413,
+                            "children": [
+                                {
+                                    "id": 64,
+                                    "label": "improve video"
+                                },
+                                {
+                                    "id": 125,
+                                    "distance": 0.9378089287424274,
+                                    "children": [
+                                        {
+                                            "id": 63,
+                                            "label": "improve status vedio"
+                                        },
+                                        {
+                                            "id": 124,
+                                            "distance": 0.8747328563463787,
+                                            "children": [
+                                                {
+                                                    "id": 62,
+                                                    "label": "improve karo"
+                                                },
+                                                {
+                                                    "id": 123,
+                                                    "distance": 0.7940634676769722,
+                                                    "children": [
+                                                        {
+                                                            "id": 61,
+                                                            "label": "improve app"
+                                                        },
+                                                        {
+                                                            "id": 119,
+                                                            "distance": 0.7304498879151403,
+                                                            "children": [
+                                                                {
+                                                                    "id": 60,
+                                                                    "label": "improve life"
+                                                                },
+                                                                {
+                                                                    "id": 118,
+                                                                    "distance": 0.7004047675347327,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 85,
+                                                                            "distance": 0.0,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 59,
+                                                                                    "label": "improve status quality"
+                                                                                },
+                                                                                {
+                                                                                    "id": 84,
+                                                                                    "distance": 0.0,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 58,
+                                                                                            "label": "improve video call quality"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 83,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 57,
+                                                                                                    "label": "improve video quality"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 82,
+                                                                                                    "distance": 0.0,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 56,
+                                                                                                            "label": "improve status upload quality"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 81,
+                                                                                                            "distance": 0.0,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 55,
+                                                                                                                    "label": "improve quality"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 80,
+                                                                                                                    "distance": 0.0,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 54,
+                                                                                                                            "label": "improve status video quality"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 79,
+                                                                                                                            "distance": 0.0,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 53,
+                                                                                                                                    "label": "improve upload quality"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 78,
+                                                                                                                                    "distance": 0.0,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 52,
+                                                                                                                                            "label": "improve android story quality"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 77,
+                                                                                                                                            "distance": 0.0,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 51,
+                                                                                                                                                    "label": "improve status upload video quality"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 76,
+                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 50,
+                                                                                                                                                            "label": "improve al quality"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 75,
+                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                            "children": [
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 49,
+                                                                                                                                                                    "label": "improve story image video quality"
+                                                                                                                                                                },
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 74,
+                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                    "children": [
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 48,
+                                                                                                                                                                            "label": "improve call quality"
+                                                                                                                                                                        },
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 73,
+                                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                                            "children": [
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 46,
+                                                                                                                                                                                    "label": "improve picture quality"
+                                                                                                                                                                                },
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 47,
+                                                                                                                                                                                    "label": "improve image video quality"
+                                                                                                                                                                                }
+                                                                                                                                                                            ]
+                                                                                                                                                                        }
+                                                                                                                                                                    ]
+                                                                                                                                                                }
+                                                                                                                                                            ]
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": 116,
+                                                                            "distance": 0.6899417724739354,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 114,
+                                                                                    "distance": 0.6743157965516628,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 45,
+                                                                                            "label": "improve video call"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 113,
+                                                                                            "distance": 0.6644141901471627,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 44,
+                                                                                                    "label": "improve desktop version"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 112,
+                                                                                                    "distance": 0.6494852647163909,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 43,
+                                                                                                            "label": "greatly improve service"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 110,
+                                                                                                            "distance": 0.6433419320308083,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 104,
+                                                                                                                    "distance": 0.5872225550306687,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 41,
+                                                                                                                            "label": "improve status quality level"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 42,
+                                                                                                                            "label": "improve status"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 108,
+                                                                                                                    "distance": 0.6274390492060898,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 40,
+                                                                                                                            "label": "improve feature"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 107,
+                                                                                                                            "distance": 0.614500844597783,
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "id": 39,
+                                                                                                                                    "label": "improve pictures and videoqualityyy"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": 106,
+                                                                                                                                    "distance": 0.6001202061443618,
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "id": 101,
+                                                                                                                                            "distance": 0.5592385416020775,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 37,
+                                                                                                                                                    "label": "improve damn waste thing"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 38,
+                                                                                                                                                    "label": "improve game"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "id": 103,
+                                                                                                                                            "distance": 0.5724564595131777,
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "id": 98,
+                                                                                                                                                    "distance": 0.5378698031138139,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 92,
+                                                                                                                                                            "distance": 0.48253576761071104,
+                                                                                                                                                            "children": [
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 36,
+                                                                                                                                                                    "label": "improve quality network"
+                                                                                                                                                                },
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 70,
+                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                    "children": [
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 34,
+                                                                                                                                                                            "label": "improve security system"
+                                                                                                                                                                        },
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 35,
+                                                                                                                                                                            "label": "improve system"
+                                                                                                                                                                        }
+                                                                                                                                                                    ]
+                                                                                                                                                                }
+                                                                                                                                                            ]
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 96,
+                                                                                                                                                            "distance": 0.525414631033438,
+                                                                                                                                                            "children": [
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 33,
+                                                                                                                                                                    "label": "improve developer"
+                                                                                                                                                                },
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 94,
+                                                                                                                                                                    "distance": 0.5029192775257607,
+                                                                                                                                                                    "children": [
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 90,
+                                                                                                                                                                            "distance": 0.4692671713381931,
+                                                                                                                                                                            "children": [
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 32,
+                                                                                                                                                                                    "label": "improve quality graphic"
+                                                                                                                                                                                },
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 88,
+                                                                                                                                                                                    "distance": 0.4162322051212697,
+                                                                                                                                                                                    "children": [
+                                                                                                                                                                                        {
+                                                                                                                                                                                            "id": 31,
+                                                                                                                                                                                            "label": "improve video compression algorithm"
+                                                                                                                                                                                        },
+                                                                                                                                                                                        {
+                                                                                                                                                                                            "id": 87,
+                                                                                                                                                                                            "distance": 0.39240403473246444,
+                                                                                                                                                                                            "children": [
+                                                                                                                                                                                                {
+                                                                                                                                                                                                    "id": 29,
+                                                                                                                                                                                                    "label": "improve interface"
+                                                                                                                                                                                                },
+                                                                                                                                                                                                {
+                                                                                                                                                                                                    "id": 30,
+                                                                                                                                                                                                    "label": "improve functionality"
+                                                                                                                                                                                                }
+                                                                                                                                                                                            ]
+                                                                                                                                                                                        }
+                                                                                                                                                                                    ]
+                                                                                                                                                                                }
+                                                                                                                                                                            ]
+                                                                                                                                                                        },
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 91,
+                                                                                                                                                                            "distance": 0.47362398245609283,
+                                                                                                                                                                            "children": [
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 27,
+                                                                                                                                                                                    "label": "improve status box"
+                                                                                                                                                                                },
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 28,
+                                                                                                                                                                                    "label": "improve device"
+                                                                                                                                                                                }
+                                                                                                                                                                            ]
+                                                                                                                                                                        }
+                                                                                                                                                                    ]
+                                                                                                                                                                }
+                                                                                                                                                            ]
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "id": 99,
+                                                                                                                                                    "distance": 0.5382260240908329,
+                                                                                                                                                    "children": [
+                                                                                                                                                        {
+                                                                                                                                                            "id": 26,
+                                                                                                                                                            "label": "improve communication"
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            "id": 93,
+                                                                                                                                                            "distance": 0.4881594408611416,
+                                                                                                                                                            "children": [
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 25,
+                                                                                                                                                                    "label": "improve privacy"
+                                                                                                                                                                },
+                                                                                                                                                                {
+                                                                                                                                                                    "id": 72,
+                                                                                                                                                                    "distance": 0.0,
+                                                                                                                                                                    "children": [
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 24,
+                                                                                                                                                                            "label": "improve security"
+                                                                                                                                                                        },
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": 71,
+                                                                                                                                                                            "distance": 0.0,
+                                                                                                                                                                            "children": [
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 22,
+                                                                                                                                                                                    "label": "improve application security"
+                                                                                                                                                                                },
+                                                                                                                                                                                {
+                                                                                                                                                                                    "id": 23,
+                                                                                                                                                                                    "label": "improve lock chat security"
+                                                                                                                                                                                }
+                                                                                                                                                                            ]
+                                                                                                                                                                        }
+                                                                                                                                                                    ]
+                                                                                                                                                                }
+                                                                                                                                                            ]
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "id": 115,
+                                                                                    "distance": 0.6756217136929988,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 20,
+                                                                                            "label": "improve client satisfaction"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 21,
+                                                                                            "label": "improve group chat experience"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 131,
+            "distance": 1.5734145107914947,
+            "children": [
+                {
+                    "id": 19,
+                    "label": "increase message disappear time"
+                },
+                {
+                    "id": 129,
+                    "distance": 1.1125317027588926,
+                    "children": [
+                        {
+                            "id": 18,
+                            "label": "increase send option"
+                        },
+                        {
+                            "id": 127,
+                            "distance": 0.9730609567935466,
+                            "children": [
+                                {
+                                    "id": 17,
+                                    "label": "increase volum"
+                                },
+                                {
+                                    "id": 122,
+                                    "distance": 0.7823682668878567,
+                                    "children": [
+                                        {
+                                            "id": 120,
+                                            "distance": 0.7368196345336575,
+                                            "children": [
+                                                {
+                                                    "id": 16,
+                                                    "label": "increase anxiety"
+                                                },
+                                                {
+                                                    "id": 117,
+                                                    "distance": 0.6903102375657012,
+                                                    "children": [
+                                                        {
+                                                            "id": 109,
+                                                            "distance": 0.6354257631682105,
+                                                            "children": [
+                                                                {
+                                                                    "id": 15,
+                                                                    "label": "increase camera"
+                                                                },
+                                                                {
+                                                                    "id": 69,
+                                                                    "distance": 0.0,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 13,
+                                                                            "label": "increase more feature"
+                                                                        },
+                                                                        {
+                                                                            "id": 14,
+                                                                            "label": "increase feature"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 111,
+                                                            "distance": 0.6484433418216177,
+                                                            "children": [
+                                                                {
+                                                                    "id": 12,
+                                                                    "label": "increase storage"
+                                                                },
+                                                                {
+                                                                    "id": 105,
+                                                                    "distance": 0.5914022171732486,
+                                                                    "children": [
+                                                                        {
+                                                                            "id": 11,
+                                                                            "label": "increase brodvast capacity"
+                                                                        },
+                                                                        {
+                                                                            "id": 102,
+                                                                            "distance": 0.56647740672045,
+                                                                            "children": [
+                                                                                {
+                                                                                    "id": 10,
+                                                                                    "label": "increase pin"
+                                                                                },
+                                                                                {
+                                                                                    "id": 100,
+                                                                                    "distance": 0.5451944949471036,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "id": 68,
+                                                                                            "distance": 0.0,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 8,
+                                                                                                    "label": "increase whatsapp message editing option"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 9,
+                                                                                                    "label": "increase pin option"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": 97,
+                                                                                            "distance": 0.5288559603055166,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "id": 7,
+                                                                                                    "label": "increase number"
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": 95,
+                                                                                                    "distance": 0.5046404541923527,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "id": 6,
+                                                                                                            "label": "increase space"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "id": 89,
+                                                                                                            "distance": 0.4404962698103564,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "id": 5,
+                                                                                                                    "label": "increase share limit"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": 86,
+                                                                                                                    "distance": 0.3911377332084683,
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "id": 3,
+                                                                                                                            "label": "increase size"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "id": 4,
+                                                                                                                            "label": "increase length"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 121,
+                                            "distance": 0.7395511321570696,
+                                            "children": [
+                                                {
+                                                    "id": 2,
+                                                    "label": "increase whatsapp revenue"
+                                                },
+                                                {
+                                                    "id": 67,
+                                                    "distance": 0.0,
+                                                    "children": [
+                                                        {
+                                                            "id": 0,
+                                                            "label": "increase quality"
+                                                        },
+                                                        {
+                                                            "id": 1,
+                                                            "label": "increase video and picture quality"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
