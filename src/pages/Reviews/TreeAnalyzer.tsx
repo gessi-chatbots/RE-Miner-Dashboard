@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Tree from "react-d3-tree";
 import TreeService from "../../services/TreeService";
-import Draggable from "react-draggable"; // For draggable windows
+import Draggable from "react-draggable";
 import { Container, Button, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -12,11 +12,8 @@ const TreeAnalyzer = () => {
     const [selectedCluster, setSelectedCluster] = useState<string>("");
     const [originalTreeData, setOriginalTreeData] = useState<any>(null);
     const [treeData, setTreeData] = useState<any>(null);
-    const [maxDistance, setMaxDistance] = useState<number>(0);
-    const [threshold, setThreshold] = useState<number>(0);
     const [siblingThreshold, setSiblingThreshold] = useState<number>(0.1);
     const [loading, setLoading] = useState<boolean>(false);
-    const [isThresholdTuningActive, setIsThresholdTuningActive] = useState<boolean>(false);
     const [metadataWindows, setMetadataWindows] = useState<any[]>([]);
     const [highlightedNodes, setHighlightedNodes] = useState<Set<number>>(new Set());
 
@@ -66,14 +63,13 @@ const TreeAnalyzer = () => {
                     siblingThreshold
                 );
 
-                if (clusterData && clusterData.hierarchy_data) {
-                    const maxDist = findMaxDistance(clusterData.hierarchy_data);
-                    setMaxDistance(maxDist);
-                    setThreshold(maxDist);
-                    setOriginalTreeData(clusterData.hierarchy_data);
-                    setTreeData(transformToTreeFormat(clusterData.hierarchy_data, maxDist));
+                console.log("Cluster Data:", clusterData);
+
+                if (clusterData && clusterData.children) {
+                    setOriginalTreeData(clusterData);
+                    setTreeData(transformToTreeFormat(clusterData));
                 } else {
-                    console.error("No hierarchy data found.");
+                    console.error("No valid hierarchy data found.");
                 }
             } catch (error) {
                 console.error("Error fetching tree data:", error);
@@ -85,30 +81,22 @@ const TreeAnalyzer = () => {
         fetchHierarchy();
     }, [selectedApp, selectedCluster, siblingThreshold]);
 
-    const findMaxDistance = (node: any): number => {
-        if (!node.children || node.children.length === 0) return node.distance || 0;
-        const childMax = Math.max(...node.children.map(findMaxDistance));
-        return Math.max(node.distance || 0, childMax);
-    };
-
-    const transformToTreeFormat = (node: any, threshold: number): any => {
+    const transformToTreeFormat = (node: any): any => {
         const children = node.children
-            ? node.children.map((child: any) => transformToTreeFormat(child, threshold))
+            ? node.children.map((child: any) => transformToTreeFormat(child))
             : [];
 
         return {
             name: node.label || `Node ${node.id}`,
             children: children.length > 0 ? children : undefined,
             attributes: {
-                distance: node.distance,
+                distance: node.distance || 0,
                 id: node.id,
             },
             rawData: node,
         };
     };
-    const handleSiblingThresholdChange = (newSiblingThreshold: number) => {
-        setSiblingThreshold(newSiblingThreshold);
-    };
+
     const handleNodeClick = (nodeData: any) => {
         const nodeId = nodeData.attributes.id;
         const newMetadata = {
@@ -209,19 +197,6 @@ const TreeAnalyzer = () => {
         alert("View Reviews clicked for selected nodes: " + Array.from(highlightedNodes).join(", "));
     };
 
-    const handleThresholdToggle = () => {
-        setIsThresholdTuningActive((prev) => !prev);
-        if (!isThresholdTuningActive && originalTreeData) {
-            setTreeData(transformToTreeFormat(originalTreeData, maxDistance));
-        }
-    };
-
-    const handleThresholdChange = (newThreshold: number) => {
-        setThreshold(newThreshold);
-        if (originalTreeData) {
-            setTreeData(transformToTreeFormat(originalTreeData, newThreshold));
-        }
-    };
 
     const findNodeById = (id: number, hierarchyData: any): any => {
         if (!hierarchyData) return null;
@@ -287,7 +262,7 @@ const TreeAnalyzer = () => {
                                     max="1"
                                     step="0.01"
                                     value={siblingThreshold}
-                                    onChange={(e) => handleSiblingThresholdChange(Number(e.target.value))}
+                                    onChange={(e) => setSiblingThreshold(Number(e.target.value))}
                                 />
                                 <p>Sibling Threshold: {siblingThreshold.toFixed(2)}</p>
                             </>

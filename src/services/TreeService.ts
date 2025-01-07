@@ -20,17 +20,17 @@ class TreeService {
         siblingThreshold: number
     ): Promise<any> => {
         const response = await fetch(
-            `${this.API_NAME}${this.PATH_NAME}/${appName}/clusters/${clusterName}`,
+            `${this.API_NAME}${this.PATH_NAME}/${appName}/clusters/${clusterName}?distance_threshold=${siblingThreshold}`,
             {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "distance_threshold": siblingThreshold.toString(),
                 },
             }
         );
         return response.json();
     };
+
 }
 
 export default TreeService;
