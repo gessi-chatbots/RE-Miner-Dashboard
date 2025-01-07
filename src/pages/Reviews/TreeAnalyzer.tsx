@@ -259,8 +259,8 @@ const TreeAnalyzer = () => {
                                     type="range"
                                     className="form-range"
                                     min="0"
-                                    max="1"
-                                    step="0.01"
+                                    max="2"
+                                    step="0.25"
                                     value={siblingThreshold}
                                     onChange={(e) => setSiblingThreshold(Number(e.target.value))}
                                 />
