@@ -191,7 +191,6 @@ class ReviewService {
         const url = `${this.API_NAME}/trees/${appName}/clusters/${clusterName}/reviews`;
 
         const requestBody = {
-            app_name: appName,
             feature_list: featureList,
         };
 
@@ -209,20 +208,20 @@ class ReviewService {
             }
 
             const reviews = await response.json();
+
             return reviews.map((review: any) => ({
-                app_id: review.app_id,
-                app_name: review.app_name,
-                feature_id: review.feature_id,
-                feature_name: review.feature_name,
-                review_id: review.review_id, // Match DTO
-                review_text: review.review_text,
-                date: review.date,
+                app_name: appName,
+                feature_name: review.features[0]?.feature || "Unknown",
+                review_id: review.reviewId,
+                review_text: review.review,
+                language_model: review.features[0]?.languageModel?.modelName || "Unknown",
             }));
         } catch (error) {
             console.error("Error fetching selected feature reviews:", error);
             throw error;
         }
     };
+
 
 }
 
