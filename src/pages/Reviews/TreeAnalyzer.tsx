@@ -4,8 +4,12 @@ import TreeService from "../../services/TreeService";
 import Draggable from "react-draggable";
 import { Container, Button, Row, Col, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
+import {toast} from "react-toastify";
 
 const TreeAnalyzer = () => {
+    const navigate = useNavigate();
+
     const [apps, setApps] = useState<string[]>([]);
     const [clusters, setClusters] = useState<string[]>([]);
     const [selectedApp, setSelectedApp] = useState<string>("");
@@ -16,6 +20,7 @@ const TreeAnalyzer = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [metadataWindows, setMetadataWindows] = useState<any[]>([]);
     const [highlightedNodes, setHighlightedNodes] = useState<Set<number>>(new Set());
+    const [activateTuning, setActivateTuning] = useState<boolean>(false);
 
     const treeService = new TreeService();
 
@@ -195,8 +200,32 @@ const TreeAnalyzer = () => {
 
 
     const handleViewReviews = () => {
-        alert("View Reviews clicked for selected nodes: " + Array.from(highlightedNodes).join(", "));
+        if (!selectedApp || !selectedCluster || highlightedNodes.size === 0) {
+            return;
+        }
+
+        // Collect selected features, filtering out intermediate and root nodes
+        const selectedFeatures = Array.from(highlightedNodes)
+            .map((nodeId) => {
+                const node = findNodeById(nodeId, originalTreeData);
+                return node?.label; // Retrieve the node's label
+            })
+            .filter((label) => label && label !== "Intermediate Node" && label !== "Root Node"); // Exclude unwanted nodes
+
+        if (selectedFeatures.length === 0) {
+            toast.error("No valid features selected.");
+            return;
+        }
+
+        navigate("/tree-reviews", {
+            state: {
+                appName: selectedApp,
+                clusterName: selectedCluster,
+                selectedFeatures,
+            },
+        });
     };
+
 
 
     const findNodeById = (id: number, hierarchyData: any): any => {
@@ -266,13 +295,18 @@ const TreeAnalyzer = () => {
                         <>
                             <h5>Actions</h5>
                             <div className="d-flex flex-column">
-                                <Button
-                                    className="btn-primary mb-2"
-                                    onClick={handleViewReviews}
-                                    aria-label="View Reviews"
-                                >
-                                    <i className="mdi mdi-eye me-2"></i> View Reviews
-                                </Button>
+                                {Array.from(highlightedNodes).some((nodeId) => {
+                                    const node = findNodeById(nodeId, originalTreeData);
+                                    return node && (!node.children || node.children.length === 0); // Ensure it's a leaf node
+                                }) && (
+                                    <Button
+                                        className="btn-primary mb-2"
+                                        onClick={handleViewReviews}
+                                        aria-label="View Reviews"
+                                    >
+                                        <i className="mdi mdi-eye me-2"></i> View Reviews
+                                    </Button>
+                                )}
                                 <Button
                                     className="btn-secondary"
                                     onClick={handleDownloadJSON}
