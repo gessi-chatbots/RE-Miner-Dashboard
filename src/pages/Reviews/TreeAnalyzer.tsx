@@ -204,6 +204,9 @@ const TreeAnalyzer = () => {
             return;
         }
 
+        // Parse the app name to extract the part after the hyphen
+        const parsedAppName = selectedApp.split("-")[1]?.toLowerCase(); // Extract and lowercase
+
         // Collect selected features, filtering out intermediate and root nodes
         const selectedFeatures = Array.from(highlightedNodes)
             .map((nodeId) => {
@@ -219,14 +222,12 @@ const TreeAnalyzer = () => {
 
         navigate("/tree-reviews", {
             state: {
-                appName: selectedApp,
+                appName: parsedAppName, // Send the parsed app name
                 clusterName: selectedCluster,
                 selectedFeatures,
             },
         });
     };
-
-
 
     const findNodeById = (id: number, hierarchyData: any): any => {
         if (!hierarchyData) return null;

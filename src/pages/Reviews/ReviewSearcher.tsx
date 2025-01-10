@@ -7,7 +7,7 @@ import { SelectedFeatureReviewDTO } from "../../DTOs/SelectedFeatureReviewDTO";
 
 const defaultColumns = ["Review ID", "Review Text", "Feature Name", "Language Model"];
 
-const TreeReviews: React.FC = () => {
+const ReviewSearcher: React.FC = () => {
     const location = useLocation();
     const { state } = location;
 
@@ -73,9 +73,8 @@ const TreeReviews: React.FC = () => {
 
     return (
         <div>
-            {/* Grey Row */}
+            <h1 className="text-secondary">Review Searcher</h1>
             <Row className="bg-light py-3 align-items-center">
-                {/* App Name Section */}
                 <Col md={3}>
                     <h6 className="text-secondary mb-2">App Name</h6>
                     <Form.Control
@@ -219,4 +218,4 @@ const TreeReviews: React.FC = () => {
     );
 };
 
-export default TreeReviews;
+export default ReviewSearcher;
