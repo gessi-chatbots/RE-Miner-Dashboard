@@ -260,14 +260,14 @@ const TreeAnalyzer = () => {
                     </Form.Select>
                 </Col>
                 <Col md={4}>
-                    <h5>Select Cluster</h5>
+                    <h5>Select Feature Family</h5>
                     <Form.Select
                         value={selectedCluster}
                         onChange={(e) => setSelectedCluster(e.target.value)}
-                        aria-label="Select Cluster"
+                        aria-label="Select Feature Family"
                         disabled={!selectedApp}
                     >
-                        <option value="">Select Cluster</option>
+                        <option value="">Feature Family</option>
                         {clusters.map((cluster) => (
                             <option key={cluster} value={cluster}>
                                 {cluster}
@@ -426,29 +426,46 @@ const TreeAnalyzer = () => {
     );
 };
 
-const CustomNode = ({nodeDatum, onNodeClick, isSelected }: any) => {
-    const isIntermediateOrRoot = !!nodeDatum.children;
+const CustomNode = ({ nodeDatum, onNodeClick, isSelected }: any) => {
+    const isIntermediateOrRoot = !!nodeDatum.children; // Determines if the node is intermediate or root
 
     return (
         <g onClick={() => onNodeClick(nodeDatum)} style={{ cursor: "pointer" }}>
-            <rect
-                width="160"
-                height="50"
-                x="-80"
-                y="-25"
-                fill={isIntermediateOrRoot ? "#6c757d" : isSelected ? "#4A90E2" : "#fff"}
-                stroke="#333"
-                rx="10"
-                ry="10"
-            />
+            {isIntermediateOrRoot ? (
+                // Circular shape for intermediate or root nodes
+                <circle
+                    cx="0"
+                    cy="0"
+                    r="10" // Small radius for a reduced size
+                    fill="#d6d6d6"
+                    stroke="#333"
+                />
+            ) : (
+                // Rectangular shape for leaf nodes
+                <rect
+                    width="160"
+                    height="50"
+                    x="-80"
+                    y="-25"
+                    fill={isSelected ? "#4A90E2" : "#fff"} // Blue background if selected, white otherwise
+                    stroke="#333"
+                    rx="10"
+                    ry="10"
+                />
+            )}
             <text
                 x="0"
                 y="0"
                 textAnchor="middle"
                 alignmentBaseline="middle"
-                style={{ fontSize: "14px", fill: "#fff", fontWeight: isIntermediateOrRoot ? "bold" : "normal" }}
+                style={{
+                    fontSize: isIntermediateOrRoot ? "10px" : "16px", // Larger font size for leaf nodes
+                    fill: isSelected ? "#fff" : "#000", // White text if selected, black otherwise
+                    stroke: "none", // Removes the black contour around letters
+                    fontWeight: isIntermediateOrRoot ? "bold" : "600", // Medium-bold for leaf nodes
+                }}
             >
-                {!isIntermediateOrRoot ? nodeDatum.name : ""}
+                {!isIntermediateOrRoot ? nodeDatum.name : ""} {/* Show label only for leaf nodes */}
             </text>
         </g>
     );
