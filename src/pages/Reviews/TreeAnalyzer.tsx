@@ -2,10 +2,14 @@ import React, { useEffect, useState } from "react";
 import Tree from "react-d3-tree";
 import TreeService from "../../services/TreeService";
 import Draggable from "react-draggable";
-import { Container, Button, Row, Col } from "react-bootstrap";
+import { Container, Button, Row, Col, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
+import {toast} from "react-toastify";
 
 const TreeAnalyzer = () => {
+    const navigate = useNavigate();
+
     const [apps, setApps] = useState<string[]>([]);
     const [clusters, setClusters] = useState<string[]>([]);
     const [selectedApp, setSelectedApp] = useState<string>("");
@@ -16,6 +20,7 @@ const TreeAnalyzer = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [metadataWindows, setMetadataWindows] = useState<any[]>([]);
     const [highlightedNodes, setHighlightedNodes] = useState<Set<number>>(new Set());
+    const [activateTuning, setActivateTuning] = useState<boolean>(false);
 
     const treeService = new TreeService();
 
@@ -63,8 +68,6 @@ const TreeAnalyzer = () => {
                     siblingThreshold
                 );
 
-                console.log("Cluster Data:", clusterData);
-
                 if (clusterData && clusterData.children) {
                     setOriginalTreeData(clusterData);
                     setTreeData(transformToTreeFormat(clusterData));
@@ -99,6 +102,10 @@ const TreeAnalyzer = () => {
 
     const handleNodeClick = (nodeData: any) => {
         const nodeId = nodeData.attributes.id;
+
+        const windowExists = metadataWindows.some((window) => window.id === nodeId);
+        if (windowExists) return; // If the window already exists, do nothing
+
         const newMetadata = {
             id: nodeId,
             name: nodeData.name,
@@ -109,7 +116,6 @@ const TreeAnalyzer = () => {
         setHighlightedNodes((prev) => new Set(prev).add(nodeId));
         setMetadataWindows((prevWindows) => [...prevWindows, newMetadata]);
     };
-
     const handleSelectAllChildren = (childrenIds: number[], hierarchyData: any) => {
         const collectAllDescendants = (nodeId: number): number[] => {
             const node = findNodeById(nodeId, hierarchyData);
@@ -174,14 +180,12 @@ const TreeAnalyzer = () => {
 
         const isTopLevelNode = (nodeId: number): boolean => {
             const node = findNodeById(nodeId, originalTreeData);
-            if (!node || !node.parent) return true; // Root node is top-level if it has no parent.
-            return !highlightedNodes.has(node.parent.id); // A node is top-level if its parent is not selected.
+            if (!node || !node.parent) return true;
+            return !highlightedNodes.has(node.parent.id);
         };
 
-        // Find the uppermost selected nodes.
         const topLevelNodes = Array.from(highlightedNodes).filter(isTopLevelNode);
 
-        // Collect the hierarchy for each top-level node.
         const hierarchies = topLevelNodes.map((nodeId) => collectSubtree(nodeId, originalTreeData));
 
         const json = JSON.stringify(hierarchies, null, 2);
@@ -194,9 +198,34 @@ const TreeAnalyzer = () => {
 
 
     const handleViewReviews = () => {
-        alert("View Reviews clicked for selected nodes: " + Array.from(highlightedNodes).join(", "));
-    };
+        if (!selectedApp || !selectedCluster || highlightedNodes.size === 0) {
+            return;
+        }
 
+        // Parse the app name to extract the part after the hyphen
+        const parsedAppName = selectedApp.split("-")[1]?.toLowerCase(); // Extract and lowercase
+
+        // Collect selected features, filtering out intermediate and root nodes
+        const selectedFeatures = Array.from(highlightedNodes)
+            .map((nodeId) => {
+                const node = findNodeById(nodeId, originalTreeData);
+                return node?.label; // Retrieve the node's label
+            })
+            .filter((label) => label && label !== "Intermediate Node" && label !== "Root Node"); // Exclude unwanted nodes
+
+        if (selectedFeatures.length === 0) {
+            toast.error("No valid features selected.");
+            return;
+        }
+
+        navigate("/review-searcher", {
+            state: {
+                appName: parsedAppName, // Send the parsed app name
+                clusterName: selectedCluster,
+                selectedFeatures,
+            },
+        });
+    };
 
     const findNodeById = (id: number, hierarchyData: any): any => {
         if (!hierarchyData) return null;
@@ -211,217 +240,294 @@ const TreeAnalyzer = () => {
     };
 
     return (
-        <Container className="mt-2 vh-100">
+        <Container fluid className="vh-100">
             <h1 className="text-secondary">Tree Analyzer</h1>
-            <div className="row flex-grow-1">
-                <div className="col-md-3">
-                    <div className="bg-light p-3">
-                        <h3>Select App</h3>
-                        <select
-                            className="form-select mb-3"
-                            value={selectedApp}
-                            onChange={(e) => setSelectedApp(e.target.value)}
-                        >
-                            <option value="">--Select an App--</option>
-                            {apps.map((app) => (
+            <Row className="bg-light py-3">
+                <Col md={4}>
+                    <h5>Select App</h5>
+                    <Form.Select
+                        value={selectedApp}
+                        onChange={(e) => setSelectedApp(e.target.value)}
+                        aria-label="Select App"
+                    >
+                        <option value="">Select App</option>
+                        {apps.map((app) => {
+                            // Extract the part after the hyphen (-)
+                            const extractedAppName = app
+                                .split("-")[1] // Get the second part after the hyphen
+                                .toLowerCase(); // Convert to lowercase
+
+                            return (
                                 <option key={app} value={app}>
-                                    {app}
+                                    {extractedAppName} {/* Displays the extracted app name */}
                                 </option>
-                            ))}
-                        </select>
+                            );
+                        })}
+                    </Form.Select>
+                </Col>
 
-                        {selectedApp && (
-                            <>
-                                <h3>Select Cluster</h3>
-                                <select
-                                    className="form-select mb-3"
-                                    value={selectedCluster}
-                                    onChange={(e) => setSelectedCluster(e.target.value)}
-                                >
-                                    <option value="">--Select a Cluster--</option>
-                                    {clusters.map((cluster) => (
-                                        <option key={cluster} value={cluster}>
-                                            {cluster}
-                                        </option>
-                                    ))}
-                                </select>
-                            </>
-                        )}
 
-                        {selectedApp && selectedCluster && (
-                            <>
-                                <h3>Sibling Threshold Tuning</h3>
-                                <label htmlFor="siblingThresholdSlider" className="form-label">
-                                    Adjust Sibling Threshold
-                                </label>
-                                <input
-                                    id="siblingThresholdSlider"
-                                    type="range"
-                                    className="form-range"
-                                    min="0"
-                                    max="2"
-                                    step="0.25"
-                                    value={siblingThreshold}
-                                    onChange={(e) => setSiblingThreshold(Number(e.target.value))}
-                                />
-                                <p>Sibling Threshold: {siblingThreshold.toFixed(2)}</p>
-                            </>
-                        )}
-
-                        {highlightedNodes.size > 0 && (
-                            <>
-                                <h3>Actions</h3>
-                                <div className="d-flex flex-column">
+                <Col md={4}>
+                    <h5>Select Feature Family</h5>
+                    <Form.Select
+                        value={selectedCluster}
+                        onChange={(e) => setSelectedCluster(e.target.value)}
+                        aria-label="Select Feature Family"
+                        disabled={!selectedApp}
+                    >
+                        <option value="">Feature Family</option>
+                        {clusters.map((cluster) => {
+                            const featureName = cluster.split("_").slice(2).join(" ").replace(/_/g, " ");
+                            return (
+                                <option key={cluster} value={cluster}>
+                                    {featureName} {/* Displays the formatted Feature Name */}
+                                </option>
+                            );
+                        })}
+                    </Form.Select>
+                </Col>
+                <Col md={2}>
+                    <h5>Sibling Threshold</h5>
+                    <Form.Label htmlFor="siblingThresholdSlider">
+                        Sibling Threshold: {siblingThreshold.toFixed(2)}
+                    </Form.Label>
+                    <Form.Range
+                        id="siblingThresholdSlider"
+                        min="0"
+                        max="2"
+                        step="0.1"
+                        value={siblingThreshold}
+                        onChange={(e) => setSiblingThreshold(Number(e.target.value))}
+                        style={{ width: "75%" }} // Adjusted slider width
+                    />
+                </Col>
+                <Col md={2}>
+                    {highlightedNodes.size > 0 && (
+                        <>
+                            <h5>Actions</h5>
+                            <div className="d-flex flex-column">
+                                {Array.from(highlightedNodes).some((nodeId) => {
+                                    const node = findNodeById(nodeId, originalTreeData);
+                                    return node && (!node.children || node.children.length === 0); // Ensure it's a leaf node
+                                }) && (
                                     <Button
                                         className="btn-primary mb-2"
                                         onClick={handleViewReviews}
                                         aria-label="View Reviews"
                                     >
-                                        <i className="mdi mdi-eye me-2"></i>
-                                        View Reviews
+                                        <i className="mdi mdi-eye me-2"></i> View Reviews
                                     </Button>
-                                    <Button
-                                        className="btn-success"
-                                        onClick={handleDownloadJSON}
-                                        aria-label="Download JSON"
-                                    >
-                                        <i className="mdi mdi-download me-2"></i>
-                                        Download JSON
-                                    </Button>
-                                </div>
-                            </>
-                        )}
-                    </div>
-                </div>
-
-                <div className="col-md-9 p-3" style={{ height: "calc(100vh - 100px)", overflow: "auto" }}>
-                    {loading && <div>Loading tree data...</div>}
-                    {!treeData && !loading && (
-                        <div className="d-flex flex-column align-items-center justify-content-center h-100">
-                            <i
-                                className="mdi mdi-emoticon-sad text-secondary"
-                                style={{ fontSize: "5rem" }}
-                            />
-                            <h2>No cluster to view selected</h2>
-                        </div>
+                                )}
+                                <Button
+                                    className="btn-secondary"
+                                    onClick={handleDownloadJSON}
+                                    aria-label="Download JSON"
+                                >
+                                    <i className="mdi mdi-download me-2"></i> Download JSON
+                                </Button>
+                            </div>
+                        </>
                     )}
-                    {treeData && !loading && (
-                        <Tree
-                            data={treeData}
-                            orientation="vertical"
-                            translate={{ x: 400, y: 50 }}
-                            pathFunc="step"
-                            collapsible={true}
-                            nodeSize={{ x: 200, y: 150 }}
-                            renderCustomNodeElement={(rd3tProps) => (
-                                <CustomNode
-                                    {...rd3tProps}
-                                    onNodeClick={handleNodeClick}
-                                    isSelected={highlightedNodes.has(rd3tProps?.nodeDatum?.attributes?.id as number)}
-                                />
-                            )}
-                        />
-                    )}
+                </Col>
+            </Row>
 
-                    {metadataWindows.map((window) => (
-                        <Draggable key={window.id}>
+            <Row className="flex-grow-1">
+                <Col>
+                    <div style={{ height: "calc(100vh - 150px)", overflowY: "auto", position: "relative" }}>
+                        {loading && <div>Loading tree data...</div>}
+                        {!treeData && !loading && (
                             <div
+                                className="d-flex flex-column align-items-center justify-content-center"
                                 style={{
                                     position: "absolute",
                                     top: "50%",
                                     left: "50%",
                                     transform: "translate(-50%, -50%)",
-                                    width: "300px",
-                                    padding: "15px",
-                                    background: "white",
-                                    border: "1px solid #ccc",
-                                    borderRadius: "8px",
-                                    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                                    zIndex: 1000,
                                 }}
                             >
-                                <h4 className="text-center mb-3">{window.name} Metadata</h4>
-                                <p>
-                                    <strong>ID:</strong> {window.id}
-                                </p>
-                                <p>
-                                    <strong>Distance:</strong> {window.distance}
-                                </p>
-                                <Row className="d-flex justify-content-between mt-3">
-                                    <Col>
-                                        <Button
-                                            className="btn-primary btn-sm"
-                                            onClick={() => handleSelectAllChildren(window.childrenIds, originalTreeData)}
-                                        >
-                                            Select All
-                                        </Button>
-                                    </Col>
-                                    <Col>
-                                        <Button
-                                            className="btn-warning btn-sm"
-                                            onClick={() => handleUnselectAllChildren(window.childrenIds, originalTreeData)}
-                                        >
-                                            Unselect All
-                                        </Button>
-                                    </Col>
-                                </Row>
-                                <Row className="mt-3">
-                                    <Col className="text-center">
-                                        <Button
-                                            className="btn btn-danger btn-sm"
-                                            onClick={() => {
-                                                handleUnselectAllChildren(window.childrenIds, originalTreeData);
-                                                handleCloseMetadata(window.id);
-                                            }}
-                                        >
-                                            Close
-                                        </Button>
-                                    </Col>
-                                </Row>
+                                <i className="mdi mdi-emoticon-sad-outline text-secondary" style={{ fontSize: "5rem" }} />
+                                <h4>No cluster selected</h4>
                             </div>
-                        </Draggable>
-                    ))}
-                </div>
-            </div>
+                        )}
+                        {treeData && !loading && (
+                            <Tree
+                                data={treeData}
+                                orientation="vertical"
+                                translate={{ x: 400, y: 50 }}
+                                collapsible
+                                nodeSize={{ x: 200, y: 150 }}
+                                renderCustomNodeElement={(rd3tProps) => (
+                                    <CustomNode
+                                        {...rd3tProps}
+                                        onNodeClick={handleNodeClick}
+                                        isSelected={highlightedNodes.has(
+                                            rd3tProps?.nodeDatum?.attributes?.id as number
+                                        )}
+                                    />
+                                )}
+                            />
+                        )}
+                        {metadataWindows.map((window) => (
+                            <Draggable key={window.id}>
+                                <div
+                                    style={{
+                                        position: "absolute",
+                                        top: "50%",
+                                        left: "50%",
+                                        transform: "translate(-50%, -50%)",
+                                        width: "300px",
+                                        background: "#fff",
+                                        padding: "20px",
+                                        border: "1px solid #ccc",
+                                        borderRadius: "8px",
+                                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                                        zIndex: 1000,
+                                    }}
+                                >
+                                    <h4>{window.name} </h4>
+                                    <Row className="d-flex justify-content-between mt-3">
+                                        <Col>
+                                            <Button
+                                                className="btn-primary btn-sm"
+                                                onClick={() =>
+                                                    handleSelectAllChildren(window.childrenIds, originalTreeData)
+                                                }
+                                            >
+                                                Select all children
+                                            </Button>
+                                        </Col>
+                                        <Col>
+                                            <Button
+                                                className="btn-warning btn-sm"
+                                                onClick={() =>
+                                                    handleUnselectAllChildren(window.childrenIds, originalTreeData)
+                                                }
+                                            >
+                                                Unselect all children
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                    <Row className="mt-3">
+                                        <Col className="text-center">
+                                            <Button
+                                                className="btn btn-danger btn-sm"
+                                                onClick={() => {
+                                                    handleUnselectAllChildren(window.childrenIds, originalTreeData);
+                                                    handleCloseMetadata(window.id);
+                                                }}
+                                            >
+                                                Close
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                </div>
+                            </Draggable>
+                        ))}
+                    </div>
+                </Col>
+            </Row>
+
         </Container>
     );
 };
 
-const CustomNode = ({ nodeDatum, onNodeClick, isSelected }: any) => (
-    <g onClick={() => onNodeClick(nodeDatum)} style={{ cursor: "pointer" }}>
-        {/* Node Background */}
-        <rect
-            width="180" // Increased width for better spacing
-            height="50" // Adjusted height
-            x="-90" // Centered horizontally
-            y="-25" // Centered vertically
-            fill={isSelected ? "#4A90E2" : "#FFFFFF"} // Clear background for unselected nodes
-            stroke="#333" // Darker border for better contrast
-            rx="10" // Rounded corners for improved look
-            ry="10"
-            style={{
-                strokeWidth: 1.5, // Slightly thicker border
-            }}
-        />
+const CustomNode = ({ nodeDatum, onNodeClick, isSelected }: any) => {
+    const isIntermediateOrRoot = !!nodeDatum.children; // Determines if the node is intermediate or root
 
-        {/* Node Label */}
-        <text
-            x="0"
-            y="0"
-            textAnchor="middle"
-            alignmentBaseline="middle"
-            style={{
-                fontSize: "14px", // Increased font size
-                fontWeight: "400", // Normal weight for better readability
-                fontFamily: "Arial, sans-serif", // Clean font
-                fill: "#333", // Dark text for good contrast
-            }}
-        >
-            {nodeDatum.name.length > 20
-                ? `${nodeDatum.name.substring(0, 20)}...` // Truncate if too long
-                : nodeDatum.name}
-        </text>
-    </g>
-);
+    const wrapText = (text: string, maxChars: number) => {
+        const words = text.split(" ");
+        const lines: string[] = [];
+        let currentLine = "";
+
+        words.forEach((word) => {
+            if ((currentLine + word).length > maxChars) {
+                lines.push(currentLine.trim());
+                currentLine = word + " ";
+            } else {
+                currentLine += word + " ";
+            }
+        });
+        if (currentLine) {
+            lines.push(currentLine.trim());
+        }
+        return lines;
+    };
+
+    const wrappedText = isIntermediateOrRoot ? [] : wrapText(nodeDatum.name || "", 20); // Adjust maxChars as needed
+
+    const labelHeight = 50; // Default height of the label rectangle
+    const paddingBottom = 10; // Extra space below the text
+    const [fontSize, setFontSize] = React.useState(16); // Initial font size
+
+    React.useEffect(() => {
+        const containerWidth = 160; // Width of the leaf node
+        const maxHeight = labelHeight + paddingBottom; // Maximum height of the container
+
+        const tempSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        const tempText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        tempText.setAttribute("style", `font-size: ${fontSize}px`);
+        tempText.setAttribute("text-anchor", "middle");
+        tempText.textContent = wrappedText.join(" ");
+
+        tempSvg.appendChild(tempText);
+        document.body.appendChild(tempSvg);
+
+        const bbox = tempText.getBBox();
+        const fits = bbox.width <= containerWidth && bbox.height <= maxHeight;
+
+        if (!fits) {
+            setFontSize((prev) => Math.max(prev - 2, 10)); // Reduce font size, minimum of 10px
+        }
+
+        document.body.removeChild(tempSvg);
+    }, [wrappedText, fontSize]);
+
+    return (
+        <g onClick={() => onNodeClick(nodeDatum)} style={{ cursor: "pointer" }}>
+            {isIntermediateOrRoot ? (
+                // Circular shape for intermediate or root nodes
+                <circle
+                    cx="0"
+                    cy="0"
+                    r="10"
+                    fill="#d6d6d6"
+                    stroke="#333"
+                />
+            ) : (
+                // Rectangular shape for leaf nodes with added height for padding
+                <rect
+                    width="160"
+                    height={labelHeight + paddingBottom} // Increased height for padding
+                    x="-80"
+                    y={-(labelHeight + paddingBottom) / 2}
+                    fill={isSelected ? "#4A90E2" : "#fff"} // Blue background if selected, white otherwise
+                    stroke="#333"
+                    rx="10"
+                    ry="10"
+                />
+            )}
+            {!isIntermediateOrRoot && (
+                <text
+                    x="0"
+                    y="-10" // Center text block vertically with padding
+                    textAnchor="middle"
+                    alignmentBaseline="middle"
+                    style={{
+                        fontSize: `${fontSize}px`, // Dynamically adjusted font size
+                        fill: isSelected ? "#fff" : "#000", // White text if selected, black otherwise
+                        stroke: "none", // Removes the black contour around letters
+                        fontWeight: "600", // Medium-bold for leaf nodes
+                    }}
+                >
+                    {wrappedText.map((line, index) => (
+                        <tspan key={index} x="0" dy="1.2em">
+                            {line}
+                        </tspan>
+                    ))}
+                </text>
+            )}
+        </g>
+    );
+};
 
 export default TreeAnalyzer;

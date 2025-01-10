@@ -1,5 +1,7 @@
 import {ReviewDataDTO} from "../DTOs/ReviewDataDTO";
 import { ReviewDataSimpleDTO } from "../DTOs/ReviewDataSimpleDTO";
+import {ReviewFeatureDTO} from "../DTOs/ReviewFeatureDTO";
+import {SelectedFeatureReviewDTO} from "../DTOs/SelectedFeatureReviewDTO";
 class ReviewService {
     API_NAME = 'http://127.0.0.1:3001/api/v1';
     PATH_NAME = '/users'
@@ -179,7 +181,48 @@ class ReviewService {
             throw error;
         }
     };
-    
+
+
+    fetchSelectedFeatureReviews = async (
+        appName: string,
+        clusterName: string,
+        featureList: string[]
+    ): Promise<SelectedFeatureReviewDTO[]> => {
+        const url = `${this.API_NAME}/trees/${appName}/clusters/${clusterName}/reviews`;
+
+        const requestBody = {
+            feature_list: featureList,
+        };
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error fetching reviews: ${response.statusText}`);
+            }
+
+            const reviews = await response.json();
+
+            return reviews.map((review: any) => ({
+                app_name: appName,
+                feature_name: review.features[0]?.feature || "Unknown",
+                review_id: review.reviewId,
+                review_text: review.review,
+                language_model: review.features[0]?.languageModel?.modelName || "Unknown",
+            }));
+        } catch (error) {
+            console.error("Error fetching selected feature reviews:", error);
+            throw error;
+        }
+    };
+
+
 }
 
 export default ReviewService;
