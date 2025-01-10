@@ -220,7 +220,7 @@ const TreeAnalyzer = () => {
             return;
         }
 
-        navigate("/tree-reviews", {
+        navigate("/review-searcher", {
             state: {
                 appName: parsedAppName, // Send the parsed app name
                 clusterName: selectedCluster,
