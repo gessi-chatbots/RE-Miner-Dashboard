@@ -180,14 +180,12 @@ const TreeAnalyzer = () => {
 
         const isTopLevelNode = (nodeId: number): boolean => {
             const node = findNodeById(nodeId, originalTreeData);
-            if (!node || !node.parent) return true; // Root node is top-level if it has no parent.
-            return !highlightedNodes.has(node.parent.id); // A node is top-level if its parent is not selected.
+            if (!node || !node.parent) return true;
+            return !highlightedNodes.has(node.parent.id);
         };
 
-        // Find the uppermost selected nodes.
         const topLevelNodes = Array.from(highlightedNodes).filter(isTopLevelNode);
 
-        // Collect the hierarchy for each top-level node.
         const hierarchies = topLevelNodes.map((nodeId) => collectSubtree(nodeId, originalTreeData));
 
         const json = JSON.stringify(hierarchies, null, 2);

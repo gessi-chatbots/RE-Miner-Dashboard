@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Table, Button, Row, Col, Form, Badge } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import ReviewService from "../../services/ReviewService";
-import { toast } from "react-toastify";
+import TreeService from "../../services/TreeService"; // Import TreeService to fetch apps
 import { SelectedFeatureReviewDTO } from "../../DTOs/SelectedFeatureReviewDTO";
 
 const defaultColumns = ["Review ID", "Review Text", "Feature Name", "Language Model"];
@@ -11,13 +11,25 @@ const ReviewSearcher: React.FC = () => {
     const location = useLocation();
     const { state } = location;
 
+    const [apps, setApps] = useState<string[]>([]);
     const [reviews, setReviews] = useState<SelectedFeatureReviewDTO[]>([]);
     const [appName, setAppName] = useState<string>("");
     const [clusterName, setClusterName] = useState<string>("");
     const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
     const [newFeature, setNewFeature] = useState<string>("");
 
-    const navigate = useNavigate();
+    useEffect(() => {
+        const fetchApps = async () => {
+            const treeService = new TreeService();
+            try {
+                const appData = await treeService.fetchAllApps();
+                setApps(appData.map((app) => app.app_name));
+            } catch (error) {
+                console.error("Error fetching apps:", error);
+            }
+        };
+        fetchApps();
+    }, []);
 
     useEffect(() => {
         if (state) {
@@ -25,11 +37,8 @@ const ReviewSearcher: React.FC = () => {
             setAppName(appName || "");
             setClusterName(clusterName || "");
             setSelectedFeatures(selectedFeatures || []);
-        } else {
-            toast.error("No data received. Redirecting to home...");
-            navigate("/");
         }
-    }, [state, navigate]);
+    }, [state]);
 
     useEffect(() => {
         fetchReviews(); // Trigger the first search automatically
@@ -37,31 +46,34 @@ const ReviewSearcher: React.FC = () => {
 
     const fetchReviews = async () => {
         if (!appName || !clusterName || selectedFeatures.length === 0) {
-            toast.error("Please select valid features.");
+            console.warn("Missing required inputs for search.");
+            setReviews([]);
             return;
         }
+
+        // Parse the app name (extract the part after the hyphen and convert to lowercase)
+        const parsedAppName = appName.split("-")[1]?.toLowerCase();
+        console.log("Searching with parsedAppName:", parsedAppName);
 
         const reviewService = new ReviewService();
         try {
             const fetchedReviews = await reviewService.fetchSelectedFeatureReviews(
-                appName,
+                parsedAppName,
                 clusterName,
                 selectedFeatures
             );
+            console.log("Fetched reviews:", fetchedReviews);
             setReviews(fetchedReviews);
         } catch (error) {
             console.error("Error fetching reviews:", error);
-            toast.error("Failed to fetch reviews. Please try again.");
+            setReviews([]); // Show "No reviews found" in case of errors
         }
     };
 
     const handleAddFeature = () => {
         if (!newFeature.trim()) return;
 
-        if (selectedFeatures.includes(newFeature.trim())) {
-            toast.warning("Feature already added.");
-            return;
-        }
+        if (selectedFeatures.includes(newFeature.trim())) return;
 
         setSelectedFeatures((prev) => [...prev, newFeature.trim()]);
         setNewFeature("");
@@ -75,19 +87,31 @@ const ReviewSearcher: React.FC = () => {
         <div>
             <h1 className="text-secondary">Review Searcher</h1>
             <Row className="bg-light py-3 align-items-center">
+                {/* App Selector */}
                 <Col md={3}>
-                    <h6 className="text-secondary mb-2">App Name</h6>
-                    <Form.Control
-                        type="text"
+                    <h6 className="text-secondary mb-2">Select App</h6>
+                    <Form.Select
                         value={appName}
-                        readOnly
-                        className="bg-light text-secondary"
+                        onChange={(e) => setAppName(e.target.value)}
+                        aria-label="Select App"
                         style={{
                             height: "40px",
                             fontSize: "14px",
                             padding: "5px 10px",
                         }}
-                    />
+                    >
+                        <option value="">Select App</option>
+                        {apps.map((app) => {
+                            const extractedAppName = app
+                                .split("-")[1] // Get the part after the hyphen
+                                .toLowerCase(); // Convert to lowercase
+                            return (
+                                <option key={app} value={app}>
+                                    {extractedAppName}
+                                </option>
+                            );
+                        })}
+                    </Form.Select>
                 </Col>
 
                 {/* Features Section */}
@@ -178,7 +202,7 @@ const ReviewSearcher: React.FC = () => {
                 </Col>
             </Row>
 
-            {/* Reviews Table */}
+            {/* Reviews Table or Sad Face */}
             <Row className="mt-4">
                 {reviews.length === 0 ? (
                     <Col className="text-center text-secondary">
