@@ -373,13 +373,7 @@ const TreeAnalyzer = () => {
                                         zIndex: 1000,
                                     }}
                                 >
-                                    <h4>{window.name} Metadata</h4>
-                                    <p>
-                                        <strong>ID:</strong> {window.id}
-                                    </p>
-                                    <p>
-                                        <strong>Distance:</strong> {window.distance}
-                                    </p>
+                                    <h4>{window.name} </h4>
                                     <Row className="d-flex justify-content-between mt-3">
                                         <Col>
                                             <Button
@@ -388,7 +382,7 @@ const TreeAnalyzer = () => {
                                                     handleSelectAllChildren(window.childrenIds, originalTreeData)
                                                 }
                                             >
-                                                Select All
+                                                Select all children
                                             </Button>
                                         </Col>
                                         <Col>
@@ -398,7 +392,7 @@ const TreeAnalyzer = () => {
                                                     handleUnselectAllChildren(window.childrenIds, originalTreeData)
                                                 }
                                             >
-                                                Unselect All
+                                                Unselect all children
                                             </Button>
                                         </Col>
                                     </Row>
@@ -429,6 +423,54 @@ const TreeAnalyzer = () => {
 const CustomNode = ({ nodeDatum, onNodeClick, isSelected }: any) => {
     const isIntermediateOrRoot = !!nodeDatum.children; // Determines if the node is intermediate or root
 
+    const wrapText = (text: string, maxChars: number) => {
+        const words = text.split(" ");
+        const lines: string[] = [];
+        let currentLine = "";
+
+        words.forEach((word) => {
+            if ((currentLine + word).length > maxChars) {
+                lines.push(currentLine.trim());
+                currentLine = word + " ";
+            } else {
+                currentLine += word + " ";
+            }
+        });
+        if (currentLine) {
+            lines.push(currentLine.trim());
+        }
+        return lines;
+    };
+
+    const wrappedText = isIntermediateOrRoot ? [] : wrapText(nodeDatum.name || "", 20); // Adjust maxChars as needed
+
+    const labelHeight = 50; // Default height of the label rectangle
+    const paddingBottom = 10; // Extra space below the text
+    const [fontSize, setFontSize] = React.useState(16); // Initial font size
+
+    React.useEffect(() => {
+        const containerWidth = 160; // Width of the leaf node
+        const maxHeight = labelHeight + paddingBottom; // Maximum height of the container
+
+        const tempSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        const tempText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        tempText.setAttribute("style", `font-size: ${fontSize}px`);
+        tempText.setAttribute("text-anchor", "middle");
+        tempText.textContent = wrappedText.join(" ");
+
+        tempSvg.appendChild(tempText);
+        document.body.appendChild(tempSvg);
+
+        const bbox = tempText.getBBox();
+        const fits = bbox.width <= containerWidth && bbox.height <= maxHeight;
+
+        if (!fits) {
+            setFontSize((prev) => Math.max(prev - 2, 10)); // Reduce font size, minimum of 10px
+        }
+
+        document.body.removeChild(tempSvg);
+    }, [wrappedText, fontSize]);
+
     return (
         <g onClick={() => onNodeClick(nodeDatum)} style={{ cursor: "pointer" }}>
             {isIntermediateOrRoot ? (
@@ -436,37 +478,43 @@ const CustomNode = ({ nodeDatum, onNodeClick, isSelected }: any) => {
                 <circle
                     cx="0"
                     cy="0"
-                    r="10" // Small radius for a reduced size
+                    r="10"
                     fill="#d6d6d6"
                     stroke="#333"
                 />
             ) : (
-                // Rectangular shape for leaf nodes
+                // Rectangular shape for leaf nodes with added height for padding
                 <rect
                     width="160"
-                    height="50"
+                    height={labelHeight + paddingBottom} // Increased height for padding
                     x="-80"
-                    y="-25"
+                    y={-(labelHeight + paddingBottom) / 2}
                     fill={isSelected ? "#4A90E2" : "#fff"} // Blue background if selected, white otherwise
                     stroke="#333"
                     rx="10"
                     ry="10"
                 />
             )}
-            <text
-                x="0"
-                y="0"
-                textAnchor="middle"
-                alignmentBaseline="middle"
-                style={{
-                    fontSize: isIntermediateOrRoot ? "10px" : "16px", // Larger font size for leaf nodes
-                    fill: isSelected ? "#fff" : "#000", // White text if selected, black otherwise
-                    stroke: "none", // Removes the black contour around letters
-                    fontWeight: isIntermediateOrRoot ? "bold" : "600", // Medium-bold for leaf nodes
-                }}
-            >
-                {!isIntermediateOrRoot ? nodeDatum.name : ""} {/* Show label only for leaf nodes */}
-            </text>
+            {!isIntermediateOrRoot && (
+                <text
+                    x="0"
+                    y="-10" // Center text block vertically with padding
+                    textAnchor="middle"
+                    alignmentBaseline="middle"
+                    style={{
+                        fontSize: `${fontSize}px`, // Dynamically adjusted font size
+                        fill: isSelected ? "#fff" : "#000", // White text if selected, black otherwise
+                        stroke: "none", // Removes the black contour around letters
+                        fontWeight: "600", // Medium-bold for leaf nodes
+                    }}
+                >
+                    {wrappedText.map((line, index) => (
+                        <tspan key={index} x="0" dy="1.2em">
+                            {line}
+                        </tspan>
+                    ))}
+                </text>
+            )}
         </g>
     );
 };
