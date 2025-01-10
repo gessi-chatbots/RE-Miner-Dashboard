@@ -252,13 +252,22 @@ const TreeAnalyzer = () => {
                         aria-label="Select App"
                     >
                         <option value="">Select App</option>
-                        {apps.map((app) => (
-                            <option key={app} value={app}>
-                                {app}
-                            </option>
-                        ))}
+                        {apps.map((app) => {
+                            // Extract the part after the hyphen (-)
+                            const extractedAppName = app
+                                .split("-")[1] // Get the second part after the hyphen
+                                .toLowerCase(); // Convert to lowercase
+
+                            return (
+                                <option key={app} value={app}>
+                                    {extractedAppName} {/* Displays the extracted app name */}
+                                </option>
+                            );
+                        })}
                     </Form.Select>
                 </Col>
+
+
                 <Col md={4}>
                     <h5>Select Feature Family</h5>
                     <Form.Select
