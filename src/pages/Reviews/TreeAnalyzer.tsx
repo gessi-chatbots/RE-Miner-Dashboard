@@ -268,11 +268,14 @@ const TreeAnalyzer = () => {
                         disabled={!selectedApp}
                     >
                         <option value="">Feature Family</option>
-                        {clusters.map((cluster) => (
-                            <option key={cluster} value={cluster}>
-                                {cluster}
-                            </option>
-                        ))}
+                        {clusters.map((cluster) => {
+                            const featureName = cluster.split("_").slice(2).join(" ").replace(/_/g, " ");
+                            return (
+                                <option key={cluster} value={cluster}>
+                                    {featureName} {/* Displays the formatted Feature Name */}
+                                </option>
+                            );
+                        })}
                     </Form.Select>
                 </Col>
                 <Col md={2}>
