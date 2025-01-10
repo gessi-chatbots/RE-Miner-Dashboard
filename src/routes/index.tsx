@@ -43,7 +43,7 @@ const AuthenticatedRoutes: React.FC = () => {
                 <Route path="/reviews" element={<DefaultLayout><ReviewsDirectory /></DefaultLayout>} />
                 <Route path="applications/:appId/reviews/:reviewId/analyze" element={<DefaultLayout><ReviewAnalyzer /></DefaultLayout>} />
                 <Route path="/tree-analyzer" element={<DefaultLayout><TreeAnalyzer /></DefaultLayout>} />
-                <Route path="/tree-reviews" element={<DefaultLayout><ReviewSearcher /></DefaultLayout>} />
+                <Route path="/review-searcher" element={<DefaultLayout><ReviewSearcher /></DefaultLayout>} />
 
             </Route>
             <Route path="/sign-up" element={<SignUpForm />} />
