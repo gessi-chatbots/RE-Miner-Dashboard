@@ -202,16 +202,13 @@ const TreeAnalyzer = () => {
             return;
         }
 
-        // Parse the app name to extract the part after the hyphen
-        const parsedAppName = selectedApp.split("-")[1]?.toLowerCase(); // Extract and lowercase
-
-        // Collect selected features, filtering out intermediate and root nodes
+        // Collect selected features
         const selectedFeatures = Array.from(highlightedNodes)
             .map((nodeId) => {
                 const node = findNodeById(nodeId, originalTreeData);
-                return node?.label; // Retrieve the node's label
+                return node?.label;
             })
-            .filter((label) => label && label !== "Intermediate Node" && label !== "Root Node"); // Exclude unwanted nodes
+            .filter((label) => label && label !== "Intermediate Node" && label !== "Root Node");
 
         if (selectedFeatures.length === 0) {
             toast.error("No valid features selected.");
@@ -220,7 +217,7 @@ const TreeAnalyzer = () => {
 
         navigate("/review-searcher", {
             state: {
-                appName: parsedAppName, // Send the parsed app name
+                appName: selectedApp, // Send the full app name
                 clusterName: selectedCluster,
                 selectedFeatures,
             },

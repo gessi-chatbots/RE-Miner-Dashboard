@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Row, Col, Form, Badge } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import ReviewService from "../../services/ReviewService";
-import TreeService from "../../services/TreeService"; // Import TreeService to fetch apps
+import TreeService from "../../services/TreeService";
 import { SelectedFeatureReviewDTO } from "../../DTOs/SelectedFeatureReviewDTO";
 
 const defaultColumns = ["Review ID", "Review Text", "Feature Name", "Language Model"];
@@ -14,10 +14,10 @@ const ReviewSearcher: React.FC = () => {
     const [apps, setApps] = useState<string[]>([]);
     const [reviews, setReviews] = useState<SelectedFeatureReviewDTO[]>([]);
     const [appName, setAppName] = useState<string>("");
-    const [clusterName, setClusterName] = useState<string>("");
     const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
     const [newFeature, setNewFeature] = useState<string>("");
 
+    // Fetch all apps for the dropdown
     useEffect(() => {
         const fetchApps = async () => {
             const treeService = new TreeService();
@@ -31,21 +31,21 @@ const ReviewSearcher: React.FC = () => {
         fetchApps();
     }, []);
 
+    // Populate state when navigating from TreeAnalyzer
     useEffect(() => {
         if (state) {
-            const { appName, clusterName, selectedFeatures } = state;
+            const { appName, selectedFeatures } = state;
             setAppName(appName || "");
-            setClusterName(clusterName || "");
             setSelectedFeatures(selectedFeatures || []);
+
+            if (appName && selectedFeatures.length > 0) {
+                fetchReviews(appName, selectedFeatures);
+            }
         }
     }, [state]);
 
-    useEffect(() => {
-        fetchReviews(); // Trigger the first search automatically
-    }, [appName, clusterName, selectedFeatures]);
-
-    const fetchReviews = async () => {
-        if (!appName || !clusterName || selectedFeatures.length === 0) {
+    const fetchReviews = async (appName: string, features: string[]) => {
+        if (!appName || features.length === 0) {
             console.warn("Missing required inputs for search.");
             setReviews([]);
             return;
@@ -59,8 +59,7 @@ const ReviewSearcher: React.FC = () => {
         try {
             const fetchedReviews = await reviewService.fetchSelectedFeatureReviews(
                 parsedAppName,
-                clusterName,
-                selectedFeatures
+                features
             );
             console.log("Fetched reviews:", fetchedReviews);
             setReviews(fetchedReviews);
@@ -70,15 +69,18 @@ const ReviewSearcher: React.FC = () => {
         }
     };
 
+    const handleManualSearch = () => {
+        fetchReviews(appName, selectedFeatures);
+    };
+
     const handleAddFeature = () => {
         if (!newFeature.trim()) return;
-
         if (selectedFeatures.includes(newFeature.trim())) return;
-
         setSelectedFeatures((prev) => [...prev, newFeature.trim()]);
         setNewFeature("");
     };
 
+    // Handle removing a feature
     const handleDeleteFeature = (feature: string) => {
         setSelectedFeatures((prev) => prev.filter((f) => f !== feature));
     };
@@ -88,7 +90,7 @@ const ReviewSearcher: React.FC = () => {
             <h1 className="text-secondary">Review Searcher</h1>
             <Row className="bg-light py-3 align-items-center">
                 {/* App Selector */}
-                <Col md={3}>
+                <Col md={4}>
                     <h6 className="text-secondary mb-2">Select App</h6>
                     <Form.Select
                         value={appName}
@@ -115,7 +117,7 @@ const ReviewSearcher: React.FC = () => {
                 </Col>
 
                 {/* Features Section */}
-                <Col md={7}>
+                <Col md={6}>
                     <h6 className="text-secondary mb-2">Features</h6>
                     <div
                         style={{
@@ -187,7 +189,7 @@ const ReviewSearcher: React.FC = () => {
                 <Col md={2} className="text-center">
                     <Button
                         variant="secondary"
-                        onClick={fetchReviews}
+                        onClick={handleManualSearch}
                         style={{
                             display: "flex",
                             alignItems: "center",

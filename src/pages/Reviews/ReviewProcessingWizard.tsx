@@ -28,10 +28,14 @@ interface ReviewProcessingWizardProps {
 }
 
 interface SelectedTasks {
-    [key: string]: boolean;
+    [key: string]: boolean | number;
     sentimentAnalysis: boolean;
     featureExtraction: boolean;
+    featureSelection: boolean;
+    hierarchicalClustering: boolean;
+    distanceThreshold: number;
 }
+
 
 interface PaginationProps {
     currentPage: number;
@@ -49,7 +53,11 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
     const [selectedTasks, setSelectedTasks] = React.useState<SelectedTasks>({
         sentimentAnalysis: false,
         featureExtraction: false,
+        featureSelection: false,
+        hierarchicalClustering: false,
+        distanceThreshold: 0.5,
     });
+
     const [wizardData, setWizardData] = React.useState<ReviewDataSimpleDTO[]>(reviewsData);
 
     const [selectedSentimentModel, setSelectedSentimentModel] = React.useState<string>("");
@@ -242,63 +250,108 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                             </FormWizard.TabContent>
 
                         <FormWizard.TabContent title="Task selection" icon="ti-panel">
-                            <Row className="task-selection-container">
-                                <Col xs={12} sm={6} md={6}>
-                                    <Form.Check
-                                        type="checkbox"
-                                        id="sentimentAnalysisCheckbox"
-                                        label="Sentiment Analysis"
-                                        checked={selectedTasks.sentimentAnalysis}
-                                        onChange={() => handleTaskSelectionChange("sentimentAnalysis")}
-                                        className="mb-3"
-                                    />
-                                    {selectedTasks.sentimentAnalysis && (
-                                        <Form.Group className="mb-3">
-                                            <Form.Label htmlFor="sentimentModelSelect">Select Sentiment Model:</Form.Label>
-                                            <Form.Select
-                                                id="sentimentModelSelect"
-                                                value={selectedSentimentModel}
-                                                onChange={(e) => handleSentimentModelChange(e.target.value)}
-                                            >
-                                                <option value="">Choose a Sentiment Analysis Model</option>
-                                                <option value="BERT">BERT</option>
-                                                <option value="BETO">BETO</option>
-                                                <option value="GPT-3.5">GPT 3.5</option>
-                                            </Form.Select>
-                                        </Form.Group>
-                                    )}
-                                </Col>
-                                <Col xs={12} sm={6} md={6}>
-                                    <Form.Check
-                                        type="checkbox"
-                                        id="featureExtractionCheckbox"
-                                        label="Feature Extraction"
-                                        checked={selectedTasks.featureExtraction}
-                                        onChange={() => handleTaskSelectionChange("featureExtraction")}
-                                        className="mb-3"
-                                    />
-                                    {selectedTasks.featureExtraction && (
-                                        <Form.Group className="mb-3">
-                                            <Form.Label htmlFor="featureModelSelect">Select Feature Model:</Form.Label>
-                                            <Form.Select
-                                                id="featureModelSelect"
-                                                value={selectedFeatureModel}
-                                                onChange={(e) => handleFeatureModelChange(e.target.value)}
-                                            >
-                                                <option value="">Choose a Feature extraction Model</option>
-                                                <option value="transfeatex">TransFeatEx</option>
-                                                <option value="t-frex-bert-base-uncased">T-Frex BERT Base Uncased</option>
-                                                <option value="t-frex-bert-large-uncased">T-Frex BERT Large Uncased</option>
-                                                <option value="t-frex-roberta-base">T-Frex Roberta Base</option>
-                                                <option value="t-frex-roberta-large">T-Frex Roberta Large</option>
-                                                <option value="t-frex-xlnet-base-cased">T-Frex XLNet Base Cased</option>
-                                                <option value="t-frex-xlnet-large-cased">T-Frex XLNet Large Cased</option>
-                                            </Form.Select>
-                                        </Form.Group>
-                                    )}
-                                </Col>
-                            </Row>
+                            <div>
+                                {/* Row for Sentiment Analysis and Feature Extraction */}
+                                <Row className="task-selection-container mb-4">
+                                    {/* Sentiment Analysis */}
+                                    <Col xs={12} sm={6}>
+                                        <Form.Check
+                                            type="checkbox"
+                                            id="sentimentAnalysisCheckbox"
+                                            label="Sentiment Analysis"
+                                            checked={selectedTasks.sentimentAnalysis}
+                                            onChange={() => handleTaskSelectionChange("sentimentAnalysis")}
+                                            className="mb-3"
+                                        />
+                                        {selectedTasks.sentimentAnalysis && (
+                                            <Form.Group>
+                                                <Form.Label htmlFor="sentimentModelSelect">Select Sentiment Model:</Form.Label>
+                                                <Form.Select
+                                                    id="sentimentModelSelect"
+                                                    value={selectedSentimentModel}
+                                                    onChange={(e) => handleSentimentModelChange(e.target.value)}
+                                                >
+                                                    <option value="">Choose a Sentiment Analysis Model</option>
+                                                    <option value="BERT">BERT</option>
+                                                    <option value="BETO">BETO</option>
+                                                    <option value="GPT-3.5">GPT 3.5</option>
+                                                </Form.Select>
+                                            </Form.Group>
+                                        )}
+                                    </Col>
+
+                                    {/* Feature Extraction */}
+                                    <Col xs={12} sm={6}>
+                                        <Form.Check
+                                            type="checkbox"
+                                            id="featureExtractionCheckbox"
+                                            label="Feature Extraction"
+                                            checked={selectedTasks.featureExtraction}
+                                            onChange={() => handleTaskSelectionChange("featureExtraction")}
+                                            className="mb-3"
+                                        />
+                                        {selectedTasks.featureExtraction && (
+                                            <>
+                                                <Form.Group>
+                                                    <Form.Label htmlFor="featureModelSelect">Select Feature Model:</Form.Label>
+                                                    <Form.Select
+                                                        id="featureModelSelect"
+                                                        value={selectedFeatureModel}
+                                                        onChange={(e) => handleFeatureModelChange(e.target.value)}
+                                                    >
+                                                        <option value="">Choose a Feature Extraction Model</option>
+                                                        <option value="transfeatex">TransFeatEx</option>
+                                                        <option value="t-frex-bert-base-uncased">T-Frex BERT Base Uncased</option>
+                                                        <option value="t-frex-bert-large-uncased">T-Frex BERT Large Uncased</option>
+                                                        <option value="t-frex-roberta-base">T-Frex Roberta Base</option>
+                                                        <option value="t-frex-roberta-large">T-Frex Roberta Large</option>
+                                                        <option value="t-frex-xlnet-base-cased">T-Frex XLNet Base Cased</option>
+                                                        <option value="t-frex-xlnet-large-cased">T-Frex XLNet Large Cased</option>
+                                                    </Form.Select>
+                                                </Form.Group>
+
+                                                {/* Hierarchical Clustering Checkbox */}
+                                                <Form.Check
+                                                    type="checkbox"
+                                                    id="hierarchicalClusteringCheckbox"
+                                                    label="Hierarchical Clustering"
+                                                    checked={selectedTasks.hierarchicalClustering}
+                                                    onChange={() => handleTaskSelectionChange("hierarchicalClustering")}
+                                                    className="mt-3"
+                                                />
+                                            </>
+                                        )}
+                                    </Col>
+                                </Row>
+
+                                {/* Row for Distance Threshold Slider */}
+                                {selectedTasks.featureExtraction && selectedTasks.hierarchicalClustering && (
+                                    <Row className="mt-3">
+                                        <Col xs={12} sm={6} className="offset-sm-6">
+                                            <Form.Group>
+                                                <Form.Label htmlFor="distanceThresholdSlider">
+                                                    Distance Threshold: {selectedTasks.distanceThreshold.toFixed(1)}
+                                                </Form.Label>
+                                                <Form.Range
+                                                    id="distanceThresholdSlider"
+                                                    min={0}
+                                                    max={1}
+                                                    step={0.1}
+                                                    value={selectedTasks.distanceThreshold}
+                                                    onChange={(e) =>
+                                                        setSelectedTasks((prev) => ({
+                                                            ...prev,
+                                                            distanceThreshold: parseFloat(e.target.value),
+                                                        }))
+                                                    }
+                                                />
+                                            </Form.Group>
+                                        </Col>
+                                    </Row>
+                                )}
+                            </div>
                         </FormWizard.TabContent>
+
                         <FormWizard.TabContent title="Send" icon="ti-stats-up">
                             <h2 className="text-secondary">Send</h2>
                             {loading ? (

@@ -57,61 +57,113 @@ const LoginForm = () => {
   };
 
   return (
-    <>
-        <Container className="mt-5">
-        <div className="logo-container">
-            <a href="https://gessi.upc.edu/en" target="_blank" rel="noopener noreferrer">
-            <Image
-                alt="GESSI logo"
-                src={Logo}
-                className="logo-image"
-            />
-            </a>
-        </div>
-        </Container>
-        <h1 className="form-title">Login in RE-Miner</h1>
-        <Container className="form-container">
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="email">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
-          <Row>
-          <Col>
-          <Button className="mt-5 mr-2" variant="secondary" onClick={() => navigate('/sign-up')}>
-              Sign Up
-              </Button>
-            </Col>
-            <Col>
-              <Button className="mt-5" variant="primary" type="submit">
-              Login
-              </Button>
-            </Col>
+      <>
+          <Container className="d-flex flex-column align-items-center justify-content-center vh-100">
+              {/* Logo */}
+              <div className="mb-4">
+                  <a href="https://gessi.upc.edu/en" target="_blank" rel="noopener noreferrer">
+                      <Image
+                          alt="GESSI logo"
+                          src={Logo}
+                          style={{
+                              maxWidth: '200px', // Increased size for the logo
+                              height: 'auto',
+                              display: 'block',
+                              margin: '0 auto',
+                          }}
+                      />
+                  </a>
+              </div>
 
-          </Row>
-        </Form>
-      </Container>
-      <div className="mt-5">
-        <Footer />
-      </div>
+              {/* Login Form */}
+              <Row className="w-100 justify-content-center">
+                  <Col xs={12} sm={8} md={6} lg={4}>
+                      <div
+                          style={{
+                              backgroundColor: '#ffffff',
+                              borderRadius: '10px',
+                              padding: '20px',
+                              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                          }}
+                      >
+                          <h1
+                              style={{
+                                  fontSize: '1.5rem',
+                                  fontWeight: 'bold',
+                                  textAlign: 'center',
+                                  marginBottom: '20px',
+                                  color: '#333',
+                              }}
+                          >
+                              Login to RE-Miner
+                          </h1>
+                          <Form onSubmit={handleSubmit}>
+                              <Form.Group controlId="email" style={{ marginBottom: '15px' }}>
+                                  <Form.Label style={{ fontWeight: '500', fontSize: '1rem' }}>
+                                      Email Address
+                                  </Form.Label>
+                                  <Form.Control
+                                      type="email"
+                                      name="email"
+                                      value={formData.email}
+                                      onChange={handleChange}
+                                      placeholder="Enter your email"
+                                      style={{ padding: '10px', fontSize: '1rem' }}
+                                      required
+                                  />
+                              </Form.Group>
+                              <Form.Group controlId="password" style={{ marginBottom: '15px' }}>
+                                  <Form.Label style={{ fontWeight: '500', fontSize: '1rem' }}>
+                                      Password
+                                  </Form.Label>
+                                  <Form.Control
+                                      type="password"
+                                      name="password"
+                                      value={formData.password}
+                                      onChange={handleChange}
+                                      placeholder="Enter your password"
+                                      style={{ padding: '10px', fontSize: '1rem' }}
+                                      required
+                                  />
+                              </Form.Group>
+                              <Row>
+                                  <Col>
+                                      <Button
+                                          variant="secondary"
+                                          style={{
+                                              width: '100%',
+                                              padding: '10px',
+                                              fontSize: '1rem',
+                                              fontWeight: 'bold',
+                                          }}
+                                          onClick={() => navigate('/sign-up')}
+                                      >
+                                          Sign Up
+                                      </Button>
+                                  </Col>
+                                  <Col>
+                                      <Button
+                                          variant="primary"
+                                          type="submit"
+                                          style={{
+                                              width: '100%',
+                                              padding: '10px',
+                                              fontSize: '1rem',
+                                              fontWeight: 'bold',
+                                          }}
+                                      >
+                                          Login
+                                      </Button>
+                                  </Col>
+                              </Row>
+                          </Form>
+                      </div>
+                  </Col>
+              </Row>
+          </Container>
+      </>
 
-    </>
+
   );
 };
 
