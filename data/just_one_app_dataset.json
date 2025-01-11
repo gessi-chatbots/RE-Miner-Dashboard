@@ -1,0 +1,1264 @@
+[
+  {
+    "app_name": "LEX18 Storm Tracker Weather",
+    "description": "LEX 18 is proud to announce a full featured weather app for Android.\r\n\r\nFeatures\r\n\r\n   \u2022 Access to station content specifically for our mobile users\r\n   \u2022 250 meter radar, the highest resolution available\r\n   \u2022 Future radar to see where severe weather is headed\r\n   \u2022 High resolution satellite cloud imagery\r\n   \u2022 Current weather updated multiple times per hour\r\n   \u2022 Daily and Hourly forecasts updated hourly from our computer models\r\n   \u2022 Ability to add and save your favorite locations\r\n   \u2022 A fully integrated GPS for current location awareness\r\n   \u2022 Severe weather alerts from the National Weather Service\r\n   \u2022 Opt-in push alerts to keep you safe in severe weather",
+    "summary": "LEX 18 is proud to announce a full featured weather app for Android.",
+    "category": "Weather",
+    "categoryId": "WEATHER",
+    "in_app_purchases": false,
+    "android_version": null,
+    "developer": "The E.W. Scripps Company",
+    "developer_site": "http://www.lex18.com",
+    "release_date": "Jun 2, 2011",
+    "current_version_release_date": "Nov 17, 2021",
+    "version": "5.4.600",
+    "changelog": null,
+    "reviews": [
+      {
+        "reviewId": "af49d697-3f34-4a41-b123-f920d865f13f",
+        "review": "The share note file feature is completely useless",
+        "reply": null,
+        "userName": "daniel burrell",
+        "score": 5,
+        "at": "Sep 13, 2022"
+      },
+      {
+        "reviewId": "daa62c24-249e-4a5e-baec-41a420e1c407",
+        "review": "This app keeps you weather alert.",
+        "reply": null,
+        "userName": "Frances Griffieth",
+        "score": 5,
+        "at": "Sep 12, 2022"
+      },
+      {
+        "reviewId": "8cc873a3-cf72-42d6-ab33-50a2a166d11b",
+        "review": "I find that LEX18 gives me the best information on the weather in my area. It's updated often and is fairly accurate (as weather predictions go) also gives good coverage of storms and warnings....",
+        "reply": null,
+        "userName": "Jack Sexton",
+        "score": 5,
+        "at": "Sep 10, 2022"
+      },
+      {
+        "reviewId": "fcd60b46-20c6-4d48-88fa-fcc45bfb3f6f",
+        "review": "I love on texas and still think this is the best/easy to use app.",
+        "reply": null,
+        "userName": "Nick Nichols",
+        "score": 5,
+        "at": "Sep 07, 2022"
+      },
+      {
+        "reviewId": "63ca6527-d68b-4114-8577-ed57db562e1d",
+        "review": "Easy to use app very useful",
+        "reply": null,
+        "userName": "Lynn Williams",
+        "score": 5,
+        "at": "Sep 02, 2022"
+      },
+      {
+        "reviewId": "8d5dde7d-4c7e-4b48-b93b-c41a8590ec39",
+        "review": "Weather Details are great but reduce the ads.",
+        "reply": null,
+        "userName": "Dennis Witajewski",
+        "score": 4,
+        "at": "Aug 26, 2022"
+      },
+      {
+        "reviewId": "1a959b31-f475-42c8-8417-3adfc9b2df37",
+        "review": "Awesome weather app it tells me everything",
+        "reply": null,
+        "userName": "wildcatsorth44 wildcatsorth44",
+        "score": 5,
+        "at": "Aug 25, 2022"
+      },
+      {
+        "reviewId": "b930ffcf-ed97-41a5-937c-d877f904e092",
+        "review": "Channel 18 is #1 HANDS \u270b\ufe0f down they have got it on lock & key forgot about it!!!",
+        "reply": null,
+        "userName": "Jerome Williams",
+        "score": 5,
+        "at": "Aug 25, 2022"
+      },
+      {
+        "reviewId": "e30fdeb7-2143-4a4d-be3d-93639032cc6a",
+        "review": "Love my Lex18 Storm Tracker Weather app!!",
+        "reply": null,
+        "userName": "Ruth Markin",
+        "score": 5,
+        "at": "Aug 21, 2022"
+      },
+      {
+        "reviewId": "8324a2fc-2bcd-4964-80fa-2da8b1aa981d",
+        "review": "Great app",
+        "reply": null,
+        "userName": "peyton moss",
+        "score": 5,
+        "at": "Aug 20, 2022"
+      },
+      {
+        "reviewId": "8e57b2c0-c8c3-45f9-b6b6-be5b914b03b6",
+        "review": "Very easy to use ..",
+        "reply": null,
+        "userName": "David Jones",
+        "score": 4,
+        "at": "Aug 12, 2022"
+      },
+      {
+        "reviewId": "64d4eedd-4af4-445b-90e8-680e87a1b3d2",
+        "review": "Love it",
+        "reply": null,
+        "userName": "Rev. Charles Wise",
+        "score": 5,
+        "at": "Aug 06, 2022"
+      },
+      {
+        "reviewId": "e66a3e46-8559-4dd1-b6a8-9f6ba6005537",
+        "review": "I like this app",
+        "reply": null,
+        "userName": "Willie Hardin",
+        "score": 5,
+        "at": "Aug 02, 2022"
+      },
+      {
+        "reviewId": "236b69b2-754b-41b3-a8b2-616e3989ac2a",
+        "review": "The best and most accurate weather app I have ever had.",
+        "reply": null,
+        "userName": "Marion Bond",
+        "score": 5,
+        "at": "Aug 01, 2022"
+      },
+      {
+        "reviewId": "5a995459-8140-4077-b3d6-1b4170ad60f2",
+        "review": "Always accurate!",
+        "reply": null,
+        "userName": "rick birman",
+        "score": 5,
+        "at": "Jul 27, 2022"
+      },
+      {
+        "reviewId": "fc7bd340-5f8e-4e64-872e-13f0b881e4c1",
+        "review": "Love it",
+        "reply": null,
+        "userName": "Tammy Stephens",
+        "score": 5,
+        "at": "Jul 25, 2022"
+      },
+      {
+        "reviewId": "5e18e3c9-0010-4783-846d-af0d36397a76",
+        "review": "Love it",
+        "reply": null,
+        "userName": "Amy Stevens",
+        "score": 5,
+        "at": "Jul 25, 2022"
+      },
+      {
+        "reviewId": "6cdaf68f-3810-4ac6-8310-e36bf2c3ad69",
+        "review": "This is a app that I can count on!",
+        "reply": null,
+        "userName": "Tony Ewell",
+        "score": 5,
+        "at": "Jul 22, 2022"
+      },
+      {
+        "reviewId": "136e70c2-9b9b-48d1-aea8-51777b8dba80",
+        "review": "Not so accurate. Temps change on the outlook way to much. Radar is good .",
+        "reply": null,
+        "userName": "Randy Lee",
+        "score": 3,
+        "at": "Jul 22, 2022"
+      },
+      {
+        "reviewId": "4b53dea1-df14-432d-a72e-0161224ab7d4",
+        "review": "I love this app especially the doppler radar",
+        "reply": null,
+        "userName": "Sandy Fawbush",
+        "score": 5,
+        "at": "Jul 14, 2022"
+      },
+      {
+        "reviewId": "13df113b-6c39-485f-81bc-8c0bfd8b8953",
+        "review": "Up to date. Nice \ud83d\udc4d",
+        "reply": null,
+        "userName": "Vickie Wagers",
+        "score": 5,
+        "at": "Jul 12, 2022"
+      },
+      {
+        "reviewId": "f5e989d5-675b-48ac-b2f2-0fb8e10ff538",
+        "review": "I LOVE LEX AND THE ENTIRE STAFF!!! PLEASE KEEP DOING WHAT YOU DO WELL!!!",
+        "reply": null,
+        "userName": "Patricia Epps",
+        "score": 5,
+        "at": "Jul 10, 2022"
+      },
+      {
+        "reviewId": "4d66400a-8f34-4b6b-b16c-b87ef10f1b39",
+        "review": "Good app",
+        "reply": null,
+        "userName": "Dianne Clouse",
+        "score": 5,
+        "at": "Jul 07, 2022"
+      },
+      {
+        "reviewId": "5ca421f6-46e9-43c5-a199-edff2b06c8a5",
+        "review": "Great, best one for warning about storms coming.",
+        "reply": null,
+        "userName": "uJohn Gahn",
+        "score": 5,
+        "at": "Jul 07, 2022"
+      },
+      {
+        "reviewId": "eca4e8fc-27b3-4a60-9107-51baa4ab19b4",
+        "review": "Best weather app out there I live on the otherside of the country and use this app.",
+        "reply": null,
+        "userName": "Trevor Mattson",
+        "score": 5,
+        "at": "Jun 25, 2022"
+      },
+      {
+        "reviewId": "8ed6ac63-ea22-4ef7-9170-1e61aa53e5e8",
+        "review": "I've always been a lex18 man or fan , take it however, for as far back as I can remember,",
+        "reply": null,
+        "userName": "Chris Bates",
+        "score": 5,
+        "at": "Jun 23, 2022"
+      },
+      {
+        "reviewId": "f669a805-3f41-4a02-942e-5c42e98aa377",
+        "review": "I love this app cause it let's me know the weather",
+        "reply": null,
+        "userName": "Angel Adams",
+        "score": 5,
+        "at": "Jun 21, 2022"
+      },
+      {
+        "reviewId": "f58db172-e8ae-44c8-b905-65bbe9a9b9eb",
+        "review": "Good",
+        "reply": null,
+        "userName": "Robert Lockard",
+        "score": 5,
+        "at": "Jun 15, 2022"
+      },
+      {
+        "reviewId": "afb5bf57-dfad-4756-b944-3049757af615",
+        "review": "I live on this app",
+        "reply": null,
+        "userName": "Jeanine Wilson",
+        "score": 5,
+        "at": "Jun 13, 2022"
+      },
+      {
+        "reviewId": "0a81e3bb-03f4-47ee-b4ed-418998fc7781",
+        "review": "This app is great I love everything about it.",
+        "reply": null,
+        "userName": "Matthew Childers",
+        "score": 5,
+        "at": "Jun 07, 2022"
+      },
+      {
+        "reviewId": "706b93ec-c264-4c18-8af2-2540b8bb5bf9",
+        "review": "Lex18 is the best app for weather and news",
+        "reply": null,
+        "userName": "Nic Davidson",
+        "score": 5,
+        "at": "Jun 06, 2022"
+      },
+      {
+        "reviewId": "341f9b5c-93aa-4674-9da3-4cd09caef272",
+        "review": "The hourly reading, the daily reading and weekly reading never jive. Just about every day the temp is either higher or lower than what is forecasted. The only reason I gave a one star rating, the radar is always helpful when we have bad storms and need to know when to take shelter. I love channel 18 news and weather, have enjoyed for years, but their weather app, well to be honest it sucks!!",
+        "reply": null,
+        "userName": "Dallas Morrow",
+        "score": 1,
+        "at": "Jun 04, 2022"
+      },
+      {
+        "reviewId": "f4f4d833-dbe8-4c50-b785-07022e6c21a1",
+        "review": "Best weather app so far.",
+        "reply": null,
+        "userName": "Tanner Stegall",
+        "score": 5,
+        "at": "Jun 04, 2022"
+      },
+      {
+        "reviewId": "d71dabd9-9679-4f4a-80e8-ac6c064529b2",
+        "review": "App will not 'follow me'. Id like to know what my weather is going to do when there are warnings.",
+        "reply": null,
+        "userName": "Pam Stephens",
+        "score": 4,
+        "at": "May 26, 2022"
+      },
+      {
+        "reviewId": "8aeb26b5-c325-4826-94ad-523ed74590a2",
+        "review": "I love being able to see what the weather is with just a glance. And I can plan my day by every hour of the day it helps to know if I should crab a jacket or an umbrella for the afternoon or to wear a tank top so I can shed the t-shirt or long sleeves if its going to be hot later! I love this app it even gives you alerts if there's gonna to be severe weather or a change that wasn't planned!",
+        "reply": null,
+        "userName": "Carrie Foster",
+        "score": 5,
+        "at": "May 24, 2022"
+      },
+      {
+        "reviewId": "44b95fdc-0f94-47f3-b30b-6596d251e16d",
+        "review": "Guys please make a widget in addition of the app. I would love to have lex18 in my screen",
+        "reply": null,
+        "userName": "Alejandro Sasmay",
+        "score": 5,
+        "at": "May 22, 2022"
+      },
+      {
+        "reviewId": "77947018-6958-40da-96ba-e7148d97c298",
+        "review": "Like this very much",
+        "reply": null,
+        "userName": "Annie Tilley",
+        "score": 5,
+        "at": "May 21, 2022"
+      },
+      {
+        "reviewId": "c2704a32-549b-4fcc-8a9c-9e92e17a1325",
+        "review": "Love Bill Meck & Lex 18",
+        "reply": null,
+        "userName": "Joseph Allen",
+        "score": 5,
+        "at": "May 20, 2022"
+      },
+      {
+        "reviewId": "d685b331-77f9-4926-8cd9-86b77b2b5314",
+        "review": "Accurate",
+        "reply": null,
+        "userName": "Mark Atkins",
+        "score": 5,
+        "at": "May 19, 2022"
+      },
+      {
+        "reviewId": "4d2d323a-f5cf-492d-a1df-8f986ccc9b95",
+        "review": "Get rid of the ads and it would be perfect.",
+        "reply": null,
+        "userName": "Jason Staudt",
+        "score": 4,
+        "at": "May 14, 2022"
+      },
+      {
+        "reviewId": "335b4864-fcee-40ae-9212-dd44ca74bc87",
+        "review": "Reliable",
+        "reply": null,
+        "userName": "Charles Lanphierd",
+        "score": 5,
+        "at": "May 12, 2022"
+      },
+      {
+        "reviewId": "83fcd3d3-44cc-4ae3-b348-770d0d9dc00d",
+        "review": "Great \ud83d\udc4d \ud83d\udc4d",
+        "reply": null,
+        "userName": "Pierre Turner",
+        "score": 5,
+        "at": "May 06, 2022"
+      },
+      {
+        "reviewId": "be010809-85e0-4656-8081-1d97dc3321bf",
+        "review": "Accurate and easy to use.",
+        "reply": null,
+        "userName": "Shawn Smith",
+        "score": 5,
+        "at": "May 05, 2022"
+      },
+      {
+        "reviewId": "cf6ef76a-147e-4ca3-bf9a-bdd0d268e90a",
+        "review": "I like that I cam put the map in montion to keep track of what's going on with the weather",
+        "reply": null,
+        "userName": "Carolyn Howard",
+        "score": 5,
+        "at": "May 03, 2022"
+      },
+      {
+        "reviewId": "b06c6e62-0432-4e28-9267-c06b01efdc77",
+        "review": "Awesome app!!!!",
+        "reply": null,
+        "userName": "Lonnie Potter",
+        "score": 5,
+        "at": "May 01, 2022"
+      },
+      {
+        "reviewId": "8d1313bd-8e64-4e72-b2ac-7d6c564dbaf4",
+        "review": "Love it \ud83d\ude00 very easy to use pretty accurate and doesn't bog my phone down",
+        "reply": null,
+        "userName": "Mikki Houglin",
+        "score": 5,
+        "at": "May 01, 2022"
+      },
+      {
+        "reviewId": "2992615a-f15c-4e17-9003-be3fc23d07df",
+        "review": "Great app... Very accurate....",
+        "reply": null,
+        "userName": "MrMustangMan",
+        "score": 5,
+        "at": "Apr 30, 2022"
+      },
+      {
+        "reviewId": "c2e6f041-ab75-419c-887d-d5ea5c556c50",
+        "review": "Seems to always be accurate",
+        "reply": null,
+        "userName": "Patty Stephan",
+        "score": 5,
+        "at": "Apr 29, 2022"
+      },
+      {
+        "reviewId": "81b02d6b-49b8-4c5f-8096-44dd64ebed24",
+        "review": "AWESOME!!!",
+        "reply": null,
+        "userName": "Jeremy Hines",
+        "score": 5,
+        "at": "Apr 28, 2022"
+      },
+      {
+        "reviewId": "da968d43-006a-4d19-83c8-50e81a54f3ce",
+        "review": "Best in town.",
+        "reply": null,
+        "userName": "Ellen Tippett",
+        "score": 5,
+        "at": "Apr 26, 2022"
+      },
+      {
+        "reviewId": "a4798974-5ca4-4d18-90b0-825c4670d0f6",
+        "review": "I watched it every morning \ud83c\udf04",
+        "reply": null,
+        "userName": "Sheri Marshall",
+        "score": 4,
+        "at": "Apr 26, 2022"
+      },
+      {
+        "reviewId": "9987385b-cf34-4fcb-815b-27cab52e636a",
+        "review": "I always love lex 18 weather n news . And I trust them more then any other weather n news in the country",
+        "reply": null,
+        "userName": "Billy Jennings",
+        "score": 5,
+        "at": "Apr 25, 2022"
+      },
+      {
+        "reviewId": "f0406bec-f207-4bc2-80c1-dc58f1581250",
+        "review": "Love this app. Smooth. Never crashes that I know of. Does exactly what I need it to.",
+        "reply": null,
+        "userName": "Levi Gatliff",
+        "score": 5,
+        "at": "Apr 25, 2022"
+      },
+      {
+        "reviewId": "3fbc6f09-77d0-42f3-9b23-9856d6f157da",
+        "review": "Great",
+        "reply": null,
+        "userName": "Robbie Bowling",
+        "score": 5,
+        "at": "Apr 24, 2022"
+      },
+      {
+        "reviewId": "d0950ee9-efbb-4ede-866a-cfa713619655",
+        "review": "I refer to this often, and find it very helpful for being weather aware and prepared.",
+        "reply": null,
+        "userName": "Teresa Miles",
+        "score": 5,
+        "at": "Apr 23, 2022"
+      },
+      {
+        "reviewId": "fe6c3846-1814-4d51-a813-e6a4be4894fc",
+        "review": "Best weather station around",
+        "reply": null,
+        "userName": "Michelle Lee",
+        "score": 5,
+        "at": "Apr 22, 2022"
+      },
+      {
+        "reviewId": "3ad4311f-8893-40c4-b413-19cce33b7a39",
+        "review": "Love it",
+        "reply": null,
+        "userName": "Rose Bailey",
+        "score": 5,
+        "at": "Apr 22, 2022"
+      },
+      {
+        "reviewId": "a400110a-0070-4c52-a5ef-6166710ef42d",
+        "review": "Thought I am in North America. I am in Western Australia. Required way too many privileges. Can't find me by GPS. Can't find Mandurah.",
+        "reply": null,
+        "userName": "John Summerfield",
+        "score": 1,
+        "at": "Apr 22, 2022"
+      },
+      {
+        "reviewId": "aa4637b6-7bbc-4c84-87a0-d70a75f5b2dd",
+        "review": "I live in ND and this is by far the most accurate app I've found so far.",
+        "reply": null,
+        "userName": "barbwire and roses",
+        "score": 4,
+        "at": "Apr 21, 2022"
+      },
+      {
+        "reviewId": "44a6ce62-b48f-40fd-bae1-c84561803aa5",
+        "review": "Ever since the last update the followed me but in the app no longer works it just keeps loading and loaded and never stops loading never actually follows, be really nice to go to Richmond or Louisville or even Lexington and not see the temperature for Paris Kentucky I'd like to know what the temperatures is where I'm currently at please fix this",
+        "reply": null,
+        "userName": "Tracy Buenrostro",
+        "score": 2,
+        "at": "Apr 21, 2022"
+      },
+      {
+        "reviewId": "72581486-5d67-435e-8ea1-986de770e27f",
+        "review": "Great",
+        "reply": null,
+        "userName": "Patrick Pregley",
+        "score": 5,
+        "at": "Apr 19, 2022"
+      },
+      {
+        "reviewId": "fe3c2bdc-e941-41f3-b586-1c8de8489200",
+        "review": "Spot on",
+        "reply": null,
+        "userName": "Justin carrier",
+        "score": 4,
+        "at": "Apr 16, 2022"
+      },
+      {
+        "reviewId": "398acb83-eecf-469a-9ab1-ad4ada040e0c",
+        "review": "Pretty accurate",
+        "reply": null,
+        "userName": "Janice Steinpreis",
+        "score": 5,
+        "at": "Apr 16, 2022"
+      },
+      {
+        "reviewId": "cb656345-7248-4b53-bf63-522049d10ca0",
+        "review": "Very up-to-date as well as a detailed hourly forecast for your local town. The radar is very accurate and most forecasts can be counted on like clockwork. ( I'm a wildland firefighter in KY and I use this app almost religiously for reliable forecasts in the field. )",
+        "reply": null,
+        "userName": "Jason Hensley",
+        "score": 5,
+        "at": "Apr 16, 2022"
+      },
+      {
+        "reviewId": "16371a0f-8d36-4e9e-a89a-d87720980d44",
+        "review": "Good",
+        "reply": null,
+        "userName": "Joel Bailey",
+        "score": 5,
+        "at": "Apr 15, 2022"
+      },
+      {
+        "reviewId": "fd1c0113-f65b-44c3-8d87-f2ab5cce85d2",
+        "review": "Love this app!",
+        "reply": null,
+        "userName": "Sheila C.",
+        "score": 5,
+        "at": "Apr 14, 2022"
+      },
+      {
+        "reviewId": "3dab82f0-5f32-44b9-8c39-6866001c7ea6",
+        "review": "Great local information. App is slow to start, staying on title screen for a while, but once started information is great.",
+        "reply": null,
+        "userName": "craig potts",
+        "score": 4,
+        "at": "Apr 13, 2022"
+      },
+      {
+        "reviewId": "db435111-825b-4f72-a5e1-88d562f4a40f",
+        "review": "Only weather app I use",
+        "reply": null,
+        "userName": "William Adams",
+        "score": 5,
+        "at": "Apr 13, 2022"
+      },
+      {
+        "reviewId": "c713bebd-290a-4658-a8bb-69f1ca47aa93",
+        "review": "Love this app",
+        "reply": null,
+        "userName": "Shirley Parks",
+        "score": 5,
+        "at": "Apr 10, 2022"
+      },
+      {
+        "reviewId": "220425f3-f20a-41e2-98e2-82af014fbb34",
+        "review": "The app has gotten better over the past couple of years. It is still not 5 star but I don't think any app is \"the best\". I am a SKYWARN Weather Spotter and rely more on the map than anything else on the app. Information like temp, wind and barometric pressure are going to different from your exact location and the technology isn't here to have the app as a personal weather station. All in all, kudos for fixing the freezing issue I had a couple of years ago and got making the map better.",
+        "reply": null,
+        "userName": "Stephen Chiles",
+        "score": 4,
+        "at": "Apr 10, 2022"
+      },
+      {
+        "reviewId": "f9a3f51f-9b00-4728-adaa-679a03c434cd",
+        "review": "I find this to be very accurate on forecasting the weather. I depend on it all the time.",
+        "reply": null,
+        "userName": "A Google user",
+        "score": 5,
+        "at": "Apr 10, 2022"
+      },
+      {
+        "reviewId": "f85e4cb6-8b76-4e74-9c40-9efc335d023a",
+        "review": "Love it !",
+        "reply": null,
+        "userName": "Barbie Mcneil",
+        "score": 5,
+        "at": "Apr 07, 2022"
+      },
+      {
+        "reviewId": "58b760f4-90e6-421b-a256-044943aec2bb",
+        "review": "I always watched Channel 18. They're the best",
+        "reply": null,
+        "userName": "Kenny Isaacs",
+        "score": 5,
+        "at": "Apr 04, 2022"
+      },
+      {
+        "reviewId": "327efd3b-a262-447f-a846-646fd7f094d9",
+        "review": "So far the most accurate weather app I've used.",
+        "reply": null,
+        "userName": "Aaron Davis",
+        "score": 5,
+        "at": "Apr 02, 2022"
+      },
+      {
+        "reviewId": "f071c2b6-4890-4eca-89bc-83b9529f6f3c",
+        "review": "Love it",
+        "reply": null,
+        "userName": "Jeff Smith",
+        "score": 5,
+        "at": "Mar 31, 2022"
+      },
+      {
+        "reviewId": "8a5d10bc-46cf-4976-8431-3c2af763785c",
+        "review": "Know tomorrow's weather today. Hour by hour or a week in advance",
+        "reply": null,
+        "userName": "Rick Reynolds",
+        "score": 4,
+        "at": "Mar 28, 2022"
+      },
+      {
+        "reviewId": "8847d344-8038-4d3c-927f-8b1abf8014c6",
+        "review": "Wonderful",
+        "reply": null,
+        "userName": "Antonio-hernandez Hernandez",
+        "score": 5,
+        "at": "Mar 26, 2022"
+      },
+      {
+        "reviewId": "2eb0497a-f917-4baa-b308-23f08f42ac6b",
+        "review": "So far, a great app.",
+        "reply": null,
+        "userName": "Max Parrish",
+        "score": 5,
+        "at": "Mar 25, 2022"
+      },
+      {
+        "reviewId": "06af981c-d2d1-466c-bd53-3c1f946be33c",
+        "review": "Love watching all the people doing a great job .",
+        "reply": null,
+        "userName": "Cindy Clark",
+        "score": 5,
+        "at": "Mar 24, 2022"
+      },
+      {
+        "reviewId": "25b2cf53-7f9f-4249-8c42-fbf3b079ff8d",
+        "review": "Always accurate, very close. Best weather forecast in Ky.",
+        "reply": null,
+        "userName": "Dave Dees",
+        "score": 5,
+        "at": "Mar 18, 2022"
+      },
+      {
+        "reviewId": "873feb3c-d069-4dda-ba09-077cd6d9fd62",
+        "review": "Very handy.",
+        "reply": null,
+        "userName": "WillA2",
+        "score": 4,
+        "at": "Mar 15, 2022"
+      },
+      {
+        "reviewId": "ebcb6e02-6573-42de-ac3a-d24507ffb31a",
+        "review": "Muy buena",
+        "reply": null,
+        "userName": "Christian Delgado",
+        "score": 5,
+        "at": "Mar 13, 2022"
+      },
+      {
+        "reviewId": "f836403b-92e0-472e-9170-a6e2a3c58883",
+        "review": "Good and easy",
+        "reply": null,
+        "userName": "Keith",
+        "score": 5,
+        "at": "Mar 12, 2022"
+      },
+      {
+        "reviewId": "43154126-aa49-4bbc-a641-14f31535d28f",
+        "review": "My favorite weather app! Easy to use, and I love the severe weather alerts.",
+        "reply": null,
+        "userName": "Michelle Isaacs",
+        "score": 4,
+        "at": "Mar 09, 2022"
+      },
+      {
+        "reviewId": "7e16432c-e355-4642-8e8e-7ca0f3eff516",
+        "review": "Good app",
+        "reply": null,
+        "userName": "Dewey Hutson",
+        "score": 5,
+        "at": "Mar 08, 2022"
+      },
+      {
+        "reviewId": "92df480c-f089-411f-93d9-ceee729f6f23",
+        "review": "We watch lex18 we love the morning show",
+        "reply": null,
+        "userName": "Phyllis Bussell",
+        "score": 4,
+        "at": "Mar 07, 2022"
+      },
+      {
+        "reviewId": "363af963-6880-44c1-a2f2-55a1794142f0",
+        "review": "Best radar and weather outlooks/forecasts I've ever seen\u2763\ufe0f",
+        "reply": null,
+        "userName": "Valerie Kolbe",
+        "score": 5,
+        "at": "Mar 01, 2022"
+      },
+      {
+        "reviewId": "cd1cc4ff-3385-40eb-b804-f14eb02c3c98",
+        "review": "Great weather map,easy visually.",
+        "reply": null,
+        "userName": "Tom Teague",
+        "score": 5,
+        "at": "Feb 26, 2022"
+      },
+      {
+        "reviewId": "bc9a6f21-e771-4620-b8e7-544de815be0f",
+        "review": "This WAS my go to favorite app, just got a new phone and every single time I've tried to download this app it will not open for me",
+        "reply": null,
+        "userName": "Paula Estes",
+        "score": 1,
+        "at": "Feb 26, 2022"
+      },
+      {
+        "reviewId": "87aa65f1-fd70-4b1e-bb52-4ca44581480e",
+        "review": "Accurate, maps are great, information perfect. Always check it when bad weather is brewing!",
+        "reply": null,
+        "userName": "Diane Mead",
+        "score": 5,
+        "at": "Feb 24, 2022"
+      },
+      {
+        "reviewId": "0b7ab38d-d96c-4094-8f8e-50c37882a607",
+        "review": "Love this app. I especially like the hour by hour forecast and map.",
+        "reply": null,
+        "userName": "Rachael Sutton",
+        "score": 5,
+        "at": "Feb 23, 2022"
+      },
+      {
+        "reviewId": "315102ed-4da0-4d47-bcaf-285f8e7449ea",
+        "review": "this is a good weather app",
+        "reply": null,
+        "userName": "Vanessa woo",
+        "score": 5,
+        "at": "Feb 20, 2022"
+      },
+      {
+        "reviewId": "c3d6458f-d121-4f6c-a16c-862066428697",
+        "review": "Very appealing app",
+        "reply": null,
+        "userName": "Raymond Perfetto",
+        "score": 5,
+        "at": "Feb 19, 2022"
+      },
+      {
+        "reviewId": "b1e0e430-b06b-463d-829e-b53d44895221",
+        "review": "Awesome app",
+        "reply": null,
+        "userName": "Brian Clarkson",
+        "score": 5,
+        "at": "Feb 19, 2022"
+      },
+      {
+        "reviewId": "8f28a32e-d602-4a08-93d4-3b7f1ae952c8",
+        "review": "Horrible app. Can't ever get location without closing and re opening numerous times.",
+        "reply": null,
+        "userName": "James Dwelly",
+        "score": 1,
+        "at": "Feb 17, 2022"
+      },
+      {
+        "reviewId": "0a1bbe45-7b3c-4cdc-a090-f87e18a7abe1",
+        "review": "Xcellent Weather App is Amazing \ud83d\udc9c\ud83d\udc9b\ud83d\udc9c",
+        "reply": null,
+        "userName": "William Brent Parrott",
+        "score": 5,
+        "at": "Feb 15, 2022"
+      },
+      {
+        "reviewId": "6b36f3f8-dcfc-4c25-b8ec-d302b9677f67",
+        "review": "When I need to know the weather this is where I go.",
+        "reply": null,
+        "userName": "James Bradley",
+        "score": 5,
+        "at": "Feb 13, 2022"
+      },
+      {
+        "reviewId": "2e107bab-7130-4b8b-9148-91ec983b3c49",
+        "review": "Easy to use",
+        "reply": null,
+        "userName": "Donair Rhodes",
+        "score": 5,
+        "at": "Feb 10, 2022"
+      },
+      {
+        "reviewId": "066248b3-972e-4cc7-ae98-36909dc2a760",
+        "review": "Best weather app!!",
+        "reply": null,
+        "userName": "John Shewmaker",
+        "score": 5,
+        "at": "Feb 09, 2022"
+      },
+      {
+        "reviewId": "818f2f2e-c0cd-450b-a7f5-a94cd85067b6",
+        "review": "Good",
+        "reply": null,
+        "userName": "Matthew Townsend",
+        "score": 5,
+        "at": "Feb 06, 2022"
+      },
+      {
+        "reviewId": "e75c32af-767d-454a-9891-279a604539fa",
+        "review": "Love it",
+        "reply": null,
+        "userName": "David Lyons",
+        "score": 5,
+        "at": "Feb 04, 2022"
+      },
+      {
+        "reviewId": "87d8142c-b28e-4b85-94b2-d04b2c2bd35d",
+        "review": "Other stations give storm warnings a long time ahead of WLEX",
+        "reply": null,
+        "userName": "Ron Jones",
+        "score": 4,
+        "at": "Feb 01, 2022"
+      },
+      {
+        "reviewId": "78d64467-a45a-408b-9fac-b1d8664041b5",
+        "review": "Ridiculously slow.",
+        "reply": null,
+        "userName": "shannon johnson",
+        "score": 1,
+        "at": "Jan 31, 2022"
+      },
+      {
+        "reviewId": "3a440de1-d920-49fa-bc1e-b19bc92fe835",
+        "review": "Are y'all on crack? If you knew the topographical of maine you would know its impossible for the majority of maine to have flash flooding. Even were I live in waterville maine the kennebec river would have to rise 50ft to even Crest the land. By then the majority of maine would be under water. To further my point how far your off. You are trying to include kennebec County Maine under today's blizzard warning even tho non of kennebec County is in the blizzard warning area.",
+        "reply": null,
+        "userName": "Matthew Lizotte",
+        "score": 1,
+        "at": "Jan 29, 2022"
+      },
+      {
+        "reviewId": "e3f1d4b1-2ed6-4b68-ac6a-9c1f38664f1a",
+        "review": "IT'S THE GREAT APP I'VE USED IT FOR YEARS.",
+        "reply": null,
+        "userName": "Georgeanna \u201cThe love buggy\u201d Blackburn",
+        "score": 5,
+        "at": "Jan 29, 2022"
+      },
+      {
+        "reviewId": "65f46bb1-da72-4bfd-828f-cef343b48df8",
+        "review": "Love this app,Have used it for Years in Different States,Always spot on.",
+        "reply": null,
+        "userName": "Joanna Hardy Tarver",
+        "score": 5,
+        "at": "Jan 28, 2022"
+      },
+      {
+        "reviewId": "267c9fcb-7cbd-4f7e-bb6b-5d1819559953",
+        "review": "The radar isn't very good lately?",
+        "reply": null,
+        "userName": "Anthony Coots",
+        "score": 3,
+        "at": "Jan 25, 2022"
+      },
+      {
+        "reviewId": "3e8d15ce-eebb-4c53-b847-ccd404ca1d52",
+        "review": "No matter where you are you will get weather at home and your current location.",
+        "reply": null,
+        "userName": "Peter Kensicki",
+        "score": 5,
+        "at": "Jan 23, 2022"
+      },
+      {
+        "reviewId": "5136416e-7647-4fd6-8a0c-5a9cb56c8e1d",
+        "review": "I'm able to get quick check of current weather, plus keep up with closings during inclement weather.",
+        "reply": null,
+        "userName": "Byron Hunt",
+        "score": 5,
+        "at": "Jan 22, 2022"
+      },
+      {
+        "reviewId": "1f2ecac9-3206-4eb6-b0a2-b2fbe0686fe6",
+        "review": "Always a good forecast",
+        "reply": null,
+        "userName": "hal loucks",
+        "score": 5,
+        "at": "Jan 22, 2022"
+      },
+      {
+        "reviewId": "9cd683d2-07d0-432b-87d2-855300ed923d",
+        "review": "Very up-to-date and informational",
+        "reply": null,
+        "userName": "Blaine Olivas",
+        "score": 5,
+        "at": "Jan 20, 2022"
+      },
+      {
+        "reviewId": "15d9f211-f8d1-427b-9433-f75ef263ed1d",
+        "review": "Always on top of the weather",
+        "reply": null,
+        "userName": "Randall Hancock",
+        "score": 5,
+        "at": "Jan 20, 2022"
+      },
+      {
+        "reviewId": "827bbf12-1a1c-42a6-bc6e-afef2693404c",
+        "review": "Love my weather app. Very dependable",
+        "reply": null,
+        "userName": "Allison Cox",
+        "score": 5,
+        "at": "Jan 18, 2022"
+      },
+      {
+        "reviewId": "bf35ca9f-f6c8-41b0-95ff-4f59fb9f8144",
+        "review": "Great weather app!!!",
+        "reply": null,
+        "userName": "Bradley Reed",
+        "score": 5,
+        "at": "Jan 16, 2022"
+      },
+      {
+        "reviewId": "22b6ff8d-98be-46ba-b343-401d5478a00b",
+        "review": "Great \ud83d\udc4d.",
+        "reply": null,
+        "userName": "Bobby Dillard",
+        "score": 5,
+        "at": "Jan 15, 2022"
+      },
+      {
+        "reviewId": "6e5a5cc0-3178-4322-b5fb-2035d4db017c",
+        "review": "My preferred weather ap",
+        "reply": null,
+        "userName": "Brian Crow",
+        "score": 5,
+        "at": "Jan 13, 2022"
+      },
+      {
+        "reviewId": "8d88cac9-3357-440e-8679-3086a4cb0a37",
+        "review": "Great app",
+        "reply": null,
+        "userName": "Jonathan Jones",
+        "score": 5,
+        "at": "Jan 12, 2022"
+      },
+      {
+        "reviewId": "ae0c940c-9221-4f8d-a0f3-eb453f4350e8",
+        "review": "Excellent",
+        "reply": null,
+        "userName": "Cornel Carter",
+        "score": 5,
+        "at": "Jan 11, 2022"
+      },
+      {
+        "reviewId": "d851dd98-46d7-4ef5-9ba2-1caf9d793e7b",
+        "review": "I've never had trouble getting on here. I've always watched 18 News all my life. There the Best.",
+        "reply": null,
+        "userName": "Shawndra Gadd",
+        "score": 5,
+        "at": "Jan 10, 2022"
+      },
+      {
+        "reviewId": "a81ef5ba-4e6e-41eb-b77f-e0fb3e4a1676",
+        "review": "Great app to have",
+        "reply": null,
+        "userName": "Kathy Wheeler",
+        "score": 5,
+        "at": "Jan 08, 2022"
+      },
+      {
+        "reviewId": "a28b8437-fa7e-439b-a127-12853eac7259",
+        "review": "Its great when you open the app and use it. But the banner with with the temp and current conditions doesn't update til you open the app.",
+        "reply": null,
+        "userName": "Lloyd Haan",
+        "score": 3,
+        "at": "Jan 07, 2022"
+      },
+      {
+        "reviewId": "5d12b600-05a9-487e-b03a-5fa027eca057",
+        "review": "Too helpful",
+        "reply": null,
+        "userName": "Sarem Alhamdani",
+        "score": 5,
+        "at": "Jan 07, 2022"
+      },
+      {
+        "reviewId": "f22a8659-fa4f-43f3-8d8f-4da7a23b113a",
+        "review": "Wreath reporting is good an Raydor is very helpful THANK you",
+        "reply": null,
+        "userName": "Robert Dolan",
+        "score": 5,
+        "at": "Jan 07, 2022"
+      },
+      {
+        "reviewId": "56317f6d-6252-44b1-952f-90337cd4d790",
+        "review": "Helps with Severe Tstorms etc. Really like the radar!",
+        "reply": null,
+        "userName": "Monica K (MonaK)",
+        "score": 5,
+        "at": "Jan 03, 2022"
+      },
+      {
+        "reviewId": "f502be01-8b5a-4c33-bc6b-eb3aae567b69",
+        "review": "Love this app and Meteorologist Bill Meck",
+        "reply": null,
+        "userName": "Joe Allen",
+        "score": 5,
+        "at": "Dec 29, 2021"
+      },
+      {
+        "reviewId": "bf51cfe9-70b2-4e27-92ea-315078c7686e",
+        "review": "Love the app",
+        "reply": null,
+        "userName": "Dorena B",
+        "score": 5,
+        "at": "Dec 28, 2021"
+      },
+      {
+        "reviewId": "f563d861-1f58-40da-85fe-0e605e1c4802",
+        "review": "Very good",
+        "reply": null,
+        "userName": "Roger Masters",
+        "score": 5,
+        "at": "Dec 27, 2021"
+      },
+      {
+        "reviewId": "0c35ea6a-3a05-420a-9d35-0eab6ff2e219",
+        "review": "Just what I need",
+        "reply": null,
+        "userName": "Sue Roth",
+        "score": 4,
+        "at": "Dec 25, 2021"
+      },
+      {
+        "reviewId": "f9c5ce2a-d8aa-48de-a2fc-b87f8a5f7e61",
+        "review": "Great",
+        "reply": null,
+        "userName": "Evelyn Shaw",
+        "score": 5,
+        "at": "Dec 23, 2021"
+      },
+      {
+        "reviewId": "3d064fd1-7c52-4cd0-955e-6e4808c76df9",
+        "review": "Love Wlex 18 weather app! It so cool to go to the app. When you need check the weather! Thank you for the app!",
+        "reply": null,
+        "userName": "Amy Sams",
+        "score": 5,
+        "at": "Dec 19, 2021"
+      },
+      {
+        "reviewId": "db1be992-347c-41e4-a040-19ff6e4ab9ca",
+        "review": "It is great",
+        "reply": null,
+        "userName": "Amy Alford",
+        "score": 5,
+        "at": "Dec 18, 2021"
+      },
+      {
+        "reviewId": "f7f39402-aba4-4b6a-a084-63c876ef4709",
+        "review": "Love the quick radar access. I am a weather enthusiasts and live by the radar.\u2764",
+        "reply": null,
+        "userName": "Marcia Hughes",
+        "score": 5,
+        "at": "Dec 18, 2021"
+      },
+      {
+        "reviewId": "bb684c93-9e7f-4b09-a816-b77b26dfecc2",
+        "review": "Bong mad",
+        "reply": null,
+        "userName": "Keontae Carter",
+        "score": 1,
+        "at": "Dec 17, 2021"
+      },
+      {
+        "reviewId": "0475f4ae-5a82-46ae-978c-0ae3c9912111",
+        "review": "Reliable, accurate reference",
+        "reply": null,
+        "userName": "Ronald Saia",
+        "score": 5,
+        "at": "Dec 12, 2021"
+      },
+      {
+        "reviewId": "5e94adcf-083c-4589-ad2b-eb9d8f47289d",
+        "review": "I downloaded this app in preparation for the storms rolling through over night. Turned on location and every notification. Didn't receive single notification regarding the tornado warning. \ud83d\ude21 Thankfully, the weather radio in our home alerted us.",
+        "reply": null,
+        "userName": "Alicia Carr",
+        "score": 1,
+        "at": "Dec 11, 2021"
+      },
+      {
+        "reviewId": "23338b6c-1581-4fc2-8704-307b3eaa3019",
+        "review": "It's accurate and easy to use.",
+        "reply": null,
+        "userName": "Chris Edgington",
+        "score": 5,
+        "at": "Dec 11, 2021"
+      },
+      {
+        "reviewId": "ba518ca4-fed6-4269-9c01-59b1c95acff1",
+        "review": "Works great! The only weather app I trust!",
+        "reply": null,
+        "userName": "Howard Carter",
+        "score": 5,
+        "at": "Dec 11, 2021"
+      },
+      {
+        "reviewId": "0e5e1901-00ed-4386-971b-a184822ea4ee",
+        "review": "Excellent",
+        "reply": null,
+        "userName": "Whit Criswell",
+        "score": 5,
+        "at": "Dec 10, 2021"
+      },
+      {
+        "reviewId": "3c7966dc-9f03-4ae7-8a4c-661af13ef706",
+        "review": "It's fantastic",
+        "reply": null,
+        "userName": "James Poore",
+        "score": 5,
+        "at": "Dec 10, 2021"
+      },
+      {
+        "reviewId": "f00454cf-ae87-4bcc-a1d5-ef3a404ac66e",
+        "review": "It's the Best App!",
+        "reply": null,
+        "userName": "Lloyd Gullett,II",
+        "score": 5,
+        "at": "Dec 10, 2021"
+      },
+      {
+        "reviewId": "682d1788-fdc2-4003-82a1-7d245ee913ed",
+        "review": "It won't open",
+        "reply": null,
+        "userName": "Christy Turnage",
+        "score": 1,
+        "at": "Dec 09, 2021"
+      },
+      {
+        "reviewId": "3d53af84-df96-4e22-9a9f-24195a024565",
+        "review": "My go to Weather App.",
+        "reply": null,
+        "userName": "Joe Diaz",
+        "score": 5,
+        "at": "Dec 09, 2021"
+      },
+      {
+        "reviewId": "8bfe3bf4-2181-4f7b-b4d9-f6facb0270d5",
+        "review": "Good.",
+        "reply": null,
+        "userName": "Joanne Jackson",
+        "score": 5,
+        "at": "Dec 04, 2021"
+      },
+      {
+        "reviewId": "7c9a574e-d355-4f27-81a4-59fcaecf13e1",
+        "review": "Accurate and dependable",
+        "reply": null,
+        "userName": "Bryon Owens",
+        "score": 5,
+        "at": "Nov 28, 2021"
+      },
+      {
+        "reviewId": "cc8ae639-87df-4bb8-943e-6c7bf9999268",
+        "review": "Love this app it goes every where i go. Cause in my line of work I need to know if its raining on the other side of town or even the next county. So i know if i can do a job. So I can notify the clients an keep every on happy.",
+        "reply": null,
+        "userName": "Bruce Voils",
+        "score": 5,
+        "at": "Nov 18, 2021"
+      }
+    ],
+    "similar_apps": [
+      {
+        "title": "ABC15 Arizona in Phoenix",
+        "link": "https://play.google.com/store/apps/details?id=com.mylocaltv.knxv",
+        "product_id": "com.mylocaltv.knxv",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=us&hl=en&product_id=com.mylocaltv.knxv&store=apps",
+        "rating": 4.0,
+        "extansion": [
+          "The E.W. Scripps Company"
+        ],
+        "thumbnail": "https://play-lh.googleusercontent.com/nQAcHvJQcjcsp1XOcXQUkjVLTCtsYCU5ZTvDf456NHS7OgG1eD0zEjxPVI6Cx1O0Ng=s64-rw"
+      },
+      {
+        "title": "ABC Action News Tampa Bay",
+        "link": "https://play.google.com/store/apps/details?id=com.mylocaltv.wfts",
+        "product_id": "com.mylocaltv.wfts",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=us&hl=en&product_id=com.mylocaltv.wfts&store=apps",
+        "rating": 4.2,
+        "extansion": [
+          "The E.W. Scripps Company"
+        ],
+        "thumbnail": "https://play-lh.googleusercontent.com/7ovnT3xM0EN2-aDt0L8fXEzPhngbv3ynNY5pIzwXQwuYWY1NjWmxt11u-Do0W_ymCR-C=s64-rw"
+      },
+      {
+        "title": "WXYZ 7 Action News Detroit",
+        "link": "https://play.google.com/store/apps/details?id=com.mylocaltv.wxyz",
+        "product_id": "com.mylocaltv.wxyz",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=us&hl=en&product_id=com.mylocaltv.wxyz&store=apps",
+        "rating": 4.3,
+        "extansion": [
+          "The E.W. Scripps Company"
+        ],
+        "thumbnail": "https://play-lh.googleusercontent.com/b4XHYsDqQPPBSBY_GqbLNWKNVsSH2Y0h2htN3nPyKKBDn6lCsiwdevNtiCJMFjGJoMw=s64-rw"
+      },
+      {
+        "title": "Storm Shield",
+        "link": "https://play.google.com/store/apps/details?id=com.wdtinc.android.stormshield",
+        "product_id": "com.wdtinc.android.stormshield",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=us&hl=en&product_id=com.wdtinc.android.stormshield&store=apps",
+        "rating": 3.8,
+        "extansion": [
+          "The E.W. Scripps Company"
+        ],
+        "thumbnail": "https://play-lh.googleusercontent.com/GvyVDvxKG3ltZ7RU19IHJ3Kw3OoKvnaisFaajE8jO_uKgwWZhpclIgTP-hjSyoS5bbI=s64-rw"
+      },
+      {
+        "title": "News Channel 5 Nashville",
+        "link": "https://play.google.com/store/apps/details?id=com.mandrejrn.revc",
+        "product_id": "com.mandrejrn.revc",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=us&hl=en&product_id=com.mandrejrn.revc&store=apps",
+        "rating": 4.3,
+        "extansion": [
+          "The E.W. Scripps Company"
+        ],
+        "thumbnail": "https://play-lh.googleusercontent.com/L0Ene8sF3ozRcX9RPRRiuIehmVWaS6O_cDU1f8luIYj265-hhNSHeT5cHimVwIWW0H4=s64-rw"
+      },
+      {
+        "title": "CBS 6 News Richmond WTVR",
+        "link": "https://play.google.com/store/apps/details?id=com.wtvr.localtv",
+        "product_id": "com.wtvr.localtv",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_play_product&gl=us&hl=en&product_id=com.wtvr.localtv&store=apps",
+        "rating": 4.7,
+        "extansion": [
+          "The E.W. Scripps Company"
+        ],
+        "thumbnail": "https://play-lh.googleusercontent.com/ns_YHqddq6Uwl3OPuDBshHgQlkIqOJtF81bQ39frXzGWBZhldEgTLOIYVCuLwc8_9IM8=s64-rw"
+      }
+    ],
+    "package_name": "com.wlex.android.weather",
+    "other_apps": null,
+    "play_store_link": "https://play.google.com/store/apps/details?id=com.wlex.android.weather&hl=en&gl=us",
+    "features": [
+      "Prototyping",
+      "Web service"
+    ],
+    "tags": [
+      "soap",
+      "online-service",
+      "testing"
+    ],
+    "is_open_source": true,
+    "repository": null,
+    "categories": [
+      "Weather"
+    ]
+  }
+]
