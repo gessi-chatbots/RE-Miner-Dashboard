@@ -138,51 +138,49 @@ class ReviewService {
         featureExtraction: boolean,
         sentimentExtraction: boolean,
         featureModel: string | null,
-        sentimentModel: string | null
+        sentimentModel: string | null,
+        siblingThreshold: number | null // Add siblingThreshold as a parameter
     ) => {
         const id = localStorage.getItem('USER_ID');
-    
-        let url = `${this.API_NAME}${this.PATH_NAME}/${id}/analyze/v1?`;
-    
-        if (featureExtraction) {
-            url += `featureExtraction=true&`;
-            if (featureModel) {
-                url += `feature_model=${featureModel}&`;
-            }
+        const queryParams = [];
+
+        if (featureExtraction && featureModel) {
+            queryParams.push(`feature_model=${encodeURIComponent(featureModel)}`);
         }
-    
-        if (sentimentExtraction) {
-            url += `sentimentExtraction=true&`;
-            if (sentimentModel) {
-                url += `sentiment_model=${sentimentModel}&`;
-            }
+
+        if (sentimentExtraction && sentimentModel) {
+            queryParams.push(`sentiment_model=${encodeURIComponent(sentimentModel)}`);
         }
-    
-        const jsonBody = reviews.map(review => ({ "reviewId": review.reviewId }));
-    
+
+        if (siblingThreshold !== null) {
+            queryParams.push(`sibling_threshold=${encodeURIComponent(siblingThreshold)}`);
+        }
+
+        const queryString = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
+        const url = `${this.API_NAME}${this.PATH_NAME}/${id}/analyze${queryString}`;
+
+        const jsonBody = reviews.map((review) => review.reviewId);
+
         try {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(jsonBody)
+                body: JSON.stringify(jsonBody),
             });
-    
-            if (response.status === 200) {
 
-                const responseData = await response.json(); 
-                console.log("Reviews analyzed successfully:", responseData);
+            if (response.status === 200) {
+                const responseData = await response.json();
+                console.log('Reviews analyzed successfully:', responseData);
             } else {
-                console.error("Unexpected status code:", response.status);
+                console.error('Unexpected status code:', response.status);
             }
         } catch (error) {
-            console.error("Error analyzing reviews:", error);
+            console.error('Error analyzing reviews:', error);
             throw error;
         }
     };
-
-
     fetchSelectedFeatureReviews = async (
         appName: string,
         featureList: string[]

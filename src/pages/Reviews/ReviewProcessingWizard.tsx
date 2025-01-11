@@ -86,7 +86,8 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                 selectedTasks.featureExtraction,
                 selectedTasks.sentimentAnalysis,
                 selectedFeatureModel,
-                selectedSentimentModel
+                selectedSentimentModel,
+                selectedTasks.distanceThreshold // Pass distanceThreshold as siblingThreshold
             );
 
             toast.dismiss(infoToast);
