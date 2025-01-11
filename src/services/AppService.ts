@@ -42,8 +42,8 @@ class AppService {
             }
             const jsonResponse = await response.json();
             const apps = jsonResponse.map((item: any) => ({
-                applicationPackage: item.applicationPackage,
-                name: item.name,
+                applicationPackage: item.package_name,
+                name: item.app_name,
                 reviewCount: item.reviewCount
             }));
             return {
