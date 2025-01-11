@@ -41,7 +41,7 @@ const ReviewSearcher: React.FC = () => {
     }, [state]);
 
     useEffect(() => {
-        fetchReviews(); // Trigger the first search automatically
+        fetchReviews();
     }, [appName, clusterName, selectedFeatures]);
 
     const fetchReviews = async () => {
