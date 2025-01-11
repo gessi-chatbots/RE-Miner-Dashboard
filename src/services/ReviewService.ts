@@ -185,10 +185,9 @@ class ReviewService {
 
     fetchSelectedFeatureReviews = async (
         appName: string,
-        clusterName: string,
         featureList: string[]
     ): Promise<SelectedFeatureReviewDTO[]> => {
-        const url = `${this.API_NAME}/trees/${appName}/clusters/${clusterName}/reviews`;
+        const url = `${this.API_NAME}/${appName}/reviews-filtered`;
 
         const requestBody = {
             feature_list: featureList,
