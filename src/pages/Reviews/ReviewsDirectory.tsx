@@ -212,7 +212,7 @@ const ReviewsDirectory: React.FC = () => {
     return (
         <div>
             <div>
-                <h1 className="text-secondary">Reviews</h1>
+                <h1 className="text-secondary">Reviews Directory</h1>
                 {pageData && pageData.length === 0 && (
                     <div className="d-flex justify-content-center align-items-center">
                         <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
