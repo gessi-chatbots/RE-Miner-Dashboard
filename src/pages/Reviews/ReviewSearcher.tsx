@@ -57,7 +57,7 @@ const ReviewSearcher: React.FC = () => {
     }, [state]);
 
     const fetchReviews = async (appName: string, features: string[]) => {
-        if (!appName || features.length === 0) {
+        if (!appName) {
             console.warn("Missing required inputs for search.");
             setReviews([]);
             return;
