@@ -223,13 +223,12 @@ class ReviewService {
 
             return reviews.map((review: any) => ({
                 app_name: appName,
-                feature_name: review.features[0]?.feature || "Unknown",
                 review_id: review.reviewId,
                 review_text: review.review,
-                language_model: review.features[0]?.languageModel?.modelName || "Unknown",
-                polarity: review.polarities[0]?.polarity || "Unknown",
-                type: review.types[0]?.type || "Unknown",
-                topic: review.topics[0]?.topic || "Unknown"
+                features: review.features?.length > 0 ? review.features.map((f: any) => f.feature) : "Unknown",
+                polarities: review.polarities?.length > 0 ? review.polarities.map((p: any) => p.polarity) : "Unknown",
+                types: review.types?.length > 0 ? review.types.map((t: any) => t.type) : "Unknown",
+                topics: review.topics?.length > 0 ? review.topics.map((t: any) => t.topic) : "Unknown"
             }));
         } catch (error) {
             console.error("Error fetching selected feature reviews:", error);

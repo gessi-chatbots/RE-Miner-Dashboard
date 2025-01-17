@@ -187,8 +187,12 @@ const ReviewSearcher: React.FC = () => {
     };
 
     const TopicBadge: React.FC<{ topic: string }> = ({ topic }) => {
+        if (!topic) return null;
+
         const getTopicStyles = (topic: string) => {
-            switch (topic.toLowerCase()) {
+            const normalizedTopic = topic.toLowerCase().trim();
+            
+            switch (normalizedTopic) {
                 case 'general':
                     return {
                         icon: 'mdi mdi-checkbox-multiple-blank-circle-outline',
@@ -301,7 +305,7 @@ const ReviewSearcher: React.FC = () => {
                 }}
             >
                 <i className={`${styles.icon} me-1`} style={{ fontSize: '14px' }} />
-                {topic.charAt(0).toUpperCase() + topic.slice(1).toLowerCase()}
+                {topic ? topic.charAt(0).toUpperCase() + topic.slice(1).toLowerCase() : 'Unknown'}
             </div>
         );
     };
@@ -336,16 +340,20 @@ const ReviewSearcher: React.FC = () => {
         );
     };
 
-    // Update the filter function to handle camelCase properly
+    // Update the filter function to be more defensive
     const filterReviews = (reviews: SelectedFeatureReviewDTO[]) => {
+        if (!Array.isArray(reviews)) return [];
+        
         return reviews.filter(review => {
-            const matchesPolarity = !selectedPolarity || review.polarity.toLowerCase() === selectedPolarity.toLowerCase();
+            // Add null checks and ensure arrays exist
+            const reviewPolarity = review.polarities[0].toLowerCase() || '';
+            const reviewType = review.types?.[0]?.toLowerCase() || '';
+            const reviewTopic = review.topics?.[0]?.toLowerCase() || '';
             
-            // Handle camelCase for type comparison
-            const matchesType = !selectedType || 
-                review.type.toLowerCase() === selectedType.toLowerCase().replace(/\s+/g, '');
+            const matchesPolarity = !selectedPolarity || reviewPolarity === selectedPolarity.toLowerCase();
+            const matchesType = !selectedType || reviewType === selectedType.toLowerCase().replace(/\s+/g, '');
+            const matchesTopic = !selectedTopic || reviewTopic === selectedTopic.toLowerCase();
             
-            const matchesTopic = !selectedTopic || review.topic.toLowerCase() === selectedTopic.toLowerCase();
             return matchesPolarity && matchesType && matchesTopic;
         });
     };
@@ -598,33 +606,50 @@ const ReviewSearcher: React.FC = () => {
                                     <td className="text-center">
                                         <ReviewIdBadge id={review.review_id || "N/A"} />
                                     </td>
-                                    <td 
-                                        style={{
-                                            textAlign: 'justify',
-                                            fontSize: '14px',
-                                            padding: '12px 16px',
-                                            lineHeight: '1.5'
-                                        }}
-                                    >
+                                    <td style={{
+                                        textAlign: 'justify',
+                                        fontSize: '14px',
+                                        padding: '12px 16px',
+                                        lineHeight: '1.5'
+                                    }}>
                                         {review.review_text || "N/A"}
                                     </td>
                                     <td className="text-center" style={{ fontSize: '14px' }}>
                                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', justifyContent: 'center' }}>
-                                            {(review.feature_name || "")
-                                                .split(",")
-                                                .map((feature, idx) => (
-                                                    <FeatureBadge key={idx} feature={feature.trim()} />
-                                                ))}
+                                            {Array.isArray(review.features) && review.features.map((feature, idx) => (
+                                                <FeatureBadge key={idx} feature={feature?.trim() || 'N/A'} />
+                                            ))}
                                         </div>
                                     </td>
                                     <td className="text-center" style={{ fontSize: '14px' }}>
-                                        <PolarityIcon polarity={review.polarity} />
+                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', justifyContent: 'center' }}>
+                                            {Array.isArray(review.polarities) ? 
+                                                Array.from(new Set(review.polarities)).map((polarity, idx) => (
+                                                    <PolarityIcon key={idx} polarity={polarity || 'N/A'} />
+                                                ))
+                                                : <PolarityIcon polarity='N/A' />
+                                            }
+                                        </div>
                                     </td>
                                     <td className="text-center" style={{ fontSize: '14px' }}>
-                                        <TypeBadge type={review.type} />
+                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', justifyContent: 'center' }}>
+                                            {Array.isArray(review.types) ? 
+                                                Array.from(new Set(review.types)).map((type, idx) => (
+                                                    <TypeBadge key={idx} type={type || 'N/A'} />
+                                                ))
+                                                : <TypeBadge type='N/A' />
+                                            }
+                                        </div>
                                     </td>
                                     <td className="text-center" style={{ fontSize: '14px' }}>
-                                        <TopicBadge topic={review.topic} />
+                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', justifyContent: 'center' }}>
+                                            {Array.isArray(review.topics) ? 
+                                                Array.from(new Set(review.topics)).map((topic, idx) => (
+                                                    <TopicBadge key={idx} topic={topic || ''} />
+                                                ))
+                                                : <TopicBadge topic='' />
+                                            }
+                                        </div>
                                     </td>
                                 </tr>
                             ))}
