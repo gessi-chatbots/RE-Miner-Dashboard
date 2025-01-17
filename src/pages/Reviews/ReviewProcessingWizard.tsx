@@ -34,6 +34,9 @@ interface SelectedTasks {
     featureSelection: boolean;
     hierarchicalClustering: boolean;
     distanceThreshold: number;
+    polarityAnalysis: boolean;
+    typeAnalysis: boolean;
+    topicAnalysis: boolean;
 }
 
 
@@ -56,6 +59,9 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
         featureSelection: false,
         hierarchicalClustering: false,
         distanceThreshold: 0.5,
+        polarityAnalysis: false,
+        typeAnalysis: false,
+        topicAnalysis: false,
     });
 
     const [wizardData, setWizardData] = React.useState<ReviewDataSimpleDTO[]>(reviewsData);
@@ -85,8 +91,14 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                 reviewsData,
                 selectedTasks.featureExtraction,
                 selectedTasks.sentimentAnalysis,
+                selectedTasks.polarityAnalysis,
+                selectedTasks.typeAnalysis,
+                selectedTasks.topicAnalysis,
                 selectedFeatureModel,
-                selectedSentimentModel
+                selectedSentimentModel,
+                selectedPolarityModel,
+                selectedTypeModel,
+                selectedTopicModel
             );
 
             toast.dismiss(infoToast);
@@ -125,6 +137,21 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
         setSelectedFeatureModel(model);
     };
 
+    const [selectedPolarityModel, setSelectedPolarityModel] = React.useState<string>("");
+    const [selectedTypeModel, setSelectedTypeModel] = React.useState<string>("");
+    const [selectedTopicModel, setSelectedTopicModel] = React.useState<string>("");
+
+    const handlePolarityModelChange = (model: string) => {
+        setSelectedPolarityModel(model);
+    };
+
+    const handleTypeModelChange = (model: string) => {
+        setSelectedTypeModel(model);
+    };
+
+    const handleTopicModelChange = (model: string) => {
+        setSelectedTopicModel(model);
+    };
 
     const nextPage = async () => {
         if (currentPage < totalPages) {
@@ -251,9 +278,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
 
                         <FormWizard.TabContent title="Task selection" icon="ti-panel">
                             <div>
-                                {/* Row for Sentiment Analysis and Feature Extraction */}
                                 <Row className="task-selection-container mb-4">
-                                    {/* Sentiment Analysis */}
                                     <Col xs={12} sm={6}>
                                         <Form.Check
                                             type="checkbox"
@@ -278,9 +303,55 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                                                 </Form.Select>
                                             </Form.Group>
                                         )}
+
+                                        <Form.Check
+                                            type="checkbox"
+                                            id="polarityAnalysisCheckbox"
+                                            label="Polarity Analysis"
+                                            checked={selectedTasks.polarityAnalysis}
+                                            onChange={() => handleTaskSelectionChange("polarityAnalysis")}
+                                            className="mb-3"
+                                        />
+                                        {selectedTasks.polarityAnalysis && (
+                                            <Form.Group className="mb-4">
+                                                <Form.Label htmlFor="polarityModelSelect">Select Polarity Model:</Form.Label>
+                                                <Form.Select
+                                                    id="polarityModelSelect"
+                                                    value={selectedPolarityModel}
+                                                    onChange={(e) => handlePolarityModelChange(e.target.value)}
+                                                >
+                                                    <option value="">Choose a Polarity Analysis Model</option>
+                                                    <option value="SVM">SVM</option>
+                                                    <option value="MLP">MLP</option>
+                                                </Form.Select>
+                                            </Form.Group>
+                                        )}
+
+                                        <Form.Check
+                                            type="checkbox"
+                                            id="typeAnalysisCheckbox"
+                                            label="Type Analysis"
+                                            checked={selectedTasks.typeAnalysis}
+                                            onChange={() => handleTaskSelectionChange("typeAnalysis")}
+                                            className="mb-3"
+                                        />
+                                        {selectedTasks.typeAnalysis && (
+                                            <Form.Group className="mb-4">
+                                                <Form.Label htmlFor="typeModelSelect">Select Type Model:</Form.Label>
+                                                <Form.Select
+                                                    id="typeModelSelect"
+                                                    value={selectedTypeModel}
+                                                    onChange={(e) => handleTypeModelChange(e.target.value)}
+                                                >
+                                                    <option value="">Choose a Type Analysis Model</option>
+                                                    <option value="BERT">BERT</option>
+                                                    <option value="ROBERTA">ROBERTA</option>
+                                                    <option value="DISTILBERT">DISTILBERT</option>
+                                                </Form.Select>
+                                            </Form.Group>
+                                        )}
                                     </Col>
 
-                                    {/* Feature Extraction */}
                                     <Col xs={12} sm={6}>
                                         <Form.Check
                                             type="checkbox"
@@ -310,7 +381,6 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                                                     </Form.Select>
                                                 </Form.Group>
 
-                                                {/* Hierarchical Clustering Checkbox */}
                                                 <Form.Check
                                                     type="checkbox"
                                                     id="hierarchicalClusteringCheckbox"
@@ -321,10 +391,32 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                                                 />
                                             </>
                                         )}
+
+                                        <Form.Check
+                                            type="checkbox"
+                                            id="topicAnalysisCheckbox"
+                                            label="Topic Analysis"
+                                            checked={selectedTasks.topicAnalysis}
+                                            onChange={() => handleTaskSelectionChange("topicAnalysis")}
+                                            className="mb-3"
+                                        />
+                                        {selectedTasks.topicAnalysis && (
+                                            <Form.Group className="mb-4">
+                                                <Form.Label htmlFor="topicModelSelect">Select Topic Model:</Form.Label>
+                                                <Form.Select
+                                                    id="topicModelSelect"
+                                                    value={selectedTopicModel}
+                                                    onChange={(e) => handleTopicModelChange(e.target.value)}
+                                                >
+                                                    <option value="">Choose a Topic Analysis Model</option>
+                                                    <option value="SVM">SVM</option>
+                                                    <option value="MLP">MLP</option>
+                                                </Form.Select>
+                                            </Form.Group>
+                                        )}
                                     </Col>
                                 </Row>
 
-                                {/* Row for Distance Threshold Slider */}
                                 {selectedTasks.featureExtraction && selectedTasks.hierarchicalClustering && (
                                     <Row className="mt-3">
                                         <Col xs={12} sm={6} className="offset-sm-6">

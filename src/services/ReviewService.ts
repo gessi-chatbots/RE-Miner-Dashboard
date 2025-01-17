@@ -137,45 +137,57 @@ class ReviewService {
         reviews: ReviewDataSimpleDTO[],
         featureExtraction: boolean,
         sentimentExtraction: boolean,
+        polarityExtraction: boolean,
+        typeExtraction: boolean,
+        topicExtraction: boolean,
         featureModel: string | null,
-        sentimentModel: string | null
+        sentimentModel: string | null,
+        polarityModel: string | null,
+        typeModel: string | null,
+        topicModel: string | null
     ) => {
         const id = localStorage.getItem('USER_ID');
-    
-        let url = `${this.API_NAME}${this.PATH_NAME}/${id}/analyze/v1?`;
-    
-        if (featureExtraction) {
-            url += `featureExtraction=true&`;
-            if (featureModel) {
-                url += `feature_model=${featureModel}&`;
-            }
-        }
-    
-        if (sentimentExtraction) {
-            url += `sentimentExtraction=true&`;
-            if (sentimentModel) {
-                url += `sentiment_model=${sentimentModel}&`;
-            }
-        }
-    
-        const jsonBody = reviews.map(review => ({ "reviewId": review.reviewId }));
+        
+        // Create an array of URL parameters and filter out empty ones
+        const params = [
+            featureExtraction && `featureExtraction=true`,
+            featureExtraction && featureModel && `feature_model=${featureModel}`,
+            sentimentExtraction && `sentimentExtraction=true`,
+            sentimentExtraction && sentimentModel && `sentiment_model=${sentimentModel}`,
+            polarityExtraction && `polarityExtraction=true`,
+            polarityExtraction && polarityModel && `polarity_model=${polarityModel}`,
+            typeExtraction && `typeExtraction=true`,
+            typeExtraction && typeModel && `type_model=${typeModel}`,
+            topicExtraction && `topicExtraction=true`,
+            topicExtraction && topicModel && `topic_model=${topicModel}`
+        ].filter(Boolean);
+
+        const url = `${this.API_NAME}${this.PATH_NAME}/${id}/analyze${params.length ? '?' + params.join('&') : ''}`;
+        console.log('Request URL:', url);
+        
+        //const jsonBody = reviews.map(review => ({ "reviewId": review.reviewId }));
+        const jsonBody = reviews.map(review => review.reviewId);
+        console.log('Request body:', JSON.stringify(jsonBody, null, 2));
     
         try {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify(jsonBody)
             });
     
-            if (response.status === 200) {
-
-                const responseData = await response.json(); 
-                console.log("Reviews analyzed successfully:", responseData);
-            } else {
-                console.error("Unexpected status code:", response.status);
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('Server response:', response.status, errorText);
+                throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
             }
+    
+            const responseData = await response.json(); 
+            console.log("Reviews analyzed successfully:", responseData);
+            return responseData;
         } catch (error) {
             console.error("Error analyzing reviews:", error);
             throw error;
