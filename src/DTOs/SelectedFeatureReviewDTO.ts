@@ -4,4 +4,7 @@ export interface SelectedFeatureReviewDTO {
     review_id: string;
     review_text: string;
     language_model: string;
+    polarity: string;
+    type: string;
+    topic: string;
 }

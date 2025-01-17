@@ -219,6 +219,7 @@ class ReviewService {
             }
 
             const reviews = await response.json();
+            console.log("Reviews fetched successfully:", reviews);
 
             return reviews.map((review: any) => ({
                 app_name: appName,
@@ -226,6 +227,9 @@ class ReviewService {
                 review_id: review.reviewId,
                 review_text: review.review,
                 language_model: review.features[0]?.languageModel?.modelName || "Unknown",
+                polarity: review.polarities[0]?.polarity || "Unknown",
+                type: review.types[0]?.type || "Unknown",
+                topic: review.topics[0]?.topic || "Unknown"
             }));
         } catch (error) {
             console.error("Error fetching selected feature reviews:", error);
