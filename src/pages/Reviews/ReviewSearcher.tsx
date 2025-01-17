@@ -100,13 +100,13 @@ const ReviewSearcher: React.FC = () => {
     const PolarityIcon: React.FC<{ polarity: string }> = ({ polarity }) => {
         if (polarity.toLowerCase() === 'positive') {
             return (
-                <div className="d-inline-flex align-items-center text-success">
+                <div className="d-inline-flex text-success">
                     <i className="mdi mdi-emoticon-happy-outline me-1" style={{ fontSize: '24px' }} />
                 </div>
             );
         } else if (polarity.toLowerCase() === 'negative') {
             return (
-                <div className="d-inline-flex align-items-center text-danger">
+                <div className="d-inline-flex text-danger">
                     <i className="mdi mdi-emoticon-sad-outline me-1" style={{ fontSize: '24px' }} />
                 </div>
             );
@@ -381,7 +381,7 @@ const ReviewSearcher: React.FC = () => {
     return (
         <div>
             <h1 className="text-secondary">Review Searcher</h1>
-            <Row className="bg-light py-3 align-items-center">
+            <Row className="bg-light py-3">
                 {/* App Selector */}
                 <Col md={3}>
                     <h6 className="text-secondary mb-2">Select App</h6>
@@ -451,7 +451,7 @@ const ReviewSearcher: React.FC = () => {
                             </div>
                         ))}
                     </div>
-                    <div className="d-flex align-items-center mt-2">
+                    <div className="d-flex mt-2">
                         <Form.Control
                             placeholder="Add feature"
                             value={newFeature}
