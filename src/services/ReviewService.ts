@@ -137,50 +137,64 @@ class ReviewService {
         reviews: ReviewDataSimpleDTO[],
         featureExtraction: boolean,
         sentimentExtraction: boolean,
+        polarityExtraction: boolean,
+        typeExtraction: boolean,
+        topicExtraction: boolean,
         featureModel: string | null,
         sentimentModel: string | null,
-        siblingThreshold: number | null // Add siblingThreshold as a parameter
+        polarityModel: string | null,
+        typeModel: string | null,
+        topicModel: string | null
     ) => {
         const id = localStorage.getItem('USER_ID');
-        const queryParams = [];
+        
+        // Create an array of URL parameters and filter out empty ones
+        const params = [
+            featureExtraction && `featureExtraction=true`,
+            featureExtraction && featureModel && `feature_model=${featureModel}`,
+            sentimentExtraction && `sentimentExtraction=true`,
+            sentimentExtraction && sentimentModel && `sentiment_model=${sentimentModel}`,
+            polarityExtraction && `polarityExtraction=true`,
+            polarityExtraction && polarityModel && `polarity_model=${polarityModel}`,
+            typeExtraction && `typeExtraction=true`,
+            typeExtraction && typeModel && `type_model=${typeModel}`,
+            topicExtraction && `topicExtraction=true`,
+            topicExtraction && topicModel && `topic_model=${topicModel}`
+        ].filter(Boolean);
 
-        if (featureExtraction && featureModel) {
-            queryParams.push(`feature_model=${encodeURIComponent(featureModel)}`);
-        }
-
-        if (sentimentExtraction && sentimentModel) {
-            queryParams.push(`sentiment_model=${encodeURIComponent(sentimentModel)}`);
-        }
-
-        if (siblingThreshold !== null) {
-            queryParams.push(`sibling_threshold=${encodeURIComponent(siblingThreshold)}`);
-        }
-
-        const queryString = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
-        const url = `${this.API_NAME}${this.PATH_NAME}/${id}/analyze${queryString}`;
-
-        const jsonBody = reviews.map((review) => review.reviewId);
-
+        const url = `${this.API_NAME}${this.PATH_NAME}/${id}/analyze${params.length ? '?' + params.join('&') : ''}`;
+        console.log('Request URL:', url);
+        
+        //const jsonBody = reviews.map(review => ({ "reviewId": review.reviewId }));
+        const jsonBody = reviews.map(review => review.reviewId);
+        console.log('Request body:', JSON.stringify(jsonBody, null, 2));
+    
         try {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
-                body: JSON.stringify(jsonBody),
+                body: JSON.stringify(jsonBody)
             });
-
-            if (response.status === 200) {
-                const responseData = await response.json();
-                console.log('Reviews analyzed successfully:', responseData);
-            } else {
-                console.error('Unexpected status code:', response.status);
+    
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('Server response:', response.status, errorText);
+                throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
             }
+    
+            const responseData = await response.json(); 
+            console.log("Reviews analyzed successfully:", responseData);
+            return responseData;
         } catch (error) {
-            console.error('Error analyzing reviews:', error);
+            console.error("Error analyzing reviews:", error);
             throw error;
         }
     };
+
+
     fetchSelectedFeatureReviews = async (
         appName: string,
         featureList: string[]
@@ -205,13 +219,16 @@ class ReviewService {
             }
 
             const reviews = await response.json();
+            console.log("Reviews fetched successfully:", reviews);
 
             return reviews.map((review: any) => ({
                 app_name: appName,
-                feature_name: review.features[0]?.feature || "Unknown",
                 review_id: review.reviewId,
                 review_text: review.review,
-                language_model: review.features[0]?.languageModel?.modelName || "Unknown",
+                features: review.features?.length > 0 ? review.features.map((f: any) => f.feature) : "Unknown",
+                polarities: review.polarities?.length > 0 ? review.polarities.map((p: any) => p.polarity) : "Unknown",
+                types: review.types?.length > 0 ? review.types.map((t: any) => t.type) : "Unknown",
+                topics: review.topics?.length > 0 ? review.topics.map((t: any) => t.topic) : "Unknown"
             }));
         } catch (error) {
             console.error("Error fetching selected feature reviews:", error);
