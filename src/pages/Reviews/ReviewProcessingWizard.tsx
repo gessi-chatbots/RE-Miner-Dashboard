@@ -17,13 +17,13 @@ import FormWizard from "react-form-wizard-component";
 import "react-form-wizard-component/dist/style.css";
 import ReviewService from "../../services/ReviewService";
 import { toast } from "react-toastify";
-import { ReviewDataSimpleDTO } from "../../DTOs/ReviewDataSimpleDTO";
+import { ReviewManagerDTO } from "../../DTOs/ReviewManagerDTO";
 
 interface ReviewProcessingWizardProps {
-    reviewsData: ReviewDataSimpleDTO[];
+    reviewsData: ReviewManagerDTO[];
     selectedReviews: string[];
     onHide: () => void;
-    onDiscardReview: (review: ReviewDataSimpleDTO) => void;
+    onDiscardReview: (review: ReviewManagerDTO) => void;
     onUpdateDirectory: () => void;
 }
 
@@ -64,7 +64,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
         topicAnalysis: false,
     });
 
-    const [wizardData, setWizardData] = React.useState<ReviewDataSimpleDTO[]>(reviewsData);
+    const [wizardData, setWizardData] = React.useState<ReviewManagerDTO[]>(reviewsData);
 
     const [selectedSentimentModel, setSelectedSentimentModel] = React.useState<string>("");
     const [selectedFeatureModel, setSelectedFeatureModel] = React.useState<string>("");
@@ -117,7 +117,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
         onHide();
     };
 
-    const discardReview = (review: ReviewDataSimpleDTO) => {
+    const discardReview = (review: ReviewManagerDTO) => {
         onDiscardReview(review);
         const updatedWizardData = wizardData.filter((r) => r.reviewId !== review.reviewId);
         setWizardData(updatedWizardData);
@@ -197,7 +197,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                                         <tbody>
                                         {wizardData
                                             .slice(startIndex, endIndex)
-                                            .map((review: ReviewDataSimpleDTO) => (
+                                            .map((review: ReviewManagerDTO) => (
                                                 <tr key={review.reviewId}>
                                                     <td className="text-center">{review.app_name || "N/A"}</td>
                                                     <td className="text-center">{review.reviewId || "N/A"}</td>

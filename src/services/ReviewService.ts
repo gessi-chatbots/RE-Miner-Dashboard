@@ -1,12 +1,12 @@
 import {ReviewDataDTO} from "../DTOs/ReviewDataDTO";
-import { ReviewDataSimpleDTO } from "../DTOs/ReviewDataSimpleDTO";
+import { ReviewManagerDTO } from "../DTOs/ReviewManagerDTO";
 import {ReviewFeatureDTO} from "../DTOs/ReviewFeatureDTO";
 import {SelectedFeatureReviewDTO} from "../DTOs/SelectedFeatureReviewDTO";
 class ReviewService {
     API_NAME = 'http://127.0.0.1:3001/api/v1';
     PATH_NAME = '/users'
 
-    fetchAllReviewsPaginated = async (page?: number, pageSize?: number): Promise<{ reviews: ReviewDataSimpleDTO[], total_pages: number }> => {
+    fetchAllReviewsPaginated = async (page?: number, pageSize?: number): Promise<{ reviews: ReviewManagerDTO[], total_pages: number }> => {
         const id = localStorage.getItem('USER_ID');
         let url = `${this.API_NAME}${this.PATH_NAME}/${id}/reviews`;
     
@@ -21,7 +21,7 @@ class ReviewService {
             }
     
             const jsonResponse = await response.json();
-            const revs: ReviewDataSimpleDTO[] = jsonResponse.reviews.map((review: any) => ({ 
+            const revs: ReviewManagerDTO[] = jsonResponse.reviews.map((review: any) => ({
                 app_id: review.app_id,
                 app_name: review.app_name,
                 reviewId: review.review_id,
@@ -134,7 +134,7 @@ class ReviewService {
     };
 
     analyzeReviews = async (
-        reviews: ReviewDataSimpleDTO[],
+        reviews: ReviewManagerDTO[],
         featureExtraction: boolean,
         sentimentExtraction: boolean,
         polarityExtraction: boolean,
