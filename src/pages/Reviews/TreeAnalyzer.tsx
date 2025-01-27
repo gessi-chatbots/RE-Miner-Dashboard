@@ -215,9 +215,9 @@ const TreeAnalyzer = () => {
             return;
         }
 
-        navigate("/review-searcher", {
+        navigate("/reviews", {
             state: {
-                appName: selectedApp, // Send the full app name
+                appName: selectedApp,
                 clusterName: selectedCluster,
                 selectedFeatures,
             },
