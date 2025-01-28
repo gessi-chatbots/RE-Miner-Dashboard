@@ -1,7 +1,5 @@
 import {ReviewDataDTO} from "../DTOs/ReviewDataDTO";
 import { ReviewManagerDTO } from "../DTOs/ReviewManagerDTO";
-import {ReviewFeatureDTO} from "../DTOs/ReviewFeatureDTO";
-import {SelectedFeatureReviewDTO} from "../DTOs/SelectedFeatureReviewDTO";
 class ReviewService {
     API_NAME = 'http://127.0.0.1:3001/api/v1';
     PATH_NAME = '/users'
@@ -166,7 +164,7 @@ class ReviewService {
         console.log('Request URL:', url);
         
         //const jsonBody = reviews.map(review => ({ "reviewId": review.reviewId }));
-        const jsonBody = reviews.map(review => review.reviewId);
+        const jsonBody = reviews.map(review => review.review_id);
         console.log('Request body:', JSON.stringify(jsonBody, null, 2));
     
         try {
@@ -195,21 +193,33 @@ class ReviewService {
     };
 
 
-    fetchSelectedFeatureReviews = async (
-        appName: string,
-        featureList: string[]
-    ): Promise<SelectedFeatureReviewDTO[]> => {
-        const url = `${this.API_NAME}/${appName}/reviews-filtered`;
-
+    fetchFilteredReviews = async (
+        appPackage: string,
+        featureList: string[],
+        selectedTopic: string,
+        selectedEmotion: string,
+        selectedPolarity: string,
+        selectedType: string,
+        currentPage: number,
+        PAGE_SIZE: number
+    ): Promise<{ reviews: ReviewManagerDTO[]; total_pages: number }> => {
+        const url = `${this.API_NAME}/reviews-filtered`;
         const requestBody = {
+            app_package: appPackage,
+            topic: selectedTopic,
+            emotion: selectedEmotion,
+            polarity: selectedPolarity,
             feature_list: featureList,
+            type: selectedType,
+            page: currentPage,
+            page_size: PAGE_SIZE,
         };
 
         try {
             const response = await fetch(url, {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(requestBody),
             });
@@ -218,24 +228,27 @@ class ReviewService {
                 throw new Error(`Error fetching reviews: ${response.statusText}`);
             }
 
-            const reviews = await response.json();
-            console.log("Reviews fetched successfully:", reviews);
+            const data = await response.json();
+            console.log("Reviews fetched successfully:", data);
 
-            return reviews.map((review: any) => ({
-                app_name: appName,
-                review_id: review.reviewId,
-                review_text: review.review,
-                features: review.features?.length > 0 ? review.features.map((f: any) => f.feature) : "Unknown",
-                polarities: review.polarities?.length > 0 ? review.polarities.map((p: any) => p.polarity) : "Unknown",
-                types: review.types?.length > 0 ? review.types.map((t: any) => t.type) : "Unknown",
-                topics: review.topics?.length > 0 ? review.topics.map((t: any) => t.topic) : "Unknown"
-            }));
+            return {
+                reviews: data.reviews.map((review: any) => ({
+                    app_package: appPackage,
+                    review_id: review.reviewId,
+                    review: review.review,
+                    features: review.features?.length > 0 ? review.features.map((f: any) => f.feature) : "Unknown",
+                    polarities: review.polarities?.length > 0 ? review.polarities.map((p: any) => p.polarity) : "Unknown",
+                    emotions: review.emotions?.length > 0 ? review.emotions.map((p: any) => p.emotion) : "Unknown",
+                    types: review.types?.length > 0 ? review.types.map((t: any) => t.type) : "Unknown",
+                    topics: review.topics?.length > 0 ? review.topics.map((t: any) => t.topic) : "Unknown",
+                })),
+                total_pages: data.total_pages, // Use total_pages from the backend
+            };
         } catch (error) {
             console.error("Error fetching selected feature reviews:", error);
             throw error;
         }
     };
-
 
 }
 
