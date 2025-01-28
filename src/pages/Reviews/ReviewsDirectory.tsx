@@ -1,155 +1,395 @@
-import React, { useState, useEffect } from 'react';
-import {Table, Button, Modal, Tooltip, OverlayTrigger, Row, Col, Form} from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import { Table,Tooltip, Button, Modal, Row, Col, Form, OverlayTrigger } from "react-bootstrap";
 import ReviewService from "../../services/ReviewService";
+import AppService from "../../services/AppService";
 import { toast } from "react-toastify";
 import {useLocation, useNavigate} from 'react-router-dom';
 import ReviewProcessingWizard from "./ReviewProcessingWizard";
-import { ReviewManagerDTO } from '../../DTOs/ReviewManagerDTO';
-import TreeService from "../../services/TreeService";
-import {SelectedFeatureReviewDTO} from "../../DTOs/SelectedFeatureReviewDTO";
+import { ReviewManagerDTO } from "../../DTOs/ReviewManagerDTO";
 
-const defaultColumns = ['Select', 'App ID', 'App Name', "Review ID", "Review Text", "Features", "Emotions", "Polarity", "Type", "Topic", 'Actions'];
+const PAGE_SIZE = 10;
+const defaultColumns = ["Application Package", "Review ID", "Review Text", "Features", "Polarity", "Emotions", "Type", "Topic", "Actions"];
 
-const PAGE_SIZE = 8
 const ReviewsDirectory: React.FC = () => {
     const [apps, setApps] = useState<string[]>([]);
-    const [reviews, setReviews] = useState<SelectedFeatureReviewDTO[]>([]);
-    const [selectAll, setSelectAll] = useState(false);
     const [pageData, setPageData] = useState<ReviewManagerDTO[] | null>(null);
     const [wizardData, setWizardData] = useState<ReviewManagerDTO[] | null>(null);
-    const [isEditModalOpen, setEditModalIsOpen] = useState<boolean>(false);
-    const [isDeleteModalOpen, setDeleteModalIsOpen] = useState<boolean>(false);
-    const [selectedReview, setSelectedReview] = useState<ReviewManagerDTO | null>(null);
     const [totalPages, setTotalPages] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
-    const [isUpdating, setIsUpdating] = useState(false);
-    const [review, setReview] = useState<string>('');
-    const [date, setDate] = useState<string>('');
-    const [score, setScore] = useState<number>(0);
-    const [expanded, setExpanded] = useState(false);
-    const [isUpdateButtonClicked, setIsUpdateButtonClicked] = useState(false);
-    const [selectedReviews, setSelectedReviews] = useState<string[]>([]);
+    const [appPackage, setAppPackage] = useState<string>("");
     const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
-    const [newFeature, setNewFeature] = useState<string>("");
     const [selectedPolarity, setSelectedPolarity] = useState<string>("");
-    const [selectedType, setSelectedType] = useState<string>("");
+    const [isEditModalOpen, setEditModalIsOpen] = useState<boolean>(false);
     const [selectedTopic, setSelectedTopic] = useState<string>("");
     const [selectedEmotion, setSelectedEmotion] = useState<string>("");
+    const [selectedType, setSelectedType] = useState<string>("");
+    const [newFeature, setNewFeature] = useState<string>("");
+    const [isDeleteModalOpen, setDeleteModalIsOpen] = useState<boolean>(false);
+    const [selectedReview, setSelectedReview] = useState<ReviewManagerDTO | null>(null);
+    const [selectedReviews, setSelectedReviews] = useState<string[]>([]);
     const [isWizardModalOpen, setWizardModalOpen] = useState<boolean>(false);
-    const location = useLocation();
-    const { state } = location;
+    const [selectAll, setSelectAll] = useState(false);
     const navigate = useNavigate();
-    const [sortedPageData, setSortedPageData] = useState<ReviewManagerDTO[] | null>(null);
-    const [appName, setAppName] = useState<string>("");
 
     const polarityOptions = ["Positive", "Negative"];
-    const typeOptions = ["Bug", "Rating", "Feature", "UserExperience"];
     const topicOptions = [
-        "General", "Usability", "Effectiveness", "Efficiency",
-        "Enjoyability", "Cost", "Reliability", "Security",
-        "Compatibility", "Learnability", "Safety", "Aesthetics"
+        "General",
+        "Usability",
+        "Effectiveness",
+        "Efficiency",
+        "Enjoyability",
+        "Cost",
+        "Reliability",
+        "Security",
+        "Compatibility",
+        "Learnability",
+        "Safety",
+        "Aesthetics",
     ];
-    const emotionOptions = ["Joy", "Anger", "Disgust", "Neutral"]
+    const emotionOptions = ["Joy", "Anger", "Disgust", "Neutral"];
+    const typeOptions = ["Bug", "Rating", "Feature", "UserExperience"];
+    const TypeBadge: React.FC<{ type: string }> = ({ type }) => {
+        const formatText = (text: string) => {
+            // Convert camelCase to space-separated words and capitalize first letter
+            return text
+                .replace(/([A-Z])/g, ' $1')
+                .toLowerCase()
+                .trim()
+                .replace(/^./, str => str.toUpperCase());
+        };
 
-    useEffect(() => {
-        if (state) {
-            const { reviewsData, selectedReviews } = state;
-            setPageData(reviewsData);
-            setSelectedReviews(selectedReviews);
+        const getTypeStyles = (type: string) => {
+            switch (type.toLowerCase()) {
+                case 'bug':
+                    return {
+                        icon: 'mdi mdi-bug-outline',
+                        bg: '#FFE6E6',
+                        color: '#D63031',
+                        border: '#FFB8B8'
+                    };
+                case 'rating':
+                    return {
+                        icon: 'mdi mdi-star-outline',
+                        bg: '#FFF4E6',
+                        color: '#E67E22',
+                        border: '#FFD8A8'
+                    };
+                case 'feature':
+                    return {
+                        icon: 'mdi mdi-puzzle-outline',
+                        bg: '#E6F6FF',
+                        color: '#0984E3',
+                        border: '#B8E2FF'
+                    };
+                case 'userexperience':
+                    return {
+                        icon: 'mdi mdi-account-outline',
+                        bg: '#E6FFE6',
+                        color: '#00B894',
+                        border: '#B8FFB8'
+                    };
+                default:
+                    return {
+                        icon: 'mdi mdi-help-circle-outline',
+                        bg: '#F5F5F5',
+                        color: '#666666',
+                        border: '#DDDDDD'
+                    };
+            }
+        };
+
+        const styles = getTypeStyles(type);
+
+        return (
+            <div
+                style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '4px 12px',
+                    borderRadius: '16px',
+                    backgroundColor: styles.bg,
+                    border: `1px solid ${styles.border}`,
+                    color: styles.color,
+                    fontSize: '13px',
+                    fontWeight: 500,
+                }}
+            >
+                <i className={`${styles.icon} me-1`} style={{ fontSize: '16px' }} />
+                {formatText(type)}
+            </div>
+        );
+    };
+
+    const TopicBadge: React.FC<{ topic: string }> = ({ topic }) => {
+        if (!topic) return null;
+
+        const getTopicStyles = (topic: string) => {
+            const normalizedTopic = topic.toLowerCase().trim();
+
+            switch (normalizedTopic) {
+                case 'general':
+                    return {
+                        icon: 'mdi mdi-checkbox-multiple-blank-circle-outline',
+                        bg: '#F3F4F6',
+                        color: '#4B5563',
+                        border: '#D1D5DB'
+                    };
+                case 'usability':
+                    return {
+                        icon: 'mdi mdi-gesture-tap',
+                        bg: '#EDE9FE',
+                        color: '#7C3AED',
+                        border: '#DDD6FE'
+                    };
+                case 'effectiveness':
+                    return {
+                        icon: 'mdi mdi-target',
+                        bg: '#FCE7F3',
+                        color: '#DB2777',
+                        border: '#FBCFE8'
+                    };
+                case 'efficiency':
+                    return {
+                        icon: 'mdi mdi-lightning-bolt',
+                        bg: '#FEF3C7',
+                        color: '#D97706',
+                        border: '#FDE68A'
+                    };
+                case 'enjoyability':
+                    return {
+                        icon: 'mdi mdi-heart-outline',
+                        bg: '#FFE4E6',
+                        color: '#E11D48',
+                        border: '#FECDD3'
+                    };
+                case 'cost':
+                    return {
+                        icon: 'mdi mdi-currency-usd',
+                        bg: '#ECFDF5',
+                        color: '#059669',
+                        border: '#A7F3D0'
+                    };
+                case 'reliability':
+                    return {
+                        icon: 'mdi mdi-shield-check-outline',
+                        bg: '#E0F2FE',
+                        color: '#0284C7',
+                        border: '#BAE6FD'
+                    };
+                case 'security':
+                    return {
+                        icon: 'mdi mdi-lock-outline',
+                        bg: '#FEF2F2',
+                        color: '#DC2626',
+                        border: '#FECACA'
+                    };
+                case 'compatibility':
+                    return {
+                        icon: 'mdi mdi-puzzle-outline',
+                        bg: '#F5F3FF',
+                        color: '#6D28D9',
+                        border: '#DDD6FE'
+                    };
+                case 'learnability':
+                    return {
+                        icon: 'mdi mdi-school-outline',
+                        bg: '#FFF7ED',
+                        color: '#C2410C',
+                        border: '#FFEDD5'
+                    };
+                case 'safety':
+                    return {
+                        icon: 'mdi mdi-shield-alert-outline',
+                        bg: '#FEF9C3',
+                        color: '#CA8A04',
+                        border: '#FEF08A'
+                    };
+                case 'aesthetics':
+                    return {
+                        icon: 'mdi mdi-palette-outline',
+                        bg: '#F3E8FF',
+                        color: '#9333EA',
+                        border: '#E9D5FF'
+                    };
+                default:
+                    return {
+                        icon: 'mdi mdi-help-circle-outline',
+                        bg: '#F3F4F6',
+                        color: '#6B7280',
+                        border: '#D1D5DB'
+                    };
+            }
+        };
+
+        const styles = getTopicStyles(topic);
+
+        return (
+            <div
+                style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '4px 10px',
+                    borderRadius: '12px',
+                    backgroundColor: styles.bg,
+                    border: `1px solid ${styles.border}`,
+                    color: styles.color,
+                    fontSize: '12px',
+                    fontWeight: 500,
+                    letterSpacing: '0.2px',
+                }}
+            >
+                <i className={`${styles.icon} me-1`} style={{ fontSize: '14px' }} />
+                {topic ? topic.charAt(0).toUpperCase() + topic.slice(1).toLowerCase() : 'Unknown'}
+            </div>
+        );
+    };
+
+    const FeatureBadge: React.FC<{ feature: string }> = ({ feature }) => {
+        const formatText = (text: string) => {
+            // Convert camelCase to space-separated words
+            return text
+                .replace(/([A-Z])/g, ' $1')
+                .toLowerCase()
+                .trim();
+        };
+
+        return (
+            <div
+                style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '4px 10px',
+                    borderRadius: '12px',
+                    backgroundColor: '#F0F9FF',
+                    border: '1px solid #BAE6FD',
+                    color: '#0369A1',
+                    fontSize: '12px',
+                    fontWeight: 500,
+                    letterSpacing: '0.2px',
+                    margin: '2px',
+                }}
+            >
+                {formatText(feature)}
+            </div>
+        );
+    };
+
+    const ReviewIdBadge: React.FC<{ id: string }> = ({ id }) => {
+        // Take only first 8 characters if ID is longer
+        const shortId = id.length > 8 ? `${id.slice(0, 8)}...` : id;
+
+        return (
+            <div
+                title={id} // This creates a native tooltip on hover
+                style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '4px 8px',
+                    borderRadius: '8px',
+                    backgroundColor: '#F1F5F9',
+                    border: '1px solid #CBD5E1',
+                    color: '#475569',
+                    fontSize: '12px',
+                    fontWeight: 500,
+                    cursor: 'help',
+                    fontFamily: 'monospace',
+                    letterSpacing: '0.5px',
+                }}
+            >
+                <i className="mdi mdi-pound me-1" style={{ fontSize: '12px' }} />
+                {shortId}
+            </div>
+        );
+    };
+    const PolarityIcon: React.FC<{ polarity: string }> = ({ polarity }) => {
+        if (polarity.toLowerCase() === 'positive') {
+            return (
+                <div className="d-inline-flex text-success">
+                    <i className="mdi mdi-emoticon-happy-outline me-1" style={{ fontSize: '24px' }} />
+                </div>
+            );
+        } else if (polarity.toLowerCase() === 'negative') {
+            return (
+                <div className="d-inline-flex text-danger">
+                    <i className="mdi mdi-emoticon-sad-outline me-1" style={{ fontSize: '24px' }} />
+                </div>
+            );
         }
-    }, [state]);
+        return <span>{polarity || 'N/A'}</span>;
+    };
 
     useEffect(() => {
         const fetchApps = async () => {
-            const treeService = new TreeService();
+            const appService = new AppService();
             try {
-                const appData = await treeService.fetchAllApps();
-                setApps(appData.map((app) => app.app_name));
+                const response = await appService.fetchAllAppsNamesSimple();
+                if (response) {
+                    setApps(response.apps.map((app) => app.app_name));
+                } else {
+                    console.warn("No apps found");
+                    setApps([]);
+                }
             } catch (error) {
                 console.error("Error fetching apps:", error);
             }
         };
         fetchApps();
     }, []);
-
-    useEffect(() => {
-        if (state) {
-            const { appName, selectedFeatures } = state;
-            setAppName(appName || "");
-            setSelectedFeatures(selectedFeatures || []);
-
-            if (appName && selectedFeatures.length > 0) {
-                fetchReviews(appName, selectedFeatures);
-            }
-        }
-    }, [state]);
-
-    const sortByAppId = () => {
-        if (pageData) {
-            const sortedReviews = [...pageData].sort((a, b) => {
-                return a.app_id.localeCompare(b.app_id);
-            });
-            setSortedPageData(sortedReviews);
-        }
+    const closeModals = () => {
+        setEditModalIsOpen(false);
+        setDeleteModalIsOpen(false);
+        setSelectedReview(null);
     };
-
-    const handleSelectAllChange = async () => {
-        const newSelectAll = !selectAll;
-        setSelectAll(newSelectAll);
-        if (newSelectAll) {
-            const reviewService = new ReviewService();
-            try {
-                const allReviews = await reviewService.fetchAllReviewsPaginated()
-                if (allReviews !== null) {
-                    const allReviewIds = pageData?.map(review => review.reviewId) || [];
-                    setSelectedReviews(newSelectAll ? allReviewIds : []);
-                    setWizardData(newSelectAll ? allReviews.reviews : []);
-                } else {
-                    console.error('Response from fetch all reviews is null');
-                }
-            } catch (error) {
-                console.error('Error fetching all reviews:', error);
-            }
-        } else {
-            setWizardData([]);
-            setSelectedReviews([]);
-        }
-    };
-
-    const handleCheckboxChange = async (review: ReviewManagerDTO) => {
-        setSelectAll(false);
-
-        setSelectedReviews((prevSelectedReviews) => {
-            const updatedSelectedReviews = [...prevSelectedReviews];
-            const index = updatedSelectedReviews.indexOf(review.reviewId);
-
-            if (index !== -1) {
-                updatedSelectedReviews.splice(index, 1);
-            } else {
-                updatedSelectedReviews.push(review.reviewId);
-            }
-
-            return updatedSelectedReviews;
-        });
-
-        setWizardData((prevWizardData) => {
-            if (!prevWizardData || prevWizardData.length === 0) {
-                return [review];
-            } else if (!prevWizardData.some((r) => r.reviewId === review.reviewId)) {
-                return [...prevWizardData, review];
-            } else {
-                return prevWizardData.filter((r) => r.reviewId !== review.reviewId);
-            }
-        });
-    };
-
     const openDeleteModal = (review: ReviewManagerDTO) => {
         setSelectedReview(review);
         setDeleteModalIsOpen(true);
     };
+    const fetchReviews = async () => {
+        try {
+            const reviewService = new ReviewService();
+            const response = await reviewService.fetchFilteredReviews(
+                appPackage,
+                selectedFeatures,
+                selectedEmotion,
+                selectedPolarity,
+                selectedTopic,
+                selectedType,
+                currentPage,
+                PAGE_SIZE
+            );
+            if (response) {
+                const { reviews: mappedData, total_pages: pages } = response;
+                setPageData(mappedData);
+                setTotalPages(pages);
+            } else {
+                setPageData([]);
+                toast.warn("No reviews found for the selected filters.");
+            }
+        } catch (error) {
+            console.error("Error fetching reviews:", error);
+            toast.error("Failed to fetch reviews.");
+        }
+    };
 
-    const handleDeleteFeature = (feature: string) => {
-        setSelectedFeatures((prev) => prev.filter((f) => f !== feature));
+    const handleCheckboxChange = (reviewId: string) => {
+        setSelectAll(false);
+        setSelectedReviews((prev) =>
+            prev.includes(reviewId)
+                ? prev.filter((id) => id !== reviewId)
+                : [...prev, reviewId]
+        );
+    };
+
+    const handleSelectAllChange = () => {
+        const newSelectAll = !selectAll;
+        setSelectAll(newSelectAll);
+        if (newSelectAll && pageData) {
+            setSelectedReviews(pageData.map((review) => review.review_id));
+            setWizardData(pageData);
+        } else {
+            setSelectedReviews([]);
+            setWizardData([]);
+        }
     };
 
     const handleAddFeature = () => {
@@ -159,35 +399,30 @@ const ReviewsDirectory: React.FC = () => {
         setNewFeature("");
     };
 
-    const closeModals = () => {
-        setEditModalIsOpen(false);
-        setDeleteModalIsOpen(false);
-        setSelectedReview(null);
+    const handleDeleteFeature = (feature: string) => {
+        setSelectedFeatures((prev) => prev.filter((f) => f !== feature));
     };
+    const openEditModal = (review: ReviewManagerDTO) => {
+        setSelectedReview(review);
+        setEditModalIsOpen(true);
+    };
+    const handleDeleteReview = async (app_name: string | undefined, review_id: string | undefined) => {
+        if (!app_name || !review_id) {
+            console.error("App Name or Review ID is undefined or null.");
+            return;
+        }
 
-    useEffect(() => {
-        sortByAppId();
-    }, [pageData]);
-
-    useEffect(() => {
-        const fetchDataFromApi = async () => {
-            const reviewService = new ReviewService();
-            try {
-                const response = await reviewService.fetchAllReviewsPaginated(currentPage, PAGE_SIZE);
-                if (response !== null) {
-                    const { reviews: mappedData, total_pages: pages } = response;
-                    setPageData(mappedData);
-                    setTotalPages(pages);
-                } else {
-                    console.error('Response from fetch all reviews is null');
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-        fetchDataFromApi();
-    }, [currentPage]);
-
+        const reviewService = new ReviewService();
+        try {
+            await reviewService.deleteReview(app_name, review_id);
+            toast.success("Review deleted successfully!");
+            setDeleteModalIsOpen(false);
+            fetchReviews();
+        } catch (error) {
+            toast.error("Error deleting review");
+            console.error("Error deleting review:", error);
+        }
+    };
     const deleteReview = async (app_id: string | undefined, review_id: string | undefined) => {
         if (!app_id) {
             console.error("App ID is undefined or null.");
@@ -221,10 +456,6 @@ const ReviewsDirectory: React.FC = () => {
         }
     };
 
-    const handleManualSearch = () => {
-        fetchReviews(appName, selectedFeatures);
-    };
-
     const nextPage = async () => {
         if (currentPage < totalPages) {
             const nextPageNumber = currentPage + 1;
@@ -240,615 +471,394 @@ const ReviewsDirectory: React.FC = () => {
     };
 
     const analyzeReviewAction = (review: ReviewManagerDTO) => {
-        navigate(`/applications/${review.app_id}/reviews/${review.reviewId}/analyze`);
+        navigate(`/applications/${review.app_id}/reviews/${review.review_id}/analyze`);
     };
-
-    const fetchReviews = async (appName: string, features: string[]) => {
-        if (!appName) {
-            console.warn("Missing required inputs for search.");
-            setReviews([]);
-            return;
-        }
-    };
-
 
     const truncateReview = (review: string) => {
-        return review.length > 50 ? `${review.substring(0, 50)}...` : review;
-    };
-
-    const fetchDataFromApi = async () => {
-        const reviewService = new ReviewService();
-        try {
-            const response = await reviewService.fetchAllReviewsPaginated(currentPage, PAGE_SIZE);
-            if (response !== null) {
-                const { reviews: mappedData, total_pages: pages } = response;
-                setPageData(mappedData);
-                setTotalPages(pages);
-            } else {
-                console.error('Response from fetch all reviews is null');
-            }
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
+        return review.length > 100 ? `${review.substring(0, 100)}...` : review;
     };
 
     const handleWizardClose = () => {
         setWizardModalOpen(false);
-        fetchDataFromApi();
+        fetchReviews();
     };
+
+
 
     return (
         <div>
-            <div>
-                <h1 className="text-secondary">Reviews Directory</h1>
-                {pageData && pageData.length === 0 && (
-                    <div className="d-flex justify-content-center align-items-center">
-                        <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
-                            <Row className="text-center">
-                                <Col>
-                                        <i className="mdi mdi-emoticon-sad text-secondary" style={{ fontSize: '5rem' }} />
-                                        <h2>No reviews uploaded yet.</h2>
-                                        <p>Why don't you write down some reviews?</p>
-                                        <div style={{ width: 'fit-content', margin: '0 auto' }}>
-                                            <Button className="mt-4 btn-secondary" href="applications">
-                                                <i className="mdi mdi-upload"/> View applications
-                                            </Button>
-                                        </div>
-                                </Col>
-                            </Row>
-                        </div>
+            <h1 className="text-secondary">Reviews Directory</h1>
+
+            {/* Filters and Search */}
+            <Row className="bg-light py-3">
+                {/* App Selector */}
+                <Col md={3}>
+                    <h6 className="text-secondary mb-2">Select App</h6>
+                    <Form.Select
+                        value={appPackage}
+                        onChange={(e) => setAppPackage(e.target.value)}
+                        aria-label="Select App"
+                        style={{
+                            height: "40px",
+                            fontSize: "14px",
+                            padding: "5px 10px",
+                        }}
+                    >
+                        <option value="">All Apps</option>
+                        {apps.map((app) => (
+                            <option key={app} value={app}>
+                                {app}
+                            </option>
+                        ))}
+                    </Form.Select>
+                </Col>
+
+                {/* Features Section */}
+                <Col md={5}>
+                    <h6 className="text-secondary mb-2">Features</h6>
+                    <div
+                        style={{
+                            height: "70px",
+                            overflowY: "auto",
+                            background: "white",
+                            borderRadius: "8px",
+                            padding: "10px",
+                            border: "1px solid #ccc",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "5px",
+                            flexWrap: "wrap",
+                        }}
+                    >
+                        {selectedFeatures.map((feature, index) => (
+                            <div
+                                key={index}
+                                style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    padding: "4px 10px",
+                                    borderRadius: "12px",
+                                    backgroundColor: "#F0F9FF",
+                                    border: "1px solid #BAE6FD",
+                                    color: "#0369A1",
+                                    fontSize: "12px",
+                                    fontWeight: 500,
+                                    margin: "2px",
+                                }}
+                            >
+                                {feature}
+                                <i
+                                    className="mdi mdi-close-circle-outline ms-1"
+                                    style={{ cursor: "pointer", fontSize: "14px" }}
+                                    onClick={() => handleDeleteFeature(feature)}
+                                />
+                            </div>
+                        ))}
                     </div>
-                )}
-                {pageData && pageData.length > 0 && (
-                    <>
-                        <Row className="bg-light py-3">
-                            {/* App Selector */}
-                            <Col md={3}>
-                                <h6 className="text-secondary mb-2">Select App</h6>
-                                <Form.Select
-                                    value={appName}
-                                    onChange={(e) => setAppName(e.target.value)}
-                                    aria-label="Select App"
+                    <div className="d-flex mt-2">
+                        <Form.Control
+                            placeholder="Add feature"
+                            value={newFeature}
+                            onChange={(e) => setNewFeature(e.target.value)}
+                            style={{
+                                fontSize: "14px",
+                                padding: "5px 10px",
+                                flex: "3",
+                            }}
+                        />
+                        <div
+                            style={{
+                                width: "1px",
+                                height: "30px",
+                                background: "#ccc",
+                                margin: "0 10px",
+                            }}
+                        ></div>
+                        <Button
+                            variant="secondary"
+                            onClick={handleAddFeature}
+                            style={{
+                                padding: "5px 15px",
+                                fontSize: "14px",
+                                flex: "1",
+                            }}
+                        >
+                            <i className="mdi mdi-plus" /> Add
+                        </Button>
+                    </div>
+                </Col>
+
+                {/* Filters */}
+                <Col md={4}>
+                    <h6 className="text-secondary mb-2">Filters</h6>
+                    <Row>
+                        <Col md={6}>
+                            <Form.Select
+                                value={selectedPolarity}
+                                onChange={(e) => setSelectedPolarity(e.target.value)}
+                                className="mb-2"
+                            >
+                                <option value="">All Polarities</option>
+                                {polarityOptions.map((option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </Form.Select>
+                            <Form.Select
+                                value={selectedTopic}
+                                onChange={(e) => setSelectedTopic(e.target.value)}
+                                className="mb-2"
+                            >
+                                <option value="">All Topics</option>
+                                {topicOptions.map((option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </Form.Select>
+                        </Col>
+                        <Col md={6}>
+                            <Form.Select
+                                value={selectedEmotion}
+                                onChange={(e) => setSelectedEmotion(e.target.value)}
+                                className="mb-2"
+                            >
+                                <option value="">All Emotions</option>
+                                {emotionOptions.map((option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </Form.Select>
+                            <Form.Select
+                                value={selectedType}
+                                onChange={(e) => setSelectedType(e.target.value)}
+                                className="mb-2"
+                            >
+                                <option value="">All Types</option>
+                                {typeOptions.map((option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </Form.Select>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+
+            <Row className="bg-light py-3">
+                <Col md={2}>
+                    <Button
+                        variant="secondary"
+                        onClick={fetchReviews}
+                        style={{
+                            padding: "5px 10px",
+                            fontSize: "14px",
+                        }}
+                    >
+                        <i className="mdi mdi-magnify" /> Search
+                    </Button>
+                </Col>
+            </Row>
+
+            {/* Reviews Table */}
+            {pageData && pageData.length > 0 ? (
+                <>
+                    <Table className="table table-bordered table-centered table-striped table-hover mt-4 bg-light">
+                        <thead>
+                        <tr>
+                            <th>
+                                <input
+                                    type="checkbox"
+                                    checked={selectAll}
+                                    onChange={handleSelectAllChange}
+                                />
+                            </th>
+                            {defaultColumns.map((column) => (
+                                <th
+                                    className="text-center"
+                                    key={column}
                                     style={{
-                                        height: "40px",
-                                        fontSize: "14px",
-                                        padding: "5px 10px",
+                                        fontSize: '14px',
+                                        fontWeight: 600,
+                                        padding: '12px 8px',
+                                        width:
+                                            column === "Application Package" ? "15%" :
+                                                column === "Review ID" ? "8%" :
+                                                    column === "Review Text" ? "40%" :
+                                                        column === "Features" ? "15%" :
+                                                            column === "Polarity" ? "8%" :
+                                                                column === "Emotions" ? "10%" :
+                                                                    column === "Type" ? "12%" :
+                                                                        column === "Topic" ? "12%" :
+                                                                            column === "Actions" ? "10%" :
+                                                                                "auto" // Fallback for unexpected columns
                                     }}
                                 >
-                                    <option value="">Select App</option>
-                                    {apps.map((app) => {
-                                        const extractedAppName = app
-                                            .split("-")[1] // Get the part after the hyphen
-                                            .toLowerCase(); // Convert to lowercase
-                                        return (
-                                            <option key={app} value={app}>
-                                                {extractedAppName}
-                                            </option>
-                                        );
-                                    })}
-                                </Form.Select>
-                            </Col>
+                                    {column}
+                                </th>
+                            ))}
 
-                            {/* Features Section */}
-                            <Col md={5}>
-                                <h6 className="text-secondary mb-2">Features</h6>
-                                <div
-                                    style={{
-                                        height: "70px",
-                                        overflowY: "auto",
-                                        background: "white",
-                                        borderRadius: "8px",
-                                        padding: "10px",
-                                        border: "1px solid #ccc",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        gap: "5px",
-                                        flexWrap: "wrap",
-                                    }}
-                                >
-                                    {selectedFeatures.map((feature, index) => (
-                                        <div
-                                            key={index}
-                                            style={{
-                                                display: 'inline-flex',
-                                                alignItems: 'center',
-                                                padding: '4px 10px',
-                                                borderRadius: '12px',
-                                                backgroundColor: '#F0F9FF',
-                                                border: '1px solid #BAE6FD',
-                                                color: '#0369A1',
-                                                fontSize: '12px',
-                                                fontWeight: 500,
-                                                margin: '2px',
-                                            }}
-                                        >
-                                            {feature.replace(/([A-Z])/g, ' $1').toLowerCase()}
-                                            <i
-                                                className="mdi mdi-close-circle-outline ms-1"
-                                                style={{ cursor: "pointer", fontSize: '14px' }}
-                                                onClick={() => handleDeleteFeature(feature)}
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                                <div className="d-flex mt-2">
-                                    <Form.Control
-                                        placeholder="Add feature"
-                                        value={newFeature}
-                                        onChange={(e) => setNewFeature(e.target.value)}
-                                        style={{
-                                            fontSize: "14px",
-                                            padding: "5px 10px",
-                                            flex: "3",
-                                        }}
-                                    />
-                                    <div
-                                        style={{
-                                            width: "1px",
-                                            height: "30px",
-                                            background: "#ccc",
-                                            margin: "0 10px",
-                                        }}
-                                    ></div>
-                                    <Button
-                                        variant="secondary"
-                                        onClick={handleAddFeature}
-                                        style={{
-                                            display: "flex",
-                                            alignItems: "center",
-                                            gap: "5px",
-                                            padding: "5px 15px", // Compact button
-                                            fontSize: "14px",
-                                            flex: "1", // Makes the button smaller
-                                        }}
-                                    >
-                                        <i className="mdi mdi-plus" /> Add
-                                    </Button>
-                                </div>
-                            </Col>
-
-                            {/* Filters Section */}
-                            <Col md={4}>
-                                <h6 className="text-secondary mb-2">Filters</h6>
-                                <Row>
-                                    <div className="d-flex gap-2">
-                                        <Form.Select
-                                            value={selectedPolarity}
-                                            onChange={(e) => setSelectedPolarity(e.target.value)}
-                                            style={{
-                                                fontSize: "14px",
-                                                padding: "5px 10px",
-                                                height: "40px",
-                                            }}
-                                        >
-                                            <option value="">All Polarities</option>
-                                            {polarityOptions.map(option => (
-                                                <option key={option} value={option}>{option}</option>
-                                            ))}
-                                        </Form.Select>
-
-                                        <Form.Select
-                                            value={selectedType}
-                                            onChange={(e) => setSelectedType(e.target.value)}
-                                            style={{
-                                                fontSize: "14px",
-                                                padding: "5px 10px",
-                                                height: "40px",
-                                            }}
-                                        >
-                                            <option value="">All Types</option>
-                                            {typeOptions.map(option => (
-                                                <option key={option} value={option}>{option}</option>
-                                            ))}
-                                        </Form.Select>
-                                    </div>
-                                </Row>
-                                <Row className="mt-4">
-                                    <div className="d-flex gap-2">
-
-                                        <Form.Select
-                                            value={selectedTopic}
-                                            onChange={(e) => setSelectedTopic(e.target.value)}
-                                            style={{
-                                                fontSize: "14px",
-                                                padding: "5px 10px",
-                                                height: "40px",
-                                            }}
-                                        >
-                                            <option value="">All Topics</option>
-                                            {topicOptions.map(option => (
-                                                <option key={option} value={option}>{option}</option>
-                                            ))}
-                                        </Form.Select>
-
-                                        <Form.Select
-                                            value={selectedEmotion}
-                                            onChange={(e) => setSelectedEmotion(e.target.value)}
-                                            style={{
-                                                fontSize: "14px",
-                                                padding: "5px 10px",
-                                                height: "40px",
-                                            }}
-                                        >
-                                            <option value="">All Emotions</option>
-                                            {emotionOptions.map(option => (
-                                                <option key={option} value={option}>{option}</option>
-                                            ))}
-                                        </Form.Select>
-                                    </div>
-                                </Row>
-
-                            </Col>
-
-                            {/* Search Button Section - moved to new row */}
-                            <Col md={12} className="mt-3">
-                                <Button
-                                    variant="secondary"
-                                    onClick={handleManualSearch}
-                                    style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        gap: "5px",
-                                        padding: "5px 20px",
-                                        fontSize: "14px",
-                                        margin: "0 auto",
-                                    }}
-                                >
-                                    <i className="mdi mdi-magnify"/> Search
-                                </Button>
-                            </Col>
-                        </Row>
-
-                        <Table className="table table-bordered table-centered table-striped table-hover mt-4 bg-light">
-                            <thead>
-                            <tr>
-                                <th className="text-center">
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {pageData.map((review) => (
+                            <tr key={review.review_id}>
+                                <td>
                                     <input
                                         type="checkbox"
-                                        checked={selectAll}
-                                        onChange={() => handleSelectAllChange()}
+                                        checked={selectedReviews.includes(review.review_id)}
+                                        onChange={() => handleCheckboxChange(review.review_id)}
                                     />
-                                </th>
-                                <th className="text-center">App ID</th>
-                                <th className="text-center">App Name</th>
-                                <th className="text-center">Review ID</th>
-                                <th className="text-center">Review Text</th>
-                                <th className="text-center">Features</th>
-                                <th className="text-center">Polarity</th>
-                                <th className="text-center">Type</th>
-                                <th className="text-center">Topic</th>
-                                <th className="text-center">Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {sortedPageData &&
-                                sortedPageData.map((review) => (
-                                    <tr key={review.app_id}>
-                                        <td className="text-center">
-                                            <input
-                                                type="checkbox"
-                                                checked={selectedReviews.includes(review.reviewId)}
-                                                onChange={() => handleCheckboxChange(review)}
-                                            />
-                                        </td>
-                                        <td className="text-center">{review.app_id || "N/A"}</td>
-                                        <td className="text-center">{review.app_name || "N/A"}</td>
-                                        <td className="text-center">
-                                            <div
-                                                title={review.reviewId || "N/A"}
-                                                style={{
-                                                    display: "inline-flex",
-                                                    alignItems: "center",
-                                                    padding: "4px 8px",
-                                                    borderRadius: "8px",
-                                                    backgroundColor: "#F1F5F9",
-                                                    border: "1px solid #CBD5E1",
-                                                    color: "#475569",
-                                                    fontSize: "12px",
-                                                    fontWeight: 500,
-                                                    cursor: "help",
-                                                    fontFamily: "monospace",
-                                                    letterSpacing: "0.5px",
-                                                }}
-                                            >
-                                                <i
-                                                    className="mdi mdi-pound me-1"
-                                                    style={{fontSize: "12px"}}
-                                                />
-                                                {review.reviewId || "N/A"}
-                                            </div>
-                                        </td>
-                                        <td
-                                            style={{
-                                                textAlign: "justify",
-                                                fontSize: "14px",
-                                                padding: "12px 16px",
-                                                lineHeight: "1.5",
-                                            }}
-                                        >
-                                            {review.review || "N/A"}
-                                        </td>
-                                        <td className="text-center" style={{fontSize: "14px"}}>
-                                            <div
-                                                style={{
-                                                    display: "flex",
-                                                    flexWrap: "wrap",
-                                                    gap: "4px",
-                                                    justifyContent: "center",
-                                                }}
-                                            >
-                                                {Array.isArray(review.features) && review.features.length > 0 ? (
-                                                    review.features.map((feature, idx) => (
-                                                        <div
-                                                            key={idx}
-                                                            style={{
-                                                                display: "inline-flex",
-                                                                alignItems: "center",
-                                                                padding: "4px 10px",
-                                                                borderRadius: "12px",
-                                                                backgroundColor: "#F0F9FF",
-                                                                border: "1px solid #BAE6FD",
-                                                                color: "#0369A1",
-                                                                fontSize: "12px",
-                                                                fontWeight: 500,
-                                                                margin: "2px",
-                                                            }}
-                                                        >
-                                                            {feature?.trim() || "N/A"}
-                                                        </div>
-                                                    ))
-                                                ) : (
-                                                    <span>N/A</span>
-                                                )}
-                                            </div>
-                                        </td>
-                                        <td className="text-center" style={{fontSize: "14px"}}>
-                                            <div
-                                                style={{
-                                                    display: "flex",
-                                                    flexWrap: "wrap",
-                                                    gap: "4px",
-                                                    justifyContent: "center",
-                                                }}
-                                            >
-                                                {Array.isArray(review.polarities)
-                                                    ? Array.from(new Set(review.polarities)).map(
-                                                        (polarity, idx) => (
-                                                            <div
-                                                                key={idx}
-                                                                className={`d-inline-flex ${
-                                                                    polarity.toLowerCase() ===
-                                                                    "positive"
-                                                                        ? "text-success"
-                                                                        : "text-danger"
-                                                                }`}
-                                                            >
-                                                                <i
-                                                                    className={`mdi ${
-                                                                        polarity.toLowerCase() ===
-                                                                        "positive"
-                                                                            ? "mdi-emoticon-happy-outline"
-                                                                            : "mdi-emoticon-sad-outline"
-                                                                    } me-1`}
-                                                                    style={{
-                                                                        fontSize: "24px",
-                                                                    }}
-                                                                />
-                                                            </div>
-                                                        )
-                                                    )
-                                                    : "N/A"}
-                                            </div>
-                                        </td>
-                                        <td className="text-center" style={{fontSize: "14px"}}>
-                                            <div
-                                                style={{
-                                                    display: "flex",
-                                                    flexWrap: "wrap",
-                                                    gap: "4px",
-                                                    justifyContent: "center",
-                                                }}
-                                            >
-                                                {Array.isArray(review.types)
-                                                    ? Array.from(new Set(review.types)).map(
-                                                        (type, idx) => (
-                                                            <div
-                                                                key={idx}
-                                                                style={{
-                                                                    display: "inline-flex",
-                                                                    alignItems: "center",
-                                                                    padding: "4px 12px",
-                                                                    borderRadius: "16px",
-                                                                    backgroundColor: "#E6F6FF",
-                                                                    border: "1px solid #B8E2FF",
-                                                                    color: "#0984E3",
-                                                                    fontSize: "13px",
-                                                                    fontWeight: 500,
-                                                                }}
-                                                            >
-                                                                <i
-                                                                    className="mdi mdi-puzzle-outline me-1"
-                                                                    style={{
-                                                                        fontSize: "16px",
-                                                                    }}
-                                                                />
-                                                                {type || "N/A"}
-                                                            </div>
-                                                        )
-                                                    )
-                                                    : "N/A"}
-                                            </div>
-                                        </td>
-                                        <td className="text-center" style={{fontSize: "14px"}}>
-                                            <div
-                                                style={{
-                                                    display: "flex",
-                                                    flexWrap: "wrap",
-                                                    gap: "4px",
-                                                    justifyContent: "center",
-                                                }}
-                                            >
-                                                {Array.isArray(review.topics)
-                                                    ? Array.from(new Set(review.topics)).map(
-                                                        (topic, idx) => (
-                                                            <div
-                                                                key={idx}
-                                                                style={{
-                                                                    display: "inline-flex",
-                                                                    alignItems: "center",
-                                                                    padding: "4px 10px",
-                                                                    borderRadius: "12px",
-                                                                    backgroundColor: "#F5F3FF",
-                                                                    border: "1px solid #DDD6FE",
-                                                                    color: "#6D28D9",
-                                                                    fontSize: "12px",
-                                                                    fontWeight: 500,
-                                                                    letterSpacing: "0.2px",
-                                                                }}
-                                                            >
-                                                                <i
-                                                                    className="mdi mdi-puzzle-outline me-1"
-                                                                    style={{
-                                                                        fontSize: "14px",
-                                                                    }}
-                                                                />
-                                                                {topic || "N/A"}
-                                                            </div>
-                                                        )
-                                                    )
-                                                    : "N/A"}
-                                            </div>
-                                        </td>
-                                        <td className="text-end" style={{width: "150px"}}>
-                                            <OverlayTrigger
-                                                overlay={
-                                                    <Tooltip id="analyze-tooltip">View Review</Tooltip>
-                                                }
-                                            >
-                                                <a
-                                                    href="javascript:void(0)"
-                                                    className="action-icon"
-                                                    onClick={() => analyzeReviewAction(review)}
-                                                >
-                                                    <i className="mdi mdi-eye"></i>
-                                                </a>
-                                            </OverlayTrigger>
-
-                                            <OverlayTrigger
-                                                overlay={
-                                                    <Tooltip id="delete-tooltip">Delete</Tooltip>
-                                                }
-                                            >
-                                                <a
-                                                    href="#"
-                                                    className="action-icon"
-                                                    onClick={() => openDeleteModal(review)}
-                                                >
-                                                    <i className="mdi mdi-delete"></i>
-                                                </a>
-                                            </OverlayTrigger>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
-                        {totalPages > 1 && (
-                            <div className="d-flex justify-content-center align-items-center">
-                                <nav>
-                                    <ul className="pagination pagination-rounded mb-0">
-                                        <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                                            <Button className="btn-primary page-link" onClick={prevPage}
-                                                    aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </Button>
-                                        </li>
-
-                                        {currentPage > 6 && (
-                                            <li className={`page-item ${currentPage === 1 ? 'active' : ''}`}>
-                                                <Button className="btn-primary page-link"
-                                                        onClick={() => setCurrentPage(1)}>
-                                                    1
-                                                </Button>
-                                            </li>
-                                        )}
-
-                                        {currentPage > 6 && (
-                                            <li className="page-item disabled">
-                                                <Button className="btn-primary page-link" disabled>
-                                                    ...
-                                                </Button>
-                                            </li>
-                                        )}
-
-                                        {Array.from({length: Math.min(10, totalPages - Math.max(1, currentPage - 5))}, (_, index) => (
-                                            <li key={index}
-                                                className={`page-item ${currentPage === index + Math.max(1, currentPage - 5) ? 'active' : ''}`}>
-                                                <Button className="btn-primary page-link"
-                                                        onClick={() => setCurrentPage(index + Math.max(1, currentPage - 5))}>
-                                                    {index + Math.max(1, currentPage - 5)}
-                                                </Button>
-                                            </li>
+                                </td>
+                                <td>{review.app_package}</td>
+                                <td className="text-center">
+                                    <ReviewIdBadge id={review.review_id || "N/A"}/>
+                                </td>
+                                <td style={{
+                                    textAlign: 'justify',
+                                    fontSize: '14px',
+                                    padding: '12px 16px',
+                                    lineHeight: '1.5'
+                                }}>
+                                    {truncateReview(review.review) || "N/A"}
+                                </td>
+                                <td className="text-center" style={{fontSize: '14px'}}>
+                                    <div style={{
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        gap: '4px',
+                                        justifyContent: 'center'
+                                    }}>
+                                        {Array.isArray(review.features) && review.features.map((feature, idx) => (
+                                            <FeatureBadge key={idx} feature={feature?.trim() || 'N/A'}/>
                                         ))}
+                                    </div>
+                                </td>
 
-                                        {totalPages - currentPage > 5 && (
-                                            <li className="page-item disabled">
-                                                <Button className="btn-primary page-link" disabled>
-                                                    ...
-                                                </Button>
-                                            </li>
-                                        )}
+                                <td className="text-center" style={{fontSize: '14px'}}>
+                                    <div style={{
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        gap: '4px',
+                                        justifyContent: 'center'
+                                    }}>
+                                        {Array.isArray(review.polarities) ?
+                                            Array.from(new Set(review.polarities)).map((polarity, idx) => (
+                                                <PolarityIcon key={idx} polarity={polarity || 'N/A'}/>
+                                            ))
+                                            : <PolarityIcon polarity='N/A'/>
+                                        }
+                                    </div>
+                                </td>
+                                <td className="text-center" style={{fontSize: '14px'}}>
+                                    <div style={{
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        gap: '4px',
+                                        justifyContent: 'center'
+                                    }}>
+                                        {Array.isArray(review.emotions) ?
+                                            Array.from(new Set(review.emotions)).map((polarity, idx) => (
+                                                <PolarityIcon key={idx} polarity={polarity || 'N/A'}/>
+                                            ))
+                                            : <PolarityIcon polarity='N/A'/>
+                                        }
+                                    </div>
+                                </td>
+                                <td className="text-center" style={{fontSize: '14px'}}>
+                                    <div style={{
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        gap: '4px',
+                                        justifyContent: 'center'
+                                    }}>
+                                        {Array.isArray(review.types) ?
+                                            Array.from(new Set(review.types)).map((type, idx) => (
+                                                <TypeBadge key={idx} type={type || 'N/A'}/>
+                                            ))
+                                            : <TypeBadge type='N/A'/>
+                                        }
+                                    </div>
+                                </td>
+                                <td className="text-center" style={{fontSize: '14px'}}>
+                                    <div style={{
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        gap: '4px',
+                                        justifyContent: 'center'
+                                    }}>
+                                        {Array.isArray(review.topics) ?
+                                            Array.from(new Set(review.topics)).map((topic, idx) => (
+                                                <TopicBadge key={idx} topic={topic || ''}/>
+                                            ))
+                                            : <TopicBadge topic=''/>
+                                        }
+                                    </div>
+                                </td>
+                                <td className="text-end" style={{width: "150px"}}>
 
-                                        <li className={`page-item ${currentPage === totalPages ? 'active' : ''}`}>
-                                            <Button className="btn-primary page-link"
-                                                    onClick={() => setCurrentPage(totalPages)}>
-                                                {totalPages}
-                                            </Button>
-                                        </li>
-                                        <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                                            <Button className="btn-primary page-link" onClick={nextPage}
-                                                    aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </Button>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        )}
-                        {wizardData && wizardData.length > 0 && (
-                            <>
-                                <Row className="mt-2">
-                                    <Col className="md-5">
-                                    </Col>
-                                    <Col className="md-5">
-                                    </Col>
-                                    <Col className="md-2 d-flex justify-content-end">
-                                        <Button className="w-auto" variant="primary"
-                                                onClick={() => setWizardModalOpen(true)}>
-                                            <i className="mdi mdi-lightning-bolt-outline"></i> Process Reviews
-                                        </Button>
-                                    </Col>
-                                </Row>
-                            </>
+                                    <OverlayTrigger overlay={<Tooltip id="analyze-tooltip">View Review</Tooltip>}>
+                                        <a href="javascript:void(0)" className="action-icon"
+                                           onClick={() => analyzeReviewAction(review)}>
+                                            <i className="mdi mdi-eye"></i>
+                                        </a>
+                                    </OverlayTrigger>
 
-                        )}
-                    </>
-                )}
-            </div>
 
+                                    <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
+                                        <a href="#" className="action-icon" onClick={() => openDeleteModal(review)}>
+                                            <i className="mdi mdi-delete"></i>
+                                        </a>
+                                    </OverlayTrigger>
+                                </td>
+
+                            </tr>
+                        ))}
+                        </tbody>
+                    </Table>
+                    {totalPages > 1 && (
+                        <div className="d-flex justify-content-center">
+                            <Button
+                                onClick={prevPage}
+                                disabled={currentPage === 1}
+                                className="me-2"
+                            >
+                                Previous
+                            </Button>
+                            <span className="px-3">{`Page ${currentPage} of ${totalPages}`}</span>
+                            <Button
+                                onClick={nextPage}
+                                disabled={currentPage === totalPages}
+                            >
+                                Next
+                            </Button>
+                        </div>
+                    )}
+                </>
+            ) : (
+                <div className="d-flex justify-content-center align-items-center" style={{minHeight: '50vh'}}>
+                    <div className="text-center">
+                        <i className="mdi mdi-emoticon-sad-outline text-secondary" style={{fontSize: '5rem'}}></i>
+                        <h2>No reviews found</h2>
+                        <p>Please adjust your filters and try again.</p>
+                    </div>
+                </div>
+            )}
 
             <Modal show={isDeleteModalOpen} backdrop="static" keyboard={false} onHide={closeModals}>
                 <Modal.Header closeButton>
                     <Modal.Title>Delete App</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {selectedReview &&
-                        <p>Do you really want to <b>delete</b> the review: {selectedReview?.reviewId}?</p>}
+                    {selectedReview && <p>Do you really want to <b>delete</b> the review: {selectedReview?.review_id}?</p>}
                     <p>This step is <b>irreversible</b></p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModals}>Close</Button>
-                    <Button variant="danger"
-                            onClick={() => deleteReview(selectedReview?.app_id, selectedReview?.reviewId)}>Delete</Button>
+                    <Button variant="danger" onClick={() => deleteReview(selectedReview?.app_id, selectedReview?.review_id)}>Delete</Button>
                 </Modal.Footer>
             </Modal>
 
@@ -858,10 +868,10 @@ const ReviewsDirectory: React.FC = () => {
                     selectedReviews={selectedReviews}
                     onHide={handleWizardClose}
                     onDiscardReview={(review) => {
-                        const updatedSelectedReviews = selectedReviews.filter((id) => id !== review.reviewId);
+                        const updatedSelectedReviews = selectedReviews.filter((id) => id !== review.review_id);
                         setSelectedReviews(updatedSelectedReviews);
                     }}
-                    onUpdateDirectory={fetchDataFromApi}
+                    onUpdateDirectory={fetchReviews}
                 />
             )}
         </div>
@@ -869,4 +879,3 @@ const ReviewsDirectory: React.FC = () => {
 };
 
 export default ReviewsDirectory;
-
