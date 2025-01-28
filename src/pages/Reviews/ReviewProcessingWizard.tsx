@@ -119,7 +119,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
 
     const discardReview = (review: ReviewManagerDTO) => {
         onDiscardReview(review);
-        const updatedWizardData = wizardData.filter((r) => r.reviewId !== review.reviewId);
+        const updatedWizardData = wizardData.filter((r) => r.review_id !== review.review_id);
         setWizardData(updatedWizardData);
     };
     const handleTaskSelectionChange = (task: string) => {
@@ -198,9 +198,9 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                                         {wizardData
                                             .slice(startIndex, endIndex)
                                             .map((review: ReviewManagerDTO) => (
-                                                <tr key={review.reviewId}>
+                                                <tr key={review.review_id}>
                                                     <td className="text-center">{review.app_name || "N/A"}</td>
-                                                    <td className="text-center">{review.reviewId || "N/A"}</td>
+                                                    <td className="text-center">{review.review_id || "N/A"}</td>
                                                     <td className="text-center">{review.review || "N/A"}</td>
 
                                                     <td className="text-end" style={{ width: "150px" }}>
