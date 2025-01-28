@@ -31,9 +31,6 @@ const DropdownMenuReviews: React.FC<{ closeDropdowns: CloseDropdownsFunction }> 
             <Dropdown.Item as={Link} to="/reviews" onClick={handleItemClick}>
                 <i className="mdi mdi-folder-open-outline" /> Reviews Directory
             </Dropdown.Item>
-            <Dropdown.Item as={Link} to="/review-searcher" onClick={handleItemClick}>
-                <i className="mdi mdi-magnify" /> Review Searcher
-            </Dropdown.Item>
         </Dropdown.Menu>
     );
 };
