@@ -86,7 +86,7 @@ class AppService {
         const id = localStorage.getItem('USER_ID')
 
         try {
-            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications`);
+            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications/names`);
             
             if (response.status === 204) {
                 return { apps: [] };
