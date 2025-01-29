@@ -11,11 +11,11 @@ const DropdownMenuApps: React.FC<{ closeDropdowns: CloseDropdownsFunction }> = (
 
     return (
         <Dropdown.Menu>
-            <Dropdown.Item as={Link} to="/applications/upload" onClick={handleItemClick}>
-                <i className="mdi mdi-upload"/> Upload Apps
+            <Dropdown.Item as={Link} to="/applications/directory" onClick={handleItemClick}>
+                <i className="mdi mdi-notebook"/>  Applications Directory
             </Dropdown.Item>
-            <Dropdown.Item as={Link} to="/applications" onClick={handleItemClick}>
-                <i className="mdi mdi-eye"/> View Apps
+            <Dropdown.Item as={Link} to="/applications/upload" onClick={handleItemClick}>
+                <i className="mdi mdi-upload"/> Upload
             </Dropdown.Item>
         </Dropdown.Menu>
     );
@@ -84,13 +84,7 @@ const SecondaryNavBar = () => {
                             </Button>
                         </Link>
                     </Nav.Item>
-                    <Nav.Item as="li" className="mx-lg-1">
-                        <Link to="/applications/directory">
-                            <Button className="text-white">
-                                <i className="mdi mdi-notebook-multiple mdi-24px"/> Applications Directory
-                            </Button>
-                        </Link>
-                    </Nav.Item>
+
                     <Nav.Item as="li" className="mx-lg-1">
                         <div ref={appsDropdownRef}>
                             <Button onClick={toggleAppsDropdown} className="text-white">
@@ -103,12 +97,12 @@ const SecondaryNavBar = () => {
                     </Nav.Item>
                     <Nav.Item className="mx-lg-1">
                         <div ref={reviewsDropdownRef}>
-                            <Button onClick={toggleReviewsDropdown} className="text-white">
-                                <i className="mdi mdi-file-document-multiple mdi-24px" /> Reviews <i className={`mdi mdi-chevron-${reviewsDropdownOpen ? 'down' : 'right'}`}></i>
-                            </Button>
-                            <Dropdown show={reviewsDropdownOpen} align="start">
-                                <DropdownMenuReviews closeDropdowns={closeDropdowns} />
-                            </Dropdown>
+                            <Link to="/reviews">
+                                <Button className="text-white">
+                                    <i className="mdi mdi-file-document-multiple mdi-24px" /> Reviews
+                                </Button>
+                            </Link>
+
                         </div>
                     </Nav.Item>
                     <Nav.Item as="li" className="mx-lg-1">

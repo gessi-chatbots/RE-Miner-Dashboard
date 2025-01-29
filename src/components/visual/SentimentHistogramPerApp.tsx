@@ -75,7 +75,7 @@ const SentimentHistogramPerApp = () => {
         const fetchAppDataFromService = async () => {
             const appService = new AppService();
             try {
-                const response = await appService.fetchAllAppsNamesSimple();
+                const response = await appService.fetchAllAppsPackages();
                 if (response !== null) {
                     const { apps: appData } = response;
                     setAppData(appData);
@@ -185,7 +185,7 @@ const SentimentHistogramPerApp = () => {
                             Select an App
                         </option>
                         {appData?.map((app) => (
-                            <option key={app.id} value={app.id}>
+                            <option key={app.app_package} value={app.app_package}>
                                 {app.app_name}
                             </option>
                         ))}
