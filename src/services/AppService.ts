@@ -82,20 +82,19 @@ class AppService {
         }
     };
 
-    fetchAllAppsNamesSimple = async (): Promise<{ apps: AppDataSimpleDTO[] } | null> => {
-        const id = localStorage.getItem('USER_ID')
+    fetchAllAppsPackages = async (): Promise<{ apps: AppDataSimpleDTO[] } | null> => {
 
         try {
-            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications/names`);
+            const response = await fetch(`${this.API_URL}/applications/directory`);
             
             if (response.status === 204) {
                 return { apps: [] };
             }
             
             const jsonResponse = await response.json();
-            const apps = jsonResponse.applications.map((item: any) => ({
-                id: item.data.id,
-                app_name: item.data.name
+            const apps = jsonResponse.map((item: any) => ({
+                app_package: item.package_name,
+                app_name: item.app_name,
             }));
 
             return {

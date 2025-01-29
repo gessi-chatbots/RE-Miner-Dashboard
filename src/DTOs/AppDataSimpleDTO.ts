@@ -1,5 +1,5 @@
 export interface AppDataSimpleDTO {
-    id: string;
+    app_package: string;
     app_name: string;
     review_size: number;
 }

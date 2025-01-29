@@ -4,7 +4,7 @@ import {Table, Button, Modal, OverlayTrigger, Tooltip, Row, Col} from 'react-boo
 import AppService from "../../services/AppService";
 import { toast } from 'react-toastify';
 import { AppDirectoryDataSimpleDTO } from '../../DTOs/AppDirectoryDataSimpleDTO';
-const defaultColumns = ['Application Package', 'Application Name', '# Reviews', 'Actions'];
+const defaultColumns = ['Package', 'Application Name', '# Reviews'];
 
 const KGDirectory: React.FC = () => {
     const [data, setData] = useState<AppDirectoryDataSimpleDTO[] | null>(null);
@@ -127,7 +127,6 @@ const KGDirectory: React.FC = () => {
                                         <th style={{ width: '20%' }} className="text-center">{defaultColumns[0]}</th>
                                         <th style={{ width: '25%' }} className="text-center">{defaultColumns[1]}</th>
                                         <th style={{ width: '25%' }} className="text-center">{defaultColumns[2]}</th>
-                                        <th style={{ width: '25%' }} className="text-center">{defaultColumns[3]}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -136,13 +135,7 @@ const KGDirectory: React.FC = () => {
                                             <td className="text-center">{app.applicationPackage || 'N/A'}</td>
                                             <td className="text-center">{app.name || 'N/A'}</td>
                                             <td className="text-center">{app.reviewCount || 'N/A'}</td>
-                                            <td className="text-end" style={{ width: "150px" }}>
-                                                <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Add application</Tooltip>}>
-                                                    <a href="#" className="action-icon" onClick={() => addApp(app)}>
-                                                        <i className="mdi mdi-plus"></i>
-                                                    </a>
-                                                </OverlayTrigger>
-                                            </td>
+
                                         </tr>
                                     ))}
                                     </tbody>
