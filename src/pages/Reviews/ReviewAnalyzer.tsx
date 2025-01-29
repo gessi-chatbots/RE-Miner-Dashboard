@@ -105,30 +105,41 @@ const ReviewAnalyzer = () => {
             return <p>{data?.review}</p>;
         }
 
-        const markedReview = data.sentences.map((sentence, index) => {
-            const sentiment = sentence?.sentimentData?.sentiment;
-            const color = sentiment === 'Not relevant' ? 'rgb(213,212,212)' : colors[SENTIMENT_OPTIONS.indexOf(sentiment)];
+        return (
+            <p>
+                {data.sentences.map((sentence, index) => {
+                    const sentiment = sentence?.sentimentData?.sentiment || "Not detected"; // ✅ Default to "Not detected"
+                    const color =
+                        sentiment === "Not detected"
+                            ? "#d3d3d3"
+                            : colors[SENTIMENT_OPTIONS.indexOf(sentiment)] || "#d3d3d3"; // Fallback to gray if missing
 
-            return (
-                <OverlayTrigger
-                    key={index}
-                    placement="right"
-                    overlay={
-                        <Tooltip id={`tooltip-right`}>
-                            {`${sentiment}`}
-                        </Tooltip>
-                    }
-                >
-                    <span
-                        style={{ backgroundColor: color }}
-                    >
-                        {`${sentence.text} `}
-                    </span>
-                </OverlayTrigger>
-            );
-        });
+                    return (
+                        <React.Fragment key={index}>
+                            <OverlayTrigger
+                                placement="right"
+                                overlay={<Tooltip id={`tooltip-${index}`}>{sentiment}</Tooltip>}
+                            >
+                            <span
+                                style={{
+                                    backgroundColor: color,
+                                    padding: "2px 4px",
+                                    borderRadius: "4px",
+                                    margin: "1px",
+                                }}
+                            >
+                                {`${sentence.text}`}
+                            </span>
+                            </OverlayTrigger>
 
-        return <p>{markedReview}</p>;
+                            {index < data.sentences.length - 1 && (
+                                <span style={{ color: "#aaa", margin: "0 5px" }}> | </span>
+                            )}
+                        </React.Fragment>
+                    );
+                })}
+            </p>
+        );
     };
 
     const options = {
@@ -181,25 +192,31 @@ const ReviewAnalyzer = () => {
                     </Col>
 
                     <Col md={6}>
-                        {(data.sentences && data.sentences.length > 0 && data.sentences.some(sentence => sentence.sentimentData)) && (
-                            <div className="px-4 py-4 sentiment-histogram-container">
-                                <h2>Review Sentiments</h2>
+                        <div className="px-4 py-4 sentiment-histogram-container">
+                            <h2>Review Sentiments</h2>
+                            {data.sentences.length > 0 ? (
                                 <Bar data={chartData()} options={options} />
-                            </div>
-                        )}
-                        {(data.sentences && data.sentences.length > 0 && data.sentences.some(sentence => sentence.featureData && sentence.featureData.feature !== "")) && (
-                            <div className="px-4 py-4 mt-4 sentiment-histogram-container">
-                                <h2>Detected Features</h2>
+                            ) : (
+                                <p>No sentiment data available.</p>
+                            )}
+                        </div>
+
+                        <div className="px-4 py-4 mt-4 sentiment-histogram-container">
+                            <h2>Detected Features</h2>
+                            {data.sentences.some(sentence => sentence.featureData && sentence.featureData.feature !== "") ? (
                                 <ul>
-                                    {data?.sentences?.map((sentence, index) => (
+                                    {data.sentences.map((sentence, index) => (
                                         sentence.featureData && sentence.featureData.feature !== "" && (
                                             <li key={index}>{sentence.featureData.feature}</li>
                                         )
                                     ))}
                                 </ul>
-                            </div>
-                        )}
+                            ) : (
+                                <p>No features detected.</p>
+                            )}
+                        </div>
                     </Col>
+
                 </Row>
             )}
         </>
