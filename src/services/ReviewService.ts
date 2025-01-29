@@ -39,14 +39,9 @@ class ReviewService {
     
 
     fetchReview = async (appId: string, reviewId: string): Promise<{ review: ReviewDataDTO } | null> => {
-        const id = localStorage.getItem('USER_ID');
         try {
-            if (!id || !reviewId || !appId) {
-                console.error('USER_ID or app id or reviewId is not available');
-                return null;
-            }
             
-            const response = await fetch(`${this.API_NAME}${this.PATH_NAME}/${id}/applications/${appId}/reviews/${reviewId}`);
+            const response = await fetch(`${this.API_NAME}/applications/${appId}/reviews/${reviewId}`);
             const jsonResponse = await response.json();
     
             const reviewData: ReviewDataDTO = {
