@@ -202,14 +202,14 @@ class ReviewService {
         selectedType: string,
         currentPage: number,
         PAGE_SIZE: number
-    ): Promise<{ reviews: ReviewManagerDTO[]; total_pages: number }> => {
+    ): Promise<{ reviews: ReviewManagerDTO[]; total_pages: number; total_elements: number; current_page: number }> => {
         const url = `${this.API_NAME}/reviews-filtered`;
         const requestBody = {
-            app_package: appPackage,
-            topic: selectedTopic,
-            emotion: selectedEmotion,
-            polarity: selectedPolarity,
-            feature_list: featureList,
+            app_id: appPackage,
+            topic: selectedTopic ? selectedTopic.toLowerCase() : null,
+            emotion: selectedEmotion ? selectedEmotion.toLowerCase() : null,
+            polarity: selectedPolarity ? selectedPolarity.toLowerCase() : null,
+            features: featureList,
             type: selectedType,
             page: currentPage,
             page_size: PAGE_SIZE,
@@ -232,17 +232,19 @@ class ReviewService {
             console.log("Reviews fetched successfully:", data);
 
             return {
-                reviews: data.reviews.map((review: any) => ({
-                    app_package: appPackage,
-                    review_id: review.reviewId,
-                    review: review.review,
-                    features: review.features?.length > 0 ? review.features.map((f: any) => f.feature) : "Unknown",
-                    polarities: review.polarities?.length > 0 ? review.polarities.map((p: any) => p.polarity) : "Unknown",
-                    emotions: review.emotions?.length > 0 ? review.emotions.map((p: any) => p.emotion) : "Unknown",
-                    types: review.types?.length > 0 ? review.types.map((t: any) => t.type) : "Unknown",
-                    topics: review.topics?.length > 0 ? review.topics.map((t: any) => t.topic) : "Unknown",
+                reviews: data.content.map((review: any) => ({
+                    app_id: review.appPackage || "N/A",
+                    review_id: review.reviewId || "N/A",
+                    review: review.review || "N/A",
+                    features: review.features?.length ? review.features.map((f: any) => f.feature) : ["N/A"],
+                    polarities: review.polarities?.length ? review.polarities.map((p: any) => p.polarity) : ["N/A"],
+                    emotions: review.emotions?.length ? review.emotions.map((e: any) => e.emotion) : ["N/A"],
+                    types: review.types?.length ? review.types.map((t: any) => t.type) : ["N/A"],
+                    topics: review.topics?.length ? review.topics.map((t: any) => t.topic) : ["N/A"],
                 })),
-                total_pages: data.total_pages, // Use total_pages from the backend
+                total_pages: data.totalPages,
+                total_elements: data.totalElements,
+                current_page: data.currentPage,
             };
         } catch (error) {
             console.error("Error fetching selected feature reviews:", error);
