@@ -8,7 +8,7 @@ import ReviewProcessingWizard from "./ReviewProcessingWizard";
 import { ReviewManagerDTO } from "../../DTOs/ReviewManagerDTO";
 
 const PAGE_SIZE = 10;
-const defaultColumns = ["Application Package", "Review ID", "Review Text", "Features", "Polarity", "Emotions", "Type", "Topic", "Actions"];
+const defaultColumns = ["Package", "Review ID", "Review Text", "Features", "Polarity", "Emotions", "Type", "Topic", "Actions"];
 
 const ReviewsDirectory: React.FC = () => {
     const [apps, setApps] = useState<string[]>([]);
@@ -19,12 +19,10 @@ const ReviewsDirectory: React.FC = () => {
     const [appPackage, setAppPackage] = useState<string>("");
     const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
     const [selectedPolarity, setSelectedPolarity] = useState<string>("");
-    const [isEditModalOpen, setEditModalIsOpen] = useState<boolean>(false);
     const [selectedTopic, setSelectedTopic] = useState<string>("");
     const [selectedEmotion, setSelectedEmotion] = useState<string>("");
     const [selectedType, setSelectedType] = useState<string>("");
     const [newFeature, setNewFeature] = useState<string>("");
-    const [isDeleteModalOpen, setDeleteModalIsOpen] = useState<boolean>(false);
     const [selectedReview, setSelectedReview] = useState<ReviewManagerDTO | null>(null);
     const [selectedReviews, setSelectedReviews] = useState<string[]>([]);
     const [isWizardModalOpen, setWizardModalOpen] = useState<boolean>(false);
@@ -335,15 +333,7 @@ const ReviewsDirectory: React.FC = () => {
         };
         fetchApps();
     }, []);
-    const closeModals = () => {
-        setEditModalIsOpen(false);
-        setDeleteModalIsOpen(false);
-        setSelectedReview(null);
-    };
-    const openDeleteModal = (review: ReviewManagerDTO) => {
-        setSelectedReview(review);
-        setDeleteModalIsOpen(true);
-    };
+
     const fetchReviews = async () => {
         try {
             const reviewService = new ReviewService();
@@ -366,8 +356,8 @@ const ReviewsDirectory: React.FC = () => {
                 toast.warn("No reviews found for the selected filters.");
             }
         } catch (error) {
-            console.error("Error fetching reviews:", error);
-            toast.error("Failed to fetch reviews.");
+            setPageData([]);
+            toast.warn("No reviews found for the selected filters.");
         }
     };
 
@@ -401,59 +391,6 @@ const ReviewsDirectory: React.FC = () => {
 
     const handleDeleteFeature = (feature: string) => {
         setSelectedFeatures((prev) => prev.filter((f) => f !== feature));
-    };
-    const openEditModal = (review: ReviewManagerDTO) => {
-        setSelectedReview(review);
-        setEditModalIsOpen(true);
-    };
-    const handleDeleteReview = async (app_name: string | undefined, review_id: string | undefined) => {
-        if (!app_name || !review_id) {
-            console.error("App Name or Review ID is undefined or null.");
-            return;
-        }
-
-        const reviewService = new ReviewService();
-        try {
-            await reviewService.deleteReview(app_name, review_id);
-            toast.success("Review deleted successfully!");
-            setDeleteModalIsOpen(false);
-            fetchReviews();
-        } catch (error) {
-            toast.error("Error deleting review");
-            console.error("Error deleting review:", error);
-        }
-    };
-    const deleteReview = async (app_id: string | undefined, review_id: string | undefined) => {
-        if (!app_id) {
-            console.error("App ID is undefined or null.");
-            return false;
-        }
-
-        if (!review_id) {
-            console.error("Review ID is undefined or null.");
-            return false;
-        }
-
-        const reviewService = new ReviewService();
-        try {
-            await reviewService.deleteReview(app_id, review_id);
-            const response = await reviewService.fetchAllReviewsPaginated(currentPage, PAGE_SIZE);
-            if (response !== null) {
-                const { reviews: mappedData, total_pages: pages } = response;
-                if (mappedData !== undefined) {
-                    setPageData(mappedData);
-                    setTotalPages(pages);
-                }
-            }
-            toast.success('Review deleted successfully!');
-            setDeleteModalIsOpen(false);
-            return true;
-        } catch (error) {
-            toast.error('Error deleting app');
-            console.error("Error deleting app:", error);
-            setDeleteModalIsOpen(false);
-            return false;
-        }
     };
 
     const nextPage = async () => {
@@ -685,7 +622,7 @@ const ReviewsDirectory: React.FC = () => {
                                         fontWeight: 600,
                                         padding: '12px 8px',
                                         width:
-                                            column === "Application Package" ? "15%" :
+                                            column === "Package" ? "15%" :
                                                 column === "Review ID" ? "8%" :
                                                     column === "Review Text" ? "40%" :
                                                         column === "Features" ? "15%" :
@@ -713,7 +650,7 @@ const ReviewsDirectory: React.FC = () => {
                                         onChange={() => handleCheckboxChange(review.review_id)}
                                     />
                                 </td>
-                                <td>{review.app_package}</td>
+                                <td>{review.app_id}</td>
                                 <td className="text-center">
                                     <ReviewIdBadge id={review.review_id || "N/A"}/>
                                 </td>
@@ -807,12 +744,6 @@ const ReviewsDirectory: React.FC = () => {
                                         </a>
                                     </OverlayTrigger>
 
-
-                                    <OverlayTrigger overlay={<Tooltip id="delete-tooltip">Delete</Tooltip>}>
-                                        <a href="#" className="action-icon" onClick={() => openDeleteModal(review)}>
-                                            <i className="mdi mdi-delete"></i>
-                                        </a>
-                                    </OverlayTrigger>
                                 </td>
 
                             </tr>
@@ -848,19 +779,6 @@ const ReviewsDirectory: React.FC = () => {
                 </div>
             )}
 
-            <Modal show={isDeleteModalOpen} backdrop="static" keyboard={false} onHide={closeModals}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Delete App</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    {selectedReview && <p>Do you really want to <b>delete</b> the review: {selectedReview?.review_id}?</p>}
-                    <p>This step is <b>irreversible</b></p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={closeModals}>Close</Button>
-                    <Button variant="danger" onClick={() => deleteReview(selectedReview?.app_id, selectedReview?.review_id)}>Delete</Button>
-                </Modal.Footer>
-            </Modal>
 
             {isWizardModalOpen && (
                 <ReviewProcessingWizard
