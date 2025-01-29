@@ -320,9 +320,9 @@ const ReviewsDirectory: React.FC = () => {
         const fetchApps = async () => {
             const appService = new AppService();
             try {
-                const response = await appService.fetchAllAppsNamesSimple();
+                const response = await appService.fetchAllAppsPackages();
                 if (response) {
-                    setApps(response.apps.map((app) => app.app_name));
+                    setApps(response.apps.map((app) => app.app_package));
                 } else {
                     console.warn("No apps found");
                     setApps([]);
@@ -334,7 +334,21 @@ const ReviewsDirectory: React.FC = () => {
         fetchApps();
     }, []);
 
-    const fetchReviews = async () => {
+    useEffect(() => {
+        fetchReviews();
+    }, [currentPage]);
+
+    useEffect(() => {
+        setCurrentPage(1);
+        fetchReviews();
+    }, [pageSize]);
+
+    useEffect(() => {
+        setCurrentPage(0);
+        fetchReviews(0);
+    }, [appPackage, selectedFeatures, selectedPolarity, selectedTopic, selectedEmotion, selectedType]);
+
+    const fetchReviews = async (page = currentPage) => {
         try {
             const reviewService = new ReviewService();
             const response = await reviewService.fetchFilteredReviews(
@@ -344,9 +358,10 @@ const ReviewsDirectory: React.FC = () => {
                 selectedEmotion,
                 selectedPolarity,
                 selectedType,
-                currentPage,
+                page, // Pass the specified page number
                 pageSize
             );
+
             if (response) {
                 const { reviews: mappedData, total_pages: pages } = response;
                 setPageData(mappedData);
@@ -367,6 +382,31 @@ const ReviewsDirectory: React.FC = () => {
         setCurrentPage(1); // Reset to page 1 when changing page size
         fetchReviews(); // Re-fetch reviews with the new page size
     };
+    const handlePolarityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedPolarity(event.target.value);
+        handleFilterChange();
+    };
+
+    const handleTopicChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedTopic(event.target.value);
+        handleFilterChange();
+    };
+
+    const handleEmotionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedEmotion(event.target.value);
+        handleFilterChange();
+    };
+
+    const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedType(event.target.value);
+        handleFilterChange();
+    };
+
+    const handleFilterChange = () => {
+        setCurrentPage(0); // Set to first page (0-based index)
+        fetchReviews(0);   // Fetch with page 0
+    };
+
     const handleCheckboxChange = (reviewId: string) => {
         setSelectAll(false);
         setSelectedReviews((prev) =>
@@ -588,21 +628,6 @@ const ReviewsDirectory: React.FC = () => {
                             </Form.Select>
                         </Col>
                     </Row>
-                </Col>
-            </Row>
-
-            <Row className="bg-light py-3">
-                <Col md={2}>
-                    <Button
-                        variant="secondary"
-                        onClick={fetchReviews}
-                        style={{
-                            padding: "5px 10px",
-                            fontSize: "14px",
-                        }}
-                    >
-                        <i className="mdi mdi-magnify" /> Search
-                    </Button>
                 </Col>
             </Row>
 
