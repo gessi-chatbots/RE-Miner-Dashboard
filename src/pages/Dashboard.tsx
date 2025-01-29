@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import SentimentHistogramPerApp from '../components/visual/SentimentHistogramPerApp';
-import AllSentimentsPolarAreaChart from "../components/visual/AllSentimentsPolarAreaChart";
+import DescriptorPolarAreaChart from "../components/visual/DescriptorPolarAreaChart";
 import Top5FeaturesHistogram from "../components/visual/Top5FeaturesHistogram";
 import FeatureLineChart from "../components/visual/FeatureLineChart";
 import CrossFeatureSentiments from "../components/visual/CrossFeatureSentiments";
@@ -13,7 +13,7 @@ const Dashboard = () => {
             <Row className="gx-5">
                 <Col className="col-md-6 mb-4 ml-3">
                     <Row className="mb-4">
-                        <AllSentimentsPolarAreaChart />
+                        <DescriptorPolarAreaChart />
                     </Row>
                     <Row>
                         <SentimentHistogramPerApp />

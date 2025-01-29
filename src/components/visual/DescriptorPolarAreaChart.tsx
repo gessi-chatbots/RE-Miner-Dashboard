@@ -43,7 +43,7 @@ const generateColors = (sentiments: string[]) => {
     return sentiments.map((sentiment) => defaultColors[sentiment]);
 };
 
-const AllSentimentsPolarAreaChart = () => {
+const DescriptorPolarAreaChart = () => {
     const [data, setData] = useState<number[]>([]);
     const [labels, setLabels] = useState(SENTIMENT_OPTIONS);
     const [colors, setColors] = useState(generateColors(SENTIMENT_OPTIONS));
@@ -122,4 +122,4 @@ const AllSentimentsPolarAreaChart = () => {
     );
 };
 
-export default AllSentimentsPolarAreaChart;
+export default DescriptorPolarAreaChart;
