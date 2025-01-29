@@ -41,21 +41,25 @@ class ReviewService {
     fetchReview = async (appId: string, reviewId: string): Promise<{ review: ReviewDataDTO } | null> => {
         try {
             
-            const response = await fetch(`${this.API_NAME}/applications/${appId}/reviews/${reviewId}`);
+            const response = await fetch(`${this.API_NAME}/reviews/${reviewId}`);
             const jsonResponse = await response.json();
-    
+
             const reviewData: ReviewDataDTO = {
-                app_name: jsonResponse.application.name,
-                app_id: jsonResponse.application.id,
-                reviewId: jsonResponse.review_id,
-                review: jsonResponse.review_text,
+                app_name: jsonResponse.package_name,
+                app_id: jsonResponse.package_name,
+                reviewId: jsonResponse.reviewId,
+                review: jsonResponse.review,
                 sentences: jsonResponse.sentences.map((sentence: any) => ({
                     id: sentence.id,
                     text: sentence.text,
-                    featureData: sentence.featureData,
-                    sentimentData: sentence.sentimentData
-                }))
+                    featureData: sentence.featureData ?? null,  // Ensure featureData is either an object or null
+                    sentimentData: sentence.sentimentData ?? null,
+                    polarityData: sentence.polarityData ?? null,
+                    topicData: sentence.topicData ?? null,
+                    typeData: sentence.typeData ?? null,
+                })),
             };
+
     
             return { review: reviewData };
         } catch (error) {
