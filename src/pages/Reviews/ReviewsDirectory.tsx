@@ -7,7 +7,6 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import ReviewProcessingWizard from "./ReviewProcessingWizard";
 import { ReviewManagerDTO } from "../../DTOs/ReviewManagerDTO";
 
-const PAGE_SIZE = 10;
 const defaultColumns = ["Package", "Review ID", "Review Text", "Features", "Polarity", "Emotions", "Type", "Topic", "Actions"];
 
 const ReviewsDirectory: React.FC = () => {
@@ -17,6 +16,7 @@ const ReviewsDirectory: React.FC = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
     const [appPackage, setAppPackage] = useState<string>("");
+    const [pageSize, setPageSize] = useState(5);
     const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
     const [selectedPolarity, setSelectedPolarity] = useState<string>("");
     const [selectedTopic, setSelectedTopic] = useState<string>("");
@@ -340,12 +340,12 @@ const ReviewsDirectory: React.FC = () => {
             const response = await reviewService.fetchFilteredReviews(
                 appPackage,
                 selectedFeatures,
+                selectedTopic,
                 selectedEmotion,
                 selectedPolarity,
-                selectedTopic,
                 selectedType,
                 currentPage,
-                PAGE_SIZE
+                pageSize
             );
             if (response) {
                 const { reviews: mappedData, total_pages: pages } = response;
@@ -361,6 +361,12 @@ const ReviewsDirectory: React.FC = () => {
         }
     };
 
+    const handlePageSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const newSize = Number(event.target.value);
+        setPageSize(newSize);
+        setCurrentPage(1); // Reset to page 1 when changing page size
+        fetchReviews(); // Re-fetch reviews with the new page size
+    };
     const handleCheckboxChange = (reviewId: string) => {
         setSelectAll(false);
         setSelectedReviews((prev) =>
@@ -750,22 +756,84 @@ const ReviewsDirectory: React.FC = () => {
                         ))}
                         </tbody>
                     </Table>
+                    <div className="d-flex align-items-center">
+                        <label className="me-2 text-secondary">Rows per page:</label>
+                        <Form.Select
+                            value={pageSize}
+                            onChange={handlePageSizeChange}
+                            style={{width: "100px"}}
+                        >
+                            <option value={5}>5</option>
+                            <option value={10}>10</option>
+                            <option value={20}>20</option>
+                            <option value={50}>50</option>
+                            <option value={100}>100</option>
+                        </Form.Select>
+                    </div>
                     {totalPages > 1 && (
-                        <div className="d-flex justify-content-center">
-                            <Button
-                                onClick={prevPage}
-                                disabled={currentPage === 1}
-                                className="me-2"
-                            >
-                                Previous
-                            </Button>
-                            <span className="px-3">{`Page ${currentPage} of ${totalPages}`}</span>
-                            <Button
-                                onClick={nextPage}
-                                disabled={currentPage === totalPages}
-                            >
-                                Next
-                            </Button>
+                        <div className="d-flex justify-content-center align-items-center">
+                            <nav>
+                                <ul className="pagination pagination-rounded mb-0">
+                                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                                        <Button className="btn-primary page-link" onClick={prevPage}
+                                                aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </Button>
+                                    </li>
+
+                                    {currentPage > 6 && (
+                                        <>
+                                            <li className="page-item">
+                                                <Button className="btn-primary page-link"
+                                                        onClick={() => setCurrentPage(1)}>
+                                                    1
+                                                </Button>
+                                            </li>
+                                            <li className="page-item disabled">
+                                                <Button className="btn-primary page-link" disabled>
+                                                    ...
+                                                </Button>
+                                            </li>
+                                        </>
+                                    )}
+
+                                    {Array.from({length: Math.min(10, totalPages - Math.max(1, currentPage - 5))}, (_, index) => {
+                                        const pageNumber = index + Math.max(1, currentPage - 5);
+                                        if (pageNumber > totalPages) return null;
+                                        return (
+                                            <li key={pageNumber}
+                                                className={`page-item ${currentPage === pageNumber ? 'active' : ''}`}>
+                                                <Button className="btn-primary page-link"
+                                                        onClick={() => setCurrentPage(pageNumber)}>
+                                                    {pageNumber}
+                                                </Button>
+                                            </li>
+                                        );
+                                    })}
+
+                                    {totalPages - currentPage > 5 && (
+                                        <>
+                                            <li className="page-item disabled">
+                                                <Button className="btn-primary page-link" disabled>
+                                                    ...
+                                                </Button>
+                                            </li>
+                                            <li className="page-item">
+                                                <Button className="btn-primary page-link"
+                                                        onClick={() => setCurrentPage(totalPages)}>
+                                                    {totalPages}
+                                                </Button>
+                                            </li>
+                                        </>
+                                    )}
+
+                                    <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                                        <Button className="btn-primary page-link" onClick={nextPage} aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </Button>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     )}
                 </>
