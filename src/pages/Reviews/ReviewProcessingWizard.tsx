@@ -187,7 +187,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                                 <Table className="table table-bordered table-centered table-striped table-hover mt-4">
                                     <thead>
                                     <tr>
-                                        <th className="text-center">App Name</th>
+                                        <th className="text-center">Package</th>
                                         <th className="text-center">Review ID</th>
                                         <th className="text-center">Review</th>
                                         <th className="text-center">Actions</th>
@@ -199,7 +199,7 @@ const ReviewProcessingWizard: React.FC<ReviewProcessingWizardProps> = ({
                                             .slice(startIndex, endIndex)
                                             .map((review: ReviewManagerDTO) => (
                                                 <tr key={review.review_id}>
-                                                    <td className="text-center">{review.app_name || "N/A"}</td>
+                                                    <td className="text-center">{review.app_id || "N/A"}</td>
                                                     <td className="text-center">{review.review_id || "N/A"}</td>
                                                     <td className="text-center">{review.review || "N/A"}</td>
 

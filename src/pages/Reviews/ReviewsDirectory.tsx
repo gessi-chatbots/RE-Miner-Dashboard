@@ -348,6 +348,33 @@ const ReviewsDirectory: React.FC = () => {
         fetchReviews(0);
     }, [appPackage, selectedFeatures, selectedPolarity, selectedTopic, selectedEmotion, selectedType]);
 
+    const handleCheckboxChange = async (review: ReviewManagerDTO) => {
+        setSelectAll(false);
+
+        setSelectedReviews((prevSelectedReviews) => {
+            const updatedSelectedReviews = [...prevSelectedReviews];
+            const index = updatedSelectedReviews.indexOf(review.review_id);
+
+            if (index !== -1) {
+                updatedSelectedReviews.splice(index, 1);
+            } else {
+                updatedSelectedReviews.push(review.review_id);
+            }
+
+            return updatedSelectedReviews;
+        });
+
+        setWizardData((prevWizardData) => {
+            if (!prevWizardData || prevWizardData.length === 0) {
+                return [review];
+            } else if (!prevWizardData.some((r) => r.review_id === review.review_id)) {
+                return [...prevWizardData, review];
+            } else {
+                return prevWizardData.filter((r) => r.review_id !== review.review_id);
+            }
+        });
+    }
+
     const fetchReviews = async (page = currentPage) => {
         try {
             const reviewService = new ReviewService();
@@ -405,15 +432,6 @@ const ReviewsDirectory: React.FC = () => {
     const handleFilterChange = () => {
         setCurrentPage(0); // Set to first page (0-based index)
         fetchReviews(0);   // Fetch with page 0
-    };
-
-    const handleCheckboxChange = (reviewId: string) => {
-        setSelectAll(false);
-        setSelectedReviews((prev) =>
-            prev.includes(reviewId)
-                ? prev.filter((id) => id !== reviewId)
-                : [...prev, reviewId]
-        );
     };
 
     const handleSelectAllChange = () => {
@@ -637,11 +655,11 @@ const ReviewsDirectory: React.FC = () => {
                     <Table className="table table-bordered table-centered table-striped table-hover mt-4 bg-light">
                         <thead>
                         <tr>
-                            <th>
+                            <th className="text-center">
                                 <input
                                     type="checkbox"
                                     checked={selectAll}
-                                    onChange={handleSelectAllChange}
+                                    onChange={() => handleSelectAllChange()}
                                 />
                             </th>
                             {defaultColumns.map((column) => (
@@ -674,11 +692,11 @@ const ReviewsDirectory: React.FC = () => {
                         <tbody>
                         {pageData.map((review) => (
                             <tr key={review.review_id}>
-                                <td>
+                                <td className="text-center">
                                     <input
                                         type="checkbox"
                                         checked={selectedReviews.includes(review.review_id)}
-                                        onChange={() => handleCheckboxChange(review.review_id)}
+                                        onChange={() => handleCheckboxChange(review)}
                                     />
                                 </td>
                                 <td>{review.app_id}</td>
@@ -704,7 +722,7 @@ const ReviewsDirectory: React.FC = () => {
                                             review.features
                                                 .filter((feature) => feature && feature.trim().toLowerCase() !== 'n/a')
                                                 .map((feature, idx) => (
-                                                    <FeatureBadge key={idx} feature={feature.trim()} />
+                                                    <FeatureBadge key={idx} feature={feature.trim()}/>
                                                 ))
                                         }
                                     </div>
@@ -864,6 +882,21 @@ const ReviewsDirectory: React.FC = () => {
                                 </ul>
                             </nav>
                         </div>
+                    )}
+                    {wizardData && wizardData.length > 0 && (
+                        <>
+                            <Row className="mt-2">
+                                <Col className="md-5">
+                                </Col>
+                                <Col className="md-5">
+                                </Col>
+                                <Col className="md-2 d-flex justify-content-end">
+                                    <Button className="w-auto" variant="primary" onClick={() => setWizardModalOpen(true)}>
+                                        <i className="mdi mdi-lightning-bolt-outline"></i> Process Reviews
+                                    </Button>
+                                </Col>
+                            </Row>
+                        </>
                     )}
                 </>
             ) : (
