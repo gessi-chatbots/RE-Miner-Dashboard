@@ -247,7 +247,7 @@ const TreeAnalyzer = () => {
 
         navigate("/reviews", {
             state: {
-                appName: selectedApp,
+                appPackage: selectedApp,
                 selectedFeatures,
             },
         });
