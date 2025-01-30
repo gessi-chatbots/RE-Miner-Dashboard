@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ReviewService from "../../services/ReviewService";
 import { ReviewDataDTO } from "../../DTOs/ReviewDataDTO";
-import { useParams } from "react-router-dom";
-import { Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
-import {Bar} from "react-chartjs-2";
+import {useNavigate, useParams} from "react-router-dom";
+import {Row, Col, OverlayTrigger, Tooltip, Button} from "react-bootstrap";
+import { Bar } from "react-chartjs-2";
+import FileUploader from "../../components/files/FileUploader";
 
 const SENTIMENT_OPTIONS = ['happiness', 'sadness', 'anger', 'surprise', 'fear', 'disgust', 'Not relevant'];
 
@@ -21,11 +22,7 @@ const generateColors = (sentiments: string[]) => {
 
 const FeatureBadge: React.FC<{ feature: string }> = ({ feature }) => {
     const formatText = (text: string) => {
-        // Convert camelCase to space-separated words
-        return text
-            .replace(/([A-Z])/g, ' $1')
-            .toLowerCase()
-            .trim();
+        return text.replace(/([A-Z])/g, ' $1').toLowerCase().trim();
     };
 
     return (
@@ -111,7 +108,7 @@ const ReviewAnalyzer = () => {
     const [data, setData] = useState<ReviewDataDTO | null>(null);
     const { reviewId, appId } = useParams();
     const [colors, setColors] = useState(generateColors(SENTIMENT_OPTIONS));
-
+    const navigate = useNavigate();
     useEffect(() => {
         const fetchReviewFromApi = async () => {
             const reviewService = new ReviewService();
@@ -146,7 +143,7 @@ const ReviewAnalyzer = () => {
 
         data.sentences.forEach((sentence) => {
             const sentimentKey = sentence?.sentimentData?.sentiment;
-            if (sentimentKey) {  // Ensure the key is not undefined
+            if (sentimentKey) {
                 sentimentCounts[sentimentKey] = (sentimentCounts[sentimentKey] || 0) + 1;
             }
         });
@@ -167,26 +164,67 @@ const ReviewAnalyzer = () => {
             datasets: [dataset],
         };
     };
+
     const markFeaturesInReview = () => {
         if (!data || !data.sentences || data.sentences.length === 0) {
             return <p>{data?.review}</p>;
         }
 
-        const sortedFeatures = data.sentences
-            .filter(sentence => sentence.featureData !== null)
-            .map(sentence => sentence.featureData!.feature)
-            .sort((a, b) => b.length - a.length);
+        // Extract features to mark
+        const detectedFeatures = Array.from(
+            new Set(
+                data.sentences
+                    .filter(sentence => sentence.featureData?.feature)
+                    .map(sentence => sentence.featureData!.feature.trim())
+            )
+        );
 
-        let markedReview = data.review;
+        // Split the review text into words
+        const words = data.review.split(/\s+/);
 
-        sortedFeatures.forEach((feature) => {
-            const marker = `<span class="feature-marker">${feature}<span class="feature-tag">Feature</span></span>`;
-            markedReview = markedReview.replace(new RegExp(feature, 'gi'), marker);
-        });
+        // Function to determine if a word is part of any detected feature
+        const isFeatureWord = (word: string) => {
+            return detectedFeatures.some(feature => feature.toLowerCase().includes(word.toLowerCase()));
+        };
 
-        return <p dangerouslySetInnerHTML={{ __html: markedReview }} />;
+        // Render words with tooltips if they are part of a feature
+        return (
+            <p style={{ lineHeight: '1.6', wordWrap: 'break-word' }}>
+                {words.map((word, index) => {
+                    if (isFeatureWord(word)) {
+                        const fullFeature = detectedFeatures.find(feature =>
+                            feature.toLowerCase().includes(word.toLowerCase())
+                        );
+
+                        return (
+                            <OverlayTrigger
+                                key={index}
+                                placement="top"
+                                overlay={<Tooltip id={`tooltip-feature-${index}`}>{fullFeature}</Tooltip>}
+                            >
+                        <span
+                            style={{
+                                fontWeight: 'bold',
+                                color: '#0369A1',
+                                backgroundColor: '#E0F7FF',
+                                borderRadius: '4px',
+                                padding: '2px 6px',
+                                margin: '0 2px',
+                                display: 'inline',
+                            }}
+                        >
+                            {word}
+                        </span>
+                            </OverlayTrigger>
+                        );
+                    }
+
+                    return <span key={index} style={{ margin: '0 2px' }}>{word}</span>;
+                })}
+            </p>
+        );
+
     };
-
     const markSentimentsInReview = () => {
         if (!data || !data.sentences || data.sentences.length === 0) {
             return <p>{data?.review}</p>;
@@ -212,7 +250,7 @@ const ReviewAnalyzer = () => {
                                         margin: "1px",
                                     }}
                                 >
-                                                                    {`${sentence.text}`}
+                                    {`${sentence.text}`}
                                 </span>
                             </OverlayTrigger>
                             {index < data.sentences.length - 1 && <span style={{ color: "#aaa", margin: "0 5px" }}> | </span>}
@@ -244,7 +282,27 @@ const ReviewAnalyzer = () => {
 
     return (
         <>
-            <h1 className="text-secondary mb-4">Review Analyzer</h1>
+            <div className="mb-3">
+                <Row className="align-content-center">
+                    <Col className="col-md-8">
+                        <h1 className="text-secondary">Review Analyzer</h1>
+                    </Col>
+                    <Col className="col-md-2"></Col>
+                    <Col className="col-md-2 d-flex justify-content-end align-items-center">
+                        <Button
+                            className="btn-secondary p-1 m-0"
+                            onClick={() => navigate('/reviews')}
+                            style={{ padding: '4px 8px', margin: 0 }}
+                        >
+                            <i className="mdi mdi-arrow-left" /> Back
+                        </Button>
+                    </Col>
+                </Row>
+
+
+            </div>
+
+
             {data && (
                 <Row>
                     <Col md={6}>
@@ -257,13 +315,9 @@ const ReviewAnalyzer = () => {
                                 <h2>Review Id</h2>
                                 <p>{data.reviewId}</p>
                             </Row>
-                            <Row>
-                                <h2>Review Text</h2>
-                                <p>{data.review}</p>
-                            </Row>
                             {data.sentences && data.sentences.length > 0 && (
                                 <Row>
-                                    <h2>Review Content:</h2>
+                                    <h2>Review Sentiments:</h2>
                                     {markSentimentsInReview()}
                                     <h2>Review Marked Features</h2>
                                     {markFeaturesInReview()}
@@ -332,9 +386,8 @@ const ReviewAnalyzer = () => {
                                 </div>
                             ) : (
                                 <div className="text-center">
-                                    <i className="mdi mdi-emoticon-sad-outline text-secondary"
-                                       style={{fontSize: '5rem'}}/>
-                                    <p className="mt-3 text-muted">No detected features.</p>
+                                    <i className="mdi mdi-emoticon-sad text-secondary" style={{fontSize: '5rem'}}/>
+                                    <h2 className="mt-3 text-muted">No Feature data available.</h2>
                                 </div>
                             )}
                         </div>
@@ -342,11 +395,12 @@ const ReviewAnalyzer = () => {
                         <div className="px-4 py-4 sentiment-histogram-container mt-4">
                             <h2>Detected Polarities</h2>
                             {data.sentences.some(sentence => sentence.polarityData && sentence.polarityData.polarity) ? (
-                                data.sentences.map((sentence, index) =>
-                                    sentence.polarityData?.polarity ? (
-                                        <PolarityIcon key={index} polarity={sentence.polarityData.polarity}/>
-                                    ) : null
-                                )
+                                Array.from(new Set(data.sentences
+                                    .map(sentence => sentence.polarityData?.polarity)
+                                    .filter(Boolean)
+                                )).map((polarity, index) => (
+                                    <PolarityIcon key={index} polarity={polarity!}/>
+                                ))
                             ) : (
                                 <div className="text-center">
                                     <i className="mdi mdi-emoticon-sad-outline text-secondary"

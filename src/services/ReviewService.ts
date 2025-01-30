@@ -51,7 +51,7 @@ class ReviewService {
                 review: jsonResponse.review,
                 sentences: jsonResponse.sentences.map((sentence: any) => ({
                     id: sentence.id,
-                    text: sentence.text,
+                    text: sentence.sentence,
                     featureData: sentence.featureData ?? null,  // Ensure featureData is either an object or null
                     sentimentData: sentence.sentimentData ?? null,
                     polarityData: sentence.polarityData ?? null,
