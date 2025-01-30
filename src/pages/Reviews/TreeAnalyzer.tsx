@@ -6,6 +6,7 @@ import { Container, Button, Row, Col, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-toastify";
+import AppService from "../../services/AppService";
 
 const TreeAnalyzer = () => {
     const navigate = useNavigate();
@@ -27,17 +28,21 @@ const TreeAnalyzer = () => {
 
     useEffect(() => {
         const fetchApps = async () => {
+            const appService = new AppService();
             try {
-                const appData = await treeService.fetchAllApps();
-                setApps(appData.map((app) => app.app_name));
+                const response = await appService.fetchAllAppsPackages();
+                if (response) {
+                    setApps(response.apps.map((app) => app.app_package));
+                } else {
+                    console.warn("No apps found");
+                    setApps([]);
+                }
             } catch (error) {
                 console.error("Error fetching apps:", error);
             }
         };
-
         fetchApps();
     }, []);
-
     useEffect(() => {
         if (!selectedApp) return;
 
@@ -276,10 +281,9 @@ const TreeAnalyzer = () => {
                     >
                         <option value="">Select App</option>
                         {apps.map((app) => {
-                            const extractedAppName = app.split("-")[1]?.toLowerCase();
                             return (
                                 <option key={app} value={app}>
-                                    {extractedAppName}
+                                    {app}
                                 </option>
                             );
                         })}
