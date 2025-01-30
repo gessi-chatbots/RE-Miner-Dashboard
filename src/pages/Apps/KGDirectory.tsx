@@ -64,37 +64,7 @@ const KGDirectory: React.FC = () => {
         }
     }
 
-    const addApp = async (app: AppDirectoryDataSimpleDTO | undefined) => {
-        if (!app) {
-            console.error("App is undefined or null.");
-            return false;
-        }
 
-        try {
-            const infoToast = toast.info('Importing application from directory', {
-                autoClose: false,
-                closeOnClick: false,
-                closeButton: false,
-            });
-
-            const appService = new AppService();
-            await appService.addAppFromDirectory(app.name);
-
-            toast.dismiss(infoToast);
-            toast.success('Application imported successfully!');
-            return true;
-        } catch (error) {
-            console.error('Error importing app:', error);
-            toast.error('Error importing application');
-            return false;
-        }
-    };
-
-
-    const convertDateFormat = (inputDate: string) => {
-        const [day, month, year] = inputDate.split('/');
-        return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
-    };
     return (
         <div>
             <div>
@@ -121,8 +91,8 @@ const KGDirectory: React.FC = () => {
                     {data && data.length > 0 && (
                         <>
                             <div className="d-flex justify-content-center align-items-center">
-                                <Table className="table table-bordered table-centered table-striped table-hover mt-4">
-                                    <thead>
+                                <Table className="table table-bordered table-hover table-striped align-middle mt-4 mb-0">
+                                    <thead className="bg-light">
                                     <tr>
                                         <th style={{ width: '20%' }} className="text-center">{defaultColumns[0]}</th>
                                         <th style={{ width: '25%' }} className="text-center">{defaultColumns[1]}</th>
