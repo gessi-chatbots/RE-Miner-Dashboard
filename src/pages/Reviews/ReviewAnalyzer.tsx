@@ -4,11 +4,10 @@ import { ReviewDataDTO } from "../../DTOs/ReviewDataDTO";
 import {useNavigate, useParams} from "react-router-dom";
 import {Row, Col, OverlayTrigger, Tooltip, Button} from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
-import FileUploader from "../../components/files/FileUploader";
 
-const SENTIMENT_OPTIONS = ['happiness', 'sadness', 'anger', 'surprise', 'fear', 'disgust', 'Not relevant'];
+const EMOTION_OPTIONS = ['happiness', 'sadness', 'anger', 'surprise', 'fear', 'disgust', 'Not relevant'];
 
-const generateColors = (sentiments: string[]) => {
+const generateColors = (emotions: string[]) => {
     const defaultColors: { [key: string]: string } = {
         happiness: 'rgba(255, 99, 132, 0.7)',
         sadness: 'rgba(54, 162, 235, 0.7)',
@@ -17,7 +16,7 @@ const generateColors = (sentiments: string[]) => {
         fear: 'rgba(153, 102, 255, 0.7)',
         disgust: 'rgba(255, 159, 64, 0.7)',
     };
-    return sentiments.map((sentiment) => defaultColors[sentiment] || '#d3d3d3');
+    return emotions.map((emotion) => defaultColors[emotion] || '#d3d3d3');
 };
 
 const FeatureBadge: React.FC<{ feature: string }> = ({ feature }) => {
@@ -107,7 +106,7 @@ const getTopicStyles = (topic: string) => {
 const ReviewAnalyzer = () => {
     const [data, setData] = useState<ReviewDataDTO | null>(null);
     const { reviewId, appId } = useParams();
-    const [colors, setColors] = useState(generateColors(SENTIMENT_OPTIONS));
+    const [colors, setColors] = useState(generateColors(EMOTION_OPTIONS));
     const navigate = useNavigate();
     useEffect(() => {
         const fetchReviewFromApi = async () => {
@@ -133,36 +132,39 @@ const ReviewAnalyzer = () => {
 
     const chartData = () => {
         if (!data || !data.sentences || data.sentences.length === 0) {
-            return {
-                labels: [],
-                datasets: [],
-            };
+            return { labels: [], datasets: [] };
         }
 
-        const sentimentCounts: { [key: string]: number } = {};
+        // Define the type of emotionCounts explicitly
+        const emotionCounts: { [key: string]: number } = EMOTION_OPTIONS.reduce((acc, emotion) => {
+            acc[emotion] = 0;
+            return acc;
+        }, {} as { [key: string]: number });
 
+        // Count occurrences of each sentiment
         data.sentences.forEach((sentence) => {
-            const sentimentKey = sentence?.sentimentData?.sentiment;
-            if (sentimentKey) {
-                sentimentCounts[sentimentKey] = (sentimentCounts[sentimentKey] || 0) + 1;
+            const sentiment = sentence?.sentimentData?.sentiment || "Not relevant";
+            if (emotionCounts.hasOwnProperty(sentiment)) {
+                emotionCounts[sentiment]++;
             }
         });
 
-        const chartLabels = Object.keys(sentimentCounts);
-        const chartDataValues = chartLabels.map((sentiment) => sentimentCounts[sentiment]);
+        // Check if there's any data to display
+        const hasData = Object.values(emotionCounts).some((count) => count > 0);
 
-        const dataset = {
-            label: 'Sentiment',
-            data: chartDataValues,
-            backgroundColor: chartLabels.map(sentiment =>
-                sentiment === 'Not relevant' ? 'rgb(213,212,212)' : colors[SENTIMENT_OPTIONS.indexOf(sentiment)]
-            ),
-        };
-
-        return {
-            labels: chartLabels,
-            datasets: [dataset],
-        };
+        // Create separate datasets for each emotion
+        if (hasData) {
+            return {
+                labels: ['Count'],  // Static label for the x-axis since each dataset has its own label
+                datasets: EMOTION_OPTIONS.map((emotion) => ({
+                    label: emotion,  // Emotion label in tooltip and legend
+                    data: [emotionCounts[emotion] || 0],  // Single data point for the emotion
+                    backgroundColor: generateColors([emotion])[0],  // Generate unique color for each emotion
+                })),
+            };
+        } else {
+            return { labels: [], datasets: [] };
+        }
     };
 
     const markFeaturesInReview = () => {
@@ -234,7 +236,7 @@ const ReviewAnalyzer = () => {
             <p>
                 {data.sentences.map((sentence, index) => {
                     const sentiment = sentence?.sentimentData?.sentiment || "Not detected";
-                    const color = colors[SENTIMENT_OPTIONS.indexOf(sentiment)] || "#d3d3d3";
+                    const color = colors[EMOTION_OPTIONS.indexOf(sentiment)] || "#d3d3d3";
 
                     return (
                         <React.Fragment key={index}>
@@ -267,7 +269,7 @@ const ReviewAnalyzer = () => {
             x: {
                 title: {
                     display: true,
-                    text: 'Sentiments',
+                    text: 'Emotions',
                 },
             },
             y: {
@@ -284,13 +286,13 @@ const ReviewAnalyzer = () => {
         <>
             <div className="mb-3">
                 <Row className="align-content-center">
-                    <Col className="col-md-8">
+                    <Col className="col-md-6">
                         <h1 className="text-secondary">Review Analyzer</h1>
                     </Col>
                     <Col className="col-md-2"></Col>
-                    <Col className="col-md-2 d-flex justify-content-end align-items-center">
+                    <Col className="col-md-4 d-flex justify-content-end align-items-center">
                         <Button
-                            className="btn-secondary p-1 m-0"
+                            className="btn-secondary w-auto d-inline-flex align-items-center"
                             onClick={() => navigate('/reviews')}
                             style={{ padding: '4px 8px', margin: 0 }}
                         >
@@ -317,7 +319,7 @@ const ReviewAnalyzer = () => {
                             </Row>
                             {data.sentences && data.sentences.length > 0 && (
                                 <Row>
-                                    <h2>Review Sentiments:</h2>
+                                    <h2>Review Emotions:</h2>
                                     {markSentimentsInReview()}
                                     <h2>Review Marked Features</h2>
                                     {markFeaturesInReview()}
@@ -363,13 +365,14 @@ const ReviewAnalyzer = () => {
                     <Col md={6}>
 
                         <div className="px-4 py-4 sentiment-histogram-container">
-                            <h2>Review Sentiments</h2>
-                            {data.sentences.length > 0 && chartData().datasets.length > 0 && chartData().datasets[0].data.some(count => count > 0) ? (
+                            <h2>Review Emotions</h2>
+                            {data.sentences.length > 0 && chartData().datasets.length > 0 ? (
                                 <Bar data={chartData()} options={options}/>
                             ) : (
                                 <div className="text-center">
                                     <i className="mdi mdi-emoticon-sad text-secondary" style={{fontSize: '5rem'}}/>
-                                    <h2 className="mt-3 text-muted">No sentiment data available.</h2>
+                                    <h2 className="mt-3 text-muted">No sentiment data available. Please check if the
+                                        review has been analyzed.</h2>
                                 </div>
                             )}
                         </div>

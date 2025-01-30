@@ -23,11 +23,12 @@ const ReviewsDirectory: React.FC = () => {
     const [selectedEmotion, setSelectedEmotion] = useState<string>("");
     const [selectedType, setSelectedType] = useState<string>("");
     const [newFeature, setNewFeature] = useState<string>("");
-    const [selectedReview, setSelectedReview] = useState<ReviewManagerDTO | null>(null);
     const [selectedReviews, setSelectedReviews] = useState<string[]>([]);
     const [isWizardModalOpen, setWizardModalOpen] = useState<boolean>(false);
     const [selectAll, setSelectAll] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
+    const { appPackage: stateAppPackage, selectedFeatures: stateSelectedFeatures } = location.state || {};
 
     const polarityOptions = ["Positive", "Negative"];
     const topicOptions = [
@@ -404,6 +405,13 @@ const ReviewsDirectory: React.FC = () => {
     };
 
     useEffect(() => {
+        // Set initial state from location
+        if (stateAppPackage) setAppPackage(stateAppPackage);
+        if (stateSelectedFeatures && stateSelectedFeatures.length > 0) setSelectedFeatures(stateSelectedFeatures);
+    }, [stateAppPackage, stateSelectedFeatures]);
+
+    useEffect(() => {
+        // Fetch apps list once on component mount
         const fetchApps = async () => {
             const appService = new AppService();
             try {
@@ -420,20 +428,24 @@ const ReviewsDirectory: React.FC = () => {
         };
         fetchApps();
     }, []);
-
     useEffect(() => {
         fetchReviews();
     }, [currentPage]);
-
     useEffect(() => {
-        setCurrentPage(1);
+        setCurrentPage(0);
         fetchReviews();
     }, [pageSize]);
 
     useEffect(() => {
-        setCurrentPage(0);
-        fetchReviews(0);
-    }, [appPackage, selectedFeatures, selectedPolarity, selectedTopic, selectedEmotion, selectedType]);
+        // Fetch reviews whenever filters, page, or pageSize change
+        const fetchReviewsWithDebounce = setTimeout(() => {
+            fetchReviews();
+        }, 300); // Debounce for 300ms to prevent multiple quick calls
+
+        return () => clearTimeout(fetchReviewsWithDebounce); // Cleanup timeout to prevent race conditions
+    }, [appPackage, selectedFeatures, selectedPolarity, selectedTopic, selectedEmotion, selectedType, currentPage, pageSize]);
+
+
 
     const handleCheckboxChange = async (review: ReviewManagerDTO) => {
         setSelectAll(false);
@@ -517,8 +529,8 @@ const ReviewsDirectory: React.FC = () => {
     };
 
     const handleFilterChange = () => {
-        setCurrentPage(0); // Set to first page (0-based index)
-        fetchReviews(0);   // Fetch with page 0
+        setCurrentPage(0);
+        setTimeout(fetchReviews, 100);
     };
 
     const handleSelectAllChange = () => {
@@ -570,8 +582,6 @@ const ReviewsDirectory: React.FC = () => {
         setWizardModalOpen(false);
         fetchReviews();
     };
-
-
 
     return (
         <div>
