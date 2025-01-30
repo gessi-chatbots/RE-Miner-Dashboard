@@ -100,6 +100,7 @@ const TreeAnalyzer = () => {
             });
         }
     }, [treeData]);
+
     const transformToTreeFormat = (node: any): any => {
         const children = node.children
             ? node.children.map((child: any) => transformToTreeFormat(child))
@@ -232,13 +233,12 @@ const TreeAnalyzer = () => {
             return;
         }
 
-        // Collect selected features
         const selectedFeatures = Array.from(highlightedNodes)
             .map((nodeId) => {
                 const node = findNodeById(nodeId, originalTreeData);
                 return node?.label;
             })
-            .filter((label) => label && label !== "Intermediate Node" && label !== "Root Node");
+            .filter((label) => label && !["Intermediate Node", "Root Node"].includes(label));
 
         if (selectedFeatures.length === 0) {
             toast.error("No valid features selected.");
@@ -248,12 +248,10 @@ const TreeAnalyzer = () => {
         navigate("/reviews", {
             state: {
                 appName: selectedApp,
-                clusterName: selectedCluster,
                 selectedFeatures,
             },
         });
     };
-
     const findNodeById = (id: number, hierarchyData: any): any => {
         if (!hierarchyData) return null;
         if (hierarchyData.id === id) return hierarchyData;
