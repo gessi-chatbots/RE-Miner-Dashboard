@@ -237,7 +237,7 @@ class ReviewService {
                     review: review.review || "N/A",
                     features: review.features?.length ? review.features.map((f: any) => f.feature) : ["N/A"],
                     polarities: review.polarities?.length ? review.polarities.map((p: any) => p.polarity) : ["N/A"],
-                    emotions: review.emotions?.length ? review.emotions.map((e: any) => e.emotion) : ["N/A"],
+                    emotions: review.emotions?.length ? review.emotions.map((e: any) => e.sentiment) : ["N/A"],
                     types: review.types?.length ? review.types.map((t: any) => t.type) : ["N/A"],
                     topics: review.topics?.length ? review.topics.map((t: any) => t.topic) : ["N/A"],
                 })),

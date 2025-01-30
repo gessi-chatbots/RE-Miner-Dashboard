@@ -241,7 +241,94 @@ const ReviewsDirectory: React.FC = () => {
             </div>
         );
     };
+    const SentimentBadge: React.FC<{ sentiment: string }> = ({ sentiment }) => {
+        if (!sentiment) return null;
 
+        const getSentimentStyles = (sentiment: string) => {
+            const normalizedSentiment = sentiment.toLowerCase().trim();
+
+            switch (normalizedSentiment) {
+                case 'happiness':
+                    return {
+                        icon: 'mdi mdi-emoticon-happy-outline',
+                        bg: '#E6FFFA',
+                        color: '#059669',
+                        border: '#A7F3D0'
+                    };
+                case 'sadness':
+                    return {
+                        icon: 'mdi mdi-emoticon-sad-outline',
+                        bg: '#E0E7FF',
+                        color: '#4338CA',
+                        border: '#C7D2FE'
+                    };
+                case 'anger':
+                    return {
+                        icon: 'mdi mdi-emoticon-angry-outline',
+                        bg: '#FFE4E6',
+                        color: '#B91C1C',
+                        border: '#FECDD3'
+                    };
+                case 'surprise':
+                    return {
+                        icon: 'mdi mdi-alert-circle-outline',
+                        bg: '#FEF3C7',
+                        color: '#D97706',
+                        border: '#FDE68A'
+                    };
+                case 'fear':
+                    return {
+                        icon: 'mdi mdi-emoticon-cry-outline',
+                        bg: '#FEF2F2',
+                        color: '#DC2626',
+                        border: '#FECACA'
+                    };
+                case 'disgust':
+                    return {
+                        icon: 'mdi mdi-emoticon-devil-outline',
+                        bg: '#F0FDF4',
+                        color: '#16A34A',
+                        border: '#BBF7D0'
+                    };
+                case 'not relevant':
+                    return {
+                        icon: 'mdi mdi-emoticon-neutral-outline',
+                        bg: '#F3F4F6',
+                        color: '#6B7280',
+                        border: '#D1D5DB'
+                    };
+                default:
+                    return {
+                        icon: 'mdi mdi-help-circle-outline',
+                        bg: '#E5E7EB',
+                        color: '#374151',
+                        border: '#D1D5DB'
+                    };
+            }
+        };
+
+        const styles = getSentimentStyles(sentiment);
+
+        return (
+            <div
+                style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '4px 10px',
+                    borderRadius: '12px',
+                    backgroundColor: styles.bg,
+                    border: `1px solid ${styles.border}`,
+                    color: styles.color,
+                    fontSize: '12px',
+                    fontWeight: 500,
+                    letterSpacing: '0.2px',
+                }}
+            >
+                <i className={`${styles.icon} me-1`} style={{ fontSize: '14px' }} />
+                {sentiment.charAt(0).toUpperCase() + sentiment.slice(1).toLowerCase()}
+            </div>
+        );
+    };
     const FeatureBadge: React.FC<{ feature: string }> = ({ feature }) => {
         const formatText = (text: string) => {
             // Convert camelCase to space-separated words
@@ -751,10 +838,10 @@ const ReviewsDirectory: React.FC = () => {
                                         justifyContent: 'center'
                                     }}>
                                         {Array.isArray(review.emotions) ?
-                                            Array.from(new Set(review.emotions)).map((polarity, idx) => (
-                                                <PolarityIcon key={idx} polarity={polarity || 'N/A'}/>
+                                            Array.from(new Set(review.emotions)).map((emotion, idx) => (
+                                                <SentimentBadge key={idx} sentiment={emotion || 'N/A'}/>
                                             ))
-                                            : <PolarityIcon polarity='N/A'/>
+                                            : <SentimentBadge sentiment='N/A'/>
                                         }
                                     </div>
                                 </td>
