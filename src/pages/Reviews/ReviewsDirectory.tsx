@@ -578,8 +578,7 @@ const ReviewsDirectory: React.FC = () => {
             <h1 className="text-secondary">Reviews Directory</h1>
 
             {/* Filters and Search */}
-            <Row className="bg-light py-3">
-                {/* App Selector */}
+            <Row className="bg-white p-4 rounded shadow-sm mb-4">
                 <Col md={3}>
                     <h6 className="text-secondary mb-2">Select App</h6>
                     <Form.Select
@@ -601,7 +600,6 @@ const ReviewsDirectory: React.FC = () => {
                     </Form.Select>
                 </Col>
 
-                {/* Features Section */}
                 <Col md={5}>
                     <h6 className="text-secondary mb-2">Features</h6>
                     <div
@@ -676,7 +674,6 @@ const ReviewsDirectory: React.FC = () => {
                     </div>
                 </Col>
 
-                {/* Filters */}
                 <Col md={4}>
                     <h6 className="text-secondary mb-2">Filters</h6>
                     <Row>
@@ -738,25 +735,25 @@ const ReviewsDirectory: React.FC = () => {
 
             {/* Reviews Table */}
             {pageData && pageData.length > 0 ? (
-                <>
-                    <Table className="table table-bordered table-centered table-striped table-hover mt-4 bg-light">
-                        <thead>
+                <div className="mb-4">
+                    <Table className="table table-bordered table-hover table-striped align-middle mb-0">
+                        <thead className="bg-light">
                         <tr>
-                            <th className="text-center">
+                            <th className="text-center py-3">
                                 <input
                                     type="checkbox"
                                     checked={selectAll}
                                     onChange={() => handleSelectAllChange()}
+                                    className="form-check-input"
                                 />
                             </th>
                             {defaultColumns.map((column) => (
                                 <th
-                                    className="text-center"
+                                    className="text-center py-3"
                                     key={column}
                                     style={{
                                         fontSize: '14px',
                                         fontWeight: 600,
-                                        padding: '12px 8px',
                                         width:
                                             column === "Package" ? "15%" :
                                                 column === "Review ID" ? "8%" :
@@ -767,28 +764,28 @@ const ReviewsDirectory: React.FC = () => {
                                                                     column === "Type" ? "12%" :
                                                                         column === "Topic" ? "12%" :
                                                                             column === "Actions" ? "10%" :
-                                                                                "auto" // Fallback for unexpected columns
+                                                                                "auto"
                                     }}
                                 >
                                     {column}
                                 </th>
                             ))}
-
                         </tr>
                         </thead>
                         <tbody>
                         {pageData.map((review) => (
-                            <tr key={review.review_id}>
-                                <td className="text-center">
+                            <tr key={review.review_id} className="border-bottom">
+                                <td className="text-center py-2">
                                     <input
                                         type="checkbox"
                                         checked={selectedReviews.includes(review.review_id)}
                                         onChange={() => handleCheckboxChange(review)}
+                                        className="form-check-input"
                                     />
                                 </td>
                                 <td>{review.app_id}</td>
                                 <td className="text-center">
-                                    <ReviewIdBadge id={review.review_id || "N/A"}/>
+                                    <ReviewIdBadge id={review.review_id || "N/A"} />
                                 </td>
                                 <td style={{
                                     textAlign: 'justify',
@@ -798,104 +795,77 @@ const ReviewsDirectory: React.FC = () => {
                                 }}>
                                     {truncateReview(review.review) || "N/A"}
                                 </td>
-                                <td className="text-center" style={{fontSize: '14px'}}>
-                                    <div style={{
-                                        display: 'flex',
-                                        flexWrap: 'wrap',
-                                        gap: '4px',
-                                        justifyContent: 'center'
-                                    }}>
+                                <td className="text-center" style={{ fontSize: '14px' }}>
+                                    <div className="d-flex flex-wrap gap-2 justify-content-center">
                                         {Array.isArray(review.features) &&
                                             review.features
                                                 .filter((feature) => feature && feature.trim().toLowerCase() !== 'n/a')
                                                 .map((feature, idx) => (
-                                                    <FeatureBadge key={idx} feature={feature.trim()}/>
+                                                    <FeatureBadge key={idx} feature={feature.trim()} />
                                                 ))
                                         }
                                     </div>
                                 </td>
 
-                                <td className="text-center" style={{fontSize: '14px'}}>
-                                    <div style={{
-                                        display: 'flex',
-                                        flexWrap: 'wrap',
-                                        gap: '4px',
-                                        justifyContent: 'center'
-                                    }}>
+                                <td className="text-center" style={{ fontSize: '14px' }}>
+                                    <div className="d-flex flex-wrap gap-2 justify-content-center">
                                         {Array.isArray(review.polarities) ?
                                             Array.from(new Set(review.polarities)).map((polarity, idx) => (
-                                                <PolarityIcon key={idx} polarity={polarity || 'N/A'}/>
+                                                <PolarityIcon key={idx} polarity={polarity || 'N/A'} />
                                             ))
-                                            : <PolarityIcon polarity='N/A'/>
+                                            : <PolarityIcon polarity='N/A' />
                                         }
                                     </div>
                                 </td>
-                                <td className="text-center" style={{fontSize: '14px'}}>
-                                    <div style={{
-                                        display: 'flex',
-                                        flexWrap: 'wrap',
-                                        gap: '4px',
-                                        justifyContent: 'center'
-                                    }}>
+                                <td className="text-center" style={{ fontSize: '14px' }}>
+                                    <div className="d-flex flex-wrap gap-2 justify-content-center">
                                         {Array.isArray(review.emotions) ?
                                             Array.from(new Set(review.emotions)).map((emotion, idx) => (
-                                                <SentimentBadge key={idx} sentiment={emotion || 'N/A'}/>
+                                                <SentimentBadge key={idx} sentiment={emotion || 'N/A'} />
                                             ))
-                                            : <SentimentBadge sentiment='N/A'/>
+                                            : <SentimentBadge sentiment='N/A' />
                                         }
                                     </div>
                                 </td>
-                                <td className="text-center" style={{fontSize: '14px'}}>
-                                    <div style={{
-                                        display: 'flex',
-                                        flexWrap: 'wrap',
-                                        gap: '4px',
-                                        justifyContent: 'center'
-                                    }}>
+                                <td className="text-center" style={{ fontSize: '14px' }}>
+                                    <div className="d-flex flex-wrap gap-2 justify-content-center">
                                         {Array.isArray(review.types) ?
                                             Array.from(new Set(review.types)).map((type, idx) => (
-                                                <TypeBadge key={idx} type={type || 'N/A'}/>
+                                                <TypeBadge key={idx} type={type || 'N/A'} />
                                             ))
-                                            : <TypeBadge type='N/A'/>
+                                            : <TypeBadge type='N/A' />
                                         }
                                     </div>
                                 </td>
-                                <td className="text-center" style={{fontSize: '14px'}}>
-                                    <div style={{
-                                        display: 'flex',
-                                        flexWrap: 'wrap',
-                                        gap: '4px',
-                                        justifyContent: 'center'
-                                    }}>
+                                <td className="text-center" style={{ fontSize: '14px' }}>
+                                    <div className="d-flex flex-wrap gap-2 justify-content-center">
                                         {Array.isArray(review.topics) ?
                                             Array.from(new Set(review.topics)).map((topic, idx) => (
-                                                <TopicBadge key={idx} topic={topic || ''}/>
+                                                <TopicBadge key={idx} topic={topic || ''} />
                                             ))
-                                            : <TopicBadge topic=''/>
+                                            : <TopicBadge topic='' />
                                         }
                                     </div>
                                 </td>
-                                <td className="text-end" style={{width: "150px"}}>
-
+                                <td className="text-end" style={{ width: "150px" }}>
                                     <OverlayTrigger overlay={<Tooltip id="analyze-tooltip">View Review</Tooltip>}>
-                                        <a href="javascript:void(0)" className="action-icon"
+                                        <a href="#" className="action-icon me-2"
                                            onClick={() => analyzeReviewAction(review)}>
-                                            <i className="mdi mdi-eye"></i>
+                                            <i className="mdi mdi-eye text-primary"></i>
                                         </a>
                                     </OverlayTrigger>
-
                                 </td>
-
                             </tr>
                         ))}
                         </tbody>
                     </Table>
-                    <div className="d-flex align-items-center">
+                    {/* Pagination and Rows per page */}
+                    <div className="d-flex align-items-center mt-3">
                         <label className="me-2 text-secondary">Rows per page:</label>
                         <Form.Select
                             value={pageSize}
                             onChange={handlePageSizeChange}
-                            style={{width: "100px"}}
+                            style={{ width: "100px" }}
                         >
                             <option value={5}>5</option>
                             <option value={10}>10</option>
@@ -905,7 +875,7 @@ const ReviewsDirectory: React.FC = () => {
                         </Form.Select>
                     </div>
                     {totalPages > 1 && (
-                        <div className="d-flex justify-content-center align-items-center">
+                        <div className="d-flex justify-content-center align-items-center mt-3">
                             <nav>
                                 <ul className="pagination pagination-rounded mb-0">
                                     <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
@@ -931,7 +901,7 @@ const ReviewsDirectory: React.FC = () => {
                                         </>
                                     )}
 
-                                    {Array.from({length: Math.min(10, totalPages - Math.max(1, currentPage - 5))}, (_, index) => {
+                                    {Array.from({ length: Math.min(10, totalPages - Math.max(1, currentPage - 5)) }, (_, index) => {
                                         const pageNumber = index + Math.max(1, currentPage - 5);
                                         if (pageNumber > totalPages) return null;
                                         return (
@@ -971,31 +941,26 @@ const ReviewsDirectory: React.FC = () => {
                         </div>
                     )}
                     {wizardData && wizardData.length > 0 && (
-                        <>
-                            <Row className="mt-2">
-                                <Col className="md-5">
-                                </Col>
-                                <Col className="md-5">
-                                </Col>
-                                <Col className="md-2 d-flex justify-content-end">
-                                    <Button className="w-auto" variant="primary" onClick={() => setWizardModalOpen(true)}>
-                                        <i className="mdi mdi-lightning-bolt-outline"></i> Process Reviews
-                                    </Button>
-                                </Col>
-                            </Row>
-                        </>
+                        <Row className="mt-2">
+                            <Col className="md-5" />
+                            <Col className="md-5" />
+                            <Col className="md-2 d-flex justify-content-end">
+                                <Button className="w-auto" variant="primary" onClick={() => setWizardModalOpen(true)}>
+                                    <i className="mdi mdi-lightning-bolt-outline"></i> Process Reviews
+                                </Button>
+                            </Col>
+                        </Row>
                     )}
-                </>
+                </div>
             ) : (
-                <div className="d-flex justify-content-center align-items-center" style={{minHeight: '50vh'}}>
+                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
                     <div className="text-center">
-                        <i className="mdi mdi-emoticon-sad-outline text-secondary" style={{fontSize: '5rem'}}></i>
+                        <i className="mdi mdi-emoticon-sad-outline text-secondary" style={{ fontSize: '5rem' }}></i>
                         <h2>No reviews found</h2>
                         <p>Please adjust your filters and try again.</p>
                     </div>
                 </div>
             )}
-
 
             {isWizardModalOpen && (
                 <ReviewProcessingWizard
@@ -1011,6 +976,7 @@ const ReviewsDirectory: React.FC = () => {
             )}
         </div>
     );
+
 };
 
 export default ReviewsDirectory;
