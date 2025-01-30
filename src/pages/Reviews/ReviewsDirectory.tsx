@@ -700,9 +700,13 @@ const ReviewsDirectory: React.FC = () => {
                                         gap: '4px',
                                         justifyContent: 'center'
                                     }}>
-                                        {Array.isArray(review.features) && review.features.map((feature, idx) => (
-                                            <FeatureBadge key={idx} feature={feature?.trim() || 'N/A'}/>
-                                        ))}
+                                        {Array.isArray(review.features) &&
+                                            review.features
+                                                .filter((feature) => feature && feature.trim().toLowerCase() !== 'n/a')
+                                                .map((feature, idx) => (
+                                                    <FeatureBadge key={idx} feature={feature.trim()} />
+                                                ))
+                                        }
                                     </div>
                                 </td>
 
