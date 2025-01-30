@@ -113,7 +113,7 @@ const DescriptorPolarAreaChart = () => {
     return (
         <Container className="sentiment-histogram-container py-3">
             <Row>
-                <label className="text-secondary mb-2">Sentiment polar area</label>
+                <label className="text-secondary mb-2">Descriptor polar area</label>
             </Row>
             <Row>
                 <PolarArea data={chartData} options={options} />

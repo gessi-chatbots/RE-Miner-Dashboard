@@ -142,7 +142,7 @@ const SentimentHistogramPerApp = () => {
         <Container className="sentiment-histogram-container">
             <Row className="mt-4">
                 <Col>
-                    <label className="text-secondary mb-2">Sentiment Histogram</label>
+                    <label className="text-secondary mb-2">Emotion Histogram</label>
                 </Col>
                 <Col md={2} className="d-flex align-items-end">
                     <Button

@@ -238,7 +238,7 @@ const CrossFeatureSentiments = () => {
         <Container className="sentiment-histogram-container">
             <Row className="mt-4">
                 <Col>
-                    <label className="text-secondary mb-2">Features and sentiments chart</label>
+                    <label className="text-secondary mb-2">Features and emotions chart</label>
                 </Col>
                 <Col md={2} className="d-flex align-items-end">
                     <Button className="btn-secondary btn-sm btn-square" onClick={() => setIsModalOpen(true)}>
