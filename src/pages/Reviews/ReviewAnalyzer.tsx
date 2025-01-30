@@ -5,7 +5,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {Row, Col, OverlayTrigger, Tooltip, Button} from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
 
-const EMOTION_OPTIONS = ['happiness', 'sadness', 'anger', 'surprise', 'fear', 'disgust', 'Not relevant'];
+const EMOTION_OPTIONS = ['happiness', 'sadness', 'anger', 'surprise', 'fear', 'disgust', 'Not Detected'];
 
 const generateColors = (emotions: string[]) => {
     const defaultColors: { [key: string]: string } = {
@@ -371,8 +371,9 @@ const ReviewAnalyzer = () => {
                             ) : (
                                 <div className="text-center">
                                     <i className="mdi mdi-emoticon-sad text-secondary" style={{fontSize: '5rem'}}/>
-                                    <h2 className="mt-3 text-muted">No sentiment data available. Please check if the
-                                        review has been analyzed.</h2>
+                                    <h2 className="mt-3 text-muted">No sentiment data available.</h2>
+                                    <h3 className="mt-3 text-muted">Please check if the
+                                        review has been analyzed.</h3>
                                 </div>
                             )}
                         </div>
@@ -391,12 +392,14 @@ const ReviewAnalyzer = () => {
                                 <div className="text-center">
                                     <i className="mdi mdi-emoticon-sad text-secondary" style={{fontSize: '5rem'}}/>
                                     <h2 className="mt-3 text-muted">No Feature data available.</h2>
+                                    <h3 className="mt-3 text-muted">Please check if the
+                                        review has been analyzed.</h3>
                                 </div>
                             )}
                         </div>
 
                         <div className="px-4 py-4 sentiment-histogram-container mt-4">
-                            <h2>Detected Polarities</h2>
+                        <h2>Detected Polarities</h2>
                             {data.sentences.some(sentence => sentence.polarityData && sentence.polarityData.polarity) ? (
                                 Array.from(new Set(data.sentences
                                     .map(sentence => sentence.polarityData?.polarity)
