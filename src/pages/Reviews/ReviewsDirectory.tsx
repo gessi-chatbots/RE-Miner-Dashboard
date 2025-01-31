@@ -242,68 +242,78 @@ const ReviewsDirectory: React.FC = () => {
             </div>
         );
     };
-    const SentimentBadge: React.FC<{ sentiment: string }> = ({ sentiment }) => {
+    const EmotionBadge: React.FC<{ sentiment: string }> = ({ sentiment }) => {
         if (!sentiment) return null;
 
         const getSentimentStyles = (sentiment: string) => {
             const normalizedSentiment = sentiment.toLowerCase().trim();
 
+            const defaultColors: { [key: string]: string } = {
+                happiness: 'rgba(255, 99, 132, 0.7)',  // Light red-pink tone
+                sadness: 'rgba(54, 162, 235, 0.7)',    // Light blue tone
+                anger: 'rgba(255, 206, 86, 0.7)',      // Light yellow tone
+                surprise: 'rgba(75, 192, 192, 0.7)',   // Light teal tone
+                fear: 'rgba(153, 102, 255, 0.7)',      // Light purple tone
+                disgust: 'rgba(255, 159, 64, 0.7)',    // Light orange tone
+                'not detected': '#d3d3d3',             // Gray
+            };
+
             switch (normalizedSentiment) {
                 case 'happiness':
                     return {
                         icon: 'mdi mdi-emoticon-happy-outline',
-                        bg: '#E6FFFA',
-                        color: '#059669',
-                        border: '#A7F3D0'
+                        bg: defaultColors.happiness,
+                        color: '#8B0000',  // Complementary text color
+                        border: '#FFB6C1',
                     };
                 case 'sadness':
                     return {
                         icon: 'mdi mdi-emoticon-sad-outline',
-                        bg: '#E0E7FF',
-                        color: '#4338CA',
-                        border: '#C7D2FE'
+                        bg: defaultColors.sadness,
+                        color: '#0D47A1',
+                        border: '#87CEEB',
                     };
                 case 'anger':
                     return {
                         icon: 'mdi mdi-emoticon-angry-outline',
-                        bg: '#FFE4E6',
-                        color: '#B91C1C',
-                        border: '#FECDD3'
+                        bg: defaultColors.anger,
+                        color: '#8B0000',
+                        border: '#FFD700',
                     };
                 case 'surprise':
                     return {
                         icon: 'mdi mdi-alert-circle-outline',
-                        bg: '#FEF3C7',
-                        color: '#D97706',
-                        border: '#FDE68A'
+                        bg: defaultColors.surprise,
+                        color: '#006400',
+                        border: '#66CDAA',
                     };
                 case 'fear':
                     return {
                         icon: 'mdi mdi-emoticon-cry-outline',
-                        bg: '#FEF2F2',
-                        color: '#DC2626',
-                        border: '#FECACA'
+                        bg: defaultColors.fear,
+                        color: '#4B0082',
+                        border: '#DA70D6',
                     };
                 case 'disgust':
                     return {
                         icon: 'mdi mdi-emoticon-devil-outline',
-                        bg: '#F0FDF4',
-                        color: '#16A34A',
-                        border: '#BBF7D0'
+                        bg: defaultColors.disgust,
+                        color: '#8B4513',
+                        border: '#FFA07A',
                     };
-                case 'not relevant':
+                case 'not detected':
                     return {
                         icon: 'mdi mdi-emoticon-neutral-outline',
-                        bg: '#F3F4F6',
+                        bg: defaultColors['not detected'],
                         color: '#6B7280',
-                        border: '#D1D5DB'
+                        border: '#D1D5DB',
                     };
                 default:
                     return {
                         icon: 'mdi mdi-help-circle-outline',
                         bg: '#E5E7EB',
                         color: '#374151',
-                        border: '#D1D5DB'
+                        border: '#D1D5DB',
                     };
             }
         };
@@ -313,20 +323,17 @@ const ReviewsDirectory: React.FC = () => {
         return (
             <div
                 style={{
-                    display: 'inline-flex',
+                    display: 'flex',
                     alignItems: 'center',
-                    padding: '4px 10px',
-                    borderRadius: '12px',
                     backgroundColor: styles.bg,
-                    border: `1px solid ${styles.border}`,
                     color: styles.color,
-                    fontSize: '12px',
-                    fontWeight: 500,
-                    letterSpacing: '0.2px',
+                    border: `2px solid ${styles.border}`,
+                    padding: '8px',
+                    borderRadius: '8px',
                 }}
             >
-                <i className={`${styles.icon} me-1`} style={{ fontSize: '14px' }} />
-                {sentiment.charAt(0).toUpperCase() + sentiment.slice(1).toLowerCase()}
+                <i className={styles.icon} style={{ marginRight: '8px' }}></i>
+                <span>{sentiment}</span>
             </div>
         );
     };
@@ -831,9 +838,9 @@ const ReviewsDirectory: React.FC = () => {
                                     <div className="d-flex flex-wrap gap-2 justify-content-center">
                                         {Array.isArray(review.emotions) ?
                                             Array.from(new Set(review.emotions)).map((emotion, idx) => (
-                                                <SentimentBadge key={idx} sentiment={emotion || 'N/A'} />
+                                                <EmotionBadge key={idx} sentiment={emotion || 'N/A'} />
                                             ))
-                                            : <SentimentBadge sentiment='N/A' />
+                                            : <EmotionBadge sentiment='N/A' />
                                         }
                                     </div>
                                 </td>
