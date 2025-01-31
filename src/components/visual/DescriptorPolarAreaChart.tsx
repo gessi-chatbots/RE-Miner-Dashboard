@@ -52,15 +52,15 @@ const DescriptorPolarAreaChart = () => {
         const fetchReviewData = async () => {
             const applicationService = new ApplicationService();
             try {
-                const response = await applicationService.fetchAllAppsNames();
+                const response = await applicationService.fetchAllAppsPackages();
                 if (response !== null) {
-                    const applicationsNamesList = response.apps.map(app => app.app_name);
+                    const applicationPackages = response.apps.map(app => app.app_package);
                     try {
-                        const sentimentResponse = await applicationService.fetchTopSentiments(applicationsNamesList);
+                        const sentimentResponse = await applicationService.fetchTopDescriptors(applicationPackages);
                         if (sentimentResponse !== null) {
                             const sentiments: string[] = [];
                             const occurrences: number[] = [];
-                            const topSentiments = sentimentResponse.topSentiments.topSentiments;
+                            const topSentiments = sentimentResponse.topSentiments.topEmotions;
                             topSentiments.forEach(item => {
                                 sentiments.push(item.sentimentName);
                                 occurrences.push(item.occurrences);

@@ -3,7 +3,7 @@ import { AppDataSimpleDTO } from '../DTOs/AppDataSimpleDTO';
 import { AppDirectoryDataSimpleDTO } from '../DTOs/AppDirectoryDataSimpleDTO';
 import { ApplicationDayStatisticsDTO } from '../DTOs/ApplicationDayStatisticsDTO';
 import { FeatureOccurrenceDTO, TopFeaturesDTO } from '../DTOs/TopFeaturesDTO';
-import { TopSentimentsDTO, SentimentOccurrenceDTO } from '../DTOs/TopSentimentsDTO';
+import {EmotionOccurrenceDTO, TopDescriptorsDTO} from '../DTOs/TopDescriptorsDTO';
 class AppService {
 
     API_URL = 'http://127.0.0.1:3001/api/v1'; 
@@ -106,37 +106,53 @@ class AppService {
         }
     };
 
-    fetchTopSentiments = async (data: string[]): Promise<{ topSentiments: TopSentimentsDTO } | null> => {
+    fetchTopDescriptors = async (data: string[]): Promise<{ topDescriptors: TopDescriptorsDTO } | null> => {
         const id = localStorage.getItem('USER_ID');
+
+        if (!id) {
+            console.error('User ID not found in local storage.');
+            return null;
+        }
+
         try {
             const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/analyze/top-sentiments`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ data })
+                body: JSON.stringify({ data }),
             });
 
             if (response.status === 500) {
-                return { topSentiments: { topSentiments: [] } };
+                return { topDescriptors: { topEmotions: [], topPolarities: [], topOccurrences: [], topTypes: [] } };
+            }
+
+            if (!response.ok) {
+                console.error(`Request failed with status: ${response.status}`);
+                return null;
             }
 
             const jsonResponse: { occurrences: number; sentiment: string }[] = await response.json();
-            const sentiments: SentimentOccurrenceDTO[] = jsonResponse.map(item => ({
+
+            const emotions: EmotionOccurrenceDTO[] = jsonResponse.map((item) => ({
                 sentimentName: item.sentiment,
-                occurrences: item.occurrences
+                occurrences: item.occurrences,
             }));
-            const topSentiments: TopSentimentsDTO = {
-                topSentiments: sentiments
-            }
-            return { topSentiments };
+
+            const topDescriptors: TopDescriptorsDTO = {
+                topEmotions: emotions,
+                topPolarities: [],
+                topOccurrences: [],
+                topTypes: [],
+            };
+
+            return { topDescriptors };
         } catch (error) {
             console.error('Error fetching data:', error);
-            throw error;
+            return null;
         }
     };
 
-    
     fetchAppFeatures = async (appId: string): Promise<{ features: string[] } | null> => {
         const id = localStorage.getItem('USER_ID');
         try {
@@ -152,7 +168,6 @@ class AppService {
         }
     };
 
-        
     getStatisticsOverTime = async (appName: string, startDate: Date, endDate?: Date): Promise<{ statistics: ApplicationDayStatisticsDTO[] } | null> => {
         const id = localStorage.getItem('USER_ID');
         const queryParams = new URLSearchParams();
