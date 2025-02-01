@@ -172,13 +172,18 @@ const DescriptorPolarAreaChart = () => {
             </Row>
             <Row className="align-items-center mb-4">
                 <Col xs="auto">
-                    <Form.Select value={selectedDescriptor} onChange={handleDescriptorChange}>
-                        <option value="" disabled>Select a descriptor</option>
-                        <option value="emotions">Emotions</option>
-                        <option value="polarities">Polarities</option>
-                        <option value="types">Types</option>
-                        <option value="topics">Topics</option>
-                    </Form.Select>
+                    <Form.Group controlId="topQuantity" className="d-flex align-items-center">
+                        <Form.Label className="fw-bold text-secondary me-2 mb-0">
+                            Descriptor:
+                        </Form.Label>
+                        <Form.Select value={selectedDescriptor} onChange={handleDescriptorChange}>
+                            <option value="" disabled>Select a descriptor</option>
+                            <option value="emotions">Emotions</option>
+                            <option value="polarities">Polarities</option>
+                            <option value="types">Types</option>
+                            <option value="topics">Topics</option>
+                        </Form.Select>
+                    </Form.Group>
                 </Col>
             </Row>
         </Container>

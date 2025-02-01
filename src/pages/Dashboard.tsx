@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import SentimentHistogramPerApp from '../components/visual/SentimentHistogramPerApp';
+import DescriptorHistogram from '../components/visual/DescriptorHistogram';
 import DescriptorPolarAreaChart from "../components/visual/DescriptorPolarAreaChart";
 import TopFeaturesHistogram from "../components/visual/TopFeaturesHistogram";
 import FeatureLineChart from "../components/visual/FeatureLineChart";
@@ -16,7 +16,7 @@ const Dashboard = () => {
                         <DescriptorPolarAreaChart />
                     </Row>
                     <Row>
-                        <SentimentHistogramPerApp />
+                        <DescriptorHistogram />
                     </Row>
                 </Col>
                 <Col className="col-md-6 mb-4 mr-3">
