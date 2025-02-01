@@ -9,13 +9,14 @@ import {
     Legend,
     Title,
 } from 'chart.js';
-import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
+import { Button, Col, Container, Modal, Row, Form } from 'react-bootstrap';
 import AppService from '../../services/AppService';
 import { ApplicationDayStatisticsDTO } from '../../DTOs/ApplicationDayStatisticsDTO';
 import { AppDataSimpleDTO } from '../../DTOs/AppDataSimpleDTO';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, Title);
 
+// You can keep SENTIMENT_OPTIONS if needed, but for descriptor selection we use fixed options.
 const SENTIMENT_OPTIONS = [
     'happiness',
     'sadness',
@@ -26,6 +27,14 @@ const SENTIMENT_OPTIONS = [
     'Not relevant',
 ];
 
+// Mapping descriptor types to sentiment names (adjust as needed)
+const DESCRIPTOR_MAP: { [key in 'emotions' | 'polarities' | 'types' | 'topics']: string[] } = {
+    emotions: ['happiness', 'sadness', 'anger', 'surprise', 'fear', 'disgust'],
+    polarities: ['positive', 'negative', 'neutral'], // example values
+    types: [], // add types if available
+    topics: [] // add topics if available
+};
+
 const generateColors = (sentiments: string[]) => {
     const defaultColors: { [key: string]: string } = {
         happiness: 'rgba(255, 99, 132, 0.7)',
@@ -35,7 +44,7 @@ const generateColors = (sentiments: string[]) => {
         fear: 'rgba(153, 102, 255, 0.7)',
         disgust: 'rgba(255, 159, 64, 0.7)',
     };
-    return sentiments.map((sentiment) => defaultColors[sentiment]);
+    return sentiments.map((sentiment) => defaultColors[sentiment] || 'rgba(100, 159, 64, 0.7)');
 };
 
 const options = {
@@ -71,14 +80,17 @@ const options = {
 };
 
 const DescriptorHistogram = () => {
+    // States for dates, app selection, descriptor selection, and chart data
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
     const [selectedApp, setSelectedApp] = useState<string | null>(null);
+    const [selectedDescriptor, setSelectedDescriptor] = useState<'' | 'emotions' | 'polarities' | 'types' | 'topics'>('');
     const [appData, setAppData] = useState<AppDataSimpleDTO[] | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [chartData, setChartData] = useState<any>({ labels: [], datasets: [] });
     const [showChart, setShowChart] = useState(false); // Controls chart visibility
 
+    // Fetch available apps on component mount
     useEffect(() => {
         const fetchAppDataFromService = async () => {
             const appService = new AppService();
@@ -98,6 +110,10 @@ const DescriptorHistogram = () => {
         fetchAppDataFromService();
     }, []);
 
+    const handleDescriptorChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedDescriptor(e.target.value as '' | 'emotions' | 'polarities' | 'types' | 'topics');
+    };
+
     const handleAddButtonClick = async () => {
         if (selectedApp && startDate && endDate) {
             const parsedStartDate = new Date(startDate);
@@ -113,6 +129,7 @@ const DescriptorHistogram = () => {
                 if (statisticsData !== null) {
                     const { statistics } = statisticsData;
 
+                    // Build an object mapping each date to its sentiment occurrences
                     const sentimentOccurrencesByDate: {
                         [date: string]: { [sentiment: string]: number };
                     } = {};
@@ -124,15 +141,13 @@ const DescriptorHistogram = () => {
                             sentimentOccurrencesByDate[currentDate] = {};
                         }
                         dayStatistics.sentimentOccurrences.forEach((sentiment) => {
-                            sentimentOccurrencesByDate[currentDate][
-                                sentiment.sentimentName
-                                ] =
-                                (sentimentOccurrencesByDate[currentDate][
-                                    sentiment.sentimentName
-                                    ] || 0) + sentiment.occurrences;
+                            sentimentOccurrencesByDate[currentDate][sentiment.sentimentName] =
+                                (sentimentOccurrencesByDate[currentDate][sentiment.sentimentName] || 0) +
+                                sentiment.occurrences;
                         });
                     });
 
+                    // Get unique sentiments from the statistics
                     const uniqueSentiments = Array.from(
                         new Set(
                             statistics.flatMap((dayStatistics: ApplicationDayStatisticsDTO) =>
@@ -144,15 +159,21 @@ const DescriptorHistogram = () => {
                     );
                     uniqueSentiments.sort();
 
+                    // If a descriptor is selected and a mapping exists, filter to include only those sentiments
+                    let filteredSentiments = uniqueSentiments;
+                    if (selectedDescriptor && DESCRIPTOR_MAP[selectedDescriptor]?.length > 0) {
+                        filteredSentiments = uniqueSentiments.filter((s) =>
+                            DESCRIPTOR_MAP[selectedDescriptor].includes(s)
+                        );
+                    }
+
                     const chartData = {
                         labels: Object.keys(sentimentOccurrencesByDate).sort(),
-                        datasets: uniqueSentiments.map((sentiment) => ({
+                        datasets: filteredSentiments.map((sentiment) => ({
                             label: sentiment,
                             data: Object.keys(sentimentOccurrencesByDate)
                                 .sort()
-                                .map(
-                                    (date) => sentimentOccurrencesByDate[date][sentiment] || 0
-                                ),
+                                .map((date) => sentimentOccurrencesByDate[date][sentiment] || 0),
                             backgroundColor: generateColors([sentiment])[0],
                         })),
                     };
@@ -165,7 +186,7 @@ const DescriptorHistogram = () => {
             }
         } else {
             console.error(
-                'Please select an app, start date, and end date before adding to the chart.'
+                'Please select an app, descriptor, start date, and end date before adding to the chart.'
             );
         }
     };
@@ -193,7 +214,9 @@ const DescriptorHistogram = () => {
             {/* Date selection */}
             <Row className="mb-2">
                 <Col md={6}>
-                    <label className="fw-bold text-secondary form-label">Start Date: </label>
+                    <label className="fw-bold text-secondary form-label">
+                        Start Date:
+                    </label>
                     <input
                         type="date"
                         className="form-control"
@@ -202,7 +225,9 @@ const DescriptorHistogram = () => {
                     />
                 </Col>
                 <Col md={6}>
-                    <label className="fw-bold text-secondary form-label">End Date: </label>
+                    <label className="fw-bold text-secondary form-label">
+                        End Date:
+                    </label>
                     <input
                         type="date"
                         className="form-control"
@@ -212,32 +237,54 @@ const DescriptorHistogram = () => {
                 </Col>
             </Row>
 
-            {/* Package selection and Add button */}
-            <Row className="mb-2 align-items-end">
+            {/* Package and Descriptor selectors */}
+            <Row className="mb-2">
                 <Col md={6}>
-                    <label className="fw-bold text-secondary form-label">Package: </label>
-                    <select
-                        value={selectedApp || ''}
-                        className="form-select"
-                        onChange={(e) => setSelectedApp(e.target.value)}
-                    >
-                        <option value="" disabled>
-                            Select a Package
-                        </option>
-                        {appData?.map((app) => (
-                            <option key={app.app_package} value={app.app_package}>
-                                {app.app_package}
+                    <Form.Group controlId="packageSelect">
+                        <Form.Label className="fw-bold text-secondary">
+                            Package:
+                        </Form.Label>
+                        <Form.Select
+                            value={selectedApp || ''}
+                            onChange={(e) => setSelectedApp(e.target.value)}
+                        >
+                            <option value="" disabled>
+                                Select a Package
                             </option>
-                        ))}
-                    </select>
+                            {appData?.map((app) => (
+                                <option key={app.app_package} value={app.app_package}>
+                                    {app.app_package}
+                                </option>
+                            ))}
+                        </Form.Select>
+                    </Form.Group>
                 </Col>
-                <Col xs="auto">
-                    <Button
-                        variant="secondary"
-                        size="sm"
-                        onClick={handleAddButtonClick}
-                    >
-                        <i className="mdi mdi-plus" /> Add
+                <Col md={6}>
+                    <Form.Group controlId="descriptorSelect">
+                        <Form.Label className="fw-bold text-secondary">
+                            Descriptor:
+                        </Form.Label>
+                        <Form.Select
+                            value={selectedDescriptor}
+                            onChange={handleDescriptorChange}
+                        >
+                            <option value="" disabled>
+                                Select a Descriptor
+                            </option>
+                            <option value="emotions">Emotions</option>
+                            <option value="polarities">Polarities</option>
+                            <option value="types">Types</option>
+                            <option value="topics">Topics</option>
+                        </Form.Select>
+                    </Form.Group>
+                </Col>
+            </Row>
+
+            {/* Add/View button on its own row, aligned to the right */}
+            <Row className="mt-3 mb-2">
+                <Col className="d-flex justify-content-end">
+                    <Button variant="secondary" size="sm" onClick={handleAddButtonClick}>
+                        <i className="mdi mdi-eye" /> View
                     </Button>
                 </Col>
             </Row>

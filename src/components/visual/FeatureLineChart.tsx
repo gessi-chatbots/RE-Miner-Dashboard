@@ -13,7 +13,6 @@ const FeatureLineChart = () => {
     const [endDate, setEndDate] = useState<string>('');
     const [appData, setAppData] = useState<AppDataSimpleDTO[] | null>(null);
     const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
-    const [statisticsData, setStatisticsData] = useState<ApplicationDayStatisticsDTO[]>([]);
     const [chartData, setChartData] = useState<any>({});
     const [colors, setColors] = useState<string[]>([]);
 
@@ -48,19 +47,20 @@ const FeatureLineChart = () => {
             await fetchFeaturesFromApp(selectedAppId);
         }
     };
+
     useEffect(() => {
         if (features.length > 0) {
             setColors(generateColors(features.length));
         }
     }, [features]);
+
     const fetchFeaturesFromApp = async (selectedAppId: string) => {
         if (selectedAppId) {
             const applicationService = new AppService();
             try {
                 const response = await applicationService.fetchAppFeatures(selectedAppId);
                 if (response !== null) {
-                    const features = response.features;
-                    setFeatures(features);
+                    setFeatures(response.features);
                 } else {
                     console.error('Response from fetch app features is null');
                 }
@@ -71,7 +71,7 @@ const FeatureLineChart = () => {
     };
 
     const formatFeatureName = (feature: string | null) => {
-        return feature?.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        return feature?.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
     };
 
     const handleAddButtonClick = async () => {
@@ -79,21 +79,25 @@ const FeatureLineChart = () => {
             console.error('Please select an app, start date, and end date before adding to the chart.');
             return;
         }
-    
+
         if (selectedFeatures.length === 0) {
             console.error('Please select at least one feature before adding to the chart.');
             return;
         }
-    
+
         const parsedStartDate = new Date(startDate);
         const parsedEndDate = new Date(endDate);
-    
+
         try {
             const applicationService = new AppService();
-            const statisticsData = await applicationService.getStatisticsOverTime(selectedApp, parsedStartDate, parsedEndDate);
+            const statisticsData = await applicationService.getStatisticsOverTime(
+                selectedApp,
+                parsedStartDate,
+                parsedEndDate
+            );
             if (statisticsData != null) {
                 const { statistics } = statisticsData;
-    
+
                 // Extract dates and occurrences for the selected features
                 const formattedData = statistics.reduce((accumulator: any, { date, featureOccurrences }: any) => {
                     selectedFeatures.forEach((selectedFeature: string) => {
@@ -105,17 +109,17 @@ const FeatureLineChart = () => {
                     });
                     return accumulator;
                 }, []);
-    
+
                 // Generate all dates in the range
                 const labels: string[] = [];
-                for (let date = new Date(parsedStartDate); date <= parsedEndDate; date.setDate(date.getDate() + 1)) {
-                    labels.push(date.toLocaleDateString());
+                for (let d = new Date(parsedStartDate); d <= parsedEndDate; d.setDate(d.getDate() + 1)) {
+                    labels.push(new Date(d).toLocaleDateString());
                 }
-    
+
                 // Populate occurrences for each feature on each date
                 const datasets: any[] = [];
                 selectedFeatures.forEach((selectedFeature: string, index: number) => {
-                    const occurrences: number[] = labels.map(date => {
+                    const occurrences: number[] = labels.map((date) => {
                         const entry = formattedData.find((entry: any) => entry.date === date && entry.feature === selectedFeature);
                         return entry ? entry.occurrences : 0;
                     });
@@ -124,14 +128,14 @@ const FeatureLineChart = () => {
                         data: occurrences,
                         fill: false,
                         borderColor: index < colors.length ? colors[index] : getRandomColor(),
-                        tension: 0.1
+                        tension: 0.1,
                     });
                 });
-    
+
                 // Set chart data
                 setChartData({
                     labels: labels,
-                    datasets: datasets
+                    datasets: datasets,
                 });
             }
         } catch (error) {
@@ -149,8 +153,7 @@ const FeatureLineChart = () => {
     };
 
     const generateColors = (count: number) => {
-        const colors = Array.from({ length: count }, () => getRandomColor());
-        return colors;
+        return Array.from({ length: count }, () => getRandomColor());
     };
 
     const options = {
@@ -173,23 +176,23 @@ const FeatureLineChart = () => {
     };
 
     return (
-        <Container className="sentiment-histogram-container">
-            <Row className="mt-4">
+        <Container className="sentiment-histogram-container py-3">
+            {/* Header with title and expand button */}
+            <Row className="mb-4 align-items-center">
                 <Col>
-                    <label className="text-secondary mb-2">Features over time</label>
+                    <h3 className="text-secondary text-center mb-0">Features over time</h3>
                 </Col>
-                <Col md={2} className="d-flex align-items-end">
-                    <Button
-                        className="btn-secondary btn-sm btn-square"
-                        onClick={() => setIsModalOpen(true)}
-                    >
-                        <i className="mdi mdi-arrow-expand"/>
+                <Col xs="auto" className="d-flex justify-content-end">
+                    <Button variant="secondary" size="sm" onClick={() => setIsModalOpen(true)}>
+                        <i className="mdi mdi-arrow-expand" />
                     </Button>
                 </Col>
             </Row>
+
+            {/* Date selection */}
             <Row className="mb-2">
                 <Col md={6}>
-                    <label className="form-label">Start Date: </label>
+                    <label className="fw-bold text-secondary form-label">Start Date:</label>
                     <input
                         type="date"
                         className="form-control"
@@ -198,7 +201,7 @@ const FeatureLineChart = () => {
                     />
                 </Col>
                 <Col md={6}>
-                    <label className="form-label">End Date: </label>
+                    <label className="fw-bold text-secondary form-label">End Date:</label>
                     <input
                         type="date"
                         className="form-control"
@@ -207,9 +210,11 @@ const FeatureLineChart = () => {
                     />
                 </Col>
             </Row>
-            <Row className="mb-4">
+
+            {/* App and Feature(s) selection */}
+            <Row className="mb-4 align-items-end">
                 <Col md={4}>
-                    <label className="form-label">App: </label>
+                    <label className="fw-bold text-secondary form-label">Package:</label>
                     <select
                         className="form-select"
                         value={selectedApp || ''}
@@ -219,17 +224,17 @@ const FeatureLineChart = () => {
                         }}
                     >
                         <option value="" disabled>
-                            Select an App
+                            Select a Package
                         </option>
                         {appData?.map((app) => (
                             <option key={app.app_package} value={app.app_package}>
-                                {app.app_name}
+                                {app.app_package}
                             </option>
                         ))}
                     </select>
                 </Col>
                 <Col md={6}>
-                    <label className="form-label">Feature(s): </label>
+                    <label className="fw-bold text-secondary form-label">Feature(s):</label>
                     <select
                         className="form-select"
                         multiple
@@ -239,10 +244,10 @@ const FeatureLineChart = () => {
                             setSelectedFeatures(selected);
                         }}
                         style={{
-                            height: selectedApp ? '200px' : '35px', 
-                            minHeight: '35px', 
-                            border: '1px solid #ced4da', 
-                            borderRadius: '4px', 
+                            height: selectedApp ? '200px' : '35px',
+                            minHeight: '35px',
+                            border: '1px solid #ced4da',
+                            borderRadius: '4px',
                         }}
                         disabled={!selectedApp}
                     >
@@ -254,14 +259,13 @@ const FeatureLineChart = () => {
                     </select>
                 </Col>
                 <Col md={2} className="d-flex align-items-end">
-                    <Button
-                        className="btn-secondary btn-sm btn-square"
-                        onClick={handleAddButtonClick}
-                    >
-                        <i className="mdi mdi-plus"/>
+                    <Button variant="secondary" size="sm" onClick={handleAddButtonClick}>
+                        <i className="mdi mdi-plus" />
                     </Button>
                 </Col>
             </Row>
+
+            {/* Chart */}
             <Row>
                 <Col>
                     {chartData.labels && chartData.datasets && (
@@ -269,6 +273,8 @@ const FeatureLineChart = () => {
                     )}
                 </Col>
             </Row>
+
+            {/* Modal for expanded view */}
             {isModalOpen && (
                 <Modal
                     fullscreen="xxl-down"
@@ -282,11 +288,13 @@ const FeatureLineChart = () => {
                         <Modal.Title>Features over time</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Col>
-                            {chartData.labels && chartData.datasets && (
-                                <Line data={chartData} options={options} />
-                            )}
-                        </Col>
+                        <Row>
+                            <Col>
+                                {chartData.labels && chartData.datasets && (
+                                    <Line data={chartData} options={options} />
+                                )}
+                            </Col>
+                        </Row>
                     </Modal.Body>
                 </Modal>
             )}

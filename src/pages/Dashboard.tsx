@@ -4,7 +4,7 @@ import DescriptorHistogram from '../components/visual/DescriptorHistogram';
 import DescriptorPolarAreaChart from "../components/visual/DescriptorPolarAreaChart";
 import TopFeaturesHistogram from "../components/visual/TopFeaturesHistogram";
 import FeatureLineChart from "../components/visual/FeatureLineChart";
-import CrossFeatureSentiments from "../components/visual/CrossFeatureSentiments";
+import CrossDescriptorEmotion from "../components/visual/CrossDescriptorEmotion";
 
 const Dashboard = () => {
     return (
@@ -27,7 +27,7 @@ const Dashboard = () => {
                         <FeatureLineChart />
                     </Row>
                     <Row >
-                        <CrossFeatureSentiments/>
+                        <CrossDescriptorEmotion/>
                     </Row>
                 </Col>
             </Row>
