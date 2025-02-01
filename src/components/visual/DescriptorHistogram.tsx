@@ -280,16 +280,15 @@ const DescriptorHistogram = () => {
                 </Col>
             </Row>
 
-            {/* Add/View button on its own row, aligned to the right */}
             <Row className="mt-3 mb-2">
-                <Col className="d-flex justify-content-end">
+                <Col></Col>
+                <Col xs="auto" className="d-flex justify-content-end m-lg-1">
                     <Button variant="secondary" size="sm" onClick={handleAddButtonClick}>
                         <i className="mdi mdi-eye" /> View
                     </Button>
                 </Col>
             </Row>
 
-            {/* Chart */}
             <Row>
                 <Col>
                     {showChart && selectedApp && startDate && endDate && (
