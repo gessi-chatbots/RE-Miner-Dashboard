@@ -3,7 +3,12 @@ import { AppDataSimpleDTO } from '../DTOs/AppDataSimpleDTO';
 import { AppDirectoryDataSimpleDTO } from '../DTOs/AppDirectoryDataSimpleDTO';
 import { ApplicationDayStatisticsDTO } from '../DTOs/ApplicationDayStatisticsDTO';
 import { FeatureOccurrenceDTO, TopFeaturesDTO } from '../DTOs/TopFeaturesDTO';
-import {EmotionOccurrenceDTO, TopDescriptorsDTO} from '../DTOs/TopDescriptorsDTO';
+import {
+    EmotionOccurrenceDTO,
+    PolarityOccurrenceDTO,
+    TopDescriptorsDTO, TopicOccurrenceDTO,
+    TypeOccurrenceDTO
+} from '../DTOs/TopDescriptorsDTO';
 class AppService {
 
     API_URL = 'http://127.0.0.1:3001/api/v1'; 
@@ -106,47 +111,49 @@ class AppService {
         }
     };
 
-    fetchTopDescriptors = async (data: string[]): Promise<{ topDescriptors: TopDescriptorsDTO } | null> => {
-        const id = localStorage.getItem('USER_ID');
-
-        if (!id) {
-            console.error('User ID not found in local storage.');
-            return null;
-        }
-
+    fetchTopDescriptors = async (): Promise<TopDescriptorsDTO | null> => {
         try {
-            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/analyze/top-sentiments`, {
+            const response = await fetch(`${this.API_URL}/analyze/top-descriptors`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ data }),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: [] }), // adjust payload as needed
             });
 
             if (response.status === 500) {
-                return { topDescriptors: { topEmotions: [], topPolarities: [], topOccurrences: [], topTypes: [] } };
+                return { topEmotions: [], topPolarities: [], topOccurrences: [], topTypes: [] };
             }
-
             if (!response.ok) {
                 console.error(`Request failed with status: ${response.status}`);
                 return null;
             }
 
-            const jsonResponse: { occurrences: number; sentiment: string }[] = await response.json();
+            const jsonResponse = await response.json();
 
-            const emotions: EmotionOccurrenceDTO[] = jsonResponse.map((item) => ({
-                sentimentName: item.sentiment,
-                occurrences: item.occurrences,
-            }));
+            const topEmotions: EmotionOccurrenceDTO[] =
+                (jsonResponse.topEmotions.topEmotions || []).map((item: any) => ({
+                    sentimentName: item.emotion,
+                    occurrences: item.occurrences,
+                }));
 
-            const topDescriptors: TopDescriptorsDTO = {
-                topEmotions: emotions,
-                topPolarities: [],
-                topOccurrences: [],
-                topTypes: [],
-            };
+            const topPolarities: PolarityOccurrenceDTO[] =
+                (jsonResponse.topPolarities.topPolarities || []).map((item: any) => ({
+                    sentimentName: item.polarity,
+                    occurrences: item.occurrences,
+                }));
 
-            return { topDescriptors };
+            const topTypes: TypeOccurrenceDTO[] =
+                (jsonResponse.topTypes.topTypes || []).map((item: any) => ({
+                    sentimentName: item.type,
+                    occurrences: item.occurrences,
+                }));
+
+            const topOccurrences: TopicOccurrenceDTO[] =
+                (jsonResponse.topTopics.topicOccurrences || []).map((item: any) => ({
+                    sentimentName: item.topic,
+                    occurrences: item.occurrences,
+                }));
+
+            return { topEmotions, topPolarities, topOccurrences, topTypes };
         } catch (error) {
             console.error('Error fetching data:', error);
             return null;
@@ -193,15 +200,13 @@ class AppService {
         }
     };
     
-    fetchTopFeatures = async (data: string[]): Promise<{ topFeatures: TopFeaturesDTO } | null> => {
-        const id = localStorage.getItem('USER_ID');
+    fetchTopFeatures = async (): Promise<{ topFeatures: TopFeaturesDTO } | null> => {
         try {
-            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/analyze/top-features`, {
+            const response = await fetch(`${this.API_URL}/analyze/top-features`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ data })
             });
     
             if (response.status === 500) {

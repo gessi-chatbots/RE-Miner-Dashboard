@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import SentimentHistogramPerApp from '../components/visual/SentimentHistogramPerApp';
 import DescriptorPolarAreaChart from "../components/visual/DescriptorPolarAreaChart";
-import Top5FeaturesHistogram from "../components/visual/Top5FeaturesHistogram";
+import TopFeaturesHistogram from "../components/visual/TopFeaturesHistogram";
 import FeatureLineChart from "../components/visual/FeatureLineChart";
 import CrossFeatureSentiments from "../components/visual/CrossFeatureSentiments";
 
@@ -21,7 +21,7 @@ const Dashboard = () => {
                 </Col>
                 <Col className="col-md-6 mb-4 mr-3">
                     <Row className="mb-4">
-                        <Top5FeaturesHistogram />
+                        <TopFeaturesHistogram />
                     </Row>
                     <Row className="mb-4">
                         <FeatureLineChart />

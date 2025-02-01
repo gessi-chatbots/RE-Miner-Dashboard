@@ -118,7 +118,6 @@ const ReviewsDirectory: React.FC = () => {
             </div>
         );
     };
-
     const TopicBadge: React.FC<{ topic: string }> = ({ topic }) => {
         if (!topic) return null;
 
