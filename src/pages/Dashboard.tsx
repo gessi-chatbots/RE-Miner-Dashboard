@@ -9,7 +9,7 @@ import CrossFeatureSentiments from "../components/visual/CrossFeatureSentiments"
 const Dashboard = () => {
     return (
         <>
-            <h1 className="text-secondary mb-3">Dashboard</h1>
+            <h1 className="text-secondary mb-4">Dashboard</h1>
             <Row className="gx-5">
                 <Col className="col-md-6 mb-4 ml-3">
                     <Row className="mb-4">
