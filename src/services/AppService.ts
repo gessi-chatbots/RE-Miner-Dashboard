@@ -137,25 +137,25 @@ class AppService {
 
             const topEmotions: EmotionOccurrenceDTO[] =
                 (jsonResponse.topEmotions.topEmotions || []).map((item: any) => ({
-                    sentimentName: item.emotion,
+                    emotion: item.emotion,
                     occurrences: item.occurrences,
                 }));
 
             const topPolarities: PolarityOccurrenceDTO[] =
                 (jsonResponse.topPolarities.topPolarities || []).map((item: any) => ({
-                    sentimentName: item.polarity,
+                    polarity: item.polarity,
                     occurrences: item.occurrences,
                 }));
 
             const topTypes: TypeOccurrenceDTO[] =
                 (jsonResponse.topTypes.topTypes || []).map((item: any) => ({
-                    sentimentName: item.type,
+                    type: item.type,
                     occurrences: item.occurrences,
                 }));
 
             const topOccurrences: TopicOccurrenceDTO[] =
                 (jsonResponse.topTopics.topicOccurrences || []).map((item: any) => ({
-                    sentimentName: item.topic,
+                    topic: item.topic,
                     occurrences: item.occurrences,
                 }));
 

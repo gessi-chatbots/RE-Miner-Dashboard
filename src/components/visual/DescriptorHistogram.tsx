@@ -16,35 +16,72 @@ import { AppDataSimpleDTO } from '../../DTOs/AppDataSimpleDTO';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, Title);
 
-// You can keep SENTIMENT_OPTIONS if needed, but for descriptor selection we use fixed options.
-const SENTIMENT_OPTIONS = [
-    'happiness',
-    'sadness',
-    'anger',
-    'surprise',
-    'fear',
-    'disgust',
-    'Not relevant',
-];
-
-// Mapping descriptor types to sentiment names (adjust as needed)
-const DESCRIPTOR_MAP: { [key in 'emotionsAndFeatures' | 'polarities' | 'types' | 'topics']: string[] } = {
-    emotionsAndFeatures: ['happiness', 'sadness', 'anger', 'surprise', 'fear', 'disgust'],
-    polarities: ['positive', 'negative', 'neutral'], // example values
-    types: [], // add types if available
-    topics: [] // add topics if available
+// Descriptor-specific color mappings
+const descriptorColors: { [key: string]: string } = {
+    happiness: 'rgba(255, 99, 132, 0.7)',
+    sadness: 'rgba(54, 162, 235, 0.7)',
+    anger: 'rgba(255, 206, 86, 0.7)',
+    surprise: 'rgba(75, 192, 192, 0.7)',
+    fear: 'rgba(153, 102, 255, 0.7)',
+    disgust: 'rgba(255, 159, 64, 0.7)',
+    positive: '#4bf4a7',
+    negative: '#ff4c4c',
+    neutral: '#4781f6',
+    general: '#4981f1',
+    usability: '#6746f6',
+    effectiveness: '#fd48af',
+    efficiency: '#fad542',
+    enjoyability: '#48fa9e',
+    cost: '#ffaf49',
+    reliability: '#43aff6',
+    security: '#f6d344',
+    compatibility: '#4280fa',
+    learnability: '#9f49fd',
+    safety: '#f847ab',
+    aesthetics: '#3f8ef6',
+    bug: '#ff4242',
+    rating: '#ffad46',
+    feature: '#46b9fa',
+    userexperience: '#40fd40',
 };
 
-const generateColors = (sentiments: string[]) => {
-    const defaultColors: { [key: string]: string } = {
-        happiness: 'rgba(255, 99, 132, 0.7)',
-        sadness: 'rgba(54, 162, 235, 0.7)',
-        anger: 'rgba(255, 206, 86, 0.7)',
-        surprise: 'rgba(75, 192, 192, 0.7)',
-        fear: 'rgba(153, 102, 255, 0.7)',
-        disgust: 'rgba(255, 159, 64, 0.7)',
-    };
-    return sentiments.map((sentiment) => defaultColors[sentiment] || 'rgba(100, 159, 64, 0.7)');
+
+// Default emotion colors
+const defaultEmotionColors: { [key: string]: string } = {
+    happiness: 'rgba(255, 99, 132, 0.7)',
+    sadness: 'rgba(54, 162, 235, 0.7)',
+    anger: 'rgba(255, 206, 86, 0.7)',
+    surprise: 'rgba(75, 192, 192, 0.7)',
+    fear: 'rgba(153, 102, 255, 0.7)',
+    disgust: 'rgba(255, 159, 64, 0.7)',
+};
+
+// Extended default color palette for fallback
+const extendedPalette: string[] = [
+    'rgba(255, 99, 132, 0.7)',
+    'rgba(54, 162, 235, 0.7)',
+    'rgba(255, 206, 86, 0.7)',
+    'rgba(75, 192, 192, 0.7)',
+    'rgba(153, 102, 255, 0.7)',
+    'rgba(255, 159, 64, 0.7)',
+    'rgba(199, 199, 199, 0.7)',
+];
+
+// Generate colors based on the descriptor type and labels
+const generateColors = (labels: string[], descriptor: string): string[] => {
+    return labels.map((label, index) => {
+        const lowerLabel = label.toLowerCase();
+        switch (descriptor) {
+            case 'emotionsAndFeatures':
+                return defaultEmotionColors[lowerLabel] || extendedPalette[index % extendedPalette.length];
+            case 'topics':
+            case 'types':
+            case 'polarities':
+                return descriptorColors[lowerLabel] || extendedPalette[index % extendedPalette.length];
+            default:
+                return extendedPalette[index % extendedPalette.length];
+        }
+    });
 };
 
 const options = {
@@ -76,15 +113,12 @@ const options = {
     },
     plugins: {
         legend: {
-            position: 'top' as const,  // 'as const' ensures the literal type is preserved
+            position: 'top' as const,
         },
     },
 };
 
-
-
 const DescriptorHistogram = () => {
-    // States for dates, app selection, descriptor selection, and chart data
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
     const [selectedApp, setSelectedApp] = useState<string | null>(null);
@@ -92,7 +126,7 @@ const DescriptorHistogram = () => {
     const [appData, setAppData] = useState<AppDataSimpleDTO[] | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [chartData, setChartData] = useState<any>({ labels: [], datasets: [] });
-    const [showChart, setShowChart] = useState(false); // Controls chart visibility
+    const [showChart, setShowChart] = useState(false);
 
     // Fetch available apps on component mount
     useEffect(() => {
@@ -101,8 +135,7 @@ const DescriptorHistogram = () => {
             try {
                 const response = await appService.fetchAllAppsPackages();
                 if (response !== null) {
-                    const { apps: appData } = response;
-                    setAppData(appData);
+                    setAppData(response.apps);
                 } else {
                     console.error('Response from fetch all apps is null');
                 }
@@ -117,7 +150,6 @@ const DescriptorHistogram = () => {
     const handleDescriptorChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedDescriptor(e.target.value as '' | 'emotionsAndFeatures' | 'polarities' | 'types' | 'topics');
     };
-
 
     const handleAddButtonClick = async () => {
         if (selectedApp && selectedDescriptor) {
@@ -136,62 +168,65 @@ const DescriptorHistogram = () => {
                 if (statisticsData && Array.isArray(statisticsData)) {
                     const statistics = statisticsData;
 
-                    // Build an object mapping each date to its sentiment occurrences
-                    const emotionOccurrencesByDate: {
-                        [date: string]: { [emotion: string]: number };
-                    } = {};
-                    statistics.forEach((dayStatistics: ApplicationDayStatisticsDTO) => {
-                        const currentDate = new Date(dayStatistics.date)
-                            .toISOString()
-                            .split('T')[0];
-                        if (!emotionOccurrencesByDate[currentDate]) {
-                            emotionOccurrencesByDate[currentDate] = {};
+                    const getOccurrencesByDescriptor = (dayStatistics: ApplicationDayStatisticsDTO) => {
+                        switch (selectedDescriptor) {
+                            case 'emotionsAndFeatures':
+                                return dayStatistics.emotionOccurrences.map((e) => ({
+                                    name: e.emotion,
+                                    occurrences: e.occurrences,
+                                }));
+                            case 'topics':
+                                return dayStatistics.topicOccurrences.map((t) => ({
+                                    name: t.topic,
+                                    occurrences: t.occurrences,
+                                }));
+                            case 'types':
+                                return dayStatistics.typeOccurrences.map((t) => ({
+                                    name: t.type,
+                                    occurrences: t.occurrences,
+                                }));
+                            case 'polarities':
+                                return dayStatistics.polarityOccurrences.map((p) => ({
+                                    name: p.polarity,
+                                    occurrences: p.occurrences,
+                                }));
+                            default:
+                                return [];
                         }
-                        dayStatistics.emotionOccurrences.forEach((emotion) => {
-                            emotionOccurrencesByDate[currentDate][emotion.emotion] =
-                                (emotionOccurrencesByDate[currentDate][emotion.emotion] || 0) +
-                                emotion.occurrences;
+                    };
+
+                    const occurrencesByDate: { [date: string]: { [name: string]: number } } = {};
+                    statistics.forEach((dayStatistics: ApplicationDayStatisticsDTO) => {
+                        const currentDate = new Date(dayStatistics.date).toISOString().split('T')[0];
+                        if (!occurrencesByDate[currentDate]) occurrencesByDate[currentDate] = {};
+
+                        getOccurrencesByDescriptor(dayStatistics).forEach(({ name, occurrences }) => {
+                            occurrencesByDate[currentDate][name] =
+                                (occurrencesByDate[currentDate][name] || 0) + occurrences;
                         });
                     });
 
-                    // Extract unique names from occurrences for chart labels
-                    const uniqueEmotions = Array.from(
+                    const uniqueNames = Array.from(
                         new Set(
-                            statistics.flatMap((dayStatistics: ApplicationDayStatisticsDTO) =>
-                                dayStatistics.emotionOccurrences.map(
-                                    (emotion) => emotion.emotion
-                                )
+                            statistics.flatMap((dayStatistics) =>
+                                getOccurrencesByDescriptor(dayStatistics).map(({ name }) => name)
                             )
                         )
                     );
 
-                    // If a descriptor is selected and a mapping exists, filter to include only those sentiments
-                    let filteredSentiments = uniqueEmotions;
-                    if (selectedDescriptor && DESCRIPTOR_MAP[selectedDescriptor]?.length > 0) {
-                        filteredSentiments = uniqueEmotions.filter((e) =>
-                            DESCRIPTOR_MAP[selectedDescriptor].includes(e)
-                        );
-                    }
-
                     const chartData = {
-                        labels: Object.keys(emotionOccurrencesByDate).sort(),
-                        datasets: filteredSentiments.map((emotion) => ({
-                            label: emotion,
-                            data: Object.keys(emotionOccurrencesByDate)
+                        labels: Object.keys(occurrencesByDate).sort(),
+                        datasets: uniqueNames.map((name) => ({
+                            label: name,
+                            data: Object.keys(occurrencesByDate)
                                 .sort()
-                                .map((date) => emotionOccurrencesByDate[date][emotion] || 0),
-                            backgroundColor: generateColors([emotion])[0],
+                                .map((date) => occurrencesByDate[date][name] || 0),
+                            backgroundColor: generateColors([name], selectedDescriptor)[0],
                         })),
                     };
 
                     setChartData(chartData);
-                    console.log('Chart Data:', chartData);
                     setShowChart(true);
-                    console.log('Show Chart:', showChart);
-                    console.log('Selected App:', selectedApp);
-                    console.log('Start Date:', startDate);
-                    console.log('End Date:', endDate);
-
                 } else {
                     console.warn('Statistics data is not in the expected format:', statisticsData);
                     setShowChart(false);
@@ -203,32 +238,23 @@ const DescriptorHistogram = () => {
             console.error('Please select an app and descriptor before adding to the chart.');
         }
     };
+
     return (
         <Container className="sentiment-histogram-container py-3">
-            {/* Header with title and Expand button */}
             <Row className="mb-4 align-items-center">
                 <Col>
-                    <h3 className="text-secondary text-center mb-0">
-                        Descriptor Histogram
-                    </h3>
+                    <h3 className="text-secondary text-center mb-0">Descriptor Histogram</h3>
                 </Col>
                 <Col xs="auto" className="d-flex justify-content-end">
-                    <Button
-                        variant="secondary"
-                        size="sm"
-                        onClick={() => setIsModalOpen(true)}
-                    >
+                    <Button variant="secondary" size="sm" onClick={() => setIsModalOpen(true)}>
                         <i className="mdi mdi-arrow-expand" />
                     </Button>
                 </Col>
             </Row>
 
-            {/* Date selection */}
             <Row className="mb-2">
                 <Col md={6}>
-                    <label className="fw-bold text-secondary form-label">
-                        Start Date:
-                    </label>
+                    <label className="fw-bold text-secondary form-label">Start Date:</label>
                     <input
                         type="date"
                         className="form-control"
@@ -237,9 +263,7 @@ const DescriptorHistogram = () => {
                     />
                 </Col>
                 <Col md={6}>
-                    <label className="fw-bold text-secondary form-label">
-                        End Date:
-                    </label>
+                    <label className="fw-bold text-secondary form-label">End Date:</label>
                     <input
                         type="date"
                         className="form-control"
@@ -249,20 +273,12 @@ const DescriptorHistogram = () => {
                 </Col>
             </Row>
 
-            {/* Package and Descriptor selectors */}
             <Row className="mb-2">
                 <Col md={6}>
                     <Form.Group controlId="packageSelect">
-                        <Form.Label className="fw-bold text-secondary">
-                            Package:
-                        </Form.Label>
-                        <Form.Select
-                            value={selectedApp || ''}
-                            onChange={(e) => setSelectedApp(e.target.value)}
-                        >
-                            <option value="" disabled>
-                                Select a Package
-                            </option>
+                        <Form.Label className="fw-bold text-secondary">Package:</Form.Label>
+                        <Form.Select value={selectedApp || ''} onChange={(e) => setSelectedApp(e.target.value)}>
+                            <option value="" disabled>Select a Package</option>
                             {appData?.map((app) => (
                                 <option key={app.app_package} value={app.app_package}>
                                     {app.app_package}
@@ -273,16 +289,9 @@ const DescriptorHistogram = () => {
                 </Col>
                 <Col md={6}>
                     <Form.Group controlId="descriptorSelect">
-                        <Form.Label className="fw-bold text-secondary">
-                            Descriptor:
-                        </Form.Label>
-                        <Form.Select
-                            value={selectedDescriptor}
-                            onChange={handleDescriptorChange}
-                        >
-                            <option value="" disabled>
-                                Select a Descriptor
-                            </option>
+                        <Form.Label className="fw-bold text-secondary">Descriptor:</Form.Label>
+                        <Form.Select value={selectedDescriptor} onChange={handleDescriptorChange}>
+                            <option value="" disabled>Select a Descriptor</option>
                             <option value="emotionsAndFeatures">Emotions</option>
                             <option value="polarities">Polarities</option>
                             <option value="types">Types</option>
@@ -311,28 +320,18 @@ const DescriptorHistogram = () => {
                 </Col>
             </Row>
 
-
-                    {/* Modal for expanded view */}
-                    {isModalOpen && (
-                        <Modal
-                            show={isModalOpen}
-                            onHide={() => setIsModalOpen(false)}
-                            size="lg"
-                            centered
-                        >
-                            <Modal.Header closeButton>
-                                <Modal.Title>Descriptor Histogram</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <div style={{ height: '80vh', width: '100%' }}>
-                                    {showChart && selectedApp && (
-                                        <Bar data={chartData} options={options} />
-                                    )}
-                                </div>
-                            </Modal.Body>
-                        </Modal>
-
-                    )}
+            {isModalOpen && (
+                <Modal show={isModalOpen} onHide={() => setIsModalOpen(false)} size="lg" centered>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Descriptor Histogram</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div style={{ height: '80vh', width: '100%' }}>
+                            {showChart && selectedApp && <Bar data={chartData} options={options} />}
+                        </div>
+                    </Modal.Body>
+                </Modal>
+            )}
         </Container>
     );
 };

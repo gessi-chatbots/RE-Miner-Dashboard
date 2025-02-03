@@ -1,21 +1,21 @@
 
 export interface EmotionOccurrenceDTO {
-    sentimentName: string;
+    emotion: string;
     occurrences: number;
 }
 
 export interface PolarityOccurrenceDTO {
-    sentimentName: string;
+    polarity: string;
     occurrences: number;
 }
 
 export interface TopicOccurrenceDTO {
-    sentimentName: string;
+    topic: string;
     occurrences: number;
 }
 
 export interface TypeOccurrenceDTO {
-    sentimentName: string;
+    type: string;
     occurrences: number;
 }
 

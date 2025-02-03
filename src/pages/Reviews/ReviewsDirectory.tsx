@@ -464,7 +464,7 @@ const ReviewsDirectory: React.FC = () => {
                                             review.features
                                                 .filter((feature) => feature && feature.trim().toLowerCase() !== 'n/a')
                                                 .map((feature, idx) => (
-                                                    <FeatureBadge key={idx} feature={feature.trim()}/>
+                                                    <FeatureBadge key={idx} feature={feature.replace(/([a-z])([A-Z])/g, '$1 $2').trim()}/>
                                                 ))
                                                 .concat(
                                                     // If all features are filtered out, display "N/A"

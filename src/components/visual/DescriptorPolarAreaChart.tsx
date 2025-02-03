@@ -6,11 +6,8 @@ import {
     Chart as ChartJS,
     Legend,
     LinearScale,
-    LineElement,
-    PointElement,
     PolarAreaController,
     RadialLinearScale,
-    TimeScale,
     Title,
     Tooltip,
 } from 'chart.js';
@@ -21,29 +18,43 @@ import { TopDescriptorsDTO } from "../../DTOs/TopDescriptorsDTO";
 ChartJS.register(
     CategoryScale,
     LinearScale,
-    PointElement,
-    LineElement,
-    TimeScale,
     Title,
     Tooltip,
     Legend,
     PolarAreaController,
     RadialLinearScale,
-    LineElement,
     ArcElement
 );
 
-// Keep these colors for emotions.
-const defaultEmotionColors: { [key: string]: string } = {
+const descriptorColors: { [key: string]: string } = {
     happiness: 'rgba(255, 99, 132, 0.7)',
     sadness: 'rgba(54, 162, 235, 0.7)',
     anger: 'rgba(255, 206, 86, 0.7)',
     surprise: 'rgba(75, 192, 192, 0.7)',
     fear: 'rgba(153, 102, 255, 0.7)',
     disgust: 'rgba(255, 159, 64, 0.7)',
+    positive: '#4bf4a7',
+    negative: '#ff4c4c',
+    neutral: '#4781f6',
+    general: '#4981f1',
+    usability: '#6746f6',
+    effectiveness: '#fd48af',
+    efficiency: '#fad542',
+    enjoyability: '#48fa9e',
+    cost: '#ffaf49',
+    reliability: '#43aff6',
+    security: '#f6d344',
+    compatibility: '#4280fa',
+    learnability: '#9f49fd',
+    safety: '#f847ab',
+    aesthetics: '#3f8ef6',
+    bug: '#ff4242',
+    rating: '#ffad46',
+    feature: '#46b9fa',
+    userexperience: '#40fd40',
 };
 
-// Extended palette for descriptors other than emotions.
+// Extended palette for fallback colors
 const extendedPalette: string[] = [
     'rgba(255, 99, 132, 0.7)',
     'rgba(54, 162, 235, 0.7)',
@@ -52,20 +63,23 @@ const extendedPalette: string[] = [
     'rgba(153, 102, 255, 0.7)',
     'rgba(255, 159, 64, 0.7)',
     'rgba(199, 199, 199, 0.7)',
-    'rgba(83, 102, 255, 0.7)',
-    'rgba(255, 203, 64, 0.7)',
-    'rgba(100, 159, 64, 0.7)',
-    'rgba(123, 99, 132, 0.7)',
-    'rgba(154, 162, 235, 0.7)',
-    'rgba(255, 156, 86, 0.7)',
-    'rgba(75, 200, 192, 0.7)',
 ];
 
-const generateColors = (labels: string[]): string[] =>
-    labels.map(label => defaultEmotionColors[label] || 'rgba(100, 159, 64, 0.7)');
+// Generate colors based on labels and descriptor type
+const generateColors = (labels: string[]): string[] => {
+    return labels.map((label, index) => {
+        const lowerLabel = label.toLowerCase();
+        return descriptorColors[lowerLabel] || extendedPalette[index % extendedPalette.length];
+    });
+};
 
-const generateDefaultColors = (labels: string[]): string[] =>
-    labels.map((_, index) => extendedPalette[index % extendedPalette.length]);
+// Transform label names to be more readable
+const transformLabel = (label: string): string => {
+    switch (label.toLowerCase()) {
+        case 'userexperience': return 'User Experience';
+        default: return label.charAt(0).toUpperCase() + label.slice(1);
+    }
+};
 
 const DescriptorPolarAreaChart = () => {
     const [chartLabels, setChartLabels] = useState<string[]>([]);
@@ -79,7 +93,7 @@ const DescriptorPolarAreaChart = () => {
             const applicationService = new ApplicationService();
             try {
                 const topDescriptors = await applicationService.fetchTopDescriptors();
-                if (topDescriptors !== null) {
+                if (topDescriptors) {
                     setDescriptorData(topDescriptors);
                 } else {
                     console.error('Response from fetchTopDescriptors is null');
@@ -95,36 +109,54 @@ const DescriptorPolarAreaChart = () => {
     useEffect(() => {
         if (!descriptorData) return;
 
-        // If no descriptor is selected, default to "emotions"
-        const effectiveDescriptor = selectedDescriptor || "emotions";
         let currentData: { sentimentName: string; occurrences: number }[] = [];
-        switch (effectiveDescriptor) {
+        switch (selectedDescriptor) {
             case 'emotions':
-                currentData = descriptorData.topEmotions;
+                currentData = descriptorData.topEmotions?.map((item) => ({
+                    sentimentName: item.emotion || '',
+                    occurrences: item.occurrences || 0,
+                })) || [];
                 break;
             case 'polarities':
-                currentData = descriptorData.topPolarities;
+                currentData = descriptorData.topPolarities?.map((item) => ({
+                    sentimentName: item.polarity || '',
+                    occurrences: item.occurrences || 0,
+                })) || [];
                 break;
             case 'types':
-                currentData = descriptorData.topTypes;
+                currentData = descriptorData.topTypes?.map((item) => ({
+                    sentimentName: item.type || '',
+                    occurrences: item.occurrences || 0,
+                })) || [];
                 break;
             case 'topics':
-                currentData = descriptorData.topOccurrences;
+                currentData = descriptorData.topOccurrences?.map((item) => ({
+                    sentimentName: item.topic || '',
+                    occurrences: item.occurrences || 0,
+                })) || [];
                 break;
             default:
-                currentData = descriptorData.topEmotions;
+                console.warn('Invalid descriptor:', selectedDescriptor);
+                currentData = [];
         }
 
-        // Process labels and change "UserExperience" to "User Experience"
+        if (currentData.length === 0) {
+            console.warn(`No data available for descriptor: ${selectedDescriptor}`);
+            setChartLabels([]);
+            setChartDataValues([]);
+            setChartColors([]);
+            return;
+        }
+
+        // Process labels and occurrences
         const rawLabels = currentData.map(item => item.sentimentName);
         const processedLabels = rawLabels.map(label =>
             label === "UserExperience" ? "User Experience" : label
         );
         const dataValues = currentData.map(item => item.occurrences);
-        const colors =
-            effectiveDescriptor === 'emotions'
-                ? generateColors(rawLabels)
-                : generateDefaultColors(rawLabels);
+
+        // Generate colors
+        const colors = generateColors(rawLabels);
 
         setChartLabels(processedLabels);
         setChartDataValues(dataValues);
@@ -141,17 +173,25 @@ const DescriptorPolarAreaChart = () => {
         ],
     };
 
+
     const options = {
         responsive: true,
         scales: {
             r: {
                 pointLabels: {
                     display: true,
-                    centerPointLabels: true,
                     font: {
-                        size: 18,
+                        size: 14,
                     },
                 },
+                ticks: {
+                    display: true, // Ensure ticks are displayed
+                },
+            },
+        },
+        plugins: {
+            legend: {
+                position: 'top' as const,
             },
         },
     };
@@ -173,9 +213,7 @@ const DescriptorPolarAreaChart = () => {
             <Row className="align-items-center mb-4">
                 <Col xs="auto">
                     <Form.Group controlId="topQuantity" className="d-flex align-items-center">
-                        <Form.Label className="fw-bold text-secondary me-2 mb-0">
-                            Descriptor:
-                        </Form.Label>
+                        <Form.Label className="fw-bold text-secondary me-2 mb-0">Descriptor:</Form.Label>
                         <Form.Select value={selectedDescriptor} onChange={handleDescriptorChange}>
                             <option value="" disabled>Select a descriptor</option>
                             <option value="emotions">Emotions</option>
