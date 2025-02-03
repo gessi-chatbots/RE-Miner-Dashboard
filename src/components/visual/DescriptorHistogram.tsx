@@ -28,8 +28,8 @@ const SENTIMENT_OPTIONS = [
 ];
 
 // Mapping descriptor types to sentiment names (adjust as needed)
-const DESCRIPTOR_MAP: { [key in 'emotions' | 'polarities' | 'types' | 'topics']: string[] } = {
-    emotions: ['happiness', 'sadness', 'anger', 'surprise', 'fear', 'disgust'],
+const DESCRIPTOR_MAP: { [key in 'emotionsAndFeatures' | 'polarities' | 'types' | 'topics']: string[] } = {
+    emotionsAndFeatures: ['happiness', 'sadness', 'anger', 'surprise', 'fear', 'disgust'],
     polarities: ['positive', 'negative', 'neutral'], // example values
     types: [], // add types if available
     topics: [] // add topics if available
@@ -84,7 +84,7 @@ const DescriptorHistogram = () => {
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
     const [selectedApp, setSelectedApp] = useState<string | null>(null);
-    const [selectedDescriptor, setSelectedDescriptor] = useState<'' | 'emotions' | 'polarities' | 'types' | 'topics'>('');
+    const [selectedDescriptor, setSelectedDescriptor] = useState<'' | 'emotionsAndFeatures' | 'polarities' | 'types' | 'topics'>('');
     const [appData, setAppData] = useState<AppDataSimpleDTO[] | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [chartData, setChartData] = useState<any>({ labels: [], datasets: [] });
@@ -111,7 +111,7 @@ const DescriptorHistogram = () => {
     }, []);
 
     const handleDescriptorChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedDescriptor(e.target.value as '' | 'emotions' | 'polarities' | 'types' | 'topics');
+        setSelectedDescriptor(e.target.value as '' | 'emotionsAndFeatures' | 'polarities' | 'types' | 'topics');
     };
 
 
@@ -279,7 +279,7 @@ const DescriptorHistogram = () => {
                             <option value="" disabled>
                                 Select a Descriptor
                             </option>
-                            <option value="emotions">Emotions</option>
+                            <option value="emotionsAndFeatures">Emotions</option>
                             <option value="polarities">Polarities</option>
                             <option value="types">Types</option>
                             <option value="topics">Topics</option>

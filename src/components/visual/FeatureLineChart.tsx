@@ -75,8 +75,8 @@ const FeatureLineChart = () => {
     };
 
     const handleAddButtonClick = async () => {
-        if (!selectedApp || !startDate || !endDate) {
-            console.error('Please select an app, start date, and end date before adding to the chart.');
+        if (!selectedApp) {
+            console.error('Please select an app before adding to the chart.');
             return;
         }
 
@@ -85,45 +85,43 @@ const FeatureLineChart = () => {
             return;
         }
 
-        const parsedStartDate = new Date(startDate);
-        const parsedEndDate = new Date(endDate);
-
         try {
             const applicationService = new AppService();
             const statisticsData = await applicationService.getStatisticsOverTime(
                 selectedApp,
-                "features",
-                parsedStartDate,
-                parsedEndDate
+                "emotionsAndFeatures"
             );
-            if (statisticsData != null) {
-                const statistics  = statisticsData;
 
-                // Extract dates and occurrences for the selected features
-                const formattedData = statistics.reduce((accumulator: any, { date, featureOccurrences }: any) => {
+            if (statisticsData != null) {
+                const statistics = statisticsData;
+
+                // Extract and sort all unique dates from the response data
+                const dates = Array.from(new Set(statistics.map(({ date }: any) => new Date(date).toLocaleDateString()))).sort();
+
+                // Extract data for the selected features
+                const formattedData = statistics.reduce((accumulator: any[], { date, featureOccurrences }: any) => {
+                    const formattedDate = new Date(date).toLocaleDateString();
                     selectedFeatures.forEach((selectedFeature: string) => {
-                        const featureEntry = featureOccurrences.find((occurrence: any) => occurrence.featureName === selectedFeature);
+                        const featureEntry = featureOccurrences.find((occurrence: any) => occurrence.feature === selectedFeature);
                         if (featureEntry) {
-                            const formattedDate = new Date(date).toLocaleDateString();
-                            accumulator.push({ date: formattedDate, feature: selectedFeature, occurrences: featureEntry.occurrences });
+                            accumulator.push({
+                                date: formattedDate,
+                                feature: selectedFeature,
+                                occurrences: featureEntry.occurrences,
+                            });
                         }
                     });
                     return accumulator;
                 }, []);
 
-                // Generate all dates in the range
-                const labels: string[] = [];
-                for (let d = new Date(parsedStartDate); d <= parsedEndDate; d.setDate(d.getDate() + 1)) {
-                    labels.push(new Date(d).toLocaleDateString());
-                }
-
                 // Populate occurrences for each feature on each date
                 const datasets: any[] = [];
                 selectedFeatures.forEach((selectedFeature: string, index: number) => {
-                    const occurrences: number[] = labels.map((date) => {
+                    const occurrences: number[] = dates.map((date) => {
                         const entry = formattedData.find((entry: any) => entry.date === date && entry.feature === selectedFeature);
                         return entry ? entry.occurrences : 0;
                     });
+
                     datasets.push({
                         label: formatFeatureName(selectedFeature),
                         data: occurrences,
@@ -135,9 +133,11 @@ const FeatureLineChart = () => {
 
                 // Set chart data
                 setChartData({
-                    labels: labels,
+                    labels: dates,
                     datasets: datasets,
                 });
+            } else {
+                console.error('No statistics data returned from the service.');
             }
         } catch (error) {
             console.error('Error fetching statistics data:', error);
@@ -261,7 +261,7 @@ const FeatureLineChart = () => {
                 </Col>
                 <Col md={2} className="d-flex align-items-end">
                     <Button variant="secondary" size="sm" onClick={handleAddButtonClick}>
-                        <i className="mdi mdi-plus" />
+                        <i className="mdi mdi-plus" /> Add
                     </Button>
                 </Col>
             </Row>
