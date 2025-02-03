@@ -1,8 +1,12 @@
 import {FeatureOccurrenceDTO} from "./FeatureOccurrenceDTO";
-import {SentimentOccurrenceDTO} from "./SentimentOccurrenceDTO";
+import {EmotionOccurrenceDTO} from "./EmotionOccurrenceDTO";
+import {PolarityOccurrenceDTO, TopicOccurrenceDTO, TypeOccurrenceDTO} from "./TopDescriptorsDTO";
 
 export interface ApplicationDayStatisticsDTO {
     date: Date;
-    sentimentOccurrences: SentimentOccurrenceDTO[];
+    emotionOccurrences: EmotionOccurrenceDTO[];
     featureOccurrences: FeatureOccurrenceDTO[];
+    polarityOccurrences: PolarityOccurrenceDTO[];
+    typeOccurrences: TypeOccurrenceDTO[];
+    topicOccurrences: TopicOccurrenceDTO[];
 }

@@ -146,8 +146,8 @@ const AppsDirectory: React.FC = () => {
                                     </thead>
                                     <tbody>
                                     {data.map(app => (
-                                        <tr key={app.id}>
-                                            <td className="text-center">{app.id || 'N/A'}</td>
+                                        <tr key={app.app_package}>
+                                            <td className="text-center">{app.app_package || 'N/A'}</td>
                                             <td className="text-center">{app.app_name || 'N/A'}</td>
                                             <td className="text-center">{app.review_size || 'N/A'}</td>
                                             <td className="text-end" style={{ width: "150px" }}>
@@ -234,7 +234,7 @@ const AppsDirectory: React.FC = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModals}>Close</Button>
-                    <Button variant="danger" onClick={() => deleteApp(selectedApp?.id)}>Delete</Button>
+                    <Button variant="danger" onClick={() => deleteApp(selectedApp?.app_package)}>Delete</Button>
                 </Modal.Footer>
             </Modal>
         </div>

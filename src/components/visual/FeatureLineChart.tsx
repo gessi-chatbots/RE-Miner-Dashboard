@@ -13,7 +13,6 @@ const FeatureLineChart = () => {
     const [endDate, setEndDate] = useState<string>('');
     const [appData, setAppData] = useState<AppDataSimpleDTO[] | null>(null);
     const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
-    const [statisticsData, setStatisticsData] = useState<ApplicationDayStatisticsDTO[]>([]);
     const [chartData, setChartData] = useState<any>({});
     const [colors, setColors] = useState<string[]>([]);
 
@@ -21,7 +20,7 @@ const FeatureLineChart = () => {
         const fetchAppDataFromService = async () => {
             const appService = new AppService();
             try {
-                const response = await appService.fetchAllAppsNamesSimple();
+                const response = await appService.fetchAllAppsPackages();
                 if (response !== null) {
                     const { apps: appData } = response;
                     setAppData(appData);
@@ -48,19 +47,21 @@ const FeatureLineChart = () => {
             await fetchFeaturesFromApp(selectedAppId);
         }
     };
+
     useEffect(() => {
         if (features.length > 0) {
             setColors(generateColors(features.length));
         }
     }, [features]);
+
     const fetchFeaturesFromApp = async (selectedAppId: string) => {
         if (selectedAppId) {
             const applicationService = new AppService();
             try {
                 const response = await applicationService.fetchAppFeatures(selectedAppId);
                 if (response !== null) {
-                    const features = response.features;
-                    setFeatures(features);
+                    const validFeatures = response.features.filter((feature: string) => feature.trim() !== "");
+                    setFeatures(validFeatures);
                 } else {
                     console.error('Response from fetch app features is null');
                 }
@@ -70,69 +71,75 @@ const FeatureLineChart = () => {
         }
     };
 
+
     const formatFeatureName = (feature: string | null) => {
-        return feature?.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        return feature?.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
     };
 
     const handleAddButtonClick = async () => {
-        if (!selectedApp || !startDate || !endDate) {
-            console.error('Please select an app, start date, and end date before adding to the chart.');
+        if (!selectedApp) {
+            console.error('Please select an app before adding to the chart.');
             return;
         }
-    
+
         if (selectedFeatures.length === 0) {
             console.error('Please select at least one feature before adding to the chart.');
             return;
         }
-    
-        const parsedStartDate = new Date(startDate);
-        const parsedEndDate = new Date(endDate);
-    
+
         try {
             const applicationService = new AppService();
-            const statisticsData = await applicationService.getStatisticsOverTime(selectedApp, parsedStartDate, parsedEndDate);
+            const statisticsData = await applicationService.getStatisticsOverTime(
+                selectedApp,
+                "emotionsAndFeatures"
+            );
+
             if (statisticsData != null) {
-                const { statistics } = statisticsData;
-    
-                // Extract dates and occurrences for the selected features
-                const formattedData = statistics.reduce((accumulator: any, { date, featureOccurrences }: any) => {
+                const statistics = statisticsData;
+
+                // Extract and sort all unique dates from the response data
+                const dates = Array.from(new Set(statistics.map(({ date }: any) => new Date(date).toLocaleDateString()))).sort();
+
+                // Extract data for the selected features
+                const formattedData = statistics.reduce((accumulator: any[], { date, featureOccurrences }: any) => {
+                    const formattedDate = new Date(date).toLocaleDateString();
                     selectedFeatures.forEach((selectedFeature: string) => {
-                        const featureEntry = featureOccurrences.find((occurrence: any) => occurrence.featureName === selectedFeature);
+                        const featureEntry = featureOccurrences.find((occurrence: any) => occurrence.feature === selectedFeature);
                         if (featureEntry) {
-                            const formattedDate = new Date(date).toLocaleDateString();
-                            accumulator.push({ date: formattedDate, feature: selectedFeature, occurrences: featureEntry.occurrences });
+                            accumulator.push({
+                                date: formattedDate,
+                                feature: selectedFeature,
+                                occurrences: featureEntry.occurrences,
+                            });
                         }
                     });
                     return accumulator;
                 }, []);
-    
-                // Generate all dates in the range
-                const labels: string[] = [];
-                for (let date = new Date(parsedStartDate); date <= parsedEndDate; date.setDate(date.getDate() + 1)) {
-                    labels.push(date.toLocaleDateString());
-                }
-    
+
                 // Populate occurrences for each feature on each date
                 const datasets: any[] = [];
                 selectedFeatures.forEach((selectedFeature: string, index: number) => {
-                    const occurrences: number[] = labels.map(date => {
+                    const occurrences: number[] = dates.map((date) => {
                         const entry = formattedData.find((entry: any) => entry.date === date && entry.feature === selectedFeature);
                         return entry ? entry.occurrences : 0;
                     });
+
                     datasets.push({
                         label: formatFeatureName(selectedFeature),
                         data: occurrences,
                         fill: false,
                         borderColor: index < colors.length ? colors[index] : getRandomColor(),
-                        tension: 0.1
+                        tension: 0.1,
                     });
                 });
-    
+
                 // Set chart data
                 setChartData({
-                    labels: labels,
-                    datasets: datasets
+                    labels: dates,
+                    datasets: datasets,
                 });
+            } else {
+                console.error('No statistics data returned from the service.');
             }
         } catch (error) {
             console.error('Error fetching statistics data:', error);
@@ -149,12 +156,12 @@ const FeatureLineChart = () => {
     };
 
     const generateColors = (count: number) => {
-        const colors = Array.from({ length: count }, () => getRandomColor());
-        return colors;
+        return Array.from({ length: count }, () => getRandomColor());
     };
 
     const options = {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
             x: {
                 title: {
@@ -170,26 +177,31 @@ const FeatureLineChart = () => {
                 },
             },
         },
+        plugins: {
+            legend: {
+                position: 'top' as const,  // Use 'as const' to assert the type
+            },
+        },
     };
 
     return (
-        <Container className="sentiment-histogram-container">
-            <Row className="mt-4">
+        <Container className="sentiment-histogram-container py-3">
+            {/* Header with title and expand button */}
+            <Row className="mb-4 align-items-center">
                 <Col>
-                    <label className="text-secondary mb-2">Features over time</label>
+                    <h3 className="text-secondary text-center mb-0">Features over time</h3>
                 </Col>
-                <Col md={2} className="d-flex align-items-end">
-                    <Button
-                        className="btn-secondary btn-sm btn-square"
-                        onClick={() => setIsModalOpen(true)}
-                    >
-                        <i className="mdi mdi-arrow-expand"/>
+                <Col xs="auto" className="d-flex justify-content-end">
+                    <Button variant="secondary" size="sm" onClick={() => setIsModalOpen(true)}>
+                        <i className="mdi mdi-arrow-expand" />
                     </Button>
                 </Col>
             </Row>
+
+            {/* Date selection */}
             <Row className="mb-2">
                 <Col md={6}>
-                    <label className="form-label">Start Date: </label>
+                    <label className="fw-bold text-secondary form-label">Start Date:</label>
                     <input
                         type="date"
                         className="form-control"
@@ -198,7 +210,7 @@ const FeatureLineChart = () => {
                     />
                 </Col>
                 <Col md={6}>
-                    <label className="form-label">End Date: </label>
+                    <label className="fw-bold text-secondary form-label">End Date:</label>
                     <input
                         type="date"
                         className="form-control"
@@ -207,9 +219,11 @@ const FeatureLineChart = () => {
                     />
                 </Col>
             </Row>
-            <Row className="mb-4">
+
+            {/* App and Feature(s) selection */}
+            <Row className="mb-4 align-items-end">
                 <Col md={4}>
-                    <label className="form-label">App: </label>
+                    <label className="fw-bold text-secondary form-label">Package:</label>
                     <select
                         className="form-select"
                         value={selectedApp || ''}
@@ -219,17 +233,17 @@ const FeatureLineChart = () => {
                         }}
                     >
                         <option value="" disabled>
-                            Select an App
+                            Select a Package
                         </option>
                         {appData?.map((app) => (
-                            <option key={app.id} value={app.id}>
-                                {app.app_name}
+                            <option key={app.app_package} value={app.app_package}>
+                                {app.app_package}
                             </option>
                         ))}
                     </select>
                 </Col>
                 <Col md={6}>
-                    <label className="form-label">Feature(s): </label>
+                    <label className="fw-bold text-secondary form-label">Feature(s):</label>
                     <select
                         className="form-select"
                         multiple
@@ -239,10 +253,10 @@ const FeatureLineChart = () => {
                             setSelectedFeatures(selected);
                         }}
                         style={{
-                            height: selectedApp ? '200px' : '35px', 
-                            minHeight: '35px', 
-                            border: '1px solid #ced4da', 
-                            borderRadius: '4px', 
+                            height: selectedApp ? '200px' : '35px',
+                            minHeight: '35px',
+                            border: '1px solid #ced4da',
+                            borderRadius: '4px',
                         }}
                         disabled={!selectedApp}
                     >
@@ -254,39 +268,46 @@ const FeatureLineChart = () => {
                     </select>
                 </Col>
                 <Col md={2} className="d-flex align-items-end">
-                    <Button
-                        className="btn-secondary btn-sm btn-square"
-                        onClick={handleAddButtonClick}
-                    >
-                        <i className="mdi mdi-plus"/>
+                    <Button variant="secondary" size="sm" onClick={handleAddButtonClick}>
+                        <i className="mdi mdi-plus" /> Add
                     </Button>
                 </Col>
             </Row>
+
+            {/* Chart */}
             <Row>
                 <Col>
-                    {chartData.labels && chartData.datasets && (
-                        <Line data={chartData} options={options} />
-                    )}
+                        {chartData.labels && chartData.datasets && (
+                            <div style={{height: '50vh', width: '100%'}}>
+                                <Line data={chartData} options={options}/>
+                            </div>
+                        )}
+
                 </Col>
             </Row>
+
+            {/* Modal for expanded view */}
             {isModalOpen && (
                 <Modal
-                    fullscreen="xxl-down"
+                    fullscreen
                     show={isModalOpen}
                     onHide={() => setIsModalOpen(false)}
-                    size="lg"
                     centered
-                    style={{ maxWidth: '95vw', maxHeight: '95vh' }}
                 >
                     <Modal.Header closeButton>
                         <Modal.Title>Features over time</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Col>
-                            {chartData.labels && chartData.datasets && (
-                                <Line data={chartData} options={options} />
-                            )}
-                        </Col>
+                        <Row>
+                            <Col>
+                                <div style={{height: '80vh', width: '100%'}}>
+
+                                    {chartData.labels && chartData.datasets && (
+                                        <Line data={chartData} options={options}/>
+                                    )}
+                                </div>
+                            </Col>
+                        </Row>
                     </Modal.Body>
                 </Modal>
             )}

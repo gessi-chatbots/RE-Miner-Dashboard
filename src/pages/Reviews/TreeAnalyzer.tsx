@@ -6,6 +6,7 @@ import { Container, Button, Row, Col, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-toastify";
+import AppService from "../../services/AppService";
 
 const TreeAnalyzer = () => {
     const navigate = useNavigate();
@@ -20,23 +21,28 @@ const TreeAnalyzer = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [metadataWindows, setMetadataWindows] = useState<any[]>([]);
     const [highlightedNodes, setHighlightedNodes] = useState<Set<number>>(new Set());
-    const [activateTuning, setActivateTuning] = useState<boolean>(false);
+    const [translate, setTranslate] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+    const treeContainerRef = React.createRef<HTMLDivElement>();
 
     const treeService = new TreeService();
 
     useEffect(() => {
         const fetchApps = async () => {
+            const appService = new AppService();
             try {
-                const appData = await treeService.fetchAllApps();
-                setApps(appData.map((app) => app.app_name));
+                const response = await appService.fetchAllAppsPackages();
+                if (response) {
+                    setApps(response.apps.map((app) => app.app_package));
+                } else {
+                    console.warn("No apps found");
+                    setApps([]);
+                }
             } catch (error) {
                 console.error("Error fetching apps:", error);
             }
         };
-
         fetchApps();
     }, []);
-
     useEffect(() => {
         if (!selectedApp) return;
 
@@ -83,6 +89,17 @@ const TreeAnalyzer = () => {
 
         fetchHierarchy();
     }, [selectedApp, selectedCluster, siblingThreshold]);
+    useEffect(() => {
+        if (treeData && treeContainerRef.current) {
+            const container = treeContainerRef.current;
+            const { width, height } = container.getBoundingClientRect();
+
+            setTranslate({
+                x: width / 2,
+                y: height / 4,
+            });
+        }
+    }, [treeData]);
 
     const transformToTreeFormat = (node: any): any => {
         const children = node.children
@@ -164,7 +181,21 @@ const TreeAnalyzer = () => {
             return newSet;
         });
     };
+    useEffect(() => {
+        if (treeData && treeContainerRef.current) {
+            const container = treeContainerRef.current;
 
+            // Center the tree view and scroll it into view
+            const { width, height } = container.getBoundingClientRect();
+            setTranslate({
+                x: width / 2,
+                y: height / 4,
+            });
+
+            // Smooth scroll to the tree container
+            container.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [treeData]);
     const handleDownloadJSON = () => {
         const collectSubtree = (nodeId: number, hierarchyData: any): any => {
             const node = findNodeById(nodeId, hierarchyData);
@@ -202,28 +233,25 @@ const TreeAnalyzer = () => {
             return;
         }
 
-        // Collect selected features
         const selectedFeatures = Array.from(highlightedNodes)
             .map((nodeId) => {
                 const node = findNodeById(nodeId, originalTreeData);
                 return node?.label;
             })
-            .filter((label) => label && label !== "Intermediate Node" && label !== "Root Node");
+            .filter((label) => label && !["Intermediate Node", "Root Node"].includes(label));
 
         if (selectedFeatures.length === 0) {
             toast.error("No valid features selected.");
             return;
         }
 
-        navigate("/review-searcher", {
+        navigate("/reviews", {
             state: {
-                appName: selectedApp, // Send the full app name
-                clusterName: selectedCluster,
+                appPackage: selectedApp,
                 selectedFeatures,
             },
         });
     };
-
     const findNodeById = (id: number, hierarchyData: any): any => {
         if (!hierarchyData) return null;
         if (hierarchyData.id === id) return hierarchyData;
@@ -237,35 +265,31 @@ const TreeAnalyzer = () => {
     };
 
     return (
-        <Container fluid className="vh-100">
-            <h1 className="text-secondary">Tree Analyzer</h1>
-            <Row className="bg-light py-3">
-                <Col md={4}>
-                    <h5>Select App</h5>
+        <Container>
+            <h1 className="text-secondary mb-4">Tree Analyzer</h1>
+
+            {/* Controls Section */}
+            <Row className="bg-white p-4 rounded shadow-sm mb-4">
+                <Col md={4} className="mb-3 mb-md-0">
+                    <h5 className="text-center mb-3">Select Package</h5>
                     <Form.Select
                         value={selectedApp}
                         onChange={(e) => setSelectedApp(e.target.value)}
                         aria-label="Select App"
                     >
-                        <option value="">Select App</option>
+                        <option value="">Package</option>
                         {apps.map((app) => {
-                            // Extract the part after the hyphen (-)
-                            const extractedAppName = app
-                                .split("-")[1] // Get the second part after the hyphen
-                                .toLowerCase(); // Convert to lowercase
-
                             return (
                                 <option key={app} value={app}>
-                                    {extractedAppName} {/* Displays the extracted app name */}
+                                    {app}
                                 </option>
                             );
                         })}
                     </Form.Select>
                 </Col>
 
-
-                <Col md={4}>
-                    <h5>Select Feature Family</h5>
+                <Col md={4} className="mb-3 mb-md-0">
+                    <h5 className="text-center mb-3">Select Feature Family</h5>
                     <Form.Select
                         value={selectedCluster}
                         onChange={(e) => setSelectedCluster(e.target.value)}
@@ -277,38 +301,44 @@ const TreeAnalyzer = () => {
                             const featureName = cluster.split("_").slice(2).join(" ").replace(/_/g, " ");
                             return (
                                 <option key={cluster} value={cluster}>
-                                    {featureName} {/* Displays the formatted Feature Name */}
+                                    {featureName}
                                 </option>
                             );
                         })}
                     </Form.Select>
                 </Col>
-                <Col md={2}>
-                    <h5>Sibling Threshold</h5>
-                    <Form.Label htmlFor="siblingThresholdSlider">
-                        Sibling Threshold: {siblingThreshold.toFixed(2)}
-                    </Form.Label>
-                    <Form.Range
-                        id="siblingThresholdSlider"
-                        min="0"
-                        max="2"
-                        step="0.1"
-                        value={siblingThreshold}
-                        onChange={(e) => setSiblingThreshold(Number(e.target.value))}
-                        style={{ width: "75%" }} // Adjusted slider width
-                    />
+
+                <Col md={4} className="d-flex flex-column align-items-center justify-content-center">
+                    <h5 className="text-center mb-3">Sibling Threshold</h5>
+
+                    <div className="d-flex align-items-center" style={{ width: "80%" }}>
+                        <Form.Range
+                            id="siblingThresholdSlider"
+                            min="0"
+                            max="2"
+                            step="0.1"
+                            value={siblingThreshold}
+                            onChange={(e) => setSiblingThreshold(Number(e.target.value))}
+                            style={{ flex: "1" }}
+                        />
+                        <Form.Label htmlFor="siblingThresholdSlider" className="text-secondary fw-bold ms-3">
+                            {siblingThreshold.toFixed(2)}
+                        </Form.Label>
+                    </div>
                 </Col>
-                <Col md={2}>
-                    {highlightedNodes.size > 0 && (
-                        <>
+
+                {/* Actions Section */}
+                {highlightedNodes.size > 0 && (
+
+                    <Col>
                             <h5>Actions</h5>
-                            <div className="d-flex flex-column">
+                            <div className="d-flex flex-column align-items-start">
                                 {Array.from(highlightedNodes).some((nodeId) => {
                                     const node = findNodeById(nodeId, originalTreeData);
-                                    return node && (!node.children || node.children.length === 0); // Ensure it's a leaf node
+                                    return node && (!node.children || node.children.length === 0);
                                 }) && (
                                     <Button
-                                        className="btn-primary mb-2"
+                                        className="btn-primary btn-sm mb-2 w-auto d-inline-flex align-items-center"
                                         onClick={handleViewReviews}
                                         aria-label="View Reviews"
                                     >
@@ -316,21 +346,24 @@ const TreeAnalyzer = () => {
                                     </Button>
                                 )}
                                 <Button
-                                    className="btn-secondary"
+                                    className="btn-secondary btn-sm w-auto d-inline-flex align-items-center"
                                     onClick={handleDownloadJSON}
                                     aria-label="Download JSON"
                                 >
                                     <i className="mdi mdi-download me-2"></i> Download JSON
                                 </Button>
                             </div>
-                        </>
-                    )}
-                </Col>
+                    </Col>
+                )}
             </Row>
 
-            <Row className="flex-grow-1">
+
+
+
+            {/* Tree Visualization Section */}
+            <Row className="flex-grow-1 bg-white rounded shadow-sm p-4">
                 <Col>
-                    <div style={{ height: "calc(100vh - 150px)", overflowY: "auto", position: "relative" }}>
+                    <div ref={treeContainerRef} style={{ height: "calc(100vh - 200px)", overflowY: "auto", position: "relative" }}>
                         {loading && <div>Loading tree data...</div>}
                         {!treeData && !loading && (
                             <div
@@ -350,16 +383,15 @@ const TreeAnalyzer = () => {
                             <Tree
                                 data={treeData}
                                 orientation="vertical"
-                                translate={{ x: 400, y: 50 }}
+                                translate={translate}
                                 collapsible
-                                nodeSize={{ x: 200, y: 150 }}
+                                nodeSize={{ x: 200, y: 80 }}
+                                separation={{ siblings: 0.6, nonSiblings: 0.7 }}
                                 renderCustomNodeElement={(rd3tProps) => (
                                     <CustomNode
                                         {...rd3tProps}
                                         onNodeClick={handleNodeClick}
-                                        isSelected={highlightedNodes.has(
-                                            rd3tProps?.nodeDatum?.attributes?.id as number
-                                        )}
+                                        isSelected={highlightedNodes.has(rd3tProps?.nodeDatum?.attributes?.id as number)}
                                     />
                                 )}
                             />
@@ -423,13 +455,13 @@ const TreeAnalyzer = () => {
                     </div>
                 </Col>
             </Row>
-
         </Container>
     );
+
 };
 
 const CustomNode = ({ nodeDatum, onNodeClick, isSelected }: any) => {
-    const isIntermediateOrRoot = !!nodeDatum.children; // Determines if the node is intermediate or root
+    const isIntermediateOrRoot = !!nodeDatum.children;
 
     const wrapText = (text: string, maxChars: number) => {
         const words = text.split(" ");
@@ -450,74 +482,39 @@ const CustomNode = ({ nodeDatum, onNodeClick, isSelected }: any) => {
         return lines;
     };
 
-    const wrappedText = isIntermediateOrRoot ? [] : wrapText(nodeDatum.name || "", 20); // Adjust maxChars as needed
-
-    const labelHeight = 50; // Default height of the label rectangle
-    const paddingBottom = 10; // Extra space below the text
-    const [fontSize, setFontSize] = React.useState(16); // Initial font size
-
-    React.useEffect(() => {
-        const containerWidth = 160; // Width of the leaf node
-        const maxHeight = labelHeight + paddingBottom; // Maximum height of the container
-
-        const tempSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        const tempText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        tempText.setAttribute("style", `font-size: ${fontSize}px`);
-        tempText.setAttribute("text-anchor", "middle");
-        tempText.textContent = wrappedText.join(" ");
-
-        tempSvg.appendChild(tempText);
-        document.body.appendChild(tempSvg);
-
-        const bbox = tempText.getBBox();
-        const fits = bbox.width <= containerWidth && bbox.height <= maxHeight;
-
-        if (!fits) {
-            setFontSize((prev) => Math.max(prev - 2, 10)); // Reduce font size, minimum of 10px
-        }
-
-        document.body.removeChild(tempSvg);
-    }, [wrappedText, fontSize]);
+    const wrappedText = isIntermediateOrRoot ? [] : wrapText(nodeDatum.name || "", 15);  // Reduce maxChars for shorter text wrapping
 
     return (
         <g onClick={() => onNodeClick(nodeDatum)} style={{ cursor: "pointer" }}>
             {isIntermediateOrRoot ? (
-                // Circular shape for intermediate or root nodes
-                <circle
-                    cx="0"
-                    cy="0"
-                    r="10"
-                    fill="#d6d6d6"
-                    stroke="#333"
-                />
+                <circle cx="0" cy="0" r="8" fill="#d6d6d6" stroke="#333" />
             ) : (
-                // Rectangular shape for leaf nodes with added height for padding
                 <rect
-                    width="160"
-                    height={labelHeight + paddingBottom} // Increased height for padding
-                    x="-80"
-                    y={-(labelHeight + paddingBottom) / 2}
-                    fill={isSelected ? "#4A90E2" : "#fff"} // Blue background if selected, white otherwise
+                    width="120"  // Reduced width
+                    height="40"  // Reduced height
+                    x="-60"
+                    y="-20"
+                    fill={isSelected ? "#4A90E2" : "#fff"}
                     stroke="#333"
-                    rx="10"
-                    ry="10"
+                    rx="8"
+                    ry="8"
                 />
             )}
             {!isIntermediateOrRoot && (
                 <text
                     x="0"
-                    y="-10" // Center text block vertically with padding
+                    y="0"
                     textAnchor="middle"
                     alignmentBaseline="middle"
                     style={{
-                        fontSize: `${fontSize}px`, // Dynamically adjusted font size
-                        fill: isSelected ? "#fff" : "#000", // White text if selected, black otherwise
-                        stroke: "none", // Removes the black contour around letters
-                        fontWeight: "600", // Medium-bold for leaf nodes
+                        fontSize: "12px",  // Smaller font size
+                        fill: isSelected ? "#fff" : "#000",
+                        stroke: "none",
+                        fontWeight: "500",
                     }}
                 >
                     {wrappedText.map((line, index) => (
-                        <tspan key={index} x="0" dy="1.2em">
+                        <tspan key={index} x="0" dy={`${index === 0 ? 0 : 1.1}em`}>
                             {line}
                         </tspan>
                     ))}

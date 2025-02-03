@@ -14,7 +14,6 @@ import ReviewAnalyzer from "../pages/Reviews/ReviewAnalyzer";
 import PrivateRoutes from './PrivateRoutes';
 import KGDirectory from '../pages/Apps/KGDirectory';
 import TreeAnalyzer from "../pages/Reviews/TreeAnalyzer";
-import ReviewSearcher from "../pages/Reviews/ReviewSearcher";
 
 interface LayoutProps {
     children: ReactNode;
@@ -43,7 +42,6 @@ const AuthenticatedRoutes: React.FC = () => {
                 <Route path="/reviews" element={<DefaultLayout><ReviewsDirectory /></DefaultLayout>} />
                 <Route path="applications/:appId/reviews/:reviewId/analyze" element={<DefaultLayout><ReviewAnalyzer /></DefaultLayout>} />
                 <Route path="/tree-analyzer" element={<DefaultLayout><TreeAnalyzer /></DefaultLayout>} />
-                <Route path="/review-searcher" element={<DefaultLayout><ReviewSearcher /></DefaultLayout>} />
 
             </Route>
             <Route path="/sign-up" element={<SignUpForm />} />

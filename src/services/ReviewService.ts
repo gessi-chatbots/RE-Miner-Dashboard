@@ -1,12 +1,10 @@
 import {ReviewDataDTO} from "../DTOs/ReviewDataDTO";
-import { ReviewDataSimpleDTO } from "../DTOs/ReviewDataSimpleDTO";
-import {ReviewFeatureDTO} from "../DTOs/ReviewFeatureDTO";
-import {SelectedFeatureReviewDTO} from "../DTOs/SelectedFeatureReviewDTO";
+import { ReviewManagerDTO } from "../DTOs/ReviewManagerDTO";
 class ReviewService {
     API_NAME = 'http://127.0.0.1:3001/api/v1';
     PATH_NAME = '/users'
 
-    fetchAllReviewsPaginated = async (page?: number, pageSize?: number): Promise<{ reviews: ReviewDataSimpleDTO[], total_pages: number }> => {
+    fetchAllReviewsPaginated = async (page?: number, pageSize?: number): Promise<{ reviews: ReviewManagerDTO[], total_pages: number }> => {
         const id = localStorage.getItem('USER_ID');
         let url = `${this.API_NAME}${this.PATH_NAME}/${id}/reviews`;
     
@@ -21,7 +19,7 @@ class ReviewService {
             }
     
             const jsonResponse = await response.json();
-            const revs: ReviewDataSimpleDTO[] = jsonResponse.reviews.map((review: any) => ({ 
+            const revs: ReviewManagerDTO[] = jsonResponse.reviews.map((review: any) => ({
                 app_id: review.app_id,
                 app_name: review.app_name,
                 reviewId: review.review_id,
@@ -41,28 +39,27 @@ class ReviewService {
     
 
     fetchReview = async (appId: string, reviewId: string): Promise<{ review: ReviewDataDTO } | null> => {
-        const id = localStorage.getItem('USER_ID');
         try {
-            if (!id || !reviewId || !appId) {
-                console.error('USER_ID or app id or reviewId is not available');
-                return null;
-            }
             
-            const response = await fetch(`${this.API_NAME}${this.PATH_NAME}/${id}/applications/${appId}/reviews/${reviewId}`);
+            const response = await fetch(`${this.API_NAME}/reviews/${reviewId}`);
             const jsonResponse = await response.json();
-    
+
             const reviewData: ReviewDataDTO = {
-                app_name: jsonResponse.application.name,
-                app_id: jsonResponse.application.id,
-                reviewId: jsonResponse.review_id,
-                review: jsonResponse.review_text,
+                app_name: jsonResponse.package_name,
+                app_id: jsonResponse.package_name,
+                reviewId: jsonResponse.reviewId,
+                review: jsonResponse.review,
                 sentences: jsonResponse.sentences.map((sentence: any) => ({
                     id: sentence.id,
-                    text: sentence.text,
-                    featureData: sentence.featureData,
-                    sentimentData: sentence.sentimentData
-                }))
+                    text: sentence.sentence,
+                    featureData: sentence.featureData ?? null,  // Ensure featureData is either an object or null
+                    sentimentData: sentence.sentimentData ?? null,
+                    polarityData: sentence.polarityData ?? null,
+                    topicData: sentence.topicData ?? null,
+                    typeData: sentence.typeData ?? null,
+                })),
             };
+
     
             return { review: reviewData };
         } catch (error) {
@@ -134,7 +131,7 @@ class ReviewService {
     };
 
     analyzeReviews = async (
-        reviews: ReviewDataSimpleDTO[],
+        reviews: ReviewManagerDTO[],
         featureExtraction: boolean,
         sentimentExtraction: boolean,
         polarityExtraction: boolean,
@@ -166,7 +163,7 @@ class ReviewService {
         console.log('Request URL:', url);
         
         //const jsonBody = reviews.map(review => ({ "reviewId": review.reviewId }));
-        const jsonBody = reviews.map(review => review.reviewId);
+        const jsonBody = reviews.map(review => review.review_id);
         console.log('Request body:', JSON.stringify(jsonBody, null, 2));
     
         try {
@@ -195,21 +192,33 @@ class ReviewService {
     };
 
 
-    fetchSelectedFeatureReviews = async (
-        appName: string,
-        featureList: string[]
-    ): Promise<SelectedFeatureReviewDTO[]> => {
-        const url = `${this.API_NAME}/${appName}/reviews-filtered`;
-
+    fetchFilteredReviews = async (
+        appPackage: string,
+        featureList: string[],
+        selectedTopic: string,
+        selectedEmotion: string,
+        selectedPolarity: string,
+        selectedType: string,
+        currentPage: number,
+        PAGE_SIZE: number
+    ): Promise<{ reviews: ReviewManagerDTO[]; total_pages: number; total_elements: number; current_page: number }> => {
+        const url = `${this.API_NAME}/reviews-filtered`;
         const requestBody = {
-            feature_list: featureList,
+            app_id: appPackage || null,
+            topic: selectedTopic ? selectedTopic.toLowerCase() : null,
+            emotion: selectedEmotion ? selectedEmotion.toLowerCase() : null,
+            polarity: selectedPolarity ? selectedPolarity.toLowerCase() : null,
+            features: featureList,
+            type: selectedType || null,
+            page: currentPage,
+            page_size: PAGE_SIZE,
         };
 
         try {
             const response = await fetch(url, {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(requestBody),
             });
@@ -218,24 +227,29 @@ class ReviewService {
                 throw new Error(`Error fetching reviews: ${response.statusText}`);
             }
 
-            const reviews = await response.json();
-            console.log("Reviews fetched successfully:", reviews);
+            const data = await response.json();
+            console.log("Reviews fetched successfully:", data);
 
-            return reviews.map((review: any) => ({
-                app_name: appName,
-                review_id: review.reviewId,
-                review_text: review.review,
-                features: review.features?.length > 0 ? review.features.map((f: any) => f.feature) : "Unknown",
-                polarities: review.polarities?.length > 0 ? review.polarities.map((p: any) => p.polarity) : "Unknown",
-                types: review.types?.length > 0 ? review.types.map((t: any) => t.type) : "Unknown",
-                topics: review.topics?.length > 0 ? review.topics.map((t: any) => t.topic) : "Unknown"
-            }));
+            return {
+                reviews: data.content.map((review: any) => ({
+                    app_id: review.appPackage || "N/A",
+                    review_id: review.reviewId || "N/A",
+                    review: review.review || "N/A",
+                    features: review.features?.length ? review.features.map((f: any) => f.feature) : ["N/A"],
+                    polarities: review.polarities?.length ? review.polarities.map((p: any) => p.polarity) : ["N/A"],
+                    emotions: review.emotions?.length ? review.emotions.map((e: any) => e.sentiment) : ["N/A"],
+                    types: review.types?.length ? review.types.map((t: any) => t.type) : ["N/A"],
+                    topics: review.topics?.length ? review.topics.map((t: any) => t.topic) : ["N/A"],
+                })),
+                total_pages: data.totalPages,
+                total_elements: data.totalElements,
+                current_page: data.currentPage,
+            };
         } catch (error) {
             console.error("Error fetching selected feature reviews:", error);
             throw error;
         }
     };
-
 
 }
 
