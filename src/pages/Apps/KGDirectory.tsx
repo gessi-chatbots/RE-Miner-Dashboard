@@ -75,7 +75,7 @@ const KGDirectory: React.FC = () => {
                             <Row className="text-center">
                                 <Col>
                                     <i className="mdi mdi-emoticon-sad text-secondary" style={{ fontSize: '5rem' }} />
-                                    <h2>No applications found in the directory.</h2>
+                                    <h2 className="text-secondary">No applications found in the directory.</h2>
                                     <div style={{ width: 'fit-content', margin: '0 auto' }}> {/* Wrap the button inside a div */}
                                         <Button className="mt-4 btn-secondary" href="/applications/upload">
                                             <i className="mdi mdi-upload"/> Upload Apps
