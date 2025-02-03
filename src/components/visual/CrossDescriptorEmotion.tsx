@@ -98,11 +98,12 @@ const CrossDescriptorEmotion = () => {
             const applicationService = new AppService();
             const statisticsData = await applicationService.getStatisticsOverTime(
                 selectedApp,
+                "features",
                 parsedStartDate,
                 parsedEndDate
             );
             if (statisticsData != null) {
-                const { statistics } = statisticsData;
+                const statistics = statisticsData;
 
                 const labels: string[] = [];
                 const featureDatasets: any[] = [];
@@ -122,14 +123,14 @@ const CrossDescriptorEmotion = () => {
                             (stat) => new Date(stat.date).toLocaleDateString() === label
                         );
                         if (stat) {
-                            const feature = stat.featureOccurrences.find((f) => f.featureName === selectedFeature);
+                            const feature = stat.featureOccurrences.find((f) => f.feature === selectedFeature);
                             data.push(feature ? feature.occurrences : 0);
                         } else {
                             data.push(0);
                         }
                     });
                     featureDatasets.push({
-                        label: formatFeatureName(selectedFeature),
+                        label: formatfeature(selectedFeature),
                         data: data,
                         borderColor: getRandomColor(),
                         tension: 0.1,
@@ -145,8 +146,8 @@ const CrossDescriptorEmotion = () => {
                             (stat) => new Date(stat.date).toLocaleDateString() === label
                         );
                         if (stat) {
-                            const sentimentOccurrence = stat.sentimentOccurrences.find(
-                                (s) => s.sentimentName === sentiment
+                            const sentimentOccurrence = stat.emotionOccurrences.find(
+                                (s) => s.emotion === sentiment
                             );
                             data.push(sentimentOccurrence ? sentimentOccurrence.occurrences : 0);
                         } else {
@@ -208,7 +209,7 @@ const CrossDescriptorEmotion = () => {
         return word.charAt(0).toUpperCase() + word.slice(1);
     };
 
-    const formatFeatureName = (feature: string) => {
+    const formatfeature = (feature: string) => {
         return feature.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
     };
 
@@ -321,7 +322,7 @@ const CrossDescriptorEmotion = () => {
                     >
                         {features.sort().map((feature) => (
                             <option key={feature} value={feature}>
-                                {formatFeatureName(feature)}
+                                {formatfeature(feature)}
                             </option>
                         ))}
                     </select>

@@ -1,4 +1,4 @@
 export interface FeatureOccurrenceDTO {
-    featureName: string;
+    feature: string;
     occurrences: number;
 }

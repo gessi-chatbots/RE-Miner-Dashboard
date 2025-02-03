@@ -92,11 +92,12 @@ const FeatureLineChart = () => {
             const applicationService = new AppService();
             const statisticsData = await applicationService.getStatisticsOverTime(
                 selectedApp,
+                "features",
                 parsedStartDate,
                 parsedEndDate
             );
             if (statisticsData != null) {
-                const { statistics } = statisticsData;
+                const statistics  = statisticsData;
 
                 // Extract dates and occurrences for the selected features
                 const formattedData = statistics.reduce((accumulator: any, { date, featureOccurrences }: any) => {
