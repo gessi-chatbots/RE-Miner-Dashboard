@@ -72,7 +72,7 @@ const DescriptorPolarAreaChart = () => {
     const [chartDataValues, setChartDataValues] = useState<number[]>([]);
     const [chartColors, setChartColors] = useState<string[]>([]);
     const [descriptorData, setDescriptorData] = useState<TopDescriptorsDTO | null>(null);
-    const [selectedDescriptor, setSelectedDescriptor] = useState<'' | 'emotions' | 'polarities' | 'types' | 'topics'>('');
+    const [selectedDescriptor, setSelectedDescriptor] = useState<'' | 'emotions' | 'polarities' | 'types' | 'topics'>('emotions');
 
     useEffect(() => {
         const fetchReviewData = async () => {

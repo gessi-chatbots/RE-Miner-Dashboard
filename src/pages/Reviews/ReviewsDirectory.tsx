@@ -55,7 +55,7 @@ const ReviewsDirectory: React.FC = () => {
         "Safety",
         "Aesthetics",
     ];
-    const emotionOptions = ["Joy", "Sadness", "Anger", "Surprise", "Fear", "Disgust", "Neutral"];
+    const emotionOptions = ["Happiness", "Sadness", "Anger", "Surprise", "Fear", "Disgust", "Neutral"];
     const typeOptions = ["Bug", "Rating", "Feature", "UserExperience"];
 
     useEffect(() => {

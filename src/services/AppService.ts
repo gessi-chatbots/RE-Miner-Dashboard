@@ -171,14 +171,19 @@ class AppService {
             const response = await fetch(`${this.API_URL}/applications/${appId}/features`, {
                 method: 'GET'
             });
-            const features: string[] = await response.json();
-    
+
+            let features: string[] = await response.json();
+
+            // Filter out features that are empty or contain only whitespace
+            features = features.filter(feature => feature.trim() !== "");
+
             return { features };
         } catch (error) {
             console.error('Error fetching data:', error);
             throw error;
         }
     };
+
 
     getStatisticsOverTime = async (
         appPackage: string,
@@ -226,25 +231,32 @@ class AppService {
                     'Content-Type': 'application/json'
                 },
             });
-    
+
             if (response.status === 500) {
                 return { topFeatures: { topFeatures: [] } };
             }
-    
+
             const jsonResponse: { occurrences: number; feature: string }[] = await response.json();
-            const features: FeatureOccurrenceDTO[] = jsonResponse.map(item => ({
+
+            // Filter out features that are empty or contain only whitespace
+            const filteredResponse = jsonResponse.filter(item => item.feature.trim() !== "");
+
+            const features: FeatureOccurrenceDTO[] = filteredResponse.map(item => ({
                 featureName: item.feature,
                 occurrences: item.occurrences
             }));
+
             const topFeatures: TopFeaturesDTO = {
                 topFeatures: features
-            }
+            };
+
             return { topFeatures };
         } catch (error) {
             console.error('Error fetching data:', error);
             throw error;
         }
     };
+
 
     createApp = async (appData: any) => {
         try {

@@ -60,7 +60,8 @@ const FeatureLineChart = () => {
             try {
                 const response = await applicationService.fetchAppFeatures(selectedAppId);
                 if (response !== null) {
-                    setFeatures(response.features);
+                    const validFeatures = response.features.filter((feature: string) => feature.trim() !== "");
+                    setFeatures(validFeatures);
                 } else {
                     console.error('Response from fetch app features is null');
                 }
@@ -69,6 +70,7 @@ const FeatureLineChart = () => {
             }
         }
     };
+
 
     const formatFeatureName = (feature: string | null) => {
         return feature?.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
