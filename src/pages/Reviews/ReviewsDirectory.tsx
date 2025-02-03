@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Table,Tooltip, Button, Row, Col, Form, OverlayTrigger } from "react-bootstrap";
+import AppService from "../../services/AppService";
+
 import ReviewService from "../../services/ReviewService";
 import { toast } from "react-toastify";
 import {useLocation, useNavigate} from 'react-router-dom';
@@ -63,6 +65,21 @@ const ReviewsDirectory: React.FC = () => {
     }, [stateAppPackage, stateSelectedFeatures]);
 
     useEffect(() => {
+        const fetchApps = async () => {
+            const appService = new AppService();
+            try {
+                const response = await appService.fetchAllAppsPackages();
+                if (response) {
+                    setApps(response.apps.map((app) => app.app_package));
+                } else {
+                    console.warn("No apps found");
+                    setApps([]);
+                }
+            } catch (error) {
+                console.error("Error fetching apps:", error);
+            }
+        };
+        fetchApps();
         if (searchTriggered) {
             fetchReviews(currentPage);
         }
@@ -227,7 +244,7 @@ const ReviewsDirectory: React.FC = () => {
                                 padding: "5px 10px",
                             }}
                         >
-                            <option value="">All Apps</option>
+                            <option value="">All Packages</option>
                             {apps.map((app) => (
                                 <option key={app} value={app}>
                                     {app}

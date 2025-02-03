@@ -37,22 +37,28 @@ class AppService {
             throw error;
         }
     };
-    
 
-    fetchAllDirectoryApps = async (page = 1, pageSize = 4): Promise<{ apps: AppDirectoryDataSimpleDTO[], total_pages: number } | null> => {
+
+    fetchAllDirectoryApps = async (
+        page = 1,
+        pageSize = 4
+    ): Promise<{ apps: AppDirectoryDataSimpleDTO[]; total_pages: number } | null> => {
         try {
             const response = await fetch(`${this.API_URL}/applications/directory`);
-            if (response.status === 204) {
+
+            if (response.status === 204 || response.status === 404) {
                 return { apps: [], total_pages: 0 };
             }
+
             const jsonResponse = await response.json();
             const apps = jsonResponse.map((item: any) => ({
                 applicationPackage: item.package_name,
                 name: item.app_name,
                 reviewCount: item.reviewCount
             }));
+
             return {
-                apps: apps,
+                apps,
                 total_pages: 1
             };
         } catch (error) {
@@ -60,7 +66,7 @@ class AppService {
             throw error;
         }
     };
-    
+
 
     fetchAllAppsNames = async (): Promise<{ apps: AppDataDTO[] } | null> => {
         const id = localStorage.getItem('USER_ID')
@@ -175,31 +181,44 @@ class AppService {
         }
     };
 
-    getStatisticsOverTime = async (appName: string, startDate: Date, endDate?: Date): Promise<{ statistics: ApplicationDayStatisticsDTO[] } | null> => {
-        const id = localStorage.getItem('USER_ID');
+    getStatisticsOverTime = async (
+        appPackage: string,
+        descriptor: string,
+        startDate?: Date | null,
+        endDate?: Date | null
+    ): Promise<ApplicationDayStatisticsDTO[]> => {
         const queryParams = new URLSearchParams();
-        queryParams.set('start_date', startDate.toISOString());
-        if (endDate) {
+
+        // Only add date parameters if they are defined
+        if (startDate !== null && startDate !== undefined) {
+            queryParams.set('start_date', startDate.toISOString());
+        }
+
+        if (endDate !== null && endDate !== undefined) {
             queryParams.set('end_date', endDate.toISOString());
         }
-    
+
+        queryParams.set('descriptor', descriptor);
+
         try {
-            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications/${appName}/statistics?${queryParams.toString()}`, {
-                method: 'GET'
-            });
-    
+            const response = await fetch(
+                `${this.API_URL}/applications/${appPackage}/statistics?${queryParams.toString()}`,
+                { method: 'GET' }
+            );
+
             if (!response.ok) {
                 throw new Error(`Failed to fetch statistics data: ${response.statusText}`);
             }
-    
+
+            // Expect a plain list from the backend instead of an object with "statistics"
             const statistics: ApplicationDayStatisticsDTO[] = await response.json();
-            return { statistics };
+            return statistics;
         } catch (error) {
             console.error('Error fetching data:', error);
             throw error;
         }
     };
-    
+
     fetchTopFeatures = async (): Promise<{ topFeatures: TopFeaturesDTO } | null> => {
         try {
             const response = await fetch(`${this.API_URL}/analyze/top-features`, {
@@ -229,9 +248,8 @@ class AppService {
     };
 
     createApp = async (appData: any) => {
-        const id = localStorage.getItem('USER_ID')
         try {
-            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications`, {
+            const response = await fetch(`${this.API_URL}/applications`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
