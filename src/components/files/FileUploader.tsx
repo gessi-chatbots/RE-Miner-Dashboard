@@ -115,6 +115,8 @@ const FileUploader = React.forwardRef((props: FileUploaderProps, ref: React.Ref<
                             reviews: item.reviews.map((review: any) => ({
                                 reviewId: review.reviewId,
                                 review: review.review,
+                                reply: review.reply,
+                                userName: review.userName,
                                 score: review.score,
                                 date: new Date(review.at).toLocaleDateString('en-GB')
                             })) as ReviewDataDTO[],
