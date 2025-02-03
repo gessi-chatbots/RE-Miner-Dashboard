@@ -271,13 +271,13 @@ const TreeAnalyzer = () => {
             {/* Controls Section */}
             <Row className="bg-white p-4 rounded shadow-sm mb-4">
                 <Col md={4} className="mb-3 mb-md-0">
-                    <h5 className="mb-3">Select App</h5>
+                    <h5 className="text-center mb-3">Select Package</h5>
                     <Form.Select
                         value={selectedApp}
                         onChange={(e) => setSelectedApp(e.target.value)}
                         aria-label="Select App"
                     >
-                        <option value="">Select App</option>
+                        <option value="">Package</option>
                         {apps.map((app) => {
                             return (
                                 <option key={app} value={app}>
@@ -289,7 +289,7 @@ const TreeAnalyzer = () => {
                 </Col>
 
                 <Col md={4} className="mb-3 mb-md-0">
-                    <h5 className="mb-3">Select Feature Family</h5>
+                    <h5 className="text-center mb-3">Select Feature Family</h5>
                     <Form.Select
                         value={selectedCluster}
                         onChange={(e) => setSelectedCluster(e.target.value)}
@@ -310,10 +310,8 @@ const TreeAnalyzer = () => {
 
                 <Col md={4} className="d-flex flex-column align-items-center justify-content-center">
                     <h5 className="text-center mb-3">Sibling Threshold</h5>
-                    <Form.Label htmlFor="siblingThresholdSlider" className="text-center">
-                        Sibling Threshold: {siblingThreshold.toFixed(2)}
-                    </Form.Label>
-                    <div style={{ width: "80%" }}>
+
+                    <div className="d-flex align-items-center" style={{ width: "80%" }}>
                         <Form.Range
                             id="siblingThresholdSlider"
                             min="0"
@@ -321,9 +319,14 @@ const TreeAnalyzer = () => {
                             step="0.1"
                             value={siblingThreshold}
                             onChange={(e) => setSiblingThreshold(Number(e.target.value))}
+                            style={{ flex: "1" }}
                         />
+                        <Form.Label htmlFor="siblingThresholdSlider" className="text-secondary fw-bold ms-3">
+                            {siblingThreshold.toFixed(2)}
+                        </Form.Label>
                     </div>
                 </Col>
+
                 {/* Actions Section */}
                 {highlightedNodes.size > 0 && (
 
