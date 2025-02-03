@@ -204,12 +204,12 @@ class ReviewService {
     ): Promise<{ reviews: ReviewManagerDTO[]; total_pages: number; total_elements: number; current_page: number }> => {
         const url = `${this.API_NAME}/reviews-filtered`;
         const requestBody = {
-            app_id: appPackage,
+            app_id: appPackage || null,
             topic: selectedTopic ? selectedTopic.toLowerCase() : null,
             emotion: selectedEmotion ? selectedEmotion.toLowerCase() : null,
             polarity: selectedPolarity ? selectedPolarity.toLowerCase() : null,
             features: featureList,
-            type: selectedType,
+            type: selectedType || null,
             page: currentPage,
             page_size: PAGE_SIZE,
         };
