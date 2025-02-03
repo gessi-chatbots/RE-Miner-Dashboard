@@ -114,83 +114,91 @@ const DescriptorHistogram = () => {
         setSelectedDescriptor(e.target.value as '' | 'emotions' | 'polarities' | 'types' | 'topics');
     };
 
+
     const handleAddButtonClick = async () => {
-        if (selectedApp && startDate && endDate) {
-            const parsedStartDate = new Date(startDate);
-            const parsedEndDate = new Date(endDate);
+        if (selectedApp && selectedDescriptor) {
+            const parsedStartDate = startDate ? new Date(startDate) : null;
+            const parsedEndDate = endDate ? new Date(endDate) : null;
 
             try {
                 const applicationService = new AppService();
                 const statisticsData = await applicationService.getStatisticsOverTime(
                     selectedApp,
+                    selectedDescriptor,
                     parsedStartDate,
                     parsedEndDate
                 );
-                if (statisticsData !== null) {
-                    const { statistics } = statisticsData;
+
+                if (statisticsData && Array.isArray(statisticsData)) {
+                    const statistics = statisticsData;
 
                     // Build an object mapping each date to its sentiment occurrences
-                    const sentimentOccurrencesByDate: {
-                        [date: string]: { [sentiment: string]: number };
+                    const emotionOccurrencesByDate: {
+                        [date: string]: { [emotion: string]: number };
                     } = {};
                     statistics.forEach((dayStatistics: ApplicationDayStatisticsDTO) => {
                         const currentDate = new Date(dayStatistics.date)
                             .toISOString()
                             .split('T')[0];
-                        if (!sentimentOccurrencesByDate[currentDate]) {
-                            sentimentOccurrencesByDate[currentDate] = {};
+                        if (!emotionOccurrencesByDate[currentDate]) {
+                            emotionOccurrencesByDate[currentDate] = {};
                         }
-                        dayStatistics.sentimentOccurrences.forEach((sentiment) => {
-                            sentimentOccurrencesByDate[currentDate][sentiment.sentimentName] =
-                                (sentimentOccurrencesByDate[currentDate][sentiment.sentimentName] || 0) +
-                                sentiment.occurrences;
+                        dayStatistics.emotionOccurrences.forEach((emotion) => {
+                            emotionOccurrencesByDate[currentDate][emotion.emotion] =
+                                (emotionOccurrencesByDate[currentDate][emotion.emotion] || 0) +
+                                emotion.occurrences;
                         });
                     });
 
-                    // Get unique sentiments from the statistics
-                    const uniqueSentiments = Array.from(
+                    // Extract unique names from occurrences for chart labels
+                    const uniqueEmotions = Array.from(
                         new Set(
                             statistics.flatMap((dayStatistics: ApplicationDayStatisticsDTO) =>
-                                dayStatistics.sentimentOccurrences.map(
-                                    (sentiment) => sentiment.sentimentName
+                                dayStatistics.emotionOccurrences.map(
+                                    (emotion) => emotion.emotion
                                 )
                             )
                         )
                     );
-                    uniqueSentiments.sort();
 
                     // If a descriptor is selected and a mapping exists, filter to include only those sentiments
-                    let filteredSentiments = uniqueSentiments;
+                    let filteredSentiments = uniqueEmotions;
                     if (selectedDescriptor && DESCRIPTOR_MAP[selectedDescriptor]?.length > 0) {
-                        filteredSentiments = uniqueSentiments.filter((s) =>
-                            DESCRIPTOR_MAP[selectedDescriptor].includes(s)
+                        filteredSentiments = uniqueEmotions.filter((e) =>
+                            DESCRIPTOR_MAP[selectedDescriptor].includes(e)
                         );
                     }
 
                     const chartData = {
-                        labels: Object.keys(sentimentOccurrencesByDate).sort(),
-                        datasets: filteredSentiments.map((sentiment) => ({
-                            label: sentiment,
-                            data: Object.keys(sentimentOccurrencesByDate)
+                        labels: Object.keys(emotionOccurrencesByDate).sort(),
+                        datasets: filteredSentiments.map((emotion) => ({
+                            label: emotion,
+                            data: Object.keys(emotionOccurrencesByDate)
                                 .sort()
-                                .map((date) => sentimentOccurrencesByDate[date][sentiment] || 0),
-                            backgroundColor: generateColors([sentiment])[0],
+                                .map((date) => emotionOccurrencesByDate[date][emotion] || 0),
+                            backgroundColor: generateColors([emotion])[0],
                         })),
                     };
 
                     setChartData(chartData);
-                    setShowChart(true); // Display chart after processing data
+                    console.log('Chart Data:', chartData);
+                    setShowChart(true);
+                    console.log('Show Chart:', showChart);
+                    console.log('Selected App:', selectedApp);
+                    console.log('Start Date:', startDate);
+                    console.log('End Date:', endDate);
+
+                } else {
+                    console.warn('Statistics data is not in the expected format:', statisticsData);
+                    setShowChart(false);
                 }
             } catch (error) {
                 console.error('Error fetching statistics data:', error);
             }
         } else {
-            console.error(
-                'Please select an app, descriptor, start date, and end date before adding to the chart.'
-            );
+            console.error('Please select an app and descriptor before adding to the chart.');
         }
     };
-
     return (
         <Container className="sentiment-histogram-container py-3">
             {/* Header with title and Expand button */}
@@ -291,9 +299,10 @@ const DescriptorHistogram = () => {
 
             <Row>
                 <Col>
-                    {showChart && selectedApp && startDate && endDate && (
+                    {showChart && selectedApp && (
                         <Bar data={chartData} options={options} />
                     )}
+
                 </Col>
             </Row>
 
@@ -310,9 +319,10 @@ const DescriptorHistogram = () => {
                         <Modal.Title>Descriptor Histogram</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        {showChart && selectedApp && startDate && endDate && (
+                        {showChart && selectedApp && (
                             <Bar data={chartData} options={options} />
                         )}
+
                     </Modal.Body>
                 </Modal>
             )}
