@@ -159,6 +159,7 @@ const FeatureLineChart = () => {
 
     const options = {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
             x: {
                 title: {
@@ -172,6 +173,11 @@ const FeatureLineChart = () => {
                     display: true,
                     text: 'Count',
                 },
+            },
+        },
+        plugins: {
+            legend: {
+                position: 'top' as const,  // Use 'as const' to assert the type
             },
         },
     };
@@ -269,21 +275,22 @@ const FeatureLineChart = () => {
             {/* Chart */}
             <Row>
                 <Col>
-                    {chartData.labels && chartData.datasets && (
-                        <Line data={chartData} options={options} />
-                    )}
+                        {chartData.labels && chartData.datasets && (
+                            <div style={{height: '50vh', width: '100%'}}>
+                                <Line data={chartData} options={options}/>
+                            </div>
+                        )}
+
                 </Col>
             </Row>
 
             {/* Modal for expanded view */}
             {isModalOpen && (
                 <Modal
-                    fullscreen="xxl-down"
+                    fullscreen
                     show={isModalOpen}
                     onHide={() => setIsModalOpen(false)}
-                    size="lg"
                     centered
-                    style={{ maxWidth: '95vw', maxHeight: '95vh' }}
                 >
                     <Modal.Header closeButton>
                         <Modal.Title>Features over time</Modal.Title>
@@ -291,9 +298,12 @@ const FeatureLineChart = () => {
                     <Modal.Body>
                         <Row>
                             <Col>
-                                {chartData.labels && chartData.datasets && (
-                                    <Line data={chartData} options={options} />
-                                )}
+                                <div style={{height: '80vh', width: '100%'}}>
+
+                                    {chartData.labels && chartData.datasets && (
+                                        <Line data={chartData} options={options}/>
+                                    )}
+                                </div>
                             </Col>
                         </Row>
                     </Modal.Body>

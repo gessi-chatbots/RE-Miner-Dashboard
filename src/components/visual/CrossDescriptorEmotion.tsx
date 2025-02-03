@@ -83,7 +83,7 @@ const CrossDescriptorEmotion = () => {
     };
 
     const handleAddButtonClick = async () => {
-        if (!selectedApp || !startDate || !endDate) {
+        if (!selectedApp) {
             return;
         }
 
@@ -91,14 +91,14 @@ const CrossDescriptorEmotion = () => {
             return;
         }
 
-        const parsedStartDate = new Date(startDate);
-        const parsedEndDate = new Date(endDate);
+        const parsedStartDate = startDate ? new Date(startDate) : null;
+        const parsedEndDate = endDate ? new Date(endDate) : null;
 
         try {
             const applicationService = new AppService();
             const statisticsData = await applicationService.getStatisticsOverTime(
                 selectedApp,
-                "features",
+                "emotionsAndFeatures",
                 parsedStartDate,
                 parsedEndDate
             );
@@ -228,6 +228,7 @@ const CrossDescriptorEmotion = () => {
 
     const options = {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
             x: {
                 title: {
@@ -241,6 +242,11 @@ const CrossDescriptorEmotion = () => {
                     display: true,
                     text: 'Count',
                 },
+            },
+        },
+        plugins: {
+            legend: {
+                position: 'top' as const,  // Use 'as const' to assert the type
             },
         },
     };
@@ -338,22 +344,22 @@ const CrossDescriptorEmotion = () => {
             <Row>
                 <Col>
                     {chartData.labels && chartData.datasets ? (
-                        <Chart type="bar" data={chartData} options={options} />
+                        <div style={{ height: '50vh', width: '100%', overflow: 'hidden' }}>
+                            <Chart type="bar" data={chartData} options={options}/>
+                        </div>
                     ) : (
                         <p></p>
                     )}
                 </Col>
             </Row>
 
-            {/* Modal for expanded view */}
-            {isModalOpen && selectedApp && (
+                    {/* Modal for expanded view */}
+                    {isModalOpen && selectedApp && (
                 <Modal
-                    fullscreen="xxl-down"
+                    fullscreen
                     show={isModalOpen}
                     onHide={() => setIsModalOpen(false)}
-                    size="lg"
                     centered
-                    style={{ maxWidth: '95vw', maxHeight: '95vh' }}
                 >
                     <Modal.Header closeButton>
                         <Modal.Title>Features and Emotions Chart</Modal.Title>
@@ -361,15 +367,18 @@ const CrossDescriptorEmotion = () => {
                     <Modal.Body>
                         <Row>
                             <Col>
-                                {chartData.labels && chartData.datasets ? (
-                                    <Chart type="bar" data={chartData} options={options} />
-                                ) : (
-                                    <p>No data to display</p>
-                                )}
+                                <div style={{ height: '80vh', width: '100%' }}>
+                                    {chartData.labels && chartData.datasets ? (
+                                        <Chart type="bar" data={chartData} options={options} />
+                                    ) : (
+                                        <p>No data to display</p>
+                                    )}
+                                </div>
                             </Col>
                         </Row>
                     </Modal.Body>
                 </Modal>
+
             )}
         </Container>
     );

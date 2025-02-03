@@ -49,6 +49,7 @@ const generateColors = (sentiments: string[]) => {
 
 const options = {
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
         x: {
             stacked: true,
@@ -58,11 +59,7 @@ const options = {
             },
             grid: {
                 display: true,
-                color: 'rgba(0, 0, 0, 1)',
-                lineWidth: 1,
-                drawBorder: false,
-                drawOnChartArea: false,
-                drawTicks: true,
+                color: 'rgba(0, 0, 0, 0.1)',
             },
         },
         y: {
@@ -77,7 +74,14 @@ const options = {
             },
         },
     },
+    plugins: {
+        legend: {
+            position: 'top' as const,  // 'as const' ensures the literal type is preserved
+        },
+    },
 };
+
+
 
 const DescriptorHistogram = () => {
     // States for dates, app selection, descriptor selection, and chart data
@@ -300,32 +304,35 @@ const DescriptorHistogram = () => {
             <Row>
                 <Col>
                     {showChart && selectedApp && (
-                        <Bar data={chartData} options={options} />
+                        <div style={{ height: '50vh', width: '100%' }}>
+                            <Bar data={chartData} options={options} />
+                        </div>
                     )}
-
                 </Col>
             </Row>
 
-            {/* Modal for expanded view */}
-            {isModalOpen && (
-                <Modal
-                    show={isModalOpen}
-                    onHide={() => setIsModalOpen(false)}
-                    size="lg"
-                    centered
-                    style={{ maxWidth: '95vw', maxHeight: '95vh' }}
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Descriptor Histogram</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        {showChart && selectedApp && (
-                            <Bar data={chartData} options={options} />
-                        )}
 
-                    </Modal.Body>
-                </Modal>
-            )}
+                    {/* Modal for expanded view */}
+                    {isModalOpen && (
+                        <Modal
+                            show={isModalOpen}
+                            onHide={() => setIsModalOpen(false)}
+                            size="lg"
+                            centered
+                        >
+                            <Modal.Header closeButton>
+                                <Modal.Title>Descriptor Histogram</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <div style={{ height: '80vh', width: '100%' }}>
+                                    {showChart && selectedApp && (
+                                        <Bar data={chartData} options={options} />
+                                    )}
+                                </div>
+                            </Modal.Body>
+                        </Modal>
+
+                    )}
         </Container>
     );
 };
