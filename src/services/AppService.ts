@@ -167,9 +167,8 @@ class AppService {
     };
 
     fetchAppFeatures = async (appId: string): Promise<{ features: string[] } | null> => {
-        const id = localStorage.getItem('USER_ID');
         try {
-            const response = await fetch(`${this.API_URL}${this.PATH_NAME}/${id}/applications/${appId}/features`, {
+            const response = await fetch(`${this.API_URL}/applications/${appId}/features`, {
                 method: 'GET'
             });
             const features: string[] = await response.json();
