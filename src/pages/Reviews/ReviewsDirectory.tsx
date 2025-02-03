@@ -55,7 +55,7 @@ const ReviewsDirectory: React.FC = () => {
         "Safety",
         "Aesthetics",
     ];
-    const emotionOptions = ["Joy", "Anger", "Disgust", "Neutral"];
+    const emotionOptions = ["Joy", "Sadness", "Anger", "Surprise", "Fear", "Disgust", "Neutral"];
     const typeOptions = ["Bug", "Rating", "Feature", "UserExperience"];
 
     useEffect(() => {
@@ -549,18 +549,20 @@ const ReviewsDirectory: React.FC = () => {
                         <div className="d-flex justify-content-center align-items-center mt-3">
                             <nav>
                                 <ul className="pagination pagination-rounded mb-0">
-                                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                                    {/* Previous Button */}
+                                    <li className={`page-item ${currentPage === 0 ? 'disabled' : ''}`}>
                                         <Button className="btn-primary page-link" onClick={prevPage}
                                                 aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </Button>
                                     </li>
 
+                                    {/* Display first page and ellipsis if current page > 6 */}
                                     {currentPage > 6 && (
                                         <>
                                             <li className="page-item">
                                                 <Button className="btn-primary page-link"
-                                                        onClick={() => setCurrentPage(1)}>
+                                                        onClick={() => setCurrentPage(0)}>
                                                     1
                                                 </Button>
                                             </li>
@@ -572,20 +574,22 @@ const ReviewsDirectory: React.FC = () => {
                                         </>
                                     )}
 
-                                    {Array.from({ length: Math.min(10, totalPages - Math.max(1, currentPage - 5)) }, (_, index) => {
-                                        const pageNumber = index + Math.max(1, currentPage - 5);
-                                        if (pageNumber > totalPages) return null;
+                                    {/* Pagination numbers */}
+                                    {Array.from({length: Math.min(10, totalPages - Math.max(0, currentPage - 5))}, (_, index) => {
+                                        const pageNumber = index + Math.max(0, currentPage - 5);
+                                        if (pageNumber >= totalPages) return null;
                                         return (
                                             <li key={pageNumber}
                                                 className={`page-item ${currentPage === pageNumber ? 'active' : ''}`}>
                                                 <Button className="btn-primary page-link"
                                                         onClick={() => setCurrentPage(pageNumber)}>
-                                                    {pageNumber}
+                                                    {pageNumber + 1} {/* Display page number as `1`-based */}
                                                 </Button>
                                             </li>
                                         );
                                     })}
 
+                                    {/* Display ellipsis and last page if there are more than 5 remaining pages */}
                                     {totalPages - currentPage > 5 && (
                                         <>
                                             <li className="page-item disabled">
@@ -595,14 +599,15 @@ const ReviewsDirectory: React.FC = () => {
                                             </li>
                                             <li className="page-item">
                                                 <Button className="btn-primary page-link"
-                                                        onClick={() => setCurrentPage(totalPages)}>
+                                                        onClick={() => setCurrentPage(totalPages - 1)}>
                                                     {totalPages}
                                                 </Button>
                                             </li>
                                         </>
                                     )}
 
-                                    <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                                    {/* Next Button */}
+                                    <li className={`page-item ${currentPage === totalPages - 1 ? 'disabled' : ''}`}>
                                         <Button className="btn-primary page-link" onClick={nextPage} aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                         </Button>
@@ -610,11 +615,12 @@ const ReviewsDirectory: React.FC = () => {
                                 </ul>
                             </nav>
                         </div>
+
                     )}
                     {wizardData && wizardData.length > 0 && (
                         <Row className="mt-2">
-                            <Col className="md-5" />
-                            <Col className="md-5" />
+                            <Col className="md-5"/>
+                            <Col className="md-5"/>
                             <Col className="md-2 d-flex justify-content-end">
                                 <Button className="w-auto" variant="primary" onClick={() => setWizardModalOpen(true)}>
                                     <i className="mdi mdi-lightning-bolt-outline"></i> Process Reviews
@@ -624,9 +630,9 @@ const ReviewsDirectory: React.FC = () => {
                     )}
                 </div>
             ) : (
-                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
+                <div className="d-flex justify-content-center align-items-center" style={{minHeight: '50vh'}}>
                     <div className="text-center">
-                        <i className="mdi mdi-emoticon-sad-outline text-secondary" style={{ fontSize: '5rem' }}></i>
+                        <i className="mdi mdi-emoticon-sad-outline text-secondary" style={{fontSize: '5rem'}}></i>
                         <h2>No reviews found</h2>
                         <p>Please adjust your filters and try again.</p>
                     </div>
