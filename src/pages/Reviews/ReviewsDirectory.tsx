@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { Table,Tooltip, Button, Modal, Row, Col, Form, OverlayTrigger } from "react-bootstrap";
+import { Table,Tooltip, Button, Row, Col, Form, OverlayTrigger } from "react-bootstrap";
 import ReviewService from "../../services/ReviewService";
-import AppService from "../../services/AppService";
 import { toast } from "react-toastify";
 import {useLocation, useNavigate} from 'react-router-dom';
 import ReviewProcessingWizard from "./ReviewProcessingWizard";
 import { ReviewManagerDTO } from "../../DTOs/ReviewManagerDTO";
+import {
+    TypeBadge,
+    TopicBadge,
+    EmotionBadge,
+    FeatureBadge,
+    ReviewIdBadge,
+    PolarityIcon,
+} from './ReviewBadges';
 
 const defaultColumns = ["Package", "Review ID", "Review Text", "Features", "Polarity", "Emotions", "Type", "Topic", "Actions"];
 
 const ReviewsDirectory: React.FC = () => {
     const [apps, setApps] = useState<string[]>([]);
+    const [searchTriggered, setSearchTriggered] = useState(false);
     const [pageData, setPageData] = useState<ReviewManagerDTO[] | null>(null);
     const [wizardData, setWizardData] = useState<ReviewManagerDTO[] | null>(null);
     const [totalPages, setTotalPages] = useState(1);
@@ -47,368 +55,6 @@ const ReviewsDirectory: React.FC = () => {
     ];
     const emotionOptions = ["Joy", "Anger", "Disgust", "Neutral"];
     const typeOptions = ["Bug", "Rating", "Feature", "UserExperience"];
-    const TypeBadge: React.FC<{ type: string }> = ({ type }) => {
-        const formatText = (text: string) => {
-            // Convert camelCase to space-separated words and capitalize first letter
-            return text
-                .replace(/([A-Z])/g, ' $1')
-                .toLowerCase()
-                .trim()
-                .replace(/^./, str => str.toUpperCase());
-        };
-
-        const getTypeStyles = (type: string) => {
-            switch (type.toLowerCase()) {
-                case 'bug':
-                    return {
-                        icon: 'mdi mdi-bug-outline',
-                        bg: '#FFE6E6',
-                        color: '#D63031',
-                        border: '#FFB8B8'
-                    };
-                case 'rating':
-                    return {
-                        icon: 'mdi mdi-star-outline',
-                        bg: '#FFF4E6',
-                        color: '#E67E22',
-                        border: '#FFD8A8'
-                    };
-                case 'feature':
-                    return {
-                        icon: 'mdi mdi-puzzle-outline',
-                        bg: '#E6F6FF',
-                        color: '#0984E3',
-                        border: '#B8E2FF'
-                    };
-                case 'userexperience':
-                    return {
-                        icon: 'mdi mdi-account-outline',
-                        bg: '#E6FFE6',
-                        color: '#00B894',
-                        border: '#B8FFB8'
-                    };
-                default:
-                    return {
-                        icon: 'mdi mdi-help-circle-outline',
-                        bg: '#F5F5F5',
-                        color: '#666666',
-                        border: '#DDDDDD'
-                    };
-            }
-        };
-
-        const styles = getTypeStyles(type);
-
-        return (
-            <div
-                style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    padding: '4px 12px',
-                    borderRadius: '16px',
-                    backgroundColor: styles.bg,
-                    border: `1px solid ${styles.border}`,
-                    color: styles.color,
-                    fontSize: '13px',
-                    fontWeight: 500,
-                }}
-            >
-                <i className={`${styles.icon} me-1`} style={{ fontSize: '16px' }} />
-                {formatText(type)}
-            </div>
-        );
-    };
-    const TopicBadge: React.FC<{ topic: string }> = ({ topic }) => {
-        if (!topic) return null;
-
-        const getTopicStyles = (topic: string) => {
-            const normalizedTopic = topic.toLowerCase().trim();
-
-            switch (normalizedTopic) {
-                case 'general':
-                    return {
-                        icon: 'mdi mdi-checkbox-multiple-blank-circle-outline',
-                        bg: '#F3F4F6',
-                        color: '#4B5563',
-                        border: '#D1D5DB'
-                    };
-                case 'usability':
-                    return {
-                        icon: 'mdi mdi-gesture-tap',
-                        bg: '#EDE9FE',
-                        color: '#7C3AED',
-                        border: '#DDD6FE'
-                    };
-                case 'effectiveness':
-                    return {
-                        icon: 'mdi mdi-target',
-                        bg: '#FCE7F3',
-                        color: '#DB2777',
-                        border: '#FBCFE8'
-                    };
-                case 'efficiency':
-                    return {
-                        icon: 'mdi mdi-lightning-bolt',
-                        bg: '#FEF3C7',
-                        color: '#D97706',
-                        border: '#FDE68A'
-                    };
-                case 'enjoyability':
-                    return {
-                        icon: 'mdi mdi-heart-outline',
-                        bg: '#FFE4E6',
-                        color: '#E11D48',
-                        border: '#FECDD3'
-                    };
-                case 'cost':
-                    return {
-                        icon: 'mdi mdi-currency-usd',
-                        bg: '#ECFDF5',
-                        color: '#059669',
-                        border: '#A7F3D0'
-                    };
-                case 'reliability':
-                    return {
-                        icon: 'mdi mdi-shield-check-outline',
-                        bg: '#E0F2FE',
-                        color: '#0284C7',
-                        border: '#BAE6FD'
-                    };
-                case 'security':
-                    return {
-                        icon: 'mdi mdi-lock-outline',
-                        bg: '#FEF2F2',
-                        color: '#DC2626',
-                        border: '#FECACA'
-                    };
-                case 'compatibility':
-                    return {
-                        icon: 'mdi mdi-puzzle-outline',
-                        bg: '#F5F3FF',
-                        color: '#6D28D9',
-                        border: '#DDD6FE'
-                    };
-                case 'learnability':
-                    return {
-                        icon: 'mdi mdi-school-outline',
-                        bg: '#FFF7ED',
-                        color: '#C2410C',
-                        border: '#FFEDD5'
-                    };
-                case 'safety':
-                    return {
-                        icon: 'mdi mdi-shield-alert-outline',
-                        bg: '#FEF9C3',
-                        color: '#CA8A04',
-                        border: '#FEF08A'
-                    };
-                case 'aesthetics':
-                    return {
-                        icon: 'mdi mdi-palette-outline',
-                        bg: '#F3E8FF',
-                        color: '#9333EA',
-                        border: '#E9D5FF'
-                    };
-                default:
-                    return {
-                        icon: 'mdi mdi-help-circle-outline',
-                        bg: '#F3F4F6',
-                        color: '#6B7280',
-                        border: '#D1D5DB'
-                    };
-            }
-        };
-
-        const styles = getTopicStyles(topic);
-
-        return (
-            <div
-                style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    padding: '4px 10px',
-                    borderRadius: '12px',
-                    backgroundColor: styles.bg,
-                    border: `1px solid ${styles.border}`,
-                    color: styles.color,
-                    fontSize: '12px',
-                    fontWeight: 500,
-                    letterSpacing: '0.2px',
-                }}
-            >
-                <i className={`${styles.icon} me-1`} style={{ fontSize: '14px' }} />
-                {topic ? topic.charAt(0).toUpperCase() + topic.slice(1).toLowerCase() : 'Unknown'}
-            </div>
-        );
-    };
-    const EmotionBadge: React.FC<{ sentiment: string }> = ({ sentiment }) => {
-        if (!sentiment) return null;
-
-        const getSentimentStyles = (sentiment: string) => {
-            const normalizedSentiment = sentiment.toLowerCase().trim();
-
-            const defaultColors: { [key: string]: string } = {
-                happiness: 'rgba(255, 99, 132, 0.7)',  // Light red-pink tone
-                sadness: 'rgba(54, 162, 235, 0.7)',    // Light blue tone
-                anger: 'rgba(255, 206, 86, 0.7)',      // Light yellow tone
-                surprise: 'rgba(75, 192, 192, 0.7)',   // Light teal tone
-                fear: 'rgba(153, 102, 255, 0.7)',      // Light purple tone
-                disgust: 'rgba(255, 159, 64, 0.7)',    // Light orange tone
-                'not detected': '#d3d3d3',             // Gray
-            };
-
-            switch (normalizedSentiment) {
-                case 'happiness':
-                    return {
-                        icon: 'mdi mdi-emoticon-happy-outline',
-                        bg: defaultColors.happiness,
-                        color: '#8B0000',  // Complementary text color
-                        border: '#FFB6C1',
-                    };
-                case 'sadness':
-                    return {
-                        icon: 'mdi mdi-emoticon-sad-outline',
-                        bg: defaultColors.sadness,
-                        color: '#0D47A1',
-                        border: '#87CEEB',
-                    };
-                case 'anger':
-                    return {
-                        icon: 'mdi mdi-emoticon-angry-outline',
-                        bg: defaultColors.anger,
-                        color: '#8B0000',
-                        border: '#FFD700',
-                    };
-                case 'surprise':
-                    return {
-                        icon: 'mdi mdi-alert-circle-outline',
-                        bg: defaultColors.surprise,
-                        color: '#006400',
-                        border: '#66CDAA',
-                    };
-                case 'fear':
-                    return {
-                        icon: 'mdi mdi-emoticon-cry-outline',
-                        bg: defaultColors.fear,
-                        color: '#4B0082',
-                        border: '#DA70D6',
-                    };
-                case 'disgust':
-                    return {
-                        icon: 'mdi mdi-emoticon-devil-outline',
-                        bg: defaultColors.disgust,
-                        color: '#8B4513',
-                        border: '#FFA07A',
-                    };
-                case 'not detected':
-                    return {
-                        icon: 'mdi mdi-emoticon-neutral-outline',
-                        bg: defaultColors['not detected'],
-                        color: '#6B7280',
-                        border: '#D1D5DB',
-                    };
-                default:
-                    return {
-                        icon: 'mdi mdi-help-circle-outline',
-                        bg: '#E5E7EB',
-                        color: '#374151',
-                        border: '#D1D5DB',
-                    };
-            }
-        };
-
-        const styles = getSentimentStyles(sentiment);
-
-        return (
-            <div
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    backgroundColor: styles.bg,
-                    color: styles.color,
-                    border: `2px solid ${styles.border}`,
-                    padding: '8px',
-                    borderRadius: '8px',
-                }}
-            >
-                <i className={styles.icon} style={{ marginRight: '8px' }}></i>
-                <span>{sentiment}</span>
-            </div>
-        );
-    };
-    const FeatureBadge: React.FC<{ feature: string }> = ({ feature }) => {
-        const formatText = (text: string) => {
-            // Convert camelCase to space-separated words
-            return text
-                .replace(/([A-Z])/g, ' $1')
-                .toLowerCase()
-                .trim();
-        };
-
-        return (
-            <div
-                style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    padding: '4px 10px',
-                    borderRadius: '12px',
-                    backgroundColor: '#F0F9FF',
-                    border: '1px solid #BAE6FD',
-                    color: '#0369A1',
-                    fontSize: '12px',
-                    fontWeight: 500,
-                    letterSpacing: '0.2px',
-                    margin: '2px',
-                }}
-            >
-                {formatText(feature)}
-            </div>
-        );
-    };
-
-    const ReviewIdBadge: React.FC<{ id: string }> = ({ id }) => {
-        // Take only first 8 characters if ID is longer
-        const shortId = id.length > 8 ? `${id.slice(0, 8)}...` : id;
-
-        return (
-            <div
-                title={id} // This creates a native tooltip on hover
-                style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    padding: '4px 8px',
-                    borderRadius: '8px',
-                    backgroundColor: '#F1F5F9',
-                    border: '1px solid #CBD5E1',
-                    color: '#475569',
-                    fontSize: '12px',
-                    fontWeight: 500,
-                    cursor: 'help',
-                    fontFamily: 'monospace',
-                    letterSpacing: '0.5px',
-                }}
-            >
-                <i className="mdi mdi-pound me-1" style={{ fontSize: '12px' }} />
-                {shortId}
-            </div>
-        );
-    };
-    const PolarityIcon: React.FC<{ polarity: string }> = ({ polarity }) => {
-        if (polarity.toLowerCase() === 'positive') {
-            return (
-                <div className="d-inline-flex text-success">
-                    <i className="mdi mdi-emoticon-happy-outline me-1" style={{ fontSize: '24px' }} />
-                </div>
-            );
-        } else if (polarity.toLowerCase() === 'negative') {
-            return (
-                <div className="d-inline-flex text-danger">
-                    <i className="mdi mdi-emoticon-sad-outline me-1" style={{ fontSize: '24px' }} />
-                </div>
-            );
-        }
-        return <span>{polarity || 'N/A'}</span>;
-    };
 
     useEffect(() => {
         // Set initial state from location
@@ -417,40 +63,17 @@ const ReviewsDirectory: React.FC = () => {
     }, [stateAppPackage, stateSelectedFeatures]);
 
     useEffect(() => {
-        // Fetch apps list once on component mount
-        const fetchApps = async () => {
-            const appService = new AppService();
-            try {
-                const response = await appService.fetchAllAppsPackages();
-                if (response) {
-                    setApps(response.apps.map((app) => app.app_package));
-                } else {
-                    console.warn("No apps found");
-                    setApps([]);
-                }
-            } catch (error) {
-                console.error("Error fetching apps:", error);
-            }
-        };
-        fetchApps();
-    }, []);
-    useEffect(() => {
-        fetchReviews();
-    }, [currentPage]);
-    useEffect(() => {
+        if (searchTriggered) {
+            fetchReviews(currentPage);
+        }
+    }, [currentPage, searchTriggered]);
+
+
+    const handleSearch = () => {
         setCurrentPage(0);
-        fetchReviews();
-    }, [pageSize]);
-
-    useEffect(() => {
-        // Fetch reviews whenever filters, page, or pageSize change
-        const fetchReviewsWithDebounce = setTimeout(() => {
-            fetchReviews();
-        }, 300); // Debounce for 300ms to prevent multiple quick calls
-
-        return () => clearTimeout(fetchReviewsWithDebounce); // Cleanup timeout to prevent race conditions
-    }, [appPackage, selectedFeatures, selectedPolarity, selectedTopic, selectedEmotion, selectedType, currentPage, pageSize]);
-
+        setSearchTriggered(true);
+        fetchReviews(currentPage);
+    };
 
 
     const handleCheckboxChange = async (review: ReviewManagerDTO) => {
@@ -516,22 +139,18 @@ const ReviewsDirectory: React.FC = () => {
     };
     const handlePolarityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedPolarity(event.target.value);
-        handleFilterChange();
     };
 
     const handleTopicChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedTopic(event.target.value);
-        handleFilterChange();
     };
 
     const handleEmotionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedEmotion(event.target.value);
-        handleFilterChange();
     };
 
     const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedType(event.target.value);
-        handleFilterChange();
     };
 
     const handleFilterChange = () => {
@@ -595,159 +214,170 @@ const ReviewsDirectory: React.FC = () => {
 
             {/* Filters and Search */}
             <Row className="bg-white p-4 rounded shadow-sm mb-4">
-                <Col md={3}>
-                    <h6 className="text-secondary mb-2">Select App</h6>
-                    <Form.Select
-                        value={appPackage}
-                        onChange={(e) => setAppPackage(e.target.value)}
-                        aria-label="Select App"
-                        style={{
-                            height: "40px",
-                            fontSize: "14px",
-                            padding: "5px 10px",
-                        }}
-                    >
-                        <option value="">All Apps</option>
-                        {apps.map((app) => (
-                            <option key={app} value={app}>
-                                {app}
-                            </option>
-                        ))}
-                    </Form.Select>
-                </Col>
-
-                <Col md={5}>
-                    <h6 className="text-secondary mb-2">Features</h6>
-                    <div
-                        style={{
-                            height: "70px",
-                            overflowY: "auto",
-                            background: "white",
-                            borderRadius: "8px",
-                            padding: "10px",
-                            border: "1px solid #ccc",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "5px",
-                            flexWrap: "wrap",
-                        }}
-                    >
-                        {selectedFeatures.map((feature, index) => (
-                            <div
-                                key={index}
-                                style={{
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    padding: "4px 10px",
-                                    borderRadius: "12px",
-                                    backgroundColor: "#F0F9FF",
-                                    border: "1px solid #BAE6FD",
-                                    color: "#0369A1",
-                                    fontSize: "12px",
-                                    fontWeight: 500,
-                                    margin: "2px",
-                                }}
-                            >
-                                {feature}
-                                <i
-                                    className="mdi mdi-close-circle-outline ms-1"
-                                    style={{ cursor: "pointer", fontSize: "14px" }}
-                                    onClick={() => handleDeleteFeature(feature)}
-                                />
-                            </div>
-                        ))}
-                    </div>
-                    <div className="d-flex mt-2">
-                        <Form.Control
-                            placeholder="Add feature"
-                            value={newFeature}
-                            onChange={(e) => setNewFeature(e.target.value)}
+                <Row>
+                    <Col md={3}>
+                        <h6 className="text-secondary mb-2">Select App</h6>
+                        <Form.Select
+                            value={appPackage}
+                            onChange={(e) => setAppPackage(e.target.value)}
+                            aria-label="Select App"
                             style={{
+                                height: "40px",
                                 fontSize: "14px",
                                 padding: "5px 10px",
-                                flex: "3",
-                            }}
-                        />
-                        <div
-                            style={{
-                                width: "1px",
-                                height: "30px",
-                                background: "#ccc",
-                                margin: "0 10px",
-                            }}
-                        ></div>
-                        <Button
-                            variant="secondary"
-                            onClick={handleAddFeature}
-                            style={{
-                                padding: "5px 15px",
-                                fontSize: "14px",
-                                flex: "1",
                             }}
                         >
-                            <i className="mdi mdi-plus" /> Add
-                        </Button>
-                    </div>
-                </Col>
+                            <option value="">All Apps</option>
+                            {apps.map((app) => (
+                                <option key={app} value={app}>
+                                    {app}
+                                </option>
+                            ))}
+                        </Form.Select>
+                    </Col>
 
-                <Col md={4}>
-                    <h6 className="text-secondary mb-2">Filters</h6>
-                    <Row>
-                        <Col md={6}>
-                            <Form.Select
-                                value={selectedPolarity}
-                                onChange={(e) => setSelectedPolarity(e.target.value)}
-                                className="mb-2"
+                    <Col md={5}>
+                        <h6 className="text-secondary mb-2">Features</h6>
+                        <div
+                            style={{
+                                height: "70px",
+                                overflowY: "auto",
+                                background: "white",
+                                borderRadius: "8px",
+                                padding: "10px",
+                                border: "1px solid #ccc",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "5px",
+                                flexWrap: "wrap",
+                            }}
+                        >
+                            {selectedFeatures.map((feature, index) => (
+                                <div
+                                    key={index}
+                                    style={{
+                                        display: "inline-flex",
+                                        alignItems: "center",
+                                        padding: "4px 10px",
+                                        borderRadius: "12px",
+                                        backgroundColor: "#F0F9FF",
+                                        border: "1px solid #BAE6FD",
+                                        color: "#0369A1",
+                                        fontSize: "12px",
+                                        fontWeight: 500,
+                                        margin: "2px",
+                                    }}
+                                >
+                                    {feature}
+                                    <i
+                                        className="mdi mdi-close-circle-outline ms-1"
+                                        style={{ cursor: "pointer", fontSize: "14px" }}
+                                        onClick={() => handleDeleteFeature(feature)}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="d-flex mt-2">
+                            <Form.Control
+                                placeholder="Add feature"
+                                value={newFeature}
+                                onChange={(e) => setNewFeature(e.target.value)}
+                                style={{
+                                    fontSize: "14px",
+                                    padding: "5px 10px",
+                                    flex: "3",
+                                }}
+                            />
+                            <div
+                                style={{
+                                    width: "1px",
+                                    height: "30px",
+                                    background: "#ccc",
+                                    margin: "0 10px",
+                                }}
+                            ></div>
+                            <Button
+                                variant="secondary"
+                                onClick={handleAddFeature}
+                                style={{
+                                    padding: "5px 15px",
+                                    fontSize: "14px",
+                                    flex: "1",
+                                }}
                             >
-                                <option value="">All Polarities</option>
-                                {polarityOptions.map((option) => (
-                                    <option key={option} value={option}>
-                                        {option}
-                                    </option>
-                                ))}
-                            </Form.Select>
-                            <Form.Select
-                                value={selectedTopic}
-                                onChange={(e) => setSelectedTopic(e.target.value)}
-                                className="mb-2"
-                            >
-                                <option value="">All Topics</option>
-                                {topicOptions.map((option) => (
-                                    <option key={option} value={option}>
-                                        {option}
-                                    </option>
-                                ))}
-                            </Form.Select>
-                        </Col>
-                        <Col md={6}>
-                            <Form.Select
-                                value={selectedEmotion}
-                                onChange={(e) => setSelectedEmotion(e.target.value)}
-                                className="mb-2"
-                            >
-                                <option value="">All Emotions</option>
-                                {emotionOptions.map((option) => (
-                                    <option key={option} value={option}>
-                                        {option}
-                                    </option>
-                                ))}
-                            </Form.Select>
-                            <Form.Select
-                                value={selectedType}
-                                onChange={(e) => setSelectedType(e.target.value)}
-                                className="mb-2"
-                            >
-                                <option value="">All Types</option>
-                                {typeOptions.map((option) => (
-                                    <option key={option} value={option}>
-                                        {option}
-                                    </option>
-                                ))}
-                            </Form.Select>
-                        </Col>
-                    </Row>
-                </Col>
+                                <i className="mdi mdi-plus" /> Add
+                            </Button>
+                        </div>
+                    </Col>
+
+                    <Col md={4}>
+                        <h6 className="text-secondary mb-2">Filters</h6>
+                        <Row>
+                            <Col md={6}>
+                                <Form.Select
+                                    value={selectedPolarity}
+                                    onChange={(e) => setSelectedPolarity(e.target.value)}
+                                    className="mb-2"
+                                >
+                                    <option value="">All Polarities</option>
+                                    {polarityOptions.map((option) => (
+                                        <option key={option} value={option}>
+                                            {option}
+                                        </option>
+                                    ))}
+                                </Form.Select>
+                                <Form.Select
+                                    value={selectedTopic}
+                                    onChange={(e) => setSelectedTopic(e.target.value)}
+                                    className="mb-2"
+                                >
+                                    <option value="">All Topics</option>
+                                    {topicOptions.map((option) => (
+                                        <option key={option} value={option}>
+                                            {option}
+                                        </option>
+                                    ))}
+                                </Form.Select>
+                            </Col>
+                            <Col md={6}>
+                                <Form.Select
+                                    value={selectedEmotion}
+                                    onChange={(e) => setSelectedEmotion(e.target.value)}
+                                    className="mb-2"
+                                >
+                                    <option value="">All Emotions</option>
+                                    {emotionOptions.map((option) => (
+                                        <option key={option} value={option}>
+                                            {option}
+                                        </option>
+                                    ))}
+                                </Form.Select>
+                                <Form.Select
+                                    value={selectedType}
+                                    onChange={(e) => setSelectedType(e.target.value)}
+                                    className="mb-2"
+                                >
+                                    <option value="">All Types</option>
+                                    {typeOptions.map((option) => (
+                                        <option key={option} value={option}>
+                                            {option}
+                                        </option>
+                                    ))}
+                                </Form.Select>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+                <Row className="mt-3 mb-2">
+                    <Col></Col>
+                    <Col xs="auto" className="d-flex justify-content-end">
+                        <Button variant="primary" onClick={handleSearch}>
+                            <i className="mdi mdi-magnify" /> Search
+                        </Button>
+                    </Col>
+                </Row>
             </Row>
+
 
             {/* Reviews Table */}
             {pageData && pageData.length > 0 ? (
@@ -801,7 +431,7 @@ const ReviewsDirectory: React.FC = () => {
                                 </td>
                                 <td>{review.app_id}</td>
                                 <td className="text-center">
-                                    <ReviewIdBadge id={review.review_id || "N/A"} />
+                                    <ReviewIdBadge id={review.review_id || "N/A"}/>
                                 </td>
                                 <td style={{
                                     textAlign: 'justify',
@@ -811,59 +441,67 @@ const ReviewsDirectory: React.FC = () => {
                                 }}>
                                     {truncateReview(review.review) || "N/A"}
                                 </td>
-                                <td className="text-center" style={{ fontSize: '14px' }}>
+                                <td className="text-center" style={{fontSize: '14px'}}>
                                     <div className="d-flex flex-wrap gap-2 justify-content-center">
-                                        {Array.isArray(review.features) &&
+                                        {Array.isArray(review.features) && review.features.length > 0 ? (
                                             review.features
                                                 .filter((feature) => feature && feature.trim().toLowerCase() !== 'n/a')
                                                 .map((feature, idx) => (
-                                                    <FeatureBadge key={idx} feature={feature.trim()} />
+                                                    <FeatureBadge key={idx} feature={feature.trim()}/>
                                                 ))
-                                        }
+                                                .concat(
+                                                    // If all features are filtered out, display "N/A"
+                                                    review.features.every((feature) => !feature || feature.trim().toLowerCase() === 'n/a')
+                                                        ? [<FeatureBadge key="na" feature="N/A"/>]
+                                                        : []
+                                                )
+                                        ) : (
+                                            <FeatureBadge feature="N/A"/>
+                                        )}
                                     </div>
                                 </td>
 
-                                <td className="text-center" style={{ fontSize: '14px' }}>
+                                <td className="text-center" style={{fontSize: '14px'}}>
                                     <div className="d-flex flex-wrap gap-2 justify-content-center">
                                         {Array.isArray(review.polarities) ?
                                             Array.from(new Set(review.polarities)).map((polarity, idx) => (
-                                                <PolarityIcon key={idx} polarity={polarity || 'N/A'} />
+                                                <PolarityIcon key={idx} polarity={polarity || 'N/A'}/>
                                             ))
-                                            : <PolarityIcon polarity='N/A' />
+                                            : <PolarityIcon polarity='N/A'/>
                                         }
                                     </div>
                                 </td>
-                                <td className="text-center" style={{ fontSize: '14px' }}>
+                                <td className="text-center" style={{fontSize: '14px'}}>
                                     <div className="d-flex flex-wrap gap-2 justify-content-center">
                                         {Array.isArray(review.emotions) ?
                                             Array.from(new Set(review.emotions)).map((emotion, idx) => (
-                                                <EmotionBadge key={idx} sentiment={emotion || 'N/A'} />
+                                                <EmotionBadge key={idx} sentiment={emotion || 'N/A'}/>
                                             ))
-                                            : <EmotionBadge sentiment='N/A' />
+                                            : <EmotionBadge sentiment='N/A'/>
                                         }
                                     </div>
                                 </td>
-                                <td className="text-center" style={{ fontSize: '14px' }}>
+                                <td className="text-center" style={{fontSize: '14px'}}>
                                     <div className="d-flex flex-wrap gap-2 justify-content-center">
                                         {Array.isArray(review.types) ?
                                             Array.from(new Set(review.types)).map((type, idx) => (
-                                                <TypeBadge key={idx} type={type || 'N/A'} />
+                                                <TypeBadge key={idx} type={type || 'N/A'}/>
                                             ))
-                                            : <TypeBadge type='N/A' />
+                                            : <TypeBadge type='N/A'/>
                                         }
                                     </div>
                                 </td>
-                                <td className="text-center" style={{ fontSize: '14px' }}>
+                                <td className="text-center" style={{fontSize: '14px'}}>
                                     <div className="d-flex flex-wrap gap-2 justify-content-center">
                                         {Array.isArray(review.topics) ?
                                             Array.from(new Set(review.topics)).map((topic, idx) => (
-                                                <TopicBadge key={idx} topic={topic || ''} />
+                                                <TopicBadge key={idx} topic={topic || ''}/>
                                             ))
-                                            : <TopicBadge topic='' />
+                                            : <TopicBadge topic=''/>
                                         }
                                     </div>
                                 </td>
-                                <td className="text-end" style={{ width: "150px" }}>
+                                <td className="text-end" style={{width: "150px"}}>
                                     <OverlayTrigger overlay={<Tooltip id="analyze-tooltip">View Review</Tooltip>}>
                                         <a href="#" className="action-icon me-2"
                                            onClick={() => analyzeReviewAction(review)}>
@@ -881,7 +519,7 @@ const ReviewsDirectory: React.FC = () => {
                         <Form.Select
                             value={pageSize}
                             onChange={handlePageSizeChange}
-                            style={{ width: "100px" }}
+                            style={{width: "100px"}}
                         >
                             <option value={5}>5</option>
                             <option value={10}>10</option>
