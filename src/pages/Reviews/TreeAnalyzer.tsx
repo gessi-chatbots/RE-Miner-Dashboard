@@ -331,7 +331,7 @@ const TreeAnalyzer = () => {
                 {highlightedNodes.size > 0 && (
 
                     <Col>
-                            <h5>Actions</h5>
+                            <h5 className="text-secondary mt-4">Actions</h5>
                             <div className="d-flex flex-column align-items-start">
                                 {Array.from(highlightedNodes).some((nodeId) => {
                                     const node = findNodeById(nodeId, originalTreeData);
