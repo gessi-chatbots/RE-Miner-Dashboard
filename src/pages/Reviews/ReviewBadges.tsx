@@ -94,14 +94,26 @@ const defaultEmotionColors: { [key: string]: string } = {
 
 export const EmotionBadge: React.FC<{ sentiment?: string }> = ({ sentiment }) => {
     const getSentimentStyles = (sentiment: string): StyleType => {
-        const bgColor = defaultEmotionColors[sentiment.toLowerCase()] || NA_STYLE.bg;
+        const lowerSentiment = sentiment.toLowerCase();
+        const icon = {
+            happiness: 'mdi mdi-emoticon-happy-outline',
+            sadness: 'mdi mdi-emoticon-cry-outline',
+            anger: 'mdi mdi-emoticon-angry-outline',
+            surprise: 'mdi mdi-emoticon-surprised-outline',
+            fear: 'mdi mdi-emoticon-neutral-outline',
+            disgust: 'mdi mdi-emoticon-sick-outline',
+        }[lowerSentiment] || NA_STYLE.icon;
 
-        return {
-            icon: '',
-            bg: bgColor,
-            color: '#FFF',  // Use white for text for better contrast
-            border: '#D1D5DB',
-        };
+        const bgColor = defaultEmotionColors[lowerSentiment] || NA_STYLE.bg;
+
+        return sentiment && defaultEmotionColors[lowerSentiment]
+            ? {
+                icon,
+                bg: bgColor,
+                color: '#FFF',  // Use white text for contrast
+                border: '#D1D5DB',
+            }
+            : NA_STYLE;
     };
 
     const styles = getSentimentStyles(sentiment || '');
@@ -116,13 +128,11 @@ export const EmotionBadge: React.FC<{ sentiment?: string }> = ({ sentiment }) =>
             padding: '4px 10px',
             borderRadius: '12px'
         }}>
-
+            <i className={`${styles.icon} me-1`} style={{ fontSize: '16px' }} />
             {sentiment ? sentiment.charAt(0).toUpperCase() + sentiment.slice(1) : 'N/A'}
         </div>
     );
-};
-
-export const PolarityIcon: React.FC<{ polarity: string }> = ({ polarity }) => {
+};export const PolarityIcon: React.FC<{ polarity: string }> = ({ polarity }) => {
     const getPolarityStyles = (polarity: string): StyleType => {
         switch (polarity.toLowerCase()) {
             case 'positive': return { icon: 'mdi mdi-emoticon-happy-outline', bg: '#E6FFE6', color: '#0b6c17', border: '#0dae0d' };
@@ -151,10 +161,10 @@ export const PolarityIcon: React.FC<{ polarity: string }> = ({ polarity }) => {
 
 export const FeatureBadge: React.FC<{ feature?: string }> = ({ feature }) => {
     const getFeatureStyles = (feature: string): StyleType => {
-        return feature.toLowerCase() === 'n/a'
+        return !feature || feature.toLowerCase() === 'n/a'
             ? NA_STYLE
             : {
-                icon: '',
+                icon: 'mdi mdi-shape-outline',  // Icon for features
                 bg: '#F0F9FF',
                 color: '#0369A1',
                 border: '#BAE6FD',
@@ -173,11 +183,11 @@ export const FeatureBadge: React.FC<{ feature?: string }> = ({ feature }) => {
             padding: '4px 10px',
             borderRadius: '12px'
         }}>
+            <i className={`${styles.icon} me-1`} style={{ fontSize: '16px' }} />
             {feature || 'N/A'}
         </div>
     );
 };
-
 export const ReviewIdBadge: React.FC<{ id?: string }> = ({ id }) => {
     const isValidId = id && id.trim().length > 0;
     const shortId = isValidId && id.length > 8 ? `${id.slice(0, 8)}...` : id || 'N/A';
