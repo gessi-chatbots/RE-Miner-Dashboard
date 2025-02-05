@@ -339,13 +339,15 @@ const ReviewAnalyzer = () => {
                                 <div className="text-center">
                                     <i className="mdi mdi-emoticon-sad-outline text-secondary"
                                        style={{fontSize: '5rem'}}/>
-                                    <p className="mt-3 text-muted">No detected topics.</p>
+                                    <h3 className="mt-3 text-muted">No topics detected</h3>
+                                    <p className="mt-3 text-muted">Please check if the
+                                        review has been analyzed.</p>
                                 </div>
                             )}
                         </div>
 
                         <div className="px-4 py-4 sentiment-histogram-container mt-4">
-                            <h2>Detected Types</h2>
+                        <h2>Detected Types</h2>
                             {data.sentences.some(sentence => sentence.typeData && sentence.typeData.type) ? (
                                 Array.from(new Set(data.sentences
                                     .map(sentence => sentence.typeData?.type)
@@ -356,7 +358,9 @@ const ReviewAnalyzer = () => {
                                 <div className="text-center">
                                     <i className="mdi mdi-emoticon-sad-outline text-secondary"
                                        style={{fontSize: '5rem'}}/>
-                                    <p className="mt-3 text-muted">No detected types.</p>
+                                    <h2 className="mt-3 text-muted">No detected types.</h2>
+                                    <p className="mt-3 text-muted">Please check if the
+                                        review has been analyzed.</p>
                                 </div>
                             )}
                         </div>
@@ -370,10 +374,10 @@ const ReviewAnalyzer = () => {
                                 <Bar data={chartData()} options={options}/>
                             ) : (
                                 <div className="text-center">
-                                    <i className="mdi mdi-emoticon-sad text-secondary" style={{fontSize: '5rem'}}/>
-                                    <h2 className="mt-3 text-muted">No sentiment data available.</h2>
-                                    <h3 className="mt-3 text-muted">Please check if the
-                                        review has been analyzed.</h3>
+                                    <i className="mdi mdi-emoticon-sad-outline text-secondary" style={{fontSize: '5rem'}}/>
+                                    <h3 className="mt-3 text-muted">No sentiments detected</h3>
+                                    <p className="mt-3 text-muted">Please check if the
+                                        review has been analyzed.</p>
                                 </div>
                             )}
                         </div>
@@ -390,10 +394,10 @@ const ReviewAnalyzer = () => {
                                 </div>
                             ) : (
                                 <div className="text-center">
-                                    <i className="mdi mdi-emoticon-sad text-secondary" style={{fontSize: '5rem'}}/>
-                                    <h2 className="mt-3 text-muted">No Feature data available.</h2>
-                                    <h3 className="mt-3 text-muted">Please check if the
-                                        review has been analyzed.</h3>
+                                    <i className="mdi mdi-emoticon-sad-outline text-secondary" style={{fontSize: '5rem'}}/>
+                                    <h3 className="mt-3 text-muted">No features detected.</h3>
+                                    <p className="mt-3 text-muted">Please check if the
+                                        review has been analyzed.</p>
                                 </div>
                             )}
                         </div>
@@ -411,7 +415,9 @@ const ReviewAnalyzer = () => {
                                 <div className="text-center">
                                     <i className="mdi mdi-emoticon-sad-outline text-secondary"
                                        style={{fontSize: '5rem'}}/>
-                                    <p className="mt-3 text-muted">No detected polarities.</p>
+                                    <h3 className="mt-3 text-muted">No polarities detected.</h3>
+                                    <p className="mt-3 text-muted">Please check if the
+                                        review has been analyzed.</p>
                                 </div>
                             )}
                         </div>
