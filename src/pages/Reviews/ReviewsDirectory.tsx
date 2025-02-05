@@ -39,6 +39,7 @@ const ReviewsDirectory: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { appPackage: stateAppPackage, selectedFeatures: stateSelectedFeatures } = location.state || {};
+    const [noResultsShown, setNoResultsShown] = useState(false);
 
     const polarityOptions = ["Positive", "Negative"];
     const topicOptions = [
@@ -59,7 +60,7 @@ const ReviewsDirectory: React.FC = () => {
     const typeOptions = ["Bug", "Rating", "Feature", "UserExperience"];
 
     useEffect(() => {
-        // Set initial state from location
+        setCurrentPage(0);
         if (stateAppPackage) setAppPackage(stateAppPackage);
         if (stateSelectedFeatures && stateSelectedFeatures.length > 0) setSelectedFeatures(stateSelectedFeatures);
     }, [stateAppPackage, stateSelectedFeatures]);
@@ -130,7 +131,7 @@ const ReviewsDirectory: React.FC = () => {
                 selectedEmotion,
                 selectedPolarity,
                 selectedType,
-                page, // Pass the specified page number
+                page,
                 pageSize
             );
 
@@ -138,16 +139,22 @@ const ReviewsDirectory: React.FC = () => {
                 const { reviews: mappedData, total_pages: pages } = response;
                 setPageData(mappedData);
                 setTotalPages(pages);
+                setNoResultsShown(false);  // Reset when results are found
             } else {
                 setPageData([]);
-                toast.warn("No reviews found for the selected filters.");
+                if (!noResultsShown) {     // Show warning only once
+                    toast.warn("No reviews found for the selected filters.");
+                    setNoResultsShown(true);
+                }
             }
         } catch (error) {
             setPageData([]);
-            toast.warn("No reviews found for the selected filters.");
+            if (!noResultsShown) {
+                toast.warn("No reviews found for the selected filters.");
+                setNoResultsShown(true);
+            }
         }
     };
-
     const handlePageSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const newSize = Number(event.target.value);
         setPageSize(newSize);
