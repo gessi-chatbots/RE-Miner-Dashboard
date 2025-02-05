@@ -529,7 +529,7 @@ const ReviewsDirectory: React.FC = () => {
                                     <OverlayTrigger overlay={<Tooltip id="analyze-tooltip">View Review</Tooltip>}>
                                         <a href="#" className="action-icon me-2"
                                            onClick={() => analyzeReviewAction(review)}>
-                                            <i className="mdi mdi-eye text-primary"></i>
+                                            <i className="mdi mdi-eye text-secondary"></i>
                                         </a>
                                     </OverlayTrigger>
                                 </td>
