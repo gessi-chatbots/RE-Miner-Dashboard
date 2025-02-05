@@ -98,11 +98,13 @@ const FeatureLineChart = () => {
                 const statistics = statisticsData;
 
                 // Extract and sort all unique dates from the response data
-                const dates = Array.from(new Set(statistics.map(({ date }: any) => new Date(date).toLocaleDateString()))).sort();
+                const dates = Array.from(
+                    new Set(statistics.map(({ date }: any) => new Date(date).toISOString().split('T')[0]))
+                ).sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
 
                 // Extract data for the selected features
                 const formattedData = statistics.reduce((accumulator: any[], { date, featureOccurrences }: any) => {
-                    const formattedDate = new Date(date).toLocaleDateString();
+                    const formattedDate = new Date(date).toISOString().split('T')[0];  // Use ISO string for consistency
                     selectedFeatures.forEach((selectedFeature: string) => {
                         const featureEntry = featureOccurrences.find((occurrence: any) => occurrence.feature === selectedFeature);
                         if (featureEntry) {
@@ -115,7 +117,6 @@ const FeatureLineChart = () => {
                     });
                     return accumulator;
                 }, []);
-
                 // Populate occurrences for each feature on each date
                 const datasets: any[] = [];
                 selectedFeatures.forEach((selectedFeature: string, index: number) => {
