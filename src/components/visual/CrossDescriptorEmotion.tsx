@@ -102,28 +102,25 @@ const CrossDescriptorEmotion = () => {
                 parsedStartDate,
                 parsedEndDate
             );
+
             if (statisticsData != null) {
                 const statistics = statisticsData;
 
-                const labels: string[] = [];
+                // Extract and sort all unique dates
+                const labels = Array.from(
+                    new Set(statistics.map((stat: any) => new Date(stat.date).toISOString().split('T')[0]))
+                ).sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
+
+                // Prepare feature and sentiment datasets
                 const featureDatasets: any[] = [];
                 const sentimentDatasets: any[] = [];
-
-                statistics.forEach((stat) => {
-                    const formattedDate = new Date(stat.date).toLocaleDateString();
-                    if (!labels.includes(formattedDate)) {
-                        labels.push(formattedDate);
-                    }
-                });
 
                 selectedFeatures.forEach((selectedFeature, index) => {
                     const data: number[] = [];
                     labels.forEach((label) => {
-                        const stat = statistics.find(
-                            (stat) => new Date(stat.date).toLocaleDateString() === label
-                        );
+                        const stat = statistics.find((stat: any) => new Date(stat.date).toISOString().split('T')[0] === label);
                         if (stat) {
-                            const feature = stat.featureOccurrences.find((f) => f.feature === selectedFeature);
+                            const feature = stat.featureOccurrences.find((f: any) => f.feature === selectedFeature);
                             data.push(feature ? feature.occurrences : 0);
                         } else {
                             data.push(0);
@@ -142,12 +139,10 @@ const CrossDescriptorEmotion = () => {
                 SENTIMENT_OPTIONS.forEach((sentiment) => {
                     const data: number[] = [];
                     labels.forEach((label) => {
-                        const stat = statistics.find(
-                            (stat) => new Date(stat.date).toLocaleDateString() === label
-                        );
+                        const stat = statistics.find((stat: any) => new Date(stat.date).toISOString().split('T')[0] === label);
                         if (stat) {
                             const sentimentOccurrence = stat.emotionOccurrences.find(
-                                (s) => s.emotion === sentiment
+                                (s: any) => s.emotion === sentiment
                             );
                             data.push(sentimentOccurrence ? sentimentOccurrence.occurrences : 0);
                         } else {
