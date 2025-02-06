@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table,Tooltip, Button, Row, Col, Form, OverlayTrigger } from "react-bootstrap";
+import {Table, Tooltip, Button, Row, Col, Form, OverlayTrigger, Alert} from "react-bootstrap";
 import AppService from "../../services/AppService";
 
 import ReviewService from "../../services/ReviewService";
@@ -235,7 +235,19 @@ const ReviewsDirectory: React.FC = () => {
     return (
         <div>
             <h1 className="text-secondary">Reviews Directory</h1>
-
+            {apps.length === 0 && (
+                <Alert variant="warning" className="mt-3 mb-4 d-flex align-items-center">
+                    No applications have been found. Please upload them using the:
+                    <button
+                        onClick={() => window.location.href = '/applications/upload'}
+                        className="ms-2 btn btn-primary btn-sm"
+                        style={{ fontWeight: '500', whiteSpace: 'nowrap', width: 'auto' }}
+                    >
+                        <i className="mdi mdi-upload me-1"></i>
+                        Uploader
+                    </button>
+                </Alert>
+            )}
             {/* Filters and Search */}
             <Row className="bg-white p-4 rounded shadow-sm mb-4">
                 <Row>

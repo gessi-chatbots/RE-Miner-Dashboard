@@ -49,7 +49,7 @@ const Dashboard = () => {
             <h1 className="text-secondary mb-4">Dashboard</h1>
 
             {apps.length === 0 && (
-                <Alert variant="warning" className="mb-4 d-flex align-items-center">
+                <Alert variant="warning" className="mt-3 mb-4 d-flex align-items-center">
                     No applications have been found. Please upload them using the:
                     <button
                         onClick={() => window.location.href = '/applications/upload'}
@@ -60,9 +60,6 @@ const Dashboard = () => {
                         Uploader
                     </button>
                 </Alert>
-
-
-
             )}
 
             <Row className="gx-5">

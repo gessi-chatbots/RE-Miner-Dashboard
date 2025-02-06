@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Tree from "react-d3-tree";
 import TreeService from "../../services/TreeService";
 import Draggable from "react-draggable";
-import { Container, Button, Row, Col, Form } from "react-bootstrap";
+import {Container, Button, Row, Col, Form, Alert} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-toastify";
@@ -267,7 +267,19 @@ const TreeAnalyzer = () => {
     return (
         <Container>
             <h1 className="text-secondary mb-4">Tree Analyzer</h1>
-
+            {apps.length === 0 && (
+                <Alert variant="warning" className="mt-3 mb-4 d-flex align-items-center">
+                    No applications have been found. Please upload them using the:
+                    <button
+                        onClick={() => window.location.href = '/applications/upload'}
+                        className="ms-2 btn btn-primary btn-sm"
+                        style={{ fontWeight: '500', whiteSpace: 'nowrap', width: 'auto' }}
+                    >
+                        <i className="mdi mdi-upload me-1"></i>
+                        Uploader
+                    </button>
+                </Alert>
+            )}
             {/* Controls Section */}
             <Row className="bg-white p-4 rounded shadow-sm mb-4">
                 <Col md={4} className="mb-3 mb-md-0">
