@@ -95,7 +95,7 @@ const LoginForm = () => {
                                   color: '#333',
                               }}
                           >
-                              Login to RE-Miner
+                              RE-Miner 2.0
                           </h1>
                           <Form onSubmit={handleSubmit}>
                               <Form.Group controlId="email" style={{ marginBottom: '15px' }}>
