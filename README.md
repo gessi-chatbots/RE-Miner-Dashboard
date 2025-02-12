@@ -71,30 +71,8 @@ npm install
 ```
 3. Start the development server:
 ```bash
-npm start
+npm start --port=8000
 ```
-
-### Backend Setup (Flask)
-
-1. Clone the repository:
-```bash
-git clone https://github.com/gessi-chatbots/RE-Miner-Backend
-cd RE-Miner-Backend
-```
-2. Create a virtual environment and activate it:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scriptsctivate
-```
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-4. Run the backend server:
-```bash
-flask run --port=3001
-```
-
 ---
 
 ## 🚀 How to Deploy
@@ -118,22 +96,6 @@ docker build -t re-miner-dashboard .
 ```bash
 docker run -d -p 8000:8000 re-miner-dashboard
 ```
-### Deploying Backend
-#### Manually 
-1. Run the Flask application in production using Gunicorn:
-```bash
-gunicorn -w 4 -b 0.0.0.0:3001 app:app
-```
-#### Docker
-1. Build the Docker image:
-```bash
-docker build -t re-miner-backend .
-```
-2. Run the container:
-```bash
-docker run -d -p 3001:3001 re-miner-backend
-```
----
 
 ## 📜 License
 
