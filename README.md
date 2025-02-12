@@ -1,138 +1,145 @@
 # RE-Miner Dashboard
 
-The RE-Miner Dashboard is a software component within the RE-Miner Ecosystem, illustrated in the figure below.
+The **RE-Miner Dashboard** is a core component of **RE-Miner 2.0**, part of the broader **RE-Miner Ecosystem**. 
 
-![RE-Miner-Ecosystem](https://github.com/gessi-chatbots/RE-Miner-Dashboard/assets/55029168/08cfdc74-1154-4ea0-a2de-2cab3786845d)
+It provides an intuitive UI for users to interact with the RE-Miner 2.0 backend for data analysis, visualization, and NLP-based insights.
 
-## Table of Contents
-1. [Description](#description)
-2. [User Cases](#user-cases)
-3. [Technologies](#technologies)
-4. [How to Install](#how-to-install)
-    - [Frontend React Application](#frontend-react-application)
-    - [AWS Amplify Backend](#aws-amplify-backend)
-5. [How to Deploy](#how-to-deploy)
-    - [Deploy Backend](#deploy-backend)
-    - [Deploy Frontend](#deploy-frontend)
-6. [Datasets](#datasets)
-7. [License](#license)
+## RE-Miner 2.0 Architecture
 
-## Description
+The structure of **RE-Miner 2.0** is illustrated in the diagram below:
 
-The RE-Miner Dashboard [RE-Miner Dashboard](https://uat.reminer-app) (still in development). Is an analytical and visualization tool. This software component comprises several integral elements:
+![RE-Miner-2.0](src/assets/static/images/RE-Miner-2.0.png)
 
-1. **React Front-end Application**
-2. **Authorization & Authentication System**
-3. **API Gateway**
-4. **Backend:**
-    - Applications API
-    - Reviews API
-    - User creation module
-5. **NoSQL Document-Based Database**
 
-### User cases
+💡 **Key Note:** While the dashboard enhances usability, it is **not strictly required**—users can interact directly with the backend via its API.
 
-The user engagement follows a structured workflow. Upon user creation, access permissions to the application and associated APIs are granted. Once an user is authenticated, the dashboard provides two primary user cases:
-| User Case                  | Description                                                                                     | Image |
-| -------------------------- | ----------------------------------------------------------------------------------------------- | ----- |
-| Single Review Analysis     | Users can select an application review and extract its features and/or emotions using some of the RE-Miner integrated NLP Models.                | ![reviewAnalysis](https://github.com/gessi-chatbots/RE-Miner-Dashboard/assets/55029168/6276bd65-57f4-41c4-b460-07ed9526c118.png) |
-| Batch Review Analysis and Visual Analytics | Users can select multiple application reviews, extract features and/or emotions using RE-Miner integrated NLP Models, and analyze key statistical charts via the Dashboard. | ![Dashboard](https://github.com/gessi-chatbots/RE-Miner-Dashboard/assets/55029168/dd505437-d8c9-4c89-a000-504873558d60.png)  |
+---
 
-## Technologies
-| Technology                 | Description                               |
-| -------------------------- | ----------------------------------------- |
-| React                      | Frontend application                      |
-| Amazon Cognito             | Authentication and Authorization          |
-| AWS API Gateway            | API Management                            |
-| AWS Lambda                 | Serverless API Coding                     |
-| DynamoDB                   | NoSQL Database                            |
-| AWS Amplify Framework      | Resource Provisioning and CI/CD           |
+## ✨ Key Features
 
-## How to Install
-### Frontend React Application
+✅ **Web-based UI** – Easy-to-use interface for interacting with RE-Miner 2.0.  
+✅ **Seamless API Communication** – Connects with the backend effortlessly.  
+✅ **Data Visualization** – Graphs, charts, and analytics for enhanced insights.  
+✅ **Extensibility** – Built to integrate future RE-Miner ecosystem expansions.
 
-1. **Clone the repository:**
+---
 
-    ```bash
-    git clone https://github.com/gessi-chatbots/RE-Miner-Dashboard
-    cd RE-Miner-Dashboard
-    ```
+## 📸 Screenshots & Demo
 
-2. **Install dependencies:**
+Here are some visuals showcasing the RE-Miner Dashboard:
 
-    ```bash
-    npm install
-    ```
+### 🔹 Main Dashboard View
+![Dashboard Screenshot](screenshots/dashboard-screenshot.png)
 
-### AWS Amplify Backend
+### 🔹 Review Analyzer
+![Single Review Analysis](screenshots/single-review-analysis.png)
 
-#### Prerequisites
+### 🔹 Batch Review Analytics (GIF Demo)
+![Batch Review GIF](screenshots/batch-review-demo.gif)
 
-- [Amplify CLI installed](https://docs.amplify.aws/cli/start/install)
+### 🔹 Feature Clustering (GIF Demo)
+![Feature Clustering GIF](screenshots/batch-review-demo.gif)
 
-#### Steps
+### 🎥 Video Demo
+A full demo is available on [YouTube](https://www.youtube.com/watch?v=a11bHSCYqqM).
 
-1. **Configure Amplify:**
+---
+## 🛠 Dependencies
+The frontend requires the following dependencies to function properly:
 
-    ```bash
-    amplify configure
-    ```
+- 🔗 **[RE-Miner Dashboard BFF (Backend for Frontend)](https://github.com/gessi-chatbots/RE-Miner-Dashboard-BFF)** – An intermediary layer for API communication.
+- 🔗 **[MApp-KG](https://github.com/gessi-chatbots/app_data_repository)** – An RDF-based knowledge graph that integrates a catalog of mobile applications and user reviews.
+- 🔗 **[RE-Miner HUB](https://github.com/gessi-chatbots/RE-Miner-Hub)** – The central integration point connecting the core layer with the outer layers. It facilitates communication within the RE-Miner 2.0 ecosystem and is essential for performing all RE-Miner 2.0 tasks.
+- **SQL Database** – Stores structured data (e.g., user information).
 
-    Follow the prompts to set up your AWS credentials and region.
+⚠ **Note:** To install all dependencies at once, you can use the **[RE-Miner Orchestrator](https://github.com/gessi-chatbots/RE-Miner-Orchestrator)**.
 
-2. **Initialize Amplify:**
+---
 
-    ```bash
-    amplify init
-    ```
+## 📦 How to Install
 
-    Follow the prompts to initialize your Amplify project.
+### Frontend Setup (React)
 
-3. **Add backend services:**
-
-    ```bash
-    amplify add auth # for Cognito
-    amplify add api # for API Gateway
-    amplify add storage # for DynamoDB
-    ```
-4. **Create the lambda functions**
-   ```bash
-    amplify add function
-   ```
-   - Select Python runtime.
-   - Copy paste the source code from the [3 functions](/amplify/backend/function)
-   - Create a `backend_url` environment variable and assign the [RE-Miner HUB URL](https://github.com/gessi-chatbots/RE-Miner-HUB)
-   - In the Amplify console copy & paste the [amplify.yml](amplify.yml) for correct building
-
-## How to deploy
-### **Deploy backend:**
-
+1. Clone the repository:
 ```bash
-    amplify push
+git clone https://github.com/gessi-chatbots/RE-Miner-Dashboard
+cd RE-Miner-Dashboard
+```
+2. Install dependencies:
+```bash
+npm install
+```
+3. Start the development server:
+```bash
+npm start
 ```
 
-This will create and configure the backend resources in your AWS account.
-    
-### **Deploy frontend:**
+### Backend Setup (Flask)
 
+1. Clone the repository:
 ```bash
-    npm run build
-    amplify publish # if you want to deploy it as well in AWS
+git clone https://github.com/gessi-chatbots/RE-Miner-Backend
+cd RE-Miner-Backend
 ```
-## Datasets
+2. Create a virtual environment and activate it:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scriptsctivate
+```
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+4. Run the backend server:
+```bash
+flask run --port=3005
+```
 
-Within the [data folder](/data), three datasets are provided, each serving distinct purposes:
+---
 
-1. [Meaningful Small Dataset](/data/meaningful_small_dataset.json): This dataset features four popular apps, accompanied by selected genuine reviews that consistently offer valuable insights when analyzed using the RE-Miner App.
+## 🚀 How to Deploy
 
-2. [Small Dataset](/data/small_dataset.json): This dataset features four popular apps, accompanied by genuine, albeit randomly selected, reviews.
+### Deploying Frontend
+#### Manually
+1. Build the production version:
+```bash
+npm run build
+```
+2. Serve the app (example using `serve`):
+```bash
+serve -s build
+```
+#### Docker
+1. Build the Docker image:
+```bash
+docker build -t re-miner-dashboard .
+```
+2. Run the container:
+```bash
+docker run -d -p 3000:3000 re-miner-dashboard
+```
+### Deploying Backend
+#### Manually 
+1. Run the Flask application in production using Gunicorn:
+```bash
+gunicorn -w 4 -b 0.0.0.0:3005 app:app
+```
+#### Docker
+1. Build the Docker image:
+```bash
+docker build -t re-miner-backend .
+```
+2. Run the container:
+```bash
+docker run -d -p 3005:3005 re-miner-backend
+```
+---
 
-3. [Very Small Dataset](/data/very_small_dataset.json): This dataset encompasses three apps and a some randomly chosen and genuine reviews.
+## 📜 License
 
-In the latest release, an additional dataset named `full_dataset.json` is introduced. This dataset is extensive, containing a vast array of applications and genuine reviews, offering a comprehensive dataset for diverse analysis.
+This project is licensed under the **[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html)**.  
+For more details, see the [`LICENSE.md`](LICENSE.md) file.
 
-## License
-This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) - see the [LICENSE.md](LICENSE.md) file for details.
+---
 
-
-
+🔗 **Developed by [GESSI - NLP4SE](https://gessi.upc.edu/en/research-areas/nlp4se)**  
