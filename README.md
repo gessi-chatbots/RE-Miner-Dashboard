@@ -92,7 +92,7 @@ pip install -r requirements.txt
 ```
 4. Run the backend server:
 ```bash
-flask run --port=3005
+flask run --port=3001
 ```
 
 ---
@@ -116,13 +116,13 @@ docker build -t re-miner-dashboard .
 ```
 2. Run the container:
 ```bash
-docker run -d -p 3000:3000 re-miner-dashboard
+docker run -d -p 8000:8000 re-miner-dashboard
 ```
 ### Deploying Backend
 #### Manually 
 1. Run the Flask application in production using Gunicorn:
 ```bash
-gunicorn -w 4 -b 0.0.0.0:3005 app:app
+gunicorn -w 4 -b 0.0.0.0:3001 app:app
 ```
 #### Docker
 1. Build the Docker image:
@@ -131,7 +131,7 @@ docker build -t re-miner-backend .
 ```
 2. Run the container:
 ```bash
-docker run -d -p 3005:3005 re-miner-backend
+docker run -d -p 3001:3001 re-miner-backend
 ```
 ---
 
