@@ -100,7 +100,7 @@ docker run -d -p 8000:8000 re-miner-dashboard
 ## 📜 License
 
 This project is licensed under the **[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html)**.  
-For more details, see the [`LICENSE.md`](LICENSE.md) file.
+For more details, see the [`LICENSE`](LICENSE) file.
 
 ---
 
