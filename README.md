@@ -52,7 +52,7 @@ The frontend requires the following dependencies to function properly:
 - 🔗 **[RE-Miner HUB](https://github.com/gessi-chatbots/RE-Miner-Hub)** – The central integration point connecting the core layer with the outer layers. It facilitates communication within the RE-Miner 2.0 ecosystem and is essential for performing all RE-Miner 2.0 tasks.
 - **SQL Database** – Stores structured data (e.g., user information).
 
-⚠ **Note:** To install all dependencies at once, you can use the **[RE-Miner Orchestrator](https://github.com/gessi-chatbots/RE-Miner-Orchestrator)**.
+⚠ **Note:** To install and execute all dependencies at once, you can use the **[RE-Miner Orchestrator](https://github.com/gessi-chatbots/RE-Miner-Orchestrator)**.
 
 ---
 
